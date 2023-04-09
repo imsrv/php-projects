@@ -1,0 +1,103 @@
+<script type="text/javascript" src="#%IMAGES_DIR%#sortabletable.js"></script>
+
+<center>#%REFERER_ERROR%#
+<br>
+
+<!-- // -->
+<TABLE id="referer_table" bgcolor=white width="100%" cellSpacing=0 cellPadding=0 border=0>
+	<THEAD>
+	<TR class="t_l">
+		<TD width="0%">&nbsp;</TD>
+		<TD width="60%"><a class=sort>[Filename]</a></TD>
+		<TD width="20%"><a class=sort>[Date]</a></TD>
+		<TD width="20%" colspan=2><a class=sort>[Size]</a></TD>
+		<TD width="0%">&nbsp;</TD>
+	</TR>
+	</THEAD>
+
+	<TBODY>
+	<TEMPLATE referer_row>
+		<TR>
+		<TD class="t_o_l"> &nbsp; <img
+			align="absmiddle"
+			src="#%IMAGES_DIR%#6.gif"></TD>
+		<TD class="t_o_l"><a 
+			title="Download &quot;%%FILENAME%%&quot;"
+			href="#%ACTION%#?cmd=#%CMD%#&d=%%FILENAME%%">%%FILENAME%%</a></TD>
+		<TD class="t_o_l" style="background:#DfDfDf">#%DATE%#</TD>
+		<TD class="t_o_l" width="0%">#%SIZE%#</TD>
+		<TD class="t_o_l" width="20%">KB</TD>
+		<TD class="t_o_l">
+			<button onClick="view('#%ACTION%#?cmd=#%CMD%#&v=%%FILENAME%%', 'p_#%FILEMD5%#');"
+				title="View &quot;%%FILENAME%%&quot;"
+				class="s_b"><img
+				alt="View"
+				src="#%IMAGES_DIR%#1.gif"></button>
+			<button onClick="if(confirm('DELETING: %%FILENAME%%\t\n\nAre you sure?')){document.location.href='#%ACTION%#?cmd=#%CMD%#&e=%%FILENAME%%';}"
+				title="Delete &quot;%%FILENAME%%&quot;"
+				class="s_b"><img 
+				alt="Delete"
+				src="#%IMAGES_DIR%#3.gif"></button>
+			</TD>
+		</TR>
+	</TEMPLATE>
+	</TBODY>
+
+
+	<TEMPLATE referer_none>
+	<TR><TD align=center colspan=6 height="160" class="t_l">There are no referrer sets uploaded.</TD></TR>
+	</TEMPLATE>
+
+	<TR><TD colspan="6"
+		align="center"
+		class="t_l">
+		
+		<table width="640" border="0"><tr valign="top">
+		<td width="30%"><ul><li class="orange">You can use the table
+			column headers to sort the files by filename, date or
+			size.</ul>
+		</td>
+
+		<td width="30%"><ul>
+			<li class="orange">To download some of the files, click
+			on file's name.</ul>
+		</td>
+
+		<td width="30%"><ul>
+			<li class="orange">The little buttons at the right end of
+			table lines are for viewing and deleting files.</ul>
+		</td>
+		</tr></table>
+		
+		</TD></TR>
+</TABLE>
+
+<script type="text/javascript">
+<!--//
+var st1 = new SortableTable(document.getElementById("referer_table"),
+	["None", "CaseInsensitiveString", "String", "Number", "None"]);
+st1.sort(1, true);
+
+function view(url,win){
+	window.open(url,win,'top=10, left=10, width=512, scrollbars=1, resizable=1 ');
+	}
+//-->
+</script>
+
+<!--#use this template to reload the page when template not found in new windows#-->
+<TEMPLATE not_found>
+<script type="text/javascript">
+<!--//
+	self.opener.location.href='#%ACTION%#?cmd=#%CMD%#&err=error_notfound';
+	self.close();
+//-->
+</script>
+</TEMPLATE>
+
+
+<MESSAGE>
+html_title: Referer sets
+
+error_notfound: File not found
+success_deleted: File successfully deleted
+</MESSAGE>

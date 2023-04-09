@@ -1,0 +1,36 @@
+##############################################################################
+# PROGRAM : BuildACommunity.com Perl Module                                  #
+# VERSION : 3.1                                                              #
+#                                                                            #
+# NOTES   :                                                                  #
+##############################################################################
+# All source code, images, programs, files included in this distribution     #
+# Copyright (c) 1999 -> 2017                                                 #
+#           Eric L. Pickup, Ecreations, BuildACommunity                      #
+#           All Rights Reserved.                                             #
+##############################################################################
+#                                                                            #
+#    ------ DO NOT MODIFY ANYTHING BELOW THIS POINT !!! -------              #
+#                                                                            #
+##############################################################################
+
+#    This file is designed to add functionality to the user management system.#         Do not touch this file unless you know what you are doing!!!# Not only could you crash everything, you may open up security holes for hackers.
+
+
+# These scripts are called from the appropriate scripts in user.pm and user_dbm_pm.# They are called at the top of the procedures before the action has taken place.# You have access to $UserName, $PassWord and all other variables that are in scope # when this scripts is called.  Modify these variables at your own risk.
+
+sub a_activate_user {}
+
+sub a_cancel_membership {}
+
+sub a_change_email {} 
+sub a_change_password {}
+
+sub a_create_user {}
+
+
+# DO NOT DELETE THIS NEXT LINE!!!
+
+
+
+1;

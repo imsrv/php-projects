@@ -1,0 +1,11 @@
+                                <tr align="center">
+                                    <td align="left">
+                                        <a href="{site_admin_url}/block.php?mode=edit&amp;bid={block_id}">{block_title}</a>
+                                    </td>
+                                    <td align="center">{block_access}</td>
+                                    <td>{block_type}</td>
+                                    <td>{block_side}</td>
+                                    <td>{block_order}</td>
+                                    <td>{block_topic}</td>
+                                    <td>{block_enabled}</td>
+                                </tr>

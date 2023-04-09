@@ -1,0 +1,137 @@
+***************************************
+*** phpInstantGallery Documentation ***
+***************************************
+
+
+
+#########################################################
+#                                                       #
+# PHPSelect Web Development Division                    #
+#                                                       #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are distributed through         #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated.                                     #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the distriuters      #
+# at admin@phpselect.com                                #
+#                                                       #
+#########################################################
+
+
+
+Contents:
+	I. Summary
+	II. Requirements
+	III. Instalation
+	IV. Template Customization
+	V. License Information (GPL)
+
+
+I. Summary
+
+	phpInstantGallery generates an html gallery from images on its server.  The script scans 
+	the directory you point it to (via a query string), and it stores the list of images it 
+	retreives in an array that is POSTED from page to page as the user moves through the gallery.  
+	This method of file-list-passing makes phpInstantGallery significantly more efficient than
+	gallery tools that scan directories for the data they need to construct galleries.
+	
+	phpInstantGallery generates two types of html pages: thumbnail and image pages.  From a 
+	thumbnail page, the user can click on any thumb to go to that thumb's corresponding image page.  
+	The image page contains the thumb's larger counterpart, as well as a scroll bar that allows the 
+	user to either scroll between the previous/next image pages, or click back to the thumb page.
+	
+	phpInstantGallery allows for the use of multiple templates.  You can maintain one template, or 
+	you can define multiple templates, and select which template to use in the query string.
+
+
+II. Requirements
+
+	* PHP 4.0.0 or later
+
+	* Image Requirements (IMPORTANT):  All thumbnail images must have the same file name as their 
+	  larger counterpart, but with a common flag just before the file extension.  You can define 
+	  what you want the flag to be in the config file - config.php.  For example, if you define 
+	  your flag to be "-00" then the thumbnail for "image.jpg" would need to be named "image-00.jpg".
+	  Also, none of the larger images can contain the flag before the extention.  The script does 
+	  not work when the flag is "-01", and there is an image pair named "image-01.jpg" and 
+	  "image-01-01.jpg".
+	  
+	  
+III. Installation
+
+	1. Download pig-x.y.tar.gz (or pig-x.y.tar for Windows users) from
+	   http://www.ikemcg.com/scripts/pig/index.html
+	
+	2. Untar/unzip phpInstantGallery into the directory you want.  Default is phpInstantGallery.
+	
+	3. Change phpInstantGallery directory to desired name.  Gallery URLs will always be the http 
+	   call to the script's index.php file plus a query string.
+	   
+	4. Create a folder on your server where you will store gallery images.  I recommend that you 
+	   create this folder outside the directory the scripts are in, and that you dedicate this 
+	   folder to gallery images.  The path to this folder will be the string value you will assign 
+	   to the $galleryroot variable in config.php.
+	   
+	5. Make changes to config.php.  The file is fairly well documented.
+	
+	6. Prepare images according to the image requirements described in the requirements section 
+	   above.  Make a new directory in the root gallery folder you created in step four, and upload 
+	   your images to that directory.  (Note: to help organize your galleries, you can create 
+	   subfolders in the root gallery folder, and then put galleries, i.e. folders with gallery 
+	   images, in those subfolders.)
+	   
+	7. Go to index.php in a web browser, and log in to the admin page to get the URLs for whatever
+	   galleries you uploaded.
+	   
+	   
+IV. Upgrading From Version 1.0
+
+	1. To upgrade from version 1.0, rename the folder that contains your current phpInstant gallery 
+	   scripts, then follow the instuctions above.  Edit the new config.php file, do not overwrite 
+	   the new file with the old one, as variable names have changed.  When you finish, copy your 
+	   old templates to the new template folder, and make the below changes to each template.
+	   
+	2. In the header.php file, change the imgList() javascript function to:
+	   
+	   function imgList() {
+			var imglist = new Array('<? echo implode("', '", $imglist); ?>');
+
+			for (var i=0; i < imglist.length; i++) {
+				document.writeln ("<input type=\"hidden\" name=\"imglist[]\" value=\"" + imglist[i] + "\">\n"); 
+			}
+		}
+		
+	3. In the image_page.php file change the function that reads getScrollBar($imgNo, $imgCnt, $gallery, $tmplt);
+	   to getScrollBar($imgno);
+	   
+	4. That should do it.
+	   
+	   
+V. Template Customization
+
+	* Definition:
+	
+	A phpInstantGallery template is a folder, under the template directory, that contains three
+	files: header.php, image_page.php, and thumb_page.php.  image_page.php is the template for the 
+	page that shows the large image and scroll bar, thumb_page.php is the template for the thumbnail 
+	page, and header.php is included at the top of each page.  Each of the  three files contains 
+	its own documentation.
+
+	* Adding New Templates:
+	
+	You can add a new template without changing or deleting the default template.  If you define 
+	multiple templates you can select among them by specifying the template name in the query string. 
+	To add a template, copy the default folder and it's contents to the same location, but with a 
+	different name.  The name you give the new folder is the name of the new template.  Edit 
+	the template files however you like.  You can then use the admin page to get the URLs to 
+	all your galleries dressed in the new template.
+	
+

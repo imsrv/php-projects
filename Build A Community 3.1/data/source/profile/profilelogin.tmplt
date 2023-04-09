@@ -1,0 +1,20 @@
+
+<TABLE WIDTH=550 CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Login</B></FONT></CENTER></TD></TR>
+<TR><TD  BGCOLOR="[<($CONFIG{'win_color'})>]" ><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<P>Please fill in the blanks below to login and access The Member's Area
+<form ENCTYPE="application/x-www-form-urlencoded"  METHOD="POST" action="[<($GUrl{'profile.cgi'})>]">
+UserName:<BR> <input type=text name="UserName" VALUE="[<($Cookies{'UserName'})>]" size=20><br>
+<BR>PassWord:<BR>  <input type=password name="PassWord" VALUE="[<($Cookies{'PassWord'})>]" size=20><br>
+<CENTER><INPUT TYPE=SUBMIT NAME="action" VALUE="Login"></CENTER>
+</FONT>
+</FORM>
+<HR WIDTH=50%><P><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">If you aren't a member yet, please <A HREF="[<($GUrl{'register.cgi'})>]">visit the registration page.</A>
+<HR WIDTH=50%><P><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Have you forgotten your password?<BR>Just fill in your email address and we'll send it to you:<BR>
+<form ENCTYPE="application/x-www-form-urlencoded"  METHOD="POST" action="[<($GUrl{'profile.cgi'})>]">
+<input type=text name="Email" size=20><br>
+<INPUT TYPE=HIDDEN NAME="action" VALUE="Get Password"></CENTER>
+<CENTER><INPUT TYPE=SUBMIT VALUE="Get Password"></CENTER>
+</FORM>
+</TD></TR></TABLE>
+

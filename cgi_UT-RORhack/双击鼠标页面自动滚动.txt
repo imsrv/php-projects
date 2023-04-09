@@ -1,0 +1,38 @@
+双击鼠标页面自动滚动 
+
+描述：捕获鼠标的双击动作，是页面自动滚动 
+效果演示：http://www.3382.net 
+
+=========修改方法============ 
+1、将如下代码保存为board.js文件 
+
+
+var currentpos,timer;   function initialize() { timer=setInterval("scrollwindow()",10);}   function sc(){clearInterval(timer);}  function scrollwindow() {currentpos=document.body.scrollTop;window.scroll(0,++currentpos);if (currentpos != document.body.scrollTop) sc();}   document.onmousedown=sc  document.ondblclick=initialize  ie = (document.all)? true:false  if (ie){function ctlent(eventobject){if(event.ctrlKey && window.event.keyCode==13){this.document.FORM.submit();}}}
+
+放到UT目录（NONcgi目录） 
+
+2、备份UTmain.pm文件 
+
+3、用文本编辑器打开UTmain.pm文件 
+
+查找如下代码 
+
+
+sub printHeader
+
+向下查找 
+
+
+"<meta HTTP-EQUIV=Content-Type content=\"text/html; charset=$cfg{'charset'}\">\n",
+
+在下面插入如下代码 
+
+
+"<script language=\"javaScript\" type=\"text/javascript\" SRC=\"$cfg{'nonCgiPath'}/board.js\"></SCRIPT>\n",
+
+保存文件 
+
+4、上传文件 
+
+这个hack只是加入HTML代码，比较安全。可能会对用户的使用习惯造成一定影响，请谨慎使用。 
+另：也可以直接把board.js里的代码写在printHeader里面，但是会比较麻烦，有兴趣的朋友自己试试。 

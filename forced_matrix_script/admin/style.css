@@ -1,0 +1,15 @@
+h1,h2,h3,h4,h5,h6 {margin: 0px; padding: 0px;}#S1 {width: 300px;}h1 {font-size: 20px;}h2 {font-size: 16px;}h3 {font-size: 14px;}h4 {font-size: 12px;}h5 {font-size: 12px;}h6 {color: #666666; font-size: 9px;}a {text-decoration: none;}a:active {text-decoration: underline;}a:hover {text-decoration: underline;}a img {border: none;}.my .ct p {padding: 0px 0px 3px 0px;}#btnsearch {border: none; margin-left: 95px; margin-top: -25px;}body,div,span,p,ul,li,td,th,input,select,textarea,button {font-family: Arial, sans-serif; font-size: 12px;}body {margin: 0px 0px 0px 3px;}br.clear, .clrbth {clear: both;}form {margin: 0px;}hr {height: 1px; padding: 0px; border: 1px solid;}li {margin: 0px 0px 1px 0px;}ul {list-style-position: outside; margin: -2px 0px 0px 8px; list-style-image: url(http://msimg.com/m/8/bullet-black.gif);}ol {list-style-position: outside; margin: -2px 0px 0px 23px;}.stock th {border-top: 1px solid #999999; border-bottom: 1px solid #999999;}.stock td {border-bottom: 1px solid #999999;}.floatleft {float: left; margin: 0px 5px 5px 0px;}.tabs a:hover {text-decoration: none;}.tabslinetall, .tabsoffline, .tabsonline, .tabsline {background-position: bottom; background-repeat: repeat-x;}.tabstext {width: 75px;}.tabsdate {color: #ffffff; width: 150px;}.tabsfronton, .tabsmidon2, .tabsendoff, .tabsfrontoff, .tabsmidon1, .tabsendon {background-position: bottom; background-repeat: no-repeat;}.textad {padding: 2px 2px 8px 8px;}.ppconbody a {text-decoration: underline;}.ppconbody a:visited {text-decoration: underline;}.b1001 {border-left: 1px solid #999999; border-top: 1px solid #999999; margin: 0px 0px 5px 0px;}.b0010 td, .b0010 th {border-bottom: 1px solid #999999;}.p5558 .fb2 {padding: 5px 5px 5px 8px;}.p4060 {padding: 4px 0px 6px 0px;}.big6 .ct, .big6 .dMSNME_1 {padding: 5px 5px 5px 8px;}.footer .ct {padding: 15px 5px 20px 8px;}.ibbtn {border: 1px outset #999999; cursor: pointer; font-weight: bold; margin: 1px 0px 0px 4px; padding: 1px 0px 2px 0px;}.fwn {font-weight: normal;}.niptop {padding: 2px 0px 2px 2px;}
+
+a {
+color:#000000 ; text-decoration: none;
+}
+
+
+A:hover {
+	#000000 ; text-decoration: underline;
+}
+A:visited {
+	#000000 ; text-decoration: none;
+}
+a.nounder
+{  color : black ; text-decoration: none; }.tabsoffline { color: #FFFFFF }

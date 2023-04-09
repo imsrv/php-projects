@@ -1,0 +1,13 @@
+<TABLE BORDER=0 CELLPADDING=3 CELLSPACING=0 [<($CONFIG{'WINCOLOR'})>] WIDTH=400>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><font face="[<($CONFIG{'font_face'})>]" size="+1" color="[<($CONFIG{'ttxt_color'})>]"><CENTER><B>Confirmation Please</CENTER></B></TD><TR>
+<TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+
+Please confirm that you wish to delete this thread and all the posts inside of it.  There will be no way to recover the information later.
+<P>Please be patient, this could take a while if the thread is long
+<form ENCTYPE="application/x-www-form-urlencoded"  METHOD="POST" action="[<($GUrl{'cforum.cgi'})>]">
+<INPUT TYPE=hidden NAME=forum VALUE="[<($FORM{'forum'})>]">
+<INPUT TYPE=hidden NAME=thread VALUE="[<($FORM{'thread'})>]">
+<INPUT TYPE=hidden NAME=action VALUE="confirm_delete_thread">
+<CENTER><INPUT TYPE=submit VALUE="I am sure."></CENTER>
+</FORM>
+</TD></TR></TABLE>

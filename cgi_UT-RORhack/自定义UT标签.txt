@@ -1,0 +1,54 @@
+自定义UT标签（swf/flash，ra/rm，wmv/wma ）
+
+post_edit.cgi 
+post_reply.cgi 
+topic_new.cgi 
+再这3个文件里面搜索 
+function image() { 
+[$nbsp][$nbsp]AddTxt="[img]"+text+"[/img]"; 
+[$nbsp][$nbsp]AddText(AddTxt); 
+} 
+
+再这个下面添加 
+function setswf() { 
+[$nbsp][$nbsp]AddTxt="[swf]"+text+"[/swf]"; 
+[$nbsp][$nbsp]AddText(AddTxt); 
+} 
+
+function real() { 
+[$nbsp][$nbsp]AddTxt="[rm]"+text+"[/rm]"; 
+[$nbsp][$nbsp]AddText(AddTxt); 
+} 
+
+function wm() { 
+[$nbsp][$nbsp]AddTxt="[wmv]"+text+"[/wmv]"; 
+[$nbsp][$nbsp]AddText(AddTxt); 
+} 
+
+搜索 
+<A href="javascript:image()"><IMG height=18 alt="Image" src="$cfg{'nonCgiPath'}/images/editor/image.gif" width=18 border=0 $imgAlign></A> 
+
+再这个下面添加 
+<A href="javascript:setswf()"><IMG height=18 alt="以500*400直接显示flash，如要自定义尺寸请用[flash 宽,高][/flash]可以" src="$cfg{'nonCgiPath'}/images/editor/flash.gif" width=18 border=0 $imgAlign></A> 
+<A href="javascript:real()"><IMG height=18 alt="在线 RealPlayer 流式视频播放（如果要播放 RealPlayer 流式音频请使用[ra][/ra]）" src="$cfg{'nonCgiPath'}/images/editor/real.gif" width=18 border=0 $imgAlign></A> 
+<A href="javascript:wm()"><IMG height=18 alt="在线 Windows Media Player 视频播放（如果要播放 Windows Media Player 音频播放请使用[wma][/wma]）" src="$cfg{'nonCgiPath'}/images/editor/wmv.gif" width=18 border=0 $imgAlign></A> 
+
+UTExtMarkupFilter.pm 
+搜索 
+$$text =~ s癨[img\](https?://[\w\-\.%\~\_/]+?)\[/img\]?IMG SRC='$1' BORDER=0>癷g if $board->{'imgTag'}; 
+
+再这个下面添加 
+$$text =~ s/(\[swf\])\s*(http|https|ftp):\/\/(\S+?\.swf)\s*(\[\/swf\])/<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http:\/\/download.macromedia.com\/pub\/shockwave\/cabs\/flash\/swflash.cab#version=6,0,29,0" width="500" height="400"><param name=movie value=$2:\/\/$3><param name=quality value=high><embed src=$2:\/\/$3 quality=high pluginspage="http:\/\/www.macromedia.com\/shockwave\/download\/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application\/x-shockwave-flash" width="500" height="400"><\/embed><\/object>/isg; 
+$$text =~ s/(\[FLASH=)(\S+?)(\,)(\S+?)(\])\s*(http|https|ftp):\/\/(\S+?\.swf)\s*(\[\/FLASH\])/<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http:\/\/download.macromedia.com\/pub\/shockwave\/cabs\/flash\/swflash.cab#version=6,0,29,0" width=$2 height=$4><param name=movie value=$6:\/\/$7><param name=quality value=high><embed src=$6:\/\/$7 quality=high pluginspage="http:\/\/www.macromedia.com\/shockwave\/download\/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application\/x-shockwave-flash" width=$2 height=$4><\/embed><\/object>/isg; 
+
+$$text =~ s/(\[ra\])(\S+?\.ra)(\[\/ra\])/<center><object classid="clsid:CFCDAA03-8BE4-11CF-B84B-0020AFBBCCFA" id="RAOCX" width="320" height="70"><param name="_ExtentX" value="6694"><param name="_ExtentY" value="1588"><param name="AUTOSTART" value="0"><param name="SHUFFLE" value="0"><param name="PREFETCH" value="0"><param name="NOLABELS" value="0"><param name="SRC" value="$2"><param name="CONTROLS" value="StatusBar,ControlPanel"><param name="LOOP" value="0"><param name="NUMLOOP" value="0"><param name="CENTER" value="0"><param name="MAINTAINASPECT" value="0"><param name="BACKGROUNDCOLOR" value="#000000"><embed src="$2" width="320" autostart="true" height="70"><\/object>/isg; 
+$$text =~ s/(\[rm\])(\S+?\.rm)(\[\/rm\])/<center><object CLASSID=clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA HEIGHT=300 ID=Player WIDTH=380 VIEWASTEXT><param NAME="_ExtentX" VALUE="12726"><param NAME="_ExtentY" VALUE="8520"><param NAME="AUTOSTART" VALUE="0"><param NAME="SHUFFLE" VALUE="0"><param NAME="PREFETCH" VALUE="0"><param NAME="NOLABELS" VALUE="0"><param NAME="CONTROLS" VALUE="ImageWindow"><param NAME="CONSOLE" VALUE="_master"><param NAME="LOOP" VALUE="0"><param NAME="NUMLOOP" VALUE="0"><param NAME="CENTER" VALUE="0"><param NAME="MAINTAINASPECT" VALUE="$2"><param NAME="BACKGROUNDCOLOR" VALUE="#000000"><\/object><br><object CLASSID=clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA HEIGHT=32 ID=Player WIDTH=480 VIEWASTEXT><param NAME="_ExtentX" VALUE="18256"><param NAME="_ExtentY" VALUE="794"><param NAME="AUTOSTART" VALUE="0"><param NAME="SHUFFLE" VALUE="0"><param NAME="PREFETCH" VALUE="0"><param NAME="NOLABELS" VALUE="0"><param NAME="CONTROLS" VALUE="controlpanel"><param NAME="CONSOLE" VALUE="_master"><param NAME="LOOP" VALUE="0"><param NAME="NUMLOOP" VALUE="0"><param NAME="CENTER" VALUE="0"><param NAME="MAINTAINASPECT" VALUE="0"><param NAME="BACKGROUNDCOLOR" VALUE="#000000"><param NAME="SRC" VALUE="$2"><\/object>/isg; 
+
+$$text =~ s/(\[wma\])(\S+?\.wma)(\[\/wma\])/<b>这个是 Windows Media Player 音乐：<\/b><br><center><embed type="application\/x-mplayer2" pluginspage="http:\/\/www.microsoft.com\/Windows\/Downloads\/Contents\/Products\/MediaPlayer\/" src="$2" name="realradio" showcontrols=1 ShowDisplay=0 ShowStatusBar=1 width="320" height="70" autostart="0"><\/embed><\/center>/isg; 
+$$text =~ s/(\[wmv\])(\S+?\.wmv)(\[\/wmv\])/<b>这个是 Windows Media Player 影片：<\/b><br><center><EMBED id="videowindow1" name="videowindow1" src="$2" width="480" height="330" AutoStart=0 ><\/EMBED><\/center>/isg; 
+
+topic_show 
+搜索 
+dbToDisplay($board, $post) if ($post->{'markup'} [$& $board->{'markup'})] 
+dbToDisplayS($post) if ($post->{'smiley'} [$& $cfg{'smileys'})] 
+这两行上下换一下位置 

@@ -1,0 +1,47 @@
+# MySQL dump 5.13
+#
+# Host: localhost    Database: reminders
+#--------------------------------------------------------
+# Server version	3.22.20a-log
+
+#
+# Table structure for table 'notify'
+#
+CREATE TABLE notify (
+  date_field timestamp(14),
+  email varchar(200) DEFAULT '' NOT NULL,
+  comment blob NOT NULL,
+  recur_num tinyint(3) unsigned DEFAULT '0' NOT NULL,
+  notify_num tinyint(3) unsigned DEFAULT '0' NOT NULL,
+  notify_val varchar(14) DEFAULT '' NOT NULL,
+  recurring char(3) DEFAULT 'no',
+  recur_val varchar(14) DEFAULT '' NOT NULL,
+  adv_notice char(3) DEFAULT 'no',
+  id varchar(14) DEFAULT '' NOT NULL,
+  subject varchar(100) DEFAULT '' NOT NULL,
+  KEY date_field (date_field)
+);
+
+#
+# Dumping data for table 'notify'
+#
+
+
+#
+# Table structure for table 'passwd'
+#
+CREATE TABLE passwd (
+  email varchar(100) DEFAULT '' NOT NULL,
+  epasswd varchar(14) DEFAULT '' NOT NULL,
+  eip varchar(100) DEFAULT '' NOT NULL,
+  edate varchar(100) DEFAULT '' NOT NULL,
+  eblocked enum('Y', 'N') DEFAULT 'N' NOT NULL,
+  esentpass TIMESTAMP(14),
+  PRIMARY KEY (email)
+);
+
+#
+# Dumping data for table 'passwd'
+#
+
+

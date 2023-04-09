@@ -1,0 +1,113 @@
+共修改三个文件：UTLanguage.pm，post_rate_x.cgi，topic_show.cgi 
+并且修改数据库 
+
+1、打开 UTLanguage.pm 
+     查找 
+$lng{'topicEditedOn'}   = "编辑于";
+     在下面新加一行 
+$lng{'topicRatedOn'}    = "打分于";
+
+2、修改后的 post_rate_x.cgi 我粘贴上来了 
+
+3、打开 topic_show.cgi 
+     查找 
+
+my $editTimeStr = ($post->{'editTime'} && $post->{'editTime'} - $post->{'postTime'} > 60)                ? "<div align=right>$post->{'editedBy'} $lng{'topicEditedOn'} " . formatTime($post->{'editTime'}) . "</div>\n"              : "";
+
+在下面加入 
+
+my $rateTimeStr = ($post->{'rateTime'} != "")              ? "<div align=right>$post->{'ratedBy'} $lng{'topicRatedOn'} " . formatTime($post->{'rateTime'}) . "</div>\n"              : "";
+
+查找 
+
+"<br>$ip<br>$editTimeStr\n";
+修改成 
+
+"<br>$ip<br>$editTimeStr<br>$rateTimeStr\n";
+
+4、修改数据库 ut_posts 表 
+
+     在editTime 和 editedBy 后面新加两个字段 rateTime 和 ratedBy 
+     字段类型参数参照上面两个字段，一模一样
+
+ 附件
+
+#!/usr/bin/perl
+#------------------------------------------------------------------------------
+#    UltraThreads
+#    Copyright (c) 2000 Kelvin Wu
+#
+#    2001.04
+#------------------------------------------------------------------------------
+
+use strict;
+
+# Imports
+use CGI::Carp qw(fatalsToBrowser);
+use DBI;
+use UTConfig;
+use UTLanguage;
+use UTMain;
+use UTCGI;
+
+#------------------------------------------------------------------------------
+
+# Get user
+connectDb();
+my $user = authUser();
+
+# Check if forum is closed
+printMessage("$lng{'forumClosedLb'}", "$lng{'forumClosed'}") 
+	if $cfg{'forumClosed'} && !$user->{'admin'};
+
+# Print HTTP header
+printHttpHeader();
+
+# Check if request is coming from this site
+checkReferer();
+
+# Get CGI parameters
+my $cgi = new UTCGI;
+my $postId = int($cgi->param('pid'));
+my $bpg = int($cgi->param('bpg')) || 1;
+my $pg = int($cgi->param('pg')) || 1;
+my $mode = $cgi->param('mode');
+my $rate = int($cgi->param('rate'));
+$postId or paramError($lng{'errPstIdMiss'});
+
+# Check if post has been rated or not
+my $query = "SELECT rating, userId, boardId, topicId FROM ut_posts WHERE id = $postId";
+my $sth = query($query);
+my ($rating, $userId, $boardId, $topicId) = $sth->fetchrow_array();
+$userId or entryError($lng{'errPstNotFnd'});
+$sth->finish;
+
+# Check if user is forum/board admin
+$user->{'admin'} || $user->{'superMod'} || boardAdmin($user->{'id'}, $boardId) or adminError();
+
+# Quote texts
+my $ratedByQ = quote($user->{'userName'});
+
+# Update score/rating
+if ($rating == 0) {
+	# Update post rating
+	$query = "UPDATE ut_posts SET rating = $rate WHERE id = $postId";
+	$dbh->do($query) or dbError();
+
+	# Update user score
+	$query = "UPDATE ut_users SET score = score + $rate WHERE id = $userId";
+	$dbh->do($query) or dbError();
+
+	# Update post
+	my $now = time();
+	$query = "UPDATE ut_posts SET 
+		rateTime = $now,
+		ratedBy = $ratedByQ
+		WHERE id = $postId";
+	$dbh->do($query) or dbError();
+}
+
+# Redirect back
+($mode eq "f")
+    ? redirect("topic_show.cgi?id=$topicId&bpg=$bpg&pg=$pg")
+    : redirect("threaded_show.cgi?tid=$topicId&pid=$postId&bpg=$bpg");

@@ -1,0 +1,150 @@
+<html><head>
+<title>Global Variables Help</title>
+</head>
+<body bgcolor="FFFFFF">
+<center>
+<br><br>
+
+<table cellspacing="1" cellpadding="4" border="2" bgcolor="#C0C0C0" width="100%">
+<tr><td>
+<table cellspacing="10" cellpadding="3" border="0" bgcolor="#EAEAD5" width="100%">
+<tr>
+<td align="center" bgcolor="#C0C0C0">
+<font color="#400060" size="+1" face="Arial">Global Variables Help</font>
+</td>
+</tr>
+<tr>
+<td height="10" bgcolor="#EAEAD5">
+<br>
+<font color="#400060" size="3" face="Arial"><b>Site Variables:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Although information such as the the path to your root directory, and the path to sendmail is best obtained from your ISP there is an included script with ICS that can often determine most of this information for you. Navigate to http://www.yourdomain.com/ICScgi/GetSiteInfo.cgi to have ICS retrieve this information for you.
+</font>
+</td>
+</tr>
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Path To Sendmail</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+You may have to ask your ISP for the path to sendmail on your web hosting server. The path shown by default is used on many servers, but this is by no means standard. In order for the e-mail notification features to work you must specify the correct path.
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Your E-Mail Address</b>:<br></font>
+<font size="2" face="verdana, arial" color="#0080C0">
+The e-mail address spider visits and warnings will be sent to. Please enter the address in the following format: somename@domain.com
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Absolute Path To Your Root</b>:<br></font>
+<font size="2" face="verdana, arial" color="#0080C0">
+This is the absolute path to your web space on this hosting server. You may have to ask your ISP what the absolute path is. Note that this is NOT the same as your URL. Alternatively you can use the included script called abspath.cgi to determine the absolute path and other info about your account.
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Path To cgi</b>:<br></font>
+<font size="2" face="verdana, arial" color="#0080C0">
+DO NOT ADD THE LEADING OR ENDING SLASH WHEN SPECIFYING A DIRECTORY NAME OR PATH.
+This is the path to the directory that will hold all ICS CGI scripts. 
+Let's assume you must run all cgi programs from a cgi-bin directory and you chose to name the directory to hold ICS cgi's 'ICScgi', you would specify the path to the cgi directory as <font color=green>cgi-bin/ICScgi</font> If you can run cgi's anywhere and created 'ICScgi' in your root then simply enter <font color=green>ICScgi</font> Incorrect would be <font color=green>/cgi-bin/ICScgi/</font> or <font color=green>cgi-bin/ICScgi/</font> or <font color=green>/cgi-bin/ICScgi</font>
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>The Directory To Hold Search Engine Directories</b>:<br></font>
+<font size="2" face="verdana, arial" color="#0080C0">
+DO NOT ADD THE LEADING OR ENDING SLASH WHEN SPECIFYING A DIRECTORY NAME OR PATH.
+This is the directory that will hold all subdirectories of search engines and the human visitor directory. These will subsequently hold replicas of pages to be served according to visitor. You may specify any directory name you wish. It is a good idea not to use the default of 'SEdirect' because if people know your directory structure then they can see your cloaked pages. The name you specify here must match what you named this directory when you created it.
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>The Directory To Hold IP And Log Files</b>:<br></font>
+<font size="2" face="verdana, arial" color="#0080C0">
+DO NOT ADD THE LEADING OR ENDING SLASH WHEN SPECIFYING A DIRECTORY NAME OR PATH.
+This is the directory that will hold the IP Address list, and the logs for spider visits and human visits, as well as the spider footprint log. The default name is IPDirect. You may choose any name you wish and/or path to a sub-directory. It is a good idea to change the name for security reasons. The name you specify here must match what you named this directory when you created it.
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>The Directory To Hold ICS Help Files</b>:<br></font>
+<font size="2" face="verdana, arial" color="#0080C0">
+This is best left at the default name of <b>ICShtml</b> while doing the install, but can be changed to another name later if you wish to hide it once ICS is completely installed. The name you specify here must match what you named this directory when you created it.
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>The Name Of This Domain</b>:<br></font>
+<font size="2" face="verdana, arial" color="#0080C0">
+The URL address of the site ICS is being istalled in and will operate from.
+</font>
+</td>
+</tr>
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>HTML File Extension Used At This site</b><br></font>
+<font size="2" face="verdana, arial" color="#0080C0">
+IF YOU ARE NOT UPGRADING FROM AN EARLIER VERSION OF ICS YOU MAY IGNORE THE HTML VARIABLE AND THE URI VARIABLE.
+This variable is included for backward compatability to older ICS versions. It is only used by sites that are determining the page name by URI. If you are new to ICS simply leave this set to <b>html</b>, and leave the URI variable to <i>no</i>. If you are upgrading from a previous version of ICS and are using SSI statements which do <b>not</b> have a "?" question mark in them, and do not have the pagename in the SSI statement, then you are using the URI version. You should then set the <i>Using URI</i> Variable to <i>yes</i> and set the html page extension variable to what is used at your site for pages served by ICS.
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Enable Directory Mirroring</b><br></font>
+<font size="2" face="verdana, arial" color="#0080C0">
+<u>Set <b>Enable Directory Mirroring</b> to <i>Yes</i></u><br> to mirror your directory structure within the <b>HumanVisitor</b> and the search engine directories. 
+<p>
+i.e. if the page name on the SSI statement (or URI if enabled) contains a directory as well as a pagename then ICS will look for that directory and page name within the HumanVisitor and each of the search engine directories.
+<p>
+<u>Set <b>Enable Directory Mirroring</b> to <i>No</i></u><br> to have ICS look for all cloaked pages in the root of the HumanVisitor and the search engine directories.
+<p>
+i.e. if the page name on the SSI statement (or URI if enabled) contains a directory as well as a pagename then ICS will <u>ignore</u> that directory and look for that page name within the root of HumanVisitor and each of the search engine directories.
+<p>
+If you are unsure of whether or not you should enable directory mirroring then begin by setting <b>Enable Directory Mirroring</b> to <i>No</i> since it is initially easier, you can always decide to change it to <i>Yes</i> and mirror your directory and subdirectory structure later. 
+</font>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#EAEAD5">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td bgcolor="#EAEAD5">
+&nbsp;
+</td>
+</tr>
+
+<tr>
+<td align="right" colspan="2" bgcolor="#C0C0C0">
+<a href=""><font face=arial size="-2" color="maroon">ICS v4.0 By: ICS Avenue</font></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+</body></html>
+

@@ -1,0 +1,445 @@
+INTRODUCTION
+============
+This event calendar system was designed with several objectives in mind.
+We wanted people to be able to:
+
+1. Browse events (obviously).
+2. Search for specific events.
+3. Submit their own events.
+4. Change or possibly delete events.
+
+Unfortunately, we don't trust the maturity of every single one of our
+students, so we wanted events to be subject to some sort of approval, and
+we wanted to know who was submitting offensive material (if any was
+submitted).  We weren't up to creating an entirely new authentication
+system, nor did we want to have yet another set of accounts to administer,
+so we decided to check logins against user accounts on our web server.  We
+still needed a separate way of storing various access levels and session
+information, which we ended up doing in a postgres database, but it gave
+us the ability to let certain people approve/modify/delete certain events
+based on their location.  I suppose that's about as much detail as I can
+put into an introduction, so I guess I'll get on with the following
+sections:
+
+	Backend - postgres
+	Backend - sessions
+	Backend - authentication
+	Backend - permissions
+	Backend - events
+	Backend - config
+	Main Page Structure
+	Boxes
+	Box - Calendar
+	Box - Admin
+	Box - Search
+	Box - Login
+	Box - Submit
+	Box - Approve
+	Box - Modify
+	Box - Delete
+	Box - Help
+	Internationalization
+
+
+BACKEND - POSTGRES
+==================
+Obviously we needed a place to store the events.  In spite of my prior
+experience with LDAP (which might have made things like the SELECT
+statements easier to manage), there's too much writing to the database to
+make it a reasonable choice.  SQL was the next logical thing, and we
+already had postgresql installed, so that's what we went with.
+
+We created two databases in postgres, one of which was for the actual
+calendar: events, locations, categories, audiences, etc; the other of
+which was for authentication purposes.  While the actual accounts are
+/etc/shadow based, we needed to keep track of who was logged in, when
+they've last logged in, what permissions they have, etc.
+
+One of the big disadvantages of not having accounts managed by postgres
+was that we couldn't just connect to the database with whatever account
+information the end-user provided.  We also didn't want guest accounts to
+be able to write to the database.  To handle this, we created a couple
+functions that would be kept in a separate file, readable only by the web
+server, that would connect to the databases with the appropriate
+information and return a connection index.  There are read-write and
+read-only functions for both the calendar and authentication databases.
+All connections to the database are done through these functions, so
+changes in access to the database should be easy to accomodate.
+
+
+BACKEND - SESSIONS
+==================
+We didn't want to be tossing accounts and passwords back and forth across
+the internet, even over SSL, so we came up with a session class that keeps
+track of a whole bunch of stuff and uses a simple session key that's set
+as a cookie.  The session keeps track of the following stuff: user ID,
+username, gecos (from /etc/passwd), expiration timestamp, remote address,
+and permissions.  All of these are stuck together in one big string and
+encrypted using MD5, with a salt formed by Unix crypting the same string.
+This encrypted string is the session key.  The remote address is used to
+protect from a replay-type attack.  There's a small chance of
+inconsistency with this if people use a proxy though.  The expiration is
+to help prevent problems with people logging in and leaving the terminal.
+Browsers should delete the cookie when it expires, and whenever someone
+logs in, the database is sent a delete statement to remove expired
+sessions.  The session key uses MD5 because Unix crypt only looks at the
+first 8 or so characters.  MD5 crypts the whole thing.  I just used Unix
+crypt to get a nice random salt for MD5.  The permissions and random user
+info probably isn't necessary, but is convenient to stick in the session.
+Permissions are updated in the session when it is renewed.  Now back to
+text with a followable string of thought.
+
+
+BACKEND - AUTHENTICATION
+========================
+We decided to use the existing user accounts that we had in /etc/shadow
+for this system, rather than setting up more accounts and having everybody
+remember yet another password.  In order for PHP to get at the account
+information, there are a few executables that it uses.  One is a
+setuid-root thingy called getshcrypt which prints the crypted password
+from /etc/shadow when given a user ID.  (It prints it so PHP can grab it.)
+Two others, getpwinfo and getuidinfo, echo the line from /etc/passwd for
+the given username or user ID respectively.  The verifyPassword function (in
+auth-shadow.php3) uses these executables to verify the supplied username
+and password, returning an error if the login failed.  This function keeps
+track of things like multiple failed login attempts (using the LastLogin
+class), and will fail a login unconditionally if there have been too many
+recent failures.
+
+Other authentication mechanisms have been supplied to me (a PAM module by
+Bruce Tenison and an NIS module by Scott Moser).  These are relatively
+easy to implement by creating some new file (auth-something.php3) which
+defines a function verifyPassword and takes a username and password for
+parameters.  This file can then be included by editting
+calendar/includes/config.inc and changing $config_auth_module and the
+related variables for the executables called by the module.
+
+The actual session creation is done by the login box, which will be
+explained later.  The login box calls verifyPassword and creates a new
+session if the attempt is successful.
+
+Aside from the table keeping track of sessions, there is another that
+keeps track of last logins.  If there is a certain number of failures
+within a given amount of time, then the account is temporarily locked.
+The last login table keeps track of the last failed attempt, the last
+successful attempt, the number of failures since last login, and the
+number of recent failures.
+
+
+BACKEND - PERMISSIONS
+=====================
+The permissions table has an easy to decipher layout.  The user_id column
+contains the user's ID from /etc/passwd.  The location_id column contains
+the ID for the location for which you are setting permissions.  The
+permissions column contains a number which is formed by binary or-ing the
+desired permissions, defined in permissions.php3.  The primary key for
+this table is compound, based on location and user ID, so a user can have
+different permissions for different locations.
+
+
+BACKEND - EVENTS
+================
+In order to allow easy changes in the form of an event, there is a
+separate event class.  The event itself is stored in the database across
+several tables.  (It's a standard relational db thing).  The items that
+are selected as a list are stored in the event table as an ID or list
+of IDs that point to those items.  The event class contains variables for
+every field of the event.  The fields that are IDs also have a matching
+variable for the string representation of the value.
+
+The base event class contains a constructor function that takes each of
+the values as a parameter.  Most of the parameters are optional.  There
+are also subclasses for different forms of initialization:  a subclass
+that can be initialized from an array of values, one that can be created
+when given the event ID from the database, one that will also fetch the
+string representations from the database, one that will create an empty
+event, and one that will get all of its values from global variables (such
+as from a submitted form).
+
+The event also handles any output, so if the event structure changes, the
+other pages do not need to be updated.  There are a few different forms of
+output:  detail view, which spits out a bunch of HTML; text-only view,
+which overrides the rest of the pages so that only the event text is
+output (not the rest of the calendar page); and an editable view, which
+outputs form elements for all the fields.  Some event output is also done
+in the rejectEvent function to include the event in an e-mail to the
+submitter.
+
+Several functions deal with the database operations on the event.  The
+submitEvent function will build an SQL statement and insert all of the
+necessary variables into the calendar database.  rejectEvent will delete
+the event from the database and e-mail the submitter to let them know
+their event was rejected.  deleteEvent, of course, deletes the event from
+the database.  approveEvent approves the event by adding an approver ID.
+updateEvent will save all variable to the database with an SQL UPDATE
+statement.  For many of these operations, several SQL queries must be
+constructed and sent to the server.  The event class makes use of SQL
+transactions which may be rolled back if an error occurs to avoid
+inconsistencies.
+
+While modifying an event in any way, the event class is responsible for
+updating the index table as well.  The event takes into consideration its
+start and end times and the list of weekdays on which it occurs to produce
+an array of timestamps for the days on which the event takes place.  This
+array is then added to the index for easier browsing later on.
+
+Before an event is submitted or updated, the validateEvent function should
+be called to make sure all the required fields are included.  The
+verifyAction function should also be called to make sure the current
+session has the correct access to do whatever it is trying to do to the
+event.
+
+
+BACKEND - CONFIG
+================
+Configuration information used to be stored in a static php file, but the
+web-based configuration forms required moving them into a database.  The
+srcConfig table contains columns for key, value, and description.  The key,
+obviously, is the name of the setting, and the value, also obviously, is the
+value.  The description is an optional text field with a brief description of
+what the setting does, and is displayed in the web forms.
+
+
+MAIN PAGE STRUCTURE
+===================
+The HTML structure of the calendar is actually pretty simple.  It consists
+of a header and footer, included from the includes directory, which
+contain whatever banners you want at the top and bottom of the page (at
+the very least they contain opening and closing HTML tags).  Between the
+header and footer is a single rowed table (left and right columns) whose
+left column contains a bunch of modular boxes that perform different
+actions on the calendar.  The right column contains the output of
+whichever box has been used last.
+
+The source is only slightly more complicated.  First, a few variables are
+set, such as the current session and whether the remote host is within the
+Simon's Rock domain.  An array of "boxes" (discussed soon) is initialized
+for the left side, and if one requires the use of HTTP headers
+(setcookie), the the box is called to perform its action.  The header is
+included, and the inner table built.  For the first column, the page loops
+through the array of boxes and has them output their box.  The background
+colors of these boxes are controlled by the main page, with the
+alternation achieved through an incrementing variable.  For the right
+column, the currently selected box outputs its results.
+
+The main page also tests whether cookies are enabled, since cookies are
+essential for storing a session key.  The page sets a test cookie and
+passes another variable along to the next page in the URL.  When this
+variable from the URL is set, the main page checks to see if the cookie is
+also set.  A global cookies_enabled variable is set to 1 or 0 for other
+objects to test.
+
+BOXES
+=====
+To simplify the main page's code, an abstract "box" class was created.  A
+subclass could then be created to handle the specifics of each action,
+while still allowing the main page to simply call the same functions for
+each one.
+
+The abstract contains several variables, some set as constants in the code
+and others set during initialization.  Among the constants are whether or
+not the box requires the use of headers, whether help is available for the
+box, and what the name of the help topic should be (if there is one).
+These are set in the code because they are directly affected by what is
+coded in the file.
+
+Those variables set during initialization are: a URL to use as the action
+in forms that are output, the name of a global variable that holds the
+current session, and whether a login is required.  The are set during
+initialization because they may be affected by code outside the class.
+
+The box class also defines a few generic functions that are used in
+performing the various required tasks.  Not all of them need to be
+overridden in the inherited classes, especially is they won't be used by
+the subclass.
+
+The outputPDeniedNotice spits out a generic error saying "You're not
+allowed to do this."  outputBox will generate the HTML for the module in
+the left column of the page, sometimes as simple as a single link.
+parseBox and outputResults will perform the box's action.  parseBox should
+only be called if headers are required, since it only parses input and
+sets necessary cookies, etc.  outputResults is what actually outputs stuff
+on the right half of the page.  outputHelp can just be a chunk of HTML
+wrapped in a function.  This is called to display help for the box's
+action if there is any.  verifyPermissions will check to see if the
+current session is allowed to use the box (or just return 1 if permissions
+don't matter).
+
+
+BOX - CALENDAR
+==============
+The calendar box displays the little month view at the top of the left
+column.  Users can browse through the calendar by date using this box,
+viewing a day or week at a time, or a certain day of the week through the
+entire month.  The calendar box makes extensive use of a global variable
+"timestamp", which is usually passed in the URL.  (The main page will
+actually put it in the action URL that it passes to boxes.)
+
+When outputting the box, the calendar box looks at the set timestamp, or
+defaults to the current time if there isn't one, and generates a calendar
+for the given month and outputs it in an HTML table.  The numbers and
+headers are links that set the timestamp and select a view for the
+results.  Links are also included to cycle through the months, as well as
+a toggle to view/hide unapproved events.
+
+Viewing unapproved events makes use of a cookie so the option persists
+through HTTP connections, thus parseBox is used to set or delete the
+cookie before anything is output.  The text-only result view also makes
+use of parseBox to output the event text and exit PHP without finishing
+execution.
+
+Otherwise, assuming the calendar box is active, SQL will be built to find
+the appropriate list of events, and the box will run through the list and
+have the events output their details.  This is done using an index table
+which keeps a list of event IDs for the events that occur on each day.  To
+check for events on that day, a search is done for the timestamp of
+midnight that morning, which is where all the events for that day are
+listed in the index.  When the calendar box loads, it fetches the index
+for the entire month.  While outputting the calendar it checks this index
+for the presence of events so it can highlight days which contain events
+in green.  When outputting week and day views, the box also uses this
+index so it may simply search for event IDs instead of building a more
+complicated query.
+
+
+BOX - ADMIN
+===========
+The admin box performs several functions, all related to calendar
+administration.  Those are Configure Items, Configure Calendar, and
+Manage Users.
+
+The list of lists under Configure Items is hard-coded into the box, but
+those links pass the name of the list, which is used to determine the
+name of the table from which to load the list of items.
+
+The Configure Calendar option displays an alphabetically sorted list of
+keys and their values.  The form to edit an item is standard for most items,
+but auth_module and php_utils get special treatment.  When the form to edit
+auth_module is displayed, a popup menu is displayed instead of the usual text
+field.  The options in this menu are hard-coded, because the box needs to
+recognize the selected option when parsing the new setting.  Most items are
+parsed the same way, but when auth_module is parsed, the values for getpwinfo,
+getuidinfo, and chkpass are set based on php_utils and auth_module.  When
+php_utils is set, any values of getpwinfo, getuidinfo, and chkpass which begin
+with the old value of php_utils are replaced with the new value.
+
+The Manage Users option spits out a list of permissions for each location.
+When parsing the form, the box just goes through each location and adds up
+the permissions for each location, inserting them into the database if any
+permissions were set.  All permissions for the user are deleted before this
+to avoid inconsistency.  The "Add a new user" link only determines a user ID
+for the username given and passes it on to the edit user form; no changes are
+made to the database until permissions are saved for the user.  Permissions
+to configure the calendar and blocking access to submit or anything else are
+only done at the "All locations" level, that is location ID -1.  If any other
+locations have -1 set for permissions, the form will ignore them.
+
+
+BOX - SEARCH
+============
+The search box is pretty self explanatory, but unfortunately the code
+couldn't be simplified as much as I'd like.  The search box consists of a
+single text field for a basic search, and a link to the advanced search
+form.
+
+The basic search will search for events with the key string in the title
+or description.  The advanced search lists all fields with a text box for
+values, or a list of checkboxes if there are multiple choices.  Search
+results must match at least one value in each field where a value is
+selected.
+
+In both cases, results are displayed as a simple list, ordered by date, of
+events.  The event details can be viewed, using the event class for
+outputting values.
+
+
+BOX - LOGIN
+===========
+The login box is a little tricky.  First, there's an extra variable,
+declared globally, stating whether logins require SSL (generally a Good
+Thing).  If so, and the global variable SSL_PROTOCOL_VERSION is not set,
+the box will output a notice stating that you must switch to SSL.  Next,
+it checks a global variable set by the main page to see if cookies are
+enabled.  If not, the box outputs a notice that cookies must be enabled to
+log in. Otherwise, if you are not logged in, the box outputs a form in
+which you can log in.  When you've logged in, the box contains options to
+display session information, logout, or renew the session.  Most of the
+actual functionality is done through the session class and the 
+verifyPassword function, both discussed above.
+
+
+BOX - SUBMIT
+============
+The submit box could not be easier.  The box itself is simply a link to
+the submit form.  The form creates an empty event and tells it to output
+an edittable form.  Through the use of multiple submit buttons, the event
+can then be submitted (a new event is created from globals and saved) or
+previewed (the event from globals outputs its detail view and then its
+edittable view).  Almost everything is handled by the event class,
+including an e-mail notification to any administrators for the event's
+location.
+
+
+BOX - APPROVE
+=============
+The approve box, as is the case with most of the components, works pretty
+simply.  When asked to output a form with a list of events to approve, it
+grabs permissions from the current session and goes through each location
+looking for approve access.  The approve box searches for events that have
+no approver ID and are in the allowed locations.  It lists them, along
+with their details, and a couple options (approve, reject, ignore).  When
+the form is submitted, the appropriate actions are taken. Reject has a
+text field for the rejecter to include the reason for rejection.  Approval
+and rejection are both handled by the event class.
+
+With the addition of submitted modifications, the approve box also looks
+for events which contain a modify_id and are in locations for which the
+user is allowed to *modify* events.  Using the modify bits allows users to
+be allowed only to approve events and not get around lack of modification
+privileges by approving their own submitted modification.
+
+
+BOX - MODIFY
+============
+The modification box is based heavily on the submit box, using the event
+class to output an edittable form of the event.  The event class also
+saves the changes, using an UPDATE statement instead of INSERT as it would
+for the submit box.  If the user is not allowed to modify the event, a new
+event is submitted with a modify_id to mark it as a submitted
+modification.
+
+
+BOX - DELETE
+============
+The delete box works similarly to the approve box, in that it first looks
+at permissions and then searches for events.  The main difference,
+however, is that there is a cutoff for the number of events listed in the
+form (since there will probably be many more deleteable events than those
+awaiting approval).  After the cutoff, a link is displayed that will cause
+the box to search again with a minimum event ID added to the query.
+Beneath each listed event are the options to delete or ignore the event.
+If any events are deleted, the submit button will bring up a confirmation
+form that lists those events to be deleted, each with a confirmation
+option.  A function is called from the event class to delete each event.
+
+
+BOX - HELP
+==========
+When the help box is called upon to display some help, it goes through the
+main page's array of boxes and checks to see which have help available.
+It then lists the topics of those available boxes, along with some help
+text beneath.  Which box's help text is displayed is determined by the
+topic chosen, but defaults to the help box's help text.
+
+
+INTERNATIONALIZATION
+====================
+I18n was stuck in almost as an afterthought, when some Italian guy
+wanted to translate the calendar.  He used gettext, which I've continued
+with, except for a small addition.  Since there were so many places were
+the string needed some slightly variable bit stuck in the middle (like a
+dynamically created link or a number or something), I added a function
+_wv(), which takes a string to translate and an array of variables to
+substitute for occurrences of %s1, %s2, etc in the string.  It does
+this after the call to gettext, so the %s1, etc should be in the string
+to translate and the translated string in the po files.

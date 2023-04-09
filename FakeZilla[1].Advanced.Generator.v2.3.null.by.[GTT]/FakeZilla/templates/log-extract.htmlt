@@ -1,0 +1,141 @@
+<CENTER>
+#%LOGEXTRACT_ERROR%#
+
+
+<TEMPLATE upload_form>
+<table cellpadding="0" cellspacing="10" border="0" class="block"><tr>
+<td class="block">
+	<ul>
+	<li class=orange>Use the button with the red plus sign
+		to add file upload fields to the form.<br>
+		You can add up to 10 file upload fields.<br><br>
+
+	<li class=orange>Choose Apache or IIS access log files to upload.
+		They will be searched for<br> referrer and user-agent
+		patterns which will be extracted and saved to
+		files.<br><br>
+
+	<li class=orange>Looking for referrer and user-agent patterns is a
+		process that takes<br>a lot of time. Please be
+		PATIENT and DO NOT try to STOP or RELOAD<br>the page
+		while the form is processing the files you submitted.
+	</ul>
+
+	<table height="170" cellpadding="0" cellspacing="0" border="0">
+		<form method="POST" action="#%ACTION%#?cmd=#%CMD%#" ENCTYPE="multipart/form-data">
+		<tr><td valign="top">
+		
+			<div class="upload">
+			<input type=file name="new[0]" class=a size=52><BR>
+			</div>
+
+			<div class="upload">
+			<input type=file name="new[1]" class=a size=52><BR>
+			</div>
+
+			<div class="upload">
+			<input type=file name="new[2]" class=a size=52><BR>
+			</div>
+			<div id="upload_3"></div>
+
+			</td></tr>
+
+		<tr><td align=center class="t_l">
+			<div class="upload"><button class="s_b"
+				onClick="add(this)"
+				title="Add another upload field"
+				style="width:100px"><img
+					border="0"
+					src="#%IMAGES_DIR%#2.gif"
+					alt="Add another upload field"></button></div>
+<script type="text/javascript">
+<!--//
+var field_count = 3;
+
+function add(obj){
+ //
+ // Check max upload fields
+ //
+ if (field_count >= 10) {
+ 	obj.disabled=true;
+ 	return;
+ 	}
+
+ //
+ // Find file container
+ //
+ var __cntnr;
+ if (!__cntnr && (document.getElementById)) {
+	if (!(__cntnr = document.getElementById('upload_' + field_count))) {
+		return;
+		}
+	}
+
+ //
+ // Add file upload field
+ //
+ __cntnr.innerHTML += '<div class=upload>'
+ 	+ '<input type=file name=\"new['+field_count+']\" class=a size=52><BR>'
+	+ '</div>'
+	+ '<div id=\"upload_'+(field_count+1)*1+'\">'
+ 	+ '</div>';
+ field_count++;
+}
+//-->
+</script>
+			</td></tr>
+
+		<tr><td valign="bottom">
+		
+			<input type="submit" value="Upload file(s)" class=button name="U" style="width:100%">
+			</td></tr>
+	
+		</form>
+	</table>
+
+</td>
+</tr></table>
+</TEMPLATE>
+
+
+<TEMPLATE upload_done>
+<table cellpadding="0" cellspacing="10" border="0" class="block" height="230" width="230"><tr>
+<td class="block">
+	<a href="#%ACTION%#?cmd=#%CMD%#"><img
+		align="absmiddle"
+		border="0"
+		src="#%IMAGES_DIR%#5.gif">Upload more files</a><br>
+	<div class="upload"><div class="orange">Return to the upload file form.</div> <br></div>
+
+	<a href="#%ACTION%#?cmd=referer"><img
+		align="absmiddle"
+		border="0"
+		src="#%IMAGES_DIR%#5.gif">Go to referrers</a><br>
+	<div class="upload"><div class="orange">Manage your referrer sets.</div> <br></div>
+
+	<a href="#%ACTION%#?cmd=user-agent"><img
+		align="absmiddle"
+		border="0"
+		src="#%IMAGES_DIR%#5.gif">Go to user-agents</a><br>
+	<div class="upload"><div class="orange">Manage your user-agent lists.</div> <br></div>
+
+	<a href="#%ACTION%#?cmd=run"><img
+		align="absmiddle"
+		border="0"
+		src="#%IMAGES_DIR%#5.gif">Run generator</a><br>
+	<div class="upload"><div class="orange">Start the fake hits generator.</div> <br></div>
+</td>
+</tr></table>
+</TEMPLATE>
+
+</CENTER>
+
+
+<MESSAGE>
+html_title: Web-server log extractor
+
+
+error_none: No files selected for upload
+error_fail: File upload(s) failed
+success_all: File(s) successfully uploaded
+</MESSAGE>

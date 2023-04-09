@@ -1,0 +1,22 @@
+其功能就是在看某个版的话题列表时展开某个话题 
+
+使用这个hack您可以需要首先安装 我写的另外一个hack:让ut显示精华的链接(http://new.roror.org/perl/ut/topic_show.cgi?id=32983&h=1&bpg=1&age=30) 
+
+这个hack可能会有些bug，嘿嘿，欢迎大家测试，出了事儿不要赖我 
+
+修改方法 
+打开board_show.cgi 
+寻找 
+
+    # Print topic    print       "<TR BGCOLOR='$rowColor'>\n",      "<td width=4% NOWRAP align=center><IMG SRC='$cfg{'nonCgiPath'}/images/$img.gif' BORDER=0",      " $imgAlign></td>\n",      "<TD align=center NOWRAP>$topic->{'hitNum'}</TD>\n",          "<TD align=center width=3% NOWRAP><A HREF='$postMode' target='_blank'>",          "<img src='$cfg{'nonCgiPath'}/images/newwin.gif' BORDER=0 $imgAlign alt='$lng{'newWindow'}'></A></td>\n",  
+
+把下面1行 
+        
+"<TD width=42%><A HREF='$postMode' class=topic>\n",
+改为 
+
+          "<TD width=42%><a href=kick_xw.cgi?id=$boardId&pg=$page[$age=$age&eId=$topic->{'id'}><img src='$cfg{'nonCgiPath'}/images/exp.gif' BORDER=0 $imgAlign></a> ]<A HREF='$postMode' class=topic>\n",  
+
+上传到服务器 
+
+保存下面两个图像到bbs/images目录 

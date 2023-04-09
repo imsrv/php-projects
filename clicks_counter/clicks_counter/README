@@ -1,0 +1,107 @@
+################################################################################
+# Access clicks Counter                        Version 1.0                     #
+# Copyright 2000 Frederic TYNDIUK (FTLS)       All Rights Reserved.            #
+# E-Mail: tyndiuk@ftls.org                     Script License: GPL             #
+# Created  02/28/2000                          Last Modified 02/28/2000        #
+# Scripts Archive at:                          http://www.ftls.org/php/        #
+################################################################################
+
+
+1. What is it ?
+===============
+
+	This script is a cliks counter.
+
+
+2. System Requirements:
+=======================
+
+	- A web server, with PHP3 or newer;
+
+
+3. What this archive contains ?
+===============================
+
+	This archive comes with 6 files:
+	    1) COPYING:     	Copyright informations (GPL).
+	    2) README:      	This file.
+	    3) LISEZMOI:    	French doc...
+	    4) clicks_counter.php:	The PHP script.
+		5) clicks_counter_admin.php : Admin part for display results.
+	    6) clicks_counter_data.txt:  File contain data.
+
+
+4. Installation and Configuration:
+==================================
+
+	It's a PHP script, so installation is pretty easy.
+
+	Copy 'clicks_counter.php', clicks_counter.php and 'count_data.txt' in
+your good directory.
+
+	Change permissions to 'clicks_counter_data.txt' for be writing by nobody (chmod a+rw)
+
+	Edit 'clicks_counter.php', you will have to do some configuration:
+
+		$COUNT_FILE = "count_data.txt";
+			// En: Absolute path and name to count data file.
+
+	Edit 'clicks_counter_admin.php', you will have to do some configuration:
+
+		$COUNT_FILE = "count_data.txt";
+			// En: Absolute path and name to count data file.
+
+		$LOGIN = "ftls";
+		$PASSWORD = "demo";
+	        // En: Private Login / password
+
+
+5. How to run it ?
+==================
+
+	Changes yours links :
+		<A HREF="clicks_counter.php?http://www.mondom.com">my Links</A>
+
+	go into http://www.mydom.dom/dir/clicks_counter_admin.php to see result.
+
+
+6. Version history:
+===================
+
+	Version 1.0         02/28/2000  - Script Created.
+
+
+7. Copyright:
+=============
+
+	This software is copyright (C) 1999 Frederic TYNDIUK. It is distributed
+under the terms of the GNU General Public License (GPL). Because it is licensed
+free of charge, there is NO WARRANTY, it is provided AS IS. The author can not
+be held liable for any damage that might arise from the use of this software.
+Use it at your own risk. 
+	See the file COPYING for more details (or http://www.gnu.org/).
+
+	Warning: This script is a free software so, but you should not remove copyright...
+
+
+8. Updates ?
+============
+
+	Latest version and New Scripts can be found at:
+	
+			http://www.ftls.org/en/
+
+
+9. Contact:
+===========
+
+	Please feel free to contact me with any comments, suggestions, bug fixes
+criticism, or just a happiness messages.
+
+	If you run into any problems while trying to configure these scripts
+first read this file carefully, if you don't find any solution, send me a Mail.
+
+	E-Mail: tyndiuk@ftls.org
+	Web: http://www.ftls.org/
+
+                                                  Frederic TYNDIUK

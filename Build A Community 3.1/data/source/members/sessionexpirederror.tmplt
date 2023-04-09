@@ -1,0 +1,9 @@
+	<HR WIDTH=75%>
+	<P>Please simply fill in your username and password below to continue as before.<BR>
+	<form ENCTYPE="application/x-www-form-urlencoded"  METHOD="POST" action="[<($CONFIG{'CGI_DIR'})>]/[<($PROGRAM_NAME)>]">
+	UserName<BR> <input type=text name="UserName" VALUE="[<($FORM{'UserName'})>]" size=20><br>
+	<BR>PassWord<BR>  <input type=password name="PassWord" VALUE="" size=20><br>
+	<input type=hidden name="vars" VALUE="[<($buffer)>]" size=20><br>
+	<INPUT TYPE=HIDDEN NAME="action" VALUE="Continue">
+	<CENTER><INPUT TYPE=SUBMIT NAME="action" VALUE="Continue"></CENTER>
+	</FORM>

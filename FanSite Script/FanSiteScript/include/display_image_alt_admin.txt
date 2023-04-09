@@ -1,0 +1,13 @@
+<?PHP 
+include ("../include/connect.txt");
+$result = mysql_query("SELECT image FROM ds_movies WHERE id = $id");  
+$imageNumber = mysql_result($result,0,"image");
+
+$result = mysql_query("SELECT description FROM ds_images WHERE id = $imageNumber");  
+$altDescription = mysql_result($result,0,"description");
+
+printf("ALT=\"%s\">",$altDescription);
+
+
+include ("../include/close.txt");
+?>

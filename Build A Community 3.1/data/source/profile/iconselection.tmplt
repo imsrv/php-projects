@@ -1,0 +1,62 @@
+<TABLE WIDTH=550 CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" FACE="[<($CONFIG{'font_face'})>]" SIZE="+1"><B>[<($IUSER{'FirstName'})>] [<($IUSER{'Initial'})>] [<($IUSER{'LastName'})>]'s Icon Selection Page</B></FONT></CENTER></TD></TR>
+<TR><TD [<($CONFIG{'WINCOLOR'})>]><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+This could take a few moments to load.
+
+[<(if (-e "iresize") {
+	$OUT .= << "GEND";
+	<P>There are over 450 icons for you to choose from.  Below you'll see fifty of them, you can click [More] to see more selections.  When you find the one you want, fill in the little round circle and click [Update Your Icon].
+	<form ENCTYPE="application/x-www-form-urlencoded"  METHOD="POST" action="$GUrl{'upload_icons.cgi'}">
+	<input type=hidden name="UserName" VALUE="$IUSER{'username'}">
+	<input type=hidden name="PassWord" VALUE="$IUSER{'password'}">
+	<input type=hidden name="action" VALUE="Change Icon">
+	<CENTER><input type=submit VALUE="Upload/Transload Your Own Image"></CENTER>
+	</FORM>
+GEND
+	}
+)>]
+
+<form ENCTYPE="application/x-www-form-urlencoded"  METHOD="POST" action="[<($GUrl{'icons.cgi'})>]">
+
+<CENTER><TABLE BORDER>
+[<(
+	$cols = 10 + $startnum;
+	$low = 1 + $startnum;
+
+	for my $x (1..5) {
+		$OUT .= "<TR>";
+		foreach $count2 ($low..$cols) {
+			$OUT .= << "GEND";
+			<TD>
+			<CENTER><IMG SRC="$GUrl{'icon_images'}/$count2.gif" WIDTH=32 HEIGHT=32>
+			<BR><INPUT TYPE=RADIO NAME="Icon" VALUE="$count2" style="background-color: $CONFIG{'win_color'}; color: $CONFIG{'win_color'}" ></CENTER>
+			</TD>
+GEND
+		}
+		$OUT .= "</TR>";
+		$cols = $cols + 10;
+		$low = $low + 10;
+	}
+)>]
+
+</TABLE>
+<CENTER><TABLE><TR><TD>
+
+[<(
+	if ($cols > 425) {
+		$startnum = 1;}
+	else {
+		$startnum = $startnum + 50;
+	}
+
+	$OUT .= "<INPUT TYPE=HIDDEN NAME=\"startnum\" VALUE=\"$startnum\">";
+	if ($startnum > 51) {
+		$OUT .= "<INPUT TYPE=SUBMIT NAME=\"action\" VALUE=\"Previous\">";
+	}
+)>]
+
+<INPUT TYPE=SUBMIT NAME="action" VALUE="More">
+<INPUT TYPE=SUBMIT NAME="action" VALUE="Update Your Icon">
+</TD></TR></TABLE>
+</TD></TR></TABLE>
+</FORM>

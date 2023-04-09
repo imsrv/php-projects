@@ -1,0 +1,94 @@
+
+<form ENCTYPE="application/x-www-form-urlencoded"  NAME="create_form" METHOD="POST" ACTION="[<($GUrl{'clubs.cgi'})>]">
+
+<TABLE BORDER="1" WIDTH=600>
+<TR BGCOLOR="[<($CONFIG{'title_color'})>]"><TD>
+
+<TABLE BORDER=0 BGCOLOR="[<($CONFIG{'title_color'})>]" WIDTH="100%" CELLSPACING=0 CELLPADDING=0><TR>
+<TD><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>Create A Club</B></FONT></TD>
+<TD ALIGN="right" VALIGN=middle>
+[<($HELPURL)>]<IMG SRC="[<($CONFIG{'button_dir'})>]/help.gif" BORDER=0 WIDTH="25" HEIGHT="25"></A>
+</TD></TR></TABLE>
+
+</TD></TR>
+<TR [<($CONFIG{'WINCOLOR'})>]>
+<INPUT TYPE="hidden" NAME="forum" VALUE="[<($forum)>]">
+</TD></TR>
+<TR [<($CONFIG{'WINCOLOR'})>]>
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%">
+<TR [<($CONFIG{'WINCOLOR'})>]>
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>This club will be created under the following category.  If you do not want to create it here, please navigate to the correct category: </B><I>[<($CAT)>]</I><BR><BR><BR>
+<TABLE>
+  <TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>Descriptive Name</B> (aka: Club Title)</TD><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><INPUT TYPE="text" NAME="title" VALUE = "[<($IFORUM{'title'})>]" SIZE="25" onFocus="select()"></TD></TR>
+  <TR><TD COLSPAN=2><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"></TD></TR>
+
+  <TR><TD COLSPAN=2><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>Club Description</B><BR>
+    <TEXTAREA NAME="bbs_desc" ROWS=3 COLS=40>[<($IFORUM{'bbs_desc'})>]</TEXTAREA></TD></TR>
+
+</TABLE>
+</TD></TR>  
+</TD></TR></TABLE>
+<TR>
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Club Settings</FONT></B></CENTER></TD></TR>
+<TR><TD>
+<TABLE><TR><TD>
+<TABLE>
+
+  <INPUT TYPE=HIDDEN NAME="clubforum" VALUE="Club">
+  <INPUT TYPE=HIDDEN NAME="access" VALUE="Private">
+  <INPUT TYPE=HIDDEN NAME="restrictedto" VALUE="Club Members Only">
+  <INPUT TYPE=hidden NAME="moderator_edit" VALUE="Settings Not Appearance">
+  <INPUT TYPE=hidden NAME="category" VALUE="[<($FORM{'category'})>]">
+  <INPUT TYPE=hidden NAME="bbs_admin" VALUE="[<($IUSER{'filenum'})>]">
+
+  <TR><TD VALIGN=TOP><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>Initial Members</B>.  Type in the Usernames of your Club Members.  Enter one per line separated by an [Enter].  <B>Important:</B> Don't forget to include <I>your</I> Username also!</TD>
+  <TD VALIGN=TOP><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><TEXTAREA NAME="members" ROWS=5 COLS=20>[<($IUSER{'username'})>]
+</TEXTAREA></TD></TR>
+
+  <TR><TD COLSPAN=2><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>Applicant Message</B>.  This is shown to people applying for membership<BR>
+    <TEXTAREA NAME="applicantmessage" ROWS=3 COLS=40>[<($CONFIG{'applicantmessage'})>]</TEXTAREA></TD></TR>
+
+
+</TABLE>
+</TD></TR>  
+</TD></TR></TABLE>
+<TR>
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Club Message Forum Settings</FONT></B></CENTER></TD></TR>
+<TR><TD>
+<TABLE><TR><TD>
+<TABLE>
+  <TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Who is allowed to create new threads?</TD><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"> <SELECT NAME="newthreads">
+	<OPTION VALUE="Everyone">Everyone</OPTION>
+	<OPTION VALUE="Moderator/Admin Only">Moderator/Admin Only</OPTION>
+	</SELECT>
+  </TD></TR>
+  <TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Must all posts be approved by the Moderator before appearing in the Club Message Forum?</TD><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"> <SELECT NAME="moderated">
+	<OPTION VALUE="No">No</OPTION>
+	<OPTION VALUE="Yes">Yes</OPTION>
+	</SELECT>
+  </TD></TR>
+  <TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Must an emailed copy of all posts be sent to the Moderator as they are submitted?</TD><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"> <SELECT NAME="emailmoderator">
+	<OPTION VALUE="No">No</OPTION>
+	<OPTION VALUE="Yes">Yes</OPTION>
+	</SELECT>
+  </TD></TR>
+  <TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Should this Club Message Forum be listed in the Index?</TD><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"> <SELECT NAME="public">
+	<OPTION VALUE="Yes">Yes</OPTION>
+	<OPTION VALUE="No">No</OPTION>
+	</SELECT>
+  </TD></TR>
+
+</TABLE>
+</TD></TR>
+</TABLE [<($CONFIG{'WINCOLOR'})>]>
+<TR [<($CONFIG{'WINCOLOR'})>]><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><CENTER><INPUT NAME="action" TYPE="submit" VALUE="Save My Club!">
+</TABLE>
+</FORM>
+
+<SCRIPT LANGUAGE="javascript">
+function ShowHelp(c_what) {
+	var Location = "[<($GUrl{'cforum.cgi'})>]?action=help&file=" + c_what;
+	link=open(Location,"CCSLink","toolbar=no,scrollbars=yes,directories=no,menubar=no,resizable=yes,width=420,height=410");
+}
+</SCRIPT>

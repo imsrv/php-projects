@@ -1,0 +1,58 @@
+#!/usr/bin/perl
+#------------------------------------------------------------------------------
+#    UltraThreads
+#    Copyright (c) 2000 Kelvin Wu
+#
+#    2000.08
+#------------------------------------------------------------------------------
+BEGIN  
+	{ 
+		($0 =~ m,(.*)/[^/]+,)   && unshift (@INC, "$1");
+		($0 =~ m,(.*)\\[^\\]+,) && unshift (@INC, "$1");  
+	} 
+use strict;
+
+# Imports
+use CGI::Carp qw(fatalsToBrowser);
+use DBI;
+use UTConfig;
+use UTLanguage;
+use UTMain;
+use UTCGI;
+
+#------------------------------------------------------------------------------
+
+# Get user
+connectDb();
+my $user = authUser();
+
+# Print HTTP header
+printHttpHeader();
+
+# Check if user is admin
+$user->{'admin'} or $user->{'superMod'} or adminError();
+
+
+# Get CGI parameters
+my $cgi = new UTCGI;
+my $userId = $cgi->param('id');
+my $page = $cgi->param('pg');
+my $origin = $cgi->param('ori');
+$userId or paramError($lng{'errUsrIdMiss'});
+
+# Don't delete user #1
+$userId == 1 
+	and userError("If you really want to delete user #1, you will have to do so manually.");
+
+# Delete all posts
+my $query = "DELETE FROM ut_posts WHERE userId = $userId";
+$dbh->do($query) or dbError();
+
+# Set post IDs to 0
+$query = "UPDATE ut_posts SET userId = 0 WHERE userId = $userId";
+$dbh->do($query) or dbError();
+
+# Redirect back
+if ($origin eq "usrAdm") { redirect("user_admin.cgi?pg=$page") }
+elsif ($origin eq "usrBan") { redirect("user_showbans.cgi") }
+else { redirect("forum_show.cgi") }

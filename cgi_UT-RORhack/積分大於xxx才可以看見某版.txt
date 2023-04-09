@@ -1,0 +1,25 @@
+1. add a new column to ut_boards: visibilityThreshold 
+
+2. in UTMain.pm, line 451 (i think): 
+replace
+return 1 if !$board->{'private'};with
+return 1 if !$board->{'private'} && $user->{'score'} >= $board->{'visibilityThreshold'};
+
+3. in board_options.cgi, around line 152: 
+after
+" VALUE='$board->{'scoreMax'}' class=subject> (0 = threshold)</td></tr>\n",insert
+"<tr bgcolor=$cfg{'lightCellColor'}><td width=45%>\n",  "<b>Visibility Threshold</b> (board only visible to users with credits above this threshold)</td>\n",  "<td> <INPUT TYPE='text' NAME='visibilityThreshold' SIZE=6 MAXLENGTH=4",  " VALUE='$board->{'visibilityThreshold'}' class=subject></td></tr>\n",
+
+4. in board_options_x.cgi: 
+after
+my $scoreMax = int($cgi->param('scoreMax')) || 0;insert
+my $visibilityThreshold = int($cgi->param('visibilityThreshold')) || 0;
+
+and after
+scoreMax    = $scoreMax,insert
+visibilityThreshold = $visibilityThreshold,
+
+5. in post_shownew.cgi: 
+replace
+my $query = "SELECT id, anonymous, private, title, active FROM ut_boards";with
+my $query = "SELECT id, anonymous, private, title, active, visibilityThreshold FROM ut_boards";

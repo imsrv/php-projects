@@ -1,0 +1,7 @@
+AuthUserFile /usr/home/chatologica/www/cgi-bin/meta-2/admin/.htpasswd
+AuthGroupFile /dev/null
+AuthName Admin Panel
+AuthType Basic
+<Limit GET POST>
+require valid-user
+</Limit>

@@ -1,0 +1,91 @@
+History of E*Reminders 
+----------------------
+Late one night Jim Suto (jim@amazinglinux.com) was awake and started
+thinking that since e-mail is becoming so widely used these days, it would be
+nice to have a way that a system can provide notifications and reminders via
+this medium. Especially if you have a cellphone equipped with email capability
+this could be very handy. 
+
+He told Ben Suto of the idea and Ben thought it would make sense to code the
+interface in PHP. Ben put together the script a couple of days later and Ben and
+Jim tested it and were really happy with the result. Jim later also refined the
+code himself somewhat and gave Ben the ok to make it GPL and release it. 
+
+E*Reminders was reviewed once in the Linux Journal magazine. 
+
+Ben passed away unfortunately and suddenly late in 2000, and will be missed
+from the project. He provided a terrific code foundation which runs
+E*Reminders today.
+----------------------
+
+Oct 31, 2002: E*Reminders-0.91 Released to Original Authors 
+		(courtesy, Glen Stewart)
+		
+- Fixed date display error in delete results window, thanks to Daniel Drucker
+  for the report.  Improved uses text in help and config windows.
+
+Dec 14, 2000: E*Reminders-0.9 Released to Original Authors 
+		(courtesy, Glen Stewart)
+		
+- Accounts older than 90 days with no pending reminders are purged
+  automatically as part of mail.php3 functions.  This took care of 
+  the one thing left in the old TODO list.
+- More help and descriptions on the main E*Reminder page.
+- Date and time default to server time when first page is brought up.
+  This means the old index.html has become index.php3
+- New accounts are told to get their password from email and use their
+  BACK button to set their first reminder.
+- References to config.in have been changed to config.php3 in INSTALL,
+  which was also slightly simplified.
+
+April 24, 1999: E*Reminders-0.86 Release
+
+- Fixed security hole where database password is readable from the
+  Internet.  For instructions on how to implement this fix without
+  replacing 0.85 entirely, read the file UPGRADE that should have
+  come with your distribution of this software.
+
+April 23, 1999: E*Reminders-0.85 Released
+
+- Small modifications of GUI, increased level of consistency.
+- New mechanism for creating accounts to keep system from being misused.
+- Users can now block any E-mail from going to their accounts.
+- Cleaned up some of the messages, and made the software more modular.
+- Small modifications of INSTALL documentation.
+
+
+April 17, 1999: E*Reminders-0.8 Released to Original Authors 
+		(courtesy, Glen Stewart)
+
+- HTML GUI given a consistent, polished look
+- Timezone support added to event entry page & subsequent output
+- Extensive info supplied to event recipient to identify possible abusers
+  and to stop recurring events.  IP #'s and dates are tracked.
+- Recurring & notify value bugs fixed from previous release
+- Added "Event" name (Subject, actually) instead of truncating the message
+  body for a partial subject.
+- Added mouse-tip help "?" icons to the entry page to get users rolling.
+- Switched system to .php3 files - mail.php3 now executed via wget or lynx cron
+- Shipping releases will not allow recurring events of minute and hour duration
+  due to possible abuses and server loading.  If you need this, find the
+  commented-out section of index.html
+- Revised date displays throughout for consistency.
+- Added support for monthly and yearly recurring events.
+- Added options in config.in for dbtimezone and dbtzcorrect.
+  Read about these in the README file (which is also much improved).
+- Enjoy!
+
+
+February 5, 1999: EReminders-0.02 Released
+
+- The database name has been changed from calendar to reminders
+- Some general tweaks  
+- Some of the prompts have been made a little friendlier.
+- Updates to install documentation.
+- Fixed a bug where if a user created a reminder that was set in the past,
+  and he sets it recurring, it would send them a message every time
+  mail.php3 is run.  Now, it will automatically make it recur at the next
+  time in the future, and will honor the recurrence settings.
+
+November 30, 1998: Initial Release
+

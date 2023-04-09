@@ -1,0 +1,42 @@
+<!-- ARTICLE START -->            
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr><td><table border="0" cellpadding="3" cellspacing="0" width="100%" class="fullbox">
+  <tr>
+    <td class="featureheader" align="left">&nbsp;{lang_todays_featured_article}</td>
+    <td class="featureheader" align="right">{email_icon}&nbsp;{print_icon}&nbsp;</td>
+  </tr>
+</table>
+<table border="0" cellpadding="2" cellspacing="0" width="100%" class="midbox">
+  <tr>
+    <td align="right" class="content">&nbsp;Title:&nbsp;</td>
+    <td width="100%" class="content" colspan="2"><b>{story_title}</b></td>
+  </tr>
+  <tr>
+    <td align="right" class="content">&nbsp;Author:&nbsp;</td>
+    <td class="content" colspan="2">{start_contributedby_anchortag}{contributedby_user}{end_contributedby_anchortag}</td>
+  </tr>
+  <tr>
+    <td align="right" class="content">&nbsp;Dated:&nbsp;</td>
+    <td class="content" colspan="2">{story_date}</td>
+  </tr>
+  <tr>
+    <td align="right" class="content">&nbsp;Viewed:&nbsp;</td>
+    <td class="content">{story_hits} times</td>
+    <td align="right">{edit_link}&nbsp;</td>
+  </tr>
+</table>
+<table border="0" cellpadding="5" cellspacing="0" width="100%" class="fullbox">
+  <tr>
+    <td class="content">{story_anchortag_and_image}{story_introtext}{story_bodyhtml}</td>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><img src="{layout_url}/interface/blank.gif" width="7" height="7" alt="" border="0"></td>
+    <td class="shadow-mid" colspan="2" width="100%"><img src="{layout_url}/interface/blank.gif" width="7" height="7" alt="" border="0"></td>
+    <td><img src="{layout_url}/interface/blank.gif" width="7" height="7" alt="" border="0"></td>
+  </tr>
+</table></td></tr>
+</table>
+<!-- ARTICLE END -->
+<br />

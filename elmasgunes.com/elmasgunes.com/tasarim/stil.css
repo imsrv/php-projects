@@ -1,0 +1,24 @@
+A:link{ font-family:Verdana;
+	font-size:11px;
+	color:#666666;
+	text-decoration:none; }
+A:alink{ font-family:Verdana;
+	font-size:11px;
+	color:#666666;
+	text-decoration:none; }
+A:visited{ font-family:Verdana;
+	font-size:11px;
+	color:#666666;
+	text-decoration:none; }
+A:hover{ font-family:Verdana;
+	font-size:11px;
+	color:#000000;
+	text-decoration:underline; }
+
+TABLE{ font-family:Verdana;
+	font-size:11px;
+	color:#666666; }
+
+BODY{ font-family:Verdana;
+	font-size:11px;
+	color:#666666; }

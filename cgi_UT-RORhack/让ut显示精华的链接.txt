@@ -1,0 +1,32 @@
+ut论坛中的精华区的处理方法不错，不过刚访问论坛的人似乎找不到如何进入精华区，所以我写了一个小hack，可以更好的显示精华区，并从精华区返回讨论区，大家可以在 
+http://www.iwebcreator.net 上看到修改的结果。 
+
+第一步： 
+备份UTlanguage.pm board_show.cgi topic_show.cgi三个文件。 
+
+打开UTlanguage.pm这个文件，查找：
+$lng{'archive'}         = "[精华] ";
+在后面加入：
+$lng{'archiveshow'}     = "显示精华区内容";  $lng{'archiveclose'}    = "返回讨论区";
+保存关闭文件。 
+
+第二步： 
+打开board_show.cgi这个文件， 查找：
+  $age == -1 ? " $lng{'archive'}" : "",  ，覆盖为： 
+
+  #added by chuan  $age != -1 ? "  [<a href=board_show.cgi?id=$boardId&age=-1&pg=1>$lng{'archiveshow'}</a>]" : "",  $age == -1 ? " $lng{'archive'}  [<a href=board_show.cgi?id=$boardId&age=$board->{'postsAge'}&pg=1>$lng{'archiveclose'}</a>]" : "",  
+保存关闭文件。 
+
+第三步： 
+打开topic_show.cgi，查找163行的 
+
+
+  my $navBar =   "<font size=3 face=arial><b>?</b></font><a href='forum_show.cgi' class=nav><B>$cfg{'forumName'}</b></a><font size=3 face=arial><b>?</b></font>" .   "<a href='board_show.cgi?id=$topic->{'boardId'}&age=$age[$pg=$boardPage' class=nav><b>$board->{'title'}</b></a> ;]<br><br>\n" .   "<img src='$cfg{'nonCgiPath'}/images/icons/icon_print.gif' border=0 alt='$lng{'topicPrintTT'}' $imgAlign>" .   "<a href='topic_print.cgi?id=$topicId' class=mod title='$lng{'topicPrintTT'}'><b>$lng{'topicPrint'}</b></a>" .   "<img src='$cfg{'nonCgiPath'}/images/icons/icon_friend.gif' border=0 alt='$lng{'topicFriendsTT'}' $imgAlign>" .   "$lng{'topicFriends'}";
+
+覆盖为 
+
+  my $navBar="";    if ($age != -1) {    $navBar .=     "<font size=3 face=arial><b>?</b></font> <a href='forum_show.cgi' class=nav><B>$cfg{'forumName'}</b></a> <font size=3 face=arial><b>?</b></font> " .       "<a href='board_show.cgi?id=$topic->{'boardId'}&age=$age[$pg=$boardPage' class=nav><b>$board->{'title'}</b></a>[$nbsp;]] " .      "<img src='$cfg{'nonCgiPath'}/images/icons/icon_print.gif' border=0 alt='$lng{'topicPrintTT'}' $imgAlign> [<a href=board_show.cgi?id=$topic->{'boardId'}&age=-1&pg=1>$lng{'archiveshow'}</a>]<br><br>\n" .    "<a href='topic_print.cgi?id=$topicId' class=mod title='$lng{'topicPrintTT'}'><b>$lng{'topicPrint'}</b></a>  " .       "<img src='$cfg{'nonCgiPath'}/images/icons/icon_friend.gif' border=0 alt='$lng{'topicFriendsTT'}' $imgAlign> " .       "$lng{'topicFriends'}";  }  else  {    $navBar .=     "<font size=3 face=arial><b>?</b></font> <a href='forum_show.cgi' class=nav><B>$cfg{'forumName'}</b></a> <font size=3 face=arial><b>?</b></font> " .       "<a href='board_show.cgi?id=$topic->{'boardId'}&age=$age[$pg=$boardPage' class=nav><b>$board->{'title'}</b></a>[$nbsp;]] " .      "<img src='$cfg{'nonCgiPath'}/images/icons/icon_print.gif' border=0 alt='$lng{'topicPrintTT'}' $imgAlign> [<a href=board_show.cgi?id=$topic->{'boardId'}&age=30&pg=1>$lng{'archiveclose'}</a>]<br><br>\n" .    "<a href='topic_print.cgi?id=$topicId' class=mod title='$lng{'topicPrintTT'}'><b>$lng{'topicPrint'}</b></a>  " .       "<img src='$cfg{'nonCgiPath'}/images/icons/icon_friend.gif' border=0 alt='$lng{'topicFriendsTT'}' $imgAlign> " .       "$lng{'topicFriends'}";  }  
+
+保存文件 
+
+将三个文件覆盖到UT的cgi-bin目录中。 

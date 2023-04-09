@@ -1,0 +1,15 @@
+<?
+	/* 
+	** DELETE_WING
+	** if we have necessary fields, delete wing
+	*/
+	if(($inputWing != "") AND ($Browser_Admin=="YES"))
+	{
+		$Query = "DELETE FROM wing WHERE ID=$inputWing ";
+		echo "<!--$Query-->\n";
+		$DatabaseResult = mysql_query($Query, $DatabaseLink);
+
+		$ActionResults = "Wing Destroyed!";
+	}
+
+?>

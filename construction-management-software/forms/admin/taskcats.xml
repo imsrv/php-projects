@@ -1,0 +1,27 @@
+<form>
+
+	<forms>
+		<add>taskcats/add.xml</add>
+		<edit>taskcats/add.xml</edit>
+		<list>taskcats/list.xml</list>
+	</forms>
+
+	<table>taskcats</table>
+	<table_uid>cat_id</table_uid>
+
+
+	<URIdata>
+		<action>action</action>
+
+		<add>add</add>
+		<details>details</details>
+		<delete>delete</delete>
+		<edit>edit</edit>
+		<list>list</list>
+		<search>search</search>
+
+		<store>store</store>
+	</URIdata>
+
+
+</form>

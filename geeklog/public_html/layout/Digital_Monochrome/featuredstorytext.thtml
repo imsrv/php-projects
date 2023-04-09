@@ -1,0 +1,46 @@
+                            <!-- ARTICLE START --> 
+                            <b>{lang_todays_featured_article}</b>
+                            <table border="0" width="100%">
+                                <tr>
+                                    <td bgcolor="#000000">
+                                        <table border="0" cellpadding="3" cellspacing="0" width="100%" bgcolor="#FFFFFF">
+                                            <tr>
+                                                <td class="storytitle" colspan="2">
+                                                    <font color="#FFFFFF" size="3">/</font>
+                                                    <font color="#E5E5E5" size="3"> </font>
+                                                    <font color="#CCCCCC" size="3">/</font>
+                                                    <font color="#B2B2B2" size="3"> </font>
+                                                    <font color="#999999" size="3">/</font>
+                                                    <font color="#7F7F7F" size="3"> </font>
+                                                    <font color="#666666" size="3">/</font>
+                                                    <font color="#4C4C4C" size="3"> </font>
+                                                    <font color="#333333" size="3">/</font>
+                                                    <font color="#191919" size="3"> </font>
+                                                    <font color="#000000" size="3">/ </font>
+                                                    <font size="3"><big>{story_title}</big><br></font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="storyunderline" colspan="2"><img src="{site_url}/images/speck.gif" width="1" height="1" alt=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <font color="#909090">{story_date}<br>{lang_contributed_by} {start_contributedby_anchortag}{contributedby_user}{end_contributedby_anchortag}<br>{lang_views}: {story_hits}</font><br>
+                                                    {story_anchortag_and_image}{story_introtext}</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" colspan="2">{edit_link}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="storyunderline" colspan="2"><img src="{site_url}/images/speck.gif" width="1" height="1" alt=""></td>
+                                            </tr>
+                                            {story_bodyhtml}
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+
+
+

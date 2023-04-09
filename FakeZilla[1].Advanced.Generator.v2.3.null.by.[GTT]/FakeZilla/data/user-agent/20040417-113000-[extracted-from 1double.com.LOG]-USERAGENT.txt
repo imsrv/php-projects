@@ -1,0 +1,21 @@
+Googlebot-Image/1.0 (+http://www.googlebot.com/bot.html)
+Googlebot/2.1 (+http://www.googlebot.com/bot.html)
+Mozilla/4.0 (compatible; MSIE 4.01; Windows 98)
+Mozilla/4.0 (compatible; MSIE 5.01; Windows 98)
+Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)
+Mozilla/4.0 (compatible; MSIE 5.0; Windows 98; DigExt)
+Mozilla/4.0 (compatible; MSIE 5.0; Windows XP) Opera 6.05  [bg]
+Mozilla/4.0 (compatible; MSIE 5.5; Windows 98)
+Mozilla/4.0 (compatible; MSIE 5.5; Windows 98; FunWebProducts)
+Mozilla/4.0 (compatible; MSIE 6.0; Windows 98)
+Mozilla/4.0 (compatible; MSIE 6.0; Windows 98) Opera 7.50  [en]
+Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; .NET CLR 1.1.4322)
+Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)
+Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; FunWebProducts)
+Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)
+Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)
+Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; DigExt)
+Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; FunWebProducts)
+Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.5a) Gecko/20030728 Mozilla Firebird/0.6.1
+Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)
+NPBot (http://www.nameprotect.com/botinfo.html)

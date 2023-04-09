@@ -1,0 +1,172 @@
+<?php
+	
+/*
+iWare Language Definition file ( EE Estonian ) for iWare Professional 3.0.7
+Translation by : Alar Mäerand (feelfree@hot.ee) 2003
+*/
+
+/* control.php */
+	
+define("CONTROL_1","Süsteemi ülevaade");
+define("CONTROL_2","Kasutajate haldamine");
+define("CONTROL_3","Gruppide haldamine");
+define("CONTROL_4","Lehekülje päis");
+define("CONTROL_5","Lehekülje jalus");
+define("CONTROL_6","Vali aktiivne skin");
+define("CONTROL_7","Menüü stiil");
+define("CONTROL_8","Menüüde järjekord");
+define("CONTROL_9","Lehtede haldamine");
+define("CONTROL_10","Failid");
+define("CONTROL_11","Moodulid");
+define("CONTROL_12","Eelvaade");
+define("CONTROL_13","Logi välja");
+
+/* iware.php */
+
+define("IWARE_1","Kasutaja login");
+define("IWARE_2","Vale kasutajanimi / parool. Palun proovige uuesti.");
+define("IWARE_3","Kasutajanimi");
+define("IWARE_4","Parool");
+define("IWARE_5","Logi sisse");
+define("IWARE_6","Süsteemi ülevaade");
+define("IWARE_7","Veebiserver");
+define("IWARE_8","PHP versioon");
+define("IWARE_9","MySQL versioon");
+define("IWARE_10","versioon");
+define("IWARE_11","Kasutajate kontod");
+define("IWARE_12","Grupid");
+define("IWARE_13","Dokumendid");
+define("IWARE_14","Failide serverisse lisatud");
+define("IWARE_15","Installeeritud menüüstiilid");
+define("IWARE_16","Installeeritud skinnid");
+define("IWARE_17","Installeeritud moodulid");
+define("IWARE_18","Kasutajate haldamine");
+define("IWARE_19","Päris nimi");
+define("IWARE_20","Kasutajanimi");
+define("IWARE_21","Grupp");
+define("IWARE_22","Uus");
+define("IWARE_23","Muuda");
+define("IWARE_24","Kustuta");
+define("IWARE_25","Loo uus kasutajakonto");
+define("IWARE_26","Päris nimi");
+define("IWARE_27","Grupp");
+define("IWARE_28","Kasutajanimi");
+define("IWARE_29","Parool");
+define("IWARE_30","Parool uuesti");
+define("IWARE_31","Lisa kasutaja");
+define("IWARE_32","Kasutajakonto loomine õnnestus");
+define("IWARE_33","Muuda kasutajakontot");
+define("IWARE_34","Päris nimi");
+define("IWARE_35","Grupp");
+define("IWARE_36","Kasutajanimi");
+define("IWARE_37","Parool");
+define("IWARE_38","Parool uuesti");
+define("IWARE_39","Salvesta muudatused");
+define("IWARE_40","Kasutajakonto salvestatud");
+define("IWARE_41","Kasutajakonto kustutatud");
+define("IWARE_42","Gruppide haldamine");
+define("IWARE_43","Grupp");
+define("IWARE_44","Lisa uus");
+define("IWARE_45","Muuda");
+define("IWARE_46","Kustuta");
+define("IWARE_47","Lisa uus kasutajagrupp");
+define("IWARE_48","Grupi nimi");
+define("IWARE_49","Võib muuta kasutajakontode seadeid ?");
+define("IWARE_50","Võib muuta gruppide seadeid?");
+define("IWARE_51","Võib muuta lehekülje päist ?");
+define("IWARE_52","Võib muuta lehekülje jalust ?");
+define("IWARE_53","Võib vahetada aktiivset skinni ?");
+define("IWARE_54","Võib vahetada menüüde stiili ?");
+define("IWARE_55","Võib muuta menüüde järjekorda ?");
+define("IWARE_56","Võib lisada / parandada / hallata dokumente ?");
+define("IWARE_57","Võib lisada  / hallata faile ?");
+define("IWARE_58","Võib adminsitreerida installeeritud mooduleid ?");
+define("IWARE_59","Lisa grupp");
+define("IWARE_60","Kasutajate grupp lisatud");
+define("IWARE_61","Muuda kasutajate gruppi");
+define("IWARE_62","Grupi nimi");
+define("IWARE_63","Võib muuta kasutajakontosid ?");
+define("IWARE_64","Võib muuta gruppide seadeid ?");
+define("IWARE_65","Võib muuta lehe päist ?");
+define("IWARE_66","Võib muuta lehe jalust ?");
+define("IWARE_67","Võib vahetada aktiivset skinni ?");
+define("IWARE_68","Võib vahetada menüü stiili ?");
+define("IWARE_69","Võib muuta menüüde järjekorda ?");
+define("IWARE_70","Võib lisada / parandada / hallata dokumente ?");
+define("IWARE_71","Võib lisada  / hallata faile ?");
+define("IWARE_72","Võib adminsitreerida installeeritud mooduleid ?");
+define("IWARE_73","Salvesta muudatused");
+define("IWARE_74","Kasutajate grupp salvestaud");
+define("IWARE_75","Kasutajate grupp kustutatud");
+define("IWARE_76","Lehe päis");
+define("IWARE_77","Päist näidatakse");
+define("IWARE_78","Lehe päise sisu");
+define("IWARE_79","Tekst");
+define("IWARE_80","Fondi Stiil");
+define("IWARE_81","Fontdi Suurus");
+define("IWARE_82","Fondi Värv");
+define("IWARE_83","Näita pilti lehe päises");
+define("IWARE_84","Pildi failinimi");
+define("IWARE_85","Pildi alternatiivne tekst");
+define("IWARE_86","Pildi raam");
+define("IWARE_87","Salvesta muudatused");
+define("IWARE_88","Lehe päise seaded salvestatud");
+define("IWARE_89","Lehe jalus ");
+define("IWARE_90","Näita jalust");
+define("IWARE_91","Tavaline tekst / HTML");
+define("IWARE_92","Salvesta muudatused");
+define("IWARE_93","Lehe jaluse muudatused salvestatud");
+define("IWARE_94","Vali aktiivne skin");
+define("IWARE_95","Vali skin");
+define("IWARE_96","Salvesta muudatused");
+define("IWARE_97","Aktiivse skinni seaded salvestatud");
+define("IWARE_98","Eelvaate pilti pole võimalik näidata");
+define("IWARE_99","Lehtede haldamine");
+define("IWARE_100","Dokumendi pealkiri");
+define("IWARE_101","Uus tekst / HTML");
+define("IWARE_102","Uus WYSIWYG");
+define("IWARE_103","Muuda Tekst / HTML");
+define("IWARE_104","Muuda WYSIWYG");
+define("IWARE_105","Kustuta");
+define("IWARE_106","Lehekülg loodud");
+define("IWARE_107","Lehekülje muudatused salvestatud");
+define("IWARE_108","Sellel lehel on olemas alamleheküljed. Selle lehe kustutamiseks pead kustutama tema alamleheküljed kõigepealt.");
+define("IWARE_109","Lehekülg kustutatud");
+define("IWARE_110","Menüü stiil");
+define("IWARE_111","Vali menüü stiil");
+define("IWARE_112","Salvesta muudatused");
+define("IWARE_113","Menüü stiili seaded salvestatud");
+define("IWARE_114","Menüüde näitamise järjekord");
+define("IWARE_115","Salvesta muudatused");
+define("IWARE_116","Menüüde järjekord muudetud");
+define("IWARE_117","Failide serverisse laadimine");
+define("IWARE_118","Antud fail on pilt, muuda suurust vastavalt");
+define("IWARE_119","Kõrgus");
+define("IWARE_120","Laius");
+define("IWARE_121","Lae fail serverisse");
+define("IWARE_122","Faili laadimine serverisse ebaõnnestus");
+define("IWARE_123","Faili laadminse serverisse õnnestus");
+define("IWARE_124","Pildifaili suuruse muutumine ebaõnnestus, kontrolli kas GDLib tugi on serveris PHP jaoks installeeritud.");
+define("IWARE_125","Sellist tüüpi faili ei ole lubatud serverisse laadida");
+define("IWARE_126","Olemasolevad failid");
+define("IWARE_127","Kustuta fail");
+define("IWARE_128","Ühtegi moodulit pole installeeritud");
+define("IWARE_129","Installeeritud moodulid");
+define("IWARE_130","Seaded puuduvad");
+define("IWARE_131","Seaded");
+define("IWARE_132","Selle mooduli jaoks pole andmebaasi vastav tabeli struktuur installeeritud");
+
+/* editor.php */
+
+define("EDITOR_0","Muuda leht");
+define("EDITOR_1","Loo uus leht");
+define("EDITOR_2","Lingi tekst");
+define("EDITOR_3","Lisa lehe peamenüüsse");
+define("EDITOR_4","Pane alamleheks");
+define("EDITOR_5","Sisaldab moodulit");
+define("EDITOR_6","META Lehe pealekiri");
+define("EDITOR_7","META Lehe võtmesõnad (eralda komadega)");
+define("EDITOR_8","META Lehe Kirjeldus");
+define("EDITOR_9","Salvesta leht");
+define("EDITOR_10","Selleks, et pilt teistele näha oleks, selleks peate sisestama URL'i. (Näiteks : http://minuhost.com/files/pilt.jpg). Vastasel juhul näete seda pilti ainult teie.");
+?>

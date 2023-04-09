@@ -1,0 +1,61 @@
+#
+# $Id: Makefile.in,v 1.7 2001/05/30 21:56:44 fluffy Exp $
+#
+
+MKINSTALLDIRS	= ./mkinstalldirs
+DESTDIR		= <<phputils>>
+DESTDIR_PERMS	= 750
+PROGS_PERMS	= 4750
+OWNER		= <<owner>>
+GROUP		= <<group>>
+WWWDIR		= <<wwwdir>>
+
+PSQL		= <<psql>>
+CREATEDB	= <<createdb>>
+CREATEUSER	= <<createuser>>
+DBUSER		= <<dbuser>>
+AUTHDB		= <<authdb>>
+CALENDARDB	= <<caldb>>
+DBRO		= <<dbro>>
+DBRW		= <<dbrw>>
+AUTH_TARGET	= <<authtarget>>
+
+install: install-dirs su-install-dbs install-auth <<installcss>> <<installpo>>
+
+install-dirs:
+	echo "Installing calendar source files..."
+	$(MKINSTALLDIRS) $(WWWDIR)
+	cp -r auth $(WWWDIR)/auth
+	cp -r calendar $(WWWDIR)/calendar
+	chown -R $(OWNER):$(GROUP) $(WWWDIR)/calendar $(WWWDIR)/auth
+
+su-install-dbs:
+	su $(DBUSER) -c "make install-dbs"
+
+install-dbs: <<createdbro>> <<createdbrw>>
+	echo "Creating databases..."
+	$(CREATEDB) $(AUTHDB)
+	$(CREATEDB) $(CALENDARDB)
+	$(PSQL) -f sql-dumps/auth.sql $(AUTHDB)
+	$(PSQL) -f sql-dumps/srccalendar.sql $(CALENDARDB)
+
+create-dbro:
+	echo "Creating read-only DB user $(DBRO)..."
+	$(CREATEUSER) $(DBRO)
+
+create-dbrw:
+	echo "Creating read-write DB user $(DBRW)..."
+	$(CREATEUSER) $(DBRW)
+
+install-auth:
+	echo "Installing authentication utilities..."
+	cd php-utils; make $(AUTH_TARGET); make $(AUTH_TARGET)/install; cd ..
+
+install-css:
+	echo "Installing stylesheet..."
+	cp basic.css $(WWWDIR)/basic.css
+	chown $(OWNER):$(GROUP) $(WWWDIR)/basic.css 
+
+install-po:
+	echo "Installing translations..."
+	cd po; make install; cd ..

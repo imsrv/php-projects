@@ -1,0 +1,199 @@
+<?php
+
+set_time_limit(0);
+include ("include/connect.txt");
+$result = mysql_query("SELECT title,rss_newsfeed FROM ds_movies WHERE seo_url = '$id'");  
+while ($myrow = mysql_fetch_row($result)) 
+
+$movie_name = mysql_result($result,0,"rss_newsfeed");
+
+If ( $movie_name == "" )
+	{
+		$movie_name = mysql_result($result,0,"title");
+		$movie_name = str_replace(" ","+",$movie_name);
+		$movie_name = $movie_name."+movie";
+		$file = "http://news.google.com/news?hl=en&ned=us&ie=UTF-8&q=$movie_name&output=rss";
+		
+	}
+else
+	{
+		$file = $movie_name;
+	}
+
+
+
+
+$result = mysql_query("SELECT rss_default,rss_count,rss_advert_text,rss_advert_link FROM ds_options WHERE id = '0'");  
+while ($myrow = mysql_fetch_row($result)) 
+
+$rss_default = mysql_result($result,0,"rss_default");
+
+
+$rss_count = mysql_result($result,0,"rss_count");
+$rss_advert_text = mysql_result($result,0,"rss_advert_text");
+$rss_advert_link = mysql_result($result,0,"rss_advert_link");
+
+
+$rss_channel = array();
+$currently_writing = "";
+$main = "";
+$item_counter = 0;
+
+function startElement($parser, $name, $attrs) {
+   	global $rss_channel, $currently_writing, $main;
+   	switch($name) {
+   		case "RSS":
+   		case "RDF:RDF":
+   		case "ITEMS":
+   			$currently_writing = "";
+   			break;
+   		case "CHANNEL":
+   			$main = "CHANNEL";
+   			break;
+   		case "IMAGE":
+   			$main = "IMAGE";
+   			$rss_channel["IMAGE"] = array();
+   			break;
+   		case "ITEM":
+   			$main = "ITEMS";
+   			break;
+   		default:
+   			$currently_writing = $name;
+   			break;
+   	}
+}
+
+function endElement($parser, $name) {
+   	global $rss_channel, $currently_writing, $item_counter;
+   	$currently_writing = "";
+   	if ($name == "ITEM") {
+   		$item_counter++;
+   	}
+}
+
+function characterData($parser, $data) {
+	global $rss_channel, $currently_writing, $main, $item_counter;
+	if ($currently_writing != "") {
+		switch($main) {
+			case "CHANNEL":
+				if (isset($rss_channel[$currently_writing])) {
+					$rss_channel[$currently_writing] .= $data;
+				} else {
+					$rss_channel[$currently_writing] = $data;
+				}
+				break;
+			case "IMAGE":
+				if (isset($rss_channel[$main][$currently_writing])) {
+					$rss_channel[$main][$currently_writing] .= $data;
+				} else {
+					$rss_channel[$main][$currently_writing] = $data;
+				}
+				break;
+			case "ITEMS":
+				if (isset($rss_channel[$main][$item_counter][$currently_writing])) {
+					$rss_channel[$main][$item_counter][$currently_writing] .= $data;
+				} else {
+					$rss_channel[$main][$item_counter][$currently_writing] = $data;
+				}
+				break;
+		}
+	}
+}
+
+$xml_parser = xml_parser_create();
+xml_set_element_handler($xml_parser, "startElement", "endElement");
+xml_set_character_data_handler($xml_parser, "characterData");
+if (!($fp = fopen($file, "r"))) {
+	die("could not open XML input");
+}
+
+while ($data = fread($fp, 4096)) {
+	if (!xml_parse($xml_parser, $data, feof($fp))) {
+		die(sprintf("XML error: %s at line %d",
+					xml_error_string(xml_get_error_code($xml_parser)),
+					xml_get_current_line_number($xml_parser)));
+	}
+}
+xml_parser_free($xml_parser);
+
+// output HTML
+
+
+if (isset($rss_channel["ITEMS"])) 
+	{
+
+		if (count($rss_channel["ITEMS"]) > 0) 
+			{
+			   if ($rss_advert_text !="")
+			     {
+print ("\n<a href=\"" . $rss_advert_link . "\" target=_blank>" . $rss_advert_text . "</a>");
+								print ("<br />");
+			     }
+				for($i = 0;($i < count($rss_channel["ITEMS"])) & ($i < $rss_count);$i++) 
+					{
+						if (isset($rss_channel["ITEMS"][$i]["LINK"])) 
+							{
+								print ("\n<a href=\"" . $rss_channel["ITEMS"][$i]["LINK"] . "\" target=_blank>" . $rss_channel["ITEMS"][$i]["TITLE"] . "</a>");
+								print ("<br />");
+							} 		
+					}
+			}
+		
+		 
+
+	}
+else 
+	{ 
+// Here we look for a default feed as custom returns null
+
+
+$file = $rss_default; 
+
+
+$xml_parser = xml_parser_create();
+xml_set_element_handler($xml_parser, "startElement", "endElement");
+xml_set_character_data_handler($xml_parser, "characterData");
+if (!($fp = fopen($file, "r"))) {
+	die("could not open XML input");
+}
+
+while ($data = fread($fp, 4096)) {
+	if (!xml_parse($xml_parser, $data, feof($fp))) {
+		die(sprintf("XML error: %s at line %d",
+					xml_error_string(xml_get_error_code($xml_parser)),
+					xml_get_current_line_number($xml_parser)));
+	}
+}
+xml_parser_free($xml_parser);
+
+// output HTML
+
+
+if (isset($rss_channel["ITEMS"])) 
+	{
+		if (count($rss_channel["ITEMS"]) > 0) 
+			{
+if ($rss_advert_text !="")
+			     {
+print ("\n<a href=\"" . $rss_advert_link . "\" target=_blank>" . $rss_advert_text . "</a>");
+								print ("<br />");
+			     }
+				for($i = 0;($i < count($rss_channel["ITEMS"])) & ($i < $rss_count);$i++) 
+					{
+						if (isset($rss_channel["ITEMS"][$i]["LINK"])) 
+							{
+								print ("\n<a href=\"" . $rss_channel["ITEMS"][$i]["LINK"] . "\" target=_blank>" . $rss_channel["ITEMS"][$i]["TITLE"] . "</a>");
+								print ("<br />");
+							} 		
+					}
+			}
+	}
+else
+	{
+		Printf( "Sorry, no feed available ");
+	}
+
+
+	} 
+
+?>

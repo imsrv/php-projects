@@ -1,0 +1,29 @@
+<form ENCTYPE="application/x-www-form-urlencoded"  NAME="create_form" METHOD="POST" ACTION="[<($GUrl{'club_links.cgi'})>]">
+<TABLE WIDTH=400  [<($CONFIG{'WINCOLOR'})>]>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]" COLSPAN=2><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><CENTER><B>Add A Link!</B></CENTER></FONT></TD></TR>
+<TR [<($CONFIG{'WINCOLOR'})>]><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<INPUT TYPE=HIDDEN NAME="club" VALUE="[<($FORM{'club'})>]">
+<INPUT TYPE=HIDDEN NAME="action" VALUE="add_link">
+Name: <INPUT TYPE=TEXT NAME="title" SIZE="20">
+</TD><TD>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><SELECT NAME="category">
+
+[<(
+	foreach $c (@cats) {
+		$OUT .= "<OPTION VLUE=\"$c\">$c</OPTION>\n";
+	}
+)>]
+
+</SELECT>
+</TD></TR>
+<TR><TD COLSPAN=2>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Address (URL): <INPUT TYPE=TEXT NAME="url" SIZE="30">
+</TD><TD>
+<TR><TD COLSPAN=2>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Description:<BR>
+<TEXTAREA NAME="description" COLS=40 ROWS=4 WRAP=VIRTUAL></TEXTAREA>
+</TD></TR>
+<TR><TD COLSPAN=2>
+<CENTER><INPUT TYPE=SUBMIT VALUE="Add My Link"></CENTER>
+</TABLE>
+</FORM>

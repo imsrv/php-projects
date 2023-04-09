@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://tempuri.org/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="addCust">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CT_FirstName" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CT_LastName" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CT_Email" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CT_Password" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addCustResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="addCustResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="removeCust">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CT_ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="removeCustResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="removeCustResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateCust">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CT_ID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CT_FirstName" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CT_LastName" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CT_Email" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CT_Password" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateCustResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateCustResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="addCustSoapIn">
+    <part name="parameters" element="s0:addCust" />
+  </message>
+  <message name="addCustSoapOut">
+    <part name="parameters" element="s0:addCustResponse" />
+  </message>
+  <message name="removeCustSoapIn">
+    <part name="parameters" element="s0:removeCust" />
+  </message>
+  <message name="removeCustSoapOut">
+    <part name="parameters" element="s0:removeCustResponse" />
+  </message>
+  <message name="updateCustSoapIn">
+    <part name="parameters" element="s0:updateCust" />
+  </message>
+  <message name="updateCustSoapOut">
+    <part name="parameters" element="s0:updateCustResponse" />
+  </message>
+  <message name="addCustHttpGetIn">
+    <part name="CT_FirstName" type="s:string" />
+    <part name="CT_LastName" type="s:string" />
+    <part name="CT_Email" type="s:string" />
+    <part name="CT_Password" type="s:string" />
+  </message>
+  <message name="addCustHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="removeCustHttpGetIn">
+    <part name="CT_ID" type="s:string" />
+  </message>
+  <message name="removeCustHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="updateCustHttpGetIn">
+    <part name="CT_ID" type="s:string" />
+    <part name="CT_FirstName" type="s:string" />
+    <part name="CT_LastName" type="s:string" />
+    <part name="CT_Email" type="s:string" />
+    <part name="CT_Password" type="s:string" />
+  </message>
+  <message name="updateCustHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="addCustHttpPostIn">
+    <part name="CT_FirstName" type="s:string" />
+    <part name="CT_LastName" type="s:string" />
+    <part name="CT_Email" type="s:string" />
+    <part name="CT_Password" type="s:string" />
+  </message>
+  <message name="addCustHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="removeCustHttpPostIn">
+    <part name="CT_ID" type="s:string" />
+  </message>
+  <message name="removeCustHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="updateCustHttpPostIn">
+    <part name="CT_ID" type="s:string" />
+    <part name="CT_FirstName" type="s:string" />
+    <part name="CT_LastName" type="s:string" />
+    <part name="CT_Email" type="s:string" />
+    <part name="CT_Password" type="s:string" />
+  </message>
+  <message name="updateCustHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="adminCustomerSoap">
+    <operation name="addCust">
+      <documentation>Adds a new Customer to the customer table</documentation>
+      <input message="s0:addCustSoapIn" />
+      <output message="s0:addCustSoapOut" />
+    </operation>
+    <operation name="removeCust">
+      <documentation>Removes a  customer from the customer table</documentation>
+      <input message="s0:removeCustSoapIn" />
+      <output message="s0:removeCustSoapOut" />
+    </operation>
+    <operation name="updateCust">
+      <documentation>Updates a  customer in the customer table</documentation>
+      <input message="s0:updateCustSoapIn" />
+      <output message="s0:updateCustSoapOut" />
+    </operation>
+  </portType>
+  <portType name="adminCustomerHttpGet">
+    <operation name="addCust">
+      <documentation>Adds a new Customer to the customer table</documentation>
+      <input message="s0:addCustHttpGetIn" />
+      <output message="s0:addCustHttpGetOut" />
+    </operation>
+    <operation name="removeCust">
+      <documentation>Removes a  customer from the customer table</documentation>
+      <input message="s0:removeCustHttpGetIn" />
+      <output message="s0:removeCustHttpGetOut" />
+    </operation>
+    <operation name="updateCust">
+      <documentation>Updates a  customer in the customer table</documentation>
+      <input message="s0:updateCustHttpGetIn" />
+      <output message="s0:updateCustHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="adminCustomerHttpPost">
+    <operation name="addCust">
+      <documentation>Adds a new Customer to the customer table</documentation>
+      <input message="s0:addCustHttpPostIn" />
+      <output message="s0:addCustHttpPostOut" />
+    </operation>
+    <operation name="removeCust">
+      <documentation>Removes a  customer from the customer table</documentation>
+      <input message="s0:removeCustHttpPostIn" />
+      <output message="s0:removeCustHttpPostOut" />
+    </operation>
+    <operation name="updateCust">
+      <documentation>Updates a  customer in the customer table</documentation>
+      <input message="s0:updateCustHttpPostIn" />
+      <output message="s0:updateCustHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="adminCustomerSoap" type="s0:adminCustomerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="addCust">
+      <soap:operation soapAction="http://tempuri.org/addCust" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="removeCust">
+      <soap:operation soapAction="http://tempuri.org/removeCust" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="updateCust">
+      <soap:operation soapAction="http://tempuri.org/updateCust" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="adminCustomerHttpGet" type="s0:adminCustomerHttpGet">
+    <http:binding verb="GET" />
+    <operation name="addCust">
+      <http:operation location="/addCust" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="removeCust">
+      <http:operation location="/removeCust" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateCust">
+      <http:operation location="/updateCust" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="adminCustomerHttpPost" type="s0:adminCustomerHttpPost">
+    <http:binding verb="POST" />
+    <operation name="addCust">
+      <http:operation location="/addCust" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="removeCust">
+      <http:operation location="/removeCust" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateCust">
+      <http:operation location="/updateCust" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="adminCustomer">
+    <port name="adminCustomerSoap" binding="s0:adminCustomerSoap">
+      <soap:address location="http://66.129.68.165/bookSource/adminCustomer.asmx" />
+    </port>
+    <port name="adminCustomerHttpGet" binding="s0:adminCustomerHttpGet">
+      <http:address location="http://66.129.68.165/bookSource/adminCustomer.asmx" />
+    </port>
+    <port name="adminCustomerHttpPost" binding="s0:adminCustomerHttpPost">
+      <http:address location="http://66.129.68.165/bookSource/adminCustomer.asmx" />
+    </port>
+  </service>
+</definitions>

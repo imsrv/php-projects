@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "dotBoardUI", "http://localhost/dotBoardUI/dotBoardUI.vbproj", "{7A35EA72-BEE1-4ADD-9D70-1825A4B363D6}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "dotBoardObjects", "..\dotBoardObjects\dotBoardObjects.vbproj", "{9FD37ACF-CB8E-4244-B750-F9D5B3FECB29}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{7A35EA72-BEE1-4ADD-9D70-1825A4B363D6}.Debug.ActiveCfg = Debug|.NET
+		{7A35EA72-BEE1-4ADD-9D70-1825A4B363D6}.Debug.Build.0 = Debug|.NET
+		{7A35EA72-BEE1-4ADD-9D70-1825A4B363D6}.Release.ActiveCfg = Release|.NET
+		{7A35EA72-BEE1-4ADD-9D70-1825A4B363D6}.Release.Build.0 = Release|.NET
+		{9FD37ACF-CB8E-4244-B750-F9D5B3FECB29}.Debug.ActiveCfg = Debug|.NET
+		{9FD37ACF-CB8E-4244-B750-F9D5B3FECB29}.Debug.Build.0 = Debug|.NET
+		{9FD37ACF-CB8E-4244-B750-F9D5B3FECB29}.Release.ActiveCfg = Release|.NET
+		{9FD37ACF-CB8E-4244-B750-F9D5B3FECB29}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,134 @@
+[<(
+	$OUT .= "<!";
+	if ($thread_closed ne "T") {
+		$openclose = "<FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><A HREF=\"$GUrl{'cforum.cgi'}?action=close_thread&thread=$FORM{'thread'}&clubs=$FORM{'clubs'}&forum=$forum\">$CONFIG{'closethread'}</A>";
+	}
+	else {
+		$openclose = "<FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><A HREF=\"$GUrl{'cforum.cgi'}?action=open_thread&thread=$FORM{'thread'}&clubs=$FORM{'clubs'}&forum=$forum\">$CONFIG{'openthread'}</A>";
+	}
+	$OUT .= ">";
+)>]
+
+<CENTER>
+
+<! 
+[<(
+	$notshown = $notshown || "No";
+)>]
+>
+
+[<($notshown)>] messages were skipped because they are <A HREF="[<($GUrl{'myforum.cgi'})>]?returnto=[<($TURL)>]">more than [<($daystoshow)>] days old</A>.
+[<(
+	if ($notshown =~ /\d/) {
+		$OUT .= "<A HREF=\"$GUrl{'cforum.cgi'}?forum=$FORM{'forum'}&thread=$FORM{'thread'}&action=message&showall=T\">Click to see the rest</A>.";
+	}
+)>]
+
+<BR>
+
+[<(
+	if (($VALIDUSER eq "T") && (($IUSER{'filenum'} eq $IFORUM{'bbs_admin'}) || ($IUSER{'filenum'} eq $admin_num))) {
+		$OUT .= "$openclose\n";
+		if ($FORM{'clubs'} ne "T") {
+			if (($moderator_edit eq "Yes") || ($moderator_edit eq "Settings Not Appearance")) {
+				$OUT .= " &nbsp; <A HREF=\"$GUrl{'cf_moderators.cgi'}?clubs=$FORM{'clubs'}&forum=$forum\">Edit Forum Settings</A>";
+			}
+		}
+	}
+	else {
+		$thisurl = &urlencode("$CONFIG{'COMMUNITY_full_cgi'}/cforum.cgi?action=message&clubs=$FORM{'clubs'}&forum=$forum&thread=$thisthread");
+		$OUT .= "&nbsp; <A HREF=\"$GUrl{'referitemail.cgi'}?url=$thisurl&mod_email=$MOD{'email'}\">Tell the moderator about this conversation</A>";
+	}
+)>]
+
+ &nbsp; <A HREF="[<($GUrl{'referitemail.cgi'})>]?url=[<($thisurl)>]">Tell a friend about this conversation</A> &nbsp; 
+</CENTER>
+
+[<(
+	if (($thread_closed ne "T") && ($Post_In_Forums ne "NO")) {
+		my $message = undef;
+		my $subject_line = "$tpost{'subject'}\n<input NAME=\"subject\" TYPE=\"hidden\" VALUE=\"$tpost{'subject'}\">\n";
+		my $title_message = "Post Your Reply";
+		my $this_action = "post_reply";
+		my $thread = $FORM{'thread'};
+		my $HELPURL = undef;
+		if ($ENV{'HTTP_USER_AGENT'} =~ /MSIE/i) {
+			$HELPURL = "<A HREF=\"$GUrl{'cforum.cgi'}?action=help&file=codes\">";
+		}
+		else {
+			$HELPURL = "<A HREF=\"javascript:ShowHelp('codes')\">";
+		}
+		my ($p, $MENU);
+		$MENU = "<B>Message Category: </B><SELECT NAME=\"picon\">\n";
+		foreach $p (keys %picons) {
+			$MENU .= "<OPTION VALUE=\"$p\">$p</OPTION>\n";
+		}
+		$MENU .= "</SELECT>\n";
+
+
+		$OUT .= <<DONENEW;
+       		<center><BR><BR>
+		    <TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+		      <tr bgcolor="$CONFIG{'title_color'}">
+		        <td width="100%" colspan="2" valign="MIDDLE"><CENTER>
+		          <font face="$CONFIG{'font_face'}" size="+1" color="$CONFIG{'ttxt_color'}"><B>
+	 	          <TABLE WIDTH=100%>
+				<TR><TD><font face="$CONFIG{'font_face'}" size="+1" color="$CONFIG{'ttxt_color'}"><B>$title_message</B></TD>
+				<TD ALIGN=right>$HELPURL<IMG SRC="$CONFIG{'button_dir'}/help.gif" BORDER=0 WIDTH="25" HEIGHT="25" ALIGN=middle VALIGN=middle></A></TD></TR>
+			    </TABLE>
+		          </B></font></CENTER>
+		        </td>
+		      </tr>
+		      <tr $CONFIG{'WINCOLOR'}>
+		         <td width="100%" colspan="2" valign="MIDDLE">
+		            <font color="$CONFIG{'text_color'}" FACE="$CONFIG{'font_face'}" SIZE="$CONFIG{'font_size'}">
+		            <BLOCKQUOTE>
+		            $quoted_text
+		            </BLOCKQUOTE>
+
+				<form NAME="rply_form" METHOD="POST" ACTION="$GUrl{'cforum.cgi'}" ENCTYPE="x-www-form-urlencoded">
+		            <P><b>UserName: </b><INPUT TYPE=TEXT NAME=UserName LENGTH=20 VALUE=\"$Cookies{'UserName'}\"><BR>
+		            <b>PassWord: </b><INPUT TYPE=PASSWORD NAME=PassWord LENGTH=20 VALUE=\"$Cookies{'PassWord'}\"><BR>
+				<FONT SIZE=-1><A HREF="$GUrl{'register.cgi'}" TARGET="_top">Join Now!</A> - <A HREF="$GUrl{'profile.cgi'}" TARGET="_top">Login To Your Personal Profile</A></FONT><P>
+		            <b>Subject: </B>
+		            $subject_line
+		            <BR>
+				$MENU
+				<P>
+		            <B>Message Text ....</B> <INPUT TYPE="checkbox" NAME="do_spellcheck"> Spell Check?</FONT><BR>
+		            <textarea NAME="message" WRAP="physical" ROWS="9" COLS="50"></textarea><BR>
+
+	   	            <input NAME="clubs" TYPE="hidden" VALUE="$FORM{'clubs'}">
+	   	            <input NAME="forum" TYPE="hidden" VALUE="$forum">
+		            <input NAME="curr_thread" TYPE="hidden" VALUE="$thread">
+		            <input NAME="action" TYPE="hidden" VALUE="$this_action">
+
+		            <CENTER>
+		            <input NAME="b_post" TYPE="submit" VALUE="Post Your Message">
+		            </font>
+		          </td>
+		       </tr>
+		     </table>
+		   </td>   
+		 </tr>
+		</table>
+DONENEW
+	}
+)>]
+
+<SCRIPT LANGUAGE="javascript">
+function ShowHelp(c_what) {
+	var Location = "[<($GUrl{'cforum.cgi'})>]?action=help&file=" + c_what;
+	link=open(Location,"CCSLink","toolbar=no,scrollbars=yes,directories=no,menubar=no,resizable=yes,width=420,height=410");
+}
+
+function OpenWin(Loc) {
+	link=open(Loc,"CCSLink","toolbar=no,scrollbars=yes,directories=no,menubar=no,resizable=yes,width=420,height=410");
+}
+
+function OpenForum(v_forum) {
+	document.forum_select.forum.value = v_forum;
+	document.forum_select.submit();  
+}
+</SCRIPT>
+</FORM>

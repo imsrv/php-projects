@@ -1,0 +1,18 @@
+<TABLE CELLPADDING=0 CELLSPACING=0>
+<TR><TD><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Help & Hints</B></FONT></CENTER><BR><BR></TD></TR>
+<TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+
+[<(
+	if ($CONFIG{'Weaver_use_bonhomme'} eq "YES") {
+		$OUT .= "<IMG SRC=\"$CONFIG{'button_dir'}/myguy/student.gif\" WIDTH=82 HEIGHT=128 ALIGN=RIGHT ALT=\"Let me be your guide\">";
+	}
+)>]
+
+<P>Uploading files is a snap once you get used to it.
+<UL>
+<LI><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">The first thing you need to do is click the [Browse] button.  This will open a window in which you can move around your local hard drive.
+<LI><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">When you find the file you are looking for (you may need to change the file type to "All Files (*.*)"), "left-click" (click the left mouse button over it) and then select "Open".
+<LI><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">That window will then close and the box on the upload form will have a file name in it.  Now click [Upload This File] and wait (this could take a minute or two for a large file.
+<LI><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">You should then get a confirmation screen.
+</UL>
+</TD></TR></TABLE>

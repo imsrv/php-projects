@@ -1,0 +1,97 @@
+<?php include("top.php"); ?>
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="33%" background="images/blue_bg.gif"><div align="right"><img src="images/main_img.jpg" width="311" height="245"></div></td>
+    <td width="7%" background="images/blue_bg_r.gif"><br>      <br></td>
+    <td width="60%" background="images/blue_bg_r.gif"><span class="header">Ýsteyebilecekleriniz</span><br>
+      <br>
+      <span class="text"> <a href="#" class="link">Bilgi Edinme Hakkýnýzý Kullanabilirsiniz</a><br>
+      <a href="#" class="link">Kiralýk Emlak Aradýðýnýzý Bildirebilirsiniz</a><br>
+      <a href="#" class="link">Satýlýk Emlak Aradýðýnýzý Bildirebilirsiniz</a><br>
+      <a href="#" class="link">Kiralama ve Satýnalmada Özel Hizmet Ýsteðiniz</a><br>
+      <a href="#" class="link">Araþtýrma ve Bilgi Toplama</a><br>
+      <a href="#" class="link">Adresinize Geliyoruz</a><br>
+      <a href="#" class="link">Gayrimenkul Sahibiyseniz</a></span></td>
+  </tr>
+  <tr>
+    <td><div align="right"><img src="images/main_img_bott.jpg" width="297" height="71"></div></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="5%" valign="top"><img src="images/left_bar.gif" width="19" height="320"></td>
+        <td width="95%"><table width="335"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="335" height="267"><span class="small_header">Sizin yanýnýzda oluruz</span><br>
+                <a href="#" class="link"><br>                  
+                Yabancýsý olduðunuz yer ve konularda bizimle iletiþim kurabilirseniz; sizin yardýmcýnýz oluruz Hizmet için týklayýn</span></a><span class="text"><br>
+                  <br>
+                <span class="small_header">Sorularýnýza çözüm arayalým</span><span class="text"><br>
+                <br>
+                <a href="#" class="link">Kiraya vermek yada satmak istiyorsanýz týklayýn</a><br>
+      </span>          <a href="#" class="link">Tapu kadastro veraset ve intikal iþlemleriniz için týklayýn</a><br>
+      <br>
+      <span class="small_header">Ofislerimiz</span> <br>      <br>
+      <span class="text">Ýstanbul - Etiler Merkez<br>
+      Balýkesir - Akçay Ofis</span><br>
+      <span class="text">Ýstanbul - Mecidiyeköy Ofis</span>      </td>
+          </tr>
+          <tr>
+            <td><div align="right"><img src="images/sol_alt_resim_1.jpg" width="204" height="188"></div></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+    <td>&nbsp;</td>
+    <td valign="top"><table width="85%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="739" class="header">Emlak Hizmetleri Hakkýnda </td>
+      </tr>
+      <tr>
+        <td height="10"></td>
+      </tr>
+      <tr>
+        <td valign="top" class="text"><p class="text"><strong><img src="images/arrow_bar.gif" width="8" height="5"> Konu<br>
+          <br>
+        </strong>Gayrimenkul taleplerinin karþýlanmasýnda “özel hizmet” uygulamasýnýn gerekliliði.<br>
+        <br>
+        Özel hizmet her canlý için yaþamsal bir tatmin aracý. Evde, iþyerinde ve tüm sosyal yaþamýnda insanýn istek ve ihtiyaçlarýnýn karþýlanmasýnda reddedemeyeceði bir hizmet. Bire bir iletiþim. Dinlemek, anlamak ve isteðini karþýlayabilmek için yapýlacak iþleri üzerinize almak. Konumuz emlak talebi olan þahýs ve firmalara özel hizmetimizi sunmak. </p>
+          <p><strong><strong><img src="images/arrow_bar.gif" width="8" height="5"> </strong> Emlak talepleri ile özel hizmet iliþkisine dair: </strong></p>
+          <p>Sanal dünya içersinde insanlarýn ihtiyaçlarýnýn karþýlanmasýna bir adým daha yaklaþmak mümkün. Emlak ile ilgili ihtiyacýnýz olduðunda, oturduðunuz yerden sayfamýza girerek, ihtiyacýnýz olan bölüme týklayýn, istek formunu doldurup yollayýn. </p>
+          <p>Ýsteðinizin güncel þartlar ile uygunluðu incelensin ve size bilgi gelsin. sonuçta hizmet size gelsin. </p>
+          <p>Yedi yýlýmýzý doldurduðumuz sektördeki hizmetlerimizin sonucunda; insanlarýn arayýþlarýný çile çekerek yaptýðýný gördüðümüz için, yoðun talep olacaðýný biliyoruz. Talep yoðunluðunun getirdiði olumsuzluðu ortadan kaldýrmak için, önceliði “güncel geçerliliði” olan isteklere vermeyi düþünüyoruz. </p>
+          <p>Günümüz kent insanlarýnýn ev ve iþyeri ihtiyaçlarýný nasýl karþýlýyor sorusunun cevabýný yedi yýldýr yaþamaktayýz. Bizim yapmayý tasarladýðýmýz çalýþmanýn taleplilerce nasýl yapýldýðýna bakalým. </p>
+          <p><strong> <strong><img src="images/arrow_bar.gif" width="8" height="5"> </strong> Taleplerin karþýlanma yöntemleri </strong></p>
+          <p><img src="images/arrow.gif" width="8" height="5"> Gazete ilanlarýný takip ediyorum ve tek tek telefon açýp, daha sonra telefonda anlatýlanlarýn ne kadar örtüþtüðünü görmeye gidiyorum.
+          <p><img src="images/arrow.gif" width="8" height="5"> Onlarca emlak ofisini bularak gösterecekleri yerlere gidiyorum. </p>
+          <p><img src="images/arrow.gif" width="8" height="5"> Ýnternette ki çeþitli siteleri inceleyerek, beðendiklerimi görmeye gidiyorum. </p>
+          <p><img src="images/arrow.gif" width="8" height="5"> Yanýmda çalýþan personeli bu iþle vazifelendiriyorum ve daha sonra bizzat bakmaya gidiyorum. </p>
+          <p><img src="images/arrow.gif" width="8" height="5"> Emlak firmalarýný arayarak onlara isteklerimi ve telefonlarýmý bildirerek, onlarýn beni aramasýný bekliyorum. </p>
+          <p><strong> <strong><strong><img src="images/arrow_bar.gif" width="8" height="5"></strong> </strong> Yöntemlerde çýkan sorunlar </strong></p>
+          <p><img src="images/arrow.gif" width="8" height="5"> Telefon ile aldýðým bilgiler yanýltýcý oluyor. Bizzat görmeye gittiðimde gösterilen yerler anlatýlanlarla örtüþmüyor. </p>
+          <p><img src="images/arrow.gif" width="8" height="5"> Birçok emlak ofisiyle konuþup, tek tek onlarý bulmak ve gösterdikleri yerleri görerek eleme yapmak zaman alýyor ve tam olarak neyi istediðimi anlamadan yer gösteriyorlar. </p>
+          <p><img src="images/arrow.gif" width="8" height="5"> Ýnternette çok deðiþik isimler altýndaki sayfalarý bulup, onlarýn içinde araþtýrma yapmak ve telefon ile ilave bilgi alýp onlarý görmeye gitmek kolay deðil. </p>
+          <p><img src="images/arrow.gif" width="8" height="5"> Yanýmda çalýþaný göndermekle olmuyor. </p>
+          <p><img src="images/arrow.gif" width="8" height="5"> Telefonumu býraktýðým emlak firmalarýndan geri dönen olmuyor. Unutuluyorum. </p>
+          <p align="justify"><img src="images/arrow.gif" width="8" height="5"> Kýsaca paramla ve harcadýðým zaman ile býktýrýcý bir uðraþa giriyorum. </p>
+          <p align="justify"><img src="images/arrow.gif" width="8" height="5"> Siz çile çekmeyin. Biz çalýþýyoruz. </p>
+          <p><br>
+          </p></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="90" valign="top" background="images/bott_bg.gif" class="black_arial11"><br>
+    <br>      <img src="images/none.gif" width="20" height="5">©2003 EmlakAdamlar | Created by <a href="http://www.hazarajans.com" target="_blank" class="link_small">HAZAR</a></td>
+  </tr>
+</table>
+
+</body>
+</html>

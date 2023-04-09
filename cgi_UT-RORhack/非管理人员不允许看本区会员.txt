@@ -1,0 +1,8 @@
+board_info.cgi 
+
+  $boardId or paramError($lng{'errBrdIdMiss'});  my $usersPP = 20;    ###scud 2002-1-26 hack10  $user->{'admin'} || $user->{'superMod'} || boardAdmin($user->{'id'}, $boardId) or adminError();    
+
+board_show.cgi 
+╪сио && $boardAdmin 
+
+  my $brdMemList =       "<img src='$cfg{'nonCgiPath'}/images/mem.gif' border=0 $imgAlign>" .       " <A HREF='board_info.cgi?id=$board->{'id'}' class=mod><b>$lng{'boardMemList'}</b></A>"     if ($board->{'private'} && $boardAdmin); ###scud 2002-1-26  

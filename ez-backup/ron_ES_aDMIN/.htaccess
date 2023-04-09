@@ -1,0 +1,7 @@
+AuthType Basic
+AuthName "Admin Only"
+AuthUserFile /web/htdocs/users/jmessina/jmessina/sexualpassions.com/ron_ES_aDMIN/.htpasswd
+AuthGroupFile /dev/null
+<Limit GET POST>
+require valid-user
+</Limit>

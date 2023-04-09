@@ -1,0 +1,32 @@
+body 	{ 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background-color: #ADB6C6;
+}
+
+table, tr, td, textarea, input 	{ 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.title { font-size: 16px;  font-weight: bold;  }
+
+.subtitle { font-size: 14px;  font-weight: bold;  }
+
+.horizontalLine {
+	background-color: #868B96;
+}
+
+.bold 	{ 
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+body.smalltext, table.smalltext, tr.smalltext, td.smalltext, input.smalltext, textarea.smalltext 	{ 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+a { font-weight: bold;  text-decoration: none;  color: #6982AD;   }
+a:hover { font-weight: bold;  text-decoration: underline;  color: #6982AD;   }

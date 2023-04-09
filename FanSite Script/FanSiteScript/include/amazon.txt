@@ -1,0 +1,22 @@
+
+<?PHP 
+include ("include/connect.txt");
+
+$result = mysql_query("SELECT amazon FROM ds_options WHERE id = '0'");  
+while ($myrow = mysql_fetch_row($result)) 
+$amazon = mysql_result($result,0,"amazon");
+?>
+
+<script type="text/javascript"><!--
+  amazon_ad_tag = "<?php print("$amazon");?>";
+  amazon_ad_width = "300";
+  amazon_ad_height = "250";
+  amazon_color_border = "FFFFFF";
+  amazon_color_link = "000000";
+  amazon_color_logo = "FFFFFF";
+  amazon_ad_logo = "hide";
+  amazon_ad_link_target = "new";
+  amazon_ad_price = "retail";
+  amazon_ad_border = "hide";
+//--></script>
+<script type="text/javascript" src="http://www.assoc-amazon.co.uk/s/ads.js"></script>

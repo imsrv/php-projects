@@ -1,0 +1,25 @@
+<?PHP 
+include ("../include/connect.txt");
+if ($submit) 
+{
+
+ $sql = "UPDATE ds_options SET admin_note = '$admin_note' WHERE id='0'";	  
+ $result = mysql_query($sql); 
+
+} 
+$sql = "SELECT admin_note FROM ds_options WHERE id = '0'";
+$result = mysql_query($sql);
+
+?>
+	 <FORM METHOD="post" ACTION="<?php echo $PHP_SELF?>">
+	 
+	 <TEXTAREA NAME="admin_note" ROWS="6" COLS="65"><?php print mysql_result($result,0,"admin_note")?>
+	 </TEXTAREA>
+	 <BR>
+	 <INPUT TYPE="SUBMIT" NAME="submit" Value = "Сохранить изменения">
+	 </FORM>
+
+
+<?PHP
+include ("../include/close.txt");
+?>

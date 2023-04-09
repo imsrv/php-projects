@@ -1,0 +1,9 @@
+                <tr>
+                    <td align="left" bgcolor="#FFFFFF">{email_icon}&nbsp;{print_icon}</td>
+		    <td bgcolor="#FFFFFF">
+                        <div align="right">
+                            {readmore_link} <a href="{comments_url}">{comments_text}</a><br>
+                            {recent_post_anchortag}
+                        </div>
+                    </td>
+                </tr>

@@ -1,0 +1,21 @@
+<?PHP 
+include ("include/connect.txt");
+
+$result = mysql_query("SELECT article,views FROM ds_articles WHERE seo_url = '$id'");  
+
+if (mysql_result($result,0,"article") == "")
+	{
+		printf("No Content");
+	}
+else
+	{
+		printf("%s<br>",mysql_result($result,0,"article"));
+	}  
+
+$count = mysql_result($result,0,"views") + 1;  
+$sql = "UPDATE ds_articles SET views = '$count' WHERE seo_url='$id'";
+mysql_query($sql);
+
+include ("include/close.txt");
+
+?>

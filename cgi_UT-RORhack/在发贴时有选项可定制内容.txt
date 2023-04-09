@@ -1,0 +1,54 @@
+1,修改表ut_boards 
+ALTER TABLE ut_boards ADD rtitle char(200); 
+
+2,board_options.cgi 
+在 "<tr bgcolor=$cfg{'lightCellColor'}><td width=45%>\n", 
+  "<b>Allow HTML</b> (security risk!)</td>\n", 
+    "<td><INPUT TYPE='checkbox' NAME='html' $htmlChecked></td></tr>\n", 
+上边添加 
+
+  "<b>可以使用的帖子类型(中间用,号分开)</b> </td>\n", 
+  "<td><INPUT TYPE='text' NAME='rtitle' SIZE=30 MAXLENGTH=200", 
+  " VALUE='$board->{'rtitle'}' class=subject></td></tr>\n", 
+3,board_option_x.cgi 
+在 
+my $html = $cgi->param('html') ? 1 : 0; 
+前边添加 
+my $rtitle = $cgi->param('rtitle'); 
+
+在 
+  html = $html, 
+  前边添加 
+    rtitle = $rtitle, 
+在 
+# Update board 
+前添加 
+my $rtitle = quote($rtitle); 
+4,topic_new.cgi 
+
+找到 
+"<td><INPUT TYPE='text' NAME='postSubject' SIZE=$inputCols MAXLENGTH='$cfg{'maxSubjectLen'}' class=subject></td></tr>\n", 
+修改为 
+
+  "<td>"; 
+  my @rtitle = split(/,/, $board->{'rtitle'}); 
+if ($#rtitle >0){ 
+print "<SELECT NAME='rtitle' SIZE=1 class=selStyle>\n"; 
+for my $rtemp (@rtitle) { 
+print "<OPTION VALUE='$rtemp'>$rtemp</OPTION>\n"; 
+} 
+print "</SELECT>\n";} 
+  print "<INPUT TYPE='text' NAME='postSubject' SIZE=$inputCols MAXLENGTH='$cfg{'maxSubjectLen'}' class=subject></td></tr>\n", 
+   
+   
+   
+5,topic_new_x.cgi 
+在 
+my $subject = $cgi->param('postSubject'); 
+前添加 
+my $rtitle = $cgi->param('rtitle'); 
+
+在 
+$subject or userError($lng{'errSubEmpty'}); 
+后边添加 
+$subject= "$rtitle$subject"; 

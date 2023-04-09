@@ -1,0 +1,13 @@
+
+<!-- START BLOCK -->
+
+<table border="0" cellpadding="1" cellspacing="0" width="100%">
+    <tr bgcolor="#666666">
+        <td>
+            <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                <tr bgcolor="#666666">
+                    <td class="blocktitle">{block_title}</td>
+                    <td align="right">{block_help}</td>
+                </tr>
+                <tr>
+                    <td bgcolor="#FFFFFF" colspan="2">

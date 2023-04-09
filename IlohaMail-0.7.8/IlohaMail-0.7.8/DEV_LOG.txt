@@ -1,0 +1,453 @@
+9/8/02
++Added Chinese translations (thanks to Danny Lin)
+
+9/2/02
++Added Swedish translations (thanks to Markus Svensson)
+
+8/27/02
++Added Italian translations (thanks to Brocco Amos)
+
+8/23/02
++Fixed bug where INBOX showed "no messages" when sorting by Date/ASC.
++Added Brasilian Portuguese langs (thanks to Eduardo Mantovani)
++Fixed bug where invalid sessions wouldn't redirect on logout.
+
+8/21/02
++Improved error handling in session auth
++Improved parameter checking in MySQL related code to prevent data corruption.
++Added support for optional (and fail-safe) persistent connections to MySQL backend.
++Fixed bug in include/mime.inc where bodystructure strings containing quoted parens caused the iml_ParseBSString() function to freeze.
+
+8/20/02
++Really fixed bug where MIME messages missing closing boundaries were not being parsed (previous fix only worked for cached messages).
++Updated Polish langs
+
+8/18/02
++Fixed bug where empty subjects fields caused problems (in iil_C_FetchHeaders)
++Merged updated German lang files
++Added Polish translations (thanks to Marcin Piliszczuk)
++Fixed non-bug where MIME messages missing closing boundaries were not being parsed.
+
+8/9/02
++Added ISO-8859-2 charset for Polish language support (a clone of ISO-8859-1)
+
+8/2/02
++Implemented custom smtp library (include/smtp.inc)
++Added support for custom smtp to compose.php (in CVS as source/compose2.php).  Large messages are now streamed, drastically reducing memory useage (only a few KB regardless of attachment size).  It is also possible to specify SMTP server to use (configure in conf/conf.inc).
++Added iil_C_AppenFromFile in include/imap.inc
+
+7/30/02
++Vastly improved performance/efficiency of iil_C_FetchHeaders (noticeable for POP accounts with hundreds of messages).
+
+7/29/02
++Message list now only fetches the number of messages to be shown when sorting by date, due to extremely slow response times when listing inboxes with many messages.  This is change is only for POP3 inboxes.
+
+7/28/02
++Fixed hypothetical bug in include/backend.MySQL.inc where UPDATE could be applied to all records due to incomplete if..else statement
++Added network timeout to "iil_C_FetchHeaders()" in include/pop3.inc to prevent IlohaMail from hanging in the event that the network connection is dropped.
++Lang selection in login screen now over rides user prefs (unless "--" is selected, in which case saved prefs will be used for returning users, and default (set in conf/login.inc) for new users)
++Removed "Update" button in prefs page, "Apply" now applies changes and shows prefs page.
+
+7/26/02
++Fixed bug in source/login.inc
+
+7/24/02
++Fixed bug where long subject were truncated in the message listing (bug was in include/pop3.inc)
++Disabled radar for POP3 accounts
+
+7/24/02
++!Released 0.7.7, GOL deploys IlohaMail
+
+7/23/02
++"Delete All" link hidden when showing Trash
++Sender address (Return-Path header) now set using command line args
+
+7/22/02
++User's address(es) are now removed from recipient list when "replying to all" (thanks to Jeroen Van der Vegt)
++It is now possible to specify the URL users should be redirected to after logging out in conf/login.inc (default is login screen).
+
+7/19/02
++Added "Check New" link to INBOX (essentially just a reload)
++Added "Delete All" feature to source/main.php (literally deletes all message in folder)
+
+7/18/02
++Added switches to conf/login.inc for hiding host, protocol selector, and rootdir.
++Add "close window" link to compose window.
+
+7/16/02
++Fixed bug where some image attatchments weren't being displayed when showing inline on POP3 accounts
++Subject is now optional.  A warning is displayed, clicking on "send" again sends with or without subject.
+
+7/11/02
++Contacts can now be selected in contacts list, then passed to new message window
+
+7/1/02
++Windows close (if appropriate) after sending or deleting messages. (patch by Jeroen van der Vegt)
++Added JavaScript-based message selection in source/main.php (patch by Jeroen van der Vegt)
+
+6/23/02
++Fixed bug where long lines in Japanese were being garbled when quoting in message composition window.
+
+6/19/02
++!Released 0.7.6
+
+6/18/02
++Merged updated lang files, preparing for release
++Fixed case sensitivity bug
+
+6/16/02
++#Had weird lump under my right ear and slight fever the last few days...back to work now.
++User name textbook selected by default in login page (thanks to pgholzleitner)
++Improved multilingual-ness of source/compose.php
++Added user prefs to show HTML-only message in frame/window, and always show images inline
++Now sets In-Reply-To headers when replying to messages
+
+6/11/02
++Fixed bug where incomplete message listing was shown after deleting a message
++Non 7bit folder names are now handled properly (thanks to Torben Rybner)
++Added Danish language support (also thanks to Torben Rybner)
++Hid some more IMAP specific elements.  The switch for supported/nonsupported is done by a variable set by include/icl.inc to add abstraction for future message access protocols.
+
+6/10/02
++Fixed bug in lang/common.inc where case sensitivity in MIME string encoding type character caused problems
++Vastly improved handling of multipart/mixed messages in source/compose.php and source/read_message.php using a new iml_GetFirstTextPart() function that finds first text part, even in nested multipart messages.
++IMAP specific features are now hidden in prefs page
+
+6/9/02
++Added next/previous arrows in read message window.  Simply traverses according to ID (should be sorted by order received).
++Fixed bug where message composition window showed more than just the message when replying/forwarding to nested multipart messages.
++#Did some performance analysis on POP3.  Seems like iil_C_FetchHeaders is taking time, where there's a 0.09 second lag between when the TOP command is sent and the reply is received, but only 0.01 to process that data.
++#I guess the real question is , why such a huge difference between POP and IMAP?  One theory is that IMAP simply returns less data, less data transfer latency.
++#That settles one issue though:  It's not my code... I can optimize the hell out of it, but it won't result in any noticeable differences (unless I cache headers...).
+
+6/6/02
++Fixed bug in POP3 library where upper-case type codes were causing problems
+
+6/5/02
++Fixed mime related issue in POP3 library.
+
+6/4/02
++Changed "Revert" to "Cancel", and added "Defaults" button in prefs.
++Improved flexibility when setting 'From' header (allows admin to specify host, but still won't use the user's pref settings)
++Added "Errors-To" and "Bounce-To" headers
++Added configuration option to honor user specified email address in "From" header
++Fixed bug in mime library where attachment names weren't found if specified in content-disposition header
++Attachment list in read message window now wraps every 4 messages.
+
+6/3/02
++Fixed bug where default_port wasn't being recognized when adv_mode=0
++Added "MAX_EXEC_TIME" config (sets maximum execution time...)
++Completed work on AUTH_MODE support
++Slightly improved handling of nested multipart messages
+
+6/2/02
++Changed/internationalized empty contacts list error message in source/contacts.php
++Added "Reply To All" feature
++Fixed various Trash folder related bugs
+
+5/31/02
++Improved error handling and added support for authentication method specification (defaults to plain text) in iil_C_Connect()
++Fixed bug where messages with no text messages (i.e. all attachments) weren't being flagged as "unseen".
++Fixed bug where multi-line address lists weren't being handled correctly
+
+5/29/02
++!Released 0.7.5
+
+5/28/02
++Fixed minor glitch in LangDecodeAddressList() again...
++Cleaned up error handling in source/compose.php (spam prevention rule violation is displayed as error).
++Added "One Stop Spam Reporting" (thanks to Jonathan) 
+
+5/27/02
++Folder list is now automatically hidden when logging into POP3 account
++Improved international-ness of search form date entry.
++Merged new strings with French and Dutch translations (preparing for 0.7.5-RC1)
++In Prefs, charset is checked against list of supported charsets, and forced to default if unsupported charset is selected.
+
+5/26/02
++Added anti-spam (anti-abuse) features.  Allows admin to set maximum recepients per message, maximum recepients per session, and interval between send operations.
+
+5/25/02
++Fixed LangDecodeSubject() in lang/common.inc
++Replaced "Delete" button with "Empty Trash" when viewing trash
++Improved multilingual-ness of source/main.php
++Window title is now set to user's email address, followed by number of new unseen messages in parens
+
+5/24/02
++Moved charset agnostic functions in lang/{$charset}.inc to lang/common.inc
++When replied or forwarded, original message is now flagged as "answered"
++From/To/CC/BCC headers are now encoded properly, uses new LangEncodeAddressList function in lang/common.inc
++EUC-JP charset engine will now encode non-Japanese 8bit strings as ISO-8859-1 strings.
++#Summer break...yay!!
+
+5/23/02
++Fixed more lang related problems, French translation coming along great
++Fixed quoting related issues when using POP3
++Made all strings localizable in source/compose.inc
+
+5/22/02
++Ignores attempts to delete messages from the trash ("Empty Trash" should be used anyway).
++Host is now verified against $default_host (set in conf/login.inc) during login.
+
+5/22/02
++Fixed bug where the 'lang' environmental variable was causing fatal errors.
++!Version 0.7.4-2 released
+
+5/22/02
++!Version 0.7.4 released
+
+5/21/02
++Improved character encoding support for European languages.
++Fixed language/encoding related problems in source/compose.php
++#Created sourceforge project, immediately screwed up CVS :-P
+
+5/20/02
++Added "Return-Path" header to message.  Bounced messages are now returned to sender, not server admin.
++Added "mark as unread" feature.  Messages can be flagged in "read message" screen.
++Attachments of type "message" now displayed correctly.
+
+5/19/02
++Added include/super2global.inc, simulates register_globals=On for PHP > 4.1, IlohaMail now officially supports PHP 4.2.x
++Files are now uploaded to "../uploads/user.host/" and cleaned up properly on logout.
+
+5/16/02
++!Version 0.7.3 released
+
+5/15/02
++Folder name in folder list unencoded correclty
++Improved dates in source/main.php.  Dates are now relative to local time (uses timezone specified in prefs), the day of week for messages from the last week, and date strings are also internationalized (i.e. uses lang/%/dates.inc)
+
+5/10/02
++Implemented log feature.  Logs basic information (time, IP, account, action, error) for all login/logout.  Logs unsuccessful login attempts as well as successful ones.
++Consolidated config files.  conf/backend.inc and conf/hosts.inc are now in conf/conf.inc.
++#We're over the 10000 line mark, we're at around 10700 lines in 111 files.
+
+5/9/02
++Implemented (optional) pop3 cache.  Now caches entire message the first time it fetches it, and subsequent requests read from cache.  Caching will not be used if cache folder does not exist.  No perceivable increase in speed for average size messages, but it now uses significantly less bandwidth.
+
+5/7/02
++Fixed bug where moving messages out of the trash resulted in the trash being expunged...messages are now copied out of trash, with a copy left there.
+
+5/5/02
++"Move to trash" now handled properly as "Delete"
+
+5/3/02
++No longer disables cache for Netscape, because it was causing strange problems.
+
+5/2/02
++Fixed a couple of minor bugs in source/compose.php
+
+5/1/02
++Fixed bug in source/compose.php where files whose names contained certain characters were causing problems...
++#I was going to work on the cache, but ended up writing a iTunes plug-in instead :-P
+
+4/30/02
++Removed dependence on JavaScript in source/index.php for login->load process.  Possibly could cause race conditions on rare occasions.
+
+4/30/02
++Contacts can now be added to "to", "cc" or "bcc" fields in source/compose.php
++!Released 0.7.2
+
+4/29/02
++Fixed mime string decoder in lang/x-euc-jp.inc.
++Completed preliminary POP3 support.  Basically works, just need to optimize a bit...
++Fixed folder list indentation in source/folders.php for the last time.  It now _really_ works like it's supposed to.
+
+4/28/02
++#On the 7th day, God said "Enough of this creation thing, I'm taking a break."  So he took a break.  And it was good.
+
+4/27/02
++Tested and debugged POP3 library against actual POP3 server for first time.  Except for some minor bugs, everything seems good so far.
++Fixed minor bug in include/imap.inc, where multi-line headers were crunched together without any padding.
++Rewrote LangParseAddressList().  Instead of trying to deal with the numerous formats, it now simply looks for an email address (a word containing an '@' sign and at least one '.'), and assumes the rest to be the name
+
+4/26/02
++#TGIF....  Haven't gotten real sleep since last weekend.  Goin ho...zzzz...
+
+4/25/02
++Finished function that parses a MIME format message and returns an IMAP bodystructure string (tested with nested multipart messages).
++#Turned out to be a pretty tricky little bugger... fortunately, that also means the rest of it shouldn't be much trickier :-P
+
+4/24/02
++Rewrote source/folders.php.  This time, the code's a little cleaner, more concise, and generally works better.
++Implemented a stack class....although I'm not sure exactly how useful it'll be...
++More work on POP3.  Done with the easy bit, working on semi-difficult part (i.e. MIME parser).  First step is to implement iil_FetchBodyStructure()
+When the POP3 library's done, the front end will simply deal with POP3 accounts as if they were feature limited IMAP accounts
++Implemented priliminary version of iil_C_FetchStructureString().  Returns bodystructure string (per RFC2060) for single-part message.  Now need to do some recursion magic to handle multipart.
+
+4/23/02
++Fixed bug where folder names containing spaces were causing problems.
++More POP3 stuff...  Converting IIL to work with POP3.  Source files will simply load "imap.inc" or "pop3.inc", and the rest will share the same code (same function names, etc).
+
+4/22/02
++#Yes, there are two entries for today.  The other entry's for stuff that made it into 0.7.1, and this is stuff that didn't
++iil_Open() now returns a "iilConnection" object, which is passed around internally instead of the file pointer used previously.  The iilConnection allows for real encapsulation, making it easier to keep track of multiple IMAP connections.
++Wrote source/synch.php, a IMAP mailbox synchronization utility.  Actually, it just moves messages from a folder on one account to a folder on another account.
++Fixed bug where "Trash" was showing up in folder lists even though no trash folder was specified.
++#Investigating POP3.  Seems like most difficult part will be parsing multipart messages, and dealing with the fact that with POP, you have to retreive the entire message.
++#Okay, here's the plan:  basically, we're going to cache all messages on the server, and periodically synchronize the cache with the actual state.  
++#Since partial retreival isn't possible with POP3, this is the only way to avoid retreiving entire messages multiple times.  This approach will save network bandwidth, server resources, and allow for much faster processing.
++#Ooops...  There IS a command called TOP, although it's an "optional" command (probably implemented in most POP servers though)
++#2am, time to go home.
+
+4/22/02
++Fixed bug in iil_C_Create() where folder names with spaces were causing problems
++Fixed bug in source/compose.php where mixed use of "\r\n" and "\n" were causing minor annoyances on a Mac
++!Released 0.7.1
+
+4/21/02
++Made source/prefs.php nice and pretty (well, sort of)
++Modified X-Mailer header in source/compose.php, now shows version and host
++Changed handling of user specified email.  It now hard codes the "From" line, and uses user specified info for "Reply-To"
+
+4/19/02
++Explicitly disables cache now (was causing problems with some brwosers like Opera and iCab)
++Released 0.7.0  
++#Initial release on a Friday night.  Seesh, doesn't get much worse!
+
+4/17/02
++Now shows prefs page when logging in for the first time.
++Minor bug fixes related to recent changes (and FS backend)
++!Declaring version 0.7.0!
+
+4/16/02
++Basic header info now shown by default when replying or forwarding messages
+
+4/15/02
++Improved error handling in iil_Connect.  It now properly sets $iil_error and $iil_errornum
++Improved error handling in login page (source/index.php)
++Added conf/new_user.inc which may contain custom code that will be executed when a new user logs in for the first time.
++Added conf/custom_auth.inc for performing customized secondary authentication.
++Fixed minor rootdir related bug (Courier-IMAP wasn't returning the actual rootdir in response to LIST)
++#Grrrr... I can't release if I keep adding features!  The website's almost ready too.
++#It's past 2am (of the 16th).  Bed time for Ryo...
+
+4/14/02
++Fixed bug in source/main.php, where URL embedded delete commands were causing problems.
++Fixed bug in contacts, where groups weren't showing up when adding contact from link
+
+4/12/02
++Fixed bug in Contacts.  Sorting and FS backend were causing problems...
++conf/default.inc now supports per-host settings (i.e. each host can have different default settings).
+
+4/10/02
++Contacts now sortable
++source/edit_contact.php now displays pop-up menu containing all known groups.
++Fixed bug in iil_C_FetchHeaders() that it from processing flags,uid, and size properly.
++Finished implementing rootdir support (I think).
+
+4/9/02
++Changed "Show/Hide Contacts" link in source/compose.php to buttons, so that text entered into various fields aren't lost.
++Modified data structure of contacts related backend-includes, to make it easier to implement an adapter-like scheme for the FS backend.
++Added sort2darray.inc
++Added multi-field sort capability to include/read_contacts.FS.inc.
+
+4/8/02
++Fixed bug in IIL: iil_C_HandlePartBody() that prevented it from fetching data if there were multiple reply lines.
+
+3/23/02
++#I guess, technically, 05:34 counts as being the next day (24th)...
++Added backend.MySQL.inc, which handles most insert,update,delete operations for prefs, and contacts management.  This should make it must easier to support other DB's.
++Completed work on MySQL support for prefs management.
++Random info:  Observe: contacts.php includes add_contacts.inc includes add_contacts.MySQL.inc includes backend.MySQL.inc which includes array2sql.inc  
+I wonder how long it'll be before we start seeing significant overhead...
+
+3/22/02
++#Spring Break (hopefully I'll be able to release in the next week).
++Added MySQL support for user preference management.  This is an optional component, so preferences can still be stored in a file based backend, while leaving MySQL support in other areas.
++Sligtly changed security scheme for DB backend.  Password now saved in session table, encrypted only with IP-based password.
++Random Tidbit: The entire package currently consists of over 8000 lines of code and text.
+
+3/12/02
++Added front-end to URL detection (in source/prefs.php)
++Text displayed in source/read_message.php (through include/read_message_print.inc) is now htmlspecialchar'd.
+
+3/10/02
++Sub-folders are indented in source/folders.php.  Implementing similar feature in folder menus could be a little more involved, but possibly worth-while.
++Re-added URL -> link conversion.  This time with a new and improved algo that actually works.
+
+3/4/02
++Fixed delete link in source/read_message.php (or include/read_message_tool.inc) which wasn't reflecting the changes made in the checkbox variable handling scheme in main.php yesterday.
++Fixed bug in main.php where, also due to yesterday's changes, the number of messages moved/deleted wasn't being set correctly.
+
+3/3/02
++#In Portland this weekend!
++Fixed bugs in IML that prevented certain functions from correctly handling folders whose names have spaces in them.  Now it simply quotes everything...hope that works okay.
++Index (login) page now pulls colors from conf/defaults.inc
++Separated login page title and blurb into "conf/login_title.inc" and "conf/login_blurb.inc".
++An attempt to move deleted messages to trash will be made only if trash folder is specified.
++Items checked in source/main.php now passed as array, instead of the strange hack used previously.
+
+2/26/02
++Some cosmetic changes in source/index.php and source/tool.php
++Concentrating on ilohamail.org
+
+2/20/02
++Fixed bug in index.php that prevented frames from being rendered properly in Netscape (there was an extra 'body' tag).
++Added tentative support for rootdir.
+
+2/18/02
++Added conf/defaults.inc.  Moved most of what used to be in lang/*/init.inc to defaults.inc, and lang/*/init.c now contains lang specific defaults.
+
+2/17/02
++Implemented CRAM-MD5 authentication.  iil_Connect sends an "AUTHENTICATE" to see if CRAM-MD5 is supported, depending on reply it uses iil_C_Login (plain text) or iil_C_Authenticate (CRAM-MD5).
++Rewrote iml_GetRawStructureArray, added iml_ParseBSString (BS = Body Structure ;-).  Now that's what I call a parser... too bad the old hack won't make it in the release code.  I'm sure it would've won an award for "most creative algorithm" or something.  I like the new one too though.  It's the most elegant parser I've ever written (of course, it's the third parser I've ever written, so I'm sure there's room for imporvement).
++Added color to index page.  I think I like the "Asparagus rubber band" inspired colors (yes, it's an inside joke).
+
+2/16/02
++Investigating CRAM-MD5 authentication.  Can't seem to find any PHP code... reading RFC2104 and RFC2195.
+
+2/15/02
++Fixed bug in IML: Made iml_GetRawStructureArray quote-aware
++Rewrote iil_C_FetchPartBody.  It now distinguishes single line responses from multi-line responses, and receives specified number of bytes for multi-line responses.
++Implemented iil_C_PrintPartBody based on iil_C_FetchPartBody
++Implemented iil_C_PrintBase64Body, also based on iil_C_FetchPartBody.  This function now allows large attachments (that are usually base64) to be passed on to client line by line, without reading the whole thing first.
+Result is greatly improved throughput and support for virtually unlimited attachment sizes.
++Fixed bug in iml_GetRawStructureArray which prevented non-nested strings from being parsed correctly (because they really don't need to be parsed).  Created a parent function that checked nestedness of string, that calls the parser (now called iml_ParseNestedStr) if necessary.
++!Declaring Version 0.6-Stable
+
+2/13/02
++Improved multilingual-ness of main.php
++Implemented MySQL support for contacts.  Default file based system can still be used if $mysql_contacts is undefined or empty.
++Started working on IlohaMail.org.  Finished basic account management stuff.  Next is IMBUSS (IlohaMail Bug Squishing System).
+
+2/12/02
++Added conf/backend.inc for dynamically selecting backend
++Implemented MySQL-based session management, not sure if it's worth implementing other aspects (i.e. user prefs/colors, contacts).  Only other sensitive data is the contacts list, I guess.
++Moved development to Project Builder where possible.  It actually does an adequate job with syntax coloring, supports CVS (if I ever decide to go CVS)
+
+2/11/02
++Fixed couple of bugs in encoding library, and compose.php
++Completely isolated pref -> backend routines (into "include/save_prefs.inc" and "include/save_colors.inc").
++Added wordwrap to LangEncodeMessage()...not sure I like the way it wraps though.  Seems like it's better to leave wrapping up to the browser.
++Implemented iil_ReadLine() which is capable of reading lines infinitely long (at least in theory).  Not all functions use it though...
++Implemented conf/hosts.inc which allows admin to specify which imap server (s) to support (by displaying a text box, hidden input type, or menu in login screen).
++index.php now accepts "preferred" language (e.g. "index.php?lang=jp/")
++Fixed bug in iml_GetPartDisposition().  Disposition isn't in index 8 but in second from last element.  Probably should go re-read RFC2060 (sigh).
+
+2/10/02
++#Left my iBook at MRhode's house...  Couldn't do anything.  Read history book instead (Howard Zinn, highly recommended.)
+
+2/9/02
++Moved pref->backend code to separate includes (include/save_prefs.inc)
++#My 22nd birthday ...got drunk
+
+2/8/02
++Fixed margin in tools.php so that everything displays nicely on Netscape (except on UNIX..., the height of the toolbar frame isn't high enough).
++Slightly improved security, by making it necessary to obtain user's session ID and corresponding IP to crack password (of course, that, or do a brute force attack).  See comments in include/write_sinc.inc
++Moved some of session file functionality into prefs.inc and colors.inc files in user directory.  Session is completely modular, in that session management could be integrated into db while leaving user prefernces in user dirs.
++Added iil_C_GetHierarchyDelimiter in IIL
++Fixed bug in main.php that caused problems when searching on certain IMAP servers (namely, Netscape doesn't seem to handle double spaces).
++Changed user folder name to user.host.tld, instead of user@host.tld
+
+2/7/02
++Finished appending headers to source.  Ended up with three different versions of the GPL notice :-P
++Also changed extensions all back to .php from .php4.  So far, nothing's broken.
++Started implementing MySQL integration.  Wasn't as difficult as I thought, but I'm not sure if it's really worth sticking a db backend to the thing.  What's wrong with file-based session/user management?
++Added "contacts" to compose.php (thanks to Matt Digiacomo).  Shows list of all email addresses in contacts list, so you can just select multiple recepients.  Quite useful, actually.
++Added language selection popup to login screen.
++!We're up to Version 0.6-dev.
+
+2/6/02
++Started preparing code for release.  First order of business is to append header to each source code, with GPL notice, copyright, and some rudimentary documentation.  What a pain in the ass...  Some of the files are almost doubling in size.  Hope all the unneccessary crap doesn't affect performance.
++#Starting this log.  Should've started when I first started the project...sometime in May/June 2000, I believe it was.

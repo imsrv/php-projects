@@ -1,0 +1,3 @@
+http://www.ftls.org/	10
+http://www.linux.org/	5
+http://www.php.net/		5

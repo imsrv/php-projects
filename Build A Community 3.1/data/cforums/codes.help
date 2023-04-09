@@ -1,0 +1,33 @@
+<CENTER><h2>Special Codes</h2></CENTER>
+
+<P>To help you better communicate, we have included some special codes that will allow you to personalize your messages.  Please note that the closing tag (the one containing the slash[/]) is manditory.
+
+<P><B>[email]</B>yourname@domain.com<B>[/email]</B> will allow people to click on an email address to send an email.
+
+<P><B>[url]</B>http://netscape.com<B>[/url]</B> will make a (full - don't forget the http:// at the beginning) address clickable.
+
+<P><B>[image]</B>http://yourdomain.com/logo.gif<B>[/image]</B> inserts the an image into your message.  You should avoid images that are too large.
+
+<P><B>[quote]</B>some text<B>[/quote]</B> use blockquotes to signify a quotation.
+
+<P><B>[code]</B>some code<B>[/code]</B> similar to blockquotes but uses courier font to maintain spacing.
+
+<P><B>[bold]</B>some text<B>[/bold]</B> causes the text between the tags to be displayed in bold. 
+
+<P><B>[italics]</B>some text<B>[/italics]</B> causes the text between the tags to be displayed in italics. 
+
+<P><B>[blue]</B>some<B>[/blue]</B> turns the text between the tags blue.
+
+<P><B>[red]</B>some<B>[/red]</B> turns the text between the tags red.
+
+<P><B>[green]</B>some<B>[/green]</B> turns the text between the tags green.
+
+<P><B>[white]</B>some<B>[/white]</B> turns the text between the tags white.
+
+<P><B>[black]</B>some<B>[/black]</B> turns the text between the tags black.
+
+<P><B>[poll]</B><BR>Some question?<BR>1:option 1<BR>2:option 2<BR>3:option 3<BR><B>[/poll]</B>
+
+<P>will insert a poll with up to nine options to quickly gauge people's opions. 
+ 
+ 

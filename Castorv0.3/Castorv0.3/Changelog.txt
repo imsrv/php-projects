@@ -1,0 +1,17 @@
+08/05/2000 CG
+  - Minor bug fixes in engines data
+  - Now you can submit yur url to the engine
+    you choose with the sumito parameter
+  - the $this->return var is now an array of array
+    containing the engine name and submission status
+  - added a Readme.txt file
+
+02/05/2000 CG
+  - New modified version of Snoopy compatible with the 0.92
+    just added a status variable
+  - Changed the submission system 
+    - now all the datas are in one file
+    - the results are reurned in an array
+    - the arguments are passed by an array
+  - more search engine added
+23/04/2000 initial release of castor

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={charset}">
+<title>{page_title}</title>
+<link rel="stylesheet" type="text/css" href="{css_url}" title="{theme}">
+
+<!-- Needed JavaScript Code -->
+<script language="JavaScript">
+    var cleared = 0;
+
+    function clearField(field)
+    {
+        if (cleared != 1) {
+            field.value = ""
+            cleared = 1
+        } else {
+            cleared = 0
+        }
+    }
+</script>
+{plg_headercode}
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" marginheight="0" marginwidth="0" topmargin="0">
+
+<center>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+        		<td width="10" background="{layout_url}/theme-images/clean-tl.gif"><img src="{layout_url}/theme-images/pixel.gif" width="10" height="5"></td>
+				<td height="5" background="{layout_url}/theme-images/clean-t.gif"><img src="{layout_url}/theme-images/pixel.gif" height="10"></td>
+				<td width="10" background="{layout_url}/theme-images/clean-tr.gif"><img src="{layout_url}/theme-images/pixel.gif" width="10" height="5"></td>
+			</tr>
+			<tr>
+				<td width="10" background="{layout_url}/theme-images/clean-l.gif"><img src="{layout_url}/theme-images/pixel.gif" width="10" height="5"></td>
+				<td width="100%" bgcolor="<?=$bglayout?>">
+				
+
+<table bgcolor="#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td><a href="{site_url}"><img src="{layout_url}/theme-images/clean-sitelogo.gif" alt="" border="0"></a></td>
+				<td valign="bottom">
+					<form action="{site_url}/search.php" method="get">
+						<div align="right">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td><input type="text" name="query" class="menusearch" size="25"></td>
+									<td><input type="submit" value="{button_search}"></td>
+									<td>&nbsp;(<a href="{site_url}/search.php">{button_advsearch}</a>) <input type="hidden" name="type" value="all"> <input type="hidden" name="mode" value="search"></td>
+								</tr>
+							</table>
+						</div>
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="0"><img src="{layout_url}/theme-images/pixel.gif" alt="" height="8" width="8" align="absmiddle" border="0"></td>
+			</tr>
+		</table>
+		<table bgcolor="#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>
+					<table bgcolor="#556289" width="100%" border="0" cellspacing="0" cellpadding="2">
+						<tr>
+							<td align ="left"><span class="display">&nbsp;{welcome_msg}</span></td>
+							<td align="right"><span class="display">{datetime}&nbsp;&nbsp;</span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td valign="bottom" bgcolor="#242e55" background="{layout_url}/theme-images/clean-menubar-t.gif"><img src="{layout_url}/theme-images/pixel.gif" alt="" height="5" width="780" align="absmiddle" border="0"></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td colspan="2" valign="bottom" bgcolor="#242e55"><img src="{layout_url}/theme-images/pixel.gif" alt="" height="20" width="8" align="absmiddle" border="0">{menu_elements}{plg_menu_elements}</td>
+			</tr>
+		</table>
+		
+		
+<table bgcolor="#E1E2E5" border="0" cellspacing="0" cellpadding="5" width="100%">
+    <tr>
+        {left_blocks}
+        <td colspan="2" width="100%" valign="top" bgcolor="#ffffff">
+            <!-- START OF CONTENT AREA -->
+

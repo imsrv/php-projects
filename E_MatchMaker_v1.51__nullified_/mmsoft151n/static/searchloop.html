@@ -1,0 +1,31 @@
+                  <table width="608" border="0" cellspacing="0" cellpadding="0" height="44">
+                    <tr> 
+                      <td width="63" valign="top" align="left" height="90">
+                      <a href="showprofile.php?user=<script language=php> echo $user; </script>&hash=<script language=php> echo $hash; </script>">
+                      <IMG height=66 src="<script language=php> echo $photo; </script>" width=62 border=0></a></td>
+                      <td width="6" height="90">&nbsp;</td>
+                      <td width="100" align=left valign="top" height="90"><font face="Arial, Helvetica, sans-serif" 
+size="2"><p align=left>Name: <script language=php> echo $user; </script><BR>Location: <script language=php> echo $statename; </script><BR>Age: <script language=php> echo $age; </script><BR></p>
+                      </font>
+                      </td>
+                      <td width="432" align="left" valign="top" height="90"><font face="Arial, Helvetica, sans-serif" 
+size="3"><b><script language=php> echo $catch; </script> </b>...&nbsp;<A href="showprofile.php?user=<script language=php> echo $user; 
+</script>&hash=<script language=php> 
+echo $hash; </script>"><FONT size=2 color=#ffffcc>more
+                        </FONT>
+                        </A><br>&nbsp;&nbsp;&nbsp;                <script language=php>
+                           if($isverified) {
+                             echo "<a href=premium.php>";
+                             echo "<img src='images/verified_image_tiny.gif' width=20 height=37 
+border=0><font color=white>Verified Member</font></a><br>";
+                           }
+                      </script>
+
+                       </td>
+                      <td align="left" valign="top" rowspan="2">&nbsp;</td>
+                    </tr>
+                    <tr> 
+                      <td colspan="4" valign="top" align="left" height="35"><img src="images/line_for_separation.gif" 
+width="604" height="8"></td>
+                    </tr>
+                  </table>

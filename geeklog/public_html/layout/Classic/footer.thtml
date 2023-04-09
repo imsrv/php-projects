@@ -1,0 +1,30 @@
+    </td>
+    {right_blocks}
+    </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+    <tr>
+        <td bgcolor="#000000" colspan="2"><img src="{site_url}/images/speck.gif" width="1" height="1" alt=""></td>
+    </tr>
+    <tr>
+        <td bgcolor="#AAAAAA" colspan="2"><img src="{site_url}/images/speck.gif" width="1" height="6" alt=""></td>
+    </tr>
+    <tr>
+        <td bgcolor="#EEEEEE" colspan="2"><img src="{site_url}/images/speck.gif" width="1" height="1" alt=""></td>
+    </tr>
+    <tr bgcolor="#DDDDDD" valign="top">
+        <td class="footer">{copyright_notice}</td>
+        <td align="right" class="footer">
+             {powered_by} <a href="{geeklog_url}">GeekLog</a>&nbsp;<br>
+             {execution_textandtime}&nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#AAAAAA" colspan="2"><img src="{site_url}/images/speck.gif" width="1" height="1" alt=""></td>
+    </tr>
+</table>
+
+</body>
+
+</html>
+

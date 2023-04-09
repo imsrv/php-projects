@@ -1,0 +1,39 @@
+<form>
+	
+	<title>New Comments</title>
+	<border>true</border>
+	<width>580</width>
+	<fields>
+		<_count header="No" width="30" align="center" suffix="."/>
+		<project_name header="Project"/>
+		<task_name header="Task" align="left"/>
+		<comment_title header="Comment Title" align="left"/>
+
+	</fields>
+
+	<header>
+		<titles>true</titles>
+		<buttons>
+		</buttons>
+	</header>
+
+	<buttons>
+
+		<details onclick="" button="details" >
+			<location>index.php?sub=tasks&action=det&task_id={TASK_ID}</location>
+		</details>
+
+	</buttons>
+	<sql>
+		<vars>
+			<table_projects import="$this->tables[projects]" type="eval" />
+			<table_tasks import="$this->tables[tasks]" type="eval" />
+			<table_comments import="$this->tables[taskcomments]" type="eval" />
+			<user import="$_SESSION[minibase][raw][user_id]" type="eval" />
+		</vars>
+
+		<query>SELECT DISTINCT comment_id , comment_title, project_name, task_name,task_id, project_id, comment_task, task_project FROM {TABLE_COMMENTS} as comment, {TABLE_TASKS} as task, {TABLE_PROJECTS} as project WHERE comment.new_user = 1 and project_id=task_project and comment_task=task_id and project_user='{USER}'</query>
+	</sql>
+
+<items>99999</items>
+</form>

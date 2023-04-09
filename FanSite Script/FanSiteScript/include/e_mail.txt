@@ -1,0 +1,12 @@
+<?PHP 
+include ("include/connect.txt");
+
+$result = mysql_query("SELECT e_mail FROM ds_options WHERE id = '0'");  
+while ($myrow = mysql_fetch_row($result)) 
+
+printf("%s",mysql_result($result,0,"e_mail"));  
+
+
+include ("include/close.txt");
+
+?>

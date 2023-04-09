@@ -1,0 +1,34 @@
+<?PHP 
+include ("include/connect.txt");
+
+if ( isset($id))
+	{
+// find if id is article or movie
+		$result = mysql_query("SELECT meta_title,meta_description,meta_keywords FROM ds_articles WHERE seo_url = '$id'");
+			if (mysql_num_rows($result)=='0' )
+				{
+		$result = mysql_query("SELECT meta_title,meta_description,meta_keywords FROM ds_movies WHERE seo_url = '$id'");
+				}
+	}
+else
+	{
+		$result = mysql_query("SELECT meta_title,meta_description,meta_keywords FROM ds_options WHERE id = '0'");
+	}
+
+
+while ($myrow = mysql_fetch_row($result))
+{
+$meta_title = $myrow[0];
+$meta_description = $myrow[1];
+$meta_keywords = $myrow[2];
+}
+
+ 
+printf("<TITLE>%s</TITLE>",$meta_title);
+printf("<META NAME=\"Keywords\" CONTENT=\"%s\">",$meta_description);
+printf("<META NAME=\"Description\" CONTENT=\"%s\">",$meta_keywords);
+ 
+
+include ("include/close.txt");
+
+?>

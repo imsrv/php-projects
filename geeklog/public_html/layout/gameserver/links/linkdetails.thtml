@@ -1,0 +1,4 @@
+<li>
+  <strong><a href="{link_url}">{link_name}</a></strong> ({link_hits})<br>
+  {link_description}
+</li>

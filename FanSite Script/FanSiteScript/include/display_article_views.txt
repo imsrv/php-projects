@@ -1,0 +1,12 @@
+<?PHP 
+include ("include/connect.txt");
+
+$result = mysql_query("SELECT views FROM ds_articles WHERE seo_url = '$id'");  
+
+
+printf("%s",mysql_result($result,0,"views"));  
+
+
+include ("include/close.txt");
+
+?>

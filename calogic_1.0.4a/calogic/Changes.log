@@ -1,0 +1,80 @@
+Changes and further developments to CaLogic
+===========================================
+
+Version 1.0.4a
+==============
+19.06.2002
+
+The reminders function is now finished. To set up reminders,
+set variables and read the information in the 
+/include/remcfg.php file, and in the readme_reminders.txt file.
+
+Corrected errors in the Language table, and recoded the method
+of replacing the variable language entries.
+
+Corrected bugs that have been reported.
+
+Removed back quotes from sql statements.
+
+Reorganized the directrory structure a little.
+
+Changed the "Requirements" section of the readme.txt
+
+AS of version 1.0.4a, I will be distributing CaLogic as a
+zip file only. (Win Zip version 6.2 (32 bit).
+
+
+
+Version 1.0.3a
+==============
+07.06.2002
+
+Fixed some bugs that showed up when using categories. This bug
+would not show up on the demo site.
+
+
+
+Version 1.0.2a
+==============
+02.06.2002
+
+
+User Names that contain anything other than letters and numbers
+are no longer accepted.
+
+Fixed a few problems with the storage of certain information
+in the database that was causing problems.
+
+Added extended query error reporting, now line numbers and file names
+are reported as well if the error occurs durring a database query.
+
+
+
+Version 1.0.1a
+==============
+01.06.2002
+
+
+A major bug was reported to me and fixed. This bug made
+every user an admin.... sorry about that.
+
+Events can now be edited.
+
+The day view now shows events.
+
+The Time Zone Offset can now be set for your contacts. This
+allows for reminders to be sent to your contacts at the right time.
+
+Events are now shown expanding over the full durration of the event
+in the Week and Day views. If there are two events occuring durring
+the same time frame, this expansion cannot take place, and the events
+are shown in the hour which they start.
+
+
+
+Version 1.0.0a
+==============
+31.05.2002
+
+
+This is the very first release. Nothing to report yet. 

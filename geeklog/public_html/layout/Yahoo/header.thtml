@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={charset}">
+<title>{page_title}</title>
+<!--
+<meta http-equiv="Pragma" content="no-cache"> 
+-->
+<link rel="stylesheet" type="text/css" href="{css_url}" title="{theme}">
+<!-- Needed JavaScript Code -->
+<script type="text/javascript">
+    var cleared = 0;
+
+    function clearField(field)
+    {
+        if (cleared != 1) {
+            field.value = ""
+            cleared = 1
+        } else {
+            cleared = 0
+        }
+    }
+</script>
+{plg_headercode}
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#000000" vlink="#000000" alink="#000000">
+<!-- HEADER -->
+<table border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#FFFFFF">
+<tr>
+  <td colspan="7" align="center"><br><font size="3"><b><a href="{site_url}">{site_name}</a></b></font><br></td>
+</tr>
+<tr>
+  <td align="center"><a href="{site_url}/submit.php?type=story{current_topic}"><img src="{site_url}/images/icons/story.gif" border="0" alt=""><br>{button_contribute}</a><br><br></td>
+  <td align="center"><a href="{site_url}/links.php"><img src="{site_url}/images/icons/link.gif" border="0" alt=""><br>{button_links}</a><br><br></td>
+  <td align="center"><a href="{site_url}/calendar.php"><img src="{site_url}/images/icons/event.gif" border="0" alt=""><br>{button_calendar}</a><br><br></td>
+  <td align="center">
+    <form action="{site_url}/search.php" method="get">
+    <input type="text" name="query" class="menusearch" size="25">
+    <input type="submit" value="{button_search}"><br><a href="{site_url}/search.php">{button_advsearch}</a>
+    <input type="hidden" name="type" value="all">
+    <input type="hidden" name="mode" value="search">
+    </form>
+  </td>
+  <td align="center"><a href="{site_url}/usersettings.php?mode=preferences"><img src="{site_url}/images/icons/plugins.gif" border="0" alt=""><br>{button_personalize}</a><br><br></td>
+  <td align="center"><a href="{site_url}/pollbooth.php"><img src="{site_url}/images/icons/poll.gif" border="0" alt=""><br>{button_polls}</a><br><br></td>
+  <td align="center"><a href="{site_url}/stats.php"><img src="{site_url}/images/icons/topic.gif" border="0" alt=""><br>{button_sitestats}</a><br><br></td>
+</tr>
+<tr>
+  <td colspan="7"><img src="{site_url}/images/speck.gif" width="1" height="1" alt=""></td>
+</tr>
+<tr>
+  <td bgcolor="#000000" colspan="7"><img src="{site_url}/images/speck.gif" width="1" height="1" alt=""></td>
+</tr>
+<tr>
+  <td bgcolor="#FFFFFF" colspan="7"><img src="{site_url}/images/speck.gif" width="1" height="1" alt=""></td>
+</tr>
+</table>
+<!-- WELCOME/TIME LINE -->
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+  <td bgcolor="#DDDDDD" height="20"><b>{welcome_msg}</b></td>
+  <td bgcolor="#DDDDDD" align="right"><b>{datetime}</b>&nbsp;</td>
+</tr>
+<tr>
+  <td bgcolor="#000000" colspan="2"><img src="{site_url}/images/speck.gif" width="1" height="1" alt=""></td>
+</tr>
+<tr>
+  <td colspan="2" align="center" bgcolor="#DDDDDD" height="20">{plg_menu_elements}</td>
+</tr>
+<tr>
+  <td bgcolor="#000000" colspan="2"><img src="{site_url}/images/speck.gif" width="1" height="1" alt=""></td>
+</tr>
+</table>
+<!-- MAIN BODY -->
+<table bgcolor="#FFFFFF" border="0" cellspacing="0" cellpadding="5" width="100%">
+    <tr>
+    {left_blocks}
+    <td width="100%" valign="top" bgcolor="#FFFFFF">

@@ -1,0 +1,110 @@
+/* Background & scrollbar properties */
+body	{
+	background-color: #000044;
+	scrollbar-arrow-color: #FFFFEE;
+	scrollbar-face-color: #000033;
+	scrollbar-base-color: #000033;
+	}
+
+/* Link properties */
+A:link	{
+	color: #99CCFF;
+	font-size: 8pt;
+	font-family: Verdana;
+	text-decoration: none;
+	}
+
+A:visited {
+	color: #99CCFF;
+	font-size: 8pt;
+	font-family: Verdana;
+	text-decoration: none;
+	}
+
+A:active {
+	color: #FFFF66;
+	font-size: 8pt;
+	font-family: Verdana;
+	text-decoration: underline;
+	}
+
+A:hover {
+	color: #FFFF66;
+	font-size: 8pt;
+	font-family: Verdana;
+	text-decoration: underline;
+	}
+
+/* Input-fields and buttons */
+input {
+	color: #FFFFEE;
+	background: #000033;
+	border: 1px solid #FFFFEE;
+	font-size: 9pt;
+	font-family: Verdana;
+	}
+
+.saybtn	{
+	background: #000033;
+	border: 1px solid;
+	color:#FFFFEE;
+	font-size: 9pt;
+	font-family: Verdana;
+	}
+
+/* View-frames body */
+.view	{
+	margin-top: 0cm;
+	margin-left: 0.2cm;
+	margin-right: 0.2cm;
+	background-color: #000044;
+	}
+
+/* Input-frames body */
+.input	{
+	margin-top: 0.1cm;
+	margin-left: 0.1cm;
+	margin-right: 0.1cm;
+	}
+
+.clock	{
+
+	margin-top: 0.0cm;
+	margin-left: 0.15cm;
+	margin-right: 0.0cm;
+   	background-color: #000044;
+    }
+
+/* Style of usernames (and more) */
+.nick 	{
+	font-family: Verdana;
+	font-size: 8pt;
+	font-weight: bold;
+	color: #FFFFEE;
+	}
+
+/* The comments (and more) style */
+.say	{
+	font-family: Verdana;
+	font-size: 8pt;
+	font-weight: normal;
+	color: #FFFFEE;
+    }
+
+/* The heading-style in available smilies popup */
+.heading {
+	font-family: Verdana;
+	font-size: 13pt;
+	font-weight: normal;
+	color: #FFFFEE;
+	}
+
+/* Centers whatever needs to be centered */
+.center {
+    text-align: center;
+	}
+
+/* Hides some input-fields in the input-frame */
+.usrn	{
+	visibility: hidden;
+	}

@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<title>{title}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+A:link {
+	COLOR: #18578e;TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #777777; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #000000
+}
+A:hover {
+	COLOR: #000000;TEXT-DECORATION: underline overline
+}
+BODY {
+	BACKGROUND-COLOR: #eeeeee
+}
+input,textarea,select,option{
+	FONT-FAMILY:Verdana,Arial,Helvetica;FONT-SIZE:9pt;COLOR:#2B1F6A;BORDER:1px solid black
+}
+select{
+	FONT-FAMILY:Verdana,Arial,Helvetica;FONT-SIZE:9pt;COLOR:#2B1F6A;BORDER:1px solid black
+}
+form{
+	FONT-FAMILY:Verdana,Arial,Helvetica;FONT-SIZE:9pt;COLOR:#000000
+}
+TD {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+
+</style>
+</head>
+
+<body>
+<table cellpadding=3 width="95%" align=center border=0 bgcolor="#99CCFF">
+  <tbody> 
+  <tr> 
+    <td bgcolor="#99CCFF"> 
+      <p>Your text here</p>
+    </td>
+  </tr>
+  <tr> 
+    <td> </td>
+  </tr>
+  </tbody>
+</table>
+<br>
+<table border="0" cellpadding="3" cellspacing="0" width="95%" align="center">
+  <tr> 
+    <td valign="top" width="13%"> 
+      <table cellpadding="2" width="155" align ="left" cellspacing="2" border="0" >
+        <tr> 
+          <td valign="top" nowrap height="8" bgcolor="#dddddd"><a href="members.php">{text_90}</a></td>
+        </tr>
+        <tr> 
+          <td valign="top" nowrap height="2" bgcolor="#dddddd"><a href="members.php?do=domain">{text_91}</a></td>
+        </tr>
+        <tr> 
+          <td valign="top" nowrap bgcolor="#dddddd"><a href="members.php?do=personal">{text_92}</a></td>
+        </tr>
+        <tr> 
+          <td valign="top" nowrap bgcolor="#dddddd"><b>{text_93}</b></td>
+        </tr>
+        <tr> 
+          <td valign="top" nowrap bgcolor="#dddddd"><a href="members.php?do=stats">{text_94}</a></td>
+        </tr>
+        <tr> 
+          <td valign="top" nowrap bgcolor="#dddddd"><a href="members.php?do=logout">{text_95}</a></td>
+        </tr>
+      </table>
+    </td>
+    <td valign="top" width="0%"> </td>
+    <td width="87%" valign="top" bgcolor="#FFFFFF"> 
+      <p><font color="#009999"><b>{text_131}</b></font></p>
+      <form method="post" action="members.php?do=dooptions">
+        <table width="60%" border=0>
+          <tbody> 
+          <tr> 
+            <td width="20%" bgcolor="#cccccc">{text_135}</td>
+            <td width="80%"> 
+              <select name="newsletter">
+                <option value="on">{text_136}</option>
+                <option value="off">{text_137}</option>
+              </select>
+              <font color="#ff0000" size="1">{error1}</font> {text_140} <font color="#FF0000">{newsstatus}</font></td>
+          </tr>
+          </tbody> 
+        </table>
+        <table width="60%" border=0>
+          <tbody> 
+          <tr> 
+            <td><font size=1>{text_139}</font></td>
+          </tr>
+          </tbody> 
+        </table>
+        <br>
+        <table width="60%" border=0>
+          <tbody> 
+		  <tr>
+          <td width="20%" bgcolor="#ffffff">&nbsp;</td>
+          <td width="80%">{text_42}</td>
+          </tr>
+          <tr> 
+            <td width="20%" bgcolor="#ffffff">&nbsp;</td>
+            <td width="80%"> 
+              <input type="submit" value="{text_114}" name="submit">
+              <input type="reset" value="{text_35}" name="reset">
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+        </form>
+      
+    </td>
+  </tr>
+</table>
+<br>
+<table width="95%" align=center border=0 bgcolor="#99CCFF">
+  <tbody> 
+  <tr> 
+    <td bgcolor="#99CCFF"> 
+      <div align=right>powered by NO ONE</div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p> </p>
+</body>
+</html>

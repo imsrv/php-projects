@@ -1,0 +1,48 @@
+<html>
+<head>
+<title><script language=php> echo $mmconfig->website; </script></title>
+</head>
+<body bgcolor="#cb3834" text="#ffffff" leftmargin="0" topmargin="0" link="#ffffcc" alink="#ffffcc" vlink="#ffffcc">
+<table width="800" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <TD vAlign=top align=right width=670 height=28 colspan=2><BR>
+
+<!-- This is the banner code - You can remove it or replace with your own if you like -->
+
+<table border=2 width=480 height=60><tr><td align=center><b>Your banner ad goes here<b></td></tr></table>
+
+<!-- End of the banner code -->
+
+    </TD>
+     <TD align=right width=330 height=50><table><tr><td width=65>&nbsp;</td><td width=50><script language=php> if(isset($mmcookie) && $mmcookie != '') echo "<a 
+href=logout.php><img border=0 src='images/sign_out.gif' align=right width=50 height=39></a>"; </script></td><td 
+width=15>&nbsp;</td></tr></table></TD></TR>
+  <TR border="0">
+    <TD height=104 width="173"><!-- #BeginEditable "5" -->
+      <TABLE height=104 cellSpacing=0 cellPadding=0 width=173 border=0>
+        <TBODY>
+        <TR border="0">
+          <TD width=19>&nbsp;</TD>
+          <TD vAlign=bottom align=left width=154><A 
+            href="index.php"><IMG height=70 
+            src="images/face_logo_red.gif" width=140 
+            border=0></A></TD></TR></TBODY></TABLE><!-- #EndEditable --></TD>
+<TD vAlign=bottom align=middle width=330 height=66><script language=php> if(isset($centerimage)) echo "<img src=$centerimage width=132 height=100>"; </script></TD>
+<TD vAlign=bottom width=333 height=77 border="0"><script language=php> if($mmcookie == '' || !isset($mmcookie))
+         echo "<a href='register.php'><img src='images/join_small_dot.gif' width='55' height='44' border='0'></a>";
+       else
+         echo "<a href='index.php'><img src='images/home_small.gif' width=50 height=44 border=0></a>";</script><A 
+href="browseprofiles.php"><IMG height=44 src="images/search_red_dot.gif" width=51 border=0></A><A 
+href="account.php"><IMG height=44 src="images/my_account_small.gif" width=50 border=0></A><A 
+href="contactus.php"><IMG height=44 src="images/contact_red_dot.gif" width=51 border=0></A><A 
+href="mailbox.php"><script language=php>
+list($session_user, $scrap) = explode(":", $mmcookie);
+$newmail = $db->Execute("select id from messages where receiving_user = '$session_user' and beenread = '0'");
+if($newmail->RecordCount() > 0 && $mmcookie != '')
+  echo "<IMG height=44 src=images/newmailboxa.gif width=56 border=0>";
+else
+  echo "<IMG height=44 src=images/mailboxa.gif width=56 border=0>"; 
+
+</script></A></TD></TR>
+  <TR>
+    <TD colSpan=3 height=885 width="800">

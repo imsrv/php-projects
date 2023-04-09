@@ -1,0 +1,35 @@
+<?PHP 
+include ("include/connect.txt");
+$imageresult = mysql_query("SELECT image FROM ds_movies WHERE seo_url = ('$id')",$db);
+$imageid = mysql_result($imageresult,0,"image");
+
+$imageresult = mysql_query("SELECT thumbnail FROM ds_options WHERE id = '0'");  
+while ($myrow = mysql_fetch_row($imageresult)) 
+
+$width = mysql_result($imageresult,0,"thumbnail");  
+//$result = mysql_query("SELECT filesize FROM ds_images WHERE id = ('$imageid')",$db);
+//$filesize = mysql_result($result,0,"filesize");
+
+
+if ( $imageid == "" )
+{
+?>
+<img src="images/default.gif" WIDTH=<?php print ("$width");?> alt="Картинок для фильма нет">
+<?php
+}
+else
+{
+?>
+<img src="include/display_image.php?id=<?php print ("$id");?>" WIDTH=<?php print ("$width");?> <?PHP include ("include/display_image_alt.txt"); ?>
+<?php
+}
+
+?>
+
+
+
+
+
+
+
+

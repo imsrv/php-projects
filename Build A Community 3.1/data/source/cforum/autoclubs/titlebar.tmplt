@@ -1,0 +1,29 @@
+<TABLE BORDER=0>
+<TR><TD WIDTH=50%>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<FONT SIZE=+2><B>[<($IFORUM{'title'})>]</B></FONT><BR>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<I>[<($IFORUM{'bbs_desc'})>]</I>
+</TD><TD WIDTH=20><BR>
+</TD><TD>
+
+[<(
+	if ($MOD{'icon'} ne "") {
+		if ($MOD{'icon'} =~ /\D/) {
+			$OUT .= "<!";
+			my ($iwidth, $iheight) = &imgsize("$CONFIG{'ICON_upload_path'}/thumbs/$MOD{'icon'}");
+			$OUT .= ">";
+			$OUT .= "<A HREF=\"$GUrl{'moreinfo.cgi'}?UserName=$MOD{'username'}\" TARGET=\"mainframe\"><IMG SRC=\"$CONFIG{'ICON_upload_url'}/thumbs/$MOD{'icon'}\" WIDTH=$iwidth HEIGHT=$iheight BORDER=0></A>";
+		}
+		else {
+			$OUT .= "<IMG SRC=\"$GUrl{'icon_images'}/$MOD{'icon'}.gif\" WIDTH=32 HEIGHT=32>";
+		}
+	}
+	else {$OUT .= "<BR>";}
+)>]
+
+</TD><TD WIDTH=50%>
+<A HREF="[<($GUrl{'moreinfo.cgi'})>]?UserName=[<($MOD{'username'})>]" TARGET="mainframe">[<($MOD{'name'})>]</A><BR>
+[<($fstatus)>]
+</TD></TR>
+</TABLE>

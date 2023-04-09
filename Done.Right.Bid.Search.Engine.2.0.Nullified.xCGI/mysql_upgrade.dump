@@ -1,0 +1,104 @@
+# Replace [bidsearchengine] in the following two lines with the name of your bid search database.
+ALTER TABLE [bidsearchengine].users ADD company VARCHAR(50) NOT NULL;
+ALTER TABLE [bidsearchengine].users CHANGE card_number card_number VARCHAR(100) DEFAULT NULL;
+
+#
+# Table structure for table 'reviewers'
+#
+CREATE TABLE reviewers (
+  id int(11) DEFAULT '0' NOT NULL auto_increment,
+  username varchar(20),
+  password varchar(50),
+  date varchar(20),
+  stats int(10),
+  PRIMARY KEY (id)
+);
+
+#
+# Table structure for table 'cookies'
+#
+CREATE TABLE cookies (
+  id int(11) DEFAULT '0' NOT NULL auto_increment,
+  time varchar(30),
+  ip varchar(50),
+  keywords varchar(60),
+  account varchar(50),
+  PRIMARY KEY (id)
+);
+
+#
+# Table structure for table 'dailystats'
+#
+CREATE TABLE dailystats (
+  id int(11) DEFAULT '0' NOT NULL auto_increment,
+  date varchar(20),
+  searches int(12),
+  PRIMARY KEY (id)
+);
+
+#
+# Table structure for table 'searchlog'
+#
+CREATE TABLE searchlog (
+  id int(11) DEFAULT '0' NOT NULL auto_increment,
+  term varchar(60),
+  searches int(12),
+  PRIMARY KEY (id)
+);
+
+#
+# Table structure for table 'sites_backup'
+#
+CREATE TABLE sites_backup (
+  id int(11) DEFAULT '0' NOT NULL auto_increment,
+  term varchar(100),
+  bid float(10,2),
+  title varchar(100),
+  url varchar(255),
+  description text,
+  status varchar(20),
+  user int(11),
+  date varchar(20),
+  PRIMARY KEY (id)
+);
+
+#
+# Table structure for table 'stats_backup'
+#
+CREATE TABLE stats_backup (
+  id int(11) DEFAULT '0' NOT NULL auto_increment,
+  user int(11),
+  term varchar(100),
+  date varchar(20),
+  clicks int(11) DEFAULT '0',
+  amount float(10,2) DEFAULT '0.00' NOT NULL,
+  PRIMARY KEY (id)
+);
+
+#
+# Table structure for table 'users_backup'
+#
+CREATE TABLE users_backup (
+  id int(11) DEFAULT '0' NOT NULL auto_increment,
+  name varchar(50),
+  street1 varchar(50),
+  street2 varchar(50),
+  city varchar(50),
+  province varchar(50),
+  zip varchar(20),
+  country varchar(50),
+  phone varchar(30),
+  email varchar(100),
+  card_holder varchar(50),
+  card_number varchar(100),
+  card_expires varchar(50),
+  username varchar(20),
+  password varchar(50),
+  status varchar(20),
+  date varchar(20),
+  card_type varchar(10),
+  balance float(10,2),
+  company varchar(50),
+  PRIMARY KEY (id)
+);
+

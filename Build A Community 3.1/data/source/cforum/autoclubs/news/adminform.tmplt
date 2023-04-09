@@ -1,0 +1,26 @@
+<form ENCTYPE="application/x-www-form-urlencoded"  NAME="create_form" METHOD="POST" ACTION="[<($GUrl{'club_news.cgi'})>]">
+<TABLE BORDER="1" WIDTH=400>
+<TR BGCOLOR="[<($CONFIG{'title_color'})>]">
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Club News Settings</FONT></B></CENTER></TD></TR>
+<TR [<($CONFIG{'WINCOLOR'})>]>
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+What "intro" text would you like to include at the top of your news page? (<I>HTML is allowed</I>)<BR>
+<TEXTAREA NAME=introtext COLS=30 ROWS=6>[<($introtext)>]</TEXTAREA>
+<P>Please enter the categories of news that you would like to use one per line (there must be atleast one): <I>Whenever an item is added it will be placed in one of these</I>.<BR>
+<TEXTAREA NAME=newscats COLS=30 ROWS=6>[<($newscats)>]</TEXTAREA>
+<P>Do you want to be the only one who can add news?
+
+[<(
+	if ($admin_only eq "T") {
+		$OUT .= "<INPUT TYPE=CHECKBOX NAME=\"admin_only\" VALUE=T CHECKED>\n";
+	}
+	else {
+		$OUT .= "<INPUT TYPE=CHECKBOX NAME=\"admin_only\" VALUE=T>\n";
+	}
+)>]
+
+<TR><TD [<($CONFIG{'WINCOLOR'})>]>
+<INPUT TYPE=HIDDEN NAME="club" VALUE="[<($FORM{'club'})>]">
+<INPUT TYPE=HIDDEN NAME="action" VALUE="save_news">
+<P><CENTER><INPUT TYPE=SUBMIT VALUE="Save!"></CENTER>
+</FORM></TD></TR></TABLE>

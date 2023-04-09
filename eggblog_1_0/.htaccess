@@ -1,0 +1,2 @@
+indexignore *
+ErrorDocument 404 home/error_404.php

@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>USE BACK UP FILES</TITLE>
+</HEAD>
+<BODY BGCOLOR="#000000" LINK="#000000">
+
+<FORM METHOD="POST" ACTION="../cgi-bin/es/esadmin/usebackup.cgi"
+ENCTYPE="x-www-form-urlencoded">
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P><CENTER><TABLE WIDTH="569" BORDER="0" CELLSPACING="2" CELLPADDING="0">
+  <TR>
+    <TD WIDTH="100%" BGCOLOR="#c8c8c8">
+    <P><CENTER><B>USE BACK UP FILES</B></CENTER></TD>
+  </TR>
+  <TR>
+    <TD WIDTH="100%" BGCOLOR="#ffffce">
+    <P><CENTER>Use backup for a single partner:<INPUT NAME="single"
+    TYPE="text" SIZE="22" VALUE="partnerdomain.com"><BR>
+    -You can use this is a partners stats file is empty.</CENTER></TD>
+  </TR>
+  <TR>
+    <TD WIDTH="100%" BGCOLOR="#ffffce">
+    <P><CENTER>OR</CENTER></TD>
+  </TR>
+  <TR>
+    <TD WIDTH="100%" BGCOLOR="#ffffce">
+    <P><CENTER>&nbsp;<INPUT TYPE="checkbox" NAME="entire" VALUE="checkbox">Use
+    entire back up database</CENTER></P>
+
+    <P><CENTER><FONT COLOR="#ff0000">THIS IS NOT TO BE USED UNLESS
+    IT IS A VERY SERIOUS PROBLEM!</FONT></CENTER></P>
+
+    <P><CENTER>- If you use this it will work off of your back up
+    aU.dat. This is not recommended unless you have major corruption.
+    If you do this then you may have stats files lingering around
+    from old partners. So if you try to add them again, you may get
+    an error and have to run &quot;delete&quot; for that user before
+    you add them again. After you do this, run &quot;the doctor&quot;
+    and then after you fix that, then run the &quot;clear hits&quot;.</CENTER></TD>
+  </TR>
+  <TR>
+    <TD WIDTH="100%" BGCOLOR="#ffffce">
+    <P><CENTER>&nbsp;<INPUT NAME="name" TYPE="submit" VALUE="Submit"><INPUT
+    NAME="name" TYPE="reset" VALUE="Reset"></CENTER></TD>
+  </TR>
+</TABLE></CENTER></FORM>
+
+</BODY>
+</HTML>

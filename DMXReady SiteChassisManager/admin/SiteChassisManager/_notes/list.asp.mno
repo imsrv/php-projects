@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_menulist" value="name:mid;datatype:3,name:SitePlanID;datatype:3,name:Menu;datatype:202,name:MenuDesc;datatype:203,name:SectionContent;datatype:203,name:PageTemplateID;datatype:3,name:ImageFileA;datatype:202,name:ImageFileB;datatype:202,name:SortOrder;datatype:3,name:IncludeFileID;datatype:3,name:PageLink;datatype:202,name:Variables;datatype:202,name:Activated;datatype:202" />
+	<infoitem key="UD_menulist2" value="name:mid2;datatype:3,name:midkey;datatype:3,name:Menu2;datatype:202,name:MenuDesc2;datatype:203,name:SectionContent2;datatype:203,name:ImageFileA2;datatype:202,name:ImageFileB2;datatype:202,name:SortOrder2;datatype:3,name:IncludeFileID2;datatype:3,name:PageLink2;datatype:202,name:Variables2;datatype:202,name:Activated2;datatype:202,name:SitePlanID;datatype:3,name:PageTemplateID;datatype:3" />
+</info>

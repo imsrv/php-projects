@@ -1,0 +1,25 @@
+BODY {
+	FONT-SIZE: 11px; MARGIN: 0px 0px 0px 0px; COLOR: #000000; FONT-FAMILY: tahoma,sans-serif; BACKGROUND-COLOR: #C0C0C0
+}
+TABLE {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 11px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; FONT-FAMILY: tahoma,sans-serif
+}
+A.tab {
+	FONT-SIZE: 11px; COLOR: #666666; FONT-WEIGHT: bold; FONT-FAMILY: Tahoma, san-serif; TEXT-DECORATION: none
+}
+A {
+	FONT-SIZE: 11px; COLOR: #666666; FONT-WEIGHT: bold; FONT-FAMILY: Tahoma, san-serif; TEXT-DECORATION: none
+}
+A:hover {
+	FONT-SIZE: 11px; COLOR: #FFFFFF; FONT-WEIGHT: bold; FONT-FAMILY: Tahoma, san-serif; TEXT-DECORATION: none
+}
+.g {
+	FONT-SIZE: 11px; FONT-FAMILY: tahoma,sans-serif; COLOR: #666666; FONT-WEIGHT: bold
+}
+}
+.r {
+	FONT-SIZE: 11px; FONT-FAMILY: tahoma,sans-serif; COLOR: #666666
+}
+.x {
+	FONT-SIZE: 11px; FONT-FAMILY: tahoma,sans-serif; COLOR: #000000; FONT-WEIGHT: bold
+}

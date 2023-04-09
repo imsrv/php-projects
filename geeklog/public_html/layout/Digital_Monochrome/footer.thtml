@@ -1,0 +1,18 @@
+    </td>
+    {right_blocks}
+    </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+    <tr bgcolor="#000000" valign="top">
+        <td class="footer"><font color="#FFFFFF"><b>{copyright_notice}</b></font></td>
+        <td align="right" class="footer">
+             <font color="#FFFFFF"><b>{powered_by} <a class="navtext" href="{geeklog_url}">GeekLog</a>&nbsp;<br>
+             {execution_textandtime}&nbsp;</b></font>
+        </td>
+    </tr>
+</table>
+
+</body>
+
+</html>
+

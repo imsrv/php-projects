@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<title>{title}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+A:link {
+	COLOR: #18578e;TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #777777; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #000000
+}
+A:hover {
+	COLOR: #000000;TEXT-DECORATION: underline overline
+}
+BODY {
+	BACKGROUND-COLOR: #eeeeee
+}
+input,textarea,select,option{
+	FONT-FAMILY:Verdana,Arial,Helvetica;FONT-SIZE:9pt;COLOR:#2B1F6A;BORDER:1px solid black
+}
+select{
+	FONT-FAMILY:Verdana,Arial,Helvetica;FONT-SIZE:9pt;COLOR:#2B1F6A;BORDER:1px solid black
+}
+form{
+	FONT-FAMILY:Verdana,Arial,Helvetica;FONT-SIZE:9pt;COLOR:#000000
+}
+TD {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+
+</style>
+</head>
+
+<body>
+<table cellpadding=3 width="95%" align=center border=0 bgcolor="#99CCFF">
+  <tbody> 
+  <tr> 
+    <td bgcolor="#99CCFF"> 
+      <p>Your text here</p>
+    </td>
+  </tr>
+  <tr> 
+    <td> </td>
+  </tr>
+  </tbody>
+</table>
+<br>
+<table border="0" cellpadding="3" cellspacing="0" width="95%" align="center">
+  <tr> 
+    <td valign="top" width="8%"> 
+      <table cellpadding="2" width="100" align ="left" cellspacing="2" border="0" >
+        <tr> 
+          <td valign="top" nowrap bgcolor="#dddddd"><a href="{startpage}">{text_1}</a></td>
+        </tr>
+        <tr> 
+          <td valign="top" nowrap bgcolor="#dddddd"><b>{text_2}</b></td>
+        </tr>
+        <tr> 
+          <td valign="top" nowrap bgcolor="#dddddd"><a href="members.php">{text_3}</a></td>
+        </tr>
+        <tr> 
+          <td valign="top" nowrap bgcolor="#dddddd"><a href="features.php">{text_4}</a></td>
+        </tr>
+        <tr> 
+          <td valign="top" nowrap bgcolor="#dddddd"><a href="faq.php">{text_5}</a><a href="faq.html"></a></td>
+        </tr>
+        <tr> 
+          <td valign="top" nowrap bgcolor="#dddddd"><a href="contact.php">{text_6}</a><a href="contact.php"></a></td>
+        </tr>
+        <tr> 
+          <td valign="top" nowrap bgcolor="#dddddd"><a href="whois.php">{text_7}</a></td>
+        </tr>
+        <tr> 
+          <td valign="top" nowrap bgcolor="#dddddd"><a href="stats.php">{text_8}</a></td>
+        </tr>
+        <tr>
+          <td valign="top" nowrap bgcolor="#dddddd"><a href="latest.php">{text_9}</a></td>
+        </tr>
+        <tr> 
+          <td valign="top" nowrap bgcolor="#dddddd"><a href="topsites.php">{text_10}</a><a href="topsites.php"></a></td>
+        </tr>
+        <tr> 
+          <td valign="top" nowrap bgcolor="#dddddd"><a href="tell.php">{text_11}</a><a href="tell.php"></a></td>
+        </tr>
+        <tr> 
+          <td valign="top" nowrap bgcolor="#dddddd"><a href="dir.php">{text_12}</a><a href="dir.php"></a></td>
+        </tr>
+      </table>
+    </td>
+    <td valign="top" width="2%">  </td>
+    <td width="90%" valign="top" bgcolor="#FFFFFF"> 
+      <p><font color="#009999"><b>{text_33}</b></font></p>
+      <p>{text_25}</p>
+      <table width="60%" border="0">
+        <tr>
+          <td bgcolor="#CCCCCC"><b>{text_26}</b></td>
+        </tr>
+      </table>
+      <form method="post" action="register.php?do=register3&domainname={domainname}&ext={ext}">   
+        <table width="60%" border="0">
+          <tr>
+            <td width="20%" bgcolor="#CCCCCC">{text_28}</td>
+            <td width="80%"> 
+              <input type="text" name="fname" value="{fname}" maxlength="25" size="30">
+              <font color="#FF0000" size="1">{error1}</font> </td>
+        </tr>
+        <tr>
+            <td width="20%" bgcolor="#CCCCCC">{text_27}</td>
+            <td width="80%"> 
+              <input type="text" name="lname" value="{lname}" maxlength="25" size="30">
+              <font color="#FF0000" size="1">{error2} </font></td>
+        </tr>
+        <tr>
+            <td width="20%" bgcolor="#CCCCCC">{text_29}</td>
+            <td width="80%"> 
+              <input type="text" name="email" value="{email}" maxlength="100" size="30">
+              <font color="#FF0000" size="1">{error3} </font></td>
+        </tr>
+        <tr>
+            <td width="20%"> </td>
+            <td width="80%">{text_30}</td>
+        </tr>
+      </table>
+      <table width="60%" border="0">
+        <tr> 
+            <td bgcolor="#CCCCCC"><b>{text_36}</b></td>
+        </tr>
+      </table>
+      <p>{text_32}</p>
+        <table width="60%" border="0">
+          <tr> 
+            <td width="20%" bgcolor="#CCCCCC">{text_31}</td>
+            <td width="80%"> 
+              <input type="text" name="targeturl" value="{targeturl}" maxlength="100" size="30">
+              <font color="#FF0000" size="1">{error4} </font></td>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <table width="60%" border=0>
+          <tbody> 
+		  <tr>
+          <td width="20%" bgcolor="#ffffff"> </td>
+          <td width="80%">{text_42}</td>
+          </tr>
+          <tr> 
+            <td width="20%" bgcolor="#ffffff"> </td>
+            <td width="80%"> 
+              <input type="submit" value="{text_34}" name="submit2">
+              <input type="reset" value="{text_35}" name="reset2">
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+        <p>&nbsp;</p>
+      </form>
+      <p> </p>
+      </td>
+  </tr>
+</table>
+<br>
+<table width="95%" align=center border=0 bgcolor="#99CCFF">
+  <tbody> 
+  <tr> 
+    <td bgcolor="#99CCFF"> 
+      <div align=right>powered by NO ONE</div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p> </p>
+</body>
+</html>

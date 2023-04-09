@@ -1,0 +1,12 @@
+<TABLE WIDTH=400 CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>An Error Has Occured</B></FONT></CENTER></TD></TR>
+<TD [<($CONFIG{'WINCOLOR'})>]><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"> 
+
+[<(
+	$OUT .= "<!";
+	$u = &urlencode("clubs.cgi?category=$FORM{'category'}&display=$FORM{'display'}");
+	$OUT .= ">";
+)>]
+
+You are not currently logged in and only recognized members can create a club.  If you are a member, please <A HREF="[<($GUrl{'cf_utils.cgi'})>]?action=login&returnto=[<($u)>]">login here</A>, if you would like to join <A HREF="[<($GUrl{'register.cgi'})>]">click to here</A>.
+</TD></TR></TABLE>

@@ -1,0 +1,27 @@
+<form>
+
+	<forms>
+		<edit>projects/details.xml</edit>
+		<list>projects/list.xml</list>
+		<details>projects/details.xml</details>
+	</forms>
+
+	<table>projects</table>
+	<table_uid>project_id</table_uid>
+
+
+	<URIdata>
+		<action>action</action>
+
+		<add>add11</add>
+		<details>details</details>
+		<delete>delete11</delete>
+		<edit>edit11</edit>
+		<list>list</list>
+		<search>search</search>
+
+		<store>store</store>
+	</URIdata>
+
+
+</form>

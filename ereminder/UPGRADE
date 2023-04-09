@@ -1,0 +1,50 @@
+UPGRADE INFORMATION for 0.9:
+
+If upgrading from .85 or higher, there's nothing to be done!
+
+
+UPGRADE INFORMATION for 0.85-0.86:
+
+There was a serious security issue with all previous versions.  Anyone
+could load your config.in file (with database passwords and login) from
+the Internet.
+
+There are no changes in this release, except a security fix. 
+
+To implement the fix yourself without replacing everything, 
+follow this procedure:
+
+	1.  Rename config.in to config.php3
+	2.  Change the line require("config.in"); to 
+	    require("config.php3"); at the beginning of the database.php3
+ 	    file.
+	3.  You're done!
+
+This makes it impossible to load your config.in file from the internet
+since the server attempts to parse it if it is named config.php3, and
+nothing is displayed to the calling browser.
+
+UPGRADE INFORMATION for 0.2-0.85:
+
+In order to upgrade to this version from previous versions, you need to
+drop the old database, and create a new one because we've added a few
+fields to the database.
+
+Unfortunately, there are no scripts available to upgrade your data,
+however, if you take a look at the new database format, and modify your
+current tables and add the data for the current entries, you should be
+able to get it working.
+
+The mail.php3 script should no longer be set to be run from the crontab as
+before.  It is no longer required that you install the php3 cgi module.
+You only need to have php3 installed as a module in apache.  Follow the
+instructions in the INSTALL documentation for the recommended entries in
+your crontab.
+
+UPGRADE INFORMATION for 0.1-0.2:
+
+Nothing.  Just replace the files with this version.  The database format
+didn't change, so you don't need to recreate any databases.
+
+
+

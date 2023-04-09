@@ -1,0 +1,75 @@
+CREATE SEQUENCE "srcevent_event_id_seq" start 1 increment 1 maxvalue 2147483647 minvalue 1  cache 1 ;
+SELECT nextval ('srcevent_event_id_seq');
+CREATE SEQUENCE "srclocation_location_id_seq" start 1 increment 1 maxvalue 2147483647 minvalue 1  cache 1 ;
+SELECT nextval ('srclocation_location_id_seq');
+CREATE SEQUENCE "srcaudience_audience_id_seq" start 1 increment 1 maxvalue 2147483647 minvalue 1  cache 1 ;
+SELECT nextval ('srcaudience_audience_id_seq');
+CREATE SEQUENCE "srccategory_category_id_seq" start 1 increment 1 maxvalue 2147483647 minvalue 1  cache 1 ;
+SELECT nextval ('srccategory_category_id_seq');
+CREATE TABLE "srcevent" ("event_id" "int4" DEFAULT nextval ( 'srcevent_event_id_seq' ) NOT NULL,
+"title" "text" NOT NULL, "description" "text" NOT NULL, "location_id" "int4" NOT NULL,
+"start_time" "int4" NOT NULL, "end_time" "int4" NOT NULL, "submitted_time" "int4" NOT NULL,
+"submitter_id" "int4" NOT NULL, "approver_id" "int4", "info_url" "text",
+"info_email" "text", "hide_oc" "int2", "modify_id" "int4");
+CREATE TABLE "srcaudience" ("audience_id" "int4" DEFAULT nextval ( 'srcAudience_audience_id_seq' ) NOT NULL, "name" "text" NOT NULL);
+CREATE TABLE "srccategory" ("category_id" "int4" DEFAULT nextval ( 'srcCategory_category_id_seq' ) NOT NULL, "name" "text" NOT NULL);
+CREATE TABLE "srccategorylist" ("event_id" "int4" NOT NULL, "category_id" "int4" NOT NULL);
+CREATE TABLE "srcaudiencelist" ("event_id" "int4" NOT NULL, "audience_id" "int4" NOT NULL);
+CREATE TABLE "srclocation" ("location_id" "int4" DEFAULT nextval ( 'srclocation_location_id_seq' ) NOT NULL, "name" "text" NOT NULL);
+CREATE TABLE "srcweekdaylist" ("event_id" "int4" NOT NULL, "day" "int2" NOT NULL);
+CREATE TABLE "srcweekday" ("day" "int2" NOT NULL, "name" "text" NOT NULL);
+CREATE TABLE "srcindex" ("event_id" "int4" NOT NULL, "timestamp" "int4" NOT NULL);
+CREATE TABLE "srcconfig" ("key" text NOT NULL PRIMARY KEY, "value" text, "description" text);
+INSERT INTO "srcevent" values (1,'Event Calendar installed',
+'The event calendar was installed. This is the first event submitted.',
+0,<<configdate>>,0,<<configdate>>,<<adminid>>,<<adminid>>,NULL,NULL,NULL,NULL);
+INSERT INTO "srcindex" values (1,<<configdate>>);
+INSERT INTO "srcaudience" values (0,'All');
+INSERT INTO "srccategory" values (0,'~Other');
+INSERT INTO "srccategorylist" values (1,0);
+INSERT INTO "srcaudiencelist" values (1,0);
+INSERT INTO "srclocation" values (0,'~Other');
+INSERT INTO "srcweekdaylist" values (1,0);
+INSERT INTO "srcweekday" values (0,'Sunday');
+INSERT INTO "srcweekday" values (1,'Monday');
+INSERT INTO "srcweekday" values (2,'Tuesday');
+INSERT INTO "srcweekday" values (3,'Wednesday');
+INSERT INTO "srcweekday" values (4,'Thursday');
+INSERT INTO "srcweekday" values (5,'Friday');
+INSERT INTO "srcweekday" values (6,'Saturday');
+CREATE UNIQUE INDEX "srcweekday_pkey" on "srcweekday" using btree ( "day" "int2_ops" );
+CREATE UNIQUE INDEX "srccategory_category_id_key" on "srccategory" using btree ( "category_id" "int4_ops" );
+CREATE UNIQUE INDEX "srcevent_pkey" on "srcevent" using btree ( "event_id" "int4_ops" );
+CREATE UNIQUE INDEX "srcevent_event_id_key" on "srcevent" using btree ( "event_id" "int4_ops" );
+CREATE UNIQUE INDEX "srccategorylist_pkey" on "srccategorylist" using btree ( "category_id" "int4_ops", "event_id" "int4_ops" );
+CREATE UNIQUE INDEX "srcaudiencelist_pkey" on "srcaudiencelist" using btree ( "audience_id" "int4_ops", "event_id" "int4_ops" );
+CREATE UNIQUE INDEX "srcaudience_pkey" on "srcaudience" using btree ( "audience_id" "int4_ops" );
+CREATE UNIQUE INDEX "srcweekdaylist_pkey" on "srcweekdaylist" using btree ( "event_id" "int4_ops", "day" "int2_ops" );
+CREATE UNIQUE INDEX "srcaudience_audience_id_key" on "srcaudience" using btree ( "audience_id" "int4_ops" );
+CREATE UNIQUE INDEX "srccategory_pkey" on "srccategory" using btree ( "category_id" "int4_ops" );
+CREATE INDEX "srcindex_pkey" on "srcindex" using btree( "timestamp" "int4_ops" );
+REVOKE ALL on "srcaudience", "srcaudiencelist", "srccategory", "srccategorylist", "srcevent", "srclocation", "srcweekday", "srcweekdaylist", "srcindex", "srcconfig" from PUBLIC;
+GRANT SELECT on "srcaudience", "srcaudiencelist", "srccategory", "srccategorylist", "srcevent", "srclocation", "srcweekday", "srcweekdaylist", "srcindex", "srcconfig" to "<<dbro>>";
+GRANT SELECT,INSERT,UPDATE,DELETE on "srcaudience", "srcaudiencelist", "srccategory", "srccategorylist", "srcevent", "srclocation", "srcweekday", "srcweekdaylist", "srcindex", "srcconfig" to "<<dbrw>>";
+INSERT INTO "srcconfig" VALUES ('ssl_required','<<sslreq>>','Set to a non-zero value to require SSL for logging in.');
+INSERT INTO "srcconfig" VALUES ('php_utils','<<phputils>>','A full path to the directory containing any executables used by the calendar, such as the authentication utilities.  Changing this may change the values of other options such as getuidinfo, getpwinfo, and chkpass, so make sure those items are correctly set after modifying this setting.');
+INSERT INTO "srcconfig" VALUES ('auth_module','<<authmod>>','Which authentication module the calendar should use to login users. Changing this may change the values of other options such as getuidinfo, getpwinfo, and chkpass, so make sure those items are correctly set after modifying this setting.');
+INSERT INTO "srcconfig" VALUES ('getuidinfo','<<getuidinfo>>','The full path to an executable used by authentication modules to get user information based on a user ID.  This setting may be modified automatically if either php_utils or auth_module is changed.');
+INSERT INTO "srcconfig" VALUES ('getpwinfo','<<getpwinfo>>','The full path to an executable used by authentication modules to get user information based on a username. This setting may be modified automatically if either php_utils or auth_module is changed.');
+INSERT INTO "srcconfig" VALUES ('chkpass','<<chkpass>>','The full path to an executable used by authentication modules to verify a user''s password. This setting may be modified automatically if either php_utils or auth_module is changed.');
+INSERT INTO "srcconfig" VALUES ('stylesheet','<<css>>','The path (relative to index.php3) to a stylesheet for the calendar.  If you do not have a stylesheet, leave this blank and the calendar will not try to include one.');
+INSERT INTO "srcconfig" VALUES ('fullname','New York State Mental Institution','The full name of the institution using the calendar.');
+INSERT INTO "srcconfig" VALUES ('shortname','Crazy House','A shortened name of the institution using the calendar.');
+INSERT INTO "srcconfig" VALUES ('abbrvname','NYSMI','An abbreviated name for the institution using the calendar.');
+INSERT INTO "srcconfig" VALUES ('homepage','http://localhost/','A full URL to the institution''s homepage, included as a link in the calendar header.');
+INSERT INTO "srcconfig" VALUES ('domain','localhost','A domain to use when constructing email addresses (username@domain) or in trying to auto-complete URLs in the info URL field of a submitted event.');
+INSERT INTO "srcconfig" VALUES ('account_host','localhost','The name of the host containing user accounts.  Users should recognize this name, as it is used to remind them which account they need to use if they have more than one.');
+INSERT INTO "srcconfig" VALUES ('calendar_image','calendar.gif','The path (relative to index.php3) to an image included in the header which links to the main calendar page.');
+INSERT INTO "srcconfig" VALUES ('webmaster','webmaster@localhost','The email address from which the calendar should send e-mail notifications of submitted/rejected events.');
+INSERT INTO "srcconfig" VALUES ('homepage_image','homepage.gif','The path (relative to index.php3) to an image included in the header which is a link to the institution''s homepage.');
+INSERT INTO "srcconfig" VALUES ('errormailto','webmaster@localhost','The e-mail address to which users should report errors encountered while using the calendar.');
+INSERT INTO "srcconfig" VALUES ('internaldomain','localhost','The domain that signifies "on-campus".  Users connecting to the calendar from this domain will be given the option to view unapproved events.');
+INSERT INTO "srcconfig" VALUES ('locale','<<locale>>','If locale is set, the calendar will try to use the specified locale for displaying dates and other locale-specific strings.');
+INSERT INTO "srcconfig" VALUES ('textdomain','<<textdomain>>','The text domain to bind for translations.');
+INSERT INTO "srcconfig" VALUES ('textdomain_dir','<<textdomain_dir>>','The directory to bind to the text domain for translations.');
+INSERT INTO "srcconfig" VALUES ('daybeforemonth','<<daybeforemonth>>','Freaky non-American people like to put the day before the month in their dates. Set this to a non-zero value to do just that in some places.');

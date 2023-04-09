@@ -1,0 +1,21 @@
+PERFORMANCE for eCorrei 1.2.5
+2 February 2002
+======================================
+
+How can you make eCorrei run really fast? Read this file.
+
+First of all, make sure your server is well setup. This means
+a properly installed OS, and a fast webserver. The module 
+version of PHP is preferred over the CGI version. On Windows 
+you can use the ISAPI version. 
+
+eCorrei will (of course) be a lot faster if the connection 
+between POP3/IMAP-server and eCorrei-server is faster. If you
+can, you should run the POP3/IMAP-server and eCorrei on one
+computer, so the connection is as fast as possible. 
+
+As eCorrei uses the IMAP module for communicating with the
+mailserver, eCorrei will perform better if the mailserver really
+is an IMAP-server. The commands eCorrei uses are designed for
+IMAP, not for POP3, however, POP3 is supported.
+

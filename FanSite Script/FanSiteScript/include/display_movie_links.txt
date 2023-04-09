@@ -1,0 +1,18 @@
+<?PHP 
+include ("include/connect.txt");
+$entry = 0;
+$result = mysql_query("SELECT id,link,film,description FROM ds_links WHERE film = '$id'");  
+while ($myrow = mysql_fetch_row($result)) 
+{ 	
+	printf("<A HREF=%s  TARGET=_blank>%s</A><br>",$myrow[1],$myrow[3]) ;
+	$entry = 1;
+} 
+
+if ( $entry =='0')
+	{
+		printf("N/A");
+	}
+
+include ("include/close.txt");
+
+?>

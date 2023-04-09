@@ -1,0 +1,464 @@
+body {
+	background-color: #eeeeee;
+	margin: 0px;
+	padding: 0px;
+}
+.border {
+	border-right-width: 2px;
+	border-left-width: 2px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #E6DDCB;
+	border-left-color: #E6DDCB;
+
+}
+td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	text-decoration: none;
+}
+.top {
+	text-align: right;
+	padding-top: 20px;
+	padding-right: 10px;
+}
+a.b:link {
+	font-style: normal;
+	color: #2E3F54;
+	text-decoration: none;
+	font-weight: normal;
+
+}
+a.b:visited {
+	font-style: normal;
+	color: #2E3F54;
+	text-decoration: none;
+	font-weight: normal;
+
+}
+a.b:hover {
+	font-style: normal;
+	color: #2E3F54;
+	text-decoration: underline;
+	font-weight: normal;
+
+}
+a.b:active {
+	font-style: normal;
+	color: #2E3F54;
+	text-decoration: none;
+	font-weight: normal;
+
+}
+.dots {
+	border-right-width: 2px;
+	border-left-width: 2px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #E6DDCB;
+	border-left-color: #E6DDCB;
+	background-image: url(http://www.hostkenti.com/images/dts.gif);
+	background-repeat: repeat-x;
+	height: 6px;
+
+}
+.m1 {
+	background-image: url(http://www.hostkenti.com/images/mbg.gif);
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 171px;
+	padding-top: 5px;
+
+}
+.m2 {
+	font-weight: bold;
+	color: #FFFFFF;
+	background-image: url(http://www.hostkenti.com/images/bgmm.gif);
+	background-repeat: no-repeat;
+	background-position: right top;
+	text-align: center;
+	padding-top: 4px;
+
+}
+a.w:link {
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a.w:visited {
+
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a.w:hover {
+
+
+	font-weight: bold;
+	color: #FFFEB2;
+	text-decoration: none;
+}
+a.w:active {
+
+
+
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.line {
+	border-right-width: 2px;
+	border-left-width: 2px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #E6DDCB;
+	border-left-color: #E6DDCB;
+	height: 6px;
+	background-color: #EDE4D1;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #FFFFFF;
+	border-bottom-color: #FFFFFF;
+
+}
+.bgright {
+	background-image: url(http://www.hostkenti.com/images/bgright.gif);
+	background-repeat: repeat-y;
+}
+.pad {
+	padding-right: 10px;
+	padding-left: 13px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+
+}
+.right {
+	background-image: url(http://www.hostkenti.com/images/fgt.gif);
+	background-repeat: repeat-y;
+}
+a:link {
+	font-weight: bold;
+	color: #006699;
+	text-decoration: none;
+}
+a:visited {
+
+	font-weight: bold;
+	color: #006699;
+	text-decoration: none;
+}
+a:hover {
+
+
+	font-weight: bold;
+	color: #CC3300;
+	text-decoration: none;
+}
+a:active {
+
+
+
+	font-weight: bold;
+	color: #006699;
+	text-decoration: none;
+}
+.bgw {
+	background-image: url(http://www.hostkenti.com/images/fgt.gif);
+	background-repeat: repeat-y;
+}
+.sub {
+	background-image: url(http://www.hostkenti.com/images/bgd.gif);
+	background-repeat: no-repeat;
+	height: 20px;
+	padding-bottom: 3px;
+
+}
+form {
+	margin: 0px;
+	padding: 0px;
+}
+.submit {
+	background-image: url(http://www.hostkenti.com/images/submit.gif);
+	background-repeat: no-repeat;
+	margin: 0px;
+	padding: 0px;
+	height: 20px;
+	width: 100px;
+	border: 0px solid;
+	cursor:hand;
+	cursor: pointer;
+}
+.box1 {
+	background-color: #F9F6F0;
+	background-image: url(http://www.hostkenti.com/images/shad.gif);
+	background-repeat: repeat-x;
+	height: 17px;
+	width: 134px;
+	border: 1px solid #9AA9BC;
+	font-size: 11px;
+	color: #000000;
+	text-decoration: none;
+
+}
+.box2 {
+
+	background-color: #F9F6F0;
+	height: 15px;
+	width: 51px;
+	border: 1px solid #9AA9BC;
+	font-size: 11px;
+	color: #000000;
+	text-decoration: none;
+}
+.help {
+	background-image: url(http://www.hostkenti.com/images/help.gif);
+	background-repeat: no-repeat;
+	padding-top: 25px;
+	padding-left: 20px;
+	padding-bottom: 15px;
+
+}
+.here {
+	font-size: 11px;
+	color: #FFFFFF;
+	text-decoration: none;
+	background-image: url(http://www.hostkenti.com/images/here.gif);
+	background-repeat: repeat-x;
+	height: 20px;
+	padding-top: 3px;
+	padding-left: 15px;
+
+}
+.plt {
+	background-image: url(http://www.hostkenti.com/images/plttl.gif);
+	background-repeat: no-repeat;
+}
+.bgpl {
+	background-image: url(http://www.hostkenti.com/images/plnbg.gif);
+	background-repeat: repeat-y;
+}
+.prices {
+	background-image: url(http://www.hostkenti.com/images/prices.gif);
+	background-repeat: no-repeat;
+}
+.pl1 {
+	padding-left: 20px;
+	padding-bottom: 5px;
+	padding-top: 3px;
+
+
+}
+.pl2 {
+	padding-left: 15px;
+	padding-bottom: 5px;
+	padding-top: 3px;
+
+
+}
+.min {
+	background-image: url(http://www.hostkenti.com/images/minbg.gif);
+	background-repeat: no-repeat;
+	padding-top: 2px;
+	padding-bottom: 5px;
+
+}
+.ssl {
+	background-image: url(http://www.hostkenti.com/images/ssl.gif);
+	background-repeat: no-repeat;
+}
+.bord {
+	background-color: #FFFFFF;
+	border: 2px solid #EDE5D2;
+}
+.footer {
+	border-right-width: 2px;
+	border-left-width: 2px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #E6DDCB;
+	border-left-color: #E6DDCB;
+	background-color: #F7F3EA;
+	background-image: url(http://www.hostkenti.com/images/foot.gif);
+	background-repeat: repeat-x;
+
+
+}
+.copy {
+	padding-top: 16px;
+	padding-left: 15px;
+}
+.m1i {
+
+	background-image: url(http://www.hostkenti.com/images/mbgri.gif);
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 171px;
+	padding-top: 8px;
+}
+.content {
+	background-color: #FFFFFF;
+	padding-right: 6px;
+	padding-left: 12px;
+	padding-top: 10px;
+
+}
+h2 {
+	font-size: 16px;
+	color: #006666;
+	margin: 0px;
+	padding: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+.subm {
+	background-image: url(http://www.hostkenti.com/images/subm.jpg);
+	background-repeat: no-repeat;
+	background-position: right top;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #FFFFFF;
+	height: 25px;
+	padding-top: 3px;
+	padding-left: 15px;
+
+}
+a.ln:link {
+	padding-left: 25px;
+	border-bottom-style: none;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-image: url(http://www.hostkenti.com/images/ar5.gif);
+	background-position: left center;
+	background-repeat: no-repeat;
+	color: #006699;
+	text-decoration: none;
+	display: block;
+	font-weight: bold;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #F9F6F0;
+	background-color: #D4EDFF;
+	border-right-style: none;
+	border-left-style: none;
+
+
+}
+a.ln:visited {
+
+	padding-left: 25px;
+	border-bottom-style: none;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-image: url(http://www.hostkenti.com/images/ar5.gif);
+	background-position: left center;
+	background-repeat: no-repeat;
+	color: #006699;
+	text-decoration: none;
+	display: block;
+	font-weight: bold;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #F9F6F0;
+	background-color: #D4EDFF;
+	border-right-style: none;
+	border-left-style: none;
+}
+a.ln:hover {
+
+
+	padding-left: 25px;
+	border-bottom-style: none;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-image: url(http://www.hostevim.com/images/ar5a.gif);
+	background-position: left center;
+	background-repeat: no-repeat;
+	color: #CC3300;
+	text-decoration: none;
+	display: block;
+	font-weight: bold;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #F9F6F0;
+	background-color: #EEE6D4;
+	border-right-style: none;
+	border-left-style: none;
+}
+a.ln:active {
+
+	padding-left: 25px;
+	border-bottom-style: none;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-image: url(http://www.hostkenti.com/images/ar5.gif);
+	background-position: left center;
+	background-repeat: no-repeat;
+	color: #006699;
+	text-decoration: none;
+	display: block;
+	font-weight: bold;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #F9F6F0;
+	background-color: #D4EDFF;
+	border-right-style: none;
+	border-left-style: none;
+}
+.current {
+
+
+
+	padding-left: 25px;
+	border-bottom-style: none;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	background-image: url(http://www.hostkenti.com/images/ar5a.gif);
+	background-position: left center;
+	background-repeat: no-repeat;
+	color: #CC3300;
+	text-decoration: none;
+	font-weight: bold;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #F9F6F0;
+	background-color: #F9EFD6;
+	border-right-style: none;
+	border-left-style: none;
+}
+.ftt {
+	color: #CC3300;
+	background-color: #D0EDFF;
+	font-size: 12px;
+	font-weight: bold;
+}
+.beg {
+	background-color: #fafafa;
+	background-image: url(http://www.hostkenti.com/images/ok.gif);
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+.wh {
+	background-color: #FFFFFF;
+	background-image: url(http://www.hostkenti.com/images/ok.gif);
+	background-repeat: no-repeat;
+	background-position: right center;
+}.old {
+	font-weight: bold;
+	text-decoration: line-through;
+}
+.box3 {
+
+	background-color: #F9F6F0;
+	background-image: url(http://www.hostkenti.com/images/shad.gif);
+	background-repeat: repeat-x;
+	height: 17px;
+	width: 150px;
+	border: 1px solid #9AA9BC;
+	font-size: 11px;
+	color: #000000;
+	text-decoration: none;
+}

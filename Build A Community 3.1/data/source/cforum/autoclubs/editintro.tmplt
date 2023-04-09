@@ -1,0 +1,12 @@
+<form ENCTYPE="application/x-www-form-urlencoded"  NAME="create_form" METHOD="POST" ACTION="[<($GUrl{'clubs.cgi'})>]">
+<TABLE BORDER="1" WIDTH=400>
+<TR BGCOLOR="[<($CONFIG{'title_color'})>]">
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Club Introduction</FONT></B></CENTER></TD></TR>
+<TR [<($CONFIG{'WINCOLOR'})>]>
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+Please enter the introduction that appears when a member arrives in your club. (<I>HTML is allowed</I>)<BR>
+<TEXTAREA NAME=introtext COLS=30 ROWS=6>[<($tintro)>]</TEXTAREA>
+<INPUT TYPE=HIDDEN NAME="club" VALUE="[<($FORM{'club'})>]">
+<INPUT TYPE=HIDDEN NAME="action" VALUE="save_intro">
+<P><CENTER><INPUT TYPE=SUBMIT VALUE="Save!"></CENTER>
+</FORM></TD></TR></TABLE>

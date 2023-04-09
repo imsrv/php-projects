@@ -1,0 +1,48 @@
+/********************************************************************************/
+/* EasyGallery:                                                                 */
+/* ====================================================                         */
+/*                                                                              */
+/* Copyright (c) 2003 by Angel Stoitsov and Mario Stoitsov                      */
+/*    http://software.stoitsov.com                                              */
+/*                                                                              */
+/* This file is part of EasyBookMarker.                                         */
+/* EasyGallery is free software; you can redistribute it and/or modify          */
+/*    it under the terms of the GNU General Public License as published by      */
+/*    the Free Software Foundation; either version 2 of the License, or         */
+/*    (at your option) any later version.                                       */
+/* EasyGallery is distributed in the hope that it will be useful,               */
+/*    but WITHOUT ANY WARRANTY; without even the implied warranty of            */
+/*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             */
+/*    GNU General Public License for more details.                              */
+/* You should have received a copy of the GNU General Public License            */
+/*    along with EasyGallery; if not, write to the Free Software                */
+/*    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA */
+/********************************************************************************/
+/*
+
+Installation
+============
+
+Prerequisites:
+
+Download and install MySQL.
+Download and install Apache
+Download and install PHP 4.1.0 or greater.
+
+Then, do the following:
+
+1. Unzip the zip file in some subdirectory (e.g. EasyGallery) under the root
+directory on your server.
+
+2. Create the database for your EasyGallery and populate it with the
+tables included at the begining of the index.php file.
+
+3. Open index.php file in some editor and edit preferences specific for your
+server and database.
+
+You are done. Point the browser to
+http:\\your_domain.com\EasyGallery\index.php
+and enjoy your EasyGallery.
+
+For more details visit:
+http://software.stoitsov.com

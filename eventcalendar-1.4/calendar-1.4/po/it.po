@@ -1,0 +1,660 @@
+# Event Calendar.
+# Copyright (C) 2000 Free Software Foundation, Inc.
+# Colorio mauro <linuxbox@interfree.it>, 2000.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: eventcalendar-0.11\n"
+"POT-Creation-Date: 2000-10-31 10:44-0800\n"
+"PO-Revision-Date: 2000-10-23 12:54-0700\n"
+"Last-Translator: Mauro <linuxbox@interfree.it>\n"
+"Language-Team: IT <it@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin-box.php3:31
+msgid "Configuring the Calendar"
+msgstr ""
+
+#: admin-box.php3:50 admin-box.php3:55 admin-box.php3:68
+msgid "Admin"
+msgstr "Amministrazione"
+
+#: admin-box.php3:56
+msgid "You are not allowed to configure the calendar."
+msgstr "Non si e' autorizzati a configurare il calendario."
+
+#: admin-box.php3:96 admin-box.php3:138 admin-box.php3:197 admin-box.php3:990
+msgid "Configure Items"
+msgstr "Configura Item"
+
+#: admin-box.php3:101
+msgid "Locations"
+msgstr ""
+
+#: admin-box.php3:107
+msgid "Categories"
+msgstr ""
+
+#: admin-box.php3:112
+msgid "Audiences"
+msgstr ""
+
+#: admin-box.php3:121 admin-box.php3:406 admin-box.php3:996
+msgid "Configure the Calendar"
+msgstr "Configura il Calendario"
+
+#: admin-box.php3:125 admin-box.php3:810
+msgid "Manage Users"
+msgstr "Gestione Utenti"
+
+#: admin-box.php3:149
+msgid "Edit the following %s1"
+msgstr "Modifica il seguente %s1"
+
+#: admin-box.php3:161
+msgid "Rename to"
+msgstr "Rinomina come"
+
+#: admin-box.php3:166
+msgid "Delete and replace with"
+msgstr "Cancella e rimpiazza con"
+
+#: admin-box.php3:179
+msgid "Create"
+msgstr "Crea"
+
+#: admin-box.php3:183
+msgid "Edit Item"
+msgstr "Modifica Item"
+
+#: admin-box.php3:184 admin-box.php3:452 admin-box.php3:549 admin-box:889
+#: admin-box.php3:1038
+msgid "Reset"
+msgstr ""
+
+#: admin-box.php3:216
+msgid "You did not select an action."
+msgstr "Non e' stata selezionata un'azione."
+
+#: admin-box.php3:262
+msgid "Successfully renamed %s1 to %s2."
+msgstr "Rinominato con successo da %s1 a %s2."
+
+#: admin-box.php3:270
+msgid "The old and new items are the same."
+msgstr "Il vecchio e il nuovo item sono uguali."
+
+#: admin-box.php3:271
+msgid "Choose a different item to replace the old one."
+msgstr "Scegliere un item differente per rimpiazzare il vecchio."
+
+#: admin-box.php3:376
+msgid "Successfully replaced %s1 with %s2."
+msgstr "Rinominato con successo da %s1 a %s2."
+
+#: admin-box.php3:399
+msgid "Successfully created %s1."
+msgstr "%s1 creato con successo."
+
+#: admin-box.php3:431
+msgid "*No value set*"
+msgstr ""
+
+#: admin-box.php3:438
+msgid "Add new item"
+msgstr "Inserisci nuovo item"
+
+#: admin-box.php3:453
+msgid "Save Item"
+msgstr ""
+
+#: admin-box.php3:499
+msgid "Authentication module"
+msgstr ""
+
+#: admin-box.php3:550
+msgid "Save Value"
+msgstr ""
+
+#: admin-box.php3:588
+msgid "Successfully deleted %s1 from the config database."
+msgstr "%s1 cancellata con successo dal database di configurazione."
+
+#: admin-box.php3:723 admin-box.php3:746 admin-box:799
+msgid "%s1 successfully saved with value: %s2."
+msgstr "%s1 salvata con successo con il valore: %s2."
+
+#: admin-box.php3:727
+msgid "The following settings were also updated: %s1"
+msgstr "Il seguente settaggio e' stato aggiornato: %s1"
+
+#: admin-box.php3:843
+msgid "There are currently no users with assigned permissions."
+msgstr "Non ci sono attualmente utenti con i permessi assegnati."
+
+#: admin-box.php3:847
+msgid "The following users have been assigned permissions"
+msgstr "I seguenti utenti hanno i permessi assegnati"
+
+#: admin-box.php3:878
+msgid "Add a new user"
+msgstr "Aggiunta di un nuovo utente"
+
+#: admin-box.php3:890
+msgid "Add user"
+msgstr ""
+
+#: admin-box.php3:955
+msgid "User is not allowed to submit events, or do anything else really."
+msgstr "L'utente non puo' inviare eventi, o fare nient'altro."
+
+#: admin-box:959
+msgid "User is assigned the following permissions"
+msgstr ""
+
+#: admin-box.php3:967
+msgid "All locations"
+msgstr ""
+
+#: admin-box.php3:974 event.php3:1071 event.php3:1362
+msgid "Location"
+msgstr "Locazione"
+
+#: admin-box.php3:1005
+msgid "Approve Own"
+msgstr ""
+
+#: admin-box.php3:1011
+msgid "Approve Other"
+msgstr ""
+
+#: admin-box.php3:1017
+msgid "Delete Own"
+msgstr ""
+
+#: admin-box.php3:1023
+msgid "Delete Other"
+msgstr ""
+
+#: admin-box.php3:1029
+msgid "Modify Own"
+msgstr ""
+
+#: admin-box.php3:1035
+msgid "Modify Other"
+msgstr ""
+
+#: admin-box.php3:1039
+msgid "Save Changes"
+msgstr ""
+
+#: admin-box.php3:1183
+msgid "Successfully saved permissions."
+msgstr "Permessi salvati con successo."
+
+#: approve-box.php3:29
+msgid "Approving Events"
+msgstr ""
+
+#: approve-box.php3:48 approve-box.php3:54 approve-box.php3:67 event.php3:1175
+msgid "Approve"
+msgstr "Approva"
+
+#: approve-box.php3:55
+msgid "You are not allowed to approve events."
+msgstr "Non si ha l'autorizzazione per approvare l'evento."
+
+#: approve-box.php3:170
+msgid "There are currently no unapproved events."
+msgstr "Non ci sono eventi da approvare."
+
+#: approve-box.php3:176
+msgid "1 event is awaiting approval."
+msgstr ""
+
+#: approve-box.php3:180
+msgid "%s1 events are awaiting approval."
+msgstr ""
+
+#: approve-box.php3:208
+msgid "Approve event"
+msgstr "Approva evento"
+
+#: approve-box.php3:213
+msgid "Reject event"
+msgstr "Rifiuta evento"
+
+#: approve-box.php3:214
+msgid "Reason for rejection"
+msgstr "Ragione del rifiuto"
+
+#: approve-box.php3:215 event.php3:1398 event.php3:1406
+msgid "optional"
+msgstr "opzionale"
+
+#: approve-box.php3:222 delete-box.php3:200
+msgid "Ignore event"
+msgstr "Ignora evento"
+
+#: approve-box.php3:228 delete-box.php3:206
+msgid "Process events"
+msgstr "Processa eventi"
+
+#: approve-box:230 delete-box.php3:209 delete-box.php3:337
+msgid "Reset Selections"
+msgstr "Annulla selezioni"
+
+#: approve-box.php3:277
+msgid "%s1 events processed."
+msgstr "%s1 eventi processati."
+
+#: box.php3:43
+msgid "You are not allowed to use this box."
+msgstr ""
+
+#: box.php3:44
+msgid ""
+"If you think you've received this message in error, you can try logging in,"
+"or send an email to %s1."
+msgstr ""
+
+#: box.php3:59
+msgid "This is a box."
+msgstr ""
+
+#: box.php3:62
+msgid "Click me"
+msgstr ""
+
+#: box.php3:77
+msgid "You clicked in the box."
+msgstr "Si e' cliccato nel box."
+
+#: box.php3:81
+msgid "Click in the box."
+msgstr "Cliccare nel box."
+
+#: calendar-box.php3:29
+msgid "The Month View"
+msgstr ""
+
+#: calendar-box.php3:168
+msgid "View these events as %s1text-only%s2."
+msgstr "Visualizza questi eventi come %s1solo testo%s2."
+
+#: calendar-box.php3:241 calendar-box.php3:266
+msgid "Week"
+msgstr "Settimana"
+
+#: calendar-box.php3:301
+msgid "Previous month"
+msgstr "Mese precedente"
+
+#: calendar-box.php3:306
+msgid "Next month"
+msgstr "Mese successivo"
+
+#: calendar-box.php3:341
+msgid "Hide unapproved events."
+msgstr ""
+
+#: calendar-box.php3:345
+msgid "View unapproved events."
+msgstr ""
+
+#: calendar-box.php3:564 calendar-box.php3:709 calendar-box.php3:824 search-box.php3:337
+msgid "1 event found."
+msgstr "1 event trovato."
+
+#: calendar-box.php3:568 calendar-box.php3:713 calendar-box.php3:828 search-box.php3:341
+msgid "%s1 events found."
+msgstr "%s1 eventi trovato."
+
+#: calendar-box.php3:608
+msgid "No events for today."
+msgstr "Nessun evento per oggi."
+
+#: calendar-box.php3:629
+msgid "Events on %s1 in %s2"
+msgstr "Eventi di %s1 in %s2"
+
+#: calendar-box.php3:656 calendar-box.php3:771 search-box.php3:331
+msgid "No events found."
+msgstr "Nessun evento trovato."
+
+#: calendar-box.php3:745
+msgid "Events in %s1"
+msgstr "Eventi di %s1"
+
+#: delete-box.php3:32
+msgid "Deleting Events"
+msgstr ""
+
+#: delete-box.php3:51 delete-box.php3:56 delete-box.php3:69 event.php3:1161
+msgid "Delete"
+msgstr "Cancella"
+
+#: delete-box.php3:57
+msgid "You are not allowed to delete events."
+msgstr ""
+
+#: delete-box.php3:150
+msgid "No deleteable events."
+msgstr "Eventi non cancellabili."
+
+#: delete-box.php3:158
+msgid "1 event is deleteable."
+msgstr ""
+
+#: delete-box.php3:162
+msgid "%s1 events are deleteable."
+msgstr ""
+
+#: delete-box.php3:170 modify-box.php3:276
+msgid "Only the first %s1 will be displayed."
+msgstr "Solo il primo %s1 verra' visualizzato."
+
+#: delete-box.php3:197
+msgid "Delete event"
+msgstr "Elimina evento"
+
+#: delete-box.php3:218 modify-box.php3:309
+msgid "Ignore these and look at the %s1next batch%s2."
+msgstr ""
+
+#: delete-box.php3:273
+msgid "%s1 events deleted."
+msgstr "%s1 eventi cancellati."
+
+#: delete-box.php3:278
+msgid "No events deleted."
+msgstr "No eventi cancellati."
+
+#: delete-box.php3:291
+msgid "No events were selected to be deleted."
+msgstr "Nessun evento selezionato da cancellare."
+
+#: delete-box.php3:299
+msgid "Please confirm the deletion of the following %s1 events."
+msgstr "Confermare la cancellazione del seguente %s1 eventi."
+
+#: delete-box.php3:303
+msgid "Please confirm the deletion of the following event."
+msgstr "Confermare la cancellazione del seguente event."
+
+#: delete-box.php3:323
+msgid "Yes, delete the event!"
+msgstr "Si, cancella l'evento!"
+
+#: delete-box.php3:327
+msgid "Oops... nevermind."
+msgstr "Oops..come non detto."
+
+#: delete-box.php3:334
+msgid "Delete events"
+msgstr "Elimina eventi"
+
+#: event.php3:1073
+msgid "When"
+msgstr "Quando"
+
+#: event.php3:1107 event.php3:1398
+msgid "Contact E-Mail"
+msgstr "Contatto E-Mail"
+
+#: event.php3:1114
+msgid "Info URL"
+msgstr ""
+
+#: event.php3:1119 event.php3:1372
+msgid "Category"
+msgstr "Categoria"
+
+#: event.php3:1121 event.php3:1385
+msgid "Audience"
+msgstr "Audience"
+
+#: event.php3:1123
+msgid "Submitted"
+msgstr "Inviato"
+
+#: event.php3:1125
+msgid "Submitted by"
+msgstr "Inviato da"
+
+#: event.php3:1127
+msgid "Approved by"
+msgstr "Approvato da"
+
+#: event.php3:1128
+msgid "Not Yet Approved"
+msgstr "Non ancora approvato"
+
+#: event.php3:1132
+msgid "Hidden from off-campus browsers"
+msgstr "Nascosto per utenti esterni"
+
+#: event.php3:1145
+msgid ""
+"This is a proposed modification to the event titled %s1 "
+"submitted by %s2 on %s3."
+msgstr ""
+"Questa e' un aproposta di modifica per l'evento con titolo %s1 "
+"inviato da %s2 on %s3."
+
+#: event.php3:1183 modify-box.php3:50 modify-box.php3:55 modify-box.php3:67
+msgid "Modify"
+msgstr "Modifica"
+
+#: event.php3:1191
+msgid "Previous page"
+msgstr "Pagina precedente"
+
+#: event.php3:1231
+msgid "Event Title"
+msgstr ""
+
+#: event.php3:1238
+msgid "Starting time"
+msgstr ""
+
+#: event.php3:1284
+msgid "Ending time"
+msgstr ""
+
+#: event.php3:1345
+msgid ""
+"If a long event only occurs on certain days of the week, "
+"check the appropriate days"
+msgstr ""
+
+#: event.php3:1354
+msgid "Description"
+msgstr ""
+
+#: event.php3:1363
+msgid "make sure it's cleared with the proper people"
+msgstr ""
+
+#: event.php3:1373 event.php3:1386
+msgid "check all that apply, or none for %s1"
+msgstr ""
+
+#: event.php3:1387
+msgid "all"
+msgstr ""
+
+#: event.php3:1406
+msgid "URL for further info"
+msgstr ""
+
+#: event.php3:1407
+msgid "please include &quot;http://&quot"
+msgstr ""
+
+#: event.php3:1421
+msgid "Check this box to keep the event hidden from off-campus browsers."
+msgstr ""
+
+#: event.php3:1433
+msgid "Preapprove this event."
+msgstr ""
+
+#: genIndex.php3:28
+msgid "%s1 rows selected."
+msgstr "%s1 righe selezionate."
+
+#: genIndex.php3:82
+msgid "ERROR"
+msgstr "ERRORE"
+
+#: genIndex.php3:95
+msgid "Index generation completed."
+msgstr "Generazione indice completata."
+
+#: genIndex.php3:120
+msgid "Click the submit button to regenerate your calendar's index."
+msgstr ""
+
+#: help-box.php3:36 help-box.php3:44
+msgid "Help"
+msgstr "Aiuto"
+
+#: help-box.php3:92
+msgid "Help is available for the following topics:"
+msgstr "L'aiuto e' disponibile per i seguenti argomenti:"
+
+#: help-box.php3:95
+msgid "General help"
+msgstr ""
+
+#: login-box.php3:29
+msgid "Logging In"
+msgstr ""
+
+#: login-box.php3:64 login-box.php3:87
+msgid "Log in"
+msgstr "Log in"
+
+#: login-box.php3:65
+msgid ""
+"In order to log in, you must use a secure connection (SSL).  Click %s1here%s2"
+"to switch to an SSL connection."
+msgstr ""
+"Per accedere bisogna utilizzare una connessione sicura (SSL).  Cliccare "
+"%s1qui%s2 per passare a una connessione SSL."
+
+#: login-box.php3:210
+msgid "You are currently not logged in."
+msgstr "Non si e' attualmente connessi."
+
+#: login-box.php3:211
+msgid "Use the login box to the left to log in."
+msgstr "Usare il box di login sulla sinistra per accedere."
+
+#: modify-box.php3:31
+msgid "Event Modification"
+msgstr ""
+
+#: modify-box.php3:56
+msgid "You are not allowed to modify events."
+msgstr "Non si ha l'autorizzazione per modificare l'evento."
+
+#: modify-box.php3:166
+msgid ""
+"You are not allowed to modify events, but your changes have been submitted "
+"for approval."
+msgstr ""
+"Non si ha l'autorizzazione per modificare l'evento, ma le modifiche saranno "
+"inviare per l'approvazione."
+
+#: modify-box.php3:168
+msgid "Event update succeeded."
+msgstr "Aggiornamento eventi avvenuta."
+
+#: modify-box.php3:264
+msgid "1 event is modifiable."
+msgstr ""
+
+#: modify-box.php3:268
+msgid "%s1 events are modifiable."
+msgstr ""
+
+#: modify-box.php3:299
+msgid "Modify this event."
+msgstr ""
+
+#: search-box.php3:27
+msgid "Searching for Events"
+msgstr ""
+
+#: search-box.php3:43 search-box.php3:65 search-box.php3:75
+msgid "Search"
+msgstr "Ricerca"
+
+#: search-box.php3:55
+msgid "Search for events containing:"
+msgstr "Trova gli eventi contenenti:"
+
+#: search-box.php3:69
+msgid "Advanced Search"
+msgstr "Ricerca avanzata"
+
+#: search-box.php3:116
+msgid "Advanced Search Form"
+msgstr "Mascheda di ricerca avanzata"
+
+#: search-box.php3:131
+msgid "Search for events that match the following:"
+msgstr "Trova gli eventi contenenti:"
+
+#: search-box.php3:134
+msgid "Title contains:"
+msgstr "Il titolo contiene:"
+
+#: search-box.php3:143
+msgid "Description contains:"
+msgstr "La descrizione contiene:"
+
+#: search-box.php3:160
+msgid "Occurs on a:"
+msgstr "Occorre su un:"
+
+#: search-box.php3:168
+msgid "Location is any of:"
+msgstr "Locazione e' una di:"
+
+#: search-box.php3:176
+msgid "Category is any of:"
+msgstr "Categoria e' una di:"
+
+#: search-box.php3:184
+msgid "Audience is any of:"
+msgstr "Audience e' uno di:"
+
+#: submit-box.php3:29
+msgid "Event Submission"
+msgstr ""
+
+#: submit-box.php3:47 submit-box.php3:52 submit-box.php3:65
+msgid "Submit"
+msgstr "Invio"
+
+#: submit-box.php3:53
+msgid "You are not allowed to submit events."
+msgstr "Non si hanno i permessi necessari per inviare eventi."
+
+#: submit-box.php3:87
+msgid ""
+"You can use the &quot;Help&quot; box for more information on this page.  "
+"All that is required for an event is the title, description, and a "
+"starting date (the starting time is optional)."
+msgstr ""
+
+#: submit-box.php3:136
+msgid "Event submission succeeded."
+msgstr "Invio evento avvenuta."
+

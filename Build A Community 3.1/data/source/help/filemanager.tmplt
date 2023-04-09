@@ -1,0 +1,23 @@
+<TABLE WIDTH=400><TR><TD>
+<CENTER><FONT SIZE=+1>File Manager Help</FONT></CENTER>
+<P>This table lists all of your existing files, where you can modify them in many different ways.  Here are explanations for the clickable terms found in the table: <BR>
+<UL>
+<LI><B>Create a Directory</B> allows you to create a new folder that can store additional files or directories.  The main directory on this page is <B>/</B>.
+<LI><B>Upload</B> allows you to upload files stored on your computer to the directory.
+</UL>
+<UL>
+<LI><B>Type</B> (sorts by file type)
+<LI><B>Name</B> (sorts alphabetically by file name)
+<LI><B>Size</B> (sorts by file size)
+<LI><B>Modified Date</B> (sorts by date on which the files were last modified)
+</UL>
+<UL>
+<LI><B>Edit</B> allows you to quickly open a specific file in the HTML editor.<BR>
+<FONT SIZE=-1><B>This does not apply to all files and is recommended for those who have advanced HTML knowledge only.</B></FONT>
+<LI><B>Properties</B> gives you some quick information (name, size, etc) on a specific file and provides a quick link that you can copy and paste.
+<LI><B>Manage</B> allows you to modify your files by giving you the options to copy, rename, move, and delete them.
+</UL>
+
+
+</TABLE>
+

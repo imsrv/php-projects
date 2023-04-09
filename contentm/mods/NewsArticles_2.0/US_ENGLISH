@@ -1,0 +1,41 @@
+<?php
+/*
+US_ENGLISH
+Language Definition File for News Article Module Version 2.0
+Translation By David N. Simmons (http://www.dsiware.com)
+*/
+define("MODLANG_1","Module Load Error :");
+define("MODLANG_2","This module has not been installed");
+define("MODLANG_3","Install Now");
+define("MODLANG_4","Module Installed");
+define("MODLANG_5","News Articles Settings");
+define("MODLANG_6","Number of headlines to display per page");
+define("MODLANG_7","Length of headline preview text in characters");
+define("MODLANG_8","Save Settings");
+define("MODLANG_9","Configuration Saved");
+define("MODLANG_10","Manage News Articles");
+define("MODLANG_11","There are currently");
+define("MODLANG_12","articles");
+define("MODLANG_13","New Article");
+define("MODLANG_14","Edit Article");
+define("MODLANG_15","Delete Article");
+define("MODLANG_16","Publish Date");
+define("MODLANG_17","Headline Text");
+define("MODLANG_18","Author / Source");
+define("MODLANG_19","Article Content");
+define("MODLANG_20","Add Article");
+define("MODLANG_21","Edit Article");
+define("MODLANG_22","Publish Date");
+define("MODLANG_23","Headline Text");
+define("MODLANG_24","Author / Source");
+define("MODLANG_25","Artcle Content");
+define("MODLANG_26","Save Changes");
+define("MODLANG_27","Article Created");
+define("MODLANG_28","Changes Saved");
+define("MODLANG_29","Article Deleted");
+define("MODLANG_30","preview length must be a number");
+define("MODLANG_31","headlines per page must be a number");
+define("MODLANG_32","you must enter a news headline");
+define("MODLANG_33","you must enter news body text");
+define("MODLANG_34","Delete this article ?");
+?>

@@ -1,0 +1,98 @@
+<CENTER>
+<TABLE WIDTH="100%" border=0>
+
+	<TR><TD WIDTH="20%"></TD>
+		<!--first column-->
+		<TD width="30%" valign="top">
+
+			<UL class="orange">
+				<li><a href="#%ACTION%#?cmd=run">Run generator</a>
+					<div>
+					Start the fake hits generator.
+					</div>
+
+				<li><a href="#%ACTION%#?cmd=project">Saved projects</a>
+					<div>
+					Manage saved project settings from your previous
+					generator settings.
+					</div>
+			</UL>
+			
+			<TEMPLATE safe_mode>
+				<div class=safe_mod>
+				<div align=center>WARNING!</div>
+				PHP is running in safe mode. This will prevent
+				the generator from running sessions longer than
+				<b>#%MAX_EXECUTION_TIME%#</b> seconds.
+				</div>
+			</TEMPLATE>
+
+			<UL class="orange">
+				<p>&nbsp;</p>
+				
+				<li><a href="#%ACTION%#?cmd=change">Change account settings</a>
+					<div>
+					Change the username and (or) the password you
+					use to log in the application.
+					</div>
+
+				<li><a onClick="return confirm('You are about to sign out.\nAre you sure?');"
+					href="#%ACTION%#?cmd=logout">Sign out</a>
+			</UL>
+
+		</TD>
+
+
+		<!--second column-->
+		<TD WIDTH="30%" valign="top">
+
+			<UL class="orange">
+				<li><a href="#%ACTION%#?cmd=proxy">Proxies</a>
+					<div>
+					Manage the sets of proxy servers. Proxy servers
+					are used to check web pages through the generator.
+					</div>
+
+				<li><a href="#%ACTION%#?cmd=referer">Referrers</a>
+					<div>
+					Manage the sets of referrers. The HTTP Referer
+					identifies the internet address(web, email, etc.)
+					that referred loaded URL address.
+					</div>
+
+				<li><a href="#%ACTION%#?cmd=user-agent">User-Agents</a>
+					<div>
+					Edit the list of user-agents used in the generator.
+					User-Agent is a field in HTTP requests, that identifies
+					the software which the client uses.
+					</div>
+
+				<li><a href="#%ACTION%#?cmd=upload">Upload files</a>
+					<div>
+					Use this tool to upload proxy servers, user-agents<br>
+					and referrers list.
+					</div>
+
+				<li><a href="#%ACTION%#?cmd=proxy-extractor">Proxy extractor</a>
+					<div>
+					Easy-to-use tool that allow you to create proxy server list
+					from HTML or text files.
+					</div>
+
+				<li><a href="#%ACTION%#?cmd=log-extractor">Web-server log extractor</a>
+					<div>
+					Create your own referrer and user-agent lists from web-server access logs.
+					</div>
+
+			</UL>
+		</TD>
+	<TD WIDTH="20%"></TD></TR>
+</TABLE>
+
+</CENTER>
+
+
+<MESSAGE>
+html_title: Menu
+
+</MESSAGE>

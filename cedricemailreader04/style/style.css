@@ -1,0 +1,33 @@
+BODY {
+	FONT-SIZE: 11px; MARGIN: 0px 0px 0px 0px; COLOR: #000000; FONT-FAMILY: tahoma,sans-serif; BACKGROUND-COLOR: #ECECEC
+}
+INPUT {
+	FONT-SIZE: 11px; FONT-FAMILY: tahoma,sans-serif
+}
+TABLE {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 11px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; FONT-FAMILY: tahoma,sans-serif
+}
+P {
+	COLOR: #000000; FONT-SIZE: 11px; FONT-FAMILY: tahoma,arial, sans-serif;
+}
+A {
+	COLOR: #000000; FONT-SIZE: 11px; FONT-FAMILY: tahoma,arial, sans-serif; TEXT-DECORATION: none; FONT-WEIGHT: bold
+}
+.s {
+	FONT-SIZE: 11px; FONT-FAMILY: tahoma,sans-serif; COLOR: #DFDFDF; FONT-WEIGHT: bold
+}
+.swb {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #FFFFFF; FONT-FAMILY: tahoma,sans-serif
+}
+.f {
+	FONT-SIZE: 11px; FONT-FAMILY: tahoma,sans-serif; COLOR: #666666
+}
+.Tdom {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #C0C0C0; FONT-FAMILY: tahoma,sans-serif
+}
+TABLE.Mtable TD {
+	BORDER-BOTTOM: #999999 1px solid
+}
+A.tab {
+	FONT-SIZE: 11px; COLOR: #ffffff; FONT-FAMILY: Tahoma, san-serif; TEXT-DECORATION: none
+}

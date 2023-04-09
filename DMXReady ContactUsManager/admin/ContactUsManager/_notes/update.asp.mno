@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Category" value="name:CategoryID;datatype:3,name:CategoryName;datatype:202,name:ParentCategoryID;datatype:3,name:CategoryDesc;datatype:203" />
+	<infoitem key="UD_Lookup_State" value="name:StateID;datatype:3,name:StateName;datatype:202,name:StateShortName;datatype:202" />
+	<infoitem key="UD_Lookup_Country" value="name:CountryID;datatype:3,name:CountryName;datatype:202" />
+</info>

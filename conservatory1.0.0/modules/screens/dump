@@ -1,0 +1,72 @@
+<?
+	/* 
+	** recursive function that spits out all parts of a wing 
+	*/
+	function getWingContents($startWing)
+	{
+		global $DatabaseLink;
+		global $Browser_Admin;
+
+		$dateToUse = Date("U");
+
+		print("<DL><P>\n\n");
+
+		/*
+		** show all the wings
+		*/		
+		$Query = "SELECT ID, Title ";
+		$Query .= "FROM wing ";
+		$Query .= "WHERE Parent=$startWing ";
+		if($Browser_Admin != "YES")
+		{
+			$Query .= "AND Private='N' ";
+		}
+		$Query .= "ORDER BY Title ";
+
+		$DatabaseResult = mysql_query($Query, $DatabaseLink);
+		while($DatabaseRow = mysql_fetch_row($DatabaseResult))
+		{
+			$door_ID = $DatabaseRow[0];
+			$door_Title = $DatabaseRow[1];
+
+			/* 
+			** put a line telling what the wing is
+			*/	
+			echo "<DT><H3 FOLDED ADD_DATE=\"$dateToUse\">$door_Title</H3>\n\n";
+	
+			/* 
+			** call getWingContents to get this branch
+			*/
+			getWingContents($door_ID);
+		}
+
+
+		/* show all the items */
+		$Query = "SELECT Title, URL, Description ";
+		$Query .= "FROM item ";
+		$Query .= "WHERE Wing=$startWing ";
+		$Query .= "ORDER BY Title ";
+		$DatabaseResult = mysql_query($Query, $DatabaseLink);
+		while($DatabaseRow = mysql_fetch_row($DatabaseResult))
+		{
+			$item_Title = $DatabaseRow[0];
+			$item_URL = $DatabaseRow[1];
+			$item_Description = $DatabaseRow[2];
+			
+			print("<DT><A HREF=\"$item_URL\" ");
+			print("ADD_DATE=\"$dateToUse\" LAST_VISIT=\"$dateToUse\" ");
+			print("LAST_MODIFIED=\"$dateToUse\">$item_Title</A>\n\n");
+			print("<DD>$item_URL<DD>$item_Description");
+		}
+
+
+		print("</DL><P>\n\n");
+
+	}
+
+	/* 
+	** start from main hall 
+	*/
+	getWingContents(0);
+
+?>

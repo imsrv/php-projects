@@ -1,0 +1,896 @@
+# --------------------------------------------------------------------
+#
+#                         MailChek Version 2.00
+#
+#                           Library functions
+#                          Supplied by  Virus
+#                          Nullified by CyKuH
+#
+# Copyright  ©2001-2002 Chez Surette Art, All Rights Reserved
+#
+# Installation or use of this software constitutes acceptance of the
+# terms of the Licence agreement contained in the accompanying file
+# 'Licence.txt'. This agreement is a legal contract, which specifies
+# the terms of the license and warranty limitation between you and
+# Chez Surette Art. Please read carefully the terms and conditions
+# contained in the Licence before installing or using this software.
+# Unless you have a different License agreement with Chez Surette Art,
+# installation or use of this software signifies your acceptance of
+# the License agreement and warranty limitation terms contained therein.
+# If you do not agree to the terms of the agreement, promptly delete
+# and destroy all copies of this software.
+#
+#    Filename : mailchek.lib
+# -------------------------------------------------------------------
+
+##################  DO NOT EDIT BELOW THIS LINE!!  ###################
+
+###########################  Parse_message  ###########################
+#
+#  This subroutine extracts and formats message and attachments from
+#  @message and puts it in @msg for the caller.
+#
+# Requires prior setting of global vars: 
+#     @msg = ();
+#     @message = @$MESS; (raw email message from POP server hash array)
+#     ref_message = \@message; (hash array from message list)
+#     $message_line_number = -1;
+#     $headsw = 0 or 1;
+#
+# Called with &Parse_message (1,0,0,$headsw)
+# Outputs body of message with attachments to @msg
+#
+#####################################################################
+
+################## Formats a message for printing
+sub Parse_message {
+    my $email_message = shift;
+    my $boundary1 = shift;
+    my $alternative1 = shift;
+    my $normal_header = shift;
+
+    my $start_attach_line = $message_line_number + 1;
+
+&trace("print_message: sal",$start_attach_line,"mln",$message_line_number) if($debug);
+
+    (my $ref_header,$message_line_number) = &Get_head(\@message,$message_line_number);
+    my %header = Parse_header($ref_header);
+
+&trace("after get_head: sal",$start_attach_line,"mln",$message_line_number) if($debug);
+
+    if ($email_message) {   # This is an email message, so print out the header info.
+	if ($start_attach_line) {    # Print out this line if we are in an attachment
+	    push (@msg, "<center>This attachment is an email sent by <b>",HTML_encode($header{'from'}),".</b></center><br>");
+	}
+	else {      # This is the main email ( since it's line 0 ), this are the names from the header
+	    $names = "$header{'from'},$header{'to'},$header{'cc'}";    #This is for the adding addresses
+	    $names =~ s/,,/,/g;        # Take out any 2 commas in a row
+	    $names =~ s/"/&quot;/g;       # so as not to confuse the html, replace quotes
+	    $names =~ s/'/&#39;/g;
+	}
+
+    if ($normal_header)   {&Print_header(\%header,$start_attach_line)}
+    else   {&Print_full_header (\%header)}
+    }
+    if ($header{'content-type'} =~ /multipart\/(alternative)?.*boundary/i) { # we have an attachment
+	my $alternative = $1 ? 1 : 0;
+	(undef,my $boundary)= split /boundary\=/i,$header{'content-type'},2;
+	$boundary =~ s/.*?([^";]{1,69}).*/--$1/;   # boundary stops at ; or "
+	$boundary =~ s/(.*?)\s+$/$1/;   # take off trailing space just in case
+	&Junk_to_boundary($ref_message,$boundary); # Trash up to the first boundary
+	my $more_attachments = 1; # This is the flag that we haven't seen the last attachment
+	while ($more_attachments) {    # Go through and take out the attachments (it's not an alternative)
+	    $more_attachments = &Parse_message(0,$boundary,$alternative);
+	    push (@msg, "<hr>") if ($more_attachments and !$alternative);
+	}
+	# If we have a multipart/alternative this might not be our last attachment
+	$more_attachments = &Junk_to_boundary($ref_message,$boundary1) if $boundary1;
+	return $more_attachments;
+    }
+    if ($header{'content-type'} =~ /rfc822/i) { # IF ITS RFC, take out the header and print it
+	my $more_attachments = &Parse_message(1,$boundary1,0);
+	return $more_attachments;
+    }
+    my ($ref_attach_body,$more_attachments);
+
+    if ($boundary1) {
+	($ref_attach_body,$more_attachments) = &Get_to_boundary($ref_message,$boundary1);
+	return 1 if ($alternative1 and $more_attachments);
+    }
+    else {
+	$ref_attach_body = $ref_message;
+    }
+
+    if ($header{'content-transfer-encoding'} =~ /base64/i) { # IT'S A BASE64 CODING SCHEME (DO NOTHING WITH IT NOW)
+	# Now lets show them how to get the file
+	my $filename = &Get_name(\%header);
+
+&trace("start attach: sal",$start_attach_line,"mln",$message_line_number) if($debug);
+
+	if ($header{'content-type'} =~/(image|video|application\/octet-stream)/i) { #it's an IMAGE or VIDEO, just show it, no link
+	    push (@msg, "<CENTER><IMG SRC=\"attach.cgi/$filename?MID=$MID&sal=$start_attach_line&eal=$message_line_number\">",
+	      "<br>Right-click to save image",
+		"</CENTER>");
+	}		# End of IMAGE
+	else {		#OK, it's BASE64, but it's NOT an image.  (future: add to both types to show and decoding types
+	    push (@msg, "<center><TABLE border=1 cellspacing=0 cellpadding=2 bgcolor='#CCCCCC'>",
+	      "<tr><td colspan=2 align='center'>Attachment</td><tr>",
+		"<tr><td>attachment type:</td><td>",(split /;/,$header{'content-type'},2)[0],"</td></tr>",
+		  "<tr><td>attachment name:</td><td><b>$filename</b></td></tr>",
+		    "<tr><td colspan=2 align='center'><a href=\"attach.cgi/$filename?MID=$MID&sal=$start_attach_line&eal=$message_line_number\" target=\"new\">View/Save &quot;$filename&quot; in new window</a></td></tr>",
+#		      "<tr><td colspan=2 align='center'><a href='javascript:Detach($start_attach_line,$message_line_number)'>Save &quot;$filename&quot; to Upload Area</a></td></tr>",
+			"</table></center>");
+	}		# End of No Image
+	return $more_attachments;
+    }			# End of BASE64   ----   put in for UUencode too
+
+    if ($header{'content-type'} =~/^application/i) { #it's an application but in text format it seems
+	my $filename = &Get_name(\%header);
+	push (@msg, "<center><TABLE border=1 cellspacing=0 cellpadding=2 bgcolor='#CCCCCC'>",
+	  "<tr><td colspan=2 align='center'>Attachment</td><tr>",
+	    "<tr><td>attachment type:</td><td>",(split /;/,$header{'content-type'},2)[0],"</td></tr>",
+	      "<tr><td>attachment name:</td><td><b>$filename</b></td></tr>",
+		"<tr><td colspan=2 align='center'><a href=\"attach.cgi/$filename?MID=$MID&sal=$start_attach_line&eal=$message_line_number\" target=\"new\">View/Save &quot;$filename&quot; in new window</a></td></tr>",
+#		  "<tr><td colspan=2 align='center'><a href='javascript:Detach($start_attach_line,$message_line_number)'>Save &quot;$filename&quot; to Upload Area</a></td></tr>",
+		    "</table></center>");
+	return $more_attachments;
+    }
+
+    # FROM HERE WE JUST PRINT OUT THE MESSAGE
+    if ($header{'content-transfer-encoding'} =~ /^quoted-printable/i) {   # Check for quoted-printable
+
+&trace ("qp-before","<br>@$ref_attach_body") if($debug);
+
+	&QP_decode($ref_attach_body);
+	push (@quote,  @$ref_attach_body);  # Only want message text for reply quote
+
+&trace ("qp-after","<br>@quote") if($debug);
+
+    }
+    # NOW WE JUST PRINT IT
+    elsif ($header{'content-type'} =~ /html/i) {   # make sure all the links goto a new window
+	push (@quote,  @$ref_attach_body);  # Only want message text for reply quote
+
+&trace ("html","<br>@quote") if($debug);
+
+	foreach (@$ref_attach_body) {
+#	    s/(<a href=\S*?).*?>/$1 target=new>/gi;
+#	    s/(<a href=\S*).*>/$1 target=new>/gi; # Caught this little sucker. 2000/08/01
+	    s/(<a )(href=.+>)/$1 target="new" $2/gi; # Nope. This one does. 2002/01/11
+	}
+    }
+    else {  # it's not html, so HTML-ify it if possible.
+	push (@quote,  @$ref_attach_body);  # Only want message text for reply quote
+
+&trace ("text-plain","<br>@quote") if($debug);
+
+	&HTML_encode($ref_attach_body) unless ($header{'content-type'} =~ /html/i);
+    }
+
+    $num_lines_printed += @$ref_attach_body;
+#    push (@msg, "<DIV style='background-color:yellow; layer-background-color:yellow; width:100%'>");
+    push (@msg,  "\n<DIV>");
+    push (@msg,  @$ref_attach_body);
+    push (@msg,  "</DIV>");
+    return $more_attachments;
+}
+################ Format friendly header with Address Book add button
+sub Print_header {
+    my %head=%{$_[0]};
+    my $start_attach_line = $_[1];
+
+    $head{'date'}		="Unknown" 			unless ($head{'date'});	# Default entries for mail info
+
+### MOD 2001/04/10 (convert GMT offset to absolute time zone)
+    $head{'date'} = &Format_date ($head{'date'});
+### MOD END
+
+    $head{'from'}		="Unknown" 			unless ($head{'from'});
+    $head{'subject'}	        ="-None-" 			unless ($head{'subject'});
+    $head{'to'}			="None Listed" 	                unless ($head{'to'});
+
+    
+    push (@msg, "<table width=100%><tr><td><table cellspacing=0 cellpadding=0 border=0>");
+    foreach my $field ('Date', 'From', 'Resent-From', 'Sender', 'Reply-To', 'Subject', 'To', 'cc') {
+	push (@msg, "<tr><td align='right' valign='top'>$mainfont<b>$field:\&nbsp\;</b></td><td valign='top'>$mainfont", $head{lc $field},"</td></tr>") if $head{lc $field};
+    }
+    push (@msg, "</table></td></tr><tr><td><hr width=100%></td></tr></table><br>");
+
+}
+###################  Entire email header with bolded headings
+sub Print_full_header {
+    my %head=%{$_[0]};
+
+    push (@msg, "<table width=100%><tr><td><table cellspacing=0 cellpadding=0 border=0>");
+ 
+    foreach (keys %head)   {
+	push (@msg, "<tr><td align='right' valign='top'><b>$_:\&nbsp\;</b></td><td valign='top'>", $head{lc $_},"</td></tr>") if $head{lc $_};
+    }
+    push (@msg, "</table></td></tr><tr><td><hr width=100%></td></tr></table><br>");
+
+}
+
+### Convert email header to key-value array
+sub Parse_header {
+    my $header;
+    my %header=();
+
+    while ($header = pop @{$_[0]}) { # Go through the header from the end.
+	while ($header =~ s/^\s+// && # If it starts with space (take it out too) and more @header (rfc822 says this one)
+
+	       ($_ = pop @{$_[0]})) { # Not taking out trailing space - I can see using it
+	    $header = ($_ . $header);
+	}
+	my ($header_field, $header_value) = split /:\s*/,$header,2; # split after the colon
+	$header{lc $header_field} .= ($header_value); # assign all fields with lowercase field
+    }
+    return %header;
+}
+###  Fancy date/time formatting
+sub Parse_email_date {
+
+use Time::Local;
+
+    my @MoY = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
+    my %MoY;
+    @MoY{@MoY} = (1..12);
+    my @Zone = qw/AST ADT EST EDT CST CDT MST MDT PST PDT/;
+    my %Zone;
+    @Zone{@Zone} = qw/-0400 -0300 -0500 -0400 -0600 -0500 -0700 -0600 -0800 -0700/;
+    if ($_[0] =~ /\s*(\d\d?)\s*([JFMASOND][a-z][a-z])\s*(\d\d\d\d)\s*(\d\d):(\d\d):?(\d\d)?\s*([\w+-]{1,5})?/)
+      {
+	  my $zone_offset = 0;
+	  return eval {
+	      my $t = Time::Local::timegm($6, $5, $4, $1, $MoY{$2}-1, $3-1900);
+	      if ($7) {
+		  my $time_adjust = $Zone{$7} || $7;
+		  # the timezone better be all numbers now ( with a + or - ), or set it to GMT.
+		  if ($time_adjust !~ /^[+-]\d{4}$/) {$time_adjust = '+0000'};
+		  my ($sign, $hour_off, $min_off) = unpack("a a2 a2",$time_adjust);
+		  $zone_offset = ($min_off * 60) + ($hour_off * 3600) * (($sign eq '+') ? 1 : -1);
+	      }
+	      $t < 0 ? time : ($t - $zone_offset);   # current time is the default time for the message
+	  }
+      }
+    else { return time }
+}
+### Extract message header
+sub Get_head {
+    my $message_line_number = $_[1];
+    my (@head);
+    while ($_ = shift @{$_[0]}) { # take off the header
+
+	$message_line_number++;
+	if ($_ eq "\n") {
+	    last;
+	}
+	push @head, $_;
+    }				# Now message is just the body
+    chomp @head;
+    return (\@head,$message_line_number);
+}
+
+###  Discard everything in message until next boundary
+sub Junk_to_boundary {
+    while ($_ = shift @{$_[0]}) {
+	$message_line_number++;
+	if (/^\Q$_[1]\E(\-\-)?/) { # Take off the top until we get to the first attach
+	    return $1 ? 0 : 1; # If there is -- at end of boundary, we are done with attachments.
+	}
+    }
+    &End_of_file;
+}
+###  Find attachment name
+sub Get_name {
+    foreach (values %{$_[0]}) {	# through the header, line by line
+	if (/name\=/) {
+	    (undef,my $attach_name) = split /name\=/;
+	    $attach_name =~ tr/ "'?&,/_/d;   # replace spaces and remove everything else
+	    return $attach_name;
+	}
+    }
+    return "no_name";
+}
+###  Find next boundary marker in message
+sub Get_to_boundary {
+    my (@body);
+    while ($_ = shift @{$_[0]}) {
+	$message_line_number++;
+	if (/^\Q$_[1]\E(\-\-)?/) {
+	    return \@body, (($1) ? 0 : 1);
+	}
+	push @body, $_;
+    }
+    &End_of_file;       # this means we reached the end of the file before we should
+}
+###  Quoted-printable attachments
+sub QP_decode {
+    foreach (@{$_[0]}) {
+	s/[ \t]+?(\r?\n)/$1/g;	# These are the rules for QP
+	s/=\r?\n//g;
+	s/=([\da-fA-F]{2})/pack("C",hex($1))/ge;
+    }
+}
+###  Convert message text to HTML whereever possible
+sub HTML_encode {
+    if (ref $_[0] eq "ARRAY" ) {
+	foreach (@{$_[0]}) {
+	    s/</\&lt\;/g;  s/>/\&gt\;/g;   # replace the < and >
+	    s/((https?|ftp|telnet):[^\s"'>)]*)/<A href\=\"$1\" target=new><font color=red>$1<\/font><\/a>/g; # if is's a URL, anything till the next space
+	    s/([\w.-]+@[\w.-]+)/<a href=\"$ENV{'SCRIPT_NAME'}?action=compose&to=$1\" target=new><font color=red>$1<\/font><\/a>/g; # And mail
+	    s/\n/<br>/;     # Change all new lines to html new lines
+	}
+    }
+    else {
+	$_ = shift;
+	s/</\&lt\;/g;  s/>/\&gt\;/g; # replace the < and >
+	s/((https?|ftp|telnet):[^\s"'>)]*)/<A href\=\"$1\" target=new><font color=red>$1<\/font><\/a>/g; # if is's a URL, anything till the next space
+	s/([\w.-]+@[\w.-]+)/<a href=\"$ENV{'SCRIPT_NAME'}?message&$1\" target=new><font color=red>$1<\/font><\/a>/g; # And mail
+	return $_;
+    }
+}
+###  EOF error
+sub End_of_file {
+   $bulletin .= "End of file $MID reached before it should. There may be more attachments";
+}
+
+###  Produces clean, professional-looking message header
+sub Fmt_header  {
+if ($head{'from'} =~ s/([\w.-]+@[\w.-]+)//) {$address = $1}    # Take out the email address
+if ($head{'reply-to'} =~ /([\w.-]+@[\w.-]+)/) { $address = $1 }  # If there is a reply to, use it.
+$head{'from'} =~ s/^[\s()<>"]*(.*?)[\s()<>"]*$/$1/;      # Take out leading and trailing space and enclosers
+
+if ($head{'from'} and $address) {
+$from = "($head{'from'}) $address";
+}
+else { $from = $address }
+
+$from =~ s/"//g;       # gotta take out all the quotes, just in case
+$from = "- not given -" unless $from;
+$from =~ s/([|%])/uc sprintf("%%%02x",ord($1))/eg;   #escape these characters for saving
+$head{'from'} = $from;
+$subject = $head{'subject'} || "- none -";
+$subject =~ s/([|%])/uc sprintf("%%%02x",ord($1))/eg;   #escape these characters
+$subject =~ s/\s/ /g;  # Remove troublesome non-alpha
+$head{'subject'} = $subject;
+$head{'to'} =~ s/"//g;
+$head{'cc'} =~ s/"//g;
+$head{'boundary'} =~ s/\"//g if ($head{'boundary'});
+$head{'date'} = &Format_date ($head{'date'});
+
+return;
+}
+###  Re-format dates without time zone offset
+sub Format_date   {
+    my @Zone = qw/-0400 -0300 -0500 -0400 -0600 -0500 -0700 -0600 -0800 -0700/;
+    my %ZONE;
+    @ZONE{@Zone} = qw/AST ADT EST EDT CST CDT MST MDT PST PDT/;
+
+    if ($_[0] =~ /\d{1,2}:\d\d:?\d\d?\s*([\w+-]{1,5})?/)
+   {
+        $zone = $1;
+       $_[0] =~ s/$1/$ZONE{$zone}/ if ($ZONE{$zone});
+    }
+return $_[0];
+
+}
+
+################ Add attachments to outgoing email $message
+sub attachments   {
+   my $attachdir = shift @_;
+   my $temp, $type, $ext;
+   my %attach_type = ('jpg' =>'image/jpeg',  # These are the content types to check
+		   'jpeg'=>'image/jpeg',  # Otherwise we give whatever.
+		   'gif' =>'image/gif',
+		   'png' =>'image/png',
+		  );
+
+
+   foreach $attach (@uploaded)   {
+
+&trace("attach","$attachdir/$attach") if ($debug);
+
+	next unless (-e "$attachdir/$attach");
+	if (-T "$attachdir/$attach") { # this is a test for a text file
+	    &oops ("Unable to open  attachment $attach: $!") unless (open (ATTACH,  "$attachdir/$attach"));
+	    $temp = "--$boundary$LF";
+	    $type = 'plain';
+	    $attach =~ /.*\.(.*)$/; # Grep the extension as $1
+	    if ($1 =~ /^htm/i) {
+		$type = 'html';
+	    }		# both these work
+	    $temp .= "Content-Type: text/$type;$LF\tname=\"$attach\"$LF";
+	    $temp .= "Content-Disposition: inline;$LF\tfilename=\"$attach\"$LF";
+	    $temp .= "$LF";
+	    $full_body .= $temp;
+	    print MAIL $temp;
+
+	    while (<ATTACH>) {
+		print MAIL $_; # send to mail
+	    }
+	    close ATTACH;
+	    print MAIL $LF; # end of attach header
+	    $full_body .= "$LF";	# same for saved
+	    push @attached_these, $attach; # record list
+	}
+	else {	# Not a text file
+	    &oops ("Unable to open  attachment $attach: $!") unless (open (ATTACH,  "$attachdir/$attach"));
+	    $temp = "--$boundary$LF";	# MAKE SURE TO PUT IN THE = AND NOT .= TO RESET IT
+	    $attach =~ /[^.]*\.(.*)$/; # Grap the extention as $1
+	    $ext = lc($1);
+	    $type = $attach_type{$ext} || 'application/x-unknown'; # default content type
+
+#&trace ("attach", $attach, "grep", $1, "type", $type) if $debug;
+
+	    $temp .= "Content-Type: $type;$LF\tname=\"$attach\"$LF"; # with a tab in front of line, treated as
+	    $temp .= "Content-Disposition: inline;$LF\tfilename=\"$attach\"$LF"; # continuation of previous line
+	    $temp .= "Content-Transfer-Encoding: base64$LF";
+	    $temp .= "$LF";
+	    print MAIL $temp;
+	    $full_body .= $temp;
+	    $temp = "";	# reset the temp variable
+	    while (read(ATTACH, $_, 60*57)) { # takes it in a chunk at a time
+		$temp .= encode_base64($_,$LF); # Code it up baby
+	    }
+	    close ATTACH;
+	    print MAIL $temp,$LF; # temp is now the encoded attachment
+#	    $full_body .= $temp . "$LF";
+	    push @attached_these, $attach;
+	} # End else not text file
+    } # End foreach	
+    print MAIL "--$boundary--$LF";
+    $full_body .= "$boundary";
+    return ($full_body, @attached_these);
+} # End sub attachments
+
+### Professional looking date-time
+sub Set_date   {
+   $date_command = "/bin/date";
+   $date = `$date_command +"%A, %d %B, %Y %T %Z"`; chop($date);
+   $date =~ /^(\w+)/;
+   $day = $1;
+   $day = substr($day,0,3);
+   $date =~ s/$1/$day/;
+   $shortdate = `$date_command +"%D %T"`; chop($shortdate);
+   return;
+}
+
+### This sets the file location variable for each script
+sub Set_location {
+    return ($realurl, $basepath, $realurl);
+}
+
+### Delete aged temp files
+sub clean_temp   {
+   unless (opendir (TEMP, "$tempdir"))   {
+      print "Can't open $tempdir: $!. Please notify $adminemail";
+      return;
+   }
+   my ($now, $then);
+   @allfiles = readdir (TEMP);
+   close (TEMP);
+   $now = time;
+   foreach (@allfiles)   {
+      if ($_ =~ /(\d{9,}$)/)   {
+         $then = $1;
+         if (($now - $then) >= $temp_age)   {
+            unlink ("$tempdir/$_");
+         }
+      }
+   }
+}
+
+############# Upload files from user computer
+sub psupload {
+    my $path    	= shift;
+    my $inputfieldname	= shift;
+    my $newname 	= shift;
+    my $maxsize		= shift;
+
+&trace("psupload path",$path) if ($debug);
+
+    if($path) {
+	if($inputfieldname) {
+	    my $req = new CGI; 
+	    if($req->param($inputfieldname)) {
+		my $file = $req->param($inputfieldname); 
+		my $filename = $file; 
+		$filename =~ s/^.*(\\|\/)//;
+		$filename = $newname if $newname;
+		if(open(OUTFILE, ">$path/$filename")) {
+		    while (my $bytesread = read($file, my $buffer, 1024)) { 
+			print OUTFILE $buffer; 
+		    } 
+		    close (OUTFILE);
+		    if($maxsize > 0) {
+			if((-s "$path/$filename") > ($maxsize * 1024)) {
+			    unlink("$path/$filename");
+			    return("$filename was too big and has been removed.");
+			} else {
+			    return(1);
+			}
+		    } else {
+			return(1);
+		    }
+		} else {
+		   return("Unable to open the destination file $path/$filename: $!");
+		}
+
+	    } else {
+		return("The upload form was submitted without a file being uploaded.");
+	    }
+	} else {
+	    return("Can't find the name of the form input field.");
+	}
+    } else {
+	return("Can't find the absolute path to the directory where the uploaded file should be stored.");
+    }
+}
+
+#############  Delete files and directory - attachments etc.
+sub kill_files   {
+# @_ = path, list of filenames . Path includes $basepath
+my $thedir = shift (@_);
+my $killed = 1;
+
+&trace("kill_files thedir",$thedir,"files",@_) if ($debug);
+
+foreach $file (@_) { 
+   $killed = 0 unless (unlink("$thedir/$file"));
+}
+
+return $killed;
+}
+
+########## Simple data trace if $debug = 1
+sub trace   {
+my $n = @_;
+my $h;
+print "\n";
+
+for ($i=0; $i < $n - 1; $i += 2)   {
+   $h = uc($_[$i]);
+   print "$h=$_[$i+1]<br>";
+}
+print "<br>";
+}
+
+############ Forward email message
+sub forwardmail   {
+$user = &get_User;
+$popaddress = $Cookies{'address'};
+
+&trace ("forwardmail form{'mid'}" ,$form{'MID'}) if ($debug);
+
+$MID = $form{'MID'};
+
+@page = &getPage ('FORWARD');
+$gotbody = 0;
+$gotfoot = 0;
+
+while ($_ = shift @page)  {
+   if ($_ =~ /$bodytag/i)  {
+	$gotbody = 1;
+
+	print <<EOF;
+	<div align="center">
+EOF
+
+	print "<b>Previous action:</b> $bulletin <p>" if ($bulletin);
+
+	print <<"EOF";
+	<center><table width="90%" $toptablebg border="1"><tr><td align=center>
+	<table border="0" cellpadding="5" width="100%" >
+	<FORM ACTION="$ENV{'SCRIPT_NAME'}"  METHOD=POST	onSubmit="return isReady(this)">
+	<INPUT TYPE=HIDDEN NAME=action VALUE=postmail>
+	<INPUT TYPE=HIDDEN NAME="MID" VALUE=$MID>
+	<INPUT TYPE=HIDDEN NAME=option VALUE=forward>
+
+	  <tr>
+	    <td width="15%"><font face="Arial" size="-1"><b>To</b>:</font></td>
+	    <td><font face="Arial"><input type="text" name="TO" 
+	    size="20">&nbsp;&nbsp;</font></td>
+	  </tr>
+	  <tr>
+	    <td width="15%"><font face="Arial" size="-1"><b>Cc</b>:</font></td>
+	    <td><font face="Arial"><input type="text" name="CC" 
+  	    size="20">&nbsp;&nbsp;</font></td>
+	 </tr>
+	  <tr>
+	    <td width="15%"><font face="Arial" size="-1"><b>From</b>:</font></td>
+	    <td><font face="Arial"><input type="text" name="FROM" value="$form{'FROM'}"
+  	    size="20">&nbsp;&nbsp;</font></td>
+	 </tr>
+
+	 <tr>
+	    <td align=center width="25%">$mainfont<b>Subject</b>:</font></td>
+	    <td width="75%">$mainfont<font size="+1"> <input type="text" name="SUBJECT"
+	    size="50" value="[Fwd: $form{'SUBJECT'}]"></font></td>
+	  </tr>
+	  <tr>
+	    <td align=center width="100%"align="center" colspan=2>
+	      $mainfont<b>Optional message</b> <font size=1>(width=70 chars)</font>:<br>
+	      <font size="+1"><textarea NAME="MESSAGE" ROWS="20" COLS="70"
+	      WRAP="physical"></textarea></td></tr>
+	  <tr>
+	    <td align=center colspan=2><input type="submit" value="Send"</td>
+	  </tr>    
+	</form></table></td></tr></table></center>
+EOF
+   } # End if
+
+   elsif ($_ =~ /$foottag/i)  {
+	$gotfoot = 1;
+	last;
+   }
+
+   else {
+	print $_;
+   }
+} # End while (@page)
+
+
+&oops ("Missing or invalid $template BODY tag") unless ($gotbody);
+&oops ("Missing or invalid $template FOOTER tag") unless ($gotfoot);
+
+}
+
+############ Reply to email message
+sub replymail   {
+$user = &get_User;
+$popaddress = $form{'FROM'};
+$MID = $form{'MID'};
+
+&trace ("replymail mid",$MID) if ($debug);
+
+@msg = ();  # Init collector for email message
+@quote = (); # Init quoted text for reply
+
+unless (&Fmt_email ($MID))  {
+   $bulletin .= " Unable to reply to this message. ";
+   &inbox;
+}
+
+# Assemble quoted message for reply
+$subject =~ s/Re:\s*//ig; # Avoid repetition of this
+
+if ($head{'content-type'} =~ /multi.*part\//i)   {
+   $multipart = "> Content-type: $head{'content-type'}";
+   $multipart =~ s/;boundary=.+$//i;
+   $multipart .= " (attachments removed)\n";
+}
+
+@text = "\n\nOn $head{'date'} $from wrote:\n\n"; # Insert reply prefix at top
+
+# De-mystify @quote from sub QP_decode
+if (@quote)  {
+   my @temp = ();
+
+   foreach (@quote)   {
+     if ($_ eq "\n")   {
+	$_ = ">".$_;
+	push (@temp, $_);
+	next;
+     }
+
+   $_ =~ s/<.*>(.+)<*/$1/;
+   $_ =~ s/<.*>*//g;
+   $_ =~ s/.*>//;
+   $_ =~ s/\n{2,}/\n/g;
+   $_ = "> ".$_;
+   push (@temp, $_) unless ($_ eq "\n");
+   }
+@quote = @temp;
+}
+
+&trace ("reply head","<br>@text","multipart", $multipart,"quote", "<br>@quote") if($debug);
+
+push (@text, $multipart) if ($multipart); # Add header line if multi-part message
+push (@text, ">\n") if ($multipart); 
+push (@text, @quote); # Insert quoted text
+
+&trace ("reply text", "<br>@text") if($debug);
+
+@page = &getPage ('REPLY');
+$gotbody = 0;
+$gotfoot = 0;
+
+while ($_ = shift @page)  {
+   if ($_ =~ /$bodytag/i)  {
+	$gotbody = 1;
+	print <<EOF;
+	<p><div align="center">
+	<table width="90%" $toptablebg border="1"><tr><td align=center>
+	<table border="0" cellpadding="5" width="100%" >
+	<FORM ACTION="$ENV{'SCRIPT_NAME'}"  METHOD=POST ENCTYPE="multipart/form-data" 
+	onSubmit="return isReady(this)">
+	<INPUT TYPE=HIDDEN NAME=action VALUE=postmail>
+	<INPUT TYPE=HIDDEN NAME=option VALUE=upload>
+
+	  <tr>
+	    <td width="15%"><font face="Arial" size="-1"><b>To</b>:</font></td>
+	    <td><font face="Arial"><input type="text" name="TO" value="$from" 
+	    size="20">&nbsp;&nbsp;</font></td>
+	  </tr>
+	  <tr>
+	    <td width="15%"><font face="Arial" size="-1"><b>Cc</b>:</font></td>
+	    <td><font face="Arial"><input type="text" name="CC"
+	    size="20">&nbsp;&nbsp;</font></td>
+	  </tr>
+	  <tr>
+	    <td width="15%"><font face="Arial" size="-1"><b>From</b>:</font></td>
+	    <td><font face="Arial"><input type="text" name="FROM" value=$popaddress
+	    size="20">&nbsp;&nbsp;</font></td>
+	  </tr>
+	  <tr>
+	    <td align=center width="25%">$mainfont<b>Subject</b>:</font></td>
+	    <td width="75%">$mainfont<font size="+1"> <input type="text" name="SUBJECT" 
+	    size="50" value="Re: $subject"></font></td>
+	  </tr>
+	  <tr>
+	    <td align=center width="100%"align="center" colspan=2>
+	      $mainfont<b>Message</b> <font size=1>(width=70 chars)</font>:<br>
+	      <font size="+1"><textarea NAME="MESSAGE" ROWS="20" COLS="70" 
+	      WRAP="physical">@text</textarea></td></tr></table>
+
+	<table border="0" cellpadding="0" width="100%" >
+	  <tr>
+	    <td align=center width=50%><b>Attachments</b> <font size=1> (any file)</font> <br>
+	      <input type="file" name="file1"><br>    
+	      <input type="file" name="file2"><br>    
+	      <input type="file" name="file3"> </td>
+	    <td align=center width=50%><input type="submit" value="Send Reply" 
+	    name="B1"></td>
+	  </tr>    
+	</form></table></td></tr></table></div>
+EOF
+
+   } # End if
+
+   elsif ($_ =~ /$foottag/i)  {
+	$gotfoot = 1;
+	last;
+   }
+
+   else {
+	print $_;
+   }
+} # End while (@page)
+
+&oops ("Missing or invalid $template BODY tag") unless ($gotbody);
+&oops ("Missing or invalid $template FOOTER tag") unless ($gotfoot);
+
+}
+
+############### Process forwarding
+sub doforward   {
+$user = &get_User;
+
+my $MID = $_[0];
+my $text = $_[1];
+my $message_header = $_[2];
+
+&trace("mid",$MID,"message_header",$message_header) if ($debug);
+
+unless (open (MAILFILE, "$tempdir/$user/$MID"))  {
+   $bulletin .= " Unable to open $tempdir/$user/$MID: $!. ";
+   return 0;
+}   
+
+my (@message) = <MAILFILE>;
+close MAILFILE;
+
+# Remove header from message and convert to hash array
+(my $ref_header,$message_line_number) = &Get_head(\@message,1); # remove header
+my %head = Parse_header($ref_header); # create readable header
+
+if ($debug)   {
+  foreach (keys %head)   {
+     print "<b>$_:</b> $head{$_}<br>";
+  }
+}
+
+# Re-construct message header
+unshift (@message, "\n");
+unshift (@message, "Cc: $head{'cc'}\n") if ($head{'cc'});
+unshift (@message, "Reply-to: $head{'reply-to'}\n") if ($head{'reply-to'});
+unshift (@message, "From: $head{'from'}\n");
+unshift (@message, "To: $head{'to'}\n");
+unshift (@message, "Date: $head{'date'}\n");
+my $subject = $head{'subject'} or "-- none --";
+unshift (@message, "Subject: $subject\n");
+
+# Label package
+my $prefix = "\n\n-------- Original Message --------\n"; # Insert prefix at top
+unshift (@message, $prefix);
+
+&trace ("content-type",$head{'content-type'}) if ($debug);
+
+if ($head{'content-type'} =~ /multipart\/.+;\s*boundary=(.+)/i)   {
+   my $boundary = $1; 
+   $boundary =~ s/"//g;
+
+&trace("boundary",$boundary) if ($debug);
+      
+   $message_header .= "MIME-version: 1.0$LF";
+   $message_header .= "Content-type: multipart/mixed\;$LF";
+   $message_header .= "\tboundary=\"$boundary\"$LF$LF";
+   print MAIL $message_header;
+   $message_header = "This is a multi-part message in MIME format.$LF$LF";
+   $message_header .= "--$boundary$LF";
+   $message_header .= "Content-type: text/plain; charset=\"US-ASCII\"$LF$LF$text$LF";
+   print MAIL $message_header;
+   print MAIL @message;
+
+}
+
+else {	# if no attachments, just print the header and message
+    print MAIL "$message_header$LF";# Give server the message header, just to rev it up
+    $full_message .= $text; # Add message to header
+    print MAIL "$text$LF";
+    print MAIL @message;
+}
+return 1;
+}
+
+############  Upload attachment files
+sub upload   {
+my ($file, $result, $i, $path);
+my $user = &get_User;
+my $path = "$tempdir/$user";
+mkdir ($path, 0755) unless (-e "$path");
+
+&trace("upload user",$user,"path",$path) if ($debug);
+
+for ($i = 1; $i <= 3; $i++)   {
+$file = "file$i";  # Form field name
+
+if ($form{$file})   {
+$filename = $form{$file};  # Source file name to upload
+$filename =~ s/^.*(\\|\/)//;  # Strip off source path
+$result = &psupload($path, $file);
+$bulletin .= "$result" unless ($result eq "1");
+push (@uploaded, $filename);
+}
+}
+}
+
+###  Send message out using this host's sendmail function
+sub sendemail {
+$TO=$_[0];  @TO=split('\0',$TO);
+$SUBJECT=$_[1];
+$FROM=$_[2];
+$REMOTE = $_[3];
+$THEMESSAGE = $_[4];
+$REPLYTO = $_[5];
+$CC = $_[6];
+open(S, "| $REMOTE -t");
+print S "Subject: $SUBJECT\n";
+print S "From: $FROM\n";
+print S "To: $TO[0]\n";
+print S "Cc: $CC\n" if($CC);
+print S "Reply-To: $REPLYTO\n" if($REPLYTO);
+print S "$THEMESSAGE\n";
+print S "\n";
+print S ".\n";
+close (S);
+}
+
+############ Construct user $tempdir directory name from cookie
+sub get_User   {
+&oops('Enable Cookies then login') unless(&GetCompressedCookies('mailuser'));
+my $user = substr($Cookies{'id'},0,10) . substr($Cookies{'server'},0,10);
+$user =~ s/\W//g; # Remove non-alphanumeric for use in filenames
+return $user;
+}
+
+### Oops - error routine
+sub oops {
+print "\n";
+print "<html><body>";
+print "<CENTER>Oops! <b>$_[0]</b>.  Press <b>Back</b> button to try again!</center>";
+print "</body></html>";
+exit;
+}
+
+1;

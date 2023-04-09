@@ -1,0 +1,4 @@
+# Check for flood posting
+if ($user->{'score'} < 10) {
+($user->{'lastPost'} + $cfg{'flood'} >= $now) and userError($lng{'errFlood'});
+}

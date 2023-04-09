@@ -1,0 +1,92 @@
+//*********************************************//
+//*********************************************//
+//***************** Romano Chat ***************//
+//*********************************************//
+//*********************************************//
+
+1.Este surgiu de chat sem banco de dados(Romano Chat) e um chat em asp (Super Chat).
+  Infelizmente o site com chat em asp não existe mais(o link) ,caso precise do script é só entrar em contato
+comigo(romano@dcc.ufmg.br) ou com autor do chat pelo ICQ (uin=75991286).
+  Atualmente o Romano Chat tem cerca 10% dos dois chats.
+  Este site é feito com a contribuição da comunidade do site www.phpbrasil.com .Ele está com nome
+Romano Chat(Versão MySQL) . Toda contribuição(funções ,designer ,bugs) não serão recusadas e estimulo .
+Agradeço desde já todos amigos do PHPBRASIL e princilpamente tmarinho(tmarinho@argo.com.br) responsavel
+pelo layout do chat.
+  
+
+2.Este site necessita de PHP/MySQL,caso não possua vá http://www.dk3.com.Nos sites www.superphp.com.br,
+www.imasters.com.br e www.phpfree.k8.com.br há várias listas de servidores PHP/MySQL gratis.
+
+3.Edite o arquivo config.php com suas configurações.
+
+4.Para criar as tabelas, entre na pasta admin pela web e execute o arquivo index.php. Lá você
+pode criar salas ,excluir salas e ver log das ultima 5 horas de conversa das salas.
+
+5.Nesta versão foi instalado um filtro familiar .Ele não é 100% garantido , mas reduz o número de
+mensagens impróprias.Para edita-lo modifique o arquivo filtro.php .Para colocar uma nova palavra 
+e só seguir o exemplo:
+  $filtro[0]="ache";
+  $filtro[1]="pagode";
+  $filtro[2]="sertanejo";
+  
+  Neste exemplo as palavras "ache" , "pagode" e "sertanejo" não vão ser aceitos.Caso um usuario 
+mande uma mensagem para o grupo ela não vai ser postada.
+  Caso coloque mais uma palavra no filtro seguindo a logica do array.Exemplo :
+  $filtro[0]="ache";
+  $filtro[1]="pagode";
+  $filtro[2]="sertanejo"; 
+  $filtro[3]="funk"; 
+
+6.Todos os pedidos feitos por usuarios foram atendidos .  
+
+7.Versões 1.0 à 2.0 ,3.0 , 3.1 e 3.3 - Rodrigo Romano Moreira
+  Versão 2.1,3.2 - Thiago Raphael Raheem Marinho
+
+8.Report bug, Rodrigo Romano Moreira(romano@dcc.ufmg.br).
+
+9. Sugestões de Layout, Thiago Raphael Raheem Marinho (tmarinho@argo.com.br).
+
+10. Todas sugestões passam pelo crivo de Rodrigo Romano Moreira e Thiago Raphael Raheem Marinho. Versões
+quem não forem criadas pelo dois, podem ser alteradas ou removidas caso não atendam as diretrizes
+dos responsaveis.
+
+11. Este chat não tem nada de paranormal, todas os funções foram retiradas(lógico que criadas por mim) do tutorial
+do tutorial do Mauricio Vivas (você encontra no site www.phpbrasil.com e www.phpfree.k8.com.br).
+
+12. E pensar que tudo isso começou com contador em php.
+
+Changelog Versão 3.2
+
+1. Alterações no layout
+1.1 Acréscimo das salas na página principal
+1.2 Acréscimo da opção de inserir careta personalizada na página principal
+1.3 Padronização das cores e uso de estilos para facilitar a mudança de esquemas de cores do chat
+1.4 Padronização dos botões para facilitar a atualização, sendo que estes também usam esquema de cor que pode ser alterado
+1.5 Organização da área administrativa
+2. Inserção da opção de inserção de careta personalizada no setor administrativo
+3. Opção de desbloqueação de usuário banido do chat
+4. Por sugestão de Ragen (não sei qual o nome real) agora a caixa de texto de mensagem ganha foco depois de digitar alguma mensagem
+5. Apesar de oculta, existe uma opção que pode ser usada que é a internacionalização do chat.
+   Estão na pasta LANG alguns arquivos que demonstram como funciona esse sistema, só não coloquei oficialmente
+   por esperar a aprovação de todos sobre mais esta idéia, que já pode ser aproveitada na versão 4 do Rodrigo,
+   caso ele queira. Não está o chat todo, apenas os arquivos pt_BR.php e index.php, que seria o primeiro arquivo contendo o conteúdo
+   atualizável para outra lingua e o segundo arquivo a página principal como exemplo do funcionamento. As demais páginas
+   deverão ser atualizadas para o funcionamento correto desse sistema.
+
+
+Changelog Versão 3.3
+
+1.Rola sons no chat.
+2.O usuario vê as mensagens enviadas por ele reservadamente.
+
+
+OBS.: Para aqueles que desejam ter a opção de entrar no chat sem a necessidade de entrar na página inicial,
+      aqui vai uma dica: monte um formulário, na sua página, onde o campo action deve ser o endereço correto
+	  do arquivo "index.php" onde ele deve estar dessa forma "index.php?entrar=1". Além disso, devem estar disponíveis
+	  os seguintes campos: "apelido", "careta", "cor" e "vsala". Sendo que o principal é o "vsala".
+	  O campo "apelido" é o nome que a pessoa vai entrar, "careta" é a careta que a pessoa escolheu, pode ser
+	  copiado o quadro da página "caretas.php" para usar as caretas ou ainda o sistema que está na página "index.php"
+	  onde há um javascript para fazer a lista aparecer e desaparecer.
+	  O campo "cor" vem do combo "Cor do Nick" que aparece na página principal, basta copiá-lo para a página destino
+	  E por último o campo "vsala". Nessa última versão, a entrada na sala é automática, há uma lista de salas e a pessoa
+	  seleciona uma e clica em entrar. Para isso ser disponibilizado

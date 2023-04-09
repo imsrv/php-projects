@@ -1,0 +1,187 @@
+<html><head>
+<title>Cloaking Options Help</title>
+</head>
+<body bgcolor="FFFFFF">
+<center>
+<br><br>
+
+<table cellspacing="1" cellpadding="4" border="2" bgcolor="#C0C0C0" width="100%">
+<tr><td>
+<table cellspacing="10" cellpadding="3" border="0" bgcolor="#EAEAD5" width="100%">
+<tr>
+<td align="center" bgcolor="#C0C0C0">
+<font color="#400060" size="+1" face="Arial">Cloaking Options Help</font>
+</td>
+</tr>
+<tr>
+<td height="10" bgcolor="#EAEAD5">
+<br>
+<font color="#400060" size="3" face="Arial"><b>Cloaking Options:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+The detection stages can be set to <i>Active</i> or <i>Stopped</i> in any combination you wish. A page request will pass through each stage that is set to <i>Active</i> to be checked against the criteria for that stage that may identify the request as being from a spider. <br><br>For example, if <b>IP STAGE 1</b> is set to <i>Active</i>, since this stage checks only for an IP Address match, the page request will be checked against the first IP Address in the ICS database, if there is no match it will be passed on to the next <i>Active</i> stage. This process continues until one of the <i>Active</i> stages identifies the request. If all stages <b>AND</b> all /IP/=Directory=/UserAgent/& statements are exhausted without a match, then the human page is served.<br><br>
+<ul>
+<li><u>There are two exceptions to this:</u>
+<ul>
+<li>If <b>Browser MultiStage Detection</b> has been set to <i>Active</i> then a five stage check is done on the page request, if the footprint is that of a human visitor browser, then all further active stages are bypassed and the human page is served. This check goes far beyond just checking if it is a Mozilla agent, it can detect human visitors 99% of the time. The other 1% will pass through the active spider detection stages before being eliminated as a spider because it is a human visitor, and will be served the human page. Spiders will pass through <b>Browser MultiStage Detection</b> to the following active stages for detection, even if the spiders are using Mozilla as a user agent trying to emulate a regular visitor.<br><br>
+<li>The other exception is <b>Generic Spider Detection</b>. If this stage is set to <i>Active</i> then the page request is checked for a generic spider match after all other active stages have been exhausted. This ensures that only spiders not matched in any prior stages are detected by this stage.<br><br>
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#EAEAD5">
+<font color="#400060" size="3" face="Arial"><b>Browser MultiStage Detection</b>:</font>
+</td>
+</tr>
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Human Browser Footprint Detection:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Set this to <i>Active</i> to detect regular visitors through a mutlistage check. When the criteria is satisfied a human page is served otherwise it is passed on to the next active stage.<br><br> This stage can reliably detect human visitors and proxy servers which tend to carry a full visitor footprint, and since the spider detection process is avoided on a majority of hits by using this stage, it makes for a very responsive system. It is recommended that this stage be set to <i>Active</i>.<br>
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#EAEAD5">
+<font color="#400060" size="3" face="Arial"><b>Use One Spider Directory</b>:</font>
+</td>
+</tr>
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Serve All Known Spiders From One Directory:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Set this to <i>Active</i> to serve pages to detected spiders from the same optimized pages directory. This option is useful if you do not want to serve content that is specific to each detected and identified spider, rather you would prefer to serve the same set of optimized pages to all detected spiders.<br><br>
+</font>
+<font size="2" face="verdana, arial"><b>From This Directory:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+If <b>Serve All Known Spiders From One Directory</b> is set to <i>Active</i>, then a directory must be chosen to indicate where optimized pages will be retrieved from. The drop down box will display all directories that have been created in "SEdirect" for you to choose a directory to serve from.<br><br> If you choose not to serve all spiders the same optimized pages then set this to <i>Match To Spider</i> and the detected spider will be served from the directory identified in the statement with the matching IP address and User Agent.<br>
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#EAEAD5">
+<font color="#400060" size="3" face="Arial"><b>IP MultiStage Detection</b>:</font>
+</td>
+</tr>
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>IP STAGE 1:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Set this to <i>Active</i> to match spiders by IP address. If the IP address of the visitor matches one of the IP addresses or one of the IP address ranges in the ICS spider database, then a cloaked page will be served.<br><br> If you have set <b>Serve All Known Spiders From One Directory</b> to <i>Active</i> then the optimized page will be served from the directory specified in <b>From This Directory</b>. If <b>Serve All Known Spiders From One Directory</b> is set to <i>Stopped</i>, then the optimized page will be retrieved from the directory named on the statement with the matching IP address in the ICS database.<br><br>
+</font>
+
+<font size="2" face="verdana, arial"><b>IP STAGE 2:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Set this to <i>Active</i> to match spiders by <a href="classc_help.html">reverse class "c"</a> IP address <b>and</b> User Agent, both the <a href="classc_help.html">reverse class "c"</a> <b>and</b> the User Agent must be matched for an optimized page to be served.<br><br> The <a href="classc_help.html">reverse class "c"</a> match can detect a spider that comes from a range of 254 IP addresses as long as at least one IP address from that range is present in the ICS IP database <b>and</b> the User Agent defined with that IP address also matches.<br><br> If the <a href="classc_help.html">reverse class "c"</a> IP address of the visitor matches the class "c" of one of the IP addresses <b>and</b> the User Agent also matches on the <u>same</u> statement, then a cloaked page will be served.<br><br> If you have set <b>Serve All Known Spiders From One Directory</b> to <i>Active</i> then the optimized page will be served from the directory specified in <b>From This Directory</b>. If <b>Serve All Known Spiders From One Directory</b> is set to <i>Stopped</i>, then the optimized page will be retrieved from the directory named on the statement with the matching class "c" IP address <b>and</b> User Agent in the ICS database.<br><br>
+</font>
+
+<font size="2" face="verdana, arial"><b>IP STAGE 3:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Set this to <i>Active</i> to match spiders by <a href="classc_help.html">reverse class "c"</a> IP address, the <a href="classc_help.html">reverse class "c"</a> <b>and</b> all of the elements of a known spider footprint must exist for an optimized page to be served.<br><br> IP STAGE 3 can detect a spider when it carries an IP address from within a range of a known class "c" <b>and</b> it leaves a footprint with all of the elements of a known spider, at least one IP address from that range must be present in the ICS IP database for a match to occur.<br><br> If the <a href="classc_help.html">reverse class "c"</a> IP address of the visitor matches the class "c" of one of the IP addresses  <b>and</b> all of the elements of a known spider footprint, then a cloaked page will be served.<br><br> If you have set <b>Serve All Known Spiders From One Directory</b> to <i>Active</i> then the optimized page will be served from the directory specified in <b>From This Directory</b>. If <b>Serve All Known Spiders From One Directory</b> is set to <i>Stopped</i>, then the optimized page will be retrieved from the directory named on the statement with the matching class "c" IP address in the ICS database.<br><br>
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#EAEAD5">
+<font color="#400060" size="3" face="Arial"><b>User Agent MultiStage Detection</b>:</font>
+</td>
+</tr>
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>UA STAGE 1:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Set this to <i>Active</i> to match spiders by User Agent <b>and</b> full spider footprint. If the User Agent of the visitor matches a User Agent in the ICS spider database <b>and</b> a full spider footprint exists then a cloaked page will be served.<br><br>Note that this stage is not plain old User Agent cloaking. It cannot be spoofed by someone simply changing their browser's User Agent to match that of a known spider.<br><br> If you have set <b>Serve All Known Spiders From One Directory</b> to <i>Active</i> then the optimized page will be served from the directory specified in <b>From This Directory</b>. If <b>Serve All Known Spiders From One Directory</b> is set to <i>Stopped</i>, then the optimized page will be retrieved from the directory named on the statement with the matching User Agent in the ICS database.<br><br>
+</font>
+
+<font size="2" face="verdana, arial"><b>UA STAGE 2:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Set this to <i>Active</i> to match spiders by User Agent <b>and</b> partial spider footprint. If the User Agent of the visitor matches a User Agent in the ICS spider database <b>and</b> a partial spider footprint exists then a cloaked page will be served.<br><br>Note that this stage also is not plain old User Agent cloaking. It cannot be spoofed by someone simply changing their browser's User Agent to match that of a known spider. With this stage it is possible for a User Agent spoofer to have the page revealed, but the elements required to be present in the header of the request are not set by any spoofers that have been captured to date.<br><br> If you have set <b>Serve All Known Spiders From One Directory</b> to <i>Active</i> then the optimized page will be served from the directory specified in <b>From This Directory</b>. If <b>Serve All Known Spiders From One Directory</b> is set to <i>Stopped</i>, then the optimized page will be retrieved from the directory named on the statement with the matching User Agent in the ICS database.<br><br>
+</font>
+
+<font size="2" face="verdana, arial"><b>UA STAGE 3:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Set this to <i>Active</i> to match spiders by User Agent alone. If the User Agent of the visitor matches a User Agent in the ICS spider database then a cloaked page will be served.<br><br>Note that this stage <b>is</b> plain old User Agent cloaking. It can be spoofed by someone simply by changing their browser's User Agent to match that of a known spider.<br><br> If you have set <b>Serve All Known Spiders From One Directory</b> to <i>Active</i> then the optimized page will be served from the directory specified in <b>From This Directory</b>. If <b>Serve All Known Spiders From One Directory</b> is set to <i>Stopped</i>, then the optimized page will be retrieved from the directory named on the statement with the matching User Agent in the ICS database.<br><br>
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#EAEAD5">
+<font color="#400060" size="3" face="Arial"><b>Generic Spider Detection</b>:</font>
+</td>
+</tr>
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>GE STAGE 1:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Set this to <i>Active</i> to match spiders by full spider footprint. If a full spider footprint exists then a cloaked page will be served.<br><br>Note that this stage does not use any of the IP addresses or User Agents in the ICS db. This stage cannot be spoofed by someone simply changing their browser's User Agent to match that of a known spider. However it is possible for a User Agent spoofer to have the page revealed, but the elements required to be present in the header of the request are not set by any spoofers that have been captured to date.<br><br> Since we have no idea which spider was matched in this stage, only that it is a spider, a directory must be specified to serve generically optimized pages from. This is described below.<br><br>
+</font>
+<font size="2" face="verdana, arial"><b>Generic Match Served From:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+If <b>GE STAGE 1</b> is set to <i>Active</i>, then a directory must be chosen to indicate where generically optimized pages will be retrieved from. The drop down box will display all directories that have been created in "SEdirect" for you to choose a directory to serve from.<br><br> If you choose not to activate GE STAGE 1 then set <b>Generic Match Served From</b> to <i>Stage Disabled</i>. It is recommended that this stage be initially set to <i>Stopped</i>, and that <b>Log All Unknown Spider Footprints</b> be set to <i>Active</i> so that you can check what spiders you would be serving a generically optimized page to. Please refer to the section below on <b>Log All Unknown Spider Footprints</b> for additional information.<br><br>
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#EAEAD5">
+<font color="#400060" size="3" face="Arial"><b>Notification And Logging Options</b>:</font>
+</td>
+</tr>
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Email Notification Of Spider Visits:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Set this to <i>Active</i> to have ICS4.0 send a e-mail notification when a detected spider makes a request for one of your optimized pages. The e-mail will provide information on the spider making the request, and will identify which active stage detected the spider as well as which directory the page content was retrieved from. It is recommended that this stage be set to <i>Active</i>.<br><br>
+</font>
+
+<font size="2" face="verdana, arial"><b>New IP Address Detection:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Set this to <i>Active</i> to have ICS4.0 send a e-mail notification when a known spider makes a request for one of your optimized pages and it is using an IP address that is not in the ICS db you are currently using. The e-mail will provide information on the spider making the request as well as the new IP address. This email will be in addition to the one you will receive for the spidering of the page if <b>Email Notification Of Spider Visits</b> is set to <i>Active</i>. It is recommended that this stage be set to <i>Active</i>.<br><br>
+</font>
+
+<font size="2" face="verdana, arial"><b>Log All Unknown Spider Footprints:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Set this to <i>Active</i> to have ICS4.0 write to a log (footprints.log) visits from spiders not detected in any of the active stages. Please note that the spiders captured here carry a footprint that requires less stringent criteria to match than those captured by <b>GE STAGE 1</b>, therefore some of the spiders recorded in this log will never match any of the detection stages including <b>GE STAGE 1</b> Unless you specifically add their IP address and/or User Agent to the ICS db. The spiders that would be matched by <b>GE STAGE 1</b> are identified in the footprints.log with two asterisks "**" as a prefix and suffix to the User Agent and the IP address fields.<br><br> Of course if <b>GE STAGE 1</b> has been set to <i>Active</i> then no entries in the footprints.log will have the asterisks because they will have been detected by that stage. <b>Hits appearing in this log have been served a human visitor page</b>. It is recommended that this log be set to <i>Active</i>.<br><br>
+</font>
+
+<font size="2" face="verdana, arial"><b>Log Known Spider Visits:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Set this to <i>Active</i> to have ICS4.0 write to a log (spider.log) whenever a spider detected by any one of the active stages requests a page. <b>Hits appearing in this log have been served a cloaked page</b>. Depending on your settings the page has been served either from a specific spider directory, from the same directory for all spiders, or if detected by GE STAGE 1 from the directory specified for generic spider pages. It is recommended that this log be set to <i>Active</i>.<br><br>
+</font>
+
+<font size="2" face="verdana, arial"><b>Log Human Visits:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Set this to <i>Active</i> to have ICS4.0 write to a log (visitor.log) whenever a visitor is detected by <b>Human Browser Footprint Detection</b> or the visitor is not matched by any of the subsequent <i>Active</i> stages. <b>Hits appearing in this log have been served a human page</b>. Details of the hit will be captured which include referrer and keywords used at search engines. It is recommended that this log be set to <i>Active</i>.<br><br>
+</font>
+
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#EAEAD5">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td bgcolor="#EAEAD5">
+&nbsp;
+</td>
+</tr>
+
+<tr>
+<td align="right" colspan="2" bgcolor="#C0C0C0">
+<a href=""><font face=arial size="-2" color="maroon">ICS v4.0 By: ICS Avenue</font></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+</body></html>
+

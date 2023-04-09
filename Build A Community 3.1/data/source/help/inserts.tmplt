@@ -1,0 +1,27 @@
+<TABLE CELLPADDING=0 CELLSPACING=0>
+<TR><TD><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Help & Hints</B></FONT></CENTER><BR><BR></TD></TR>
+<TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+
+[<(
+	if ($CONFIG{'Weaver_use_bonhomme'} eq "YES") {
+		$OUT .= "<IMG SRC=\"$CONFIG{'button_dir'}/myguy/schoolbus.gif\" WIDTH=144 HEIGHT=150 ALIGN=RIGHT ALT=\"Let me be your guide\">";
+	}
+)>]
+
+<UL>
+<LI><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>PLUGIN:#XXXX</B>: You can include images found in the <A HREF="[<($GUrl{'gallery.cgi'})>]">Clip-Art gallery</A> anywhere on your site by using <B>Plugin:#</B> and the <B>four-digit code</B> that is found under each Clip-Art image.  For example, if the image's code were <B>1234</B>, you would type <B>PLUGIN:#1234</B> (with <I>no</I> spaces).<BR><BR>
+
+[<(
+	if ($Simple_Search ne "NO") {
+		$OUT .= "<LI><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><B>PLUGIN:SIMPLESEARCHBOX</B>: Allows you (or your visitors) to perform a text search on your entire site.  You can edit the look of the results page by choosing it from the menu on the main page of the editor.<BR><BR>\n";
+	}
+)>]
+
+<LI><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>PLUGIN:JAVA_CLOCK</B>: Gives you a Java-script clock showing the current time.<BR><BR>
+<LI><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>PLUGIN:JAVA_TICKER</B>: A ticker-tape script that shows whatever text you entered in the Ticker-Tape Text box of the "Plugin Setup" page.<BR><BR>
+<LI><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>PLUGIN:JAVA_NAMEBOX</B>: A pop-up window asks your visitor's name and then inserts it wherever you've place the plugin.<BR><BR>
+<LI><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>PLUGIN:JAVA_RANDOM_LINK</B>: Inserts a button in your page, when a visitor clicks on it, they are wisked away to one of the sites you've entered into the Random Links box of the "Plugin Setup" page.<BR><BR>
+<LI><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>PLUGIN:JAVA_SEARCH</B>: Inserts a search box so that your visitor can search several search engines all from one form.  You can select the default text in the "Plugin Setup" section.<BR><BR>
+</UL>
+
+</TD></TR></TABLE>

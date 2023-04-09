@@ -1,0 +1,59 @@
+0.2: First public release
+0.2.1: Some scripts still had the pre-0.2 hard coded
+mysql_connect statments; this release made it so you
+only have to change the password once in each of
+three files:
+	config.php
+	calendar/includes/config.inc
+	phpMyAdmin/config.inc.php3
+Plus, I'm not giving my MySQL password out to the 
+whole world anymore.
+0.2.2: Improved a bug in the timesheet.php script
+that caused dates to be displayed incorrectly.
+0.2.3: The time sheet administrator can no longer
+easily delete those time sheets that users have not
+marked done. The time sheet admin must now change
+the status of the time sheet to "done" before the
+delete icon will be shown next to it in a list.
+A bug with the colors in the setup.php script was
+fixed.
+0.2.4: Fixed bug in system administrator message
+section of news.php.
+Fixed possible bug in identity.php script.
+Changed location of "LOGOUT" link in menu.php (only
+shows up if you are using the scripts from an IP
+address other than what you have set for yourself
+in the database).
+0.2.5: Previous versions had a typo in several of 
+the WebCalendar scripts which caused an error message;
+that has been fixed.
+Added the default WebCalendar user "admin" (password:
+admin) and changed the default WebCalendar user "scott"
+to "sgreathouse" (password: password) for consistency.
+0.2.6: Fixed error in setup.sql
+Fixed bug which caused weird problems if you tried to 
+create a new user with one of the indexed fields blank
+(login, ipaddress and machinename). The script now
+returns an error in this case and if you try to create
+a new user with one of those fields duplicating an
+existing user.
+Fixed bug in printer friendly display of contact log.
+0.2.7: Upgraded WebCalendar to 0.9.22 (This is the first
+WebCalendar upgrade included with this package. Make
+sure to read the UPGRADING doc in the calendar directory
+if you are upgrading! You need to create a new table.)
+Upgraded phpMyAdmin to 2.1.0 (got rid of the customized
+color scheme and page header in the process).
+0.2.8: Contact log now allows you to see call-backs for
+the next 24 hours, week, 30 days, or year -- this was
+implemented to help those people who compulsively print
+everything to use less paper. 
+Fixed problem with quotes.php (wasn't using header).
+Fixed problem with printer friendly version of time
+sheet (wouldn't let time sheet administrator print
+other people's time sheets).
+0.2.9: Fixed problem with time sheet administrator's page 
+(undeleting one time sheet undeleted all of them).
+Fixed problem with password sharing being set to "No"
+anytime a non-administrator changed any of their
+settings (again, you shouldn't even be using this!).

@@ -1,0 +1,80 @@
+<?
+	/* 
+	** ADD_ITEM
+	** if we have necessary fields, add item
+	*/
+	if(($inputTitle!="") AND ($Browser_Admin == "YES"))
+	{
+		/* 
+		** check for duplicate 
+		*/
+		$Query = "SELECT ID FROM item WHERE URL = '$inputURL' ";
+		$DatabaseResult = mysql_query($Query, $DatabaseLink);
+		if(mysql_NumRows($DatabaseResult) > 0)
+		{
+			$ActionResults = "We already have that one!  But thanks anyway!";
+		}
+		else
+		{
+
+			if(isset($REMOTE_USER))
+			{
+				$Creator = $REMOTE_USER;
+			}
+			else
+			{
+				$Creator = gethostbyaddr($REMOTE_ADDR);
+			}
+
+
+			$Query = "INSERT INTO item ";
+			$Query .= "(Wing, Title, URL, Description, Created, Creator, LinkCount, LastChecked) "; 
+			$Query .= "VALUES ( ";
+			$Query .= "$wing, ";
+			$Query .= "'" . ereg_replace("'", "''", $inputTitle) . "', ";
+			$Query .= "'$inputURL', ";
+			$Query .= "'" . ereg_replace("'", "''", $inputDesc) . "', ";
+			$Query .= "now(), ";
+			$Query .= "'$Creator', ";
+			$Query .= "0, ";
+			$Query .= "'1970-02-18')"; //check new links right away
+			$DatabaseResult = mysql_query($Query, $DatabaseLink);
+			if(!$DatabaseResult)
+			{
+				$ActionResults = "Add failed: " . mysql_error();
+			}
+			else
+			{
+				$ActionResults = "Item Added!";
+			}
+			$newItem = mysql_insert_id();
+
+
+			/* 
+			** send mail to the conservatory or coolsites list 
+			*/
+			if($inputSendMail == "")
+			{
+				$Query = "SELECT Private FROM wing ";
+				$Query = $Query . "WHERE ID=$wing ";
+				$DatabaseResult = mysql_query($Query, $DatabaseLink);
+				$DatabaseRow = mysql_fetch_row($DatabaseResult);
+				$isPrivate = $DatabaseRow[0];
+
+				$MailBody .= "WING\n   $wing_PlainTitle\n";
+				$MailBody .= "   <http://$SiteURL/$IndexScript?SCREEN=stroll&wing=$wing>\n\n";
+				$MailBody .= "SITE\n   $inputTitle <http://$SiteURL/$LocationScript?inputItem=$newItem>\n\n";
+				$MailBody .= "DESCRIPTION\n   $inputDesc\n\n";
+
+				if($isPrivate == "N")
+				{
+					$MailTo = $MailingList_Add;
+					$MailFrom = "$Creator <$MailingList_Add>";
+					$MailSubject = "[Conservatory] $inputTitle";
+		
+					mail($MailTo, $MailSubject, $MailBody, "From: $MailFrom");
+				}
+			}
+		}	
+	}
+?>

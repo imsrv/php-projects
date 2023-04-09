@@ -1,0 +1,16 @@
+<?PHP 
+$setHost = "localhost";
+$setDatabase = "fan";
+$setUser = "root";
+$setPass = "pass";
+
+
+
+
+
+
+
+
+$db = mysql_connect($setHost,$setUser,$setPass);
+mysql_select_db($setDatabase,$db) or die ("Не могу соединиться с БД");;
+?>

@@ -1,0 +1,89 @@
+<form>
+	<title>Add / Edit Task</title>
+	<action>index.php?sub=tasks&action=store</action>
+	<name>edit</name>
+	<width>540</width>
+
+	<formtag>true</formtag>
+	<border>true</border>
+
+	<vars>
+		<task_project import="$_GET[task_project] ? $_GET[task_project] : $_POST[task_project]" type="eval" />
+	</vars>
+	
+	<buttons>		
+		<set>
+			<footer>true</footer>
+			<header>true</header>
+		</set>
+
+		<return onclick="" button="return" >
+			<location>index.php?sub=projects&action=details&project_id={TASK_PROJECT}</location>
+		</return>
+
+		<save onclick="" button="saveall">
+			<location>javascript:document.forms[0].submit();</location>
+		</save>
+
+	</buttons>
+
+	<redirect>index.php?sub=tasks&action=det&task_id={TASK_ID}</redirect>
+
+	<fields>
+
+		<task_id type="hidden" hidden="true"/>
+		<task_user type="hidden" hidden="true"/>
+		<task_project type="hidden" default="$_GET[task_project]" action="eval" />
+
+		<task_name type="textbox" size="40:100" required="true" validate="A:1:100">
+			<title>Name</title>
+			<description>Enter the name for this task.</description>
+		</task_name>
+
+		<task_cat type="droplist">
+			<title>Category</title>
+			<relation table="taskcats" id="cat_id" text="cat_name" />
+		</task_cat>
+
+		<task_status type="droplist">
+			<title>Status</title>
+			<relation table="taskstatus" id="status_id" text="status_name" />
+		</task_status>
+
+		<task_description type="textarea" size="40:4">
+			<title>Description</title>
+		</task_description>
+
+		<task_date type="date" now="true">
+			<title>Scheduled date</title>
+
+			<fields>
+				<month format="int" default="now" />
+				<day format="int" default="now" />
+				<year from="2004" to="2010" default="now"/>
+			</fields>
+		</task_date>
+
+		<date_completed type="date" empty="true">
+			<title>Complete Date</title>
+			<description>Select the date when this task was completed.</description>
+
+			<fields>
+				<month format="int" empty="true" />
+				<day format="int" empty="true" />
+				<year from="2004" to="2010" empty="true" />
+			</fields>
+		</date_completed>
+
+		<date_ecompleted type="date" empty="true">
+			<title>Estimated Complete Date</title>
+			<description>Select the date when this task is supposed to be completed.</description>
+
+			<fields>
+				<month format="int" empty="true" />
+				<day format="int" empty="true" />
+				<year from="2004" to="2010" empty="true" />
+			</fields>
+		</date_ecompleted>
+	</fields>
+</form>

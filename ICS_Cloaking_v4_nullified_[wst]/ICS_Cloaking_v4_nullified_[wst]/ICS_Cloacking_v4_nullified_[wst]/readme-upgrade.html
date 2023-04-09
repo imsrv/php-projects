@@ -1,0 +1,161 @@
+<html><head>
+<title>Upgrade to ICS4.0</title>
+</head>
+<body bgcolor="FFFFFF">
+<center>
+<br><br>
+
+<table cellspacing="1" cellpadding="4" border="2" bgcolor="#C0C0C0" width="100%">
+<tr><td>
+<table cellspacing="10" cellpadding="3" border="0" bgcolor="#EAEAD5" width="100%">
+<tr>
+<td align="center" bgcolor="#C0C0C0">
+<font color="#400060" size="+1" face="Arial">ICS4.0 Upgrade Instructions</font>
+</td>
+</tr>
+<tr>
+<td height="10" bgcolor="#EAEAD5">
+<br>
+<font color="red">
+These instructions are to be used only by those upgrading from a previous version of ICS 3.x, if you are performing a new install of ICS v4.0 please use the full instructions found in the file named <i>readme.html</i>
+</font>
+<font color="#400060" size="3" face="Arial"><h3>Upgrade Instructions:</h3></font>
+</td>
+</tr>
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial" color="#0080C0">
+<b>NOTE:</b>
+<p>
+It is a good idea to backup the <i>ICScgi</i> directory and the <i>IPDirect</i> directory prior to starting the upgrade so that you can easily revert to your previous version of ICS should something go wrong. 
+<p>
+Choose a time to perform the upgrade when your site is not very busy, as you will be unable to serve pages until completion of step 6. The upgrade should take approx. 15 mins.
+<p>
+Please check one of your ICS SSI pages now (the page with the single SSI statement in it on your web server that matches the page names in the HumanVisitor directory and the search engine directories). Open a few of these pages and look at the SSI statement.
+<p>
+<b>If it is of this structure:</b>
+<p>
+&lt;!--#include virtual="/cgi-bin/ICScgi/ICSengine.cgi?<i>this-page-name</i>.html"--&gt;
+<p>
+then make a mental note that you are using the <u>most current version of ICS</u>.
+<p>
+<p>
+<b>If it is of this structure:</b>
+<p>
+&lt;!--#include virtual="/cgi-bin/ICScgi/ICSengine.cgi"--&gt;
+<p>
+then make a mental note that you are using the <u>URI method of page detection</u>.
+<p>
+<p>
+<h3><u>Step 1</u></h3>
+<ul>
+Delete all files from your current <i>ICScgi</i> directory on your web server <b>EXCEPT</b> <i>default.cgi</i>. If you delete this file you will have to respecify all of your site default global variables.
+</ul>
+<p>
+<h3><u>Step 2</u></h3>
+<ul>
+Upload the ICS v4.0 files from the <b>ICScgi</b> directory on your hard drive to the directory you just deleted all the files except default.cgi from above. <b>DO NOT UPLOAD</b> <i>default.cgi</i>, your old one will be used to save you from having to respecify your site default variables again. The upload MUST BE DONE IN ASCII format NOT BIN, the programs will not work if they are not uploaded in ASCII. Then change the permissions on the files you just uploaded using your FTP client as follows:
+<p>
+<b>chmod the following to 766</b><br>
+options.cgi<br>
+pwfile.cgi<br>
+<p>
+<b>chmod the remaining files in ICScgi (listed below) to 755</b><br>
+GetCookie.cgi<br>
+GetSiteInfo.cgi<br>
+GlobalVariables.cgi<br>
+ICSengine.cgi<br>
+ICSspider.cgi<br>
+ICSstart.cgi<br>
+IPadmin.cgi<br>
+LogAnalyzer.cgi<br>
+Navigation.cgi<br>
+nslookup.cgi<br>
+PswAdmin.cgi<br>
+SetCookie.cgi<br>
+SetMultiStage.cgi<br>
+StepByStep.cgi<br>
+</ul>
+<p>
+<h3><u>Step 3</u></h3>
+<ul>
+<p>
+<li>Upload <b>all files</b> from the ICS v4.0 ICShtml directory on your hard drive to <i>ICShtml</i> on your web server.
+<p>
+<li>Chmod your current <i>IPDirect</i> directory on your web server to 777. Open <i>IPDirect</i> and rename:
+<br> <i>vstatslog.txt</i> to <b>visitor.log</b><br>
+<i>statslog.txt</i> to <b>spider.log</b><br>
+<p>
+<li>Upload <b>footprints.log</b> from the ICS v4.0 IPDirect on your hard drive to <i>IPDirect</i> on your web server.
+<p>
+<li>Chmod <b>footprints.log</b>, <b>visitor.log</b>, and <b>spider.log</b> to 766.
+<p>
+<li>Do <b>NOT</b> upload <i>IPlist.pl</i>, continue using your current <i>IPlist.pl</i> (IP and User Agent list).
+</ul>
+<p>
+<h3><u>Step 4</u></h3>
+<ul>
+Now navigate to the ICS Authentication interface by specifying it's URL address with your browser, i.e. www.yourdomain.com/path-to-ICScgi-directory/you-created/in-step1/ICSstart.cgi
+<p>
+This is the authentication interface for ICS. On login it will set a cookie that will allow you to be authenticated to all of the interfaces for a period of 4 hours, after that you will be required to authenticate again.
+<p>
+Your previous password has been reset, therefore the initial login credentials to use are as follows:<br><br>
+<b>UserID:</b> Admin<br>
+<b>Passwd:</b> password
+<p>
+After you have completed the upgrade to ICS, use the <i>Change Password</i> option from the <b>Navigation</b> interface to change your password to something else.
+<p>
+Once you authenticate you will be presented with the <b>Navigation</b> interface. Note that each interface has two links on it, one labelled <i>Navigation</i> and another labelled <i>Help</i>. Use the <i>Navigation</i> link to return to this interface to navigate to the various admin interfaces, and use the <i>Help</i> link to get context sensitive help for the interface you are at.  Ok, now it is time to verify your site information, so choose <b>Set/Change Site Global Variables</b> from the navigation interface to verify your site variables.
+<p>
+All fields should already be correctly filled in from your previous installation. However, the field <b>Directory To Hold ICS Help Files:</b> will be blank. Please specify <i>ICShtml</i>.
+<p>
+As long as you did not delete <i>default.cgi</i> all of your other variables should be correct.
+</ul>
+<p>
+<h3><u>Step 5</u></h3>
+<ul>
+<li>Ok remember the mental note you made on whether you were using the most current version of ICS or the URI method of page detection when you were asked to check the SSI page at the start of the upgrade instructions? Well it's time to use that information.
+<p>
+<li>If you are using the most current version of ICS then have a look at the bottom of the <b>Set/Change Site Global Variables</b> and make sure that <b>Using URI</b> is set to <b>no</b>. Set <b>HTML Extension Used At This Site</b> to whatever extension you use for cloaked pages. Click on <i>Activate Settings</i> to update the settings file for ICS v4.0.
+<p>
+<li>If you are using the URI method of page detection then have a look at the bottom of the <b>Set/Change Site Global Variables</b> and make sure that <b>Using URI</b> is set to <b>yes</b>. Set <b>HTML Extension Used At This Site</b> to whatever extension you use for cloaked pages. Click on <i>Activate Settings</i> to update the  settings file for ICS v4.0.
+</ul>
+<p>
+<h3><u>Step 6</u></h3>
+<ul>
+Use the <i>Navigation</i> interface and choose <b>Set Cloaking And Notification Options</b>, you will notice that all of the options that determine how pages are served are set to <i>Stopped</i>. In this state ICS 4.0 will deliver the HumanVisitor page to any visitor requesting a page, whether it is a search engine or regular surfer does not matter, all will get the human version of the page requested. In essence, no cloaking is taking place.
+<p>
+Also note that the <b>Notification And Logging Options</b> are all set to <i>Active</i>, it is recommended that these be left <i>Active</i> so that you can adequately track what is being served. In addition, the e-mail notification of spider visits will contain the directory name and path the page content was retrieved from for a detected spider request.
+<p>
+Set <b>IP STAGE 1</b> to <i>Active</i> and if you were also delivering by User Agent with ICS 3.x then set <b>UA STAGE 3</b> to <i>Active</i> as well. <b>You are now back to serving pages, and are approximating the settings of ICS 3.1</b> Try navigating to a page or two at your site to make sure all is well.
+</ul>
+<h3><u>Step 7</u></h3>
+<ul>
+Now that you are back to serving pages normally take some time and go to the ICS navigation interface again and explore the other options there by selecting each in turn to familiarize yourself with what is available. Click on the <i>Help</i> link as you visit each interface to get specific information for that interface and it's use. This might be a good time to change your password to something other than <i>password</i>. From here I highly recommend that you read the full installation instructions for ICS v4.0 and follow the testing steps beginning at STEP 5 of the full install, there are a number of new features and testing methods you should be aware of at the very least. The full installation instructions accompany ICS v4.0 and can be found in the file named readme.html
+</ul>
+<p>
+Thank you for upgrading to ICS v4.0 we hope you enjoy the new features and look of ICS.
+</font>
+</td>
+</tr>
+
+
+<tr>
+<td bgcolor="#FBF3D9">
+&nbsp;
+</td>
+</tr>
+
+<tr>
+<td align="right" colspan="2" bgcolor="#C0C0C0">
+<a href=""><font face=arial size="-2" color="maroon">ICS v4.0 By: ICS Avenue</font></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+</body></html>
+

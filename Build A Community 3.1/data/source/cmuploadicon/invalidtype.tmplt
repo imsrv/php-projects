@@ -1,0 +1,5 @@
+<TABLE WIDTH=550 CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Error</B></FONT></CENTER></TD></TR>
+<TR><TD [<($CONFIG{'WINCOLOR'})>]><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<FONT=+1></B>The file you are trying to upload is not among the allowed types, you are only allowed to upload gif or jpg files.</B></FONT>
+</TD></TR></TABLE>

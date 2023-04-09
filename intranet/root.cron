@@ -1,0 +1,5 @@
+0 17 * * 5 /root/bin/clearuploads.sh
+25 16 * * 5 chmod 755 /tmp/winpopup.script
+30 16 * * 5 /tmp/winpopup.script
+45 16 * * 5 echo "## EMPTY" > /tmp/winpopup.script
+5 0 * * * /root/bin/uploadpw.sh

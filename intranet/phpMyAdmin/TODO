@@ -1,0 +1,11 @@
+phpMyAdmin - Todo
+
+phpMyAdmin 2.1.0 is probably the latest release in the 2.0 tree; 
+development will focus on version 3.0 after this. phpMyAdmin 3.0
+will contain a database abstraction layer, allowing it to be used
+with Postgres and other databases.
+Version 3.0 will also require at least one additional table, for 
+the first time. Until now, I've tried to avoid this, but it is
+really necessary for certain features (like saving preferences and
+custom SQL queries).
+You can expect 3.0 in the end of 2000, I hope.

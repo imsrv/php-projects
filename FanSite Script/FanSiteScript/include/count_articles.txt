@@ -1,0 +1,9 @@
+<?PHP 
+include ("include/connect.txt");
+$result = mysql_query("SELECT id FROM ds_articles");
+$count = mysql_num_rows($result);
+printf("%s",$count);
+
+include ("include/close.txt");
+
+?>

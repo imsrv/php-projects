@@ -1,0 +1,91 @@
+INSTALL
+Modified: 9/8/2002
+
+Introduction
+============
+This document assumes you're running Apache, and have PHP4 (v 4.1.2 or
+later) installed.  If you are running a version of PHP earlier than 4.1.2,
+you are STRONGLY encouraged to upgrade.
+
+An html version of this file is available in the Manual directory, as
+well as the online documentation engine <http://ilohamail.org/docs/>.
+
+This document will walk you through the steps necessary to setup 
+IlohaMail with a file-based backend.  It is possible to setup IlohaMail
+with a MySQL-backend, which is recommended for larger installations.
+For differences between the two backends, see the FAQ available at:
+http://ilohamail.org/docs/view.php?id=47
+
+
+Updating
+========
+See the file UPGRADING for more information on updating older versions.
+
+
+Installation
+============
+
+1) Download and unpack the tar ball, cd into the IlohaMail directory.
+	e.g.
+	$tar xzf IlohaMail-version.tar.gz
+	$cd IlohaMail-version
+
+2) Move the IlohaMail directory to any location on your hard drive OUTSIDE
+your Apache document root.
+	e.g.
+	$mv IlohaMail /www/IlohaMail
+
+3) Add an "Alias" directive in your httpd.conf file, and point it to the
+IlohaMail/source directory.
+	e.g.
+	Alias /webmail /usr/local/apache/IlohaMail/source
+
+3b.  If you do not have access to the httpd.conf file, you may also create
+a symbolic link in your document root.
+	e.g.
+	$ln -s /www/IlohaMail/source {$DOCUMENT_ROOT}/webmail
+
+4) Create necessary directories inside IlohaMail/
+	NOTE:
+		The directories you need to create differ depending on your desired
+		configuration.
+		In all the following steps, ignore folders that you don't need. 
+	You need:
+		users:  Needed for file based backend only
+		sessions: Needed for file based backend only
+		uploads: Needed to support sending attachments
+		cache: Needed ONLY if POP3 caching is to be enabled
+	e.g.
+	$mkdir /www/IlohaMail/users
+	$mkdir /www/IlohaMail/sessions
+	$mkdir /www/IlohaMail/uploads
+	$mkdir /www/IlohaMail/cache
+
+5) Change access privileges so only the web server has access to those
+directories
+	e.g.
+	$chmod 700 /www/IlohaMail/users
+	$chmod 700 /www/IlohaMail/sessions
+	$chmod 700 /www/IlohaMail/uploads
+	$chmod 700 /www/IlohaMail/cache
+
+NOTE: If you have PHP installed as a CGI module, or you do not have root
+access, you may need to change permissions to 777.
+
+6) Change the owner of the folders you created in step 4 to the user Apache
+is running as (look for the "User" directive in httpd.conf if you're not
+sure).
+You will need root access for this step (change the privileges to 777 and
+skip this step if you don't have root access).
+	e.g.
+	$chown nobody /www/IlohaMail/users
+	$chown nobody /www/IlohaMail/sessions
+	$chown nobody /www/IlohaMail/uploads
+	$chown nobody /www/IlohaMail/cache
+
+7) Restart Apache, and try accessing the program.  If it works, give your
+self a pat on the back.
+
+8) Please read the manual for information on various configuration 
+options, as well as the optional MySQL backend.
+The manual can be accessed online at: http://ilohamail.org/docs/

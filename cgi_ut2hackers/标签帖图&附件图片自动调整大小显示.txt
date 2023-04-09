@@ -1,0 +1,33 @@
+#´ò¿ª UTExtMarkupFilter.pm
+
+#ÏÂÃæÕâ¸öÊÇÌû×ÓÖĞµÄÌùÍ¼
+#ÕÒµ½£¡
+
+$$text =~ s°\[img\](https?://[\w\-\.%\~\_/]+?)\[/img\]°<IMG SRC='$1' BORDER=0>°ig if $board->{'imgTag'};
+
+#¸Ä³É
+
+$$text =~ s°\[img\](https?://[\w\-\.%\~\_/]+?)\[/img\]°<a href='$1' target='_blank'><IMG SRC='$1' BORDER=0 onload='javascript:if(this.width>(screen.width-300)){var oldwidth=this.width; var oldheight=this.height; this.width=screen.width-300; this.height=(oldheight*(this.width/oldwidth));}'></a>°ig if $board->{'imgTag'};
+
+#########
+#Ç©ÃûÖĞµÄÌûÍ¼
+
+#ÕÒµ½
+
+$text =~ s°\[img\](https?://[\w\-\.%\~\_/]+?)\[/img\]°<IMG SRC='$1' BORDER=0>°ig if $cfg{'sgnImgTag'};
+
+#¸Ä³É
+
+$text =~ s°\[img\](https?://[\w\-\.%\~\_/]+?)\[/img\]°<a href='$1' target='_blank'><IMG SRC='$1' BORDER=0 onload='javascript:if(this.width>(screen.width-300)){var oldwidth=this.width; var oldheight=this.height; this.width=screen.width-300; this.height=(oldheight*(this.width/oldwidth));}'></a>°ig if $cfg{'sgnImgTag'};
+
+###########
+
+#¸½¼şÍ¼Æ¬ÏÔÊ¾
+
+#ÕÒµ½
+
+$$text .= "<BR><BR><IMG SRC='$cfg{'baseUrl'}$cfg{'attachUrlPath'}/$post->{'attach'}'>\n";
+
+#¸Ä³É
+
+$$text .= "<BR><BR><a href='$cfg{'baseUrl'}$cfg{'attachUrlPath'}/$post->{'attach'}' target='_blank'><IMG SRC='$cfg{'baseUrl'}$cfg{'attachUrlPath'}/$post->{'attach'}' border=0 onload='javascript:if(this.width>screen.width-333)this.width=screen.width-333'></a>\n";

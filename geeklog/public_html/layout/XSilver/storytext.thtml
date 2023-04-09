@@ -1,0 +1,35 @@
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+      <td width="6" valign="bottom" align="left"><img border="0" src="{layout_url}/images/storybox-title-left-corner.gif" width="6" height="22" alt=""></td>
+      <td class="storytitle" width="45%" background="{layout_url}/images/storybox-title-bluebg.gif" nowrap>&nbsp;{story_title}</td>
+      <td width="50%" background="{layout_url}/images/storybox-title-silverbg.gif"><img border="0" src="{layout_url}/images/storybox-title-cascade.gif" width="43" height="22" alt=""></td>
+      <td class="storytitle" width="5%" align="right" background="{layout_url}/images/storybox-title-silverbg.gif" nowrap>{email_icon}&nbsp;{print_icon}&nbsp;</td>
+      <td width="6" valign="bottom" align="left"><img border="0" src="{layout_url}/images/storybox-title-right-corner.gif" width="6" height="22" alt=""></td>
+    </tr>
+    <tr>
+      <td width="6" background="{layout_url}/images/storybox-left-tube-bg.gif" valign="top" align="left"><img border="0" src="{layout_url}/images/storybox-left-tube-bg.gif" width="6" height="5" alt=""></td>
+      <td class="storybox" colspan="3"><table border="0" cellpadding="3" cellspacing="0" width="100%"><tr><td width="100%">{story_date}<br>{lang_contributed_by} {start_contributedby_anchortag}{contributedby_user}{end_contributedby_anchortag}<br>{lang_views}: {story_hits}</td></tr>
+
+                            
+                                <tr>
+                                    <td>
+                                        <p>{story_anchortag_and_image}{story_introtext}</p>
+                                    </td></tr></table>
+                                	<table border="0" cellpadding="3" cellspacing="0" width="100%">
+
+						
+							<tr><td align="center"><hr width="300" size="1" noshade>{edit_link}</td><br>{story_bodyhtml}
+							
+							</table></td>
+      <td width="6" background="{layout_url}/images/storybox-right-tube-bg.gif"><img border="0" src="{layout_url}/images/storybox-right-tube-bg.gif" width="6" height="5" alt=""></td>
+    </tr>
+    <tr>
+      <td width="6" valign="top" align="left" height="5"><img border="0" src="{layout_url}/images/storybox-bottom-left-corner.gif" width="6" height="5" alt=""></td>
+      <td width="50%" height="5" background="{layout_url}/images/storybox-bottom-bluebg.gif"><img border="0" src="{layout_url}/images/storybox-bottom-bluebg.gif" width="10" height="5" alt=""></td>
+      <td width="50%" height="5" valign="top" align="right" background="{layout_url}/images/storybox-bottom-bluebg.gif"><img border="0" src="{layout_url}/images/storybox-bottom-cascade.gif" width="23" height="5" alt=""></td>
+      <td width="75" height="5" background="{layout_url}/images/storybox-bottom-silverbg.gif"><img border="0" src="{layout_url}/images/storybox-bottom-silverbg.gif" width="10" height="5" alt=""></td>
+      <td width="6" height="5"><img border="0" src="{layout_url}/images/storybox-bottom-right-corner.gif" width="6" height="5" alt=""></td>
+    </tr>
+  </table>
+  <br>
+ 

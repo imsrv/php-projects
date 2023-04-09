@@ -1,0 +1,46 @@
+<!-- START STORYTEXT.HTML -->         
+           <table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="10" background="{layout_url}/theme-images/clean-article-tl.gif"><img src="{layout_url}/theme-images/pixel.gif" height="10" width="10"></td>
+					<td height="10" background="{layout_url}/theme-images/clean-article-t.gif"><img src="{layout_url}/theme-images/pixel.gif" height="10"></td>
+					<td width="10" background="{layout_url}/theme-images/clean-article-tr.gif"><img src="{layout_url}/theme-images/pixel.gif" height="10" width="10"></td>
+				</tr>
+				<tr>
+					<td width="10" background="{layout_url}/theme-images/clean-article-l.gif"><img src="{layout_url}/theme-images/pixel.gif" height="5" width="10"></td>
+					<td bgcolor="#ffffff" width="100%">
+					<table width="100%" border="0" cellspacing="0" cellpadding="3">
+						<tr>
+								<td align="left" bgcolor="#e1e2e5"><span class="articleTitle">{story_title}</span></td>
+								<td align="right" bgcolor="#e1e2e5">{email_icon}&nbsp;{print_icon}&nbsp;</td>
+							</tr>
+						<tr>
+								<td colspan="2" bgcolor="#ffffff"><font color="#909090">{story_date}<br>{lang_contributed_by} {start_contributedby_anchortag}{contributedby_user}{end_contributedby_anchortag}</font>
+									<table width="100%" border="0" cellspacing="0" cellpadding="3" bgcolor="#ffffff">
+										<tr>
+											<td>
+												<p>{story_anchortag_and_image}{story_introtext}</p>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+			<tr>
+				<td align="left" valigh="bottom" bgcolor="#e1e2e5" colspan="2">{readmore_link} <a href="{comments_url}">{comments_text}</a></td>
+			</tr>
+			<tr>
+				<td align="left" valigh="bottom" bgcolor="#e1e2e5">{recent_post_anchortag}<b>&nbsp;&nbsp;[&nbsp;{lang_views}: {story_hits}&nbsp;]</b></td>
+				<td bgcolor="#e1e2e5" align="right">&nbsp;{edit_link}
+				</td>
+			</tr>
+		</table>
+		
+					</td>
+					<td width="10" background="{layout_url}/theme-images/clean-article-r.gif"><img src="{layout_url}/theme-images/pixel.gif" height="5" width="10"></td>
+				</tr>
+				<tr>
+					<td width="10" background="{layout_url}/theme-images/clean-article-bl.gif"><img src="{layout_url}/theme-images/pixel.gif" height="10" width="10"></td>
+					<td height="10" background="{layout_url}/theme-images/clean-article-b.gif"><img src="{layout_url}/theme-images/pixel.gif" height="10"></td>
+					<td width="10" background="{layout_url}/theme-images/clean-article-br.gif"><img src="{layout_url}/theme-images/pixel.gif" height="10" width="10"></td>
+				</tr>
+			</table>
+	<br><!-- END STORYTEXT.HTML --><!-- START STORYBODYTEXT.HTML -->

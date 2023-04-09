@@ -1,0 +1,16 @@
+$MultiStage1="Stopped";
+$IPStage1="Stopped";
+$IPStage2="Stopped";
+$IPStage3="Stopped";
+$IPStage4="Stopped";
+$DefaultDir2="Stage Disabled";
+$UAStage1="Stopped";
+$UAStage2="Stopped";
+$UAStage3="Stopped";
+$UAWarn1="Active";
+$SpiderLike="Active";
+$ServeAllFromHere="Stopped";
+$DefaultDir1="Match To Spider";
+$DoSendEmail="Active";
+$DoWriteLog="Active";
+$DoWriteVisitorLog="Active";

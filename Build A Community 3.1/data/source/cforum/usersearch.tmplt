@@ -1,0 +1,23 @@
+<TABLE BORDER=0 CELLPADDING=3 CELLSPACING=0 [<($CONFIG{'WINCOLOR'})>] WIDTH=600>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><font face="[<($CONFIG{'font_face'})>]" size="-1" color="[<($CONFIG{'ttxt_color'})>]"><CENTER><B>Search Results</B></CENTER></TD><TR>
+<TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><UL>
+
+[<(
+	if (! defined $#posts) {
+		$OUT .= "<LI><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\">No matching posts were found, either the username that you used isn't an exact match or the user has not posted any messages.\n";
+	}
+	else {
+		foreach $post (@posts) {
+			($tforum, $id, $thisthread) = split(/&&/, $post);
+			if (($FORM{'Range'} eq $forum) && ($tforum ne $forum)) { }
+			tie %postsdb, "DB_File", "$GPath{'cforums_data'}/$tforum.db";
+			%post = &readpost($postsdb{$id});
+			if (($post{'moderated'} eq "Yes") && ($post{'approved'} eq "F")) {next;}
+			$OUT .= "<LI><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><A HREF=\"$GUrl{'cforum.cgi'}?clubs=$FORM{'clubs'}&forum=$tforum&thread=$post{'thisthread'}&action=message&highlight=$id\">$post{'subject'}</A><BR>&nbsp; &nbsp; &nbsp; &nbsp; <I>by $post{'name'} on $post{'date'}</I>\n";
+		}
+	}
+)>]
+
+</UL></TD></TR>
+</TABLE>
+

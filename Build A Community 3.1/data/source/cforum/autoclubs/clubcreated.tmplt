@@ -1,0 +1,14 @@
+<TABLE BORDER>
+</TR>
+<TD BGCOLOR=NAVY BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<CENTER><FONT COLOR=WHITE><B>Configuration Saved.</B></FONT></CENTER>
+</TD></TR><TR>
+<TD [<($CONFIG{'WINCOLOR'})>]><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"> 
+[<($FORM{'clubforum'})>] Saved.
+You can reach it at (you should bookmark it):<BR>
+<A HREF="[<($GUrl{'clubs.cgi'})>]?club=[<($FORM{'forum'})>]&action=open">[<($GUrl{'clubs.cgi'})>]?club=[<($FORM{'forum'})>]&action=open</A>
+<CENTER><FORM><INPUT TYPE="button" VALUE="--- OK ---" onClick="history.go(-2);"><BR><FONT SIZE=1>You may need to reload to see it</FONT></FORM></CENTER>
+</TD></TR></TABLE>
+<P>
+<HR>
+[<($FORM{'TEMPLATE'})>]

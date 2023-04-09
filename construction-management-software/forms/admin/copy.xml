@@ -1,0 +1,41 @@
+<form>
+	<title>Copy Project</title>
+	<action>index.php?sub=copy&action=store</action>
+	<name>edit</name>
+	<width>540</width>
+
+	<formtag>true</formtag>
+	<border>true</border>
+	
+	<buttons>		
+		<set>
+			<footer>true</footer>
+			<header>true</header>
+		</set>
+
+		<save onclick="" button="return">
+			<location>index.php?sub=projects&action=details&project_id={PROJECT}</location>
+		</save>
+
+
+		<return onclick="" button="save">
+			<location>javascript:document.forms[0].submit();</location>
+		</return>
+
+	</buttons>
+
+	<vars>
+		<project import="$_GET[project_id] ? $_GET[project_id] : $_POST[project_id]" type="eval" />
+	</vars>
+
+	<fields>
+
+		<project_id type="hidden" default="$_GET[project_id]" action="eval"/>
+
+		<project_name type="textbox" size="30" required="true" validate="A:1:200">
+			<title>Project Title</title>
+			<description>Enter a name for this new project. It will be copied under this name with the assigned tasks.</description>
+		</project_name>
+
+	</fields>
+</form>

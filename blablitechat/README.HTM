@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+<title>BlaB! Lite README</title>
+<style type="text/css">
+body{font-family:Verdana,sans-serif;font-size:11px;color:#000000;background-color:#ffffff}
+pre{font-family:"Courier New",monospace;font-size:11px}
+ul{font-family:Verdana,sans-serif;font-size:11px}
+ol{font-family:Verdana,sans-serif;font-size:11px}
+A:link{color:blue;background-color:#ffffff}
+A:visited{color:blue;background-color:#ffffff}
+A:hover{color:red;background-color:#ffffff}
+A:active{color:red;background-color:#ffffff}
+.l{font-size:10px}
+.k{color:#cccccc;background-color:#bbbbbb}
+.m{color:#333333;background-color:#ffffff}
+.n{color:#ff0000;background-color:#ffffff}
+</style></head><body>
+
+<a name="0"></a>
+<h2>BlaB! Lite 2.x README</h2>
+Homepage: <a href="http://hot-things.net" target="_blank">http://hot-things.net</a>
+<ul>
+<li><a href="#a">Description and features</a></li>
+<li><a href="#b"><b>License</b></a><br /><br /></li>
+<li><a href="#1">How to install BlaB! Lite 2.x</a></li>
+<li><a href="#2">Settings, security issues, possible problems</a><br /><br /></li>
+<li><a href="#3">How to create a skin</a></li>
+<li><a href="#4">How to create a language file in another language</a></li>
+</ul><hr size="1" class="k" />
+
+<br /><a name="a"></a>
+<h3>Description and features</h3>
+BlaB! Lite 2.x (formerly <a href="http://hot-things.net/htschat.php" target="_blank">Simple Chat</a>) is a chat system written in PHP and JavaScript.
+The output produced by BlaB! Lite 2.x is very clean, XHTML1.1 compliant (except both frameset files: index.php and frameset.php due to some browser limitations)
+and also looks fine with any modern browser that supports HTML4 and JavaScript.
+<h4>Features</h4><ul>
+<li>Fast processing, extremely low bandwidth required</li>
+<li>Easy to install. No MySQL database required</li>
+<li>XHTML 1.1 and CSS2 compliant output</li>
+<li>PHP3/PHP4/PHP5 compatibility (supports <i>safe mode, error_reporting(8), register_globals:off</i>)</li>
+<li>Best viewed with any modern browser (Netscape4 is not supported due to some CSS limitations)</li>
+<li>Advanced skinning system</li>
+<li>Smilies, bb codes, 'http' links, unrecognizable 'mailto' links</li>
+<li>Sound alert on new messages</li>
+<li>Custom date/time settings</li>
+</ul><a href="#0">top</a><hr size="1" class="k" />
+
+<br /><a name="b"></a>
+<div style="color:#A00000">
+<i>BlaB! Lite 2.x is <b>NOT</b> a GPL product - please read carefully the following lines!</i> <br />
+<h4>BlaB! Lite 2.x LICENSE AGREEMENT</h4>
+By downloading and using BlaB! Lite 2.x, you indicate your acceptance of the following terms and conditions:<br />
+<br />&nbsp; - You are granted the right to run multiple instances of this software free of charge. 
+<br />&nbsp; - You may not rent, sub-license, sell or redistribute this software without our prior written permission.
+<br />&nbsp; - You may not remove or modify our copyright marks without our prior written permission.
+<br />&nbsp; - The source code may be altered (at your own risk!), but the altered code may not be distributed without our prior written permission.
+<br />&nbsp; - If any terms are violated, we reserve the right to terminate this license at any time.
+<br /><br /><b>DISCLAIMER OF WARRANTY</b><br /><br />
+THIS SOFTWARE AND THE ACCOMPANYING FILES ARE PROVIDED 'AS IS' AND WITHOUT WARRANTIES OF ANY KIND!
+</div><br /><a href="#0">top</a><hr size="1" class="k" />
+
+<br /><a name="1"></a>
+<h3>How to install BlaB! Lite 2.x</h3><ol>
+<li>Unzip the files from the ZIP archive in an empty directory keeping the directory structure</li>
+<li>Upload the whole directory (and all files/subdirectories in it) to your server by an FTP program</li>
+<li>CHMOD the subdirectory <b>/data</b> to 777
+<div class="l"><br />------------------------------<br /><br />CHMOD means to change permissions/attributes of a file or a directory on a Linux/Unix system, usually by an FTP program.<br />   If you are running a Windows server you should make the subdirectory <b>/data</b> readable/writeable (in most cases from the admin panel).<br /><br />------------------------------</div><br /></li>
+<li>Open a browser and enter the admin panel to setup your ADMIN password: <a href="#" onclick="return false">http://yoursite.com/blab/admin.php</a></li>
+</ol>
+<a href="#0">top</a><hr size="1" class="k" />
+
+<br /><a name="2"></a>
+<h3>Settings, security issues, possible problems</h3>
+There is a number of well commented settings in <i>config.php</i>. Please, consider carefully what you are changing.
+BlaB! Lite 2.x is set to work in a developer mode: <i>error_reporting(8)</i>, which displays php error messages and notices if any. 
+Remove the line <i>error_reporting(8);</i> from <i>config.php</i> when you have done with the settings.
+<br /><br />With PHP3 and some earlier PHP4.0x versions you may experience PHP errors when running the script for the first time.
+CHMOD both files <i>data/room</i> and <i>data/user</i> to 777.
+<br /><br />The file <i>online.php</i> can be loaded in an <i>iframe</i> window if you would like to display <i>OnlineUsers/ActivityTime</i> anywhere on your site.
+<br /><br />There are two files in your skin directory: 'custom-left.inc' and 'custom-right.inc' that contain ordinary HTML tags for a logo and a title. They are provided for BlaB! users who would like to display a company logo, banners or just a site navigation bar. 
+<br /><br />Running BlaB! Lite 2.x on Apache server is secure. Make sure that the folder <b>/data</b> contains a .htaccess file against http access.
+Try to load:<pre>
+<a href="#" onclick="return false">http://<i>www.yoursite.com</i>/blab/data/room</a>
+<a href="#" onclick="return false">http://<i>www.yoursite.com</i>/blab/data/user</a>
+</pre>
+You should get a 403 answer: <span style="color:#A00000">Forbidden You don't have permission to access <i>FILE</i> on this server.</span>
+<br /><br />If you want to run BlaB! Lite 2.x on any other server, you need to rename the folder <i>/data</i> and also change its name in <i>config.php</i> accordingly.
+<br /><br />Sometime, you may experience a disk error that might damage files under the subdirectory <b>/data</b> (running out of space would have the same effect).
+We suggest you to empty the damaged room from the admin panel.
+<br /><br /><a href="#0">top</a><hr size="1" class="k" />
+
+<br /><a name="3"></a>
+<h3>How to create a skin</h3>
+If you are good at graphics and enjoy some CSS experience, you may create nice BlaB! skins in minutes.
+<br />Please check our online tutorial at: <a href="http://hot-things.net/skin_howto/" target="_blank">http://hot-things.net/skin_howto/</a>.
+<br /><br /><a href="#0">top</a><hr size="1" class="k" />
+
+<br /><a name="4"></a>
+<h3>How to create a language file in another language</h3>
+The language files are simple ASCII text files - <i>lang-en.inc</i>, <i>lang-bg.inc</i> etc.
+Create your own file or/and tell BlaB! Lite which one to load: (<i>config.php</i>).
+If you are about to use a non-English alphabet, we recommend you to set the right encoding in your language file: (lang-xx.inc file, line #6 and #7).
+This will decrease the loading time and prevent some browsers from displaying incorrect letters.<br />
+<br />examples:<br />
+<br /><b>$lang[1]='ISO-8859-1';</b> &nbsp; <i>ISO-8859-1</i> is the proper charset for English.
+<br /><b>$lang[2]='en';</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>en</i> is a 2-letters language code.
+<br />
+<br /><b>$lang[1]='euc-jp';</b> &nbsp; <i>euc-jp</i> is the proper charset for Japanese.
+<br /><b>$lang[2]='jp';</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>jp</i> is a 2-letters language code.
+<br /><br /><a href="#0">top</a><hr size="1" class="k" />
+</body></html>

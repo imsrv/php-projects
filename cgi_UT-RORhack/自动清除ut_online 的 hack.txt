@@ -1,0 +1,10 @@
+forum_show.cgi 
+
+
+$query = "SELECT COUNT(*) FROM ut_online WHERE lastOnTime > $activeTime";
+
+上面添加 
+
+    $query = "DELETE FROM ut_online WHERE lastOnTime < $activeTime";      $sth = query($query);
+
+这样可以防止ut_online越来越大，每次自动清除不需要的数据。 

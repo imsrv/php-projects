@@ -1,0 +1,35 @@
+目的：对所有的 admin 功能检查 IP，行使这些敏感的功能只能在所允许的 IP 范围内。这样别人即使破解了管理员密码也无法使用管理功能。因为老是有人想尽办法想破管理员密码，干脆加上 IP Range，一劳永逸。 
+
+允许的 IP 保存在单独的文件中，cgi-bin 下面的 adminips.txt 
+之所以用另外的文件，是考虑到 mod_perl 下的模块重载有个时间的间隔。 
+
+adminips.txt 的格式： 
+123.45.67.89|111.22.33.44|122.23.34.|ip4|ip5.... 
+用 | 分隔，在一行内，Class C 的直接写 123.456.7. 之类的就可以了，别用通配符。 
+
+请正确设定 cgi-bin 目录的权限，txt 文件应该不可以 read。 
+
+1 
+UTConfig.pm 里面，在 $cfg{'IIS'} 下面加上 
+$cfg{'adminIps'} = 1; 
+
+这个设定不能 web 界面改动也没需要 
+
+2 
+UTMain.pm 
+
+  BEGIN { ...    这里找个地方加     @EXPORT = qw( .... &checkAdminIps     ...  }  
+
+下面随便找个地方加个函数 
+
+  #------------------------------------------------------------------------------  # Check if IPs are allowed for admin access    sub checkAdminIps  {    my $ip = $ENV{'REMOTE_ADDR'};      if ($cfg{'adminIps'} && (-e "$cfg{'cgiDir'}/adminips.txt")) {      open(IPS, "$cfg{'cgiDir'}/adminips.txt");      my $tmp = <IPS>;      close(IPS);      my @adminips = split(/\|/, $tmp);      for my $adminip (@adminips) {        return 1 if index($ip, $adminip) == 0;      }      adminError();    }  }  
+
+3 
+查找所有的 admin 功能的 cgi 文件，你可以搜寻那些含有 
+# Check if user is admin 
+行的文件，在下面加上 
+
+
+$user->{'admin'} or adminError();  checkAdminIps();
+
+大概有 49 个文件 

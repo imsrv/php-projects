@@ -1,0 +1,101 @@
+<html><head>
+<title>IP/Agent Admin Help</title>
+</head>
+<body bgcolor="FFFFFF">
+<center>
+<br><br>
+
+<table cellspacing="1" cellpadding="4" border="2" bgcolor="#C0C0C0" width="100%">
+<tr><td>
+<table cellspacing="10" cellpadding="3" border="0" bgcolor="#EAEAD5" width="100%">
+<tr>
+<td align="center" bgcolor="#C0C0C0">
+<font color="#400060" size="+1" face="Arial">IP/Agent Admin Help</font>
+</td>
+</tr>
+<tr>
+<td height="10" bgcolor="#EAEAD5">
+<br>
+<font color="#400060" size="3" face="Arial"><b>Add/Modify/Delete IP's &amp; User Agents:</b></font>
+</td>
+</tr>
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Translators:</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+You will notice at the beginning of the list displayed in the IP administration panel that there are several entries for <font color=green>babelfish</font>, and those matches are being directed to the HumanVisitor directory i.e. they will be shown the human page. This is AltaVista's <font color=green>translate</font> function. Some people use it to view cloaked pages since it carries what looks to many scripts like an AltaVista IP, these entries prevent that. Any other translators that you wish to block should also appear at the top of the list. Follow the same statement format in directing them to the HumanVisitor content as the Babelfish entries.<br><br>
+
+<h3><font color="#400060">To Add an IP or Agent for an existing Engine:</h3></font>
+<b>STEP 1</b><br>
+Simply duplicate one of the entries in the display for the engine you are adding (i.e. if you are adding an IP for Inktomi, then duplicate one of the entries already in the list for Inktomi by copy and paste and modify the copy with your new IP address. Make sure you don't leave any blank lines in the list before submitting it for update and that you leave the other entries intact. One more thing, always keep the <font color=green>babelfish</font>  and any other translator entries (e.g. the GO/Infoseek translator) at the top to avoid inadvertently displaying a cloaked page to the translate function carrying an IP address within a range that is defined in the IP list.<br><br>
+<b>STEP 2</b><br>
+Hit "UPDATE IP/Directory/Agent List".<br>
+ICS will display a new page advising whether the update was successful. ICS will then display the list of IP Addresses and User Agents it will be using. ICS will read this list to determine if a match by IP address or User Agent (if those stages are enabled) exists. <br><br>
+
+As soon as you hit "Update" ICS will be using the updated list.<br><br>
+
+<h3><font color="#400060">More In Depth Instructions and How To Add a New engine to ICS:</h3></font><br>
+<table cellpadding=0 cellspacing=o border=0>
+<tr>
+<td width=10>
+</td>
+<td>
+<font color="#0080C0" size="-1" face="Verdana, Arial">
+<b>The format must be matched exactly and is as follows:</b><br><br>
+/ipaddress/=directory=/useragent/&<br><br>
+<b>Let's look at this more closely now:</b><br>
+<li><b>Start with a leading forward slash ( / )</b></li>
+<li><b>Next is the IP address</b></li><br>
+If the IP address is a full IP i.e. all numerical positions are occupied like these two for example <font color=green>172.10.10.1 or 172.199.176.134</font> then simply follow it with another forward slash.<br><br>
+If you want to match more than one IP address with a single entry then you must place the forward slash at the end of the partial IP address. Using the same IP's from the above example; if you wanted to match <font color=green>172.10.10</font> and all possible numbers for the last three digits, you would specify it like this: <font color=green>172.10.10.</font> This essentially makes the last three numerical positions of the address a wild card match. ICS would then treat any IP address in the range of <font color=green>172.10.10.0</font> through to <font color=green>172.10.10.254</font> as a match. This function is useful if you know that a particular engine owns a large block of addresses and you want to specify it in one entry.<br><br>
+One more thing before we leave this, ICS will do a check to ensure that an IP address 'match' is not in fact using a footprint that would disqualify it from being a match, in that case it will show the visitor the human page (Please Note: ICS will only do this check if you have <b>Human Browser Footprint Detection</b> set to <i>Active</i>). This means you can feel relatively safe about adding a 'block of addresses' to your list. <br><br>
+<b>Your entry so far looks like this for a single address:</b><br>
+<font color=green>/172.10.10.1/</font><br><br>
+<b>Or like this for a wildcard match (notice the period after the last digit):</b><br>
+<font color=green>/172.10.10./</font> Had you specified it as <font color=green>/172.10.10/</font> (without the period) ICS would then consider <font color=green>/172.10.10/</font> to be equivalent to <font color=green>172.10.10*.*</font> and consider a match any combinations of digits after the 10 in <font color=green>/172.10.10/</font> AND  any combination of digits after the period. I have used the asterisks only to illustrate the wildcard match capability of the forward slash, since most of you are familiar with using the asterisk as a wild card character. DO NOT USE ASTERISKS IN BUILDING THIS ENTRY, ONLY THE FORWARD SLASH IS ALLOWED.<br><br>
+<li><b>Next add an equal sign ( = ) so the entry looks like this:</b></li><br>
+<font color=green>/172.10.10.1/=</font><br><br>
+<li><b>Next you specify the directory name</b></li><br>
+This is the name of the directory that ICS will get the page being requested from when a match occurs using the IP address you specify. In our example it is 172.10.10.1 Let's assume you are adding this address for Infoseek. You would then create a subdirectory in the <font color=green>SEDirect</font> (or whatever you called it) directory that already holds the AltaVista, Inktomi, Excite, Lycos, and NorthernLight, and other Search Engine directories and set permissions on it to 755 using your FTP client. Now when a match occurs for 172.10.10.1 that visitor will be shown the page being requested that you placed in the Infoseek directory (unless you have elected to serve all spiders from the same directory, in which case the page content will be retrieved from the directory chosen to retrieve spider pages from). Try to use a directory name that is descriptive of the engine you are adding because ICS will use it in the email notices it sends you. So far the entry looks like this:</li><br>
+<font color=green>/172.10.10.1/=Infoseek</font><br><br> 
+<li><b>Follow the directory name with another equal sign ( = ). The entry now looks like this:</b></li><br>
+<font color=green>/172.10.10.1/=Infoseek=</font><br><br>
+<li><b>Follow the equal sign with another forward slash ( / ). The entry now looks like this:</b></li><br>
+<font color=green>/172.10.10.1/=Infoseek=/</font><br><br>
+<li><b>Now specify the ACTUAL User Agent of this engine</b></li><br>
+Just like you need to know the actual IP address of the engine you are adding, you must know the actual User Agent of that engine. These are freely available on many sites on the net for the given engines. You must match the case exactly. Infoseek's User Agent is <font color=green>Sidewinder</font>, so you would type in <font color=green>Sidewinder</font> and follow it with a forward slash. Now the entry would look like this:<br>
+<font color=green>/172.10.10.1/=Infoseek=/Sidewinder/</font><br><br>
+<li><b>Now tell ICS you are done by adding the delimiter ampersand ( &amp; ), the entry is now complete and looks like this:</b></li><br>
+<font color=green>/172.10.10.1/=Infoseek=/Sidewinder/&amp;</font><br><br> 
+<li><b>Follow <b>Step 2</b> from the above <font color=green>Adding an IP or Agent to an existing engine</font></b></li><br>
+<h4>Congratulations! You have added a new engine to ICS.</h4><br><br>
+<b>Additional Considerations</b><br>
+If you don't know the User Agent of a search engine but do know an IP then specify <font color=green>None</font> for User Agent. ICS will obviously only be able to perform matches by IP in this case.<br><br> 
+If you don't know the IP address of a search engine but do know the User Agent then specify <font color=green>172.10.10.1</font> for the IP address. The 172. series of IP addresses are non routables so they will never match. ICS will obviously only be able to perform matches by User Agent in this case.<br><br>
+Just one last thing, you can use the same steps to adding a new engine to direct ANY IP address to a particular page. For example you could build this entry:<br>
+<font color=green>/165.102.9.31/=Default=/None/&amp;</font><br><br>
+So that whenever visitor matching IP address <font color=green>165.102.9.31</font> accesses your site they would get the version of the page requested that you placed in the directory called <font color=green>Default</font>. This can be useful to serve anyone, not just a search engine, a specific set of pages by IP address.
+</font></font>
+</td>
+</tr>
+
+
+<tr>
+<td bgcolor="#FBF3D9">
+&nbsp;
+</td>
+</tr>
+
+<tr>
+<td align="right" colspan="2" bgcolor="#C0C0C0">
+<a href=""><font face=arial size="-2" color="maroon">ICS v4.0 By: ICS Avenue</font></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+</body></html>
+

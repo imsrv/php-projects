@@ -1,0 +1,6 @@
+<FORM METHOD="post" ACTION="search.php"> 
+<P>
+	<INPUT TYPE="TEXT" NAME="search_term">
+	<INPUT TYPE="SUBMIT" NAME="submit" VALUE="Искать на сайте">
+</P>
+</FORM> 

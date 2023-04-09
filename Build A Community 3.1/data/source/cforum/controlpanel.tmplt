@@ -1,0 +1,88 @@
+<CENTER>
+<TABLE BORDER=1 CELLPADDING=0 CELLSPACING=0><TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<TABLE BORDER=0 CELLPADDING=3 CELLSPACING=0 [<($CONFIG{'WINCOLOR'})>]>
+
+[<(
+	opendir(FILES, "$GPath{'cforums_data'}/") || die ERROR("Can't open directory $GPath{'cforums_data'}/");
+	my @allfiles=readdir(FILES);
+	closedir(FILES);
+
+	open(FCAT,"$GPath{'cforums_data'}/forum.categories");
+	my @fcats=<FCAT>;
+	close(FCAT);
+
+	if ($FORM{'clubs'} ne "T") {
+		$OUT .= "<TR><TD BGCOLOR=\"$CONFIG{'title_color'}\" WIDTH=33>";
+		if (($MOD{'icon'} ne "") && ($forum ne "")) {
+			if ($MOD{'icon'} =~ /\D/) {
+				($iwidth, $iheight) = &imgsize("$CONFIG{'ICON_upload_path'}/thumbs/$MOD{'icon'}");
+				$OUT .= "<A HREF=\"$GUrl{'moreinfo.cgi'}?UserName=$IUSER{'username'}\"><IMG SRC=\"$CONFIG{'ICON_upload_url'}/thumbs/$MOD_icon\" WIDTH=$iwidth HEIGHT=$iheight BORDER=0></A>";
+			}
+			else {
+				$OUT .= "<IMG SRC=\"$GUrl{'icon_images'}/$MOD{'icon'}.gif\" WIDTH=32 HEIGHT=32>";
+			}
+		}
+		else {$OUT .= "<BR>";}
+		$OUT .= "</TD><TD BGCOLOR=\"$CONFIG{'title_color'}\">";
+		if ($FORM{'forum'} ne "") {
+			$OUT .= "<font face=\"$CONFIG{'font_face'}\" size=\"-1\" color=\"$CONFIG{'ttxt_color'}\"><B>$IFORUM{'title'}</B>";
+		}
+		elsif (-e "clubs.cgi") {
+			$OUT .= "<font face=\"$CONFIG{'font_face'}\" size=\"-1\" color=\"$CONFIG{'ttxt_color'}\"><B>Navigate The Clubs</B>";
+		}
+		else {
+			$OUT .= "<font face=\"$CONFIG{'font_face'}\" size=\"-1\" color=\"$CONFIG{'ttxt_color'}\"><B>Navigate The Forums</B>";
+		}
+		if (($MOD{'name'} ne "") && ($forum ne "")) {
+			$OUT .= "<BR>Moderator: <A HREF=\"$GUrl{'moreinfo.cgi'}?UserName=$MOD{'username'}\"><font face=\"$CONFIG{'font_face'}\" size=\"-1\" color=\"$CONFIG{'ttxt_color'}\">$MOD{'name'}</FONT></A>";
+		}
+		$OUT .= "</TD><TR>\n";
+	}
+
+	$OUT .= "<TR><TD COLSPAN=2><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\">\n";
+	if ($IUSER{'username'} eq "") {$IUSER{'username'} = "Guest";}
+	else {
+		if ($IUSER{'handle'} ne "") {
+			$NAME = "($IUSER{'handle'})";
+		}
+		else {
+			$NAME = "($IUSER{'realname'})";
+		}
+	}
+)>]
+
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><FONT size=-1>You are currently logged in as: <B>[<($IUSER{'username'})>]</B> [<($NAME)>] - <A HREF="[<($GUrl{'myforum.cgi'})>]?returnto=[<($TURL)>]">Viewing posts</A> from the last [<($daystoshow)>] days.</FONT>
+<CENTER><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><FONT size=-1><A HREF="[<($GUrl{'cforum.cgi'})>]?clubs=[<($FORM{'clubs'})>]&clubs=[<($FORM{'clubs'})>]&forum=[<($forum)>]&action=getall">All Conversations</A> - 
+
+[<(
+	if (-e "clubs.cgi") {
+		$OUT .= "<A HREF=\"$GUrl{'clubs.cgi'}\" TARGET=\"_top\">All Clubs & Forums</A> ";
+	}
+	else {
+		$OUT .= "<A HREF=\"$GUrl{'cforum.cgi'}\" TARGET=\"_top\">All Forums</A> ";
+	}
+	if (($CONFIG{'CFORUM_usekeys'} ne "NO") && (! -e "clubs.cgi")) {
+		$OUT .= " - <A HREF=\"$GUrl{'cforum.cgi'}?action=searchoptions&clubs=$FORM{'clubs'}&forum=$forum\" TARGET=\"_top\">Search</A> ";
+	}
+	if ($PROGRAM_NAME eq "clubs.cgi") {
+		$TURL = &urlencode("$GUrl{'clubs.cgi'}?action=$FORM{'action'}&forum=$FORM{'forum'}&clubs=$FORM{'clubs'}&thread=$FORM{'thread'}&category=$FORM{'category'}");
+	}
+	else {
+		$TURL = &urlencode("$GUrl{'cforum.cgi'}?action=$FORM{'action'}&forum=$FORM{'forum'}&clubs=$FORM{'clubs'}&thread=$FORM{'thread'}");
+	}
+	$OUT .= " - <A HREF=\"$GUrl{'cf_utils.cgi'}?action=WhoisOnline\">Who's Here?</A>";
+	if ($VALIDUSER ne "T") {
+		$OUT .= " - <A HREF=\"$GUrl{'register.cgi'}\">Register</A>";
+		$OUT .= " - <A HREF=\"$GUrl{'cf_utils.cgi'}?action=login&returnto=$TURL\">Login</A></CENTER>\n";
+	}
+	else {
+		$OUT .= " - <A HREF=\"$GUrl{'profile.cgi'}\" TARGET=\"_top\">Member Profile</A>";
+		$OUT .= " - <A HREF=\"$GUrl{'cf_utils.cgi'}?action=login&returnto=$TURL\">Login As A Different User</A></CENTER>\n";
+	}
+)>]
+
+</TD></TR>
+</TABLE>
+</TD></TR></TABLE>
+</CENTER></FONT>
+

@@ -1,0 +1,6 @@
+<h2>{poll_question}</h2>
+<table border="0" cellpadding="3" cellspacing="0" align="center">
+{poll_votes}
+</table>
+<div class="storybyline" align="left"><br><a href="{site_url}/pollbooth.php">{lang_pollquestions}</a></div>
+<div class="storybyline" align="right">{num_votes} {lang_votes} {poll_comments}</div>

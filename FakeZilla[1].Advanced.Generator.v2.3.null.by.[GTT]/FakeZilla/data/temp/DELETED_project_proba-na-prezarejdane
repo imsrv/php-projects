@@ -1,0 +1,20 @@
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;
+; FakeHits.co.uk Advanced Generator ver2.3
+; Sun, 2004-Apr-04 17:24:28
+;
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+URL= ertwe rtwer tert ertwerwert ertwert wertwertwert
+Referer=URL
+Referer-Url=
+Referer-List=referer (1).txt
+User-Agent=List
+UserAgent-Exact=
+UserAgent-List=useragent (1).php
+Method=GET
+Param=a:0:{}
+Proxy=20040403-124611-PROXY.txt
+Sim-Proxy=
+Hits-per-hour=1800
+Total-hits-sent=20

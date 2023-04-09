@@ -1,0 +1,113 @@
+<html>
+<head><title>Installation</title></head>
+<body>
+<center><h2>Installation</h2>
+
+<table width="500"><tr><td>
+
+<font size=-1>If you are <b>upgrading</b> an existing installation of IlohaMail, consult the "UPGRADING" document included in the package.  Depending on the version you're running and changes made to the new version, procedures may differ significantly.</font>
+
+<p><b>Debian users:</b> A Debian package of IlohaMail is available.  Follow the link found on the <a href="http://ilohamail.org/main.php?page=Downloads">downloads page</a>.
+
+<p><b>MacOS X:</b> A MacOS X installer of IlohaMail is available.  Follow the link found on the <a href="http://ilohamail.org/main.php?page=Downloads">downloads page</a>.
+
+
+<p><b>Installation from tar-ball distribution:</b><br>
+The following steps will install IlohaMail with the default file-based backend.
+
+<ol>
+<li>Download and unpack the tar ball, cd into the IlohaMail-version directory.
+<center><table width="300"><tr><td bgcolor="#CCCCCC">
+<i>e.g.</i>
+<pre>$tar xzf IlohaMail-version.tar.gz
+$cd IlohaMail-version</pre>
+</td></tr></table></center><br>
+</li>
+
+<li>Move the IlohaMail directory to any location on your hard drive OUTSIDE your Apache document root.
+<center><table width="300"><tr><td bgcolor="#CCCCCC">
+<i>e.g.</i>
+<pre>$mv IlohaMail /www/IlohaMail</pre>
+</td></tr></table></center>
+<br>
+</li>
+
+<li>Create a redirect using one of the following methods:
+<table><tr><td valign="top">a.</td>
+<td valign="top">
+If you have access to the httpd.conf file, add an "Alias" directive in your httpd.conf file, and point it to the IlohaMail/source directory.
+</td></tr></table>
+
+<center><table width="300"><tr><td bgcolor="#CCCCCC">
+<i>e.g.</i>
+<pre>Alias /webmail /www/IlohaMail/source</pre>
+</td></tr></table></center>
+
+<table><tr><td valign="top">b.</td>
+<td valign="top">
+If you do not have access to the httpd.conf file, you can also create a symbolic link in your document root.
+</td></tr></table>
+
+<center><table width="300"><tr><td bgcolor="#CCCCCC">
+<i>e.g.</i><font size="-1">(replace {$DOCUMENT_ROOT} with path to your document root.</font>
+<pre>
+$ ln -s /www/IlohaMail/source {$DOCUMENT_ROOT}/webmail
+</pre>
+</td></tr></table></center>
+<br>
+</li>
+
+<li>Create directories inside IlohaMail/.  The directories you need to create may differ depending on what your desired configuration is:
+<center>
+<table border="1" width="300">
+<tr><td><b>direcory</b></td><td><b>Needed if...</b></td><tr>
+<tr><td>users</td><td>using file-based backend</td></tr>
+<tr><td>sessions</td><td>using file-based backend</td></tr>
+<tr><td>uploads</td><td>to send attachments</td><tr>
+<tr><td>cache</td><td>enable pop3 caching</td></tr>
+</table>
+<table width="300"><tr><td bgcolor="#CCCCCC">
+<i>e.g.</i> <font size="-1">(Omit folders you don't need)</font>
+<pre>$mkdir /www/IlohaMail/users
+$mkdir /www/IlohaMail/sessions
+$mkdir /www/IlohaMail/uploads
+$mkdir /www/IlohaMail/cache
+</pre>
+</td></tr></table></center>
+<br>
+</li>
+
+<li>Change access privileges so only the web server has access to those directories
+<center><table width="300"><tr><td bgcolor="#CCCCCC">
+<i>e.g.</i> <font size="-1">(Omit folders you don't need)</font>
+<pre>$chmod 700 /www/IlohaMail/users
+$chmod 700 /www/IlohaMail/sessions
+$chmod 700 /www/IlohaMail/uploads
+$chmod 700 /www/IlohaMail/cache
+</pre>
+</td></tr></table></center>
+<br>Note:  Use "777" instead of "700" if you have PHP installed as a CGI, 
+or if you do not have root access (which is required in the next step).
+<br><br>
+</li>
+
+<li>Change the owner of the folders you created in step 4 to the user Apache is running as (look for the "User" directive in httpd.conf if you're not sure).<br>
+You will need root access for this step.  If you don't have root access, you should have set the privileges to "777" in the last step, and skip this step.
+<center><table width="300"><tr><td bgcolor="#CCCCCC">
+<i>e.g.</i> <font size="-1">(Omit folders you don't need)</font>
+<pre>$chown nobody /www/IlohaMail/users
+$chown nobody /www/IlohaMail/sessions
+$chown nobody /www/IlohaMail/uploads
+$chown nobody /www/IlohaMail/cache
+</pre>
+</td></tr></table></center><br>
+</li>
+
+<li>Restart Apache, and try accessing the program.  If it works, give your self a pat on the back.<br><br></li>
+
+<li>It is <b>strongly recommended</b> that you use a database backend on large scale production environments.
+</li>
+</ol>
+</td></tr></table>
+</center>
+</html>

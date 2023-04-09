@@ -1,0 +1,27 @@
+<CENTER>
+#%LOGIN_ERROR%#
+
+	<TABLE cellspacing=3 cellpadding=0 border=0>
+<FORM ACTION="#%ACTION%#" METHOD="POST">
+<INPUT TYPE="HIDDEN" NAME="Login" VALUE="1">
+
+		<TR>
+			<TD>Username<BR><input name="alias" value="%%OLD%%" class="a"><BR>
+			</TD>
+			<TD>Password<BR><input type="password" name="password" class="a">
+			</TD>
+		</TR>
+		<TR><TD align="center" colspan="2">
+			<input type="submit" name="Login" value="Login" class="button">
+		</TD></TR>
+	</TABLE>
+</FORM>
+</CENTER>
+
+<MESSAGE>
+html_title: Login Panel
+
+error_unauthorized_access: Unauthorized access
+error_access_denied : Access denied
+error_wrong: Wrong password
+</MESSAGE>

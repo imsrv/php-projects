@@ -1,0 +1,11 @@
+$PathToMail="/usr/bin/sendmail";
+$EmailAddy="youraddress\@domain.com";
+$filepath="/www/path-to/public_html";
+$cgidirectory="ICScgi";
+$Directories="SEdirect";
+$IPDirectory="IPDirect";
+$ICSHelp="ICShtml";
+$DomainName="http://www.yourdomain.com";
+$html="yes";
+$UsingURI="no";
+$DirMirror="no";

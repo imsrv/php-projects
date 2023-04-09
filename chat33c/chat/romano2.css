@@ -1,0 +1,57 @@
+td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+td.titulo {
+	background-color : #FFD700;
+	height : 20px;
+	color : Black;
+	text-align : center;
+}
+
+td.titulo2 {
+	background-color : #F0E68C;
+	height : 10px;
+	color : Black;
+	text-align : center;
+	font-size : 10px;
+}
+
+td.campos {
+	background-color : #FFFFFF;
+	color : #000000;
+	font-size: 12px;
+}
+
+td.button {
+	text-align : center;
+	color: Black;
+	cursor: pointer;
+	cursor: hand;
+}
+
+td.fundo_careta{
+	border:1px solid white;
+	cursor: pointer;
+	cursor: hand;
+	background-color : #F5FFFA;
+}
+
+input.text {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #990000;
+	border: thin solid #CCCCCC;
+}
+
+a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #FF0000;
+}

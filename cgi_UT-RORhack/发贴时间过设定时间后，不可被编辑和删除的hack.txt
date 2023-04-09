@@ -1,0 +1,66 @@
+1.UTConfig.pm 
+
+###2002-5-16:second 30*3600*24=2592000 
+$cfg{'trial_edittime'}=2592000; 
+
+2.UTLanguage.pm 
+$lng{'trialnot_edit'} = "this post can not edit or del.because it is scored or the post time is too old"; 
+
+3.post_edit.cgi 
+$board or entryError($lng{'errBrdNotFnd'}); 后面 
+
+###scud hack_2002_a:打分或者一定时间后就没法修改/删除了: 
+  my $now = time(); 
+  my $trialtime = $cfg{'trial_edittime'}; 
+
+  if(!($user->{'admin'} || $user->{'superMod'} || boardAdmin($user->{'id'}, $board->{'id'}) ) ) 
+  { 
+    if( ($post->{'rating'}!=0) || ( $post->{'postTime'}<($now-$trialtime) ) ) 
+    { 
+      entryError($lng{'trialnot_edit'}); 
+    }   
+  } 
+###----------------  end hack_2002_a 
+
+4.post_edit_x.cgi 
+
+$board or entryError($lng{'errBrdNotFnd'}); 后面: 
+
+###scud hack_2002_a:打分或者一定时间后就没法修改/删除了 
+  my $now = time(); 
+  my $trialtime = $cfg{'trial_edittime'}; 
+
+  if(!($user->{'admin'} || $user->{'superMod'} || boardAdmin($user->{'id'}, $board->{'id'}) ) ) 
+  { 
+    if( ($post->{'rating'}!=0) || ( $post->{'postTime'}<($now-$trialtime) ) ) 
+    { 
+      entryError($lng{'trialnot_edit'}); 
+    }   
+  } 
+###----------------  end hack_2002_a 
+
+5.post_delete_x.cgi 
+  a: 前面的 
+# Get post data 
+my $query = "SELECT id, userId, boardId, topicId, parentId, attach FROM ut_posts WHERE id = $postId"; 
+  =>改成: SELECT * from .... 或者加上 rating,postTime两个字段 
+
+  b: 
+# Check if user can delete post 
+$user->{'id'} == $post->{'userId'} 
+  || $user->{'admin'} || $user->{'superMod'} || boardAdmin($user->{'id'}, $post->{'boardId'}) 
+  or userError($lng{'errNotYours'}); 
+
+后面: 
+###scud hack_2002_a:打分或者一定时间后就没法修改/删除了 
+  my $now = time(); 
+  my $trialtime = $cfg{'trial_edittime'}; 
+
+  if(!($user->{'admin'} || $user->{'superMod'} || boardAdmin($user->{'id'}, $post->{'boardId'}) ) ) 
+  { 
+    if( ($post->{'rating'}!=0) || ( $post->{'postTime'}<($now-$trialtime) ) ) 
+    { 
+      entryError($lng{'trialnot_edit'}); 
+    }   
+  } 
+###----------------  end hack_2002_a 

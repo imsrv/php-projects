@@ -1,0 +1,8 @@
+<TABLE WIDTH=400 CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Message Sent</B></FONT></CENTER></TD></TR>
+<TR><TD [<($CONFIG{'WINCOLOR'})>]><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<H3>Your message has been sent!</H3>
+[<($FORM{'ThankYouMessage'})>]
+<CENTER><FORM><INPUT TYPE="button" VALUE="--- Back ---" onClick="history.go(-1);"></FORM></CENTER>
+<hr>
+</TD></TR></TABLE>

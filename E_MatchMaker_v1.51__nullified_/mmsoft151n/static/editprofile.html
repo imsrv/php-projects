@@ -1,0 +1,316 @@
+<body bgcolor=#cb3834 text=white><h1>Modify profile for user "<script language=php> echo $user; </script>"</h1>
+<table width="800" border="0" cellspacing="0" cellpadding="0" height="1097">
+  <tr> 
+<form action="admin.php"><input type=hidden name=action value="<script language=php> echo $action; </script>">
+    <td height="885"> <input type=hidden name=user value="<script language=php> echo $user; </script>">
+      <table width="800" border="0" cellspacing="0" cellpadding="0" height="294">
+        <tr> 
+          <td height="300" background="images/people_red.gif" align="left" valign="top"><!-- #BeginEditable "CyKuH [WTN]" -->
+            <table width="790" border="0" cellspacing="0" cellpadding="0" height="299">
+              <tr> 
+                <td height="29" width="36">&nbsp;</td>
+                <td height="29" width="233">&nbsp;</td>
+                <td height="254" rowspan="7" width="8"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font></td>
+                <td height="29" width="138">&nbsp;</td>
+                <td height="29" width="11">&nbsp;</td>
+                <td height="29" width="64">&nbsp;</td>
+                <td height="29" width="278">&nbsp;</td>
+                <td height="0" rowspan="7" width="17"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font></td>
+              </tr>
+              <tr> 
+                <td valign="top" width="36">&nbsp;</td>
+                <td rowspan="6" width="233" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Now, 
+                  it's time for you to create your profile. The information you 
+                  provide will be used to create your public profile - so remember 
+                  to be as accurate as possible in order to provide the best description 
+                  of yourself.<br>
+                  <br>
+                  You will have an opportunity to upload a photo once you've completed 
+                  the information. <br>
+                  <br>
+                  Once your profile is completed and your photo has been uploaded, 
+                  it will be available for viewing by other members.<br>
+                  <br>
+                  You can change your profile as often as you wish by clicking 
+                  the &quot;My Account&quot; button located at the top of the 
+                  page. </font></td>
+                <td colspan="3" valign="top" height="0" rowspan="6"> 
+                  <table width="213" border="0" cellspacing="0" cellpadding="0" height="271">
+                    <tr valign="middle"> 
+                      <td width="54" height="26"> 
+                        <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Gender</font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="129" height="26" valign="middle"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+                        <script language=php> WriteCombo($sex_values, "sex", $sex, 1); </script>
+                        </font></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="54" height="26"> 
+                        <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Age</font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="129" height="26" valign="middle"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+                      <script language=php> WriteCombo($age_values, "age", $age, 1); </script></font></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="54" height="26"> 
+                        <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Race</font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="129" height="26" valign="middle"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"> 
+                        <script language=php> WriteCombo($race_values, "race", $race, 1); </script>                        </font></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="54" height="26"> 
+                        <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">State</font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="129" height="26" valign="middle"> <font size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+                       <script language=php> WriteCombo($state_values, "state", $state, 1);</script></font></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="54" height="26"> 
+                        <div align="right"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">City</font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="129" height="26" valign="middle"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+                      <input name="city" type="text" size=15 maxlen=0 value="<script language=php> echo $city;</script>"></font></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="54" height="26"> 
+                        <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Zip 
+                          Code</font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="129" height="26" valign="middle"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+                        <input name="zipcode" type="text" size=10 maxlen=0 value="<script language=php> echo $zipcode;</script>">
+                        </font></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="54" height="26"> 
+                        <div align="right"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Height</font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="129" height="26" valign="middle">
+                      <script language=php> WriteCombo($height_values, "height", $height, 1); </script></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="54" height="26"> 
+                        <div align="right"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Body 
+                          Type </font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="129" height="26" valign="middle">
+<script language=php> WriteCombo($build_values, "build", $build, 1); </script></td>
+                    </tr>
+                    <tr>
+                      <td width="74" height="26"> 
+                        <div align="right"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Want 
+                          Children? </font></div>
+                      </td>
+                      <td width="12" height="26">&nbsp;</td>
+                      <td width="153" height="26">
+<script language=php> WriteCombo($kids_values, "kids", $kids, 1); </script></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="54" height="26">&nbsp;</td>
+                      <td width="12" height="26">&nbsp;</td>
+                      <td width="129" height="26" valign="middle"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+                        </font></td>
+                    </tr>
+                  </table>
+                </td>
+                <td rowspan="6" width="278" valign="top" height="0"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font> 
+                  <table width="277" border="0" cellspacing="0" cellpadding="0" height="237">
+                    <tr valign="middle"> 
+                      <td width="74" height="26"> 
+                        <div align="right"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Relationship 
+                          Type </font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="153" height="26">
+<script language=php> WriteCombo($relation_values, "relation", $relation, 1);</script></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="74" height="26"> 
+                        <div align="right"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Willing 
+                          to Travel</font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="153" height="26">
+<script language=php> WriteCombo($travel_values, "travel", $travel, 1);</script></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="74" height="26"> 
+                        <div align="right"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Eye 
+                          Color </font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="153" height="26"><script language=php> WriteCombo($eyes_values, "eyes", $eyes, 1); </script></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="74" height="26"> 
+                        <div align="right"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Hair 
+                          Color </font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="153" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+<script language=php> WriteCombo($hair_values, "hair", $hair, 1); </script>
+                        </font></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="74" height="26"> 
+                        <div align="right"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Education</font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="153" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+<script language=php> WriteCombo($education_values, "education", $education, 1); </script>
+                        </font></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="74" height="26"> 
+                        <div align="right"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Income 
+                          Level </font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="153" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+<script language=php> WriteCombo($income_values, "income", $income, 1); </script>
+                        </font></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="74" height="26"> 
+                        <div align="right"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Smoke</font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="153" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+<script language=php> WriteCombo($smoke_values, "smoke", $smoke, 1); </script>
+                        </font></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="74" height="26"> 
+                        <div align="right"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Drink</font></div>
+                      </td>
+                      <td width="12" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                      <td width="153" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
+<script language=php> WriteCombo($drink_values, "drink", $drink, 1); </script>
+                        </font></td>
+                    </tr>
+                    <tr valign="middle"> 
+                      <td width="74" height="26">&nbsp;</td>
+                      <td width="12" height="26">&nbsp;</td>
+                      <td width="153" height="26"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"></font></td>
+                    </tr>
+                  </table>
+                  <font face="Verdana, Arial, Helvetica, sans-serif" size="1"></font></td>
+              </tr>
+              <tr> 
+                <td width="36">&nbsp;</td>
+              </tr>
+              <tr> 
+                <td width="36" height="22">&nbsp;</td>
+              </tr>
+              <tr> 
+                <td width="36" height="21">&nbsp;</td>
+              </tr>
+              <tr> 
+                <td width="36" height="23">&nbsp;</td>
+              </tr>
+              <tr> 
+                <td height="69" width="36">&nbsp;</td>
+              </tr>
+            </table>
+            <!-- #EndEditable --> </td>
+        </tr>
+      </table>
+      <br>
+      <table width="800" border="0" cellspacing="0" cellpadding="0" height="466">
+        <tr>
+          <td valign="top" height="542"><!-- #BeginEditable "CyKuH [WTN]" -->
+            <table width="794" border="0" cellspacing="0" cellpadding="0" height="596">
+              <tr> 
+                <td align="center" valign="middle" width="27" height="159">&nbsp;</td>
+                <td align="left" valign="top" width="665" height="159"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="ffffcc"><b>HEADLINE</b></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"><br>
+                  <br>
+                  Here's your chance to make a first impression! In 80 characters 
+                  or less ... sell yourself! This headline will be displayed next 
+                  to your profile and will be the very first thing seen by other 
+                  members. Be creative, make it count!<br>
+                  <br>
+                  (maximum 80 characters)<br>
+                   <input name="catch" type="text" size=80 maxlen=80 value="<script language=php> echo $catch;</script>">
+                  <br>
+                  <br>
+                  <font color="ffffcc"><b><font size="2"><br>
+                  TELL US ABOUT YOU</font></b></font><br>
+                  <br>
+                  Now, tell our other members what it is that makes you unique 
+                  and separates you from the rest. Don't be shy ... now's the 
+                  time to brag. Describe your perfect first date, talk about your 
+                  hobbies or interests. This is your chance to convince our other 
+                  members that to look elsewhere after reviewing your profile 
+                  would be a waste of time!<br>
+                  <br>
+                  (maximum 3333 characters)<br>
+                  <textarea name="about" cols=80 rows=3><script language=php> echo $about;</script></textarea>
+                  <br>
+                  <br>
+                  <font color="ffffcc"><b><font size="2"><br>
+                  WHAT ARE YOU LOOKING FOR?</font></b></font><br>
+                  <br>
+                  Tell everyone what you're looking for in a partner. Describe 
+                  the type of person you consider to be your perfect match. Be 
+                  as truthful as possible when completing this section ... you'll 
+                  have a better chance at developing a long-term, fruitful relationship.<br>
+                  <br>
+                  (maximum 3333 characters)<br>
+                  <textarea name="looking" cols=80 rows=3><script language=php> echo $looking;</script></textarea>
+                  <br>
+                  &nbsp;</font><p><b>
+                <font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#FFFFCC">
+                INTERESTS</font></b></p>
+                <p><b>
+                <font face="Verdana, Arial, Helvetica, sans-serif" size="1" color="#FFFFCC">
+                <script language=php> writecheckbox($interest_values, "interest[]", $interest); </script></font></b></p>
+                <p><font face="Verdana, Arial, Helvetica, sans-serif" size="1">
+                  <br>
+                  <br>
+                  <input type="submit" name="Submit" value="Save Changes">
+                  </font><input type=hidden name=modeofform value="<script language=php> echo $modeofform;</script>"></FORM><form action="admin.php"><input type=hidden name=action value="<script language=php> echo $action; </script>"><input type=submit name=submit value="Abort Changes"></form></td>
+                <td align="center" valign="middle" width="102" height="159">&nbsp;</td>
+              </tr>
+            </table>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <!-- #EndEditable --></td>
+        </tr>
+      </table>
+      <div align="center"><br>
+        <font face="Verdana, Arial, Helvetica, sans-serif" size="1">Copyright 
+        2001. All Rights Reserved.<br>
+        </font><br>
+      </div>
+    </td>
+  </tr>
+  <tr align="center"> 
+    <td height="262"><br>
+      <br>
+    </td>
+  </tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

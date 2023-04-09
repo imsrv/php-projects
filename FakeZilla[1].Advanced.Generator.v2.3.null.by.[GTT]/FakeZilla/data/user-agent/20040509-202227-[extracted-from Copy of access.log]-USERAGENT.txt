@@ -1,0 +1,12 @@
+Ad Muncher v4.4
+Avant Browser (http://www.avantbrowser.com)
+CerberianDrtrs/Version-3.0-Build-37
+Cowbot-0.1.1 (NHN Corp. / +82-2-3011-1954 / nhnbot@naver.com)
+Denmex websearch (http://search.denmex.com)
+EmailSiphon
+FAST-WebCrawler/3.8 (atw-crawler at fast dot no; http://fast.no/support/crawler.asp)
+FAST-WebCrawler/3.8 (crawler at trd dot overture dot com; http://www.alltheweb.com/help/webmaster/crawler)
+FAST-WebCrawler/3.x Multimedia (mm dash crawler at fast dot no)
+FavOrg
+GetRight/4.5c
+Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.0.3705)

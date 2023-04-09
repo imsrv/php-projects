@@ -1,0 +1,8 @@
+<TABLE BORDER="1" CELLSPACING="2" CELLPADDING="10">
+<TR BGCOLOR="[<($CONFIG{'title_color'})>]">
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>Thread Deleted</B></FONT></TD></TR>
+<TR [<($CONFIG{'WINCOLOR'})>]>
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><FONT COLOR="[<($CONFIG{'text_color'})>]" FACE="[<($CONFIG{'font_face'})>]" SIZE=2>
+[<($status)>]
+</TD></TR></TABLE></CENTER>
+<CENTER><P><A HREF="[<($GUrl{'cforum.cgi'})>]?action=getall&clubs=[<($FORM{'clubs'})>]&forum=[<($FORM{'forum'})>]">Back to the forum...</A></CENTER>

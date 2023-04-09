@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+<TITLE>#%SITE_TITLE%# - #%HTML_TITLE%#</TITLE>
+
+<link rel=stylesheet type="text/css" href="#%IMAGES_DIR%#admin.css">
+</HEAD>
+<BODY bgcolor="WHITE" leftmargin="0" topmargin="7" marginwidth="0" marginheight="7">
+	
+	<table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr><td height="80%" valign="top" align="center">
+
+		
+
+	
+	<TABLE BORDER="0" cellSpacing="0" CELLPADDING="0" WIDTH="100%" class="bottom_line">
+	<TR>
+		<TD width="50%"><a href="#%SITE_HREF%#"><IMG 
+			border="0"
+			SRC="#%IMAGES_DIR%#admin_logo.png"
+			ALIGN=absmidle
+			ALT="#%SITE_TITLE%#"></a>
+			
+			<div class=site>#%SITE_TITLE%#</div></TD>
+
+		<TEMPLATE logged>
+			<TD width="50%" align="right">&nbsp;You are logged in as <b>#%ALIAS%#</b>&nbsp;</TD>
+			<TD width="0%"><a href="#%ACTION%#?cmd=menu"><img
+					align="absmiddle"
+					border="0"
+					src="#%IMAGES_DIR%#5.gif">Menu</a></TD>
+			<TD width="0%"><a
+				onClick="return confirm('You are about to sign out.\nAre you sure?');"
+				href="#%ACTION%#?cmd=logout"><img
+					align="absmiddle"
+					border="0"
+					src="#%IMAGES_DIR%#5.gif">Sign out</a></TD>
+		</TEMPLATE>
+	</TR>
+	</TABLE>
+	
+	
+		<br>
+		<div class="head">#%HTML_TITLE%#</div>
+		<br>
+		

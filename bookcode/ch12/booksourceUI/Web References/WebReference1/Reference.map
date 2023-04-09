@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://66.129.68.165/bookSource/orderBooks.asmx?wsdl" filename="orderBooks.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://66.129.68.165/bookSource/adminCustomer.asmx?wsdl" filename="adminCustomer.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://66.129.68.165/bookSource/bookSource.vsdisco" filename="bookSource.disco" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://66.129.68.165/bookSource/getCustomer.asmx?wsdl" filename="getCustomer.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://66.129.68.165/bookSource/sellerAdmin.asmx?wsdl" filename="sellerAdmin.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://66.129.68.165/bookSource/getBooks.asmx?wsdl" filename="getBooks.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://66.129.68.165/bookSource/loginCustomer.asmx?wsdl" filename="loginCustomer.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://66.129.68.165/bookSource/getCategories.asmx?wsdl" filename="getCategories.wsdl" />
+  </Results>
+</DiscoveryClientResultsFile>

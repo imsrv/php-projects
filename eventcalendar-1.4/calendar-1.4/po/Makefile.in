@@ -1,0 +1,27 @@
+#
+# $Id: Makefile.in,v 1.2 2001/05/28 17:02:24 fluffy Exp $
+#
+
+MKINSTALLDIRS	= ../mkinstalldirs
+MOSUFFIX	= .mo
+DESTDIR		= <<textdomain_dir>>
+DESTFILE	= <<textdomain>>$(MOSUFFIX)
+DESTFILE_PERMS	= 644
+MSGFMT		= <<msgfmt>>
+
+MOFILES		= it.mo
+
+install: $(MOFILES)
+	$(MKINSTALLDIRS) $(DESTDIR)
+	@mos='$(MOFILES)'; \
+	for mo in $$mos; do \
+		base=`basename $$mo`; \
+		lang=`echo $$mo | sed 's/\$(MOSUFFIX)$$//'`; \
+		dir=$(DESTDIR)/$$lang/LC_MESSAGES; \
+		$(MKINSTALLDIRS) $$dir; \
+		cp $$mo $$dir/$(DESTFILE); \
+		chmod $(DESTFILE_PERMS) $$dir/$(DESTFILE); \
+	done
+
+%.mo : %.po
+	$(MSGFMT) -o $@ $<

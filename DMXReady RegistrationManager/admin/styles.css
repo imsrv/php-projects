@@ -1,0 +1,65 @@
+A.menu {
+	font-size: 12px;
+	color:#FFFFFF;
+}
+A.menu:hover {
+	font-size: 12px;
+	color:#CCCCCC;
+	text-decoration: underline;
+}
+A.menu:active {
+	font-size: 12px;
+	color:#CCCCCC;
+}
+table {font-family: Verdena, Arial, Helvetica; font-size: 11px;}
+body {font-family: Verdena, Arial, Helvetica; font-size: 11px;}
+hr {  color: #000000}
+
+h3 {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+h4 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	background-color: #660033;
+
+}
+a{color: #0000FF; font-size: 11px; text-decoration: underline;}
+a:hover {color: #FF0000; font-size: 11px;}
+a:active { color: #660033; font-size: 11px;}
+
+.row1 {
+	background-color: #F5F5F5;
+
+}
+.row2 {
+
+}
+.tableheader {
+	font-weight: bold;
+	background-color: #DAE3E3;
+	padding: 3px;
+	margin: 3px;
+}
+input {
+	font-size: 10px;
+
+}
+select {
+	font-size: 10px;
+}
+.tableborder {
+	border: 1px solid #000000;
+	padding: 3px;
+
+}
+button {
+	font-size: 10px;
+	background-color: #000000;
+	color: #FFFFFF;
+
+
+}

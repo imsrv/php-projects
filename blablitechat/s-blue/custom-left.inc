@@ -1,0 +1,1 @@
+<img src="<?php print $skin_dir;?>/logo.png" width="79" height="96" alt="" hspace="12" vspace="6" />

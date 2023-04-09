@@ -1,0 +1,1 @@
+<br><a href="admin.php">Admin</a><br><font size="1"><center><b>* THIS SCRIPT TAKES YOUR URL AND ID & PUTS IT INTO A DATABASE THIS IS ONLY USED TO KEEP TRACK OF WHO IS USEING THIS SCRIPT <br>THIS INFO WILL NOT BE SOLD<br></b><? include "http://myspaceoutfit.com/mscontact/sitename.php" ?>

@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_controlpanel" value="name:ItemID;datatype:3,name:ItemName;datatype:202,name:Activated;datatype:202,name:HelpLink;datatype:202,name:DateAdded;datatype:7,name:CategoryID;datatype:3" />
+</info>

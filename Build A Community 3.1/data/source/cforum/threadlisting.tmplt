@@ -1,0 +1,14 @@
+<TR BGCOLOR="[<($color)>]">
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+[<($folder_image)>] [<($picons{$ft{'picon'}})>] &nbsp; 
+<A HREF="[<($GUrl{'cforum.cgi'})>]?action=message&clubs=[<($FORM{'clubs'})>]&forum=[<($FORM{'forum'})>]&thread=[<($ft{'thisthread'})>]">
+<B>[<($ft{'subject'})>]</B></A> [<($NEW)>] [<($HOT)>]</FONT><BR>
+<FONT FACE="[<($CONFIG{'font_face'})>]" COLOR="[<($CONFIG{'text_color'})>]" SIZE=-1>
+[<($teaser)>]...
+</FONT></TD>
+
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">[<($ft{'name'})>]</FONT></TD>
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">[<($ldate)>]</FONT></TD>
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><CENTER>[<($num_posts)>]</CENTER></FONT></TD>
+[<($ADMIN_CODE)>]
+</TR>

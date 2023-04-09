@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://tempuri.org/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="validCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CT_Email" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CT_Password" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="validCustomerResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="validCustomerSoapIn">
+    <part name="parameters" element="s0:validCustomer" />
+  </message>
+  <message name="validCustomerSoapOut">
+    <part name="parameters" element="s0:validCustomerResponse" />
+  </message>
+  <message name="validCustomerHttpGetIn">
+    <part name="CT_Email" type="s:string" />
+    <part name="CT_Password" type="s:string" />
+  </message>
+  <message name="validCustomerHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="validCustomerHttpPostIn">
+    <part name="CT_Email" type="s:string" />
+    <part name="CT_Password" type="s:string" />
+  </message>
+  <message name="validCustomerHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="loginCustomerSoap">
+    <operation name="validCustomer">
+      <documentation>This will log a customer into the shopDb and return the customers Id</documentation>
+      <input message="s0:validCustomerSoapIn" />
+      <output message="s0:validCustomerSoapOut" />
+    </operation>
+  </portType>
+  <portType name="loginCustomerHttpGet">
+    <operation name="validCustomer">
+      <documentation>This will log a customer into the shopDb and return the customers Id</documentation>
+      <input message="s0:validCustomerHttpGetIn" />
+      <output message="s0:validCustomerHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="loginCustomerHttpPost">
+    <operation name="validCustomer">
+      <documentation>This will log a customer into the shopDb and return the customers Id</documentation>
+      <input message="s0:validCustomerHttpPostIn" />
+      <output message="s0:validCustomerHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="loginCustomerSoap" type="s0:loginCustomerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="validCustomer">
+      <soap:operation soapAction="http://tempuri.org/validCustomer" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="loginCustomerHttpGet" type="s0:loginCustomerHttpGet">
+    <http:binding verb="GET" />
+    <operation name="validCustomer">
+      <http:operation location="/validCustomer" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="loginCustomerHttpPost" type="s0:loginCustomerHttpPost">
+    <http:binding verb="POST" />
+    <operation name="validCustomer">
+      <http:operation location="/validCustomer" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="loginCustomer">
+    <port name="loginCustomerSoap" binding="s0:loginCustomerSoap">
+      <soap:address location="http://66.129.68.165/bookSource/loginCustomer.asmx" />
+    </port>
+    <port name="loginCustomerHttpGet" binding="s0:loginCustomerHttpGet">
+      <http:address location="http://66.129.68.165/bookSource/loginCustomer.asmx" />
+    </port>
+    <port name="loginCustomerHttpPost" binding="s0:loginCustomerHttpPost">
+      <http:address location="http://66.129.68.165/bookSource/loginCustomer.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,91 @@
+<?
+	if($Browser_Admin == "YES")
+	{
+		/* 
+		** Find all the doorways out of this wing 
+		*/
+		$Query = "SELECT ID, Title, Description FROM wing ";
+		$Query .= "WHERE Parent=$wing ";
+		$Query .= "ORDER BY Title ";
+		$DatabaseResult = mysql_query($Query, $DatabaseLink);
+		$numRows = mysql_NumRows($DatabaseResult);
+		$RowCount = 0;
+	
+		if($numRows > 0)
+		{
+			print("<B>Doors to Other Wings:</B><BR>\n");
+			print("<DL>\n");
+	
+			while($DatabaseRow = mysql_fetch_row($DatabaseResult))
+			{
+				$door_ID = $DatabaseRow[0];;
+				$door_Title = $DatabaseRow[1];;
+				$door_Description = $DatabaseRow[2];;
+		
+				print("<DT><A HREF=\"$IndexScript?SCREEN=tidy&wing=$door_ID\">$door_Title</A>\n");
+				print("<DD>$door_Description\n");
+				print("<DD><A HREF=\"$IndexScript?SCREEN=move_wing&wing=$door_ID#current_wing\">Re-Classify</A>");
+				print(" | <A HREF=\"$IndexScript?SCREEN=tidy&ACTION=DELETE_WING&wing=$wing&inputWing=$door_ID\">Destroy</A> ");
+				print(" | <A HREF=\"$IndexScript?SCREEN=edit_wing&wing=$wing&inputWing=$door_ID\">Alter</A> ");
+		
+			}
+	
+			print("</DL>\n");
+		}
+	
+	
+		/*
+		** Find all links for this wing
+		*/
+		$Query = "SELECT ID, Title, URL, Description, Created, Creator, LinkCount, LastChecked ";
+		$Query .= "FROM item ";
+		$Query .= "WHERE Wing=$wing ";
+		$Query .= "ORDER BY Title ";
+		$DatabaseResult = mysql_query($Query, $DatabaseLink);
+		$numRows = mysql_NumRows($DatabaseResult);
+	
+		if($numRows > 0)
+		{
+			print("<B>Items in this Collection:</B><BR>\n");
+			print("<DL>\n");
+	
+			while($DatabaseRow = mysql_fetch_row($DatabaseResult))
+			{
+				$item_ID = $DatabaseRow[0];
+				$item_Title = $DatabaseRow[1];
+				$item_URL = $DatabaseRow[2];
+				$item_Description = $DatabaseRow[3];
+	
+				$item_Created = $DatabaseRow[4];
+				$item_Creator = $DatabaseRow[5];
+				$item_LinkCount = $DatabaseRow[6];
+				$item_LastChecked = $DatabaseRow[7];
+	
+				print("<DT><A HREF=\"$item_URL\">$item_Title</A>");
+		
+				print("<DD><A HREF=\"$IndexScript?SCREEN=move_item&item=$item_ID&wing=$wing#current_wing\">Re-Classify</A>");
+				print(" | <A HREF=\"$IndexScript?SCREEN=tidy&ACTION=DELETE_ITEM&inputItem=$item_ID&wing=$wing\">Destroy</A> ");
+				print(" | <A HREF=\"$IndexScript?SCREEN=edit_item&inputItem=$item_ID&wing=$wing\">Alter</A> ");
+		
+				print("<BR>\n");	
+				print("Created $item_Created");
+				print("<BR>\n");	
+				print("By $item_Creator");
+				print("<BR>\n");	
+				print("Visited $item_LinkCount times");
+				print("<BR>\n");	
+				print("Last Checked $item_LastChecked");
+				print("<BR>\n");
+				print("<FONT SIZE=2>$item_Description</FONT><BR>\n");
+		
+			}
+
+			print("</DL>\n");
+		}
+	
+	}
+	else
+	{
+		print("You seem to have lost your way...");
+	}
+?>

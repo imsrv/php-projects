@@ -1,0 +1,45 @@
+<?PHP 	
+include ("include/connect.txt");
+$results = 0;
+if ( isset($search_term))
+{
+	if ( !(isset($pagenumber)))
+		{
+			$pagenumber = 1;
+		}
+	$pattern = '/ /';
+	$replacement = '_';
+	$string = $search_term;
+
+	$search_term = preg_replace($pattern,$replacement,$string);
+
+$result = mysql_query("SELECT search_number FROM ds_options WHERE id = '0'");  
+while ($myrow = mysql_fetch_row($result)) 
+$search_number = mysql_result($result,0,"search_number");
+
+	//$search_term = preg_replace($pattern,$replacement,$string);
+ 
+	$result = mysql_query("SELECT seo_url,title FROM ds_movies WHERE title LIKE '%$search_term%' ORDER BY (title) ASC",$db);
+	$movies = mysql_num_rows($result);
+	$pagescount = ($movies/$search_number)+1;
+	printf("<B>Страница %s из %s</B><br>",$pagenumber,intval($pagescount)); 
+	for ($i=1;$i<$pagescount;$i++) 
+		{ 
+			printf("<a href=search.php?pagenumber=%s&search_term=%s>%s<a> ",$i,$search_term,$i); 
+		} 
+	$pagenumber = $pagenumber -1; 
+	$pagenumber = $pagenumber*$search_number; 
+	$result = mysql_query("SELECT seo_url,title FROM ds_movies WHERE title LIKE '%$search_term%' ORDER BY (title) ASC LIMIT $pagenumber,$search_number",$db); printf("<br><br>"); 
+	while ($myrow = mysql_fetch_row($result)) 
+		{ 
+			$staticurl = $myrow[0].".html";
+			printf("<A HREF=movie_%s>%s</A><br>",$staticurl,$myrow[1]) ;
+			printf("<br>"); 
+			$results =1;
+		} 
+} 
+if ( $results == '0' )
+	{
+		printf(" Результатов нет. ");
+	}
+?>

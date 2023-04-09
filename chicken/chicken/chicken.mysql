@@ -1,0 +1,133 @@
+-- MySQL dump 9.11
+--
+-- Host: localhost    Database: chicken
+-- ------------------------------------------------------
+-- Server version	4.0.24_Debian-5-log
+
+--
+-- Table structure for table `answer`
+--
+
+CREATE TABLE `answer` (
+  `id` int(11) NOT NULL auto_increment,
+  `md5_ans` varchar(32) NOT NULL default '',
+  `date` datetime default NULL,
+  `who` varchar(100) NOT NULL default '',
+  `def` varchar(100) default NULL,
+  `ans` longtext NOT NULL,
+  `cat` varchar(32) NOT NULL default '',
+  `lang` varchar(32) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `answer`
+--
+
+INSERT INTO `answer` VALUES (1,'f5dd3bc21b16272641c4816334d84894','2005-08-13 22:06:54','Un professeur','','Pour aller de l\'autre côté','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (2,'9da3e95f074bf5219ee0450f860846bb','2005-08-13 23:41:24','Une assistante','','Oui, pour aller de l\'autre côté !','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (3,'6183844c2eddadae792ad61274d700ee','2005-08-14 13:02:44','Platon','','Pour son bien','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (4,'15a08efdc79f1214f0e3f28ef5a51e5c','2005-08-14 13:03:07','Aristote','','C\'est dans la nature du poulet de traverser les routes.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (5,'ff13f254c2e56c2baa8b7b26eb7df0a8','2005-08-14 13:03:48','Karl Marx','','C\'est une obligation historique que la mentalité étriquée des petits-bourgeois esclaves de leurs préjugés ne saurait remettre en question.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (6,'394efc22cdf0eaea6615d22944f34c85','2005-08-14 13:05:04','Capitaine James T. Kirk','','To boldly go where no chicken has gone before.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (7,'4f44faeba46dafd42546ef4baba2c933','2005-08-14 13:05:32','Hippocrate','','A cause d\'un excès d\'une humeur bilieuse, de couleur vert clair au niveau de la poche principale de son estomac.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (8,'7e04ac84278dd2398cf2f7004375ff3c','2005-08-14 13:06:02','George W. Bush','','We don\'t really care why the chicken crossed the road. We just want to know if the chicken is on our side of the road or not. The chicken is either with us or it is against us. There is no middle ground here.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (9,'aa8e7b835a93c78de4d8d9af048ef68c','2005-08-14 13:06:50','Colin Powell','','Maintenant à gauche de l\'écran, vous pouvez voir clairement l\'image satellite du poulet traversant la route.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (10,'faa5ec9796dff06aa8732407bd843540','2005-08-14 13:07:48','Ronald Reagen','','I forgot!','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (11,'329d5a6154f1808c77fb5598abfeda3a','2005-08-14 13:10:03','Andersen Consulting','','Deregulation of the chicken\'s side of the road was threatening its dominant market position. The chicken was faced with significant challenges to create and develop the competencies required for the newly competitive market. Andersen Consulting, in a partnering relationship with the client, helped the chicken by rethinking its physical distribution strategy and implementation rocesses. Using the Poultry Integration Model (PIM), Andersen helped the chicken use its skills, methodologies, knowledge, capital and experiences to align the chicken\'s people, processes and technology in support of its overall strategy within a Program Management framework. Andersen Consulting convened a diverse cross-spectrum of road analysts and best chickens along with Anderson consultants with deep skills in the transportation industry to engage in a two-day itinerary of meetings in order to leverage their personal knowledge capital, both tacit and explicit, and to enable them to synergize with each other in order to achieve the implicit goals of delivering and successfully architecting and implementing an enterprise-wide value framework across the continuum of poultry cross-median processes. The meeting was held in a park-like setting, enabling and creating an impactful environment which was strategically based, industry-focused, and built upon a consistent, clear, and unified market message and aligned with the chicken\'s mission, vision, and core values. This was conducive towards the creation of a total business integration solution.\r\nAndersen Consulting helped the chicken change to become more successful.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (12,'3ce3faf8a77baeaa2f40de1f6f362535','2005-08-14 13:11:03','Martin Luther King Jr.','','I have a dream: I envision a world where all chickens will be free to cross roads without having their motives called into question.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (13,'72c09ae65960c518e9d59c940add6f54','2005-08-14 13:11:32','Richard M. Nixon','','The chicken did not cross the road. I repeat, the chicken did not cross the road.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (14,'4cec725d94250c6aee7073e919b43d0e','2005-08-14 13:12:24','John Lenon','','Imagine the chickens crossing the road in peace.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (15,'463645a60340b04808716af21ffa6ffb','2005-08-14 13:12:52','Bill Clinton','','I swear by the Constitution that I did not have sexual relations with THAT chicken. What do you mean by \"chicken\"? Could you define \"chicken\" please?','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (16,'2ff54cf2832dfccfeae26206a66add25','2005-08-14 13:59:43','Machiavel','','De cette manière, ses sujets le considéreront avec admiration, comme un poulet qui a le courage d\'oser traverser la route; mais également avec peur, car lequel parmi eux serait capable de rivaliser avec un tel parangon de la vertu avienne ? De toute façon, l\'important est que le poulet ait traversé. La fin de traverser la route justifie n\'importe quel motif.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (17,'2376e151230281f7a00ef314b04d4cd5','2005-08-14 14:00:04','Neil Armstrong','','That\'s one small step for Chicken, one giant leap for Chicken kind.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (18,'a7813c33a10f47444e66b07414b365bf','2005-08-14 14:01:17','Sigmund Freud','','La poule était bien évidemment de sexe femelle et interprétait par conséquence le poteau de signalisation comme un symbole phallique duquel elle a voulu se rapprocher.\r\nMais le fait que vous vous préoccupiez tous du fait que le poulet a traversé la route révèle votre sentiment d\'insécurité sexuelle latente dû à une relation incestueuse à l\'enfance.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (19,'382e0cef9359944236beea56b3404135','2005-08-14 14:01:36','David Hume','','Hors des us et des coutumes.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (20,'544b61320628385e4eb38990e94686b9','2005-08-14 14:02:31','Georg Friederich Hegel','','Thèse : pour être de ce côté. Antithèse : pour être de l\'autre côté. Synthèse : traverse la route.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (21,'166ba8ec5e4aa54ec5ef07f9be76b084','2005-08-14 14:02:58','Boris Eltsin','','There was vodka on the other side','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (22,'8dbaf445dcca411493445c037cc72936','2005-08-14 14:03:53','Isaac Azimov','','La Troisième Loi des Poulets stipule qu\'un poulet doit protéger sa propre existence sauf si cette protection le force à désobéir à un ordre humain ou à blesser un humain.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (23,'e2d6dfec3735244242af660c3d0bc0b7','2005-08-14 14:07:27','Nelson Mandela','','It was his long walk for freedom.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (24,'55c78eebb7a329790f0efde8ae20f1a4','2005-08-14 14:08:35','Bill Gates','Famous humourist',' I have just released eChicken 2006, which will not only cross roads, but will lay eggs, file your important documents, and balance your checkbook - and Internet Explorer is an inextricable part of eChicken.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (25,'ce4646b8578223fbf86545060b9da0d6','2005-08-14 14:11:58','Microsoft','','To escape justice.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (26,'bb0e5d2afe688302bb8bc970668012d7','2005-08-14 14:14:47','Fernando Henrique Cardoso','Former president of Brazil','O importante é, com o plano Real, o povo está comendo mais frango.','ec10d7e518989e5b88a9b22ae8d1c6d1','d2b6b7b404320a1110413c64c6367a27');
+INSERT INTO `answer` VALUES (27,'c1d0cd3a37da769b3b5f703125183326','2005-08-14 14:18:00','Jorge-Luis Borges','','Autentica era la travesía, sólo eran errados la carretera, el pollo y algunos otros eventos; lo importante es de creerlo.','ec10d7e518989e5b88a9b22ae8d1c6d1','68a65c541300c08a78982fe9ac5599b5');
+INSERT INTO `answer` VALUES (28,'04e92e0bbfb58d20375b44fc70a5f4ff','2005-08-14 14:20:45','Linus Torvalds','A genius guy','Because the new chicken 2.8 is really stable, crashless, more secure and supports more hardware. You can compile it with any gcc version.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (29,'8905da44bdc8ecdad0052e98c2b85b19','2005-08-14 14:22:01','Volfang von Beethoven','','Pardon ? parlez plus fort s\'il vous plaît.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (30,'82298a96db1530ca7e88f09a62f57d61','2005-08-14 14:22:30','Oliver Stone','','The question is not \"Why did the chicken cross the road?\" but is rather \"Who was crossing the road at the same time whom we overlooked in our haste to observe the chicken crossing?\"\r\n','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (31,'54d9ad539abacc22472074b91ef88311','2005-08-14 14:22:50','Charles Darwin','',' Chickens, over great periods of time, have been naturally selected in such a way that they are now genetically disposed to cross roads.\r\nAlso,  it was the logical next step after coming down from the trees.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (32,'7f67571dd117f637dff6ccf390271006','2005-08-14 14:26:05','Einstein','','Whether the chicken crossed the road or the road crossed the chicken depends upon your frame of reference.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (33,'5cc6f0a5f8224baab25f9366d8b13eb0','2005-08-14 14:26:28','Voltaire','','Il se peut que je ne sois pas d\'accord avec ce poulet, mais je défendrai jusqu\'à la mort son droit de traverser les routes.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (34,'c5482ec9b96baa276db7211f016cb2e7','2005-08-14 14:27:07','Ray Charles','','You mean: \"who helped him to cross the road?\"','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (35,'be584368b339a5e5db8ee4f4d196e4ef','2005-08-14 14:29:29','Jean-Marie Le Pen','','Pour picorer le pain des Français.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (36,'01fce5a3c0a32f9fe15d7bac88879d5e','2005-08-14 14:30:03','Ernest Hemingway','','To die. In the rain. Alone...','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (37,'d99f34e0da2feea80fe48c859470997b','2005-08-14 14:31:08','Margaret Thatcher','','There was no alternative.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (38,'f81cf63badec35921c18d6422727763d','2005-08-14 14:31:40','William Shakespear','','To cross or not to cross, that it is the question.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (39,'c0ceee50356f79b542437e4e05f0309b','2005-08-14 14:32:18','Zen','','Le poulet peut vainement traverser la route, seul le Maître connaît le bruit de son ombre derrière le mur.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (40,'9b67b6fe909846f7a315cc353b0048f9','2005-08-14 14:33:06','René Descartes','','Cocogito, ergot sum.','ec10d7e518989e5b88a9b22ae8d1c6d1','2cfe99fe800dba063f0c950147a614ba');
+INSERT INTO `answer` VALUES (41,'416e2fc4dec41290575e8e158a658514','2005-08-14 14:33:51','Galilon Galilei','','Et pourtant, il traverse.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (42,'733ae04256cf17f3bfaf5c0b3bdc08ff','2005-08-14 14:34:31','Charles De Gaulle','','J\'invite tous les poulets libres à venir me rejoindre de l\'autre côté de la route.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (43,'245fdf53d0494528c15b3b6699f69631','2005-08-14 14:34:54','Murphy','','Le poulet traversera systématiquement la route au moment où une voiture arrivera à tombeau ouvert.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (44,'38df9b5207ea5ec4c0945c4a799d821b','2005-08-14 14:35:28','Diogène','','Pour rigoler.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (45,'d4ca36ebd250c907c03e110011c823ad','2005-08-14 14:39:30','Julius Cæsar','','Avis venit, vidit, traversit.','ec10d7e518989e5b88a9b22ae8d1c6d1','2cfe99fe800dba063f0c950147a614ba');
+INSERT INTO `answer` VALUES (46,'0e449d6bab87c920211616424c5ab58c','2005-08-14 14:40:30','Adolf Hitler','','Pour purrifier la race des poulets.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (47,'212b4a783896dfa39cc7ad0d120c1691','2005-08-14 14:41:00','Eric Cantona','','Le poulet, il est libre, le poulet, il traverse les routes quand il veut le poulet.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (48,'d71c4dc8f513ec52d7729a3c0751fe46','2005-08-14 14:41:55','Che Guevara','','Hay que cruzar la carretera, pero sin perder la ternura jamás...','ec10d7e518989e5b88a9b22ae8d1c6d1','68a65c541300c08a78982fe9ac5599b5');
+INSERT INTO `answer` VALUES (49,'3354866dbcd0a7d9a9890df4ea347097','2005-08-14 14:43:05','Un commercial d\'IBM','','Nous proposons de construire une infrastructure technique permettant aux poulets de traverser les routes.\r\nUn cluster de 5 serveurs massivement parallèles a tolérance de panne, reliés par un réseau FDDI, avec 10 To de disques RAID devrait suffire.. Côté logiciel, il faudra approvisionner une centaine de licences DB2, Netview et Visual Age, car ces produits sont en totale adéquation aux besoins de traverser des routes, moyennant une prestation d\'adaptation mineure de 25 années hommes (tarif : 1500 $ HT /jour).\r\n\r\n','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (50,'21ccfffdf0b3f337c9aaf7244a72205d','2005-08-14 14:46:46','Josip Stalin','','Le poulet sera exécuté ainsi que tous les témoins et dix autres personnes prises au hasard pour ne pas avoir empêché le poulet de traverser la route.','ec10d7e518989e5b88a9b22ae8d1c6d1','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (51,'d9e1b0a23fdd2c09c3a108f058410673','2005-08-14 14:48:04','Salvador Dalí','','El pez ...','ec10d7e518989e5b88a9b22ae8d1c6d1','68a65c541300c08a78982fe9ac5599b5');
+INSERT INTO `answer` VALUES (52,'d4b365f83eff650875f9c6529a41da9e','2005-08-14 14:48:16','Salvador Dalí','','The fish','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (53,'9376cea2a15d431bc41eca37bbbadd4b','2005-08-14 14:50:10','Chicken NT','','Will cross on june. No, september. Well, before october.','ff929879fd4011f9cd39215f6d0cd969','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (54,'62457a4cb3446b209d5515a24eb5882a','2005-08-14 14:51:07','Poulet OS/2','','Il a traversé, avec du style et du cachet, rapidement, il y a des années, mais personne ne regardait.','ff929879fd4011f9cd39215f6d0cd969','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (55,'1940c6a63d552a1ca26b4cd0b46cf882','2005-08-14 14:51:55','Poulet XP','','Il s\'est planté en plein milieu de la route, à cause d\'un bug dans la gestion de la cuisse.','ff929879fd4011f9cd39215f6d0cd969','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (56,'85f9750f74800cf618b9d2349c9d26b7','2005-08-14 14:53:02','Microsoft Chicken','','Walks on the 2 sides of the road, then buys the road','ff929879fd4011f9cd39215f6d0cd969','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (57,'73600cfaf36a6950e733156f9f902a7b','2005-08-14 14:53:28','Poulet Assembleur','','Il a commencé par construire la route, gravier par gravier, puis il a traversé à toute vitesse.','bcaefffc99a53a6948922d2e8ac0738c','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (58,'071dcd031d165e771907c9e5517523ec','2005-08-14 14:54:09','VB Chicken','','USHighway!TheRoad.Cross (aChicken)','bcaefffc99a53a6948922d2e8ac0738c','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (59,'5e4cccd1dfec6a9225177a767c9f1b20','2005-08-14 14:54:35','Poulet C','','Il a traversé sans regarder.','bcaefffc99a53a6948922d2e8ac0738c','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (60,'7eb3a54a5c755294dd910ef79ca3a272','2005-08-14 14:54:57','Poulet C++','','Pas la peine de traverser, il a créé une autre instance de lui-même de l\'autre côté.','bcaefffc99a53a6948922d2e8ac0738c','3c2237352ef708a5d9f363e4f0e732fb');
+INSERT INTO `answer` VALUES (61,'d553cf0ebea5f9e98183e08629b3dbd0','2005-08-14 14:55:36','Delphi Chicken','','Drag-dropped to the other side.','bcaefffc99a53a6948922d2e8ac0738c','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (62,'6bb54103f66fb0fd5bb000aeb509a736','2005-08-14 14:58:43','Mac Chicken X','','Nobody knows how it crossed; however, it\'s available in blue, red, green ...','ff929879fd4011f9cd39215f6d0cd969','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (63,'a5493944266af87deb117fafa08d2a56','2005-08-14 15:03:53','ChickenX','','cat chicken | awk \'{print $2}\'| grep -i road > /dev/engine/leg','ff929879fd4011f9cd39215f6d0cd969','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (64,'3b6c0076a6977b72b7d52d768be85b82','2005-08-14 15:04:25','GPL','','Why not?','ff929879fd4011f9cd39215f6d0cd969','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (65,'d4657075146db6b36539da0f9560dfb0','2005-08-14 15:06:41','Richard M. Stallman','A great philosopher','Free chicken refers not to price, but to freedom; so think of free mouvement, not free grain.','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+INSERT INTO `answer` VALUES (66,'1ddc8d84310dd8abdaaae9ba7bc6e036','2005-08-14 15:07:18','Swobodin','','This joke is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or\r\n(at your option) any later version. :-P','ec10d7e518989e5b88a9b22ae8d1c6d1','010c0cb3812249198367d4d921331e0f');
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL auto_increment,
+  `md5_cat` char(32) NOT NULL default '',
+  `name_cat` char(50) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` VALUES (1,'ec10d7e518989e5b88a9b22ae8d1c6d1','Famous Characters');
+INSERT INTO `categories` VALUES (2,'bcaefffc99a53a6948922d2e8ac0738c','Programming languages');
+INSERT INTO `categories` VALUES (3,'ff929879fd4011f9cd39215f6d0cd969','Operating systems');
+
+--
+-- Table structure for table `languages`
+--
+
+CREATE TABLE `languages` (
+  `id` int(11) NOT NULL auto_increment,
+  `md5_lang` char(32) NOT NULL default '',
+  `lang` char(50) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `languages`
+--
+
+INSERT INTO `languages` VALUES (1,'010c0cb3812249198367d4d921331e0f','English');
+INSERT INTO `languages` VALUES (2,'3c2237352ef708a5d9f363e4f0e732fb','French');
+INSERT INTO `languages` VALUES (3,'68a65c541300c08a78982fe9ac5599b5','Spanish');
+INSERT INTO `languages` VALUES (4,'d2b6b7b404320a1110413c64c6367a27','Portuguese');
+INSERT INTO `languages` VALUES (5,'2cfe99fe800dba063f0c950147a614ba','Latin');
+

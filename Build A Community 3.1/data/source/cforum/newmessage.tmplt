@@ -1,0 +1,63 @@
+[<(
+	$OUT .= "<!";
+	if ($ENV{'HTTP_USER_AGENT'} =~ /MSIE/i) {
+		$HELPURL = "<A HREF=\"$GUrl{'cforum.cgi'}?action=help&file=codes\">";
+	}
+	else {
+		$HELPURL = "<A HREF=\"javascript:ShowHelp('codes')\">";
+	}
+	my ($p);
+	$MENU = "<B>Message Category: </B><SELECT NAME=\"picon\">\n";
+	foreach $p (keys %picons) {
+		$MENU .= "<OPTION VALUE=\"$p\">$p</OPTION>\n";
+	}
+	$MENU .= "</SELECT>\n";
+	$OUT .= ">";
+)>]
+
+
+<center><BR><BR>
+    <TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+      <tr bgcolor="[<($CONFIG{'title_color'})>]">
+        <td width="100%" colspan="2" valign="MIDDLE"><CENTER>
+          <font face="[<($CONFIG{'font_face'})>]" size="+1" color="[<($CONFIG{'ttxt_color'})>]"><B>
+          <TABLE WIDTH=100%>
+		<TR><TD><font face="[<($CONFIG{'font_face'})>]" size="+1" color="[<($CONFIG{'ttxt_color'})>]"><B>[<($title_message)>]</B></TD>
+		<TD ALIGN=right>[<($HELPURL)>]<IMG SRC="[<($CONFIG{'button_dir'})>]/help.gif" BORDER=0 WIDTH="25" HEIGHT="25" ALIGN=middle VALIGN=middle></A></TD></TR>
+	    </TABLE>
+          </B></font></CENTER>
+        </td>
+      </tr>
+      <tr [<($CONFIG{'WINCOLOR'})>]>
+         <td width="100%" colspan="2" valign="MIDDLE">
+            <font color="[<($CONFIG{'text_color'})>]" FACE="[<($CONFIG{'font_face'})>]" SIZE="[<($CONFIG{'font_size'})>]">
+            <BLOCKQUOTE>
+            [<($quoted_text)>]
+            </BLOCKQUOTE>
+		<form NAME="rply_form" METHOD="POST" ACTION="[<($GUrl{'cforum.cgi'})>]" ENCTYPE="x-www-form-urlencoded">
+            <P><b>UserName: </b><INPUT TYPE=TEXT NAME=UserName LENGTH=20 VALUE="[<($Cookies{'UserName'})>]"><BR>
+            <b>PassWord: </b><INPUT TYPE=PASSWORD NAME=PassWord LENGTH=20 VALUE="[<($Cookies{'PassWord'})>]"><BR>
+		<FONT SIZE=-1><A HREF="[<($GUrl{'register.cgi'})>]" TARGET="_top">Join Now!</A> - <A HREF="[<($GUrl{'profile.cgi'})>]" TARGET="_top">Login To Your Personal Profile</A></FONT><P>
+            <b>Subject: </B>
+            [<($subject_line)>]
+            <BR>
+		[<($MENU)>]
+		<P>
+            <B>Message Text ....</B> <INPUT TYPE="checkbox" NAME="do_spellcheck"> Spell Check?</FONT><BR>
+            <textarea NAME="message" WRAP="physical" ROWS="9" COLS="50"></textarea><BR>
+
+            <input NAME="clubs" TYPE="hidden" VALUE="[<($FORM{'clubs'})>]">
+            <input NAME="forum" TYPE="hidden" VALUE="[<($FORM{'forum'})>]">
+            <input NAME="curr_thread" TYPE="hidden" VALUE="[<($thread)>]">
+            <input NAME="action" TYPE="hidden" VALUE="[<($this_action)>]">
+
+            <CENTER>
+            <input NAME="b_post" TYPE="submit" VALUE="Post Your Message">
+            </font>
+          </td>
+       </tr>
+     </table>
+   </td>   
+ </tr>
+</table>
+</FORM>

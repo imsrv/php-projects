@@ -1,0 +1,82 @@
+关键词监测程序 
+
+【功能】:检测标题,内容是否含有特殊关键字,如果有,提示不允许发表/修改/回复 
+【特征】:可后台维护,支持基本的正则表达式(只要你会写) 
+
+======================================= 
+【关于正则表达式】:如果你写了正则表达式,可能会出现你不先要的结果,例如 
+
+骂.*人 
+
+会匹配: 骂xxxxxxxxxxxxxxx (省略100字) xxxxxxxxxxxxx人 
+
+所以要注意,最好不要用任意匹配的 
+
+最好只用普通的单词,词语(别用正则表达式),或者用匹配一个／0个的 
+
+.?骂.?人.?(好像是这么写吧,ccc) 
+
+(什么是正则表达式哪? 我也不知道呀...如果不会,就写要检测的词语就可以了) 
+
+================================================================================= 
+共影响6个文件:修改前做好备份. 
+
+1.在UT_Language.pm里添加: 
+
+$lng{'dirty_words'} ="内容或标题中含有过滤字词,请返回修改,谢谢合作"; 
+
+2.in cfg_general.cgi: 
+
+添加:(找个合适的地方添加) 
+###--------------------------- 
+### scud words filter 
+my $dirty_wordStr = ""; 
+for (@{$cfg{'dirty_words'}}) { $dirty_wordStr .= ',' . $_ ;} 
+$dirty_wordStr =~ s/^\,//s; 
+
+###--------------------------------------- 
+
+###--------------------------- 
+### scud words filter 
+
+    "<tr bgcolor=$cfg{'lightCellColor'}><td width=45%>\n", 
+  "<b><font color=red>These words can't be posted</font></b> (Separated by comma, eg: word1,word2,word3. Leave empty if none)</td>\n", 
+  "<td><INPUT TYPE='text' NAME='dirty_words' SIZE=$inputCols", 
+  " VALUE='$dirty_wordStr' class=subject></td></tr>\n", 
+###---------------------------- 
+
+3.in cfg_general_x.cgi中 
+
+合适的地方添加: 
+
+###--------------------------- 
+### scud words filter 
+my @dirty_wordsArray = split(/\,/, $cgi->param('dirty_words')); 
+my $dirty_wordsStr = ""; 
+for my $rn (@dirty_wordsArray) { 
+  $dirty_wordsStr .= ",\'" . $rn . "\'" if length($rn); 
+} 
+$dirty_wordsStr =~ s/^,//; 
+$dirty_wordsStr = "[" . $dirty_wordsStr . "]"; 
+
+$output .= "\$cfg\{\'dirty_words\'\} = " . $dirty_wordsStr . ";\n"; 
+
+###--------------------------- 
+
+4.在post_edit_x.cgi,post_reply_x.cgi,topic_new_x.cgi中: 
+
+都在表单取值后添加:(例如 $body or paramError($lng{'errBdyEmpty'}); 后面) 
+##============================================= 
+## scud filter dirty words 
+
+for (@{$cfg{'dirty_words'}}) 
+{ 
+  if($body =~/$_/i) { entryError($lng{'dirty_words'}) ; } 
+} 
+
+for (@{$cfg{'dirty_words'}}) 
+{ 
+  if($subject =~/$_/i) { entryError($lng{'dirty_words'}) ; } 
+} 
+
+##============================================= 

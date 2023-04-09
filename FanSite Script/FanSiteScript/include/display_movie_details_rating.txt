@@ -1,0 +1,28 @@
+<?PHP 
+include ("include/connect.txt");
+
+$result = mysql_query("SELECT id,mpaa_rating FROM ds_movies WHERE seo_url = '$id'");  
+while ($myrow = mysql_fetch_row($result)) 
+{ 
+
+{ 
+if ( $myrow[1] == "")
+	{
+	printf(" N/A ");
+	}
+	else
+	{
+	printf("%s",$myrow[1]); 
+	}
+ 
+
+}  
+
+ 
+
+} 
+
+
+include ("include/close.txt");
+
+?>

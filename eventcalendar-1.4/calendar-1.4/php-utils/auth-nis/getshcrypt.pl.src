@@ -1,0 +1,106 @@
+#!/usr/bin/perl -U
+
+sub checkresults;
+sub invaliduser;
+sub getfromfile;
+sub getfromsystem;
+
+$programname=$0;
+if ($programname=~m/.*\//) {
+    $programname=~s/.*\///;
+}
+
+$username=@ARGV[0];
+
+if ($username eq "") {
+	print "$programname: mygetshcrypt username\n";
+	exit(1);
+}
+if ($username eq "root") {
+	invaliduser("$username");
+}
+
+#lets see if this user is in the local password file first
+@localpw=getfromfile("/etc/passwd",$username);
+if (!checkresults(@localpw)) {
+	# the user wasn't in local, so now go to yp
+	@yppasswd=getfromsystem("ypcat passwd | grep $username");
+	if (!checkresults(@yppasswd)) {
+		invaliduser($username);
+	} else { # we found him and only him in yp
+		$wholeline=@yppasswd[0];
+		@yppasswd;  # clear the yppasswd array
+	}
+} else {  # we found the user in /etc/passwd
+	# now we have to find out if we want the passwd or userinfo
+	if ($programname eq "getshcrypt.pl") {
+		# they want the shadow passwd, gotta open up 
+		#/etc/shadow for that
+		@shadow=getfromfile("/etc/shadow",$username);
+		if (!checkresults(@shadow)) {
+			invaliduser($user);
+		} else {
+			$wholeline=@shadow[0];
+			@shadow;  # clear this array
+		}
+		
+	} else {
+		$wholeline=@localpw[0];
+		@localpw;  # clear this array
+	}
+}
+
+#$wholeline=@yppasswd[0];
+#if($programname eq "getshcrypt.pl") {
+if($programname =~ m/getshcrypt/) {
+	# we only want the second field (encrypted password)
+	@splitup=split(/:/,$wholeline);
+	print "@splitup[1]\n";
+} else {
+	# if called by anything else, just spit out the whole line
+	print $wholeline;
+}
+exit(0);
+
+sub checkresults {
+	# this function returns the true or false, and wants 
+	my(@input);
+	@input=@_;
+	if (@input != 1) {
+		return 0;
+	} else {
+		return 1;
+	}
+}
+
+sub invaliduser {
+	my $user=shift @_;
+	print "invalid user $user\n";
+	exit(1);
+}
+
+sub getfromfile {
+	# this takes a file and a username, and returns an array with 
+	# all the lines in the file that contain "username:" at the 
+	# beginning of a line
+	my($filename,$username)=@_;
+	my($line,@results);
+	open(READ,"<$filename") || die "couldn't open $filename for reading\n";
+	while($line=<READ>) {
+		if ($line=~m/^$username:/) {
+			@results[@results-0]=$line;
+		}
+	}
+	return @results;
+}
+
+sub getfromsystem {
+	# this takes a string, executes it, and returns an array of the
+	# results
+	my($execstr)=@_;
+	my(@results);
+	open(LOCALPW,"$execstr |") || die "couldn't execute $execstr\n";
+	@results=<LOCALPW>;
+	close(LOCALPW);
+	return @results;
+}

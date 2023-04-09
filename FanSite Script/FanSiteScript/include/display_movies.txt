@@ -1,0 +1,62 @@
+<?PHP 
+include ("include/connect.txt");
+
+if ( !(isset ( $pagenumber )))
+	{
+		$pagenumber ="1";
+	}
+
+$result = mysql_query("SELECT movie_page,movie_summary FROM ds_options WHERE id = '0'");  
+while ($myrow = mysql_fetch_row($result)) 
+$movie_page = mysql_result($result,0,"movie_page");
+$movie_summary = mysql_result($result,0,"movie_summary");
+
+$result = mysql_query("SELECT id,title FROM ds_movies ORDER BY (title) ASC",$db); 
+$articles = mysql_num_rows($result);
+if ( ($articles/2) != (intval($articles/2)))
+{
+$articles = $articles+1;
+}
+
+ 
+$pagescount = ($articles/$movie_page)+1;
+ 
+if (($pagescount-1) > 1)
+	{
+		printf("<B>Страница %s из %s</B><br>",$pagenumber,intval($pagescount-1)); 
+		for ($i=1;$i<$pagescount;$i++) 
+			{ 
+				printf("<a href=movies.php?pagenumber=%s>%s<a> ",$i,$i); 
+			} 
+
+		printf("<br><br>");
+	}
+	$pagenumber = $pagenumber -1; 
+	$pagenumber = $pagenumber*$movie_page;
+ 
+	$result = mysql_query("SELECT seo_url,title,summary FROM ds_movies ORDER BY (title) ASC LIMIT $pagenumber,$movie_page",$db); 
+	 
+	while ($myrow = mysql_fetch_row($result))
+ 
+		{ 
+			$staticurl = $myrow[0].".html";
+			printf("<A HREF=movie_%s>%s</A><br>",$staticurl,$myrow[1]) ;
+			$commentstring = $myrow[2];
+
+			$varlength = strlen($commentstring);
+			if ( $movie_summary > '0')
+				{
+					if ( $varlength > $movie_summary )
+						{
+							$commentstring = substr($commentstring,0,$movie_summary);
+							printf("%s ....<br><br>",$commentstring);
+						}
+					else
+				{
+				$commentstring = substr($commentstring,0,$movie_summary);
+				printf("%s<br><br>",$commentstring);
+		}
+	}
+} 
+include ("include/close.txt");
+?>

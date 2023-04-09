@@ -1,0 +1,101 @@
+# IlohaMail 0.7.3
+# All required and optional tables for MySQL backend
+
+CREATE TABLE users (
+   id mediumint(9) NOT NULL auto_increment,
+   login varchar(50) NOT NULL,
+   host varchar(50) NOT NULL,
+   PRIMARY KEY (id),
+   KEY id (id),
+   UNIQUE id_2 (id),
+   KEY login (login),
+   KEY host (host)
+);
+
+CREATE TABLE contacts (
+    id mediumint(9) NOT NULL auto_increment,
+    owner mediumint(9) NOT NULL,
+    name text,
+    email text,
+    email2 text,
+    grp text,
+    aim text,
+    icq text,
+    phone text,
+    work text,
+    cell text,
+    address text,
+    url text,
+    comments text,
+    PRIMARY KEY (id),
+    KEY id (id),
+    KEY owner (owner)
+);
+
+CREATE TABLE sessions (
+    sid varchar(64) NOT NULL,
+    login text,
+    password text,
+    host text,
+    path text,
+    dataID int,
+    port int,
+    inTime int(12) NOT NULL,
+    lastSend int,
+    numSent int,
+    PRIMARY KEY sid (sid),
+    KEY inTime (inTime)
+);
+
+CREATE TABLE colors (
+    id int NOT NULL,
+    tool_bg text,
+    tool_link text,
+    folder_bg text,
+    folder_link text,
+    main_bg text,
+    main_hilite text,
+    main_text text,
+    main_link text,
+    quotes text,
+    PRIMARY KEY id (id),
+    KEY id (id)
+);
+
+CREATE TABLE prefs (
+    id int NOT NULL,
+    colorize_quotes char,
+    detect_links char,
+    view_max int,
+    show_size char,
+    save_sent char,
+    sent_box_name text,
+    delete_trash char,
+    trash_name text,
+    rootdir text,
+    user_name text,
+    email_address text,
+    signature1 text,
+    show_sig1 char,
+    lang text,
+    charset text,
+    sort_field text,
+    sort_order text,
+    list_folders char,
+    view_inside char,
+    timezone int,
+	html_in_frame char,
+	show_images_inline char,
+    PRIMARY KEY (id),
+    KEY id (id)
+);
+
+CREATE TABLE user_log(
+	logTime datetime,
+	logTimeStamp int(12),
+	userID int,
+	account text,
+	action text,
+	comment text,
+	ip varchar(15)
+);

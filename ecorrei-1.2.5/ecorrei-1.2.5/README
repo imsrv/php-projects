@@ -1,0 +1,104 @@
+README for eCorrei 1.2.5
+2 February 2002
+======================================
+
+Please read this file before attempting to use eCorrei.
+Read the INSTALL file for installation instructions.
+Also included is a FAQ, SECURITY, PERFORMANCE, TODO and
+CREDITS file.
+
+CONTENTS
+========
+
+1. What is eCorrei?
+
+2. Features
+
+3. Translations
+
+4. Reporting bugs
+
+5. eCorrei on the Web
+
+
+1. What is eCorrei?
+===================
+
+eCorrei is a webmail system. This means it will allow you to access
+your POP email account via the web. It can do (nearly) all the things
+a normal email client can do: receiving mail, sending mail, replying,
+forwarding, etc. eCorrei was designed to be fast, simple and platform
+independent.
+
+
+2. Features
+===========
+
+	*	Support for both POP3 and IMAP;
+
+	*	Receiving plain text messages, HTML messages, messages
+		with attachments, HTML messages with attachments and
+		HTML messages with inline images;
+
+	*	Sending emails using a SMTP server or the PHP mail()
+		function;
+
+	*	Replying and forwarding of emails;
+
+	*	Deleting emails, one or more at a time;
+
+	*	Autorefresh of Inbox;
+
+	*	Options for setting name and email address;
+
+	*	Parsing of URL's in messages;
+
+	*	Quickly send mails with smart maillinks in messages;
+
+	*	Add signature to mails;
+	
+	*	Addressbook with groups to organize your addresses;
+
+	*	Multiple language support (user can choose language).
+
+To see what to the future will bring for eCorrei, have a look at the 
+"The future for eCorrei" section.
+
+
+3. Translations
+===============
+
+eCorrei is currently available in 8 languages. If you would like to
+translate eCorrei for me, send me a mail for instructions. Please
+contact me before translating. Thanks in advance!
+
+
+4. Reporting bugs
+=================
+
+If you think you've found a bug, please use the bug report system on
+the website. Please tell which browser/PHP version/server you're using.
+Before reporting, make sure you've got the required PHP environment
+(check with check.php, see INSTALL) and your configuration is OK.
+As I can't test eCorrei on all platforms/browsers/servers etc., I
+would like you to mail me any testing results.
+
+
+5. eCorrei on the Web
+=====================
+
+eCorrei has it's own web page, check it out:
+
+	http://ecorrei.sourceforge.net/
+
+Also have a look at the SourceForge Project page:
+
+	http://www.sourceforge.net/projects/ecorrei/
+
+If you want to contact the authors of eCorrei, send a mail to:
+
+	jvreuls@users.sourceforge.net
+	or
+	gummientchen@users.sourceforge.net
+
+

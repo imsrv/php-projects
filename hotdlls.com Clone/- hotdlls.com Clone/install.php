@@ -1,0 +1,64 @@
+<?php
+require "config.class.php";
+$c = new config();
+$c->open();
+
+mysql_query("CREATE TABLE downloads (
+   id int(9) NOT NULL auto_increment,
+   type char(255) NOT NULL,
+   title char(255) NOT NULL,
+   url char(255) NOT NULL,
+   sname char(100) NOT NULL,
+   surl char(255) NOT NULL,
+   date char(16) NOT NULL,
+   email char(255) NOT NULL,
+   views int(9) DEFAULT '0' NOT NULL,
+   reports int(9) DEFAULT '0' NOT NULL,
+   PRIMARY KEY (id),
+   UNIQUE id (id)
+)")
+	or die(mysql_error());
+
+mysql_query("CREATE TABLE que (
+   id int(9) NOT NULL auto_increment,
+   type char(255) NOT NULL,
+   title char(255) NOT NULL,
+   url char(255) NOT NULL,
+   sname char(100) NOT NULL,
+   surl char(255) NOT NULL,
+   date char(16) NOT NULL,
+   email char(255) NOT NULL,
+   views int(9) DEFAULT '0' NOT NULL,
+   reports int(9) DEFAULT '0' NOT NULL,
+   PRIMARY KEY (id),
+   UNIQUE id (id)
+)")
+	or die(mysql_error());
+
+mysql_query("CREATE TABLE linker (
+   id char(20) NOT NULL,
+   pass char(20) NOT NULL,
+   title char(20) NOT NULL,
+   url char(150) NOT NULL,
+   inn int(4) DEFAULT '0' NOT NULL,
+   ut int(4) DEFAULT '0' NOT NULL,
+   support tinyint(1) DEFAULT '0' NOT NULL,
+   supports int(4) DEFAULT '0' NOT NULL,
+   email char(255) NOT NULL,
+   PRIMARY KEY (id),
+   UNIQUE id (id)
+)")
+	or die(mysql_error());
+
+mysql_query("CREATE TABLE iplogg (
+   ip varchar(15) NOT NULL,
+   sid char(50) NOT NULL,
+   id char(20) NOT NULL,
+   hit tinyint(1) NOT NULL,
+   ref char(200) NOT NULL,
+   UNIQUE (ip, sid)
+)")
+	or die(mysql_error());
+
+$c->close();
+?>

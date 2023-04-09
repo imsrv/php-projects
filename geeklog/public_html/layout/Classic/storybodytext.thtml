@@ -1,0 +1,11 @@
+                <tr>
+                    <td>
+                        <div align="right">
+                            {edit_link}
+                            <br>
+                            {readmore_link}<a href="{comments_url}">{comments_text}</a>&nbsp;{email_icon}&nbsp;{print_icon}
+                            <br>
+                            {recent_post_anchortag}
+                        </div>
+                    </td>
+                </tr>

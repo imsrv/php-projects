@@ -1,0 +1,28 @@
+<form>
+
+	<forms>
+		<add>tasks/add.xml</add>
+		<edit>tasks/add.xml</edit>
+		<list>tasks2/list.xml</list>
+		<details>tasks/details.xml</details>
+	</forms>
+
+	<table>tasks</table>
+	<table_uid>task_id</table_uid>
+
+
+	<URIdata>
+		<action>action</action>
+
+		<add>add</add>
+		<details>det</details>
+		<delete>delete</delete>
+		<edit>edit</edit>
+		<list>details</list>
+		<search>search</search>
+
+		<store>store</store>
+	</URIdata>
+
+
+</form>

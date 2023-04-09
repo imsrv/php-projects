@@ -1,0 +1,105 @@
+备份帖子中的附件自动判断 
+增加本版版主和管理员判断 
+增加 BAN 判断 
+增加 Referer 判断 
+
+1、mysql中ut_posts表中添加字段 download int(11) 默认值 0 
+     mysql中ut_posts_bak表中添加字段 download int(11) 默认值 0 
+
+2、打开 UTmain.pm 
+
+查找 
+
+
+  # Attachment    if ($post->{'attach'}) {      if ($cfg{'attachImg'} && $post->{'attach'} =~ /embed\.(?:jpe?g|gif|png)$/i) {        $$text .= "<BR><BR><IMG SRC='$cfg{'baseUrl'}$cfg{'attachUrlPath'}/$post->{'attach'}'>\n";      }      else {        $$text .= "<BR><BR>$lng{'tpcAttText'}\n"
+
+下面两行覆盖为： 
+
+
+        . "<A HREF='attachment.cgi?aid=$post->{'post_id'}' target=_blank>"          . "$post->{'attach'}</A> (该文件已经被下载 $post->{'download'} 次)\n";
+
+3、打开 UTExtMarkupFilter.pm 
+
+查找 
+
+
+    # Attachment      if ($post->{'attach'}) {        if ($cfg{'attachImg'} && $post->{'attach'} =~ /embed\.(?:jpe?g|gif|png)$/i) {          $$text .= "<BR><BR><IMG SRC='$cfg{'baseUrl'}$cfg{'attachUrlPath'}/$post->{'attach'}'>\n";        }        else {          $$text .= "<br><br><br><img src='$cfg{'nonCgiPath'}/images/attachment.gif' border=0 $imgAlign> "
+
+下面两行覆盖为： 
+
+
+          . "<A HREF='attachment.cgi?aid=$post->{'post_id'}' target=_blank>"            . "$lng{'postAttTtl'}</A> (该文件已经被下载 $post->{'download'} 次)\n";
+
+4、新建一个 attachment.cgi 文件 
+
+内容如下： 
+
+
+#!/usr/bin/perl
+#------------------------------------------------------------------------------
+# UltraThreads hack
+# Copyright (c) 2002 hehechuan && hotsnow
+#
+# 2002.01
+#------------------------------------------------------------------------------
+
+use strict;
+
+# Imports
+use CGI::Carp qw(fatalsToBrowser);
+use UTConfig;
+use UTLanguage;
+use UTMain;
+use UTCGI;
+
+# Get user
+connectDb();
+my $user = authUser();
+
+# Check if forum is closed
+if ($cfg{'forumClosed'} && !$user->{'admin'}) {
+	$lng{'forumClosed'} = "$lng{'forumClosed'}"."<BR><BR>$cfg{'closeReason'}" if $cfg{'closeReason'} ne "";
+	printMessage("$lng{'forumClosedLb'}", "$lng{'forumClosed'}");
+}
+
+# Check if user is registered, not banned, not blocked.
+$user->{'defaultUser'} and regError();
+checkBan($user->{'id'});
+checkBlock();
+
+# Check if request is coming from this site
+checkReferer();
+
+# Get CGI parameters
+my $cgi = new UTCGI;
+my $attachId = int($cgi->param('aid'));
+
+$attachId or paramError("请选择一个附件!!!");
+
+my $bak = 0;
+my $query = "SELECT boardId, attach, semiHidden, credits FROM ut_posts WHERE id = $attachId";
+my $sth = query($query);
+my $post = $sth->fetchrow_hashref();
+$sth->finish;
+if (!$post) {
+	$bak = 1;
+	$query = "SELECT boardId, attach, semiHidden, credits FROM ut_posts_bak WHERE id = $attachId";
+	$sth = query($query);
+	$post = $sth->fetchrow_hashref();
+	$sth->finish;
+}
+$post->{'attach'} or entryError("该附件不存在!!!");
+
+# Check if user is forum/board admin
+if (!($user->{'admin'} || $user->{'superMod'} || boardAdmin($user->{'id'}, $post->{'boardId'}))) {
+	(($user->{'score'} < $post->{'credits'}) && ($post->{'semiHidden'} == 1)) and  paramError("您的分数不够下载此附件!!!");
+}
+
+# Update download
+$query = "UPDATE ut_posts".($bak?"_bak":"")." SET download = download + 1 WHERE id = $attachId";
+$dbh->do($query) or dbError();
+
+# Print HTTP header
+printHttpHeader();
+print "Content-Type: text/html\n\n";
+print "<META HTTP-EQUIV=REFRESH CONTENT='0; URL=$cfg{'baseUrl'}$cfg{'attachUrlPath'}/$post->{'attach'}'>";

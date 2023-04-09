@@ -1,0 +1,13 @@
+Aþaðýdaki kiþiden size mesaj var:
+
+Tarih: {DATE}
+Ýsim: {NAME}
+E-Posta: {EMAIL}
+Mesaj Ýçeriði: 
+
+{COMMENTS}
+
+
+
+            HabipOguz.Com
+         "hayal etmek güzeldir"

@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Backup Database</TITLE>
+</HEAD>
+<BODY BGCOLOR="#000000">
+
+<FORM METHOD="POST" ACTION="../cgi-bin/es/esadmin/backup.cgi"
+ENCTYPE="x-www-form-urlencoded">
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P><CENTER><TABLE WIDTH="497" BORDER="0" CELLSPACING="2" CELLPADDING="0">
+  <TR>
+    <TD WIDTH="492" BGCOLOR="#ffffce">
+    <P><CENTER>&nbsp;<B>Back Up your Database</B></CENTER></TD>
+  </TR>
+  <TR>
+    <TD WIDTH="492" BGCOLOR="#ffffff">
+    <P><CENTER>&nbsp;Nothing is worse then having your precious database
+    of link partners nuked.</CENTER></P>
+
+    <P><CENTER>This is in place to protect you incase the whole database
+    goes down. Then in the event that something goes wrong you can
+    use the backed up copies.</CENTER></P>
+
+    <P><CENTER>What this program does is copy the entire database
+    to es/backup/<BR>
+    Whenever you backup again, it merely rewrites the old backup
+    files.</CENTER></P>
+
+    <P><CENTER>Since it backs up the entire database, please reset
+    the IP file first so it doesn't have to copy that when it is
+    so large.</CENTER></TD>
+  </TR>
+  <TR>
+    <TD WIDTH="492" BGCOLOR="#ffffce">
+    <P><CENTER>&nbsp;<INPUT NAME="name" TYPE="submit" VALUE="Backup"></CENTER></TD>
+  </TR>
+</TABLE></CENTER></FORM>
+
+</BODY>
+</HTML>

@@ -1,0 +1,7 @@
+CGIMachine - ACCESS COUNTER
+
+Put this file in your CGI-Directory with COUNTER.EXE, if you want
+to lock the application. Then no new counters will created.
+
+This is for your protection. Then no other webmasters can create
+counters on your website to use with their web-pages.

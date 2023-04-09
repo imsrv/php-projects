@@ -1,0 +1,16 @@
+<TABLE BORDER=0><TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<U><H2>The following posts contain your search terms:</H2></U>
+</TD></TR><TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+
+[<(
+	for $r ( 0 .. $#messages ) {
+		$OUT .= "&nbsp;&nbsp;\n";
+		$OUT .= "<FONT FACE=\"$CONFIG{'font_face'}\" COLOR=\"$CONFIG{'text_color'}\" SIZE=2>\n";
+		$OUT .= "<A HREF=\"$GUrl{'cforum.cgi'}?action=message&clubs=$FORM{'clubs'}&forum=$messages[$r]{'forum'}&thread=$messages[$r]{'thread'}\">";
+		$OUT .= "<B>$messages[$r]{'subject'}</B></A>";
+		$OUT .= "<FONT FACE=\"$CONFIG{'font_face'}\" COLOR=\"$CONFIG{'text_color'}\" SIZE=1>\n";
+		$OUT .= " [ $messages[$r]{'name'} ] [ $messages[$r]{'msg_date'} ]</FONT><BR>\n";
+    }
+)>]
+
+</TD></TR></TABLE>

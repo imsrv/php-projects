@@ -1,0 +1,25 @@
+打开edit_post.cgi 
+搜索： 
+
+print      "</td></tr>\n",      "<tr bgcolor=$cfg{'lightCellColor'}><td valign=top>\n",      "<b>$lng{'postOptions'}</b></td>\n",    "<td>";
+
+下面加入 
+
+# if ($user->{'userName'} eq seawind) {  #     print "Kick seawind";  #}    if ($user->{'moderator'} || $user->{'superMod'} || $user->{'admin'}) {    print      "<INPUT TYPE='checkbox' NAME='hidEditText' Checked> 不显示被编辑信息（管理员、版主使用）<br>\n";  }    else {      print      "<INPUT TYPE='hidden' NAME='hidEditText' value='0'>\n";      }
+
+打开 post_edit_x.cgi 
+搜索 
+
+my $delAttach = $cgi->param('delAttach');
+下面加入 
+
+my $hideEditText = $cgi->param('hidEditText');
+
+搜索 
+
+my $now = time();  $query = "UPDATE ut_posts SET     body = $bodyQ,     postSubject = $subjectQ,     notify = $notify,     markup = $markup,     smiley = $smiley,     semiHidden = $semiHidden,     postSign = $postSign,     editTime = $now,    editedBy = $editedByQ     WHERE id = $postId";  $dbh->do($query) or dbError();
+
+修改为 
+
+
+# Update post  $query = "UPDATE ut_posts SET     body = $bodyQ,     postSubject = $subjectQ,     notify = $notify,     markup = $markup,     smiley = $smiley,     semiHidden = $semiHidden,     postSign = $postSign ";    if ($hideEditText && $user->{'admin'}) {  # nothing  }  elsif ($hideEditText && $user->{'superMod'}) {  # nothing  }  elsif ($hideEditText && $user->{'superMod'}) {  # nothing  }  else{    $query .=",editTime = $now,    editedBy = $editedByQ ";  }      $query .= "WHERE id = $postId";  $dbh->do($query) or dbError();

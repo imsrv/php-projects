@@ -1,0 +1,21 @@
+sub get_local_settings {
+	my $databasehost = '216.208.233.132';
+	my $databasehostport = '';
+	my $databasename = 'ecreations';
+	my $databaseusername = 'root';
+	my $databasepassword = 'root';
+	my $mail_cmd = '/usr/sbin/sendmail -t';
+	my $server_type = 'main';
+	my $CGI_DIR = '/cgi-bin/members';
+	my $server_address = 'http://216.208.233.137';
+	my $server_cgibin = 'http://216.208.233.137/cgi-bin/members';
+	my $COMMUNITY_Database = 'ASCII';
+	if ($databasehostport eq "") {
+		my $databaseconnect = "DBI:mysql:$databasename:$databasehost";
+	}
+	else {
+		my $databaseconnect = "DBI:mysql:$databasename:$databasehost:$databasehostport";
+	}
+	return ($COMMUNITY_Database, $databaseconnect, $mail_cmd, $server_type, $CGI_DIR, $server_address, $server_cgibin);
+}
+1;

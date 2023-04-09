@@ -1,0 +1,20 @@
+
+<!-- START BLOCK -->
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="9" background="{layout_url}/theme-images/gameserver-block-tl.gif"><img src="{layout_url}/theme-images/pixel.gif" height="9" width="9"></td>
+					<td height="9" background="{layout_url}/theme-images/gameserver-block-t.gif"><img src="{layout_url}/theme-images/pixel.gif" height="9"></td>
+					<td width="9" background="{layout_url}/theme-images/gameserver-block-tr.gif"><img src="{layout_url}/theme-images/pixel.gif" height="9" width="9"></td>
+				</tr>
+				<tr>
+					<td width="9" background="{layout_url}/theme-images/gameserver-block-l.gif"><img src="{layout_url}/theme-images/pixel.gif" height="9" width="9"></td>
+					<td bgcolor="#ffffff" width="100%">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+								<td align="left" valigh="top" nowrap bgcolor="#051535"><img src="{layout_url}/theme-images/pixel.gif" align="top" height="20" width="1"><span class="articleTitle">{block_title}</span></td>
+								<td align="right" nowrap bgcolor="#051535">{block_help}</td>
+						</tr>
+						</table>
+						
+						<table bgcolor="#2e4166" width="100%" border="0" cellspacing="0" cellpadding="3">
+						<tr><td>

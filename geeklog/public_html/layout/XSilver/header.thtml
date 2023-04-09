@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset={charset}">
+<title>{page_title}</title>
+<META NAME="ROBOTS" CONTENT="INDEX,FOLLOW">
+<LINK REL="SHORTCUT ICON" href="{site_url}/favicon.ico">
+<!--
+<meta http-equiv="Pragma" content="no-cache"> 
+-->
+<link rel="stylesheet" type="text/css" href="{css_url}" title="{theme}">
+
+<!-- Needed JavaScript Code -->
+<script type="text/javascript" language="JavaScript1.2">
+    var cleared = 0;
+
+    function clearField(field)
+    {
+        if (cleared != 1) {
+            field.value = ""
+            cleared = 1
+        } else {
+            cleared = 0
+        }
+    }
+</script>
+<!-- Code for imageswaps, do not remove -->
+<script type="text/javascript" language="JavaScript1.2">
+d290=new Image(125,22)
+d290.src="{layout_url}/images/stats.gif"
+d854=new Image(125,22)
+d854.src="{layout_url}/images/stats-2.gif"
+
+e721=new Image(125,22)
+e721.src="{layout_url}/images/calendar.gif"
+e38=new Image(125,22)
+e38.src="{layout_url}/images/calendar-2.gif"
+
+c742=new Image(125,22)
+c742.src="{layout_url}/images/links.gif"
+c831=new Image(125,22)
+c831.src="{layout_url}/images/links-2.gif"
+
+e806=new Image(125,22)
+e806.src="{layout_url}/images/submit.gif"
+e388=new Image(125,22)
+e388.src="{layout_url}/images/submit-2.gif"
+
+c418=new Image(125,22)
+c418.src="{layout_url}/images/polls.gif"
+c830=new Image(125,22)
+c830.src="{layout_url}/images/polls-2.gif"
+
+c446=new Image(125,22)
+c446.src="{layout_url}/images/personalize.gif"
+c233=new Image(125,22)
+c233.src="{layout_url}/images/personalize-2.gif"
+
+function filter(imagename,objectsrc){
+if (document.images)
+document.images[imagename].src=eval(objectsrc+".src")
+}
+//-->
+</script>
+{plg_headercode}
+</head>
+<body bgcolor="#404040">
+<table border="0" cellpadding="0" cellspacing="0" width="780" align="center" bgcolor="#CCCCCC">
+    <tr>
+      <td width="6"><img border="0" src="{layout_url}/images/container-left-top-corner.gif" width="6" height="22" alt=""></td>
+      <td width="100%" height="22" background="{layout_url}/images/container-top-bg.gif" nowrap><a href="{site_url}/stats.php" onmouseover="filter('d703','d854')"
+onmouseout="filter('d703','d290')">
+<img border="0" src="{layout_url}/images/stats.gif" name="d703" width="125" height="22" alt=""></a><a href="{site_url}/calendar.php" onmouseover="filter('e844','e38')" onmouseout="filter('e844','e721')"><img border="0" src="{layout_url}/images/calendar.gif" name="e844" width="125" height="22" alt=""></a><a href="{site_url}/links.php" onmouseover="filter('c927','c831')" onmouseout="filter('c927','c742')"><img border="0" src="{layout_url}/images/links.gif" name="c927" width="125" height="22" alt=""></a><a href="{site_url}/submit.php?type=story{current_topic}" onmouseover="filter('e58','e388')"
+onmouseout="filter('e58','e806')"><img border="0" src="{layout_url}/images/submit.gif" name="e58" width="125" height="22" alt=""></a><a href="{site_url}/pollbooth.php" onmouseover="filter('c337','c830')"
+onmouseout="filter('c337','c418')"><img border="0" src="{layout_url}/images/polls.gif" name="c337" width="125" height="22" alt=""></a><a href="{site_url}/usersettings.php?mode=preferences" onmouseover="filter('c855','c233')"
+onmouseout="filter('c855','c446')"><img border="0" src="{layout_url}/images/personalize.gif" name="c855" width="125" height="22" alt=""></a></td>
+      <td width="6"><img border="0" src="{layout_url}/images/container-right-top-corner.gif" width="6" height="22" alt=""></td>
+    </tr>
+    <tr>
+      <td width="6" background="{layout_url}/images/container-left-tube-bg.gif"><img border="0" src="{layout_url}/images/container-left-tube-bg.gif" width="6" height="5" alt=""></td>
+      <td width="100%">
+
+  <table bgcolor="#EFEFEF" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+	<td align="left" width="50%"><a href="{site_url}"><img border="0" src="{layout_url}/images/logo.gif" width="183" height="70" alt="{site_name}"></a></td><td width="50%" align="right" valign="top">
+<table cellpadding="0" cellspacing="0" border="0"><tr>
+<td>
+<form action="{site_url}/search.php" method="get"><input type="text" name="query" class="menusearch" size="15" maxLength="255"><input type="submit" value="{button_search}">&nbsp;<input type="hidden" name="type" value="all"><input type="hidden" name="mode" value="search"></form></td></tr></table></td></tr>
+<tr>
+      <td width="50%" class="welcomeblock" valign="middle"
+align="left"><b>{welcome_msg}</b></td>       <td width="50%" class="welcomeblock"
+valign="middle" align="right"><b>{datetime}</b>&nbsp;</td>    </tr>
+<tr><td width="100%" class="headerblock" valign="middle"
+align="center" colspan="2"><a href="{site_url}/search.php">{button_advsearch}</a>&nbsp;&nbsp;&nbsp;<a href="{site_url}/profiles.php?uid=2">{button_contact}</a> {plg_menu_elements}</td> </tr> </table>  
+
+<table border="0" cellspacing="3" cellpadding="0" width="100%" bgcolor="#CCCCCC">
+    <tr>
+        {left_blocks}
+        <td width="100%" valign="top">
+
+            <!-- START OF CONTENT AREA -->
+
+    

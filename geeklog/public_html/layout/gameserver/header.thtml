@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={charset}">
+<title>{page_title}</title>
+<link rel="stylesheet" type="text/css" href="{css_url}" title="{theme}">
+
+<!-- Needed JavaScript Code -->
+<script language="JavaScript">
+    var cleared = 0;
+
+    function clearField(field)
+    {
+        if (cleared != 1) {
+            field.value = ""
+            cleared = 1
+        } else {
+            cleared = 0
+        }
+    }
+</script>
+{plg_headercode}
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#000000" vlink="#000000" alink="#000000">
+
+<center>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="269"><a href="{site_url}"><img src="{layout_url}/theme-images/gameserver_logo2.gif" alt="Welcome to gameserver" border="0"></a></td>
+				<td valign="bottom" align="right">
+					<form action="{site_url}/search.php" method="get">
+						<div align="right">
+							<table border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td><input type="text" name="query" class="menusearch" size="25"></td>
+									<td><input type="submit" value="{button_search}"></td>
+									<td>&nbsp;(<a href="{site_url}/search.php">{button_advsearch}</a>) <input type="hidden" name="type" value="all"> <input type="hidden" name="mode" value="search"></td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</form>
+			</tr>
+			<tr>
+				<td colspan="2"></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td colspan="2" valign="bottom" bgcolor="#242e55" background="{layout_url}/theme-images/gameserver_menu_tile.gif"><img src="{layout_url}/theme-images/pixel.gif" alt="" height="36" width="8" align="absmiddle" border="0">{menu_elements}{plg_menu_elements}</td>
+			</tr>
+		</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="black">
+		<tr>
+			<td width="43%"><span class="welcomeName">{welcome_msg}</span></td>
+			<td width="20%"><img src="{layout_url}/theme-images/pixel.gif" width="1" height="20" border="0"></td>
+			<td align="right" width="33%"><span class="welcomeName">{datetime}</span></td>
+		</tr>
+	</table>
+	</body>
+<table bgcolor="#000000" border="0" cellspacing="0" cellpadding="5" width="100%">
+    <tr>
+        {left_blocks}
+        <td width="100%" valign="top">
+
+            <!-- START OF CONTENT AREA -->
+

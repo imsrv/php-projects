@@ -1,0 +1,29 @@
+<?
+	/*
+	** UPDATE_WING 
+	** if we have necessary fields, update wing
+	*/
+	if(($inputTitle!="") && ($Browser_Admin=="YES"))
+	{
+		$inputTitle = ereg_replace("'", "''", $inputTitle);
+		$inputDescription = ereg_replace("'", "''", $inputDescription);
+
+		$Query = "UPDATE wing ";
+		$Query .= "SET Title='$inputTitle', ";
+		$Query .= "Private='$inputPrivacy', ";
+		$Query .= "Description='$inputDescription' ";
+		$Query .= "WHERE ID=$inputWing ";
+		$DatabaseResult = mysql_query($Query, $DatabaseLink);
+		if(!$DatabaseResult)
+		{
+			$ActionResults = "Update failed: " . mysql_error();
+		}
+		else
+		{
+			$ActionResults = "Wing Updated!";
+		}
+
+		
+	}
+
+?>

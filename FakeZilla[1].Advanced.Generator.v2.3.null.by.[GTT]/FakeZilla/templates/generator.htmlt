@@ -1,0 +1,239 @@
+<html>
+<head>
+<title>PROJECT: #%TITLE%#</title>
+
+<style>
+div.gnrtr {
+	font:bold 14px Arial;
+	}
+table.gnrtr {
+	background-color:#F0F0F0;
+	border:solid 1px #707070;
+	font:normal 11px tahoma;
+	}
+table.gnrtr th {
+	padding:5 15 5 5px;
+	white-space:nowrap;
+	font-weight:normal;
+	text-align:left;
+	}
+table.gnrtr th div {
+	padding-bottom:5px;
+	}
+table.gnrtr th li {
+	margin-left:20px;
+	}
+
+table.stats {
+	font:normal 10px Arial;
+	}
+table.stats th {
+	font:bold 11px Verdana;
+	padding:12 2 2 2px;
+	border-bottom:black 1px solid;
+	}
+table.stats td {
+	background-color:white;
+	padding: 2 5 2 2px;
+	border-bottom:solid 1px #D7D7D7;
+	}
+table.stats td b{
+	color:red;
+	}
+table.stats input{
+	font:normal 11px Arial;
+	border:solid 1px black;
+	text-align:center;
+	margin-right:2px;
+	cursor:hand;
+	}
+div.end {
+	font:bold 14px Arial;
+	color:red;
+	text-align:center;
+	border-bottom:solid 2px red;
+	paddng-top:15px;
+	}
+</style>
+</head>
+<body onUnload="if(!Finished)alert('Changing or reloading the page will halt the running session.');">
+<div class="gnrtr">#%TITLE%#</div>
+
+<TEMPLATE close>
+<script type="text/javascript">
+<!--//
+self.close();
+//-->
+</script>
+</TEMPLATE>
+
+<table width="100%" cellpadding=0 cellspacing=0 border=0 class="gnrtr"><tr>
+	<th valign=top>
+		<div><b>URL</b>: <a href="#%URL%#" target="_#%URL%#">#%URL%#</a></div>
+		
+		<TEMPLATE referer_list>
+			<div><b>Referer-List</b>: #%REFERER%#</div>
+			</TEMPLATE>
+
+		<TEMPLATE referer_url>
+			<div><b>Referer-Url</b>: <a href="#%REFERER%#" target="_#%REFERER%#">#%REFERER%#</a></div>
+			</TEMPLATE>
+
+		<TEMPLATE useragent_list>
+			<div><b>UserAgent-List</b>: #%USERAGENT%#</div>
+			</TEMPLATE>
+
+		<TEMPLATE useragent_exact>
+			<div><b>UserAgent-Exact</b>: #%USERAGENT%#</div>
+			</TEMPLATE>
+
+		<div><b>Proxy-List</b>: #%PROXY%#</div>
+
+		<TEMPLATE sim_proxy>
+			<div><b>Simulate-Proxy</b>: On</div>
+			</TEMPLATE>
+	</th>
+	<th valign=top>
+		
+		<TEMPLATE total_hits>
+			<div><b>Total-Hits</b>: #%TOTAL%#</div>
+			</TEMPLATE>
+
+		<TEMPLATE hour_hits>
+			<div><b>Hits-Per-Hour</b>: #%HOUR%#</div>
+			</TEMPLATE>
+
+		<TEMPLATE post_param>
+			<div><b>HTTP-Method</b>: POST</div>
+			
+			<TEMPLATE post_params><li><b>#%POST_KEY%#</b>=#%POST_VALUE%#</li></TEMPLATE>
+			</TEMPLATE>
+		</th>
+	</tr>
+</table>
+
+<!--#
+<script type="text/javascript">
+<!--//
+var isNav4, isIE4, wHeight=320, wWidth=640;
+
+if (parseInt(navigator.appVersion.charAt(0)) >= 4) {
+	isNav4 = (navigator.appName == 'Netscape') ? 1 : 0;
+	isIE4 = (navigator.appName.indexOf('Microsoft') != -1) ? 1 : 0;
+	}
+
+if (isNav4) {
+	window.innerWidth = wWidth;
+	window.innerHeight = wHeight;
+	}
+
+if (isIE4) {
+	window.resizeTo(500, 500);
+	width = 500 - (document.body.clientWidth -  wWidth);
+	height = 500 - (document.body.clientHeight -  wHeight);
+	window.resizeTo(width, height);
+	}
+//-->
+</script>
+#-->
+
+<form name=stats>
+<table cellspacing=0 cellpadding=0 border=0 width="100%" class=stats><tr>
+	<td width="50%">&nbsp;</td>
+	<td width="0%"><nobr>Elapsed-Time</nobr></td>
+	<td width="0%"><input name=elapsed readonly size=14></td>
+	<td width="0%">Processed</td>
+	<td width="0%"><input name=processed readonly size=6 value=0></td>
+	<td width="0%">Successful</td>
+	<td width="0%"><input name=successful readonly size=6 value=0></td>
+	<td width="0%">Errors</td>
+	<td width="0%"><input name=errors readonly size=6 value=0></td>
+	<td width="50%">&nbsp;</td>
+</tr></table>
+</form>
+
+<script type="text/javascript">
+<!--//
+ // Elapsed Timer
+ function elapsed() {
+	Seconds++;
+	
+	fHrs = Math.floor(Seconds/3600);
+	fMins = Math.floor((Seconds%3600)/60);
+	fSecs = Seconds%60;
+
+	document.forms['stats'].elements['elapsed'].value =
+		((fHrs<10)?'0':'')+fHrs+'h:'+
+		((fMins<10)?'0':'')+fMins+'m:'+
+		((fSecs<10)?'0':'')+fSecs+'s';
+	if (!Finished) {
+		ElapsedTimer = self.setTimeout("elapsed()", 1000);
+		}
+ }
+ var Finished = 0;
+ var Seconds = 0;
+ var ElapsedTimer;
+ elapsed();
+//-->
+</script>
+
+<table cellpadding=0 cellspacing=0 border=0 width="100%" class=stats>
+	<tr>
+		<th width="25%" align="left">Date</th>
+		<th width="25%" align="left">Proxy Server</th>
+		<th width="25%">Connected</th>
+		<th width="25%">Status</th>
+	</tr>
+</table>
+
+
+<TEMPLATE stat_row>
+	<table cellpadding=0 cellspacing=0 border=0 width="100%" class=stats>		
+		<tr>
+			<td width="25%">%%DATE%%</td>
+			<td width="25%">%%PROXY%%</td>
+			<td width="25%" align="center">
+				#%CONNECTED%#
+<MESSAGES>
+connected_0: OK
+connected_1: <b>Failed</b>
+</MESSAGES>
+				</td>
+			<td width="25%" align="center">
+				<TEMPLATE status_0>
+					OK
+<script type="text/javascript">
+<!--//
+document.forms['stats'].elements['successful'].value++;
+//-->
+</script>
+					</TEMPLATE>
+
+				<TEMPLATE status_1>
+					<b>Error</b>
+<script type="text/javascript">
+<!--//
+document.forms['stats'].elements['errors'].value++;
+//-->
+</script>
+					</TEMPLATE>
+<script type="text/javascript">
+<!--//
+document.forms['stats'].elements['processed'].value++;
+//-->
+</script>
+				</td>
+		</tr>
+	</table>
+</TEMPLATE>
+
+
+<TEMPLATE final>
+<div class=end>Session successfully ended.</div>
+<script type="text/javascript">
+<!--//
+Finished=1;
+alert('   Session successfully ended!   ');
+//-->
+</script>
+</TEMPLATE>

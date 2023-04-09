@@ -1,0 +1,28 @@
+<TABLE WIDTH=500 CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Pending Applications</B></FONT></CENTER></TD></TR>
+<TR><TD [<($CONFIG{'WINCOLOR'})>]><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+The following members have applied for membership in your club.  They will not be able to access your club until you approve them.
+<form NAME="create_form" METHOD="POST" ACTION="[<($GUrl{'clubs.cgi'})>]" ENCTYPE="x-www-form-urlencoded">
+<CENTER><TABLE BORDER=1>
+<INPUT NAME=forum VALUE=[<($FORM{'forum'})>] TYPE=hidden>
+<TR><TD><B>Approve</B></TD><TD><B>Deny</B></TD><TD><B>UserName</B></TD><TD><B>Comments</B></TD></TR>
+
+[<(
+	$OUT .= "<!";
+	foreach my $m (@mpending) {
+		if (! $count) {$OUT .= ">";$count++;}
+		$OUT .= "<!";
+		my (@r) = split(/\|/, $m);
+		$OUT .= ">";
+		if ($r[0] !~ /\w/) {next;}
+		$OUT .= "<TR><TD><INPUT TYPE=radio NAME=\"$r[0]\" VALUE=\"approve\" CHECKED></TD><TD><INPUT TYPE=radio NAME=\"$r[0]\" VALUE=\"deny\"></TD><TD><A HREF=\"$GUrl{'moreinfo.cgi'}?UserName=$r[0]\">$r[0]</A></TD><TD>$r[1]</TD></TR>\n";
+	}
+
+)>]
+
+<TR><TD COLSPAN=4>Email Message:<BR>
+<TEXTAREA NAME=email_text COLS=60 ROWS=6>[<($CONFIG{'default_club_email'})>]</TEXTAREA></TD></TR>
+</TR><TD COLSPAN=4><CENTER><INPUT TYPE=hidden NAME=action VALUE="process applications"><INPUT TYPE=submit VALUE="Process Applications"></TD></TR>
+</TABLE>
+</FORM>
+</TD></TR></TABLE></CENTER>

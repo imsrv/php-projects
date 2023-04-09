@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={charset}">
+<title>{page_title}</title>
+<meta http-equiv="Pragma" content="no-cache"> 
+<link rel="stylesheet" type="text/css" href="{css_url}" title="{theme}">
+{plg_headercode}
+</head>
+<body background="{background_image}" link="#333366" vlink="#333366" alink="#333366">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+    <tr>
+        <td valign="bottom" rowspan="2">
+            &nbsp;<a href="{site_url}"><img src="{site_logo}" width="350" height="84" border="0" alt="{site_name}"></a>
+        </td>
+        <td align="right" valign="top"><a href="{site_url}">{button_home}</a> / <a href="{site_url}/profiles.php?uid=2">{button_contact}</a>&nbsp;</td>
+    </tr>
+    <tr>
+        <td align="right">
+            <form action="{site_url}/search.php" method="get">{button_search}&nbsp;<input type="text" size="15" name="query">
+                &nbsp;<input type="hidden" name="type" value="all">
+                <input type="hidden" name="mode" value="search">
+            </form>
+        </td>
+    </tr>
+    <tr><td bgcolor="#000000" colspan="2"><img src="{site_url}/images/speck.gif" width="1" height="1" alt=""></td></tr>
+    <tr><td bgcolor="#AAAAAA" colspan="2"><img src="{site_url}/images/speck.gif" width="1" height="6" alt=""></td></tr>
+    <tr> <td bgcolor="#FFFFFF" colspan="2"><img src="{site_url}/images/speck.gif" width="1" height="1" alt=""></td></tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+    <tr>
+        <td align="center" valign="middle" bgcolor="#DDDDDD" height="20">{menu_elements}{plg_menu_elements}</td>
+    </tr>
+    <tr><td bgcolor="#AAAAAA"><img src="{site_url}/images/speck.gif" width="1" height="1" alt=""></td></tr>
+    <tr><td bgcolor="#EEEEEE"><img src="{site_url}/images/speck.gif" width="1" height="10" alt=""></td></tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+    <tr><td bgcolor="#FFFFFF" colspan="2"><img src="{site_url}/images/speck.gif" width="1" height="1" alt=""></td></tr>
+    <tr>
+        <td bgcolor="#DDDDDD" height="20"><b>{welcome_msg}</b></td><td bgcolor="#DDDDDD" align="right"><b>{datetime}</b>&nbsp;</td>
+    </tr>
+    <tr>
+        <td bgcolor="#AAAAAA" colspan="2"><img src="{site_url}/images/speck.gif" width="1" height="1" alt=""></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF" colspan="2"><img src="{site_url}/images/speck.gif" width="1" height="15" alt=""></td>
+    </tr>
+</table>
+<table bgcolor="#FFFFFF" border="0" cellspacing="0" cellpadding="5" width="100%">
+    <tr>
+        <td class="featureblock" valign="top">
+            {geeklog_blocks}
+            <br><img src="{site_url}/images/speck.gif" width="150" height="1" alt="">
+        </td>
+        <td><img src="{site_url}/images/speck.gif" width="10" height="1" alt=""></td>
+        <td width="100%" valign="top">
+
+            <!-- START OF CONTENT AREA -->
+

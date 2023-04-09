@@ -1,0 +1,10 @@
+$cgiurl = 'http://www.cgiscript.net/demo/csCreatePro/csCreate.cgi';
+$cgipath = '/www/vhosts/cgiscript.net/demo';
+$rooturl = 'http://www.cgiscript.net/';
+$rootpath = '/www/vhosts/cgiscript.net/';
+$htmlurl = 'http://www.cgiscript.net/demo/csCreatePro';
+$htmlpath = '/www/vhosts/cgiscript.net/demo/csCreatePro';
+$makebackups=1;
+$username = 'demo';
+$password = 'demo';
+1;

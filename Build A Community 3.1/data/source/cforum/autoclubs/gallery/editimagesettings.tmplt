@@ -1,0 +1,43 @@
+[<(
+	($twidth, $theight) = &imgsize("$CONFIG{'CLUB_image_path'}/$FORM{'club'}/thumbs/$i[0]");
+	($pwidth, $pheight) = &imgsize("$CONFIG{'CLUB_image_path'}/$FORM{'club'}/photos/$i[0]");
+	$pwidth= $pwidth+25;
+	$pheight= $pheight+25;
+	if ($ENV{'HTTP_USER_AGENT'} !~ /MSIE/i) {
+		$LINK = "<A HREF=\"javascript:OpenWin(\'$CONFIG{'CLUB_image_dir'}/$FORM{'club'}/photos/$i[0]\',\'$pwidth\',\'$pheight\');\">";
+	}
+	else {
+		$LINK = "<A HREF=\"$CONFIG{'CLUB_image_dir'}/$FORM{'club'}/photos/$i[0]\" TARGET=NEW>";
+	}
+)>]
+
+<CENTER><form ENCTYPE="application/x-www-form-urlencoded" METHOD="POST" action="[<($GUrl{'club_gallery.cgi'})>]">
+<TABLE BORDER="0">
+<TR BORDER="0" [<($CONFIG{'WINCOLOR'})>]>
+<TD VALIGN=TOP><CENTER>[<($LINK)>]<IMG SRC="[<($CONFIG{'CLUB_image_dir'})>]/[<($FORM{'club'})>]/thumbs/[<($i[0])>]" BORDER=1 WIDTH=[<($twidth)>] HEIGHT=[<($theight)>]></A></TD>
+<TD VALIGN=TOP>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<input type=hidden name="filename" value="[<($i[0])>]">
+<input type=hidden name="club" value="[<($FORM{'club'})>]">
+<input type=hidden name="orginal_cat" value="[<($FORM{'original_cat'})>]">
+<B>Select a Category:</B><SELECT NAME="category">
+
+[<(
+	foreach $c (@cats) {
+		if ($c eq $i[3]) {
+			$OUT .= "<OPTION VALUE=\"$c\" SELECTED>$c</OPTION>\n";
+		}
+		else {
+			$OUT .= "<OPTION VALUE=\"$c\">$c</OPTION>\n";
+		}
+	}
+)>]
+
+</SELECT>
+<BR><B>A Short Description:</B><BR>
+</TD></TR><TR><TD COLSPAN=2>
+<TEXTAREA NAME="description" COLS=40 ROWS=3 WRAP=VIRTUAL>[<($i[2])>]</TEXTAREA>
+<P><center><input type=submit name="action" value="Save This File">
+<BR><center><input type=submit name="action" value="Delete This File">
+</TD></TR></TABLE>
+</FORM>

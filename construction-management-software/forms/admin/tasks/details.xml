@@ -1,0 +1,65 @@
+<form>
+	<title>Task Details</title>
+	<action>index.php?sub=tasks&action=store</action>
+	<name>edit</name>
+	<width>580</width>
+
+	<formtag>true</formtag>
+	<border>true</border>
+	
+	<buttons>		
+		<set>
+			<footer>true</footer>
+			<header>true</header>
+		</set>
+
+		<save onclick="" button="return">
+			<location>index.php?sub=projects&action=details&project_id={TASK_PROJECT}</location>
+		</save>
+
+		<return onclick="" button="edit" >
+			<location>index.php?sub=tasks&action=edit&task_id={TASK_ID}</location>
+		</return>
+
+	</buttons>
+
+	<redirect>index.php?sub=projects&action=details&project_id={TASK_PROJECT}</redirect>
+
+	<fields>
+
+		<task_id type="hidden" hidden="true"/>
+
+		<task_name type="text" size="40:100" required="true" validate="A:1:100">
+			<title>Name</title>
+		</task_name>
+
+		<task_project type="hidden" default="$_GET[task_project]" action="eval" />
+
+		<task_cat type="relation">
+			<title>Category</title>
+			<relation table="taskcats" id="cat_id" text="cat_name" />
+		</task_cat>
+
+		<task_status type="relation">
+			<title>Status</title>
+			<relation table="taskstatus" id="status_id" text="status_name" />
+		</task_status>
+
+		<task_description type="text" size="40:4">
+			<title>Description</title>
+		</task_description>
+
+		<task_date type="text" action="date" params="m.d.Y">
+			<title>Start Date</title>
+		</task_date>
+
+		<date_ecompleted type="text" action="date" params="m.d.Y">
+			<title>Estimated Complete Date</title>
+		</date_ecompleted>
+
+		<date_completed type="text" action="date" params="m.d.Y">
+			<title>Complete Date</title>
+		</date_completed>
+
+	</fields>
+</form>

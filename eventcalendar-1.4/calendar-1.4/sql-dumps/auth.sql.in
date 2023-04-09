@@ -1,0 +1,10 @@
+CREATE TABLE "session" ("session_key" "text" NOT NULL, "user_id" "int4" NOT NULL, "username" "text" NOT NULL, "gecos" "text", "expires" "int4" NOT NULL, "source_host" "text" NOT NULL);
+CREATE TABLE "last_login" ("user_id" "int4" NOT NULL, "failures" "int4" NOT NULL, "last_login_source" "text", "last_failed_source" "text", "recent_failures" "int2", "failure_timestamp" "int4", "login_timestamp" "int4");
+CREATE TABLE "permissions" ("user_id" "int4" NOT NULL, "location_id" "int4" NOT NULL, "permissions" "int4" NOT NULL);
+CREATE UNIQUE INDEX "permissions_pkey" on "permissions" using btree ( "user_id" "int4_ops", "location_id" "int4_ops" );
+CREATE UNIQUE INDEX "session_pkey" on "session" using btree ( "session_key" "text_ops" );
+CREATE UNIQUE INDEX "last_login_pkey" on "last_login" using btree ( "user_id" "int4_ops" );
+REVOKE ALL on "last_login", "permissions", "session" from PUBLIC;
+GRANT SELECT on "last_login", "permissions", "session" to "<<dbro>>";
+GRANT SELECT,INSERT,UPDATE,DELETE on "last_login", "permissions", "session" to "<<dbrw>>";
+INSERT INTO "permissions" values (<<adminid>>,-1,255);

@@ -1,0 +1,25 @@
+[<(
+	$OUT .= "<!";
+	if ($forum ne "") {$RANGE = "	<SELECT NAME=\"Range\">\n<OPTION VALUE=\"$forum\">This Forum\n<OPTION VALUE=\"All\">All Forums\n</SELECT>\n";}
+	else {$RANGE = "<INPUT TYPE=hidden NAME=Range VALUE=\"ALL\">\n";}
+	$OUT .= ">";
+)>]
+
+<TABLE BORDER=0 CELLPADDING=3 CELLSPACING=0 [<($CONFIG{'WINCOLOR'})>] WIDTH=400>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><font face="[<($CONFIG{'font_face'})>]" size="+1" color="[<($CONFIG{'ttxt_color'})>]"><CENTER><B>Search The Forums</CENTER></B></TD><TR>
+<TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<CENTER><form ENCTYPE="application/x-www-form-urlencoded"  ACTION="[<($GUrl{'cforum.cgi'})>]" METHOD="get">
+<TABLE><TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><CENTER>
+<FONT FACE="[<($CONFIG{'font_face'})>]" COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]">
+Search For: </FONT>
+<INPUT TYPE="text" NAME="terms" SIZE=15><BR>
+[<($RANGE)>]
+<SELECT NAME=action>
+<OPTION VALUE=search>Keyword Search</OPTION>
+<OPTION VALUE=usersearch>UserName</OPTION>
+</SELECT>
+<INPUT TYPE="hidden" NAME="forum" VALUE="[<($FORM{'forum'})>]">
+<INPUT TYPE="submit" VALUE="Search!">
+</CENTER></TD></TR></TABLE></FORM>
+</TD></TR>
+</TABLE>

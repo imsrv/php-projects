@@ -1,0 +1,25 @@
+                            <table border="0" cellspacing="0" cellpadding=2 width="100%">
+                                <tr>
+                                    <td rowspan="2"><img src="{layout_url}/images/icons/block.gif" alt=""></td>
+                                    <td>[ <a href="{site_admin_url}/block.php?mode=edit">{lang_newblock}</a> | <a href="{site_admin_url}">{lang_adminhome}</a> ]</td>
+                                </tr>
+                                <tr>
+                                    <td>{lang_instructions}</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="3" border="0" width="100%">
+                                <tr>
+                                    <th align="left">{lang_blocktitle}</th>
+                                    <th>{lang_access}</th>
+                                    <th>{lang_blocktype}</th>
+                                    <th>{lang_side}</th>
+                                    <th>{lang_blockorder}</th>
+                                    <th>{lang_blocktopic}</th>
+                                    <th>{lang_enabled}</th>
+                                </tr>
+                                {blocklist_item}
+                                <tr>
+                                    <td colspan="6">{previouspage_link} {nextpage_link}</td>
+                                </tr>
+                            </table>
+

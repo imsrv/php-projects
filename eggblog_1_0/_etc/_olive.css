@@ -1,0 +1,32 @@
+body		{ color:#333; background-color:#5E5443; font:normal 75% trebuchet ms,verdana,arial,sans-serif; }
+input		{ font:normal 100% trebuchet ms,verdana,arial,sans-serif; }
+textarea	{ font:normal 100% trebuchet ms,verdana,arial,sans-serif; }
+hr		{ color:#d6d6c3; }
+a		{ color:#83910e; text-decoration:underline; }
+a:hover		{ color:#a8ba14; text-decoration:underline; }
+blockquote	{ font-style:italic; border-left:#eee 10px solid; }
+
+#container	{ background-color:#fff; border:5px #444935 solid; }
+
+#header		{ background-color:#a3a571; color:#fff; }
+#header a	{ color:#fff; }
+#header h1	{ font-size:32px; font-weight:normal; }
+#header h2	{ font-size:13px; font-weight:bold; }
+
+#main h2	{ font-size:18px; font-weight:normal; color:#83910e; border-left:5px #d6d6c3 solid; }
+
+ul#album li img		{ border:1px #AD8E6F solid; }
+ul#album li .text h3	{ font-size:18px; font-weight:normal; color:#83910e; }
+
+ul#photos img	{ border:1px #ad8e6f solid; }
+
+#photo img	{ border:1px #ad8e6f solid; }
+
+#menu		{ background-color:#e1e1cd; }
+#menu .head a	{ color:#fff; text-decoration:none; }
+
+#footer		{ clear:both; width:450px; margin:20px 0px 10px 20px; padding:0px; font-size:10px; }
+
+.date		{ font-weight:bold; font-size:11px; text-transform:uppercase; }
+.head		{ font-size:11px; color:#fff; border-left:5px #5e5443 solid; background-color:#a3a571; text-transform:uppercase; }
+.item		{ background-color:#d6d6c3; font-size:10px; }

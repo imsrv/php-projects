@@ -1,0 +1,140 @@
+/* ARKAPLAN */ 
+.body {
+	background-color: #B0B0B0;
+	margin-top: 0px;
+}
+
+/* TABLOLAR */ 
+.tablo {
+	 BORDER-BOTTOM:#5b5b5b 1px solid; 
+	 BORDER-TOP:   #5b5b5b 1px solid; 
+	 BORDER-LEFT:  #5b5b5b 1px solid; 
+	 BORDER-RIGHT: #5b5b5b 1px solid; 
+}
+
+.tabloalt {
+	 BORDER-BOTTOM:#DDDDDD 1px solid; 
+}
+
+.tablokirmizi {
+	 BORDER-BOTTOM:#9F0402 1px solid; 
+	 BORDER-TOP:   #9F0402 1px solid; 
+	 BORDER-LEFT:  #9F0402 1px solid; 
+	 BORDER-RIGHT: #9F0402 1px solid;
+	 background-color:#CC0702;
+	 color:#FFFFFF;
+	 font-family: Geneva, Arial, Helvetica, sans-serif;
+	 font-size: 12px;
+	 font-weight:bold;
+}
+
+.tabloyesil {
+	 BORDER-BOTTOM:#009900 1px solid; 
+	 BORDER-TOP:   #009900 1px solid; 
+	 BORDER-LEFT:  #009900 1px solid; 
+	 BORDER-RIGHT: #009900 1px solid;
+	 background-color:#99cc00;
+	 color:#000000;
+	 font-family: Geneva, Arial, Helvetica, sans-serif;
+	 font-size: 12px;
+	 font-weight:bold;
+}
+
+.tablogri1 {
+	 BORDER-BOTTOM:#DADADA 1px solid; 
+	 BORDER-TOP:   #DADADA 1px solid; 
+	 BORDER-LEFT:  #DADADA 1px solid; 
+	 BORDER-RIGHT: #DADADA 1px solid; 
+	 background-color:#F6F6F6;
+}
+
+.tablogri2 {
+	 BORDER-BOTTOM:#BCBCBC 1px solid; 
+	 BORDER-TOP:   #BCBCBC 1px solid; 
+	 BORDER-LEFT:  #BCBCBC 1px solid; 
+	 BORDER-RIGHT: #BCBCBC 1px solid; 
+	 background-color:#DCDCDC;
+}
+
+.tablogrialt {
+	 BORDER-BOTTOM:#DCDCDC 1px solid; 
+}
+
+.tablogri3 {
+	 BORDER-BOTTOM:#606060 3px solid; 
+	 BORDER-TOP:   #606060 1px solid; 
+	 BORDER-LEFT:  #606060 1px solid; 
+	 BORDER-RIGHT: #606060 1px solid; 
+	 background-color:#888888;
+}
+
+.tablogri4 {
+	 BORDER-BOTTOM:#BCBCBC 1px dotted; 
+	 BORDER-TOP:   #BCBCBC 1px dotted; 
+	 BORDER-LEFT:  #BCBCBC 1px dotted; 
+	 BORDER-RIGHT: #BCBCBC 1px dotted; 
+	 background-color:#F6F6F6;
+}
+
+
+/* YAZI TÝPLERÝ */ 
+.standart {
+	color:#000000;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.kucuk {
+	color: #000000;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+.vurgu {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight:bold;
+}
+
+.vurguBEYAZ {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight:bold;
+	color:#FFFFFF;
+}
+
+.baslik {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight:bold;
+	color:#000000;
+}
+
+.baslik2 {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight:bold;
+	color:#FFFFFF;
+}
+
+/* FORM ELEMANLARI */
+.KUTUCUK {
+	font-family: "Courier New", Courier, mono;
+	font-size: 12px;
+}
+
+
+
+
+
+/* LÝNKLER */
+
+A {
+	COLOR: #000000; TEXT-DECORATION: none;
+}
+A:visited {
+	COLOR: #000000;  TEXT-DECORATION: none;
+}
+A:hover {
+	COLOR: #0000FF;  TEXT-DECORATION: none;
+}

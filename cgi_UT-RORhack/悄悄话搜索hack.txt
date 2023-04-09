@@ -1,0 +1,288 @@
+#!/usr/bin/perl
+#------------------------------------------------------------------------------
+#    UltraThreads
+#    Copyright (c) 2000 Kelvin Wu
+#
+#    2000.08
+#------------------------------------------------------------------------------
+#    UltraPMSearch
+#    Copyright (c) 2002 cynix
+#------------------------------------------------------------------------------
+
+use strict;
+
+# Imports
+use CGI::Carp qw(fatalsToBrowser);
+use DBI;
+use UTConfig;
+use UTLanguage;
+use UTMain;
+use UTCGI;
+
+#------------------------------------------------------------------------------
+
+# Get user
+connectDb();
+my $user = authUser();
+
+# Check if forum is closed
+printMessage("$lng{'forumClosedLb'}", "$lng{'forumClosed'}") 
+	if $cfg{'forumClosed'} && !$user->{'admin'};
+
+# Print header
+my @buttons = ();
+printHeader($user, "", \@buttons, $lng{'searResults'});
+
+# Check if user has logged in
+$user->{'defaultUser'} and regError();
+
+# Check if access should be denied
+checkBlock();
+
+# Get CGI parameters
+my $cgi = new UTCGI;
+my $id = int($cgi->param('id')) || 0;
+my $box = $cgi->param('box') || "inbox";
+my $mode = $cgi->param('mode') || "phrase";
+my $words = $cgi->param('words');
+my $age = int($cgi->param('age')) || 999;
+my $limit = int($cgi->param('limit')) || 25;
+my $page = int($cgi->param('page')) || 1;
+my $sort = $cgi->param('sort') || "msgTime";
+my $order = $cgi->param('order') || "desc";
+my $userName = $cgi->param('userName');
+my $wordsTmp = $words;
+$wordsTmp =~ s/\s|\t//isg;
+$id || $wordsTmp || $userName or userError($lng{'errWordEmpty'});
+
+my ($query, $sth, $cache, $pageNum, $idStr, $resultsId, $resultsNum);
+
+my $now = time();
+my $pmTable = "ut_pm$box";
+my $pmUser = $box eq "inbox" ? "sender" : "recipient";
+
+# We check if this search has been cached or not
+if ($id) {
+	# Cache expire after one hour
+	$query = "SELECT * FROM ut_search WHERE id = $id AND startTime + 3600 >= $now";
+	$sth = query($query);
+	$cache = $sth->fetchrow_hashref();
+    $sth->finish;
+	printMessage("Error", "Invalid Search ID") if ($cache->{'userId'} != $user->{'id'});
+}
+
+my $offset = ($page - 1) * $limit;
+my $limitStr = "LIMIT $offset, $limit"; 
+
+if ($cache) {
+	$resultsId = $cache->{'results'};
+}
+else {
+	# Find user
+	my $userStr = $userName ? "AND $pmUser = ".quote($userName) : "";
+
+	# Find words
+	my $wordStr = "";
+	if ($wordsTmp) {
+		$wordStr = "AND (";
+		$words =~ s![\'\"]!!;
+		$words =~ s!_!\\\_!;	
+		$words =~ s!%!\\\%!;
+		my @words = split(' ', $words);
+		for my $word (@words) {
+			$word = "%$word%";
+			$word = quote($word);
+			$word = "(body LIKE $word OR subject LIKE $word)" 
+		}
+		if ($mode eq "and") { $wordStr .= join(" AND ", @words) }
+		elsif ($mode eq "or") { $wordStr .= join(" OR ", @words) }
+		elsif ($mode eq "phrase") { $wordStr .= "body LIKE '%$words%'" }
+		else { paramError($lng{'errParamMiss'}) }
+		$wordStr .= ")";
+	}
+
+	# Other criteria
+	$age = min(max(1, $age), 999);
+
+	# Get results
+	$query = "
+		SELECT id  
+		FROM $pmTable
+		WHERE userId = $user->{'id'}
+			AND msgTime + $age * 86400 > $now 
+			$userStr 
+			$wordStr";
+	$sth = query($query);
+	my $results = $sth->fetchall_arrayref({});
+	$sth->finish;
+	for my $r (@$results) {
+		$resultsId .= $r->{'id'} . ",";
+	}
+
+	if (length($resultsId)) {
+		$resultsId =~ s/\,$//;
+		$query = "INSERT INTO ut_search SET id = NULL, userId = $user->{'id'}, startTime = $now, bakTable = 0, results = '$resultsId'";
+		$dbh->do($query) or dbError($user);
+		
+		$query = "SELECT LAST_INSERT_ID()";
+		$sth = query($query);
+		$id = $sth->fetchrow_array();
+		$sth->finish;
+	}
+}
+
+my @tmp = split(/\,/, $resultsId);
+$resultsNum = $#tmp + 1;
+my $idStr = "$pmTable.id IN (" . $resultsId . ")";
+$query = "
+	SELECT $pmTable.id AS pid, $pmTable.$pmUser AS name, $pmTable.subject, $pmTable.msgTime, $pmTable.msgRead, ut_users.id AS uid
+	FROM $pmTable LEFT JOIN ut_users
+  ON ut_users.userName = $pmTable.$pmUser
+	WHERE $pmTable.userId = $user->{'id'}
+		AND $idStr  
+	ORDER BY $sort $order  
+	$limitStr";
+
+my $pageNum = int($resultsNum / $limit) + ($resultsNum % $limit != 0);
+my $prevPage = $page - 1;
+my $nextPage = $page + 1;
+
+my @bar;
+my $imgAlign = getBrowserAttr('middleImgAlign');
+my $navBar = 
+	"<font size=3 face=arial><b>&#187;</b></font>&nbsp;<a href='forum_show.cgi' class=nav><B>$cfg{'forumName'}</b></a>&nbsp;<font size=3 face=arial><b>&#187;</b></font>&nbsp;" . 
+    "<b>$lng{'searResults'}</b>";
+
+# Print search bar
+if ($resultsNum > 0) {
+	my $startMsg = $offset + 1;
+	my $endMsg = $offset + $limit > $resultsNum ? $resultsNum : $offset + $limit;
+	push(@bar, "", "$lng{'searDisplay'} $startMsg - $endMsg of $resultsNum");
+	printBar($user, $navBar, "", \@bar, 1);
+}
+else {
+	# If nothing found, display notification
+	printBar($user, $navBar, "", \@bar, 1);
+	print
+		tableStart($user, ""),
+		"<TR BGCOLOR='$cfg{'darkCellColor'}'>\n",
+	    "<td width=3%>&nbsp;</td>\n",
+		"<TD width=50%><font color=$cfg{'darkCellTColor'}><B>$lng{'pmSubject'}</B></font></TD>\n",
+		"<TD WIDTH='15%' NOWRAP align=center><font color=$cfg{'darkCellTColor'}><B>".$lng{$box=="inbox"?'pmSender':'pmRecipient'}."</B></font></TD>\n",
+		"<TD WIDTH='20%' NOWRAP align=center><font color=$cfg{'darkCellTColor'}><B>$lng{'pmSentDate'}</B></font></TD>\n",
+		"</TR>\n\n",
+		"<TR BGCOLOR='$cfg{'lightCellColor'}'><TD COLSPAN=4>\n",
+		"<br><blockquote><b>$lng{'searNotFound'}</b></blockquote>\n",
+		"</TD></TR>\n\n",
+		tableEnd($user);
+
+    # Update online users stats
+    updateOnlineUsers($user, $lng{'forum_search_x'});
+
+    printFooter();
+}
+
+# Search messages
+$sth = query($query);
+my $msgs = $sth->fetchall_arrayref({});
+$sth->finish;
+
+my $imgAlign = getBrowserAttr('middleImgAlign');
+
+# Print table header
+print
+	tableStart($user, ""),
+  "<TR BGCOLOR='$cfg{'darkCellColor'}'>\n",
+    "<td width=3%>&nbsp;</td>\n",
+  "<TD width=50%><font color=$cfg{'darkCellTColor'}><B>$lng{'pmSubject'}</B></font></TD>\n",
+  "<TD WIDTH='15%' NOWRAP align=center><font color=$cfg{'darkCellTColor'}><B>".$lng{$box=="inbox"?'pmSender':'pmRecipient'}."</B></font></TD>\n",
+  "<TD WIDTH='20%' NOWRAP align=center><font color=$cfg{'darkCellTColor'}><B>$lng{'pmSentDate'}</B></font></TD>\n",
+  "</TR>\n\n";
+
+my $age2 = $user->{'defaultUser'} ? $cfg{'postsAge'} : $user->{'postsAge'};
+my $rowColor = $cfg{'lightCellColor2'};
+
+# Print found messages
+for my $msg (@$msgs) {
+	# Prepare display strings    
+	my $authorStr = "<A HREF='user_info.cgi?id=$msg->{'uid'}'>$msg->{'name'}</A>";
+	my $timeStr = formatTime($msg->{'msgTime'});
+
+    my $msgShow = "pm_show.cgi?id=$msg->{'pid'}&box=$box";
+
+    print
+		"<TR BGCOLOR='$rowColor'>\n",
+        "<TD width=3%><A HREF='$msgShow' target='_blank'>",
+        "<img src='$cfg{'nonCgiPath'}/images/newwin.gif' BORDER=0 $imgAlign alt='$lng{'newWindow'}'></A></td><td width=50%>\n";
+
+    print 
+      "<A HREF='$msgShow' class=topic>$msg->{'subject'}</A>\n";
+
+    print
+		"</TD><TD NOWRAP width=15% align=center>\n",
+		"$authorStr\n",
+		"</TD><TD align=center width=20% nowrap>\n",
+		"$timeStr\n",
+		"</TD></TR>\n\n";
+
+    if ($rowColor eq $cfg{'lightCellColor2'}) {
+        $rowColor = $cfg{'lightCellColor'};
+    }
+    else {
+        $rowColor = $cfg{'lightCellColor2'};
+    }
+}
+
+print
+	tableEnd($user);
+
+# Print page bar
+if ($pageNum > 1) {
+    my @pageBar = (
+    	"pm_search_x.cgi?limit=$limit&page=$prevPage&sort=$sort&order=$order&id=$id", "pagePrevS", $page == 1 ? 0 : 1
+    );
+
+    # First, set how many pages we have on the left and the right.
+    my ($lower, $upper);
+    my $left = $page;
+    my $right = int($resultsNum/$limit) - $page;
+
+    # Then work out what page number we can go above and below.
+	($left > int($cfg{'maxBoardPages'}/2)) 
+        ? ($lower = $left - int($cfg{'maxBoardPages'}/2))
+        : ($lower = 1);
+	($right > int($cfg{'maxBoardPages'}/2))
+        ? ($upper = $page + int($cfg{'maxBoardPages'}/2)) 
+        : ($upper = int($resultsNum/$limit) + 1);
+    
+    # Finally, adjust those page numbers if we are near an endpoint.
+	(int($cfg{'maxBoardPages'}/2) - $page >= 0) and 
+        ($upper = $upper + (int($cfg{'maxBoardPages'}/2) + 1 - $page));
+	($page > ($resultsNum/$limit - int($cfg{'maxBoardPages'}/2))) and 
+        ($lower = $lower - ($page - int($resultsNum/$limit - int($cfg{'maxBoardPages'}/2)) - 1));
+
+	for (my $i = 1 ; $i <= int($resultsNum/$limit) + 1; $i++) {
+		if ($i < $lower) { $i = $lower - 1; next; }			
+		last if ($i > $upper);
+		push(@pageBar, "pm_search_x.cgi?limit=$limit&page=$i&sort=$sort&order=$order&id=$id", $i, $i == $page ? 0 : 1);
+        last if (($i * $limit) >= $resultsNum);
+	}
+	push(@pageBar, "pm_search_x.cgi?limit=$limit&page=$nextPage&sort=$sort&order=$order&id=$id", "pageNextS", $page == $pageNum ? 0 : 1);
+
+	printBar($user, "", "", \@pageBar);
+}
+
+# Update online users stats
+updateOnlineUsers($user, $lng{'forum_search_x'});
+
+# Print popup box if new PM comes
+print 
+	"<script language=javascript>\n",
+	"alert(\"$lng{'forumPmNew1'} $user->{'pmNew'} $lng{'forumPmNew2'}\")\n",
+	"</script>\n" 
+	if (!$user->{'defaultUser'} && $user->{'pmNew'} && $user->{'pmPopup'} && $cfg{'pm'});
+
+# Print footer
+printFooter();
+
+

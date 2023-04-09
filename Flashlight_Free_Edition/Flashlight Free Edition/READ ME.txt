@@ -1,0 +1,102 @@
+========================
+ FLASHLIGHT README FILE
+========================
+
+Contents:
+  * General
+  * Description
+  * Advantages
+  * Free Features
+  * Professional Features
+  * Requirements
+  * Installation
+  * FAQ's
+  * Uninstall
+  * Support
+
+~~~~~~~~~~~~~~~~~~~~~~~
+
+* GENERAL
+ Script: Flashlight Free Edition
+ Version: 1.0
+ Author: XEWeb
+ Email: flashlight@xeweb.net
+
+
+
+* DESCRIPTION
+ Flashlight is a professional PHP/MySQL multi-user private messaging system. It has
+ more features than email and is very secure.
+
+
+
+* ADVANTAGES
+ - Mail protocols (such as IMAP & POP3) are not required.
+ - Because there is no actual email address, no user can be spammed.
+ - Worms and viruses will not spread from user to user.
+ - Flashlight is web-based so can be accessed from all over the world.
+
+
+
+* FREE FEATURES
+ Features include:
+ - Send to and cc users
+ - Reply and forward messages
+ - Contacts list with search function
+ - Message formatting
+ - Attachments to messages
+ - Administrator options and settings
+
+
+
+* PROFESSIONAL FEATURES
+ - Password based message encryption
+ - Message and attachment statistics
+ - Unlimited users and administrators
+ - See: http://flashlight.xeweb.net/index.php?p=professional
+
+
+
+* REQUIREMENTS
+ OPERATING SYSTEM: Linux, Windows NT/2000 Server Family, Windows XP, Unix
+ WEB SERVER: Apache (latest release)
+ SCRIPTING: PHP4 (latest stable release)
+ DATABASE: 1 MySQL Database (latest stable release)
+ BROWSER: Internet Explorer; Cookie-Enabled; Javascript-Enabled;
+
+
+
+* INSTALLATION
+1. Edit config.php and set the values to reflect your database configuration.
+   Please make sure information is between the ' and ';
+
+2. Save the file and upload the whole Flashlight directory.
+
+3. CHMOD the folder 'attachments' to 777 (see your FTP client how to do this).
+
+4. Run install.php from the web, i.e. http://www.yoursite.com/Flashlight/install.php
+
+5. Once installation is successful, delete the files "install.php" and "installer.php" and 
+   then log in with the username and password set, by going to the index.php of the Flashlight
+   directory.
+
+6. Go to 'Administrator Options' and select 'Flashlight Settings' for some final configuration.
+
+
+
+* FAQ's
+ - The layout looks messed up in my browser.
+ Make sure you are using the latest version of Internet Explorer.
+ - I logout but can still click back.
+ Once logged out, close the window.
+
+
+
+* UNINSTALL
+ To uninstall Flashlight, delete the database (the 4 tables; "users", "inbox", "outbox"
+ and "settings") then delete the Flashlight directory.
+
+
+
+* SUPPORT
+ Visit: http://flashlight.xeweb.net or email: flashlight@xeweb.net

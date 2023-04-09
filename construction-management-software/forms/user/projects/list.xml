@@ -1,0 +1,34 @@
+<form>
+	
+	<title>Personal Projects</title>
+	<width>540</width>
+	<border>true</border>
+	
+	<fields>
+		<_count header="No" suffix="." width="30" align="center" />
+		<project_name header="Project" align="left" />
+	</fields>
+
+	<header>
+		<titles>true</titles>
+	</header>
+
+	<buttons>
+		<details onclick="" button="details" >
+			<location>index.php?sub=projects&action=details&project_id={PROJECT_ID}</location>
+		</details>
+
+	</buttons>
+	
+	<sql>
+		<vars>
+			<table import="$this->tables[projects]" type="eval"/>
+			<user import="$_SESSION[minibase][raw][user_id]" type="eval" />
+		</vars>
+
+		<query>SELECT * FROM {TABLE} WHERE project_user = {USER}</query>
+	</sql>
+
+	<items>99999</items>
+
+</form>

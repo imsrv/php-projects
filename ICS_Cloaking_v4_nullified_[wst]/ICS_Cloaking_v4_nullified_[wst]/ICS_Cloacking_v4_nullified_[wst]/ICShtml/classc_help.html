@@ -1,0 +1,50 @@
+<html><head>
+<title>Class c Help</title>
+</head>
+<body bgcolor="FFFFFF">
+<center>
+<br><br>
+
+<table cellspacing="1" cellpadding="4" border="2" bgcolor="#C0C0C0" width="100%">
+<tr><td>
+<table cellspacing="10" cellpadding="3" border="0" bgcolor="#EAEAD5" width="100%">
+<tr>
+<td align="center" bgcolor="#C0C0C0">
+<font color="#400060" size="+1" face="Arial">What Is A Reverse Class "c" Match?</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Reverse Class "c"</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+An IP address is made up of four octets like so- 11.22.33.44, each position can have a value ranging from 0 to 255. The numbers 0 and 255 are never used for normal device IP addressing, so that leaves 1 to 254. A class "c" is a term used to refer to the first three octets of the IP address with the fourth octet being any number from 1 to 254.<br><br>So what is a reverse class "c" match? It is a phrase we coined to describe a match whereby a spider uses an IP address from a class "c" range and in the ICS spider db another address from that range exists for that spider.<br><br>
+For example; let's assume that the Inktomi spider <b>Slurp</b> visits and requests a page and it is using IP address 216.35.185.43 and in the ICS IP data base there is a statement defining an IP address for Inktomi's Slurp that looks like this:<br><br>
+/216.35.185.90/=Inktomi=/Slurp/&
+<br><br>
+Normally no IP match would occur because the two IP addresses are not the same. But taking advantage of the fact that spiders often use many IP addresses from the same class "c" we can take the address the spider used and drop the last octet so that we compare 216.35.185. against the ICS IP list. If another address is found that begins with 216.35.185. then a strong indication that this is a spider is established.<br><br>
+In the example used here the IP address used by Slurp 216.35.185.43 would be considered a match to the IP address 216.35.185.90 found in the ICS IP address db.<br><br>
+When this technique is combined with either a User Agent that must also match, or a strong spider footprint, it becomes very powerful in detecting spiders that might otherwise be missed. 
+</font>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#EAEAD5">
+&nbsp;
+</td>
+</tr>
+
+<tr>
+<td align="right" colspan="2" bgcolor="#C0C0C0">
+<a href=""><font face=arial size="-2" color="maroon">ICS v4.0 By: ICS Avenue</font></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+</body></html>
+

@@ -1,0 +1,235 @@
+# -----------------------------------------------------------------
+#                     GroupMail Secure Version 2.00
+#
+#                        Address Book Functions
+#                          Supplied by  Virus
+#                          Nullified by CyKuH
+#    Filename : address.lib
+# -------------------------------------------------------------------
+#
+sub address   {
+$id = $Cookies{'name'};
+$banner = &makebanner ('ADDRESS <font size=2>book');
+print <<EOF;
+<HTML><HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+
+var actionSelected = "";
+var indexItemSelected = "";
+
+function selectAction (action) {
+  actionSelected = action;
+}
+
+function selectIndexItem(item) {
+  indexItemSelected = item;
+}
+
+function memWarning(){
+if (actionSelected == "")
+return true
+
+if (!confirm ("Are you sure you want to " + actionSelected + " " + indexItemSelected + "?"))
+return false
+}
+
+</SCRIPT></HEAD>
+
+<body $bodybg $bodytext>$mainfont $banner <center>
+EOF
+
+print "<b>Previous action:</b> $bulletin<p>" if ($bulletin);
+
+print <<EOF;
+<table width="600" border="0"><tr><td align=center>
+<FORM ACTION="$ENV{'SCRIPT_NAME'}"  METHOD=POST onSubmit="return memWarning()">
+<INPUT TYPE=SUBMIT NAME="action" VALUE="Add"><p>
+<table border="2" cellspacing="2" width="100%" $subtablebg >
+<tr> <td><INPUT TYPE=SUBMIT NAME="action" VALUE="Edit"></td> <td align=center> $mainfont<b>Name</b></font></td> <td align=center> $mainfont<b>Email Address</b></font></td> <td align=center> $mainfont<b>Location</b></font></td> <td align=center> $mainfont<b>Phone</b></font></td><td><INPUT TYPE=SUBMIT NAME="action" VALUE="Del"  onClick="selectAction('DELETE')"></td></tr>
+EOF
+&readbook;
+
+if(@book)   {
+foreach (@book)	{
+   ($email, $fullname, $location, $phone) = split(/\t/, "$_");
+   $fullname = '-----' unless ($fullname);
+   $location = '-----' unless($location);
+   $phone = '-----' unless($phone);
+
+print <<EOF;
+<tr><td><input type=radio name=EDIT value=$email onClick="selectIndexItem('$email')"></td> <td>$fullname</td> <td>$email</td> <td>$location</td> <td>$phone</td>
+<td><input type=radio name=REMOVE  value=$email onClick="selectIndexItem('$email')"></td></tr>
+EOF
+}
+}
+
+print <<EOF;
+</table><p><center><INPUT TYPE=SUBMIT NAME="action" VALUE="Add"><p>
+</form></td></tr></table></center></div></body>
+EOF
+}
+
+##############  Individual member operations on address book  ##############
+
+sub editbook   {
+$id = $Cookies{'name'};
+
+if($form{'action'} eq 'Edit')   {
+&oops ('You must select a record to Edit') unless ($form{'EDIT'});
+$email = $form{'EDIT'};
+&readbook;
+$found = 0;
+
+foreach (@book)   {
+   ($key, $fullname, $location, $phone) = split(/\t/, $_);
+
+   if ($key eq $email)  {
+      $found = 1;
+      last;
+   }
+}
+
+&oops ("Can't find $email in book") unless ($found);
+@book = @newbook;
+}
+
+elsif ($form{'EMAIL'})  {  # Sender address from 'Print_header' message header
+   $email = $form{'EMAIL'};
+}
+
+$banner = &makebanner ('ADDRESS <font size=2>update');
+print <<EOF;
+<body $bodybg $bodytext> $mainfont $banner
+<p><div align="center">
+<center><table width="450" $subtablebg border="1"><tr><td>
+<FORM ACTION="$ENV{'SCRIPT_NAME'}"  METHOD=POST>
+<table border="0" cellpadding="0" width="100%" >
+<tr><td>$mainfont<b>Name:</b></td> <td> <input type=text size=30  name="FULLNAME"  value="$fullname"></font></td></tr>
+<tr><td>$mainfont<b>Email address:</b></td> <td> <input type=text size=30  name="EMAIL"  value="$email"></font></td></tr>
+<tr><td>$mainfont<b>Location:</b></td> <td> <input type=text size=30  name="LOCATION"  value="$location"></font></td></tr>
+<tr><td>$mainfont<b>Phone:</b></td> <td> <input type=text size=30 name="PHONE"  value="$phone"></font></td></tr> </table><p>
+
+<center><INPUT TYPE=SUBMIT NAME="action" VALUE="Update"></center>
+</form></td></tr></table></center></div></body>
+EOF
+}
+
+sub updatbook   {
+$id = $Cookies{'name'};
+&oops ('Missing email address') unless ($form{'EMAIL'});
+$email = $form{'EMAIL'};
+&readbook;
+@newbook = ();
+$found = 0;
+
+foreach (@book)   {
+   ($key, $fullname, $location, $phone) = split(/\t/, $_);
+
+   if ($key eq $email)  {
+      next;
+   }
+   else   {
+      push (@newbook, "$_\n");
+   }
+}
+
+push (@newbook, "$email\t$form{'FULLNAME'}\t$form{'LOCATION'}\t$form{'PHONE'}\n");
+&writebook;
+
+$bulletin = "$form{'EMAIL'} added or updated";
+&address;
+}
+
+sub deletbook   {
+$id = $Cookies{'name'};
+
+&oops ('Invalid use of Delete function') unless ($form{'action'} eq 'Del');
+&oops ('You must select a record to Delete') unless ($form{'REMOVE'});
+$key = $form{'REMOVE'};
+&readbook;
+@newbook = ();
+
+foreach (@book)   {
+   ($email, $fullname, $location, $phone) = split(/\t/, $_);
+   if ($key eq $email)   {
+      next;
+   }
+   else   {
+      push (@newbook, "$_\n");
+   }
+}
+&writebook;
+
+$bulletin = "$key removed from book";
+&address;
+}
+
+sub readbook   {
+if (-e "$basepath$adddir/$id.dat")   {
+&oops ("Can't read $id address book: $!") unless (open (ADDR, "$basepath$adddir/$id.dat"));
+@book = <ADDR>;
+chomp @book;
+close ADDR;
+   }
+else   {
+   unless (open (ADDR, ">$basepath$adddir/$id.dat"))   {
+      $bulletin = "Unable to create address book for $id: $!";
+      &address;
+   }
+close ADDR;
+@book = ();
+   }
+}
+
+sub writebook   {
+&oops ("Can't update $id address book: $!") unless (open (ADDR, ">$basepath$adddir/$id.dat"));
+@book = sort ({ lc($a) cmp lc($b) } @newbook) if (@newbook); # Alphabetic sort by email address.
+print ADDR @book;
+close ADDR;
+}
+
+################  Admin backup and restore of Address Books  ##################
+
+
+sub backbook   {
+unless (-e "$basepath$backdir/$adddir")   {
+    &oops ("Unable to create $basepath$backdir/$adddir: $!") unless ( mkdir "$basepath$backdir/$adddir", 0755 );
+}
+
+&oops ( "Unable to open $basepath$adddir: $!") unless (opendir THEDIR, "$basepath$adddir");
+@allfiles = readdir THEDIR;
+closedir THEDIR;
+
+foreach (@allfiles) {
+   if ($_ =~ /\.dat$/i) {
+   open (REGFILE, "$basepath$adddir/$_");
+   @file = <REGFILE>;
+   close REGFILE;
+   &oops ( "Unable to write $basepath$backdir/$adddir/$_: $!") unless (open BACKFILE,  ">$basepath$backdir/$adddir/$_");
+   print BACKFILE @file;
+   close BACKFILE;
+   }
+}
+
+$bulletin = "Address books BACKUP successful!";
+}
+
+sub restbook   {
+&oops ( "Unable to open $basepath$backdir/$adddir: $!") unless (opendir BACKDIR, "$basepath$backdir/$adddir");
+@allfiles = readdir BACKDIR;
+closedir BACKDIR;
+
+foreach (@allfiles) {
+   if ($_ =~ /\.dat$/i) {
+   open (BACKFILE, "$basepath$backdir/$adddir/$_");
+   @file = <BACKFILE>;
+   close BACKFILE;
+   &oops ( "Unable to write $basepath$adddir/$_: $!") unless (open REGFILE,  ">$basepath$adddir/$_");
+   print REGFILE @file;
+   close REGFILE;
+   }
+}
+
+$bulletin = "Address books RESTORE successful!";
+}
+1;

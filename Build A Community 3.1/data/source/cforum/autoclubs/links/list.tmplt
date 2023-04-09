@@ -1,0 +1,25 @@
+<TABLE WIDTH=400>
+<TR><TD><P><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><FONT SIZE=+1><B>[<($introtext)>]</B></FONT></FONT><P></TD></TR>
+
+[<(
+	foreach my $c (@cats) {
+		my $CAT = "<TR><TD BGCOLOR=\"$CONFIG{'title_color'}\"><FONT COLOR=\"$CONFIG{'ttxt_color'}\" FACE=\"$CONFIG{'font_face'}\" SIZE=\"+1\">$c</FONT></TD></TR><TR><TD $CONFIG{'WINCOLOR'}><UL>\n";
+		my $CLOSECAT = "</TD></TR>\n";
+		foreach my $l (@links) {
+			my @r = split(/\|\|/, $l);
+			if ($r[1] eq $c) {
+				$OUT .= $CAT;
+				$CAT = "";
+				$OUT .= "<LI><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><B><A HREF=\"$r[2]\">$r[3]</A></B><BR>\n";
+				$OUT .= "&nbsp;&nbsp;<I>posted by <A HREF=\"$GUrl{'moreinfo.cgi'}?UserName=$r[4]\">$r[4]</A></I>\n";
+				if (($VALIDUSER eq "T") && (($IUSER{'filenum'} eq $IFORUM{'bbs_admin'}) || ($IUSER{'filenum'} eq $admin_num) || ($IUSER{'username'} eq $r[4]))) {
+					$OUT .= "&nbsp;&nbsp;-&nbsp;&nbsp;<FONT SIZE=1><A HREF=\"$GUrl{'club_links.cgi'}?club=$FORM{'club'}&action=deletelink&id=$r[0]\">delete link</A></FONT>\n";
+					$OUT .= "<BR>$r[5]\n";
+				}
+			}
+		}
+		$OUT .= $CLOSECAT;
+	}
+)>]
+
+</TABLE>

@@ -1,0 +1,43 @@
+[Hack] 首頁最新發表標題顯示
+
+開啟 forum_show.cgi，並且搜詢
+
+"<TD NOWRAP align=center width=6%>$boardPostsTotal</TD>\n",
+
+將原本的整段..
+
+"<TD NOWRAP align=center width=6%>$boardPostsTotal</TD>\n",
+			"<TD NOWRAP align=center width=6%>$newPostNumStr</TD>\n",
+			"<TD NOWRAP align=center class=smalltext width=15%>$lastPostTimeStr<br>",
+            "by $lastPostNameStr</TD>\n",
+			"<TD width=20% valign=top>$mods{$board->{'id'}}&nbsp;</TD>\n",
+			"</TR>\n";
+			
+		print "\n";
+	}
+}
+
+print 
+	tableEnd($user);
+
+替換為
+
+"<TD NOWRAP align=center width=6%>$boardPostsTotal</TD>\n",
+                        "<TD NOWRAP align=center width=4%>$newPostNumStr</TD>\n",
+                        "<TD class=smalltext width=22%>\n";
+
+		$query = "SELECT boardId,id,subject FROM ut_topics where boardId = $board->{'id'} ORDER BY lastPostTime DESC LIMIT 1";
+		$sth = query($query);
+		my @row = $sth->fetchrow_array;
+		print "<a href='topic_show.cgi?id=$row[1]&h=1&bpg=1&age=$age'>$row[2]</a>\n";
+		$sth->finish;
+
+	print		"<br>$lastPostTimeStr by $lastPostNameStr</TD>\n",
+                        "<TD width=15% valign=top>$mods{$board->{'id'}}&nbsp;</TD>\n",
+                        "</TR>\n";
+                print "\n";
+        }
+}
+
+print 
+        tableEnd($user);

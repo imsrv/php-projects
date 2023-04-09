@@ -1,0 +1,24 @@
+		</td>
+        {right_blocks}
+	  </tr>
+	</table>
+    </td>
+    <td class="main-right" valign="bottom"><img src="{layout_url}/interface/blank.gif" width="16" height="7" alt="" border="0" class="lower-right"></td>
+  </tr>
+  <tr>
+    <td class="lower-line-left"><img src="{layout_url}/interface/blank.gif" width="16" height="9" alt="" border="0"></td>
+	<td class="lower-line-mid" width="100%"><img src="{layout_url}/interface/blank.gif" width="9" height="9" alt="" border="0"></td>
+	<td class="lower-line-right"><img src="{layout_url}/interface/blank.gif" width="16" height="9" alt="" border="0"></td>
+  </tr>
+</table>
+<table border="0" cellspacing="5" cellpadding="0" width="100%">
+    <tr valign="top">
+        <td class="footer">{copyright_notice}</td>
+        <td  class="footer" align="right">
+             {powered_by} <a class="footer" href="{geeklog_url}">GeekLog</a><br>
+             {execution_textandtime}</b>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

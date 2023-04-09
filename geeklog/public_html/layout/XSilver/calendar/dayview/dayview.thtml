@@ -1,0 +1,115 @@
+                            <table width="100%" class="dayview_times" cellpadding="5" cellspacing="0" border="0">
+                                <tr align="center">
+                                    <td align="center"><b>{lang_day}</b></td>
+                                    <td align="center"><a href="{site_url}/calendar.php?mode={mode}&view=week&month={wmonth}&day={wday}&year={wyear}">{lang_week}</a></td>
+                                    <td align="center"><a href="{site_url}/calendar.php?mode={mode}">{lang_month}</a></td>
+                                </tr>
+                            </table><br>
+                            <table cellpadding="2" cellspacing="0" border="1" width="100%" class="dayview_times">
+                                <tr>
+                                    <td colspan="2" class="dayview_datecol"><a href="{site_url}/calendar.php?mode={mode}&view=day&month={prevmonth}&day={prevday}&year={prevyear}"><<</a>&nbsp;&nbsp;{currentday}&nbsp;&nbsp;<a href="{site_url}/calendar.php?mode={mode}&view=day&month={nextmonth}&day={nextday}&year={nextyear}">>></a></td>
+                                <tr>
+                                    <td colspan="2" class="weekview_caltitle">{calendar_title} {calendar_toggle}</td>
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times">{lang_week} {week_num}</td>
+                                    <td>{allday_events}</td>
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=0">12:00am</a></td>
+                                    {0_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=1">1:00am</a></td>
+                                    {1_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=2">2:00am</a></td>
+                                    {2_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=3">3:00am</a></td>
+                                    {3_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=4">4:00am</a></td>
+                                    {4_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=5">5:00am</a></td>
+                                    {5_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=6">6:00am</a></td>
+                                    {6_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=7">7:00am</a></td>
+                                    {7_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=8">8:00am</a></td>
+                                    {8_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=9">9:00am</a></td>
+                                    {9_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=10">10:00am</a></td>
+                                    {10_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=11">11:00am</a></td>
+                                    {11_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=12">12:00pm</a></td>
+                                    {12_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=13">1:00pm</a></td>
+                                    {13_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=14">2:00pm</a></td>
+                                    {14_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=15">3:00pm</a></td>
+                                    {15_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=16">4:00pm</a></td>
+                                    {16_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=17">5:00pm</a></td>
+                                    {17_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=18">6:00pm</a></td>
+                                    {18_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=19">7:00pm</a></td>
+                                    {19_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=20">8:00pm</a></td>
+                                    {20_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=21">9:00pm</a></td>
+                                    {21_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=22">10:00pm</a></td>
+                                    {22_cols}
+                                </tr>
+                                <tr>
+                                    <td width="1%" class="dayview_times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=23">11:00pm</a></td>
+                                    {23_cols}
+                                </tr>
+                            </table><br>
+                            {quickadd_form}

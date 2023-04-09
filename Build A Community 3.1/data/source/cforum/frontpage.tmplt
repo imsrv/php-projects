@@ -1,0 +1,174 @@
+<SCRIPT LANGUAGE="javascript">
+function ShowHelp(c_what) {
+	var Location = "[<($CONFIG{'CGI_DIR'})>]/cforum.cgi?action=help&file=" + c_what;
+	link=open(Location,"CCSLink","toolbar=no,scrollbars=yes,directories=no,menubar=no,resizable=yes,width=420,height=410");
+}
+
+function OpenWin(Loc) {
+	link=open(Loc,"CCSLink","toolbar=no,scrollbars=yes,directories=no,menubar=no,resizable=yes,width=420,height=410");
+}
+
+function OpenForum(v_forum) {
+	document.forum_select.forum.value = v_forum;
+	document.forum_select.submit();  
+}
+</SCRIPT>
+
+<BR><BR>
+<CENTER>
+<TABLE BORDER=2 BGCOLOR="[<($CONFIG{'win_color'})>]" CELLSPACING=0 CELLPADDING=0 WIDTH=600>
+<TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<TABLE BORDER=0 BGCOLOR="[<($CONFIG{'title_color'})>]" WIDTH="100%" CELLSPACING=0 CELLPADDING=0><TR>
+<TD><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">&nbsp;&nbsp;Forum Menu...</FONT></TD>
+<TD ALIGN="right" VALIGN=middle>
+<A HREF="[<($GUrl{'myforum.cgi'})>]?returnto=[<($TURL)>]"><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Personalize</FONT></A>&nbsp;
+
+[<(
+	if ($ENV{'HTTP_USER_AGENT'} =~ /MSIE/i) {
+		$OUT .= "<A HREF=\"$GUrl{'cforum.cgi'}?action=help&file=iforum\">";
+	}
+	else {
+		$OUT .= "<A HREF=\"javascript:ShowHelp('iforum')\">";
+	}
+)>]
+
+<IMG SRC="[<($CONFIG{'button_dir'})>]/help.gif" BORDER=0 WIDTH="25" HEIGHT="25" VALIGN=middle ALIGN=middle></A>
+</TD></TR></TABLE>
+</TD></TR>
+<TR BGCOLOR="[<($CONFIG{'bbs_table2'})>]">
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<FONT FACE="[<($CONFIG{'font_face'})>]" COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]">
+
+<B>Please select a forum from the list below...</B>
+</OL></FONT>
+<CENTER><TABLE><TR><TD BGCOLOR=[<($CONFIG{'win_color'})>]>
+<TABLE CELLSPACING=0 CELLPADDING=5 WIDTH="100%">
+
+[<(
+	$LAST_VISIT = $LAST_VISIT - 1800;
+
+	$OUT .= "<TR><TD BGCOLOR=$CONFIG{'bbs_table2'}><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\">Forum</TD><TD BGCOLOR=$CONFIG{'bbs_table2'}><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\">Moderator</TD><TD BGCOLOR=$CONFIG{'bbs_table2'}><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\">#Posts</TD><TD BGCOLOR=$CONFIG{'bbs_table2'}><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\">Last Post</TD></TR>\n";
+
+	open(CAT,"$GPath{'cforums_data'}/categories.def"); 
+	my @cats=<CAT>;
+	close(CAT);
+
+	open(FCAT,"$GPath{'cforums_data'}/forum.categories");
+	my @fcats=<FCAT>;
+	close(FCAT);
+
+	my @myforums = split(/!!/, $myforums);
+
+	my ($nc, $n) = (undef, undef);
+
+	foreach $c(@cats) {
+		$c =~ s/(\n|\cM)//g;
+		next if ($FORM{'category'} && $c ne $FORM{'category'});
+		$nc++;
+		$n++;
+		my $color = undef;
+
+		if ($n == 1) {
+			$color = $CONFIG{'bbs_table1'};
+		}
+		else {
+			$color = $CONFIG{'bbs_table2'};
+		}
+
+		my $THISCATEGORY .= "<TR BGCOLOR=\"$color\"><TD COLSPAN=4><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><B>$c</B></TD></TR>\n";
+
+		foreach my $fc (@fcats) {
+			$fc =~ s/(\n|\cM)//g;
+			my @entries=split(/\:/,$fc);
+			if ($entries[1] eq $c) {
+				if ($#myforums > 0) {
+					$forumon = "F";
+					foreach $myforum (@myforums) {
+						if ($myforum eq $entries[0]) {
+							$forumon = "T";
+							last;
+						}
+					}
+				} 
+				if ($forumon ne "F") {
+					my $forum = $entries[0];
+					my $tot = 0;
+					my $lptime = 0;
+					my ($forum_icon, $NEW) = (undef, undef);
+
+					my $lastposting = "<I>Empty</I>";
+					my $forum_file = "$GPath{'cforums_data'}/$forum.db";
+
+					tie my %posts, "DB_File", $forum_file;
+
+					my %tforum = &readbbs("$GPath{'cforums_data'}/$forum.cfg");
+					my %tmod = &get_moderator($tforum{'bbs_admin'});
+
+					if ($tforum{'moderated'} eq "Yes") {
+						foreach $upost(sort keys %posts) {            #foreach thread...
+							my %tposts = &readpost($posts{$upost});
+							if (($moderated eq "Yes") && ($approved eq "F")) {next;}
+							$tot++;
+							$lptime = $tposts{'pdate'};
+							$lastposting = $tposts{'date'};
+						}
+					}
+					else {
+						my @tposts = sort keys %posts;
+						$tot = $#tposts;
+						my %tpost = &readpost($posts{$tposts[$tot]});
+						$tot++;
+						$lptime = $tpost{'pdate'};
+						$lastposting = $tpost{'date'} || "<I>Empty</I>";
+					}
+
+					if ($lptime >= $extra_new) {
+						$NEW = "$CONFIG{'extra_new_message'}";
+					}
+					elsif (($lptime >= $LAST_VISIT) && ($CONFIG{'new_minutes'} < $pdate)) {
+						$NEW = "$CONFIG{'new_message'}";
+					}
+
+					if ($tforum{'access'} ne "Open To All") {
+						if ($tforum{'access'} eq "Read-Only For Non-Privileged") {
+							$forum_icon = "<IMG SRC=\"$CONFIG{'button_dir'}/readonly.gif\" ALT=\"Restricted Access\"> &nbsp; ";
+							$readonly_forum++;
+						}
+						elsif ($tforum{'access'} eq "Closed") {
+							$tforum{'title'} .= " (closed)";
+						}
+						else {
+							$forum_icon = "<IMG SRC=\"$CONFIG{'button_dir'}/lock.gif\" ALT=\"Restricted Access\"> &nbsp; ";
+							$closed_forum++;
+						}
+					}
+					$OUT .= "$THISCATEGORY<TR BGCOLOR=\"$color\">\n";
+					$OUT .= "<TD><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><FONT FACE=\"$CONFIG{'font_face'}\" COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\">\n";
+					$OUT .= "<B>$forum_icon<A HREF=\"$GUrl{'cforum.cgi'}?action=getall&clubs=$FORM{'clubs'}&forum=$forum\">$tforum{'title'}</A></B><BR>$tforum{'bbs_desc'}</TD><TD><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\">$tmod{'name'}</TD><TD><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><CENTER>$tot</CENTER></TD><TD><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\">$lastposting$NEW</TD>\n";
+					$THISCATEGORY = "";
+				}	
+				if ($n == 2) {
+					$n = 0;
+				}
+				if ($nc == $bbs_menu_columns) {
+					$nc = 0; $OUT .= "</TR>";
+				}
+			}
+		}
+	}
+)>]
+
+
+</TD></TR></TABLE>
+</TD></TR></TABLE>
+
+[<(
+	 if ($readonly_forum > 0) {
+		$OUT .= "<BR><IMG SRC=\"$CONFIG{'button_dir'}/readonly.gif\" ALT=\"Restricted Access\"> = Read-Only: Only authorized members may post.\n";
+	 }
+	 if ($closed_forum > 0) {
+		$OUT .= "<BR><IMG SRC=\"$CONFIG{'button_dir'}/lock.gif\" ALT=\"Restricted Access\"> = Private: Restricted/Limited Access\n";
+	 }
+)>]
+
+</TD></TR></TABLE>

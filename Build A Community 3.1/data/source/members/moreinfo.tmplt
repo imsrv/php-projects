@@ -1,0 +1,138 @@
+<TABLE WIDTH=400 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR=BLACK COLSPAN=2><TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=400><TR><TD VALIGN=TOP><FONT COLOR=WHITE SIZE=3><B>Member : 
+
+[<(
+	if ($TUSER{'handle'}) {
+   		$OUT .= "$TUSER{'handle'}\n";
+		$name = $TUSER{'handle'};
+	}
+	else {
+   		$OUT .= "$TUSER{'realname'}\n";
+		$name = $TUSER{'realname'};
+	}
+)>]
+
+<BR>UserName: [<($FORM{'UserName'})>]
+</B></FONT></TD>
+
+<! [<(my $TURL = &urlencode("$GUrl{'moreinfo.cgi'}?UserName=$TUSER{'username'}");)>] >
+
+<TD BGCOLOR=BLACK HALIGN=RIGHT ALIGN=RIGHT>
+
+[<(
+	if ($CONFIG{'cforum_present'}) {
+		$OUT .= "<A HREF=\"$GUrl{'myforum.cgi'}?action=addfilter&user=$FORM{'UserName'}&returnto=$TURL\"><FONT COLOR=WHITE SIZE=2><CENTER>Add $name<BR>to your ignore list</CENTER></FONT></A>\n";
+	}
+	else {
+		$OUT .= "<BR>\n";
+	}
+)>]
+
+</TD></TR></TABLE></TD></TR>
+<TR>
+<TR>
+<TD VALIGN=TOP>
+
+[<(
+	if ($TUSER{'icon'} ne "") {
+		if ($TUSER{'icon'} =~ /\D/) {
+			($iwidth, $iheight) = &imgsize("$CONFIG{'ICON_upload_path'}/images/$TUSER{'icon'}");
+			$OUT .= "<IMG SRC=\"$CONFIG{'ICON_upload_url'}/images/$TUSER{'icon'}\" WIDTH=$iwidth HEIGHT=$iheight BORDER=0>";
+		}
+		else {
+			$OUT .= "<IMG SRC=\"$GUrl{'icon_images'}/$TUSER{'icon'}.gif\" WIDTH=32 HEIGHT=32>";
+		}
+	}
+)>]
+
+
+</TD>
+<TD VALIGN=TOP>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<P>[<($TUSER{'description'})>]
+<P><B>my email:</B> <A HREF="mailto:[<($TUSER{'email'})>]">[<($TUSER{'email'})>]</A>
+
+[<(
+	if ($TUSER{'url'}) {
+   		$BODY .= "<BR><B>my website:</B> <A HREF=\"$TUSER{'url'}\">$TUSER{'urlname'}</A>\n";
+	}
+	if ($TUSER{'ICQ'} =~ /\d/) {
+		$TUSER{'ICQ'} =~ s/\D//g;
+		$rnd=int rand 10000;
+		$iname = &urlencode($name);
+   		$BODY .= "<BR><B>my ICQ:</B> <A HREF=\"$GUrl{'cf_utils.cgi'}?action=icq&icq=$TUSER{'ICQ'}&name=$iname\">$TUSER{'ICQ'}</A> <IMG SRC=\"http://wwp.icq.com/scripts/online.dll?icq=$TUSER{'ICQ'}&img=1&t=$rnd\" ALT=\"Status\" WIDTH=44 HEIGHT=14>\n";
+	}
+
+	$postactivitydb = "$GPath{'cforums_data'}/postactivity.db";
+	$activitydb = "$GPath{'cforums_data'}/activity.db";
+
+	$td = &Long_Date($TUSER{'last_update'});
+   	$OUT .= "<BR><B>last visit</A></B>: $td\n";
+
+
+	tie %pactivity, "DB_File", "$postactivitydb";
+	@r = split(/&&/, $pactivity{$FORM{'UserName'}});
+	if ($r[0]) {
+		$td = &Long_Date($r[0]);
+   		$OUT .= "<BR><B>last post</B>: <A HREF=\"$GUrl{'cforum.cgi'}?action=message&forum=$r[1]&thread=$r[3]&highlight=$r[2]\">$td</A>\n";
+	}
+)>]
+
+
+<P><HR SIZE=3 WIDTH=75%><P>
+</TD></TR></TABLE>
+
+[<(
+	foreach $ipost(@posts) {
+		($forum, $next_id, $thisthread) = split(/&&/, $ipost);
+		$forums{$forum}++;
+		$pcount++;
+	}
+
+	$x = 0;
+	$OUT .= "<TABLE><TR><TD COLSPAN=3>\n";
+	if ($pcount > 0) {
+		$OUT .= "<FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><B>Posts In The Forums:</B> $pcount<BR>\n";
+		$OUT .= "<B>Where:</B><BR>\n";
+		$OUT .= "</TD></TR>\n";
+		foreach $uforum(reverse sort { $forums{$a} <=> $forums{$b} } keys %forums) {
+			$CONFIG{'clubflag'} = "";
+			if ($forums{$uforum} > 0) {
+				if ($x == 0) {
+					$x = 150 / $forums{$uforum};
+				}
+				$length = $forums{$uforum} * $x;
+			}
+			$length++;
+			open (CFG, "$GPath{'cforums_data'}/$uforum.cfg");
+			@cfg = <CFG>;
+			close (CFG);
+			@tcfg = split(/\|/, $cfg[0]);
+			if ($tcfg[22] ne "Club") {
+				if (($access ne "Open To All") && ($access ne "")) {
+					if ($access eq "Read-Only For Non-Privileged") {
+						$forum_icon = "<IMG SRC=\"$CONFIG{'button_dir'}/readonly.gif\" ALT=\"Restricted Access\"> &nbsp; ";
+						$readonly_forum++;
+					}
+					elsif ($access eq "Closed") {$f_name .= " (closed)";}
+					else {
+						$forum_icon = "<IMG SRC=\"$CONFIG{'button_dir'}/lock.gif\" ALT=\"Restricted Access\"> &nbsp; ";
+						$closed_forum++;
+					}
+				}
+				$URL = "<A HREF=\"$GUrl{'cforum.cgi'}?action=getall&forum=$uforum\" TARGET=\"_top\">";
+			}
+			else {
+				$CONFIG{'clubflag'} = "$CONFIG{'clubflag'}";
+				$URL = "<A HREF=\"$GUrl{'clubs.cgi'}?action=open&club=$uforum\" TARGET=\"_top\">";
+			}
+
+			$OUT .= "<TR><TD>$forum_icon</TD><TD><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><B>$URL$tcfg[0]</A> $CONFIG{'clubflag'}</B></TD><TD><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\">$forums{$uforum}</TD><TD><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><IMG SRC=\"$CONFIG{'button_dir'}/bar.gif\" height=10 width=$length></TD></TR>\n";
+		}
+	}
+)>]
+
+
+</TABLE>
+<HR WIDTH=60%>
+<CENTER><A HREF="[<($CONFIG{'CGI_DIR'})>]/cforum.cgi?action=usersearch&terms=[<($TUSER{'username'})>]&forum=&Range=All">List posts by [<($name)>]</A></CENTER>

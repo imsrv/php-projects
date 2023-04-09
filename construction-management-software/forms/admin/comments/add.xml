@@ -1,0 +1,51 @@
+<form>
+	<title>Add / Edit Comment</title>
+	<action>index.php?sub=comments&action=store</action>
+	<name>edit</name>
+	<width>540</width>
+
+	<formtag>true</formtag>
+	<border>true</border>
+
+	<vars>
+		<task import="$_GET[comment_task] ? $_GET[comment_task] : $_POST[comment_task]" type="eval" />
+	</vars>
+	
+	<buttons>		
+		<set>
+			<footer>true</footer>
+			<header>true</header>
+		</set>
+
+		<return onclick="" button="return" >
+			<location>index.php?sub=tasks&action=det&task_id={TASK}</location>
+		</return>
+
+		<save onclick="" button="saveall">
+			<location>javascript:document.forms[0].submit();</location>
+		</save>
+
+	</buttons>
+
+	<redirect>index.php?sub=tasks&action=det&task_id={COMMENT_TASK}</redirect>
+
+	<fields>
+
+		<comment_id type="hidden" hidden="true"/>
+		<comment_user type="hidden" hidden="true"/>
+		<comment_date type="hidden" hidden="true"/>
+		<new_admin type="hidden" forcevalue="0" />
+		<new_user type="hidden" forcevalue="1" />
+
+		<comment_task type="hidden" default="$_GET[comment_task]" action="eval" />
+
+		<comment_title type="textbox" size="40:100" required="true" validate="A:1:100">
+			<title>Title</title>
+			<description>Enter the title for this comment.</description>
+		</comment_title>
+
+		<comment_body type="textarea" size="40:4">
+			<title>Body</title>
+		</comment_body>
+	</fields>
+</form>

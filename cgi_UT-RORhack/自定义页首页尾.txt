@@ -1,0 +1,48 @@
+功能描述： 管理员可以自定义页首页尾，方便统一主页风格 
+修改方法： 
+
+1，备份相关文件 
+2，打开UTConfig.pm，寻找 
+
+$cfg{'fontSize'} = 13;  $cfg{'fontSizeUnit'} = "px";  
+在下面加入 
+
+  $cfg{'header'} = "<font color=\"red\">welcome to <a href=http://www.photoshopcn.com>http://www.photoshopcn.com></a>。</font>";  $cfg{'footer'} = "<font color=\"red\">welcome to <a href=http://www.photoshopcn.com>http://www.photoshopcn.com></a>。</font>";  
+保存退出！ 
+
+3. 打开UTMain.pm 
+搜索 
+
+"<BODY leftmargin=0 topmargin=0 marginwidth=0 marginheight=0 BGCOLOR='$cfg{'bodyColor'}' TEXT='$cfg{'textColor'}'",  " LINK='$cfg{'linkColor'}' VLINK='$cfg{'vlinkColor'}' ALINK='$cfg{'alinkColor'}'",  " $bgImageStr>\n\n",
+大概在561行左右 
+
+下面加入： 
+
+    # print header,added by chuan      "$cfg{'header'}",      #end
+
+再搜索
+sub printFooter   {    my $hideCopyright = shift() || 0;        print  
+
+下面加入 
+
+    "$cfg{'footer'}",  
+保存退出！ 
+
+4.打开cfg_style.cgi 
+搜索
+print    tableStart($user, "Default Settings for New Users", 2),
+
+再上面加入 
+
+#edit header ,added by chuan  print    tableStart($user, "Default Settings for header/footer", 2),    "<tr bgcolor=$cfg{'lightCellColor'}><td width=45% valign=top>\n",    "<b>Default header</b></td>\n",    "<td><TEXTAREA NAME='header' ROWS='10' COLS='40' style='width:100%' class=subject>$cfg{'header'}</TEXTAREA></td></tr>",      "<tr bgcolor=$cfg{'lightCellColor'}><td width=45% valign=top>\n",    "<b>Default footer</b></td>\n",    "<td><TEXTAREA NAME='footer' ROWS='10' COLS='40' style='width:100%' class=subject>$cfg{'footer'}</TEXTAREA>";  print      "</td></tr>\n",      tableEnd($user),      "<br>\n";    #end
+保存退出 
+
+5.休息休息，喝点水 
+
+6.打开cfg_style_x.cgi (kw的程序的文件名都要带"x") 
+搜索
+$output .= "\$cfg\{\'fontSizeUnit\'\} = \"" . $cgi->param('fontSizeUnit') . "\";\n";   
+下面加入 
+
+#footer/header value,added by chuan  my $header=$cgi->param('header');  my $footer=$cgi->param('footer');  $header =~ s/"/\\"/g;  $footer =~ s/"/\\"/g;  $output .= "\$cfg\{\'header\'\} = \"" . $header . "\";\n";   $output .= "\$cfg\{\'footer\'\} = \"" . $footer . "\";\n";     #end  
+保存退出。 

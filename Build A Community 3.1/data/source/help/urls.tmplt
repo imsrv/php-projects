@@ -1,0 +1,35 @@
+<TABLE CELLPADDING=0 CELLSPACING=0>
+<TR><TD><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Help & Hints</B></FONT></CENTER><BR><BR></TD></TR>
+<TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+
+[<(
+	if ($CONFIG{'Weaver_use_bonhomme'} eq "YES") {
+		$OUT .= "<IMG SRC=\"$CONFIG{'button_dir'}/myguy/teacher1.gif\" WIDTH=93 HEIGHT=128 ALIGN=RIGHT ALT=\"Let me be your guide\">";
+	}
+)>]
+
+<P>There are two different types of web addresses (or URLs).
+<P>If you have a file on your personal site, all you need to use as the URL is the name of the file (ex. you uploaded a file named <I>mypicture.gif</I>, the address would be "mypicture.gif").
+<P>If you are linking to a page, image, or sound on a different server you need to include a full address.  <B>You must</B> include "http://" at the beginning or it will <B>never</B> work.  You should also make sure that the URL has the right information at the end.
+<UL>
+<LI><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">An image must end with either ".gif", ".jpg" or "jpeg".
+<LI><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Midi files should also always end with ".mid".
+</UL>
+
+<P>You can also easily use images from the <A HREF="[<($GUrl{'gallery.cgi'})>]">Clip-Art Gallery</A> in your page.  Simply type # the four digit code found beneath the image.  Do not include a space between # and the code.
+
+<H3>Hint</H3>
+You can have two browser windows open at the same time.  Keep one in the editor and use the other one to search for stuff.  Go to the "<U>F</U>ile" menu at the top of your screen, and select "New" and then from the sub-menu, select "Window" (or "Navigator Window").  This will open a second window for you.  You can now switch back and forth between them.
+
+<P>To copy the address of a picture:
+<UL>
+<LI><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>Netscape</B>: Right-click (click the right mouse button) over the image you want and select "Copy Image Location".  Then "Paste" (right-click and select "Paste") into the correct field in the editor.
+<LI><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>Internet Explorer</B>: Right-click (click the right mouse button) over the image you want and select "Properties".  Then "Copy" the address by high-lighting it (click the left button at the beginning of the address and while holding the button drag the mouse to the end), release and then "right-click" and select "Copy" from the menu.  Then "Paste" (right-click and select paste) into the correct field in the editor.
+</UL>
+
+<P>To copy the address of a page:
+<UL>
+<LI><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Go to the page that you want to link to, then right click on the Location/Address box at the top of the screen.  Select "Copy".  Then "Paste" (right-click and select "Paste") into the correct field in the editor.
+</UL>
+
+</TD></TR></TABLE>

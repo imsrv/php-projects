@@ -1,0 +1,61 @@
+<form>
+	<title>Project Details</title>
+	<action>index.php?sub=projects&action=store</action>
+	<name>edit</name>
+	<width>580</width>
+
+	<formtag>true</formtag>
+	<border>true</border>
+	
+	<buttons>		
+		<set>
+			<header>true</header>
+		</set>
+
+		<copy onclick="" button="copy" >
+			<location>index.php?sub=copy&project_id={PROJECT_ID}</location>
+		</copy>
+
+		<export onclick="" button="export" >
+			<location>index.php?sub=export&project_id={PROJECT_ID}</location>
+		</export>
+
+		<return onclick="" button="return" >
+			<location>index.php?sub=projects</location>
+		</return>
+
+		<save onclick="" button="edit">
+			<location>index.php?sub=projects&action=edit&project_id={PROJECT_ID}</location>
+		</save>
+
+	</buttons>
+
+	<fields>
+
+		<project_id type="hidden" hidden="true"/>
+
+		<project_name type="text" size="40:100" required="true" validate="A:1:100">
+			<title>Name</title>
+		</project_name>
+
+		<project_description type="text" size="40:4">
+			<title>Description</title>
+		</project_description>
+
+		<project_user type="relation">
+			<title>Assigned User</title>
+
+			<relation table="users" id="user_id">
+				<text>	
+					<field name="user_login">user_login</field>
+					<field name="user_name">user_name</field>
+				</text>
+
+				<separator>&nbsp;-&nbsp;</separator>
+
+				<condition>user_level=1</condition>
+			</relation>
+		</project_user>
+
+	</fields>
+</form>

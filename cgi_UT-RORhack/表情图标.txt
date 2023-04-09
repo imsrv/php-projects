@@ -1,0 +1,175 @@
+添加bbs/icon目录 
+copy icon图像 
+
+mysql执行： 
+ALTER TABLE ut_posts ADD icon VARCHAR (50) DEFAULT 'icon1.gif' not null AFTER postTime 
+ALTER TABLE ut_topics ADD icon VARCHAR (50) DEFAULT 'icon1.gif' not null AFTER subject 
+
+UTMain.pm 
+
+&buildImagesList后添加： 
+
+&buildIconsList 
+
+sub buildImagesList 上面添加 
+
+sub buildIconsList 
+{ 
+[$nbsp][$nbsp] 
+[$nbsp][$nbsp]my $imageDir = shift(); 
+[$nbsp][$nbsp][$nbsp][$nbsp]my $hilighItem = shift(); 
+[$nbsp][$nbsp]my $imagepath = shift(); 
+[$nbsp][$nbsp][$nbsp][$nbsp]my @imgfiles; 
+# my $options; 
+
+[$nbsp][$nbsp]chdir($imageDir); 
+[$nbsp][$nbsp]opendir (DIR, $imageDir) || paramError("Error Reading Directory: $!"); 
+[$nbsp][$nbsp]my @allfiles = readdir(DIR); 
+[$nbsp][$nbsp]closedir (DIR); 
+
+[$nbsp][$nbsp]for (my $x = 0; $x <= $#allfiles; $x++) { 
+[$nbsp][$nbsp][$nbsp][$nbsp]next if (($allfiles[$x] eq ".") || ($allfiles[$x] eq "..")); 
+[$nbsp][$nbsp][$nbsp][$nbsp]if ($allfiles[$x] =~ /\.jpg|\.gif|\.png/i) { 
+[$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp]if (($allfiles[$x] =~ /^icon/i) or ($allfiles[$x] =~ /^bar/i)) { 
+[$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp]push(@imgfiles,"$allfiles[$x]"); 
+[$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp]} 
+[$nbsp][$nbsp][$nbsp][$nbsp]} 
+[$nbsp][$nbsp]} 
+
+[$nbsp][$nbsp]for (my $i = 0; $i <= $#imgfiles; $i++) { 
+[$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp]if ($imgfiles[$i] eq $hilighItem) { 
+[$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp]print "<INPUT TYPE='radio' NAME='icon' value=$imgfiles[$i] checked><img src=$imagepath", 
+[$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp]"/$imgfiles[$i]>\n"; 
+[$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp]} 
+[$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp]else { 
+[$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp]print "<INPUT TYPE='radio' NAME='icon' value=$imgfiles[$i]><img src=$imagepath", 
+[$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp]"/$imgfiles[$i]>\n"; 
+[$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp][$nbsp]} 
+[$nbsp][$nbsp]} 
+
+# return $options; 
+} 
+#end add 
+
+topic_new.cgi 
+"<td><INPUT TYPE='text' NAME='postSubject' SIZE=$inputCols MAXLENGTH='$cfg{'maxSubjectLen'}' class=subject></td></tr>\n", 
+后加： 
+#add by chuan --icons hack 
+"<tr bgcolor=$cfg{'lightCellColor'}><td valign=top>\n", 
+"<b>图标</b></td><td>\n"; 
+
+my $IconPath = $cfg{'nonCgiDir'} . "/images/icon"; 
+my $IconUrl = $cfg{'nonCgiPath'} . "/images/icon"; 
+my $selectIcon = "icon1.gif"; 
+buildIconsList($IconPath, $selectIcon,$IconUrl); 
+
+print 
+"</td></tr>"; 
+
+print 
+#end 
+
+topic_new_x.cgi 
+
+after 
+my $subject = $cgi->param('postSubject'); 
+add 
+my $icon = $cgi->param('icon'); 
+
+after 
+subject = $subjectQ, 
+add 
+icon = '$icon', 
+
+after 
+realIp = '$realIp', 
+postTime = $now, 
+add 
+icon = '$icon', 
+
+board_show.cgi 
+
+modify 
+SELECT ut_topics.id, subject, locked, ut_topics.postNum, hitNum, lastPostTime, 
+to 
+SELECT ut_topics.id, subject, ut_topics.icon, locked, ut_topics.postNum, hitNum, lastPostTime, 
+
+modify 
+"$archive$topic->{'subject'}</A>\n"; 
+to 
+"<img src= $cfg{'nonCgiPath'}/images/icon/$topic->{'icon'} align=absmiddle border=0>$archive$topic->{'subject'}</A>\n"; 
+
+topic_show.cgi 
+modify 
+"<td valign=top width=100%><IMG SRC='$cfg{'nonCgiPath'}/images/$img.gif' BORDER=0", 
+to 
+"<td valign=top width=100%><img src= $cfg{'nonCgiPath'}/images/icon/$post->{'icon'} align=absmiddle border=0><IMG SRC='$cfg{'nonCgiPath'}/images/$img.gif' BORDER=0", 
+
+threaded_show.cgi 
+modify 
+"<td valign=top width=100%><IMG SRC='$cfg{'nonCgiPath'}/images/$img.gif' BORDER=0", 
+to 
+"<td valign=top width=100%><img src= $cfg{'nonCgiPath'}/images/icon/$post->{'icon'} align=absmiddle border=0><IMG SRC='$cfg{'nonCgiPath'}/images/$img.gif' BORDER=0", 
+
+post_reply.cgi 
+after 
+" VALUE='$lng{'reSubject'} $subject' class=subject></td></tr>\n", 
+add 
+"<tr bgcolor=$cfg{'lightCellColor'}><td valign=top>\n", 
+"<b>图标</b></td><td>\n"; 
+
+my $IconPath = $cfg{'nonCgiDir'} . "/images/icon"; 
+my $IconUrl = $cfg{'nonCgiPath'} . "/images/icon"; 
+my $selectIcon = $topic->{'icon'}; 
+buildIconsList($IconPath, $selectIcon,$IconUrl); 
+
+print 
+"</td></tr>"; 
+
+print 
+
+post_reply_x.cgi 
+after 
+my $subject = $cgi->param('postSubject'); 
+add 
+my $icon = $cgi->param('icon'); 
+
+after 
+postSign = $postSign, 
+ip = '$ip', 
+realIp = '$realIp', 
+postTime = $now, 
+add 
+icon = '$icon', 
+
+post_edit_x.cgi 
+after 
+" VALUE='$post->{'postSubject'}' class=subject></td></tr>\n"; 
+add 
+print"<tr bgcolor=$cfg{'lightCellColor'}><td valign=top>\n", 
+"<b>图标</b></td><td>\n"; 
+
+my $IconPath = $cfg{'nonCgiDir'} . "/images/icon"; 
+my $IconUrl = $cfg{'nonCgiPath'} . "/images/icon"; 
+my $selectIcon =$post->{'icon'}; 
+buildIconsList($IconPath, $selectIcon,$IconUrl); 
+
+print 
+"</td></tr>"; 
+
+post_edit_x.cgi 
+after 
+my $subject = $cgi->param('postSubject'); 
+add 
+my $icon = $cgi->param('icon'); 
+
+after 
+body = $bodyQ, 
+add 
+icon = '$icon', 
+
+modify 
+$query = "UPDATE ut_topics SET subject = $subjectQ WHERE id = $post->{'topicId'}"; 
+to 
+$query = "UPDATE ut_topics SET subject = $subjectQ,icon='$icon' WHERE id = $post->{'topicId'}"; 
+

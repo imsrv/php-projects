@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Category" value="name:CategoryID;datatype:3,name:CategoryName;datatype:202,name:ParentCategoryID;datatype:3,name:CategoryDesc;datatype:203" />
+	<infoitem key="UD_imagebank" value="name:ImageID;datatype:3,name:ImageFile;datatype:202,name:ImageName;datatype:202" />
+</info>

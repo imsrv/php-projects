@@ -1,0 +1,43 @@
+<form>
+	
+	<subtitle>Uncompleted Tasks</subtitle>
+	<width>540</width>
+	<fields>
+		<_count header="No" width="30" align="center" suffix="."/>
+		<task_name header="Title" align="left" />
+
+		<task_status type="relation">
+			<header>Status</header>
+			<relation table="taskstatus" id="status_id" text="status_name" />
+		</task_status>
+
+
+		<task_date header="Start Date" type="date" params="m.d.Y" width="100" align="center" />
+		<date_ecompleted header="Estimated date" type="date" params="m.d.Y" width="100" align="center" />
+
+
+	</fields>
+
+	<header>
+		<titles>true</titles>
+	</header>
+
+	<buttons>
+		<details onclick="" button="details" >
+			<location>index.php?sub=tasks&action=det&task_id={TASK_ID}</location>
+		</details>
+
+	</buttons>
+	<sql>
+		<vars>
+			<table import="$this->tables[tasks]" type="eval" />
+			<product import="$_GET[project_id]" type="eval" />
+			<date import="time()" type="eval" />
+		</vars>
+
+		<query>SELECT * FROM {TABLE} WHERE task_project='{PRODUCT}' and (( date_completed > {DATE}) or (date_completed [= 0)) ORDER BY task_date,date_ecompleted ASC</query>
+	</sql>
+
+	<items>99999</items>
+
+</form>

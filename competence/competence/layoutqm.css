@@ -1,0 +1,37 @@
+body {
+	font-family:verdana, arial, helvetica, sans-serif;
+	color:#666666;
+	background-color:white; font-size:10pt
+	}
+.tr-phase    { font-size: 8pt; color: #808080; border-style: solid; border-width: 1 }
+.tr-titre-phase    { font-size: 10px; color: #FFFFFF; border-style: solid; border-width: 1; background-color:#008080; font-weight:bold }
+
+.tab-gen     { color: #666666; font-size: 8pt; text-align: center }
+.tr-gen      {color:#666666; font-size:8pt; text-align:center}
+.tab-phase   { border-style: solid; border-width: 1 }
+.td-gengauche { color: #666666; font-size: 8pt; text-align: center; }
+.td-genmilieu  {color:#666666; font-size:8pt; text-align:center}
+.td-gendroite  {color:#666666; font-size:8pt; text-align:center}
+.menu        { color: #CCFFFF; background-color: #F0FFFF; border: 1px ridge #000080; 
+               padding-left: 4 }
+.t_menu      { color: #999999; font-size: 8pt; background-color: #EBEBEB; font-family: 
+               Times New Roman; font-weight: bold; 
+               border-top: 1px ridge #000080; border-bottom: 1px ridge #000080; 
+               padding: 0 }
+.l_menu      { color: #999999; font-size: 8pt;font-family: 
+               Times New Roman; font-weight: bold}
+.l_menu2     { color: #FF0000; font-size: 8pt;font-family: 
+               Times New Roman; font-weight: bold}
+.td_niv       { border:1px solid #0099FF; font-size:10pt; padding-left:4; padding-right:4; padding-top:1; padding-bottom:1; text-align:center}
+.td_nivo      { border:1px solid #FF0000; font-size:10pt; padding-left:4; padding-right:4; padding-top:1; padding-bottom:1; text-align:center}
+.text {position:absolute; background-color:#ffffff; font-family:tahoma,arial,helvetica,sans-serif; font-size:12px; overflow:auto;}
+.title {font-weight:bold; color:#ffffff;}
+.send        { background-color: #FFECC4; font-size: 10 px; border: 1px ridge #FF9900 }
+p {margin:5px;}
+
+a            { color: #0099CC; font-size: 8 pt; text-decoration: none; font-family: 
+               verdana, arial, helvetica, sans-serif; 
+               border: 0px solid #FFFFFF }
+a:link {color:#0099CC;}
+a:visited {color:#07a;}
+a:hover {background-color:#C0C0C0;}/* ou eee pour rendre plus clair

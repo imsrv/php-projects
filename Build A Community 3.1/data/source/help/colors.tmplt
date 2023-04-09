@@ -1,0 +1,12 @@
+<TABLE WIDTH=300 CELLPADDING=0 CELLSPACING=0>
+<TR><TD><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Help & Hints</B></FONT></CENTER><BR><BR></TD></TR>
+<TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+
+[<(
+	if ($CONFIG{'Weaver_use_bonhomme'} eq "YES") {
+		$OUT .= "<IMG SRC=\"$CONFIG{'button_dir'}/myguy/myguyart.gif\" WIDTH=150 HEIGHT=171 ALIGN=RIGHT ALT=\"Let me be your guide\">";
+	}
+)>]
+
+<P>When choosing your colors it is important to make sure that you choose ones that are different enough from each other to be readible.  For example, silver on white may look great in the real world, on a computer screen no one can read it without getting a headache.  Choose smartly and your readers will thank you.
+</TD></TR></TABLE>

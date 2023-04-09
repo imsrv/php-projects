@@ -1,0 +1,140 @@
+Beginning with version 1.3, there's a new installation system.  Once
+you've unzipped the source (which I assume you've done by now), the
+process is simple:
+
+$ ./config.pl
+$ su
+# make install
+
+The perl configure script will ask you a bunch of questions about the
+setup of the calendar, then create some Makefiles and some other files.
+The Makefiles can then be used to install things where they need to be.
+At this point, you should be able to log into the calendar as whichever
+user you ran the config script as, and set things up the way you want
+them.
+
+If that stuff doesn't work, or if you just want to do things yourself,
+you can try the following:
+
+0. Look for a bunch of files with names ending in ".in".  These include:
+ Makefile.in
+ po/Makefile.in
+ php-utils/Make.common.in
+ sql-dumps/srccalendar.sql.in
+ sql-dumps/auth.sql.in
+ auth/sql/sql.php3.in
+ calendar/sql/sql.php3.in
+The top-level Makefile probably doesn't matter so much, since you're
+installing yourself, but you should go through the others and find
+stuff that looks like <<variablename>> and replace them with the
+appropriate values, saving the results into files without the .in on
+the end.
+
+1. Move the calendar and auth directories to some web-accessible place,
+preferably with SSL access too.  Don't forget to change the uid of the 
+files so your web server can read them.
+
+$ mv calendar /var/www/
+$ mv auth /var/www/
+$ chown -R root:www-data /var/www/auth /var/www/calendar
+
+2. Create two postgresql databases (I use srccalendar and auth) and input
+the table schema (and some sample data) from the included sql-dumps.
+
+$ createdb auth
+$ createdb srccalendar
+$ psql -f sql-dumps/auth.sql auth
+$ psql -f sql-dumps/srccalendar.sql srccalendar
+
+3. If you don't already have a postgres user, you'll need to create one,
+possibly two, for calendar access.  (These are users in the postgresql
+database, not unix users.)  Grant the appropriate access to the tables. I
+give read-only access to guest and read-write to another user.
+
+$ createuser guest
+$ createuser foo
+$ psql auth
+auth=> grant select on last_login,permissions,session to guest;
+auth=> grant select,insert,update,delete on last_login,permissions,session
+auth-> to foo;
+auth=> \connect srccalendar
+srccalendar=> grant select on srcaudience,srcaudiencelist,srccategory,
+srccalendar-> srccategorylist,srcevent,srclocation,srcweekday,
+srccalendar-> srcweekdaylist,srcindex,srcconfig to guest;
+srccalendar=> grant select,insert,update,delete on srcaudience,srccategory,
+srccalendar-> srcweekday,srclocation,srcevent,srcindex,srcconfig,
+srccalendar-> srcweekdaylist,srccategorylist,srcaudiencelist to foo;
+
+4.  Edit calendar/sql/sql.php3 so the functions connect as the appropriate
+users.
+
+5.  Edit calendar/includes/header.inc and footer.inc to meet your needs.
+I would appreciate some sort of recognition to remain at the bottom.
+
+6.  Install the appropriate authentication utilities from the php-utils
+directory.  There's a Makefile in php-utils to help with this.  By
+default it installs things in /usr/local/php3/, but you can change this in
+php-utils/Make.common.  Current options for authentication are
+shadow, PAM, and NIS.  shadow gets its information directly from
+/etc/shadow.  PAM passes a username and password to PAM.  NIS currently
+works the same as shadow, but contacts an NIS server for information.
+Some of these things need to be setuid root, so you should su before
+installing.  The Makefile also makes them executable only by root and
+whatever group is specified in the Makefile (which should be the group of
+your web server).
+
+$ cd php-utils
+$ su
+
+# make auth-shadow	- OR -
+# make auth-pam		- OR -
+# make auth-nis
+
+# make shadow-install	- OR -
+# make pam-install	- OR -
+# make nis-install
+
+7.  Set up access for users to approve, modify, etc events in the
+calendar. The sql dump for the srccalendar database should have had a
+line to insert admin permissions for some user.  The rest can be handled
+through the calendar's admin box, but if you want to handle that
+manually, too, this is done in the permissions table in the auth
+database.  A given row in permissions will contain some user's unix user
+ID, a number signifying permissions, and a location ID to which the
+given permissions apply (or -1 if they apply to all locations).  For
+instance, to grant access for user spaz (with unix user ID 42) to
+approve and modify his own events, use the following statement in psql:
+
+auth=>  insert into permissions ( user_id, location_id, permissions )
+auth=>  values ( 42, -1, 17 );
+
+A list of permissions is found in auth/permissions.php3.  Permissions are
+combined using a bitwise OR.  Permissions to approve submitted
+modifications use the Modify bits, *not* the Approve bits.  This is so, on
+the off chance that you only want somebody able to approve but not modify
+events, they can't submit a modification and then approve it.
+
+8.  If you want internationalization, you'll need to install the .mo
+files.  Hopefully you can do this in the po directory by copying
+Makefile.in to Makefile and replacing the <<variables>> in Makefile with
+the appropriate values:
+
+* "textdomain_dir" should be set to the directory where your .mo files
+  are installed, like /usr/share/locale or ./locale if they're in your
+  calendar directory.
+* "textdomain" is used to tell gettext which .mo files to use.  I
+  decided to use "eventcalendar", but if you install the .mo files as
+  something other than "eventcalendar.mo", then set this accordingly.
+* "msgfmt" is the path to the msgfmt program.
+
+Then run "make install" as root.  If you still want to do this part by
+hand, then for each CC.po you want installed (where CC is some locale
+thingy like "it"), run "msgfmt -o eventcalendar.mo CC.po" and copy
+eventcalendar.mo into /usr/share/locale/CC/LC_MESSAGES/ (or whichever
+directory the locales go in).
+
+
+If I'm leaving anything out, or if you need help, e-mail
+fluffy@simons-rock.edu, and I'll see what I can do.  You can also check
+the accompanying file "DESIGN" for some more information on how the
+calendar works.

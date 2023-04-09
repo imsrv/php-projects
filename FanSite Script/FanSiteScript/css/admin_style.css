@@ -1,0 +1,188 @@
+/* Table of Contents:
+
+	1. Link Styles
+	2. Layout
+	3. Typography
+	4. Navigation Menu
+	5. Code Snippets Page
+	6. Forms
+	7. Tool Tips
+	
+*/
+
+/* 1. Link Styles ----------------------------------------------------------- */
+A{text-decoration: underline; color:#000; }
+A:visited {text-decoration: underline; color:#000; }
+A:active {text-decoration: underline; color:#000; }
+A:hover {text-decoration: none; color:#777; }
+#sidetxt {margin-left:10px; margin-top:15px;}
+
+/* 2. Layout ----------------------------------------------------------- */
+body {
+    font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+    font-size: 11px; 
+	background-color:#333;
+	text-align:center;
+	color: #333;
+    text-decoration: none;
+	margin-bottom:0px;
+	margin-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+	background-image:url(../images/admin/bg.jpg);
+	background-repeat: repeat-x;			
+	}
+
+.boxbg { background-image:url(../images/admin/boxbg.jpg); background-repeat:repeat-x; padding:10px;
+border-left:solid #eaeaea 3px; border-bottom:solid #eaeaea 3px;}
+.boxbgr { background-image:url(../images/admin/boxbgr.jpg); background-repeat:no-repeat; width:9px; height:38px; float:right;}
+
+	#frame {
+		width:750px;
+		margin-right:auto;
+		margin-left:auto;
+		margin-top:0px;
+		padding:0px;
+		text-align:left;
+		background-color:#FFFFFF;
+		background-image:url(../images/admin/bg2.gif);
+		background-position:bottom right;
+		background-repeat:no-repeat;
+		height:100%;
+		}
+		
+	#contentleft {
+		width:120px;
+		padding:0px;
+		float:left;
+						
+		}
+	
+	#contentcenter {
+		width:570px;
+		padding-left: 20px;
+		float:left;
+		margin-left:10px;
+		margin-top:2px;
+		line-height:15px;
+		padding-bottom:10px;
+							
+		}
+			
+	#contentright {
+		width:135px;
+		padding:0px;
+		float:left;
+		
+		}
+		
+	#contentright p {
+	font-size:10px
+		
+		}
+		
+/* 3. Typography ----------------------------------------------------------- */		
+	p,h1,pre {
+		margin:0px 10px 10px 0px;
+		}
+		
+	h1 {
+	 font-size: 17px;
+     font-weight: bold;
+     letter-spacing: -1px;
+     text-align: center;
+     display: inline;
+     font-family: Helvetica, Arial, Sans-Serif;
+     color: #333333;
+	 text-transform: uppercase;
+	 }
+	
+	
+/* 4. Navigation Menu ----------------------------------------------------------- */	
+#navcontainer { margin-left: 0px; }
+
+#navcontainer ul
+{
+margin: 0;
+padding: 0;
+list-style-type: none;
+font-family: verdana, arial, Helvetica, sans-serif;
+}
+
+#navcontainer li { margin: 0 0 1px 0; }
+
+#navcontainer a
+{
+display: block;
+margin-left:10px;
+padding: 5px 20px;
+width: 90px;
+color: #fff;
+background-color: #323232;
+text-decoration: none;
+letter-spacing:0px;
+}
+
+#navcontainer a:hover
+{
+color: #F8CF01;
+background-color: #323232;
+text-decoration: none;
+background-image:url(../images/admin/butover.jpg);
+background-repeat:repeat-y;
+}
+
+#navcontainer ul ul li { margin: 0 0 1px 0; }
+
+#navcontainer ul ul a
+{
+display: block;
+padding: 5px 5px 5px 30px;
+width: 125px;
+color: #fff;
+background-color: #369;
+text-decoration: none;
+}
+
+#navcontainer ul ul a:hover
+{
+color: #fff;
+background-color: #69C;
+text-decoration: none;
+
+}
+
+/* 5. Code Snippets Page ----------------------------------------------------------- */
+.helpbox { background-color:#efefef; padding:10px; background-image:url(../images/admin/helpboxbg.jpg); background-position:left; background-repeat:repeat-y; }
+.helpsection { }
+.phpcode { background-color:#FFFF99; color:#FF0000; font-weight:bold; background-image:url(../images/admin/phpcodebg.jpg); background-position:right; background-repeat:repeat-y; }
+
+/* 6. Forms ----------------------------------------------------------- */
+input, textarea { background-color:#ededed;}
+input:hover { background:#e1e1e1; background-image:url(../images/admin/pulsebg.gif); background-repeat:repeat-x repeat-y;}
+textarea:hover { background:#e1e1e1; background-image:url(../images/admin/pulsebg.gif); background-repeat:repeat-x repeat-y;}
+input:focus { background-image:url(../images/admin/formbg2.jpg); background-color:#FED200; background-repeat:repeat-x;}
+textarea:focus { background-image:url(../images/admin/formbg.jpg); background-color:#FED200; background-repeat:repeat-x;}
+
+/* 7. Tool Tips ----------------------------------------------------------- */
+#hintbox{ /*CSS for pop up hint box */
+position:absolute;
+top: 0;
+background-image:url(../images/admin/formbg2.jpg); background-color:#FED200; background-repeat:repeat-x;
+width: 150px; /*Default width of hint.*/ 
+padding: 3px;
+border:1px solid #E1E1E1D;
+font:normal 11px Verdana;
+line-height:18px;
+z-index:100;
+border-right: 2px solid #7C7B7D;
+border-bottom: 2px solid #7C7B7D;
+visibility: hidden;
+text-align:left;
+}
+
+.hintanchor{ /*CSS for link that shows hint onmouseover*/
+font-weight: bold;
+color: navy;
+margin: 3px 8px;
+}

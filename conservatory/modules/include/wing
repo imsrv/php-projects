@@ -1,0 +1,78 @@
+<?
+	function GetWingInfo($wing)
+	{
+		global $DatabaseLink;
+		
+		global $wing_Title;
+		global $wing_FullTitle;
+		global $wing_PlainTitle;
+		global $wing_Parent;
+
+		$wing=intval($wing);
+		
+		$Query = "SELECT Title, Parent FROM wing WHERE ID=$wing ";
+		$DatabaseResult = mysql_query($Query, $DatabaseLink);
+		if(!$DatabaseResult)
+		{
+			print("<!--" . mysql_errno().": ".mysql_error()."-->\n");
+		}
+		
+		$numRows = mysql_NumRows($DatabaseResult);
+		if($numRows > 0)
+		{
+			$DatabaseRow = mysql_fetch_row($DatabaseResult);
+			
+			$wing_Title = $DatabaseRow[0];
+			$wing_Parent = intval($DatabaseRow[1]);
+		}
+		else
+		{
+			$wing_Title = "Main Hall";
+			$wing_Parent = 0;
+		}
+
+		/* 
+		** Get Parents until we get to zero
+		*/
+		$wing_FullTitle = "<A HREF=\"$IndexScript?SCREEN=stroll&amp;wing=$wing\">" .
+			ereg_replace(" ", "&nbsp;", $wing_Title) .
+			"</A>";
+		$wing_PlainTitle = $wing_Title;
+		$currentParent = $wing_Parent;
+		while($currentParent > 0)
+		{
+			$Query = "SELECT ID, Title, Parent ";
+			$Query .= "FROM wing ";
+			$Query .= "WHERE ID=$currentParent ";
+			
+			$DatabaseResult = mysql_query($Query, $DatabaseLink);
+			$numRows = mysql_NumRows($DatabaseResult);
+			if($numRows > 0)
+			{
+				$DatabaseRow = mysql_fetch_row($DatabaseResult);
+
+				$tID = $DatabaseRow[0];
+				$tTitle = $DatabaseRow[1];
+				$tParent = $DatabaseRow[2];
+
+				$wing_FullTitle = "<A HREF=\"$IndexScript?SCREEN=stroll&amp;wing=$tID\">$tTitle</A>" 
+					. " : " . $wing_FullTitle;
+				$wing_PlainTitle = $tTitle . " : " . $wing_PlainTitle; 
+				$currentParent = $tParent;
+			
+			}
+			else
+			{
+				$currentParent = 0;
+			}
+
+		}
+		if($wing_Title != "Main Hall")
+		{
+			$wing_FullTitle = "<A HREF=\"$IndexScript?SCREEN=stroll&amp;wing=0\">Main Hall</A>" . 
+				" : " . $wing_FullTitle; 
+		}
+
+	}
+
+?>

@@ -1,0 +1,32 @@
+body		{ color:#333; background-color:#435a5e; font:normal 75% trebuchet ms,verdana,arial,sans-serif; }
+input		{ font:normal 100% trebuchet ms,verdana,arial,sans-serif; }
+textarea	{ font:normal 100% trebuchet ms,verdana,arial,sans-serif; }
+hr		{ color:#c3ccd6; }
+a		{ color:#0e3f91; text-decoration:underline; }
+a:hover		{ color:#6489c7; text-decoration:underline; }
+blockquote	{ font-style:italic; border-left:#eee 10px solid; }
+
+#container	{ background-color:#fff; border:5px #353a49 solid; }
+
+#header		{ background-color:#7188a5; color:#fff; }
+#header a	{ color:#fff; }
+#header h1	{ font-size:32px; font-weight:normal; }
+#header h2	{ font-size:13px; font-weight:bold; }
+
+#main h2	{ font-size:18px; font-weight:normal; color:#7188a5; border-left:5px #435a5e solid; }
+
+ul#album li img		{ border:1px #7188a5 solid; }
+ul#album li .text h3	{ font-size:18px; font-weight:normal; color:#7188a5; }
+
+ul#photos img	{ border:1px #7188a5 solid; }
+
+#photo img	{ border:1px #7188a5 solid; }
+
+#menu		{ background-color:#cdd7e1; }
+#menu .head a	{ color:#fff; text-decoration:none; }
+
+#footer		{ font-size:10px; }
+
+.date		{ font-weight:bold; font-size:11px; text-transform:uppercase; }
+.head		{ font-size:11px; color:#fff; border-left:5px #435a5e solid; background-color:#7188a5; text-transform:uppercase; }
+.item		{ background-color:#c3ccd6; font-size:10px; }

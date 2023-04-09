@@ -1,0 +1,61 @@
+body{
+	font-family:georgia;
+	font-size:9pt;
+	margin:100px;
+	text-align:center;
+	background-color:#fff;
+}
+h1{
+	color:#336699;
+	font-size:20pt;
+}
+.warning{
+	background-color:red;
+	color:#fff;
+	padding:3px;
+}
+#form{
+	padding:20px;
+	background-color:#fffccc;
+	color:#990000;
+}
+#hasil{
+	margin:10px;
+}
+#output{
+	padding:10px 20px;
+	background-color:#cc0000;
+	color:#fff;
+}
+#output a{
+	color:#fff;
+	text-decoration:none;
+}
+#output a:hover{;
+	text-decoration:underline;
+}
+#itung{
+	font-size:40px;
+	color:#f9f9f9;
+	margin:10px;
+}
+#foot{
+	position:absolute;
+	bottom:0px;
+	font-family:tahoma;
+	font-size:9px;
+	margin:auto;
+	background-color:#c0c0c0;
+	color:#f0f0f0;
+	padding:2px 5px;
+}
+#foot a{
+	color:#f0f0f0;
+	text-decoration:none;
+}
+#foot:hover{
+	background-color:#ff6600;
+}
+#foot a:hover{
+	color:#fff;
+}

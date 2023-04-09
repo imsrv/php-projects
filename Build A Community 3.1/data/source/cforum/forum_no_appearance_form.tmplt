@@ -1,0 +1,123 @@
+<form ENCTYPE="application/x-www-form-urlencoded" NAME="create_form" METHOD="POST" ACTION="[<($GUrl{'cf_moderators.cgi'})>]">
+<TABLE BORDER="1" WIDTH=400><TR><TD>
+<TABLE BORDER="1" WIDTH=400>
+<TR BGCOLOR="[<($CONFIG{'title_color'})>]"><TD>
+
+<TABLE BORDER=0 BGCOLOR="[<($CONFIG{'title_color'})>]" WIDTH="100%" CELLSPACING=0 CELLPADDING=0><TR>
+<TD><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>Edit Your Forum!</B></FONT></TD>
+<TD ALIGN="right" VALIGN=middle>
+[<($HELPURL)>]<IMG SRC="[<($CONFIG{'button_dir'})>]/help.gif" BORDER=0 WIDTH="25" HEIGHT="25"></A>
+</TD></TR></TABLE>
+
+</TD></TR>
+
+<TR [<($CONFIG{'WINCOLOR'})>]>
+<INPUT TYPE="hidden" NAME="forum" VALUE="[<($FORM{'forum'})>]">
+</TD></TR>
+<TR [<($CONFIG{'WINCOLOR'})>]>
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%">
+<TR [<($CONFIG{'WINCOLOR'})>]>
+<TABLE WIDTH=100%>
+  <TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Descriptive Name:</TD><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><INPUT TYPE="text" NAME="title" VALUE = "[<($IFORUM{'title'})>]" SIZE="15"></TD></TR>
+  <TR><TD COLSPAN=2><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">(This will display in the forum title...)</TD></TR>
+
+  <TR><TD COLSPAN=2><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Forum Description:<BR>
+    <TEXTAREA NAME="bbs_desc" ROWS=3 COLS=35>[<($IFORUM{'bbs_desc'})>]fbbs_desc</TEXTAREA></TD></TR>
+
+	<INPUT TYPE=HIDDEN NAME="clubforum" VALUE="Forum">
+
+  </TD></TR>
+
+</TABLE>
+</TD></TR>  
+</TD></TR></TABLE>
+<TR>
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Club Settings</FONT></B><BR><I>Ignore this section if you are creating a forum</I></CENTER></TD></TR>
+<TR><TD>
+<TABLE WIDTH=100%><TR><TD>
+<TABLE WIDTH=100%>
+  <TR><TD COLSPAN=2><TABLE WIDTH=100%><TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Access Restrictions: </TD><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"> <SELECT NAME="access">
+	<OPTION VALUE="[<($IFORUM{'access'})>]">[<($IFORUM{'access'})>]</OPTION>
+	<OPTION VALUE="Private">Private - Members Only</OPTION>
+	<OPTION VALUE="Read-Only For Non-Privileged">Read-Only For Non-Members</OPTION>
+	<OPTION VALUE="Closed">Closed</OPTION>
+	</SELECT>
+  </TD></TR></TABLE>
+  </TD></TR>
+
+	<INPUT TYPE=HIDDEN NAME="restrictedto" VALUE="PassWord">
+
+  </TD></TR>
+
+  <INPUT TYPE="hidden" NAME="moderator_edit" VALUE="[<($IFORUM{'moderator_edit'})>]">
+  <INPUT TYPE="hidden" NAME="pg_color" SIZE="25" VALUE="[<($IFORUM{'pg_color'})>]fpg_color">
+  <INPUT TYPE="hidden" NAME="win_color" SIZE="25" VALUE="[<($IFORUM{'win_color'})>]">
+  <INPUT TYPE="hidden" NAME="font_face" SIZE="25" VALUE="[<($IFORUM{'font_face'})>]">
+  <INPUT TYPE="hidden" NAME="text_color" SIZE="25" VALUE="[<($IFORUM{'text_color'})>]ftext_color">
+  <INPUT TYPE="hidden" NAME="title_color" SIZE="25" VALUE="[<($IFORUM{'title_color'})>]">
+  <INPUT TYPE="hidden" NAME="ttxt_color" SIZE="25" VALUE="[<($IFORUM{'ttxt_color'})>]">
+  <INPUT TYPE="hidden" NAME="bbs_table1" SIZE="25" VALUE="[<($CONFIG{'bbs_table1'})>]">
+  <INPUT TYPE="hidden" NAME="bbs_table2" SIZE="25" VALUE="[<($CONFIG{'bbs_table2'})>]">
+  <INPUT TYPE="hidden" NAME="highlightcolor" SIZE="25" VALUE="[<($CONFIG{'highlightcolor'})>]">
+  <INPUT TYPE="hidden" NAME="topic_color" SIZE="25" VALUE="[<($CONFIG{'topic_color'})>]">
+
+
+
+  <TR><TD COLSPAN=2><TABLE WIDTH=100%><TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">If restricted by password, private password:</TD><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><INPUT TYPE="text" NAME="bbs_private_pw" SIZE="20" VALUE = "[<($IFORUM{'bbs_private_pw'})>]"></TD></TR></TABLE></TD></TR>
+
+
+  <INPUT TYPE=hidden NAME=bbs_admin VALUE="[<($IUSER{'filenum'})>]">
+  <INPUT TYPE=hidden NAME=status VALUE="[<($status)>]">
+  <INPUT TYPE=hidden NAME=CLUB_max_kb VALUE="[<($CONFIG{'CLUB_max_kb'})>]">
+  <INPUT TYPE=hidden NAME=CLUB_max_images VALUE="[<($CONFIG{'CLUB_max_images'})>]">
+
+
+
+</TABLE>
+</TD></TR>  
+</TD></TR></TABLE>
+<TR>
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Forum Settings</FONT></B></CENTER></TD></TR>
+<TR><TD>
+<TABLE><TR><TD>
+<TABLE>
+  <TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Who is allowed to create new threads: </TD><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"> <SELECT NAME="newthreads">
+	<OPTION VALUE="[<($IFORUM{'newthreads'})>]">[<($IFORUM{'newthreads'})>]</OPTION>
+	<OPTION VALUE="Everyone">Everyone</OPTION>
+	<OPTION VALUE="Moderator/Admin Only">Moderator/Admin Only</OPTION>
+	</SELECT>
+  </TD></TR>
+  <TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Is this forum moderated? (posts only appear after being approved by you): </TD><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"> <SELECT NAME="moderated">
+	<OPTION VALUE="[<($IFORUM{'moderated'})>]">[<($IFORUM{'moderated'})>]</OPTION>
+	<OPTION VALUE="Yes">Yes</OPTION>
+	<OPTION VALUE="No">No</OPTION>
+	</SELECT>
+  </TD></TR>
+  <TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Email the moderator (you) a copy of all posts as they are submitted? </TD><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"> <SELECT NAME="emailmoderator">
+	<OPTION VALUE="[<($IFORUM{'emailmoderator'})>]">[<($IFORUM{'emailmoderator'})>]</OPTION>
+	<OPTION VALUE="Yes">Yes</OPTION>
+	<OPTION VALUE="No">No</OPTION>
+	</SELECT>
+  </TD></TR>
+  <TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Display listing in the forum index, this should not be turned on until the forum is ready: </TD><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"> <SELECT NAME="public">
+	<OPTION VALUE="[<($IFORUM{'public'})>]">[<($IFORUM{'public'})>]</OPTION>
+	<OPTION VALUE="Yes">Yes</OPTION>
+	<OPTION VALUE="No">No</OPTION>
+	</SELECT>
+  </TD></TR>
+
+</TABLE>
+</TD></TR>
+</TABLE [<($CONFIG{'WINCOLOR'})>]>
+<TR [<($CONFIG{'WINCOLOR'})>]><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><CENTER><INPUT NAME="action" TYPE="submit" VALUE="Save Forum Configuration">
+</TABLE>
+</TD></TR></TABLE>
+</FORM>
+	<SCRIPT LANGUAGE="javascript">
+	function ShowHelp(c_what) {
+	  var Location = "[<($GUrl{'cforum.cgi'})>]?action=help&file=" + c_what;
+	  link=open(Location,"CCSLink","toolbar=no,scrollbars=yes,directories=no,menubar=no,resizable=yes,width=420,height=410");
+	}
+	</SCRIPT>
+

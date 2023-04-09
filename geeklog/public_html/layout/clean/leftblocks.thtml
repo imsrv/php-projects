@@ -1,0 +1,4 @@
+        <td class="featureblock" valign="top">
+            {geeklog_blocks}
+            <br><img src="{layout_url}/theme-images/pixel.gif" width="150" height="1">
+        </td>

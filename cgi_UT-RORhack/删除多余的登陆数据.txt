@@ -1,0 +1,14 @@
+就是清空UT_ONLINE啦~这样速度会快点 
+misc_admin.cgi 
+
+      "<td width=50%>",    </td>\n",      tableEnd($user),大概如此 
+
+改为
+      "<td width=50%>",    "<table border=0><tr><td>",    "<input type=radio name=job value='emptyollog'>",    "</td><td>",    "<b>Empty online log</b>",    "</td></tr><tr><td> </td><td>",    "</td></tr></table></td>\n",      tableEnd($user),
+
+misc_admin_x.cgi 
+最后加上一行： 
+
+redirect("misc_emptyollog_x.cgi") if $job eq "emptyollog";
+
+下面附件保存为misc_emptyollog_x.cgi 

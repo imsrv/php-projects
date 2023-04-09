@@ -1,0 +1,15 @@
+<?PHP 
+include ("include/connect.txt");
+
+$result = mysql_query("SELECT film FROM ds_articles WHERE seo_url = '$id'");  
+
+
+$link_back = mysql_result($result,0,"film");
+$link_back = "movie_".$link_back.".html";
+printf("%s",$link_back);  
+
+
+
+include ("include/close.txt");
+
+?>

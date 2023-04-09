@@ -1,0 +1,38 @@
+<?
+	print("<TABLE WIDTH=\"400\" BORDER=\"0\"><TR><TD WIDTH=\"400\">\n");
+	print("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You have a site to suggest?  Great! \n");
+	print("Fill in the following information and someone \n");
+	print("will check it out and put it in the appropriate wing.<BR>");
+	print("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stuck coming up with a description? \n");
+	print("Check the HTML source.  Site owners put much effort into coming up \n");
+	print("with perfect 255-character descriptions in the form of meta tags. \n");
+	print("If this is going right over your head...no worries...Look for a bit \n");
+	print("of text on the page itself that says what the says is in the owner's \n");
+	print("words.  Otherwise, you've got your big, beautiful brain! \n");
+	print("</TD></TR></TABLE>\n");
+
+	/*
+	** Find "Suggested Links" wing
+	*/
+	$Query = "SELECT ID FROM wing WHERE Title='Suggested Links' ";
+	$DatabaseResult = mysql_query($Query, $DatabaseLink);
+	$DatabaseRow = mysql_fetch_row($DatabaseResult);
+	$SuggestedLinks = $DatabaseRow[0];
+
+	/* 
+	** display form for adding item 
+	*/
+	print("<FORM ACTION=$IndexScript METHOD=\"post\" NAME=\"addItemForm\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"SCREEN\" VALUE=\"stroll\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"ACTION\" VALUE=\"ADD_ITEM\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"wing\" VALUE=\"$SuggestedLinks\">\n");
+	
+	print("Title: <INPUT TYPE=TEXT NAME=\"inputTitle\" VALUE=\"\" SIZE=\"36\"><BR>\n");
+	print("URL: <INPUT TYPE=TEXT NAME=\"inputURL\" VALUE=\"http://\" SIZE=\"36\" onFocus=\"this.form.inputURL.select();\"><BR>\n");
+	print("Description: (255 Characters or less)");
+	print("<BR><TEXTAREA NAME=\"inputDesc\" COLS=50 ROWS=5 WRAP=\"virtual\"></TEXTAREA><BR>\n");
+	
+	print("<INPUT TYPE=SUBMIT VALUE=\"Suggest Link\"><BR>\n");
+	print("</FORM>\n");
+
+?>

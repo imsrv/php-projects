@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>Partner Gallery Submission Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<p align="center"><center><font face="Verdana" size="1" color="#000000"><b><font size="4">Partner 
+          Gallery Submission Form </font></b></font> 
+        </center>
+      </p>
+      <form method="POST" action="/cgi-bin/tgp/psubmit.pl" enctype="multipart/form-data">
+<div align="center">
+  <center>  
+
+ <table border="0" cellpadding="0" cellspacing="0" width="360">
+      <tr>
+                <td bgcolor="#C0C0C0"><font face="Verdana"><b>Username</b></font></td>
+        <td bgcolor="#C0C0C0"> 
+        
+       <font face="Verdana"><b><input type="text" name="webname" size="20"></b></font>
+
+</td>
+  </tr>
+  <tr>
+                <td bgcolor="#C0C0C0"><font face="Verdana"><b>Password</b></font></td>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b> 
+          <input type="text" name="webpass" size="20"></b></font></td>
+  </tr>
+  <tr>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>Gallery URL</b></font></td>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b> 
+          <input type="text" name="weburl" size="20"></b></font></td>
+  </tr>
+  <tr>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>Category</b></font></td>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>
+          <select name="webcate">		  
+<!--#include virtual="/cgi-bin/tgp/categories.cgi" -->
+          </select>
+          </b></font></td>
+  </tr>
+  <tr>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>Number of Pics</b></font></td>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b> 
+          <input type="text" name="webpics" size="20"></b></font></td>
+  </tr>
+  <tr>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>Description</b></font></td>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b> 
+          <input type="text" name="webdesc" size="20"></b></font></td>
+  </tr>
+        <tr>
+          <td bgcolor="#C0C0C0"><font face="Verdana"><b>Thumbnail<br>
+            </b>(88x88)</font></td>
+          <td bgcolor="#C0C0C0">
+            <input type="file" name="file">
+          </td>
+        </tr>
+</table>
+
+  </center>
+  </div>
+    <p align="center"><input type="submit" value="SUBMIT YOUR GALLERY" name="B1">
+</p></form>
+
+</body>
+</html>

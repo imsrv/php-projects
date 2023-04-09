@@ -1,0 +1,150 @@
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-tl.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9" width="9"></td>
+					<td height="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-t.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9"></td>
+					<td width="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-tr.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9" width="9"></td>
+				</tr>
+				<tr>
+					<td width="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-l.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9" width="9"></td>
+					<td bgcolor="#ffffff" width="100%">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+								<td align="left" valigh="top" nowrap bgcolor="#051535"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" align="top" height="20" width="1"><span class="articleTitle">{calendar_title}&nbsp;</span></td>
+						</tr>
+						</table>
+						
+						<table bgcolor="#2e4166" width="100%" border="0" cellspacing="0" cellpadding="3">
+						<tr><td>
+						
+					<!-- end first half theme -->
+					
+					
+					<table width="100%" class="dayview-times" cellpadding="5" cellspacing="0" border="0">
+                                <tr align="center">
+                                    <td align="center"><b>{lang_day}</b></td>
+                                    <td align="center"><a href="{site_url}/calendar.php?mode={mode}&view=week&month={wmonth}&day={wday}&year={wyear}">{lang_week}</a></td>
+                                    <td align="center"><a href="{site_url}/calendar.php?mode={mode}">{lang_month}</a></td>
+                                </tr>
+                            </table><br>
+                            <table bgcolor="#051535" cellpadding="2" cellspacing="1" border="0" width="100%" class="dayview-times">
+                                <tr>
+                                    <td bgcolor="#2e4166" colspan="2" class="dayview-datecol"><a href="{site_url}/calendar.php?mode={mode}&view=day&month={prevmonth}&day={prevday}&year={prevyear}"><<</a>&nbsp;&nbsp;{currentday}&nbsp;&nbsp;<a href="{site_url}/calendar.php?mode={mode}&view=day&month={nextmonth}&day={nextday}&year={nextyear}">>></a></td>
+                                <tr>
+                                    <td bgcolor="#2e4166" colspan="2" class="weekview-caltitle">{calendar_title} {calendar_toggle}</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times">{lang_week} {week_num}</td>
+                                    <td bgcolor="#2e4166" >{allday_events}</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&year={year}&hour=0">12:00am</a></td>
+                                    {0_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=1">1:00am</a></td>
+                                    {1_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=2">2:00am</a></td>
+                                    {2_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=3">3:00am</a></td>
+                                    {3_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=4">4:00am</a></td>
+                                    {4_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=5">5:00am</a></td>
+                                    {5_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=6">6:00am</a></td>
+                                    {6_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=7">7:00am</a></td>
+                                    {7_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=8">8:00am</a></td>
+                                    {8_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=9">9:00am</a></td>
+                                    {9_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=10">10:00am</a></td>
+                                    {10_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=11">11:00am</a></td>
+                                    {11_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=12">12:00pm</a></td>
+                                    {12_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=13">1:00pm</a></td>
+                                    {13_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=14">2:00pm</a></td>
+                                    {14_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=15">3:00pm</a></td>
+                                    {15_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=16">4:00pm</a></td>
+                                    {16_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=17">5:00pm</a></td>
+                                    {17_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=18">6:00pm</a></td>
+                                    {18_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=19">7:00pm</a></td>
+                                    {19_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=20">8:00pm</a></td>
+                                    {20_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=21">9:00pm</a></td>
+                                    {21_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=22">10:00pm</a></td>
+                                    {22_cols}
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" width="1%" class="dayview-times"><a href="{site_url}/submit.php?type=event&mode={mode}&month={month}&day={day}&year={year}&hour=23">11:00pm</a></td>
+                                    {23_cols}
+                                </tr>
+                            </table><br>
+                            {quickadd_form}
+
+<!-- end of theme -->
+						
+						</td></tr>
+						</table>
+					</td>
+					<td width="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-r.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9" width="9"></td>
+				</tr>
+				<tr>
+					<td width="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-bl.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9" width="9"></td>
+					<td height="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-b.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9"></td>
+					<td width="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-br.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9" width="9"></td>
+				</tr>
+			</table><BR>

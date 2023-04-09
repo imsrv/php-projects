@@ -1,0 +1,117 @@
+<html><head>
+<title>Log Analyzer Help</title>
+</head>
+<body bgcolor="FFFFFF">
+<center>
+<br><br>
+
+<table cellspacing="1" cellpadding="4" border="2" bgcolor="#C0C0C0" width="100%">
+<tr><td>
+<table cellspacing="10" cellpadding="3" border="0" bgcolor="#EAEAD5" width="100%">
+<tr>
+<td align="center" bgcolor="#C0C0C0">
+<font color="#400060" size="+1" face="Arial">Log Analyzer Help</font>
+</td>
+</tr>
+<tr>
+<td height="10" bgcolor="#EAEAD5">
+<br>
+<font color="#400060" size="3" face="Arial"><b>Log Display And Admin:</b></font>
+</td>
+</tr>
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Choose A Log File</b></font><br>
+<font size="2" face="verdana, arial" color="#0080C0">
+Select a file from the drop down list to take action on.<br><br>
+<ul>
+<li>The <i>visitor.log</i> file will contain hits from human visitors if you have enabled logging of human visits.<br> 
+<li>The <i>spider.log</i> file will contain hits from known spiders if you have enabled logging of spider visits.<br>
+<li>The <i>footprints.log</i> file will contain hits from spiders matching a spider footprint but of unknown origin, if you have enabled logging of unknown spider visits.<br>
+<li>There may be other entries if you have chosen to "Rotate Logs" at any time, these will be saved copies of logs with the date appended to the file name of when they were <i>Rotated</i>.<br>
+</ul>
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Action For This Log</b>:<br></font>
+<font size="2" face="verdana, arial" color="#0080C0">
+The action chosen here will operate on the log file chosen above.<br>
+<ul>
+<li>There are four possible choices:
+<ul>
+<li><i>Display</i> - will diplay a formatted report including elements based on the checked fields.<br><br>
+<li><i>Rotate Log</i> - will clear the chosen log and copy it to a new log with the date appended.<br><br>
+<li><i>Delete Log</i> - will permanently delete the chosen log and it's contents.<br><br>
+<li><i>Display Raw</i> - will display the raw log entries without any formatting.<br><br>
+</ul>
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Hits Per Page</b>:<br></font>
+<font size="2" face="verdana, arial" color="#0080C0">
+Set this to the number of hits you want to display per formatted page.<br><br> This option has no effect unless "Action For This Log" is set to <i>Display</i>.
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Include User Agent In Report</b>:<br></font>
+<font size="2" face="verdana, arial" color="#0080C0">
+Check this box if you want the User Agent displayed in the formatted report. If the User Agent is prefixed and suffixed by two <b>**</b>asterisks<b>**</b> then this hit would be matched by <b>GE STAGE 1</b> when set to <i>Active</i>. <br><br>This option has no effect unless "Action For This Log" is set to <i>Display</i>.
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Include Referrer In Report</b>:<br></font>
+<font size="2" face="verdana, arial" color="#0080C0">
+Check this box if you want the Referrer information displayed in the formatted report. The referrer will be created as a hot link, so that you can click on it and be taken to the query used to find your site. <br><br>This option has no effect unless "Action For This Log" is set to <i>Display</i>.
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Include IP Address In Report</b>:<br></font>
+<font size="2" face="verdana, arial" color="#0080C0">
+Check this box if you want the IP Address displayed in the formatted report. If the IP Address is prefixed and suffixed by two <b>**</b>asterisks<b>**</b> then this hit would be matched by <b>GE STAGE 1</b> when set to <i>Active</i>. <br><br>This option has no effect unless "Action For This Log" is set to <i>Display</i>.
+</font>
+</td>
+</tr>
+
+<tr>
+<td align="left" bgcolor="#FBF3D9">
+<font size="2" face="verdana, arial"><b>Include Search Keywords In Report</b>:<br></font>
+<font size="2" face="verdana, arial" color="#0080C0">
+Check this box if you want the Search Keywords used to find your site displayed in the formatted report. <br><br>This option has no effect unless "Action For This Log" is set to <i>Display</i>.
+</font>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#EAEAD5">
+&nbsp;
+</td>
+</tr>
+
+<tr>
+<td align="right" colspan="2" bgcolor="#C0C0C0">
+<a href=""><font face=arial size="-2" color="maroon">ICS v4.0 By: ICS Avenue</font></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+</body></html>
+

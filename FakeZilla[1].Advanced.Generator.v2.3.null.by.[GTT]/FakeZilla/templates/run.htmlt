@@ -1,0 +1,453 @@
+<TEMPLATE activate_project>
+<!--#	Activates the project by opening the generator
+	in a new window, and reloading the init page
+	#-->
+
+	<form action="generator.php" method="GET" target="_blank" name=project>
+	<input type="hidden" name="tmp" value="%%TMP%%">
+<script type="text/javascript">
+<!--//	
+function start() {
+	if (Actvted) {
+		return;
+		}
+	
+	document.forms['project'].submit();
+	document.forms['reload'].submit();
+	Actvted = 1;
+	}
+
+ // activation timer
+ var Actvted = 0;
+ var Actvtn_tmr = self.setTimeout("start()", 600);
+
+//-->
+</script>
+	</form>
+
+	<div align=center>
+	<form action="#%ACTION%#" method="GET" onSubmit="start();" name=reload>
+	<input type="hidden" name="cmd" value="#%CMD%#">
+	<input type="hidden" name="err" value="#%ERR%#">
+		<pre>
+			If the project's not started in 5 seconds,
+			click on the button bellow
+			<br>
+			<input type=submit value="Start project">
+		</pre>
+	</form>
+	</div>
+
+
+
+
+</TEMPLATE>
+
+
+<CENTER>
+#%RUN_ERROR%#
+
+<form method="POST" action="#%ACTION%#?cmd=#%CMD%#" name="run">
+<script type="text/javascript">
+<!--//
+//
+// Set a radio button up according to its name and value
+//
+function setRadio(_form, _name, _value) {
+ for(i=0; i<_form.elements.length; i++){
+ 	if ((_form.elements[i].type=='radio')
+ 		&& (_form.elements[i].name==_name)
+ 		&& (_form.elements[i].value==_value)) {
+ 		
+ 		_form.elements[i].checked = true;
+ 		break;
+ 		}
+ 	}
+ }
+
+//
+// Set a select drop-down according to provided name and value
+//
+function setOption(_form, _name, _value) {
+ if (_form.elements[_name] && _form.elements[_name].options){
+ 	for (i=0; i<_form.elements[_name].options.length; i++){
+ 		
+ 		if (_form.elements[_name].options[i].text == _value) {
+ 			_form.elements[_name].selectedIndex = i;
+ 			break;
+ 			}
+ 		}
+ 	}
+ }
+//-->
+</script>
+
+<table cellpadding="0" cellspacing="2" border="0" class="run">
+<tr><td>
+
+	<TEMPLATE safe_mode>
+		<div class=safe_mod>
+		<div align=center>WARNING!</div>
+		PHP is running in safe mode.
+		This will prevent the generator
+		from running sessions longer
+		than <b>#%MAX_EXECUTION_TIME%#</b> seconds.
+		</div>
+	</TEMPLATE>
+
+</td></tr>
+<tr>
+<td class="block">
+	<table cellpadding="2" cellspacing="0" border="0">
+		<tr>
+			<td class="title">URL</td>
+			<td><input name="URL" class=a size=62 value="%%URL%%"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><ul class=run><li class=orange>
+				This is the URL that will be checked from the proxy servers with<BR>
+				the generated fake hits.</li></ul></td>
+		</tr>
+	</table>
+</td>
+</tr>
+<tr>
+<td class="block">
+	<table cellpadding="2" cellspacing="0" border="0">
+
+		<tr>
+			<td rowspan="4" class="title">Referer</td>
+			<td><input type="radio" name="Referer" id="referer-url" value="URL" checked></td>
+			<td><label class="hand" for="referer-url">Exact URL address</label></td>
+		</tr>
+			
+
+		<tr>
+			<td></td>
+			<td><input name="Referer-Url" size="58" class=a value="%%REFERER_URL%%" onClick="setRadio(this.form, 'Referer', 'URL')"></td>
+		</tr>
+
+		<tr>
+			<td><input type="radio" name="Referer" id="referer-list" value="List"></td>
+			<td><label class="hand" for="referer-list">Load random from file</label></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><select name="Referer-List"
+				onChange="setRadio(this.form, 'Referer', 'List')"
+				onClick="setRadio(this.form, 'Referer', 'List')"
+				class=a
+				style="width:99%;">
+				<TEMPLATE referer_list>
+				<option>#%REFERER%#
+				</TEMPLATE>
+				</select>
+<script type="text/javascript">
+<!--//
+setRadio(document.forms['run'], 'Referer', '#%REFERER%#');
+setOption(document.forms['run'], 'Referer-List', '%%REFERER_LIST%%');
+//-->
+</script>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td colspan=2><ul class=run>
+				<li class=orange>
+				This is an URL that will be used as a Referer in the HTTP headers provided<BR>
+				to the checked we address. This can be a web address, a mail address, or<BR>
+				local HDD referrer.</li>
+				
+				<li class=orange>
+				There are two options for setting the referrer. You can type an URL<BR>
+				address to be used for all generated hits from the <b>Exact URL address</b><BR>
+				option. The other option, <b>Load random from file</b> lets you use plain<BR>
+				text files with referrers stored on this server.</li></ul></td>
+		</tr>
+	</table>
+</td>
+</tr>
+<tr>
+<td class="block">
+	<table cellpadding="2" cellspacing="0" border="0">
+
+		<tr>
+			<td rowspan="4" class="title">User-Agent</td>
+			<td><input type="radio" name="User-Agent" id="useragent-exact" value="Exact"></td>
+			<td><label class="hand" for="useragent-exact">Exact User-Agent</label></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><input name="UserAgent-Exact" size="58" class=a value="%%USERAGENT_EXACT%%" onClick="setRadio(this.form, 'User-Agent', 'Exact')"></td>
+		</tr>
+
+		<tr>
+			<td><input type="radio" name="User-Agent" id="useragent-list" value="List" checked></td>
+			<td><label class="hand" for="useragent-list">Load random from file</label></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><select name="UserAgent-List"
+				onChange="setRadio(this.form, 'User-Agent', 'List')"
+				onClick="setRadio(this.form, 'User-Agent', 'List')"
+				class=a 
+				style="width:99%;">
+				<TEMPLATE useragent_list>
+				<option>#%USERAGENT%#
+				</TEMPLATE>
+				</select>
+<script type="text/javascript">
+<!--//
+setRadio(document.forms['run'], 'User-Agent', '#%USERAGENT%#');
+setOption(document.forms['run'], 'UserAgent-List', '%%USERAGENT_LIST%%');
+//-->
+</script>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td colspan=2><ul class=run>
+				<li class=orange>
+				User-Agent is a field in HTTP requests, that identifies the software which<BR>
+				the client uses. It can be from different browsers or web-search robots.</li>
+				
+				<li class=orange>
+				There are two options for setting the user-agent. You can type the<BR>
+				User-Agent signature, which will be used for all generated hits from the<BR>
+				<b>Exact User-Agent</b> option. If you want to use predefined lists of<BR>
+				user-agent signatures, you can use the <b>Load random from file</b><BR>
+				option.</li></ul></td>
+		</tr>
+	</table>
+</td>
+</tr>
+<tr>
+<td class="block">
+	<table cellpadding="2" cellspacing="0" border="0">
+
+		<tr>
+			<td rowspan="4" class="title">HTTP Method</td>
+			<td><input type="radio" name="Method" id="method-get" value="GET" checked></td>
+			<td><label class="hand" for="method-get">GET</label></td>
+		</tr>
+
+		<tr>
+			<td><input type="radio" name="Method" id="method-post" value="POST"></td>
+			<td><label class="hand" for="method-post">POST</label></td>
+		</tr>
+
+		<tr>
+			<td rowspan="2"></td>
+			<td>
+<script type="text/javascript">
+<!--//
+setRadio(document.forms['run'], 'Method', '#%METHOD%#');
+//-->
+</script>
+				<TEMPLATE post_param>
+					<table cellpadding="0" cellspacing="0" border="0">
+						<tr>
+						<td><b>Key&nbsp;</b></td>
+						<td><input class="a"
+							name="Param[#%PARAM_INDEX%#][key]"
+							value="%%PARAM_KEY%%"
+							onClick="setRadio(this.form, 'Method', 'POST')"></td>
+						<td><b>&nbsp;Value&nbsp;</b></td>
+						<td><input class="a"
+							name="Param[#%PARAM_INDEX%#][value]"
+							value="%%PARAM_VALUE%%"
+							onClick="setRadio(this.form, 'Method', 'POST')"></td>
+						</tr>
+					</table>
+					<div id="post_#%PARAM_NEXT%#"></div>
+				</TEMPLATE>
+				
+				
+				
+<script type="text/javascript">
+<!--//
+var field_count = #%FIELD_COUNT%#;
+
+function add(obj){
+
+ //
+ // Check max upload fields
+ //
+ if (field_count >= 20) {
+ 	obj.disabled=true;
+ 	return;
+ 	}
+
+ //
+ // Find file container
+ //
+ var __cntnr;
+ if (!__cntnr && (document.getElementById)) {
+	if (!(__cntnr = document.getElementById('post_' + field_count))) {
+		return;
+		}
+	}
+
+ //
+ // Add file upload field
+ //
+ __cntnr.innerHTML += '<table cellpadding=0 cellspacing=0 border=0>'
+	+ '<tr>'
+	+ '<td><b>Key&nbsp;</b></td>'
+	+ '<td><input class=a name=\"Param[' + field_count + '][key]\" onClick=\"setRadio(this.form, \'Method\', \'POST\')\"></td>'
+	+ '<td><b>&nbsp;Value&nbsp;</b></td>'
+	+ '<td><input class=a name=\"Param[' + field_count + '][value]\" onClick=\"setRadio(this.form, \'Method\', \'POST\')\"></td>'
+	+ '</tr>'
+	+ '</table>'
+	+ '<div id=\"post_'+(field_count+1)*1+'\">'
+ 	+ '</div>';
+ field_count++;
+}
+//-->
+</script>
+			</td>
+		</tr>
+		<tr>
+			<td align=center><button class="s_b"
+					onClick="add(this);setRadio(this.form, 'Method', 'POST'); return false;"
+					title="Add another key/value pair fields"
+					style="width:100px"><img
+						border="0"
+						src="#%IMAGES_DIR%#2.gif"
+						alt="Add another key/value pair fields"></button></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td colspan=2><ul class=run>
+				<li class=orange>
+				This setting identifies the way you want to load tested URL.<BR>
+				GET is the more common method, used for retrieving files from web<BR>
+				servers. POST method is used in general to submit web forms.</li>
+				
+				<li class=orange>
+				If you use the POST method, perhaps you will need to provide<BR>
+				parameters for the submitted form. Each parameter is identified by its<BR>
+				key, and the assigned value. You can use the button with the red plus<BR>
+				sign to add up to 20 parameters.</li></ul></td>
+		</tr>
+	</table>
+</td>
+</tr>
+<tr>
+<td class="block">
+	<table cellpadding="2" cellspacing="0" border="0" width="490">
+		<tr>
+			<td align="right" class="title">Proxy server</td>
+			<td><select name="Proxy" class=a style="width:99%;">
+				<TEMPLATE proxy_list>
+				<option>#%PROXY%#
+				</TEMPLATE>
+				</select>
+<script type="text/javascript">
+<!--//
+setOption(document.forms['run'], 'Proxy', '%%PROXY%%');
+//-->
+</script>
+			</td>
+		</tr>
+		<tr>
+			<td align="right"><label class=hand for="sim-proxy">Simulate proxy</label></td>
+			<td><input type="checkbox"
+				<TEMPLATE sim_proxy> CHECKED </TEMPLATE>
+				id="sim-proxy"
+				name="Sim-Proxy"
+				value="1"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><ul class=run>
+				<li class=orange>
+				You can use the proxy server lists that are already uploaded to our<BR>
+				server. Proxy servers will be used for accessing the tested URL and<BR>
+				hiding you IP address.</li>
+
+				<li class=orange>
+				The <b>Simulate proxy</b> option will add HTTP header request fields that<BR>
+				will identify them as requests passed through proxy servers. For the<BR>
+				initial IP addresses will be used randomly generated values.</li></ul></td>
+		</tr>
+	</table>
+</td>
+</tr>
+<tr>
+<td class="block">
+	<table cellpadding="2" cellspacing="0" border="0">
+		<tr>
+			<td class="title"><nobr>Hits per hour</nobr></td>
+			<td><input name="Hits-per-hour" class=a size=21 value="%%PER_HOUR%%"></td>
+			<td class="title"><nobr>Total hits sent<nobr></td>
+			<td><input name="Total-hits-sent" class=a size=21 value="%%TOTAL%%"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td colspan="3"><ul class=run>
+				<li class=orange>
+				You can restrict the number of hits sent from the generator on hourly<BR>
+				basis. If no values is provided for the <b>Hits per hour</b> option, than no<BR>
+				restriction will be applied.</li>
+
+				<li class=orange>
+				<b>Total hits sent</b> option will set the maximum amount of hits sent to the<BR>
+				tested web page. This will take effect if only this value is less than the<BR>
+				number of proxy servers provided by the <b>Proxy server</b> option file.</li></ul></td>
+		</tr>
+	</table>
+</td>
+</tr>
+<tr>
+<td class="block">
+	<table cellpadding="2" cellspacing="0" border="0">
+		
+		<tr>
+			<td class="title">Project title</td>
+			<td><input name="Project-title" class=a size=62 value="%%TITLE%%"></td>
+		</tr>
+		<tr>
+			<td align="right"><label class=hand for="save-project">Save project</label></td>
+			<td><input type="checkbox"
+				<TEMPLATE save_project> CHECKED </TEMPLATE>
+				id="save-project"
+				name="Save-project"
+				value="1"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><ul class=run>
+				<li class=orange>
+					You can save the settings for this session as a project and use it again.<BR>
+					For that you have to turn on the <b>Save project</b> checkbox.</li>
+				<li class=orange>
+					<b>Project title</b> is optional. You can name the project if you are about to<BR>
+					save it, but if you do not provide a title, it will be assigned with the<BR>
+					date when the project is activated.</li>
+
+				</ul></td>
+		</tr>
+	</table>
+</td>
+</tr>
+
+<tr><td>
+	<input type="submit" value="Run generator" class=button name="R" style="width:100%">
+	<div align=center>Clicking on the button above will start the session, and its results will be displayed in a new window.</div>
+</td></tr>
+</table>
+
+</form>
+</CENTER>
+
+<MESSAGE>
+html_title: Run generator
+
+error_url: Empty URL
+project_run: Project successfully ran
+</MESSAGE>

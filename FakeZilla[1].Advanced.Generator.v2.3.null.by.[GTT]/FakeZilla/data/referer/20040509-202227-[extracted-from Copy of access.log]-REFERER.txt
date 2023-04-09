@@ -1,0 +1,2 @@
+http://localhost/FakeZilla.com/fakezilla-advanced/?cmd=run&err=project_run&tmp=ZmhhNC50bXA%3D
+http://www.referer.com

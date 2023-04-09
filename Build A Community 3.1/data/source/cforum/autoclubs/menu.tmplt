@@ -1,0 +1,47 @@
+<TABLE BORDER=0 WIDTH="100%">
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Navigation</TD></TR>
+<TR><TD>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="1" FACE="[<($CONFIG{'font_face'})>]">
+<A HREF="[<($GUrl{'clubs.cgi'})>]" TARGET="_top">All Clubs</A>
+<BR><A HREF="[<($GUrl{'myforum.cgi'})>]?returnto=[<($TURL)>]" TARGET="_top">Personalize</A>
+<BR><A HREF="[<($GUrl{'profile.cgi'})>]" TARGET="_top">My Profile</A>
+<BR><A HREF="[<($GUrl{'cf_utils.cgi'})>]?action=WhoisOnline" TARGET="mainframe">Who's Online?</A>
+</FONT>
+</TD></TR>
+</TABLE>
+
+<BR><BR>
+
+<TABLE BORDER=0 WIDTH="100%">
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Club Pages</TD></TR>
+<TR><TD>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="1" FACE="[<($CONFIG{'font_face'})>]">
+<A HREF="[<($GUrl{'cforum.cgi'})>]?forum=[<($FORM{'club'})>]&action=getall&clubs=T" TARGET="mainframe"><B>Messages</B></A>
+<BR><A HREF="[<($GUrl{'club_gallery.cgi'})>]?club=[<($FORM{'club'})>]" TARGET="mainframe">Photo Gallery</A>
+<BR><A HREF="[<($GUrl{'club_news.cgi'})>]?club=[<($FORM{'club'})>]" TARGET="mainframe">Club News</A>
+<BR><A HREF="[<($GUrl{'club_links.cgi'})>]?club=[<($FORM{'club'})>]" TARGET="mainframe">Links</A>
+<BR><A HREF="[<($GUrl{'cf_utils.cgi'})>]?action=show_members&club=[<($FORM{'club'})>]" TARGET="mainframe">Members</A>
+</FONT>
+</TD></TR>
+</TABLE>
+
+[<(
+	if (($VALIDUSER eq "T") && (($IUSER{'filenum'} eq $IFORUM{'bbs_admin'}) || ($IUSER{'filenum'} eq $admin_num))) {
+		$OUT .= "<BR><BR>\n";
+		$OUT .= "<TABLE BORDER=0 WIDTH=\"100%\">\n";
+		$OUT .= "<TR><TD BGCOLOR=\"$CONFIG{'title_color'}\"><FONT COLOR=\"$CONFIG{'ttxt_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\">Admin Tools</TD></TR>\n";
+		$OUT .= "<TR><TD>\n";
+		$OUT .= "<FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"1\" FACE=\"$CONFIG{'font_face'}\">\n";
+		$OUT .= "<A HREF=\"$GUrl{'clubs.cgi'}?action=edit_intro&clubs=T&club=$FORM{'club'}\" TARGET=\"mainframe\">Edit Intro</A>\n";
+		$OUT .= "<BR><A HREF=\"$GUrl{'club_upload_icon.cgi'}?clubs=T&club=$FORM{'club'}\" TARGET=\"mainframe\">Club Icon</A>\n";
+		$OUT .= "<BR><A HREF=\"$GUrl{'clubs.cgi'}?action=review&forum=$FORM{'club'}\" TARGET=\"mainframe\">Approve Members</A>\n";
+		$OUT .= "<BR><A HREF=\"$GUrl{'clubs.cgi'}?action=cancel&forum=$FORM{'club'}\" TARGET=\"mainframe\">Cancel Members</A>\n";
+		$OUT .= "<BR><A HREF=\"$GUrl{'club_gallery.cgi'}?action=edit&club=$FORM{'club'}\" TARGET=\"mainframe\">Edit Gallery</A>\n";
+		$OUT .= "<BR><A HREF=\"$GUrl{'club_news.cgi'}?action=edit&club=$FORM{'club'}\" TARGET=\"mainframe\">Edit News</A>\n";
+		$OUT .= "<BR><A HREF=\"$GUrl{'club_links.cgi'}?action=edit&club=$FORM{'club'}\" TARGET=\"mainframe\">Edit Links</A>\n";
+		$OUT .= "<BR><A HREF=\"$GUrl{'cf_moderators.cgi'}?clubs=T&forum=$FORM{'club'}\" TARGET=\"mainframe\">Forum Settings</A>\n";
+		$OUT .= "</FONT>\n";
+		$OUT .= "</TD></TR>\n";
+		$OUT .= "</TABLE>\n";
+	}
+)>]

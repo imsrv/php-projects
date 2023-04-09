@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://tempuri.org/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="AllCustById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CT_Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllCustByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AllCustByIdResult" nillable="true">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="AllCustByIdSoapIn">
+    <part name="parameters" element="s0:AllCustById" />
+  </message>
+  <message name="AllCustByIdSoapOut">
+    <part name="parameters" element="s0:AllCustByIdResponse" />
+  </message>
+  <message name="AllCustByIdHttpGetIn">
+    <part name="CT_Id" type="s:string" />
+  </message>
+  <message name="AllCustByIdHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="AllCustByIdHttpPostIn">
+    <part name="CT_Id" type="s:string" />
+  </message>
+  <message name="AllCustByIdHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="getCustomerSoap">
+    <operation name="AllCustById">
+      <documentation>This will return one customer's information in an XML String based on the customer ID sent</documentation>
+      <input message="s0:AllCustByIdSoapIn" />
+      <output message="s0:AllCustByIdSoapOut" />
+    </operation>
+  </portType>
+  <portType name="getCustomerHttpGet">
+    <operation name="AllCustById">
+      <documentation>This will return one customer's information in an XML String based on the customer ID sent</documentation>
+      <input message="s0:AllCustByIdHttpGetIn" />
+      <output message="s0:AllCustByIdHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="getCustomerHttpPost">
+    <operation name="AllCustById">
+      <documentation>This will return one customer's information in an XML String based on the customer ID sent</documentation>
+      <input message="s0:AllCustByIdHttpPostIn" />
+      <output message="s0:AllCustByIdHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="getCustomerSoap" type="s0:getCustomerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="AllCustById">
+      <soap:operation soapAction="http://tempuri.org/AllCustById" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="getCustomerHttpGet" type="s0:getCustomerHttpGet">
+    <http:binding verb="GET" />
+    <operation name="AllCustById">
+      <http:operation location="/AllCustById" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="getCustomerHttpPost" type="s0:getCustomerHttpPost">
+    <http:binding verb="POST" />
+    <operation name="AllCustById">
+      <http:operation location="/AllCustById" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="getCustomer">
+    <port name="getCustomerSoap" binding="s0:getCustomerSoap">
+      <soap:address location="http://66.129.68.165/bookSource/getCustomer.asmx" />
+    </port>
+    <port name="getCustomerHttpGet" binding="s0:getCustomerHttpGet">
+      <http:address location="http://66.129.68.165/bookSource/getCustomer.asmx" />
+    </port>
+    <port name="getCustomerHttpPost" binding="s0:getCustomerHttpPost">
+      <http:address location="http://66.129.68.165/bookSource/getCustomer.asmx" />
+    </port>
+  </service>
+</definitions>

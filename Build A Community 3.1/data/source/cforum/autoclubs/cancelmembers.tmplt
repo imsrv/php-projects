@@ -1,0 +1,15 @@
+<TABLE WIDTH=500 CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>View/Cancel Memberships</B></FONT></CENTER></TD></TR>
+<TR><TD [<($CONFIG{'WINCOLOR'})>]><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+The following members have joined and were accepted into your club.  You can view each member below and cancel their access if you wish.
+<OL>
+
+[<(
+	foreach my $m (@members) {
+		$m =~ s/(\n|\cM| )//g;
+		if ($m !~ /\w/) {next;}
+		$OUT .= "<LI><A HREF=\"$GUrl{'moreinfo.cgi'}?UserName=$m\">$m</A> &nbsp; &nbsp; &nbsp; &nbsp; <A HREF=\"$GUrl{'clubs.cgi'}?action=deletemember&UserName=$m&forum=$FORM{'forum'}\">Delete</A>\n";
+	}
+)>]
+
+</TD></TR></TABLE></CENTER>

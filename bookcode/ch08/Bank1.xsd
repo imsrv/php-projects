@@ -1,0 +1,35 @@
+<xsd:schema id="Bank" targetNamespace="http://tempuri.org/Bank1.xsd" xmlns="http://tempuri.org/Bank1.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xsd:element name="Bank" msdata:IsDataSet="true" msdata:EnforceConstraints="False">
+    <xsd:complexType>
+      <xsd:choice maxOccurs="unbounded">
+        <xsd:element name="Customer">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="CustomerID" type="xsd:string" minOccurs="0" msdata:Ordinal="0" />
+              <xsd:element name="CustomerName" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              <xsd:element name="City" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              <xsd:element name="Account" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Type" type="xsd:string" minOccurs="0" msdata:Ordinal="0" />
+                    <xsd:element name="Balance" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                  </xsd:sequence>
+                  <xsd:attribute name="Customer_Id" type="xsd:int" use="prohibited" />
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="Customer_Id" msdata:AutoIncrement="true" type="xsd:int" msdata:AllowDBNull="false" use="prohibited" />
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:choice>
+    </xsd:complexType>
+    <xsd:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xsd:selector xpath=".//Customer" />
+      <xsd:field xpath="@Customer_Id" />
+    </xsd:unique>
+    <xsd:keyref name="Customer_Account" refer="Constraint1" msdata:IsNested="true">
+      <xsd:selector xpath=".//Account" />
+      <xsd:field xpath="@Customer_Id" />
+    </xsd:keyref>
+  </xsd:element>
+</xsd:schema>

@@ -1,0 +1,108 @@
+Since version 1.3.1
+
+     * Added gettext support for internationalization.  Most of the work
+       for this was done by Colorio Mauro <linuxbox@interfree.it>.
+     * Added an Italian PO file for the new gettext support (Mauro).
+     * Fixed a cosmetic bug in config.pl.
+     * config.pl now asks if the DB users need to be created, so if they
+       already exist, "make install" won't fail.
+     * Removed Postgres version-specific DISTINCT syntax, so a patch is no
+       longer necessary for Postgres 7.
+     * The "Modify" link is no longer displayed in the event detail view
+       if no user is logged in.
+     * The login box's SSL notice is no longer displayed when a user is
+       logged in.
+     * The check to see if a user if "off campus" or not is now
+       case-insensitive (as domains should be).
+     * Reformatted the code.
+
+Since version 1.3
+
+     * Various bug fixes to make the calendar PHP 4 compatible.
+
+Since version 1.2
+
+     * Fixed a bug where multiple modifications of the same event were not
+       handled properly if one of them was approved.
+     * Got rid of the unused MakeOCVisible permissions, replaced them with
+       configuration permissions.
+     * Added the Admin box for calendar configuration.
+     * Added the srcconfig table for storing configuration info.
+     * Moved $GLOBALS["config_everything"] to $GLOBALS["CONFIG"]["everything"]. 
+     * Changed a config varname: computername -> account_host.
+     * Boxes now output titles at the beginning of outputForm().
+     * Added .green attribute to basic.css for green links.
+     * Fixed a bug in SSL detection in login-box.
+     * Added new install system.
+     * Cleaned up code for auth-shadow executables.
+     * Fixed a whole bunch of bugs that were screwing up SQL generation.  Some
+       were PHP4 issues, some were just plain dumb.
+     * PHP4 seems to handle DB connections a little differently, so the
+       connection functions in sql/sql.php3 now store the connections in
+       global variables and return those in subsequent calls.
+
+Since version 1.1.1
+
+     * Modify-box now handles events with ID 0 properly.
+     * srccalendar=> ALTER TABLE srcevent ADD COLUMN modify_id int4;
+     * Added submitted modifications.  (Changes to event, modify-box,
+       approve-box, and search-box.)
+     * Made the already-existing help for the search box available.
+
+Since version 1.1
+
+     * Fixed a few typos ($GLOBALS[$variable] instead of $GLOBALS["variable"]).
+     * Added submitter's name to submission notification.
+     * Added check for trailing slash in $config_php_utils.
+     * The PAM module should now accept passwords with spaces. (Thanks to
+       Andrea Whitlock.)
+     * Added a missing AND in delete-box's "next batch" query.  (My old
+       professor John Myers stumbled onto this bug.)
+     * Fixed MD5 salt detection, needed to call substr.  (Mark Bryant helped
+       me find this one.)
+     * Calendar no longer depends on the return value of exec in the various
+       places where it's called.  (Thanks to Nicholas Waltham and Jason Ford
+       for noticing that this broke with PHP 3.0.15.)
+     * basic.css now included.
+
+Since version 1.0
+
+   Thanks go to Bruce Tenison for taking the time to implement a few new
+   features.
+     * Updated INSTALL intructions.
+     * Fixed a typo in the approve-box help. (BT)
+     * Put Login button before Clear button in login-box. (BT)
+     * Put the submit button before Clear in advanced search form.
+     * Changed the year displayed in session expiration to 4 digits. (BT)
+     * Calendar-box supports highlighting days with events with a lovely
+       shade of green. (BT and me).
+     * Added a new index table to speed up green highlighting and event
+       browsing in general.
+     * Implemented e-mail notification of a submitted event. (BT)
+     * Implemented e-mail notification of an approved event.
+     * Auth-Shadow supports MD5 crypting as well as old-style Unix crypt.
+       (BT)
+     * Auth-Pam added with support for PAM authentication. (BT)
+     * Changed event submission to select on the OID of the previous
+       insert, instead of selecting on the entire event, to get the event
+       ID.
+     * Updated a couple links in the event class to remember the current
+       timestamp.
+     * Learned about a little SQL concept we like to call "transactions".
+       Event submission, modification, and deletion now use transactions
+       to avoid inconsistencies in the database.
+     * Added a friendlier error message when sessions expire while
+       submitting or modifying an event. The user is asked to enable
+       cookies, log in, and click the back button a few times to avoid
+       re-typing a bunch of stuff.
+     * Added a check for enabled cookies. It sets a test cookie and
+       passes another variable in the URL to let the page know it should
+       check for the test cookie.
+     * Login box now notifies user when cookies appear to be disabled.
+     * New page - genIndex.php3 - in the calendar directory regenerates
+       the index table.
+     * Month view feature added which displays all of the month's events,
+       similarly to the weekday view.
+     * Added a separate config file for a bunch of site-specific settings.
+       (BT and me)
+     * NIS authentication module courtesy of Scott Moser.

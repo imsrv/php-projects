@@ -1,0 +1,19 @@
+<form ENCTYPE="application/x-www-form-urlencoded"  NAME="stat_form" METHOD="POST" ACTION="[<($GUrl{'cforum.cgi'})>]">
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="2" CELLPADDING="2">
+<tr bgcolor="[<($COLOR)>]">
+<TD valign="MIDDLE" WIDTH=250><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">[<($post{'name'})>]</FONT></A></TD>
+<TD valign="MIDDLE"><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">[<($post{'date'})>]</TD>
+</tr>
+<tr bgcolor="[<($TABLECOLOR)>]">
+<td width="100%" colspan="2" valign="MIDDLE">
+<font color="[<($CONFIG{'text_color'})>]" FACE="[<($CONFIG{'font_face'})>]" SIZE="[<($CONFIG{'font_size'})>]">
+
+<TEXTAREA NAME="edit_message" COLS=40 ROWS=8 WRAP=PHYSICAL>[<($post{'message'})>]</TEXTAREA>
+<input NAME="message_id" TYPE="hidden" VALUE="[<($post{'message_id'})>]">
+<input NAME="forum" TYPE="hidden" VALUE="[<($FORM{'forum'})>]">
+<input NAME="action" TYPE="hidden" VALUE="save_edit">
+<P><b>UserName: </b><INPUT TYPE=TEXT NAME=UserName LENGTH=20 VALUE="[<($Cookies{'UserName'})>]"><BR>
+<b>PassWord: </b><INPUT TYPE=PASSWORD NAME=PassWord LENGTH=20 VALUE="[<($Cookies{'PassWord'})>]"><P>
+<BR><input TYPE="submit" VALUE="Save Your Changes!">
+</font></td></tr></table>
+</FORM>

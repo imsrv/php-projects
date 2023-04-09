@@ -1,0 +1,7 @@
+        <td class="col-right-line" valign="top"><img src="{layout_url}/interface/blank.gif" width="16" height="9" alt="" border="0" class="col-right-curve"></td>
+		<td class="col-right" valign="top">
+            <img src="{layout_url}/interface/blank.gif" width="160" height="9" alt="" border="0" class="col-right">
+            {geeklog_blocks}
+            <br />
+            <img src="{layout_url}/interface/blank.gif" width="160" height="9" alt="" border="0" class="col-right">
+        </td>

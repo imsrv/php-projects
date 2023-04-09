@@ -1,0 +1,83 @@
+Version: 0.7.8
+Modified: 9/7/02
+
+			//////////////////
+			//  IlohaMail   //
+			//////////////////
+		
+
+What is IlohaMail?
+==================
+IlohaMail (pronounced: e-lo-ha-mail) is a lightweight, yet full featured,
+multilingual webmail program that is easy to use and install. It runs on a
+stock, default build of PHP, and does not require databases (although 
+database support is available).  IlohaMail supports IMAP and POP3. 
+
+
+License
+=======
+IlohaMail is released under the General Public License (GPL). You may
+download it, use it, deploy it, re-distribute it, or feed it to your 
+rhino as you wish, free of charge.
+Please refer to the file "COPYING" that should have come with this file,
+for additional information.
+
+
+Installation
+============
+Please refer to the document "INSTALL" (or "UPGRADING" if upgrading) that 
+should have been included
+
+
+Support
+=======
+If you have any questions or comments, post to the online forum at:
+http://ilohamail.org/forum/
+
+Make sure you check the documentation first, available at:
+http://ilohamail.org/docs/
+
+There are also some documentation in HTML format in the "Manual" 
+directory.
+
+
+Additional Info
+===============
+Please visit the IlohaMail website at <http://ilohamail.org>
+There, you will find the latest news, documentation, and online discussions.
+
+
+Credits
+=======
+Project Lead
+	Ryo Chijiiwa
+	
+Translators
+	Dutch					Jeroen van der Vegt
+	French					Alain GŽlinas
+	Spanish  				Alejandro Gonz‡lez
+	German					Peter Surda, Peter Holzleitner
+	Danish					Torben Rybner
+	Italian					Brocco Amos
+	Polish					Marcin Piliszczuk
+	Brazilian Portuguese			Eduardo Mantovani
+	Swedish					Markus Svensson
+	Chinese					Danny Lin
+
+Code Contribution
+	TOMO <groove@spencernetwork.org> - jcode.php*
+	pob@medienrecht.org - qp_encode*
+	Torben Rybner - utf7.inc, others
+	Jeroen van der Vegt - UI enhancements, others
+	
+	*Public domain code
+
+Beta Testers:
+	Keith Adams
+	Matt Bauer
+	Matt Digiacomo
+	Jonathan Byrne
+
+Logo Design
+	Alison Eckhardt
+

@@ -1,0 +1,37 @@
+帖子标题的分类选择 
+
+描述：在帖子主题之前加上大致分类，例如：【灌水】这是一个灌水的帖子。 
+效果演示：http://www.3382.net 
+
+=========修改方法============ 
+1、备份topic_new.cgi、post_reply.cgi、post_edit.cgi文件 
+2、用文本编辑器打开topic_new.cgi 
+查找如下代码 
+
+
+# Print header  my @buttons = ();  printHeader($user, "", \@buttons, "$lng{'postTitleNew'}");    my $browser = getBrowserBrand();  
+
+在下面插入如下代码 
+
+
+  print qq~  <script>  function DoTitle(addTitle) {   var revisedTitle;   var currentTitle = document.form1.postSubject.value;   revisedTitle = addTitle+currentTitle;   document.form1.postSubject.value=revisedTitle;   document.form1.postSubject.focus();   return; }  </script>~;    
+
+保存文件 
+
+3、还是在topic_new.cgi中查找如下代码 
+
+
+print     "<tr bgcolor=$cfg{'lightCellColor'}><td width=15%>\n",    "<FORM ACTION=\"topic_new_x.cgi\" METHOD=post name=form1 ENCTYPE=\"multipart/form-data\">\n",    "<input type=hidden name=age value=$age>\n",    "<input type=hidden name=pg value=$page>\n",    "<input type=hidden name=bpg value=$boardPage>\n",    "<b>$lng{'postTpcSbj'}</b></td>\n",    "<td><INPUT TYPE='text' NAME='postSubject' SIZE=$inputCols MAXLENGTH='$cfg{'maxSubjectLen'}' class=subject></td></tr>\n",
+
+替换为 
+
+#===========话题分类选择===============  print     "<tr bgcolor=$cfg{'lightCellColor'}><td width=15%>\n",    "<FORM ACTION=\"topic_new_x.cgi\" METHOD=post name=form1 ENCTYPE=\"multipart/form-data\">\n",    "<input type=hidden name=age value=$age>\n",    "<input type=hidden name=pg value=$page>\n",    "<input type=hidden name=bpg value=$boardPage>\n",    "<b>$lng{'postTpcSbj'}</b>",    "</td>\n",    "<td>",      "<SELECT name=huati onchange=DoTitle(this.options[this.selectedIndex].value)  class=subject>\n",      "          <OPTION selected value=''>选择话题</OPTION> <OPTION value=【原创】>【原创】</OPTION> \n",      "          <OPTION value=【转帖】>【转帖】</OPTION> <OPTION value=【灌水】>【灌水】</OPTION> \n",      "          <OPTION value=【讨论】>【讨论】</OPTION> <OPTION value=【求助】>【求助】</OPTION> \n",      "          <OPTION value=【推荐】>【推荐】</OPTION> <OPTION value=【公告】>【公告】</OPTION> \n",      "          <OPTION value=【注意】>【注意】</OPTION> <OPTION value=【贴图】>【贴图】</OPTION>\n",      "          <OPTION value=【建议】>【建议】</OPTION> <OPTION value=【下载】>【下载】</OPTION>\n",      "          <OPTION value=【分享】>【分享】</OPTION> <OPTION value=【分流】>【分流】</OPTION> <OPTION value=【测试】>【测试】</OPTION></SELECT>\n",      "<INPUT TYPE='text' NAME='postSubject' SIZE=$inputCols MAXLENGTH='$cfg{'maxSubjectLen'}' class=subject></td></tr>\n",
+
+保存文件 
+
+至此topic_new.cgi修改完毕 
+4、5、post_reply.cgi、post_edit.cgi修改方法与上述大致相同，留给大家自己改吧！ 
+
+6、上传文件 
+这个hack只是增加了一段JS代码和HTML代码，还是比较安全的，建议将所有的分类增加到UTLanguage.pm文件中之后再到程序中调用 
+方便制作多语言版本，嘻嘻，也留给大家自己做作业吧！很简单的。

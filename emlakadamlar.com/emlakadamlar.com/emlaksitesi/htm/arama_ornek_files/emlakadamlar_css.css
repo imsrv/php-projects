@@ -1,0 +1,39 @@
+.text {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.header {
+	FONT-SIZE: 20px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.small_header {
+	FONT-WEIGHT: normal; FONT-SIZE: 18px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.grey_text {
+	FONT-SIZE: 11px; COLOR: #666666; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.black_arial11 {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.link {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.link:hover {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.link_small {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.link_small:hover {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.form {
+	FONT-SIZE: 12px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.buton {
+	FONT-SIZE: 11px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.arial11 {
+	FONT-SIZE: 11px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.text_11 {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}

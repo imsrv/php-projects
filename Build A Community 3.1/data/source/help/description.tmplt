@@ -1,0 +1,12 @@
+<TABLE CELLPADDING=0 CELLSPACING=0>
+<TR><TD><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Help & Hints</B></FONT></CENTER><BR><BR></TD></TR>
+<TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+
+[<(
+	if ($CONFIG{'Weaver_use_bonhomme'} eq "YES") {
+		$OUT .= "<IMG SRC=\"$CONFIG{'button_dir'}/myguy/student.gif\" WIDTH=82 HEIGHT=128 ALIGN=RIGHT ALT=\"Let me be your guide\">";
+	}
+)>]
+
+<P>Your description is used in various parts of the site and is used to provide a brief insight into you.  As always on the web, you shouldn't provide any information that you want to remain private.  You may want to say where you are from, your interests, your favorite joke etc.
+</TD></TR></TABLE>

@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Category" value="name:CategoryID;datatype:3,name:CategoryName;datatype:202,name:ParentCategoryID;datatype:3,name:CategoryDesc;datatype:203" />
+	<infoitem key="UD_List_Events" value="name:ItemID;datatype:3,name:CategoryID;datatype:3,name:ItemName;datatype:203,name:ItemDesc;datatype:203,name:ItemDescShort;datatype:203,name:DateAdded;datatype:7,name:EventLocation;datatype:203,name:LocationMap;datatype:202,name:EventStartDate;datatype:7,name:EventEndDate;datatype:7,name:EventPresenter;datatype:202,name:EventStartTime;datatype:7,name:EventEndTime;datatype:7,name:Activated;datatype:202,name:ItemPrice;datatype:3,name:ItemCost;datatype:5,name:ImageFileA;datatype:202,name:ImageFileB;datatype:202,name:Feature1;datatype:202,name:Feature2;datatype:202,name:Feature3;datatype:202,name:Feature4;datatype:202,name:Feature5;datatype:202,name:UnitOfMeasure;datatype:202,name:DownloadFileA;datatype:202,name:DownloadFileB;datatype:202" />
+</info>

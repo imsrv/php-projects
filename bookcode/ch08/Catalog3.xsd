@@ -1,0 +1,19 @@
+<xsd:schema id="Catalog" targetNamespace="http://tempuri.org/Catalog3.xsd" xmlns="http://tempuri.org/Catalog3.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xsd:element name="Catalog" msdata:IsDataSet="true" msdata:EnforceConstraints="False">
+    <xsd:complexType>
+      <xsd:choice maxOccurs="unbounded">
+        <xsd:element name="Product">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="ProductID" type="xsd:string" minOccurs="0" msdata:Ordinal="0" />
+              <xsd:element name="ProductName" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              <xsd:element name="ListPrice" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+            </xsd:sequence>
+            <xsd:attribute name="Type" form="unqualified" type="xsd:string" />
+            <xsd:attribute name="SupplierId" form="unqualified" type="xsd:string" />
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:choice>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

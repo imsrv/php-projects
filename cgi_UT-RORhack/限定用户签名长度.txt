@@ -1,0 +1,42 @@
+user_options.cgi 
+modify 
+
+  "<tr bgcolor=$cfg{'lightCellColor'}><td valign=top><b>$lng{'userOptProfSign'}</b>\n",
+to 
+
+  "<tr bgcolor=$cfg{'lightCellColor'}><td valign=top><b>$lng{'userOptProfSign'}(最大$cfg{'sigLength'}字节)</b>\n",
+
+user_options.cgi 
+after 
+
+#$password =~ /^\w+$/ or userError($lng{'errPwdChar'});
+add 
+
+length($signature)>$cfg{'sigLength'} and userError('您的签名太长，请重新设置！');
+
+ut_language.pm 
+
+$lng{'userOptProfSign'} 
+后面去掉最大字节数，例如 
+
+$lng{'userOptProfSign'} = "个人签名 ";
+
+cfg_general.cgi 
+after 
+
+      "<tr bgcolor=$cfg{'lightCellColor'}><td width=45%>\n",      "<b>Enable image tag in signature</b></td>\n",    "<td><INPUT TYPE='checkbox' NAME='sgnImgTag' value=1 $sgnImgTagChecked></td></tr>\n",
+
+add
+      "<tr bgcolor=$cfg{'lightCellColor'}><td width=45%>\n",      "<b>Max Length of the Signature (Max:255 bytes)</b></td>\n",    "<td><INPUT TYPE='text' NAME='sigLength' SIZE=3",    " VALUE='$cfg{'sigLength'}' class=subject> Bytes</td></tr>\n",
+
+cfg_general_x.cgi 
+
+after 
+
+$output .= $cgi->param('sgnImgTag')     ? "\$cfg\{\'sgnImgTag\'\} = " . "1" . ";\n"     : "\$cfg\{\'sgnImgTag\'\} = " . "0" . ";\n";
+add 
+
+$output .= "\$cfg\{\'sigLength\'\} = " . int($cgi->param('sigLength')) . ";\n";
+
+上传所有文件 
+在General Settings中设置最大签名长度。 

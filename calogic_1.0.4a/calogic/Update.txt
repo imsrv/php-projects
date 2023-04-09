@@ -1,0 +1,66 @@
+CaLogic Update Instructions
+===========================
+The current version is 1.0.4a
+
+
+For current users of CaLogic follow these instructions to update
+your installation of CaLogic.
+
+UPDATE INFO FOR ALL VERSIONS
+============================
+
+I have reorganized the directory structure of calogic a little.
+The new directory: setup, will contain the setup files needed
+to do an update, or a new installation. These files used to be in
+the admin directory. Now, the admin directory only contains the 
+settings.php file. So, if you have relocated the settings.php
+file, you can omit the admin directory entirly.
+
+
+UPDATE FROM VERSION 1.0.1a or 1.0.2a or 1.0.3a
+===============================================
+
+Upload all files except dbconfig.php in the include
+directory and settings.php in the admin directory.
+These files have not been changed.
+You must reset the variables in the config.php file in the include
+directory, as there have been changes to this file.
+
+once the files are uploaded, run the update_1.0.3a.php file from
+the setup directory:
+http://www.yourdomain.com/calogic/setup/update_1.0.3a.php
+for example.
+
+This file corrects table errors and language table entries. 
+No other changes have been made to the database structure.
+
+
+Thats it.
+
+See the Changes.log for information on program changes.
+Read the readme_reminders.txt file for information on
+setting up reminders.
+
+
+UPDATE FROM VERSION 1.0.0a
+================================
+
+Upload all files except dbconfig.php in the include
+directory and settings.php in the admin directory.
+These files have not been changed.
+You must reset the variables in the config.php file in the include
+directory, as there have been changes to this file.
+
+once the files are uploaded, run the update_1.0.0a.php file from
+the setup directory:
+http://www.yourdomain.com/calogic/setup/update_1.0.0a.php
+for example.
+
+This file adds a field to the CaLogic contacts table, and corrects
+a few other table errors and language table entries.
+No other changes have been made to the database structure.
+
+See the Changes.log for information on program changes.
+Read the readme_reminders.txt file for information on
+setting up reminders.
+

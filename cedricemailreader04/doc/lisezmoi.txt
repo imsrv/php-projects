@@ -1,0 +1,196 @@
+Cedric email reader
+http://www.isoca.com/creation/webmail/
+
+Realisation : Cedric AUGUSTIN <cedric@isoca.com>
+Web : www.isoca.com
+Version : 0.4.1
+Date : Septembre 2001
+
+---------------------------------------------------------------------------
+Sommaire
+A) Présentation
+B) Liens
+C) Installation
+D) Lancement
+E) Prérequis
+F) To do liste
+G) Contributions
+H) Change log
+I) Foire aux questions
+
+---------------------------------------------------------------------------
+A) Présentation
+Ce programme est un webmail : il s'agit d'une application permettant de 
+consulter et de gérer une boîte aux lettre électronique en utilisant un 
+navigateur web. Il vous donne également la possibilité d’envoyer des emails.
+Il est destiné à être installé et paramétré sur votre compte et non à être 
+utilisé depuis www.isoca.com qui ne vous fourni qu’une version de démonstration.
+
+Principales fonctionnalités : 
+* Ce webmail est écris en PHP 4 (version 0.2 pour PHP 3), 
+* Multi lingue,
+* Pas d’utilisation des cookies ou session, 
+* Lecture des emails sur un compte IMAP (pas encore POP), 
+* Suppression des messages sans les ouvrir (bien pratique si il y a un virus), 
+* Affichage des messages au format texte et html, 
+* Lecture des attachements, 
+* Envois de messages au format texte avec ou sans attachement, 
+* Carnet d'adresse rudimentaire, 
+* ... et tjs en GPL avec les sources...
+
+---------------------------------------------------------------------------
+B) Liens
+* Démonstration du Cedric email reader par la consultation de la boite email 
+IMAP avec le compte demo@isoca.com : 
+http://www.isoca.com/creation/webmail/emailreader.php
+
+* Démonstration de l'envoi de message avec ou sans attachement avec le compte 
+demo@isoca.com : http://www.isoca.com/creation/webmail/email.php
+
+* Les sources de la version 0.4 dans un seul fichier zip de 65 ko : 
+http://www.isoca.com/creation/webmail/cedricemailreader04.zip
+
+* Envoyez moi un petit mot pour me dire ce que vous en pensez (cedric@isoca.com 
+ou page contact www.isoca.com).
+
+* Si vous avez un soucci, passez faire un tour sur le forum création, j'y publie 
+les patchs en attandant les nouvelles versions : 
+http://www.isoca.com/creation/forum/
+
+--------------------------------------------------------------------------------
+C) Installation
+1) Téléchargez les sources. Une fois le fichier d'archive décompressé sur votre 
+   disque dur, modifiez les fichiers suivants :
+   * Dans le répertoire /common se trouve les fichiers par défaut
+     /common/emailreader.ini.php -> parametres généraux.
+     /common/adressbook.opt -> Carnet d'adresse.
+     /common/fromoption.opt -> adresse email utilisée dans le from.
+   * Dans le répertoire /perso, créez un sous répertoire ayant comme nom votre
+     login de connexion (ex : toto1234). Puis copiez-y les fichiers du répertoire
+     /perso/template. Vous devez ensuite les personaliser.
+   * Faite de même pour toutes les personnes à qui vous souhaitez donner accès au
+     webmail avec un profil différent de celui par défaut.
+
+2) Copiez l'ensemble des fichiers et répertoires où vous voulez sur votre site.
+
+3) Si vous voulez envoyer des attachements, le sous répertoire tmp-php doit avoir
+   les droit 777 (tous les droits pour tout le monde).
+
+4) Et voilà, ça devrait fonctionner. Vous êtes fortement encouragé à m'envoyer 
+   un petit mot avec (cedric@isoca.com).
+
+--------------------------------------------------------------------------------
+D) Lancement
+Appeler depuis votre navigateur la page emailreader.php.
+Vous pouvez spécifier la langue en rajoutant le paramètre ?lang=XX, où XX peut 
+être remplacer par fr pour français, ou en pour anglais... 
+Actuellement ce webmail est traduit en 5 langues (Allemand-de, Anglais-en, 
+Espagnol-es, Français-fr et Suedois-se. Si vous en créer un pour une autre langue,
+envoyez le moi pour en faire profiter tous le monde.
+En l'abscence de paramètre, la langue choisie par défaut est celle définie dans 
+le fichier emailreaderdefault.ini.php. 
+
+--------------------------------------------------------------------------------
+E) Prérequis
+Le serveur qui héberge ces pages doit vous mettre à disposition PHP 4.0.4 ou plus
+avec notament les librairies IMAP (avec php < 4.0.4 il faut modifier le code pour 
+les attachements, mais le reste fonctionne).
+Votre messagerie doit être bien sûr un serveur IMAP. Il y a un tout petit peu de 
+javascript et des feuilles de style, donc vous devez utiliser un navigateur de 
+génération 4 (Mozilla, Netscape, ie...).
+Pour l'envoi d'attachement, vous devez pouvoir uploader sur le serveur. Ce 
+webmail a été conçu pour être utilisé chez Hebergement-discount.com, mais il 
+devrait pouvoir fonctionner ailleurs avec quelques petits aménagements.
+
+--------------------------------------------------------------------------------
+F) To do liste
+Urgent
+* Gestion du carnet d'adresse 
+* Gestion des utilisateurs
+
+Moins urgent
+* Implémenter la réexpédition (avec renvoie des attachements).
+* Donner le choix entre POP, IMAP et pourquoi pas News avec la même interface.
+* Gérer une boite "Envoyé".
+* Rajouter l'effacement de l'historique du navigateur à la page Quitter.
+* ... 
+
+--------------------------------------------------------------------------------
+G) Contributions
+* Programation
+  Php and javascript : Cedric Augustin (cedric@isoca.com)
+
+* Web Design & Graphics 
+  Layout & graphics: Raphaël GRIGNANI (i@977design.com) from 977design (http://www.977design.com). 
+  Color code: Joshua Davis
+
+* Translations 
+  Peter Arnmark (peter@arnmark.net) from Net Business Design (http://www.netbusinessdesign.com). 
+
+
+--------------------------------------------------------------------------------
+H) Change log
+0.4
+* Design entièrement revu
+* Optimisation de la lecture de la boite aux lettres et des messages
+* Lecture de tout les types d'attachements
+* Lecture des emails au format html
+* Mise en place du fonctionnement multi-utilisateur (profil et carnet d'adresse)
+* Modification de l'arboréscence
+* Traduction en 5 langues
+
+0.3
+* Lecture des attachements
+* Utilisation de php 4
+
+0.2
+* Première version publique diffusée avec la licence GNU
+
+--------------------------------------------------------------------------------
+I) FAQ
+Q:Pourquoi tout est en anglais ?
+R: Pour anticiper la notoriété... ;-) 
+
+Q: Peut-on modifier le code ?
+R: Oui bien sûr. Ce travail est diffusé sous la GNU Public Licence. Cela signifie 
+entre autre que vous pouvez en modifier le code, mais selon certaines règles 
+(article 2):
+a) Ajouter aux fichiers modifiés l'indication très claire des modifications 
+effectuées, ainsi que la date de chaque changement. 
+b) Distribuer sous les termes de la Licence Publique Générale l'ensemble de 
+toute réalisation contenant tout ou partie du Programme, avec ou sans 
+modifications. 
+c) Si le Programme modifié lit des commandes de manière interactive lors de son
+exécution, faire en sorte qu'il affiche, lors d'une invocation ordinaire, le 
+copyright approprié en indiquant clairement la limitation de garantie (ou la 
+garantie que Vous Vous engagez à fournir Vous-même), qu'il stipule que tout 
+utilisateur peut librement redistribuer le Programme selon les conditions de la 
+Licence Publique Générale GNU, et qu'il montre à tout utilisateur comment lire 
+une copie de celle-ci. 
+
+Q: Y aura-t-il de nouvelles versions?
+R: J'y compte bien. La nouvelle version 0.4 est batti pour être évolutive et 
+permettre à chacun de rajouter des fonctionnalitées que je n'ai plus le temps de 
+développer (et oui la famille...).
+
+Q: Peut-on l'installer ailleurs que chez Hebergement discount ?
+R: Vous faites ce que vous voulez. Je crains cependant que la fonction PHP 
+"mail" ne soit pas disponible chez la plupart des autres hébergeurs (à cause de
+ceux qui font du spam). Mais si les bibliothèques IMAP sont installées, cela 
+devrait marcher au moins pour consulter les messages. 
+
+Q: Où trouve-t-on les anciennes versions
+R: Dans le même repertoire que les nouvelles :
+http://www.isoca.com/creation/webmail/cedricemailreader02.zip
+http://www.isoca.com/creation/webmail/cedricemailreader03.zip
+
+Q: Pour le support ?
+R: Ne comptez pas trop sur moi, je suis en passe de me faire lincher par ma femme 
+dès que j'approche d'un peu trop près de l'ordinateur. Non je plaisante. 
+Par contre toutes vos suggestions et contributions sont les bienvenues.
+
+Q: Responsabilités ?
+R: Je ne suis responsable de rien, vous assumez toutes les conséquences de 
+l'utilisation de ces scripts. 
+--------------------------------------------------------------------------------
+Cédric - http://www.isoca.com/ 

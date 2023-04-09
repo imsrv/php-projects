@@ -1,0 +1,59 @@
+<?php
+//  Simon's Rock Event Calendar
+//  Copyright (C) 1999-2001 Ryan Krebs and Simon's Rock College of Bard
+//  Please read the accompanying files "COPYING" and "COPYRIGHT"
+//  for more information
+//  $Id: sql.php3.in,v 1.5 2001/05/27 23:27:02 fluffy Exp $  
+
+if (!$SQL_INCLUDED)
+{
+	$SQL_INCLUDED = 1;
+
+	// each function does what its name implies.
+	// we want to keep this file separate so prying eyes don't steal db access
+	function connectROToAuth()
+	{
+		if (!$GLOBALS["AUTH_RO_CONN"])
+		{
+			$GLOBALS["AUTH_RO_CONN"] = @pg_connect(
+				"user=<<dbro>> port=5432 dbname=<<authdb>>");
+		}
+
+		return $GLOBALS["AUTH_RO_CONN"];
+	}
+
+	function connectRWToAuth()
+	{
+		if (!$GLOBALS["AUTH_RW_CONN"])
+		{
+			$GLOBALS["AUTH_RW_CONN"] = @pg_connect(
+				"user=<<dbrw>> port=5432 dbname=<<authdb>>");
+		}
+
+		return $GLOBALS["AUTH_RW_CONN"];
+	}
+
+	function connectROToCalendar()
+	{
+		if (!$GLOBALS["CAL_RO_CONN"])
+		{
+			$GLOBALS["CAL_RO_CONN"] = @pg_connect(
+				"user=<<dbro>> port=5432 dbname=<<caldb>>");
+		}
+
+		return $GLOBALS["CAL_RO_CONN"];
+	}
+
+	function connectRWToCalendar()
+	{
+		if (!$GLOBALS["CAL_RW_CONN"])
+		{
+			$GLOBALS["CAL_RW_CONN"] = @pg_connect(
+				"user=<<dbrw>> port=5432 dbname=<<caldb>>");
+		}
+
+		return $GLOBALS["CAL_RW_CONN"];
+	}
+
+}
+?>

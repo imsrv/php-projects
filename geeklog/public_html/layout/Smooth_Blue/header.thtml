@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={charset}">
+<title>{page_title}</title>
+<!--
+<meta http-equiv="Pragma" content="no-cache"> 
+-->
+<link rel="stylesheet" type="text/css" href="{css_url}" title="{theme}">
+<!-- Needed JavaScript Code -->
+<script type="text/javascript">
+    var cleared = 0;
+
+    function clearField(field)
+    {
+        if (cleared != 1) {
+            field.value = ""
+            cleared = 1
+        } else {
+            cleared = 0
+        }
+    }
+</script>
+{plg_headercode}
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#000000" vlink="#000000" alink="#000000">
+<!-- HEADER -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td class="upper-left"><img src="{layout_url}/interface/blank.gif" width="16" height="16" alt="" border="0"></td>
+	<td class="upper-mid" width="100%"><img src="{layout_url}/interface/blank.gif" width="10" height="4" alt="" border="0"></td>
+	<td class="upper-right"><img src="{layout_url}/interface/blank.gif" width="16" height="16" alt="" border="0"></td>
+  </tr>
+  <tr>
+    <td class="main-left"><img src="{layout_url}/interface/blank.gif" width="16" height="7" alt="" border="0"></td>
+    <td class="main-mid" width="100%" align="right" nowrap="nowrap">
+	  <img src="{layout_url}/interface/logo-geeklog.gif" alt="" border="0" align="left">
+      <div class="header1">{site_name}</div>
+	  <div class="header2">{site_slogan}</div>
+	</td>
+    <td class="main-right"><img src="{layout_url}/interface/blank.gif" width="16" height="7" alt="" border="0"></td>
+  </tr>
+  <tr>
+    <td class="menu" colspan="3" nowrap="nowrap">
+      <a href="{site_url}/index.php">Homepage</a> |
+      <a href="{site_url}/submit.php?type=story{current_topic}">{button_contribute}</a> |
+      <a href="{site_url}/links.php">{button_links}</a> |
+      <a href="{site_url}/calendar.php">{button_calendar}</a> |
+      <a href="{site_url}/usersettings.php?mode=preferences">{button_personalize}</a> |
+      <a href="{site_url}/pollbooth.php">{button_polls}</a> |
+      <a href="{site_url}/search.php">{button_search}</a> |
+      <a href="{site_url}/stats.php">{button_sitestats}</a>
+    </td>
+  </tr>
+  <tr>
+    <td class="shadow-left"><img src="{layout_url}/interface/blank.gif" width="16" height="7" alt="" border="0"></td>
+	<td class="shadow-mid" width="100%"><img src="{layout_url}/interface/blank.gif" width="7" height="7" alt="" border="0"></td>
+    <td class="shadow-right"><img src="{layout_url}/interface/blank.gif" width="16" height="7" alt="" border="0"></td>
+  </tr>
+  <tr>
+    <td class="main-left"><img src="{layout_url}/interface/blank.gif" width="16" height="7" alt="" border="0"></td>
+    <td class="main-mid" width="100%" align="center">{plg_menu_elements}</td>
+    <td class="main-right"><img src="{layout_url}/interface/blank.gif" width="16" height="7" alt="" border="0"></td>
+  </tr>
+  <tr>
+    <td class="main-left" valign="bottom"><img src="{layout_url}/interface/blank.gif" width="16" height="7" alt="" border="0" class="lower-left"></td>
+    <td width="100%">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+	  <tr>
+		{left_blocks}
+		<td class="main-mid" width="100%" valign="top">
+          <img src="{layout_url}/interface/blank.gif" width="100%" height="6" alt="" border="0">

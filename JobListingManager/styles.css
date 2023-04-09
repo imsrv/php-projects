@@ -1,0 +1,73 @@
+A.menu {
+	font-size: 12px;
+	color:#FFFFFF;
+}
+A.menu:hover {
+	font-size: 12px;
+	color:#CCCCCC;
+	text-decoration: underline;
+}
+A.menu:active {
+	font-size: 12px;
+	color:#CCCCCC;
+}
+table {font-family: Verdena, Arial, Helvetica; font-size: 11px;}
+body {font-family: Verdena, Arial, Helvetica; font-size: 11px;}
+.hr1 {
+	color: #CCCCCC;
+	line-height: 1px;
+	text-decoration: underline;
+	border: 1px inset #666666;
+}
+.hr2 {
+	color: #000000;
+	border: 1px dashed #CCCCCC;
+	line-height: 1px;
+}
+
+h3 {
+	font-size: 14px;
+	font-weight: bold;
+}
+h4 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	background-color: #660033;
+
+}
+a{color: #0000FF; font-size: 11px; text-decoration: underline;}
+a:hover {color: #FF0000; font-size: 11px;}
+a:active { color: #660033; font-size: 11px;}
+
+.row1 {background-color: #F4F4F4
+}
+.row2 {
+	background-color: #FFFFFF;
+
+}
+.tableheader {
+	font-weight: bold;
+	background-color: #DAE3E3;
+	padding: 3px;
+	margin: 3px;
+}
+input {
+	font-size: 10px;
+}
+select {
+	font-size: 10px;
+}
+.tableborder {
+	border: 1px solid #000000;
+	padding: 3px;
+
+}
+.tableborder2 {
+	border: 1px solid #cccccc;
+	padding: 3px;
+
+}
+.unnamed1 {
+	font-family: Arial, Helvetica, sans-serif;
+}

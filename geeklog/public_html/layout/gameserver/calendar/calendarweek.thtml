@@ -1,0 +1,4 @@
+                                    <tr>
+                                        <td bgcolor="#2e4166" valign="middle" align="center"><b><a href="{site_url}/calendar.php?mode={mode}&view=week&month={wmonth}&day={wday}&year={wyear}">>></a></b></td>
+                                        {cal_days}
+                                    </tr>

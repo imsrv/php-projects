@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>Partner Gallery Submission Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1251">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<p align="center"><center><font face="Verdana" size="1" color="#000000"><b><font size="4">Partner 
+          Gallery Submission Form </font></b></font> 
+        </center>
+      </p>
+      <form method="POST" action="/cgi-bin/tgp/psubmit.pl">
+<div align="center">
+  <center>  
+
+ <table border="0" cellpadding="0" cellspacing="0" width="360">
+      <tr>
+                <td bgcolor="#C0C0C0"><font face="Verdana"><b>Username</b></font></td>
+        <td bgcolor="#C0C0C0"> 
+        
+       <font face="Verdana"><b><input type="text" name="webname" size="20"></b></font>
+
+</td>
+  </tr>
+  <tr>
+                <td bgcolor="#C0C0C0"><font face="Verdana"><b>Password</b></font></td>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b> 
+          <input type="text" name="webpass" size="20"></b></font></td>
+  </tr>
+  <tr>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>Gallery URL</b></font></td>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b> 
+          <input type="text" name="weburl" size="20"></b></font></td>
+  </tr>
+  <tr>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>Category</b></font></td>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>
+          <select name="webcate">		  
+<option value="Amateurs">Amateurs</option>
+<option value="Anal Sex">Anal Sex</option>
+<option value="Babes">Babes</option>
+<option value="Dicks/Shemales">Dicks/Shemales</option>
+<option value="Fetish/Bondage/Watersports">Fetish/Bondage/Watersports</option>
+<option value="Groups">Groups</option>
+<option value="Hardcore">Hardcore</option>
+<option value="Lesbians">Lesbians</option>
+<option value="Older Women">Older Women</option>
+<option value="Oral Sex">Oral Sex</option>
+<option value="Videos/MPEGs/AVIs">Videos/MPEGs/AVIs</option>
+
+          </select>
+          </b></font></td>
+  </tr>
+  <tr>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>Number of Pics</b></font></td>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b> 
+          <input type="text" name="webpics" size="20"></b></font></td>
+  </tr>
+  <tr>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>Description</b></font></td>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b> 
+          <input type="text" name="webdesc" size="20"></b></font></td>
+  </tr>
+
+</table>
+
+  </center>
+  </div>
+    <p align="center"><input type="submit" value="SUBMIT YOUR GALLERY" name="B1">
+</p></form>
+
+</body>
+</html>

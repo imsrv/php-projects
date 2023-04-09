@@ -1,0 +1,225 @@
+<html>
+<head><title>CyberCart Example Page</title></head>
+<body bgcolor=ffffff>
+<center>
+
+<h1>CyberCart Example Page</h1>
+</center>
+
+<!-- Set of CyberCart Function Buttons  -->
+
+<center>
+<table>
+<tr valign=top align=center>
+
+<td>
+<form method=post action="http://swww.lobo.net/cgi-bin/cgiwrap/cart2/cybercart.pl">
+Term:<input type=text name="term" size=15 maxlength=40>
+<input type=hidden name="action" value="search">
+<input type=hidden name=merchant value=Demo>
+<input type=submit value="Search">
+</form>
+</td>
+
+<td>
+<form method=post action="http://swww.lobo.net/cgi-bin/cgiwrap/cart2/cybercart.pl">
+<input type=hidden name="action" value="order">
+<input type=hidden name=merchant value=Demo>
+<input type=submit value="Show Order">
+</form>
+</td>
+
+<td>
+<form method=post action="http://swww.lobo.net/cgi-bin/cgiwrap/cart2/cybercart.pl">
+<input type=hidden name="action" value="place">
+<input type=hidden name=merchant value=Demo>
+<input type=submit value="Check Out">
+</form>
+</td>
+
+<td>
+<form method=post action="http://swww.lobo.net/cgi-bin/cgiwrap/cart2/cybercart.pl">
+<input type=hidden name="action" value="clear">
+<input type=hidden name=merchant value=Demo>
+<input type=submit value="Clear Order">
+</form>
+</td>
+
+</tr>
+</table>
+</center>
+
+<!-- Form tag to add items to shopping cart -->
+<form method=post action="http://swww.lobo.net/cgi-bin/cgiwrap/cart2/cybercart.pl">
+<input type=hidden name=action value=add>
+<input type=hidden name=merchant value=Demo>
+<input type=hidden name=page_name value=demo.html>
+
+<!-- Item Examples to use as a template -->
+
+<!-- include a name anchor for the search engine -->
+<a name="item01"></a>
+<h2>Set of Juggling Bags</h2>
+Items can include just a simple description, price and quantity textbox.<p>
+Price: $9.95 
+Quantity: 
+<input type=text name=item01_quant size=2 maxsize=3>
+<input type=hidden name=item01_name value="Juggling Bags">
+<input type=hidden name=item01_price value=9.95>
+<br>
+<input type=submit value="Order">
+<p>
+<hr>
+
+<a name="item02"></a>
+<h2>The Complete Book of Juggling</h2>
+The price of items that comes in different forms, such as a softback 
+and hardback books, can be specified in a drop down menu.<p>
+<select name=item02_price>
+<option value=Softback-$9.95>Softback - $9.95
+<option value=Hardback-$19.95>Hardback - $19.95
+</select>
+Quantity: <input type=text name=item02_quant size=2 maxsize=3>
+<input type=hidden name=item02_name value="The Complete Book of Juggling">
+<p>
+
+<hr>
+<a name="item03"></a>
+<h2>Juggling T-Shirt</h2>
+You can also specify several additional properties specified in the
+@properties variable.  For example, t-shirts come in different colors and sizes.
+<p>
+Size: <select name=item03_price>
+<option value=Small-$9.95>Small - $9.95
+<option value=Medium-$9.95>Medium - $9.95
+<option value=Large-$12.95>Large - $12.95
+<option value=XL-$15.95>XL - $15.95
+</select>
+Color: <select name=item03_prop1>
+<option>White
+<option>Blue
+<option>Black
+<option>Yellow
+</select>
+<br>
+Quantity:<input type=text name=item03_quant size=3>
+<input type=hidden name=item03_name value="Juggling tshirt">
+<input type=submit value=Order>
+<p>
+<hr>
+<p>
+
+<a name="item07">
+<h2>75 Tricks with a Stripper Deck</h2></a>
+You can also set up quantity pricing through the HTML.
+<pre>
+Quantity  Price
+ 1-10     $1.95
+11-20     $1.75
+21+       $1.50
+</pre>
+<p>
+<input type=hidden name=item07_name value="75 Tricks with a Stripper Deck">
+<input type=hidden name=item07_price value=1to10!1.95|11to20!1.75|21to50!1.50>
+Quantity <input type=text name=item07_quant size=2 value=0>
+<br clear=all>
+<input type=submit value="Add Items">
+</form>
+
+<p>
+<hr>
+<p>
+All of the above items are part of the same form, so several of the 
+above items could be ordered at the same time.  You can also use
+buttons or images to add individual items to the shopping cart.  But
+to do this, each item must be a separate form.  Examples are shown
+below.
+<p>
+<hr>
+
+<!-- Form tag to add items to shopping cart -->
+<form method=post action="http://swww.lobo.net/cgi-bin/cgiwrap/cart2/cybercart.pl">
+<input type=hidden name=action value=add>
+<input type=hidden name=merchant value=Demo>
+<input type=hidden name=page_name value=demo.html>
+
+<a name="item04"></a>
+<h2>Set of Juggling Clubs</h2>
+If the order button for this item is submitted, the quantity is 
+automatically set at 1, but can be changed later during the order 
+processing.<p>
+<input type=hidden name=item04_name value="Set of Juggling Clubs">
+<input type=hidden name=item04_quant value=1>
+<input type=hidden name=item04_price value=29.95>
+<input type=submit value="Order 1 Set of Juggling Clubs">
+<p>
+
+
+</form>
+
+
+<!-- Form tag to add items to shopping cart -->
+<form method=post action="http://swww.lobo.net/cgi-bin/cgiwrap/cart2/cybercart.pl">
+<input type=hidden name=action value=add>
+<input type=hidden name=merchant value=Demo>
+<input type=hidden name=page_name value=demo.html>
+
+<p>
+<hr>
+<p>
+
+<a name="item05"></a>
+<h2>Juggling Video</h2>
+A checkbox can also be used for adding items to the cart.  For example, a 
+series of three videos.<p>
+<b>Volume 1</b><input type=checkbox name=video1_quant value=1><br>
+<b>Volume 2</b><input type=checkbox name=video2_quant value=1><br>
+<b>Volume 3</b><input type=checkbox name=video3_quant value=1><br>
+Each video only $19.95!<p>
+
+<input type=hidden name=video1_name value="Juggling Video Vol 1">
+<input type=hidden name=video1_price value=9.95>
+
+<input type=hidden name=video2_name value="Juggling Video Vol 2">
+<input type=hidden name=video2_price value=9.95>
+
+<input type=hidden name=video3_name value="Juggling Video Vol 3">
+<input type=hidden name=video3_price value=9.95>
+
+<input type=submit value="Order These Videos!">
+</form>
+<p>
+
+<hr>
+<h1>Referrer Function</h1>
+Another function of CyberCart allows other web sites to set up a link to the 
+CyberCart pages and track orders generated from these links.  The referrer can
+be notified by email when an order results from someone linking through their
+site and the referrer can also check a summary of such orders.  The referrer 
+needs to register with the merchant (the referrers ID, email address, and password, which is 
+optional).  But once this is done, the referrer simply makes a link to the 
+CyberCart script, and a cookie is set to track that order's origin (the 
+referrer's ID is the only thing placed in the cookie).  Here is an example 
+link:<br>
+<a href="http://swww.lobo.net/cgi-bin/cgiwrap/cart2/cybercart.pl/Demo:rtweb">Go to CyberCart Demo</a>
+<p>
+To check on summaries of referred orders, the referrer connects to a summary 
+script in much the same way.  A password can be required as well.  Here is an
+example:<br>
+<a href="http://swww.lobo.net/cgi-bin/cgiwrap/cart2/summary.pl/Demo:rtweb:1234">Summary of rtweb</a>
+<p>
+Referrers can be quickly added through the Administration script.<p>
+<hr>
+<p>
+These are just a few examples of how items for CyberCart can be formatted on 
+HTML pages - see the CyberCart installation manual for more information on
+additional formatting.
+<p>
+
+<h5>
+<hr>
+Copyright &copy 1997, Richard Torzynski
+
+</body>
+</html>
+

@@ -1,0 +1,190 @@
+/* Table of Contents:
+
+	1. Films List Display
+	2. Film Page
+	3. Article Page
+	4. Link Styles
+	5. Site Layout
+	6. Typography
+	7. Navigation Menu
+	
+*/
+
+/* 1. Films List Display ----------------------------------------------------------- */
+#filmslist A{text-decoration: none; color:#F8CF01; background-color:#000; text-transform:uppercase;}
+#filmslist A:visited {text-decoration: none; color:#F8CF01; background-color:#000; text-transform:uppercase;}
+#filmslist A:active {text-decoration: none; color:#F8CF01; background-color:#000; text-transform:uppercase;}
+#filmslist A:hover {text-decoration: none; color:#ffe464; background-color:#000; text-transform:uppercase;}
+
+#filmslist { background-image:url(../images/filmsbg.jpg); background-color:#252525; background-repeat:repeat-x; padding:5px; margin-top:5px; color:#FFF;}
+#filmsbgbot { background-color:#f9bc00; height:10px; background-image:url(../images/filmsbgbot.gif); background-repeat:repeat-x;}
+#filminfo { }
+#filmslistimg { margin-right:10px; }
+
+/* 2. Film Page ----------------------------------------------------------- */
+.filminfostats A{text-decoration: none; color:#F8CF01;}
+.filminfostats A:visited {text-decoration: none; color:#F8CF01;}
+.filminfostats A:active {text-decoration: none; color:#F8CF01;}
+.filminfostats A:hover {text-decoration: none; color:#ffe464;}
+.filmarticlebg { background-image:url(../images/filmarticlebg.jpg); background-repeat:repeat-x; padding:10px;
+border-left:solid #eaeaea 3px; border-bottom:solid #eaeaea 3px;}
+.filmarticlebgr { background-image:url(../images/filmarticlebgr.jpg); background-repeat:no-repeat; width:9px; height:38px; float:right;}
+.filminfobox { float:right; background-color:#000; width:200px;}
+.filminfostats { background-color:#000; padding:0px; color:#fff; background-image:url(../images/filminfostatsbg.gif); background-position:bottom; background-repeat:no-repeat;}
+.filminfostats2 { padding:10px; color:#fff; background-image:url(../images/filminfostatsbg2.gif); background-repeat: repeat-x;}
+.filminfocontent { width:355px;}
+.filminfoimg { border-width:thin; border-color:#FFD200;}
+h3 { font-weight:bold; font-size:13px;}
+
+
+/* 3. Article Page ----------------------------------------------------------- */
+.articlecontent { width:560px;}
+
+/* 4. Link Styles ----------------------------------------------------------- */
+A{text-decoration: underline; color:#000; }
+A:visited {text-decoration: underline; color:#000; }
+A:active {text-decoration: underline; color:#000; }
+A:hover {text-decoration: none; color:#777; }
+#sidetxt {margin-left:10px; margin-top:15px;}
+
+/* 5. Site Layout ----------------------------------------------------------- */
+body {
+    font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif; 
+    font-size: 11px; 
+	background-color:#333;
+	text-align:center;
+	color: #333;
+    text-decoration: none;
+	margin-bottom:0px;
+	margin-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+	background-image:url(../images/bg.jpg);
+	background-repeat: repeat-x;			
+	}
+	
+	#frame {
+		width:750px;
+		margin-right:auto;
+		margin-left:auto;
+		margin-top:0px;
+		padding:0px;
+		text-align:left;
+		background-color:#FFFFFF;
+		background-image:url(../images/bg2.gif);
+		background-position:bottom right;
+		background-repeat:no-repeat;
+		height:100%;
+		}
+		
+	#contentleft {
+		width:120px;
+		padding:0px;
+		float:left;
+						
+		}
+	
+	#contentcenter {
+		width:570px;
+		padding-left: 20px;
+		float:left;
+		margin-left:10px;
+		margin-top:2px;
+		line-height:15px;
+		padding-bottom:10px;
+							
+		}
+		
+			
+	#contentright {
+		width:135px;
+		padding:0px;
+		float:left;
+		
+		}
+		
+	#contentright p {
+	font-size:10px
+	
+		}
+		
+	img { border:none;}	
+		
+/* 6. Typography ----------------------------------------------------------- */		
+	p,h1,pre {
+		margin:0px 10px 10px 0px;
+		}
+		
+	h1 {
+	 font-size: 17px;
+     font-weight: bold;
+     letter-spacing: -1px;
+     text-align: center;
+     display: inline;
+     font-family: Helvetica, Arial, Sans-Serif;
+     color: #333333;
+	 text-transform: uppercase;
+	 }
+	 
+	 h2 {font-size: 14px;
+	 font-weight: bold;
+	 text-align: center;
+	 display: inline;
+	 font-family: Helvetica, Arial, Sans-Serif;
+	 color: #fff;
+	 text-transform: uppercase;
+	 }	
+	
+/* 7. Navigation Menu ----------------------------------------------------------- */	
+#navcontainer { margin-left: 0px; }
+
+#navcontainer ul
+{
+margin: 0;
+padding: 0;
+list-style-type: none;
+font-family: verdana, arial, Helvetica, sans-serif;
+}
+
+#navcontainer li { margin: 0 0 1px 0; }
+
+#navcontainer a
+{
+display: block;
+margin-left:10px;
+padding: 5px 20px;
+width: 90px;
+color: #fff;
+background-color: #323232;
+text-decoration: none;
+letter-spacing:0px;
+}
+
+#navcontainer a:hover
+{
+color: #F8CF01;
+background-color: #323232;
+text-decoration: none;
+background-image:url(../images/butover.jpg);
+background-repeat:repeat-y;
+}
+
+#navcontainer ul ul li { margin: 0 0 1px 0; }
+
+#navcontainer ul ul a
+{
+display: block;
+padding: 5px 5px 5px 30px;
+width: 125px;
+color: #fff;
+background-color: #369;
+text-decoration: none;
+}
+
+#navcontainer ul ul a:hover
+{
+color: #fff;
+background-color: #69C;
+text-decoration: none;
+
+}

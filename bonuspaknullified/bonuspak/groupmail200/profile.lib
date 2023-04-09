@@ -1,0 +1,172 @@
+# -----------------------------------------------------------------
+#                     GroupMail Secure Version 2.00
+#
+#                       Profile Library Functions
+#                          Supplied by  Virus
+#                          Nullified by CyKuH
+#    Filename : profile.lib
+# -------------------------------------------------------------------
+
+sub profstart {
+$named = $Cookies{'name'} unless ($named);
+if (-e "$basepath$profdir/$named.dat") {
+  open(STUDFILE, "$basepath$profdir/$named.dat");
+  ($name, $loc, $birth, $sex, $hobby, $occ, $quote) = <STUDFILE>;
+  close STUDFILE;
+#  chomp($name, $loc, $birth, $sex, $hobby, $occ, $quote);
+}
+
+$banner = &makebanner ('PROFILE <font size=2>edit');
+print <<"EOF";
+<body $bodybg $bodytext>$mainfont $banner
+<p><div align="center">
+<form method="POST" action="$ENV{'SCRIPT_NAME'}">
+ <input type=hidden name=action value=procprof>
+<table width="400" $subtablebg border="1" cellpadding=5><tr>
+<td align=center>$mainfont Your Profile identifies you to other group members<br>
+Enter your real name and whatever else you wish<p>
+<table width=100% border=0 cellspacing=5 cellpadding=5>
+
+<tr><td width=30%> $mainfont
+<b>Username</b>: </td><td width=70%><input type="text" name="NAME" size="20"  value="$named"></td></tr>
+
+<tr><td width=30%> $mainfont<b>Real name & location</b> <font size="-1"> </font>: </td><td width=70%><input type="text" name="LOCATION" size="36" value="$loc"></td></tr>
+
+<tr><td width=30%> $mainfont<b>Occupation</b>: </td><td width=70%><input type="text" name="OCC" size="36" value="$occ"></td></tr>
+
+<tr><th colspan=2 align=center>Optional</th></tr>
+<tr><td width=30%> $mainfont<b>Birth date</b><font size="-1">(day month year)</font>: </td><td width=70%><input type="text" name="BIRTH" size="10" value="$birth"></td></tr>
+
+<tr><td width=30%> $mainfont<b>Gender</b><font size="-1"> (M/F)</font>: </td><td width=70%><input type="text" name="SEX" size="10" value="$sex"></td></tr>
+
+<tr><td width=30%> $mainfont<b>Hobbies</b>: </td><td width=70%><input type="text" name="HOBBY" size="36" value="$hobby"></td></tr>
+
+<tr><td width=30%> $mainfont<b>Additional info</b>: </td><td width=70%><textarea rows="4" name="QUOTE" cols="35">$quote</textarea> </td></tr></table>                                                                        
+<center><table><tr><td align=center><input type="submit" value="Submit" name="Submit"></td></tr> </table>
+</td></tr></table></form></div></body>
+EOF
+}
+
+sub procprof {
+	&oops('Not a registered user!') unless (open(REGFILE, "$basepath$regdir/$Cookies{'name'}.dat"));
+	($null1, $null2, $html, $mailme) = <REGFILE>;
+	close REGFILE;
+
+	&oops('You didnt specify your name') unless ($form{'NAME'});
+	&oops('You didnt specify your real name or location') unless ($form{'LOCATION'});
+
+	&oops('Cannot open profile folder!') unless (open(MAILFILE, ">$basepath$profdir/$Cookies{'name'}.dat"));
+	print MAILFILE
+		"$form{'NAME'}\n$form{'LOCATION'}\n$form{'BIRTH'}\n$form{'SEX'}\n$form{'HOBBY'}\n$form{'OCC'}\n$form{'QUOTE'}";
+close (MAILFILE);
+
+$bulletin = "Profile published for $Cookies{'name'}";
+&viewall
+}
+
+sub showprof {
+if (-e "$basepath$profdir/$form{'member'}.dat") {
+&oops("Sorry $form{'member'} does not have a Profile") unless (open(STUDFILE, "$basepath$profdir/$form{'member'}.dat"));
+($name, $loc, $birth, $sex, $hobby, $occ, $quote) = <STUDFILE>;
+close STUDFILE;
+chomp($name, $loc, $birth, $sex, $hobby, $occ, $quote);
+$loc = "----------" if (!$loc );
+$birth = "----------" if (!$birth );
+$sex = "----------" if (!$sex );
+$hobby = "----------" if (!$hobby );
+$occ = "----------" if (!$occ );
+$quote = "----------" if (!$quote );
+
+$banner = &makebanner ("PROFILE <font size=2>$form{'member'}");
+print <<"EOF";
+<body $bodybg $bodytext> $mainfont $banner
+<p><div align="center">
+EOF
+
+print "<b>Previous action:</b> $bulletin<p>" if ($bulletin);
+
+print <<EOF;
+<table border="4" cellpadding="2" width="600" $subtablebg>
+  <tr>
+    <td width="9%">Username</td>
+    <td width="91%">$name</td>
+  </tr>
+  <tr>
+    <td width="9%">Real name/ Location</td>
+    <td width="91%">$loc</td>
+  </tr>
+  <tr>
+    <td width="9%">Occupation</td>
+    <td width="91%">$occ</td>
+  </tr>
+  <tr>
+    <td width="9%">Birth Date</td>
+    <td width="91%">$birth</td>
+  </tr>
+  <tr>
+    <td width="9%">Gender (M/F)</td>
+    <td width="91%">$sex</td>
+  </tr>
+  <tr>
+    <td width="9%">Hobbies</td>
+    <td width="91%">$hobby</td>
+  </tr>
+  <tr>
+    <td width="9%">Additional info</td>
+    <td width="91%">$quote</td>
+  </tr>
+</table>
+<p>&nbsp;</p><BR>
+EOF
+}
+else {
+$bulletin = "Sorry, $form{'member'} does not have a profile<p>";
+&viewall
+}
+}
+
+################  Admin backup and restore of profiles  ##################
+
+
+sub backprof   {
+unless (-e "$basepath$backdir/$profdir")   {
+    &oops ("Unable to create $basepath$backdir/$profdir: $!") unless ( mkdir "$basepath$backdir/$profdir", 0755 );
+}
+
+&oops ( "Unable to open $basepath$profdir: $!") unless (opendir THEDIR, "$basepath$profdir");
+@allfiles = readdir THEDIR;
+closedir THEDIR;
+
+foreach (@allfiles) {
+   if ($_ =~ /\.dat$/i) {
+   open (REGFILE, "$basepath$profdir/$_");
+   @file = <REGFILE>;
+   close REGFILE;
+   &oops ( "Unable to write $basepath$backdir/$profdir/$_: $!") unless (open BACKFILE,  ">$basepath$backdir/$profdir/$_");
+   print BACKFILE @file;
+   close BACKFILE;
+   }
+}
+
+$bulletin = "Profiles BACKUP successful!";
+}
+
+sub restprof   {
+&oops ( "Unable to open $basepath$backdir/$profdir: $!") unless (opendir BACKDIR, "$basepath$backdir/$profdir");
+@allfiles = readdir BACKDIR;
+closedir BACKDIR;
+
+foreach (@allfiles) {
+   if ($_ =~ /\.dat$/i) {
+   open (BACKFILE, "$basepath$backdir/$profdir/$_");
+   @file = <BACKFILE>;
+   close BACKFILE;
+   &oops ( "Unable to write $basepath$profdir/$_: $!") unless (open REGFILE,  ">$basepath$profdir/$_");
+   print REGFILE @file;
+   close REGFILE;
+   }
+}
+
+$bulletin = "Profiles RESTORE successful!";
+}
+1;

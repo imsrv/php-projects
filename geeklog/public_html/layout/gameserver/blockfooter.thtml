@@ -1,0 +1,12 @@
+						</td></tr>
+						</table>
+					</td>
+					<td width="9" background="{layout_url}/theme-images/gameserver-block-r.gif"><img src="{layout_url}/theme-images/pixel.gif" height="9" width="9"></td>
+				</tr>
+				<tr>
+					<td width="9" background="{layout_url}/theme-images/gameserver-block-bl.gif"><img src="{layout_url}/theme-images/pixel.gif" height="9" width="9"></td>
+					<td height="9" background="{layout_url}/theme-images/gameserver-block-b.gif"><img src="{layout_url}/theme-images/pixel.gif" height="9"></td>
+					<td width="9" background="{layout_url}/theme-images/gameserver-block-br.gif"><img src="{layout_url}/theme-images/pixel.gif" height="9" width="9"></td>
+				</tr>
+			</table><br>
+<!-- END BLOCK -->

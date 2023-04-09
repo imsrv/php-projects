@@ -1,0 +1,87 @@
+INSTALL for eCorrei 1.2.5
+2 February 2002
+======================================
+
+CONTENTS
+========
+
+1. Requirements
+
+2. Installation
+
+3. Windows comments
+
+
+1. Requirements
+===============
+
+You don't need a heavy system to be able to run eCorrei. The test 
+system I use is a Pentium 100 MHz system, running Redhat Linux 7.1
+with 32 MB of RAM. The minimum requirements are:
+
+	*	A web server (like Apache 1.3.23)
+
+	*	A SMTP server or access to one (Sendmail is
+		standard on most Linux systems)
+
+	*	PHP 4.0.3 (tested with PHP 4.1.0)
+
+	*	IMAP module of PHP
+
+This should be everything. You also should have the permissions
+to write to files in your directory's.
+
+Also make sure the extension .php is connected to PHP.
+
+To check your PHP environment, upload the check.php file, and view
+it with your browser. If all tests are passed, eCorrei should
+run fine. Delete the check.php file after installation as it
+could give away sensitive server info. 
+
+PHP can be found at http://www.php.net/, Apache can be found at 
+http://www.apache.org/.
+
+In the PHP manual you can see how to compile the IMAP module for
+PHP.
+
+2. Installation
+===============
+
+	1.	Download eCorrei (file: ecorrei-1.2.5.tar.gz)
+
+	2.	Unpack the file in a directory on your webserver.
+		(tar zxvf ecorrei-1.2.5.tar.gz)
+
+	4.	Change the config file (config.php)
+		
+		You probably want to change the domains array
+
+	5.	Change the permissions for the user dir to 777
+
+	6.	Create the temp dir, according to the path 
+		specified in the config.php file
+
+	7.	Change the permissions for the temp dir to 777
+		
+	8.	Now you have installed eCorrei!
+		Test eCorrei by calling the index.php file 
+		in the eCorrei installation directory in your 
+		browser.
+
+3. Windows comments
+===================
+
+I have done only limited testing on Windows, but eCorrei prooved
+to be relatively "Plug 'n' Play". One thing you have to look at
+is the hostname variable in the config file. This variable must
+contain the hostname of the computer running eCorrei. It is used
+in redirections, so it must be correct. When you're running Apache
+(probably other servers too) the hostname used by the browser can
+be obtained using the $HTTP_HOST variable. My recommendation is 
+leaving the value of the hostname variable as it is and test 
+eCorrei. If the redirections fail (for example, after you 
+change the options) you must hardcode the hostname. For 
+example, if hostname is "ecorrei.sourceforge.net" change the 
+line to read:
+$cfg->hostname = "ecorrei.sourceforge.net";
+ 

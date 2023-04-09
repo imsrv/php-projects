@@ -1,0 +1,34 @@
+<TABLE BORDER=0 CELLPADDING=3 CELLSPACING=0 [<($CONFIG{'WINCOLOR'})>] WIDTH=600>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><font face="[<($CONFIG{'font_face'})>]" size="-1" color="[<($CONFIG{'ttxt_color'})>]"><CENTER><B>Search Results</B></CENTER></TD><TR>
+<TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<UL>
+[<(
+	if ($num_results < 1) {
+		$OUT .= "<LI><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\">No matching posts were found, you might want to try a less specific search.\n";
+	}
+	else {
+		for $post (0 .. $cnt) {
+			
+			if ($temp{$foundposts[$post]{'id'}} < 1) {
+				if (($FORM{'Range'} eq $forum) && ($foundposts[$post]{'forum'} ne $forum)) { }
+				else {
+					tie %postsdb, "DB_File", "$GPath{'cforums_data'}/$foundposts[$post]{'forum'}.db";
+					%post = &readpost($postsdb{$foundposts[$post]{'id'}});
+					if (($post{'moderated'} eq "Yes") && ($post{'approved'} eq "F")) {next;}
+					if ($post{'suspended'} eq "T") {
+						if (($VALIDUSER eq "T") && (($IUSER{'filenum'} eq $IFORUM{'bbs_admin'}) || ($IUSER{'filenum'} eq $admin_num))) {
+							$OUT .= "<LI><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><A HREF=\"$GUrl{'cforum.cgi'}?clubs=$FORM{'clubs'}&forum=$foundposts[$post]{'forum'}&thread=$foundposts[$post]{'thread'}&action=message&highlight=$foundposts[$post]{'id'}\">$post{'subject'}</A><BR>&nbsp; &nbsp; &nbsp; &nbsp; <I>by $post{'name'} on $post{'date'}</I>\n";
+						}
+						else {next;}
+					}
+					$OUT .= "<LI><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><A HREF=\"$GUrl{'cforum.cgi'}?clubs=$FORM{'clubs'}&forum=$foundposts[$post]{'forum'}&thread=$foundposts[$post]{'thread'}&action=message&highlight=$foundposts[$post]{'id'}\">$post{'subject'}</A><BR>&nbsp; &nbsp; &nbsp; &nbsp; <I>by $post{'name'} on $post{'date'}</I>\n";
+					$temp{$foundposts[$post]{'id'}}++;
+				}
+			}
+		}
+	}
+)>]
+
+</UL>
+</TD></TR>
+</TABLE>

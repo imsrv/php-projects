@@ -1,0 +1,988 @@
+<TABLE CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Register For Membership</B></FONT></CENTER></TD></TR>
+<TR><TD [<($CONFIG{'WINCOLOR'})>]><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+
+<form ENCTYPE="application/x-www-form-urlencoded"  METHOD="POST" action="[<($GUrl{'register.cgi'})>]">
+<INPUT TYPE=hidden NAME=USER_Referer VALUE="[<($FORM{'USER_Referer'})>]">
+<B>Your Name:</B>:
+<TABLE>
+<TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">First Name:</TD><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Middle Name:</TD><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Last Name:</TD></TR>
+<TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><INPUT TYPE=TEXT NAME=USER_FirstName SIZE=12 VALUE="[<($IUSER{'FirstName'})>]" ></TD>
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><INPUT TYPE=TEXT NAME=USER_Initial SIZE=12 VALUE="[<($IUSER{'Initial'})>]" ></TD>
+<TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><INPUT TYPE=TEXT NAME=USER_LastName SIZE=12 VALUE="[<($IUSER{'LastName'})>]" ></TD></TR>
+</TABLE>
+
+
+<P>UserName<BR>
+<FONT SIZE=-2><I>Please make sure that it is easy to remember.  Lower case only, no spaces and no punctuation.</I></FONT><BR>
+
+<INPUT TYPE=TEXT NAME=UserName SIZE=20><BR>
+Email Address:<BR><INPUT TYPE=TEXT NAME=Email SIZE=20 VCARD_NAME="vCard.Email"><BR>
+
+[<(
+	if ($COMMUNITY_ICQ eq "YES") {
+	$OUT .= << "GEND";
+		<P>ICQ Number
+		<BR><INPUT TYPE=TEXT SIZE=20 NAME=USER_ICQ VALUE="$IUSER{'ICQ'}">
+GEND
+	}
+
+	if ($COMMUNITY_Age eq "YES") {
+	$OUT .= << "GEND";
+		<P>Age:
+		<BR><INPUT TYPE=TEXT SIZE=4 NAME=USER_Age VALUE="$IUSER{'Age'}">
+GEND
+	}
+	if ($COMMUNITY_BirthDate eq "YES") {
+	$OUT .= << "GEND";
+		<P><B>Date of Birth:</B>
+		<TABLE>
+		<TR><TD><FONT COLOR="$CONFIG{'text_color'}" SIZE="$CONFIG{'font_size'}" FACE="$CONFIG{'font_face'}">Month:</TD><TD><FONT COLOR="$CONFIG{'text_color'}" SIZE="$CONFIG{'font_size'}" FACE="$CONFIG{'font_face'}">Day:</TD><TD><FONT COLOR="$CONFIG{'text_color'}" SIZE="$CONFIG{'font_size'}" FACE="$CONFIG{'font_face'}">Year:</TD></TR>
+		<TR><TD><FONT COLOR="$CONFIG{'text_color'}" SIZE="$CONFIG{'font_size'}" FACE="$CONFIG{'font_face'}">
+		<SELECT NAME=USER_BirthMonth>
+		<OPTION>1
+		<OPTION>2
+		<OPTION>3
+		<OPTION>4
+		<OPTION>5
+		<OPTION>6
+		<OPTION>7
+		<OPTION>8
+		<OPTION>9
+		<OPTION>10
+		<OPTION>11
+		<OPTION>12
+		</SELECT>
+
+		</TD><TD><FONT COLOR="$CONFIG{'text_color'}" SIZE="$CONFIG{'font_size'}" FACE="$CONFIG{'font_face'}">
+
+		<SELECT NAME=USER_BirthDay>
+		<OPTION>1
+		<OPTION>2
+		<OPTION>3
+		<OPTION>4
+		<OPTION>5
+		<OPTION>6
+		<OPTION>7
+		<OPTION>8
+		<OPTION>9
+		<OPTION>10
+		<OPTION>11
+		<OPTION>12
+		<OPTION>13
+		<OPTION>14
+		<OPTION>15
+		<OPTION>16
+		<OPTION>17
+		<OPTION>18
+		<OPTION>19
+		<OPTION>20
+		<OPTION>21
+		<OPTION>22
+		<OPTION>23
+		<OPTION>24
+		<OPTION>25
+		<OPTION>26
+		<OPTION>27
+		<OPTION>28
+		<OPTION>29
+		<OPTION>30
+		<OPTION>31
+		</SELECT>
+
+		</TD><TD><FONT COLOR="$CONFIG{'text_color'}" SIZE="$CONFIG{'font_size'}" FACE="$CONFIG{'font_face'}">
+
+		<SELECT NAME=USER_BirthYear>
+		<OPTION>$IUSER{'BirthYear'}
+		<OPTION>1901
+		<OPTION>1902
+		<OPTION>1903
+		<OPTION>1904
+		<OPTION>1905
+		<OPTION>1906
+		<OPTION>1907
+		<OPTION>1908
+		<OPTION>1909
+		<OPTION>1910
+		<OPTION>1911
+		<OPTION>1912
+		<OPTION>1913
+		<OPTION>1914
+		<OPTION>1915
+		<OPTION>1916
+		<OPTION>1917
+		<OPTION>1918
+		<OPTION>1919
+		<OPTION>1920
+		<OPTION>1921
+		<OPTION>1922
+		<OPTION>1923
+		<OPTION>1924
+		<OPTION>1925
+		<OPTION>1926
+		<OPTION>1927
+		<OPTION>1928
+		<OPTION>1929
+		<OPTION>1930
+		<OPTION>1931
+		<OPTION>1932
+		<OPTION>1933
+		<OPTION>1934
+		<OPTION>1935
+		<OPTION>1936
+		<OPTION>1937
+		<OPTION>1938
+		<OPTION>1939
+		<OPTION>1940
+		<OPTION>1941
+		<OPTION>1942
+		<OPTION>1943
+		<OPTION>1944
+		<OPTION>1945
+		<OPTION>1946
+		<OPTION>1947
+		<OPTION>1948
+		<OPTION>1949
+		<OPTION>1950
+		<OPTION>1951
+		<OPTION>1952
+		<OPTION>1953
+		<OPTION>1954
+		<OPTION>1955
+		<OPTION>1956
+		<OPTION>1957
+		<OPTION>1958
+		<OPTION>1959
+		<OPTION>1960
+		<OPTION>1961
+		<OPTION>1962
+		<OPTION>1963
+		<OPTION>1964
+		<OPTION>1965
+		<OPTION>1966
+		<OPTION>1967
+		<OPTION>1968
+		<OPTION>1969
+		<OPTION>1970
+		<OPTION>1971
+		<OPTION>1972
+		<OPTION>1973
+		<OPTION>1974
+		<OPTION SELECTED>1975
+		<OPTION>1976
+		<OPTION>1977
+		<OPTION>1978
+		<OPTION>1979
+		<OPTION>1980
+		<OPTION>1981
+		<OPTION>1982
+		<OPTION>1983
+		<OPTION>1984
+		<OPTION>1985
+		<OPTION>1986
+		<OPTION>1987
+		<OPTION>1988
+		<OPTION>1989
+		<OPTION>1990
+		<OPTION>1991
+		<OPTION>1992
+		<OPTION>1993
+		<OPTION>1994
+		<OPTION>1995
+		<OPTION>1996
+		<OPTION>1997
+		<OPTION>1998
+		<OPTION>1999
+		<OPTION>2000
+		</SELECT>
+
+		</TD></TR></TABLE>
+GEND
+	}
+
+	if ($COMMUNITY_Sex eq "YES") {
+		$OUT .= "<P>Sex:";
+		$OUT .= "<BR><SELECT NAME=USER_Sex>";
+		if ($IUSER{'Sex'} eq "Male") {
+			$OUT .= "<OPTION SELECTED>Male";
+		}
+		else {
+			$OUT .= "<OPTION>Male";
+		}
+		if ($IUSER{'Sex'} eq "Female") {
+			$OUT .= "<OPTION SELECTED>Female";
+		}
+		else {
+			$OUT .= "<OPTION>Female";
+		}
+		$OUT .= "</SELECT>";
+	}
+
+	if ($COMMUNITY_Marital_Status eq "YES") {
+		$OUT .= "<P>Marital Status:";
+		$OUT .= "<BR><SELECT NAME=USER_Marital_Status>";
+		if ($IUSER{'Marital_Status'} eq "Married") {
+			$OUT .= "<OPTION SELECTED>Married";
+		}
+		else {
+			$OUT .= "<OPTION>Married";
+		}
+		if ($IUSER{'Marital_Status'} eq "Single") {
+			$OUT .= "<OPTION SELECTED>Single";
+		}
+		else {
+			$OUT .= "<OPTION>Single";
+		}
+		if ($IUSER{'Marital_Status'} eq "Divorced") {
+			$OUT .= "<OPTION SELECTED>Divorced";
+		}
+		else {
+			$OUT .= "<OPTION>Divorced";
+		}
+		if ($IUSER{'Marital_Status'} eq "Widowed") {
+			$OUT .= "<OPTION SELECTED>Widowed";
+		}
+		else {
+			$OUT .= "<OPTION>Widowed";
+		}
+		$OUT .= "</SELECT>";
+	}
+
+	if ($COMMUNITY_Children eq "YES") {
+		$OUT .= "<P>Number Of Children:";
+		$OUT .= "<BR><SELECT NAME=USER_Children>";
+		if ($IUSER{'Children'} eq "0") {
+			$OUT .= "<OPTION SELECTED>0";
+		}
+		else {
+			$OUT .= "<OPTION>0";
+		}
+		if ($IUSER{'Children'} eq "1") {
+			$OUT .= "<OPTION SELECTED>1";
+		}
+		else {
+			$OUT .= "<OPTION>1";
+		}
+		if ($IUSER{'Children'} eq "2") {
+			$OUT .= "<OPTION SELECTED>2";
+		}
+		else {
+			$OUT .= "<OPTION>2";
+		}
+		if ($IUSER{'Children'} eq "3") {
+			$OUT .= "<OPTION SELECTED>3";
+		}
+		else {
+			$OUT .= "<OPTION>3";
+		}
+		if ($IUSER{'Children'} eq "4") {
+			$OUT .= "<OPTION SELECTED>4";
+		}
+		else {
+			$OUT .= "<OPTION>4";
+		}
+		if ($IUSER{'Children'} eq "5") {
+			$OUT .= "<OPTION SELECTED>5";
+		}
+		else {
+			$OUT .= "<OPTION>5";
+		}
+		if ($IUSER{'Children'} eq "6") {
+			$OUT .= "<OPTION SELECTED>6";
+		}
+		else {
+			$OUT .= "<OPTION>6";
+		}
+		if ($IUSER{'Children'} eq "7 or more") {
+			$OUT .= "<OPTION SELECTED>7 or more";
+		}
+		else {
+			$OUT .= "<OPTION>7 or more";
+		}
+		$OUT .= "</SELECT>";
+	}
+
+	if ($COMMUNITY_Income eq "YES") {
+		$OUT .= "<P>Family Income:";
+		$OUT .= "<BR><SELECT NAME=USER_Income>";
+		if ($IUSER{'Income'} eq "lt30k") {
+			$OUT .= "<OPTION VALUE=\"lt30k\" SELECTED>less than \$30,000";
+		}
+		else {
+			$OUT .= "<OPTION VALUE=\"lt30k\">less than \$30,000";
+		}
+		if ($IUSER{'Income'} eq "30k-50k") {
+			$OUT .= "<OPTION VALUE=\"30k-50k\" SELECTED>\$30,000 to \$50,000";
+		}
+		else {
+			$OUT .= "<OPTION VALUE=\"30k-50k\">\$30,000 to \$50,000";
+		}
+		if ($IUSER{'Income'} eq "50k-75k") {
+			$OUT .= "<OPTION VALUE=\"50k-75k\" SELECTED>\$50,000 to \$75,000";
+		}
+		else {
+			$OUT .= "<OPTION VALUE=\"50k-75k\">\$50,000 to \$75,000";
+		}
+		if ($IUSER{'Income'} eq "75k-100k") {
+			$OUT .= "<OPTION VALUE=\"75k-100k\" SELECTED>\$75,000 to \$100,000";
+		}
+		else {
+			$OUT .= "<OPTION VALUE=\"75k-100k\">\$75,000 to \$100,000";
+		}
+		if ($IUSER{'Income'} eq "100k-200k") {
+			$OUT .= "<OPTION VALUE=\"100k-200k\" SELECTED>\$100,000 to \$200,000";
+		}
+		else {
+			$OUT .= "<OPTION VALUE=\"100k-200k\">\$100,000 to \$200,000";
+		}
+		if ($IUSER{'Income'} eq "gt200k") {
+			$OUT .= "<OPTION VALUE=\"gt200k\" SELECTED>\$200,000 or more";
+		}
+		else {
+			$OUT .= "<OPTION VALUE=\"gt200k\">\$200,000 or more";
+		}
+		$OUT .= "</SELECT>";
+	}
+
+	if ($COMMUNITY_Primary_Computer_Use eq "YES") {
+		$OUT .= "<P>Where do you mostly use a computer:";
+		$OUT .= "<BR><SELECT NAME=USER_Primary_Computer_Use>";
+		if ($IUSER{'Primary_Computer_Use'} eq "Home") {
+			$OUT .= "<OPTION SELECTED>Home";
+		}
+		else {
+			$OUT .= "<OPTION>Home";
+		}
+		if ($IUSER{'Primary_Computer_Use'} eq "Office") {
+			$OUT .= "<OPTION SELECTED>Office";
+		}
+		else {
+			$OUT .= "<OPTION>Office";
+		}
+		if ($IUSER{'Primary_Computer_Use'} eq "School") {
+			$OUT .= "<OPTION SELECTED>School";
+		}
+		else {
+			$OUT .= "<OPTION>School";
+		}
+		if ($IUSER{'Primary_Computer_Use'} eq "Home & Office") {
+			$OUT .= "<OPTION SELECTED>Home & Office";
+		}
+		else {
+			$OUT .= "<OPTION>Home & Office";
+		}
+		$OUT .= "</SELECT>";
+	}
+
+	if ($COMMUNITY_Education eq "YES") {
+		$OUT .= "<P>What is you highest level of education?:";
+		$OUT .= "<BR><SELECT NAME=USER_Education>";
+		if ($IUSER{'Education'} eq "Grade School") {
+			$OUT .= "<OPTION SELECTED>Grade School";
+		}
+		else {
+			$OUT .= "<OPTION>Grade School";
+		}
+		if ($IUSER{'Education'} eq "High School") {
+			$OUT .= "<OPTION SELECTED>High School";
+		}
+		else {
+			$OUT .= "<OPTION>High School";
+		}
+		if ($IUSER{'Education'} eq "Vocational/Technical School") {
+			$OUT .= "<OPTION SELECTED>Vocational/Technical School";
+		}
+		else {
+			$OUT .= "<OPTION>Vocational/Technical School";
+		}
+		if ($IUSER{'Education'} eq "Some College") {
+			$OUT .= "<OPTION SELECTED>Some College";
+		}
+		else {
+			$OUT .= "<OPTION>Some College";
+		}
+		if ($IUSER{'Education'} eq "College Graduate") {
+			$OUT .= "<OPTION SELECTED>College Graduate";
+		}
+		else {
+			$OUT .= "<OPTION>College Graduate";
+		}
+		if ($IUSER{'Education'} eq "Post Graduate") {
+			$OUT .= "<OPTION SELECTED>Post Graduate";
+		}
+		else {
+			$OUT .= "<OPTION>Post Graduate";
+		}
+		$OUT .= "</SELECT>";
+	}
+
+	if ($COMMUNITY_Employment eq "YES") {
+		$OUT .= "<P>Employment:";
+		$OUT .= "<BR><SELECT NAME=USER_Employment>";
+
+		if ($IUSER{'Employment'} eq "Accounting") {
+			$OUT .= "<option value=\"Accounting\" SELECTED>Accounting/Finance</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Accounting\" >Accounting/Finance</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Banking") {
+			$OUT .= "<option value=\"Banking\" SELECTED>Banking</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Banking\" >Banking</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "BizServices") {
+			$OUT .= "<option value=\"BizServices\" SELECTED>Business Supplies/Services</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"BizServices\" >Business Supplies/Services</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Clerical") {
+			$OUT .= "<option value=\"Clerical\" SELECTED>Clerical/Administrative</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Clerical\" >Clerical/Administrative</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Computerware") {
+			$OUT .= "<option value=\"Computerware\" SELECTED>Computer Hardware/Software</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Computerware\" >Computer Hardware/Software</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Consulting") {
+			$OUT .= "<option value=\"Consulting\" SELECTED>Consulting</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Consulting\" >Consulting</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Constructionland") {
+			$OUT .= "<option value=\"Constructionland\" SELECTED>Construction/Landscaping</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Constructionland\" >Construction/Landscaping</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "ConsumerRetailWhole") {
+			$OUT .= "<option value=\"ConsumerRetailWhole\" SELECTED>Consumer Retail/Wholesale</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"ConsumerRetailWhole\" >Consumer Retail/Wholesale</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "CustomerSvc") {
+			$OUT .= "<option value=\"CustomerSvc\" SELECTED>Customer Service/Support</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"CustomerSvc\" >Customer Service/Support</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Education") {
+			$OUT .= "<option value=\"Education\" SELECTED>Education/Training</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Education\" >Education/Training</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Engineering") {
+			$OUT .= "<option value=\"Engineering\" SELECTED>Engineering</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Engineering\" >Engineering</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Entertainment") {
+			$OUT .= "<option value=\"Entertainment\" SELECTED>Entertainment Industry</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Entertainment\" >Entertainment Industry</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Executive") {
+			$OUT .= "<option value=\"Executive\" SELECTED>Executive/Senior management</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Executive\" >Executive/Senior management</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "GenAdminSupe") {
+			$OUT .= "<option value=\"GenAdminSupe\" SELECTED>General Administrative/Supervisory</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"GenAdminSupe\" >General Administrative/Supervisory</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "GovMil") {
+			$OUT .= "<option value=\"GovMil\" SELECTED>Government/Military</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"GovMil\" >Government/Military</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Homemaker") {
+			$OUT .= "<option value=\"Homemaker\" SELECTED>Homemaker</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Homemaker\" >Homemaker</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Hospitality") {
+			$OUT .= "<option value=\"Hospitality\" SELECTED>Hospitality (Travel/Hotel/Restaurant)</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Hospitality\" >Hospitality (Travel/Hotel/Restaurant)</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "HumanResources") {
+			$OUT .= "<option value=\"HumanResources\" SELECTED>Human Resources</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"HumanResources\" >Human Resources</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Manufacturing") {
+			$OUT .= "<option value=\"Manufacturing\" SELECTED>Manufacturing/Production/Operations</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Manufacturing\" >Manufacturing/Production/Operations</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Legal") {
+			$OUT .= "<option value=\"Legal\" SELECTED>Legal Services</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Legal\" >Legal Services</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Managerial") {
+			$OUT .= "<option value=\"Managerial\" SELECTED>Managerial</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Managerial\" >Managerial</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Marketing") {
+			$OUT .= "<option value=\"Marketing\" SELECTED>Marketing/Advertising</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Marketing\" >Marketing/Advertising</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Media") {
+			$OUT .= "<option value=\"Media\" SELECTED>Media/Publishing</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Media\" >Media/Publishing</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Health") {
+			$OUT .= "<option value=\"Health\" SELECTED>Medical/Health Services</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Health\" >Medical/Health Services</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "NonProfit") {
+			$OUT .= "<option value=\"NonProfit\" SELECTED>Non-Profit Orginizations</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"NonProfit\" >Non-Profit Orginizations</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "RandD") {
+			$OUT .= "<option value=\"RandD\" SELECTED>Research and Development</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"RandD\" >Research and Development</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "RealEstate") {
+			$OUT .= "<option value=\"RealEstate\" SELECTED>Real Estate</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"RealEstate\" >Real Estate</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Sales") {
+			$OUT .= "<option value=\"Sales\" SELECTED>Sales</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Sales\" >Sales</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Trade/Craft") {
+			$OUT .= "<option value=\"Trade/Craft\" SELECTED>Tradesman/Craftsman</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Trade/Craft\" >Tradesman/Craftsman</option>\n";
+		}
+
+		if ($IUSER{'Employment'} eq "StudentCollege") {
+			$OUT .= "<option value=\"StudentCollege\" SELECTED>Student</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"StudentCollege\" >Student</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Self") {
+			$OUT .= "<option value=\"Self\" SELECTED>Self-Employed</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Self\" >Self-Employed</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Retired") {
+			$OUT .= "<option value=\"Retired\" SELECTED>Retired</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Retired\" >Retired</option>\n";
+		}
+		if ($IUSER{'Employment'} eq "Unemployed") {
+			$OUT .= "<option value=\"Unemployed\" SELECTED>Unemployed</option>\n";
+		}
+		else {
+			$OUT .= "<option value=\"Unemployed\" >Unemployed</option>\n";
+		}
+		$OUT .= "</SELECT>";
+	}
+
+	if ($COMMUNITY_PhoneNumber eq "YES") {
+	$OUT .= << "GEND";
+		<P>Phone Number (xxx) xxx-xxxx:
+		<BR><INPUT TYPE=TEXT SIZE=20 NAME=USER_Phonenumber VALUE="$IUSER{'Phonenumber'}">
+GEND
+	}
+
+	if ($COMMUNITY_FaxNumber eq "YES") {
+	$OUT .= << "GEND";
+		<P>Fax Number (xxx) xxx-xxxx:
+		<BR><INPUT TYPE=TEXT SIZE=20 NAME=USER_Faxnumber VALUE="$IUSER{'Faxnumber'}">
+GEND
+	}
+
+
+	if ($COMMUNITY_Address eq "YES") {
+	$OUT .= << "GEND";
+		<P>Address:
+		<BR><INPUT TYPE=TEXT SIZE=20 NAME=USER_Address VALUE="$IUSER{'Address'}">
+GEND
+	}
+
+	if ($COMMUNITY_City eq "YES") {
+	$OUT .= << "GEND";
+		<P>City:
+		<BR><INPUT TYPE=TEXT SIZE=20 NAME=USER_City VALUE="$IUSER{'City'}">
+GEND
+	}
+
+	if ($COMMUNITY_State eq "YES") {
+	$OUT .= << "GEND";
+		<P>State / Province:
+		<BR><INPUT TYPE=TEXT SIZE=20 NAME=USER_State VALUE="$IUSER{'State'}">
+GEND
+	}
+
+	if ($COMMUNITY_Country eq "YES") {
+	$OUT .= << "GEND";
+		<P>Country:
+		<BR><SELECT NAME=USER_Country VALUE="$IUSER{'Country'}">
+		<option >United States</option>
+		<option >Canada</option>
+		<option >Afghanistan</option>
+		<option >Albania</option>
+		<option >Algeria</option>
+		<option >American Samoa</option>
+		<option >Andorra</option>
+		<option >Angola</option>
+		<option >Anguilla</option>
+		<option >Antarctica</option>
+		<option >Antigua and Barbuda</option>
+		<option >Argentina</option>
+		<option >Armenia</option>
+		<option >Aruba</option>
+		<option >Australia</option>
+		<option >Austria</option>
+		<option >Azerbaijan</option>
+		<option >Bahamas</option>
+		<option >Bahrain</option>
+		<option >Bangladesh</option>
+		<option >Barbados</option>
+		<option >Belarus</option>
+		<option >Belgium</option>
+		<option >Belize</option>
+		<option >Benin</option>
+		<option >Bermuda</option>
+		<option >Bhutan</option>
+		<option >Bolivia</option>
+		<option >Bosnia and Herzegovina</option>
+		<option >Botswana</option>
+		<option >Bouvet Island</option>
+		<option >Brazil</option>
+		<option >British Indian Ocean Territory</option>
+		<option >British Virgin Islands</option>
+		<option >Brunei</option>
+		<option >Bulgaria</option>
+		<option >Burkina Faso</option>
+		<option >Burundi</option>
+		<option >Cambodia</option>
+		<option >Cameroon</option>
+		<option >Cape Verde</option>
+		<option >Cayman Islands</option>
+		<option >Central African Republic</option>
+		<option >Chad</option>
+		<option >Chile</option>
+		<option >China</option>
+		<option >Christmas Island</option>
+		<option >Cocos Islands</option>
+		<option >Colombia</option>
+		<option >Comoros</option>
+		<option >Congo</option>
+		<option >Cook Islands</option>
+		<option >Costa Rica</option>
+		<option >Croatia</option>
+		<option >Cuba</option>
+		<option >Cyprus</option>
+		<option >Czech Republic</option>
+		<option >Denmark</option>
+		<option >Djibouti</option>
+		<option >Dominica</option>
+		<option >Dominican Republic</option>
+		<option >East Timor</option>
+		<option >Ecuador</option>
+		<option >Egypt</option>
+		<option >El Salvador</option>
+		<option >Equatorial Guinea</option>
+		<option >Eritrea</option>
+		<option >Estonia</option>
+		<option >Ethiopia</option>
+		<option >Falkland Islands</option>
+		<option >Faroe Islands</option>
+		<option >Fiji</option>
+		<option >Finland</option>
+		<option >France</option>
+		<option >French Guiana</option>
+		<option >French Polynesia</option>
+		<option >French Southern Territories</option>
+		<option >Gabon</option>
+		<option >Gambia</option>
+		<option >Georgia</option>
+		<option >Germany</option>
+		<option >Ghana</option>
+		<option >Gibraltar</option>
+		<option >Greece</option>
+		<option >Greenland</option>
+		<option >Grenada</option>
+		<option >Guadeloupe</option>
+		<option >Guam</option>
+		<option >Guatemala</option>
+		<option >Guinea</option>
+		<option >Guinea-Bissau</option>
+		<option >Guyana</option>
+		<option >Haiti</option>
+		<option >Heard and McDonald Islands</option>
+		<option >Honduras</option>
+		<option >Hong Kong</option>
+		<option >Hungary</option>
+		<option >Iceland</option>
+		<option >India</option>
+		<option >Indonesia</option>
+		<option >Iran</option>
+		<option >Iraq</option>
+		<option >Ireland</option>
+		<option >Israel</option>
+		<option >Italy</option>
+		<option >Ivory Coast</option>
+		<option >Jamaica</option>
+		<option >Japan</option>
+		<option >Jordan</option>
+		<option >Kazakhstan</option>
+		<option >Kenya</option>
+		<option >Kiribati</option>
+		<option >Korea, North</option>
+		<option >Korea, South</option>
+		<option >Kuwait</option>
+		<option >Kyrgyzstan</option>
+		<option >Laos</option>
+		<option >Latvia</option>
+		<option >Lebanon</option>
+		<option >Lesotho</option>
+		<option >Liberia</option>
+		<option >Libya</option>
+		<option >Liechtenstein</option>
+		<option >Lithuania</option>
+		<option >Luxembourg</option>
+		<option >Macau</option>
+		<option >Macedonia, Former Yugoslav Republic of</option>
+		<option >Madagascar</option>
+		<option >Malawi</option>
+		<option >Malaysia</option>
+		<option >Maldives</option>
+		<option >Mali</option>
+		<option >Malta</option>
+		<option >Marshall Islands</option>
+		<option >Martinique</option>
+		<option >Mauritania</option>
+		<option >Mauritius</option>
+		<option >Mayotte</option>
+		<option >Mexico</option>
+		<option >Micronesia, Federated States of</option>
+		<option >Moldova</option>
+		<option >Monaco</option>
+		<option >Mongolia</option>
+		<option >Montserrat</option>
+		<option >Morocco</option>
+		<option >Mozambique</option>
+		<option >Myanmar</option>
+		<option >Namibia</option>
+		<option >Nauru</option>
+		<option >Nepal</option>
+		<option >Netherlands</option>
+		<option >Netherlands Antilles</option>
+		<option >New Caledonia</option>
+		<option >New Zealand</option>
+		<option >Nicaragua</option>
+		<option >Niger</option>
+		<option >Nigeria</option>
+		<option >Niue</option>
+		<option >Norfolk Island</option>
+		<option >Northern Mariana Islands</option>
+		<option >Norway</option>
+		<option >Oman</option>
+		<option >Pakistan</option>
+		<option >Palau</option>
+		<option >Panama</option>
+		<option >Papua New Guinea</option>
+		<option >Paraguay</option>
+		<option >Peru</option>
+		<option >Philippines</option>
+		<option >Pitcairn Island</option>
+		<option >Poland</option>
+		<option >Portugal</option>
+		<option >Puerto Rico</option>
+		<option >Qatar</option>
+		<option >Reunion</option>
+		<option >Romania</option>
+		<option >Russia</option>
+		<option >Rwanda</option>
+		<option >S. Georgia and S. Sandwich Isls.</option>
+		<option >Saint Kitts &amp; Nevis</option>
+		<option >Saint Lucia</option>
+		<option >Saint Vincent and The Grenadines</option>
+		<option >Samoa</option>
+		<option >San Marino</option>
+		<option >Sao Tome and Principe</option>
+		<option >Saudi Arabia</option>
+		<option >Senegal</option>
+		<option >Seychelles</option>
+		<option >Sierra Leone</option>
+		<option >Singapore</option>
+		<option >Slovakia</option>
+		<option >Slovenia</option>
+		<option >Somalia</option>
+		<option >South Africa</option>
+		<option >Spain</option>
+		<option >Sri Lanka</option>
+		<option >St. Helena</option>
+		<option >St. Pierre and Miquelon</option>
+		<option >Sudan</option>
+		<option >Suriname</option>
+		<option >Svalbard and Jan Mayen Islands</option>
+		<option >Swaziland</option>
+		<option >Sweden</option>
+		<option >Switzerland</option>
+		<option >Syria</option>
+		<option >Taiwan</option>
+		<option >Tajikistan</option>
+		<option >Tanzania</option>
+		<option >Thailand</option>
+		<option >Togo</option>
+		<option >Tokelau</option>
+		<option >Tonga</option>
+		<option >Trinidad and Tobago</option>
+		<option >Tunisia</option>
+		<option >Turkey</option>
+		<option >Turkmenistan</option>
+		<option >Turks and Caicos Islands</option>
+		<option >Tuvalu</option>
+		<option >U.S. Minor Outlying Islands</option>
+		<option >Uganda</option>
+		<option >Ukraine</option>
+		<option >United Arab Emirates</option>
+		<option >United Kingdom</option>
+		<option >Uruguay</option>
+		<option >Uzbekistan</option>
+		<option >Vanuatu</option>
+		<option >Vatican City</option>
+		<option >Venezuela</option>
+		<option >Vietnam</option>
+		<option >Virgin Islands</option>
+		<option >Wallis and Futuna Islands</option>
+		<option >Western Sahara</option>
+		<option >Yemen</option>
+		<option >Yugoslavia (Former)</option>
+		<option >Zaire</option>
+		<option >Zambia</option>
+		<option >Zimbabwe</option>
+		<option >United States</option>
+		</SELECT>
+GEND
+	}
+
+	if ($COMMUNITY_ZipCode eq "YES") {
+	$OUT .= << "GEND";
+		<P>Zip Code / Postal Code:
+		<BR><INPUT TYPE=TEXT SIZE=20 NAME=USER_ZipCode VALUE="$IUSER{'ZipCode'}">
+GEND
+	}
+
+	if ($COMMUNITY_Filler1 eq "YES") {
+	$OUT .= << "GEND";
+		<P>$COMMUNITY_Filler1_Prompt
+		<BR><TEXTAREA COLS=20 ROWS=3 NAME=USER_Filler1>$IUSER{'Filler1'}</TEXTAREA>
+GEND
+	}
+
+	if ($COMMUNITY_Filler2 eq "YES") {
+	$OUT .= << "GEND";
+		<P>$COMMUNITY_Filler2_Prompt
+		<BR><INPUT TYPE=TEXT SIZE=20 NAME=USER_Filler2 VALUE="$IUSER{'Filler2'}">
+GEND
+	}
+
+	if ($COMMUNITY_Filler3 eq "YES") {
+	$OUT .= << "GEND";
+		<P>$COMMUNITY_Filler3_Prompt
+		<BR><INPUT TYPE=TEXT SIZE=20 NAME=USER_Filler3 VALUE="$IUSER{'Filler3'}">
+GEND
+	}
+
+	if ($COMMUNITY_Filler4 eq "YES") {
+	$OUT .= << "GEND";
+		<P>$COMMUNITY_Filler4_Prompt
+		<BR><INPUT TYPE=PASSWORD SIZE=20 NAME=USER_Filler4 VALUE="$IUSER{'Filler4'}">
+GEND
+	}
+
+	if ($COMMUNITY_Filler5 eq "YES") {
+	$OUT .= << "GEND";
+		<P>$COMMUNITY_Filler5_Prompt
+		<BR><INPUT TYPE=PASSWORD SIZE=20 NAME=USER_Filler5 VALUE="$IUSER{'Filler5'}">
+GEND
+	}
+
+	if ($COMMUNITY_Filler6 eq "YES") {
+	$OUT .= << "GEND";
+		<P>$COMMUNITY_Filler6_Prompt
+		<BR><INPUT TYPE=TEXT SIZE=20 NAME=USER_Filler6 VALUE="$IUSER{'Filler6'}">
+GEND
+	}
+
+	if ($COMMUNITY_Filler7 eq "YES") {
+	$OUT .= << "GEND";
+		<P>$COMMUNITY_Filler7_Prompt
+		<BR><INPUT TYPE=TEXT SIZE=20 NAME=USER_Filler7 VALUE="$IUSER{'Filler7'}">
+GEND
+	}
+
+	if ($COMMUNITY_Filler8 eq "YES") {
+	$OUT .= << "GEND";
+		<P>$COMMUNITY_Filler8_Prompt
+		<BR><INPUT TYPE=TEXT SIZE=20 NAME=USER_Filler8 VALUE="$IUSER{'Filler8'}">
+GEND
+	}
+
+	if ($COMMUNITY_Filler9 eq "YES") {
+	$OUT .= << "GEND";
+		<P>$COMMUNITY_Filler9_Prompt
+		<BR><INPUT TYPE=TEXT SIZE=20 NAME=USER_Filler9 VALUE="$IUSER{'Filler9'}">
+GEND
+	}
+
+	if ($COMMUNITY_Filler10 eq "YES") {
+	$OUT .= << "GEND";
+		<P>$COMMUNITY_Filler10_Prompt
+		<BR><INPUT TYPE=TEXT SIZE=20 NAME=USER_Filler10 VALUE="$IUSER{'Filler10'}">
+GEND
+	}
+)>]
+<INPUT TYPE=HIDDEN NAME="action" VALUE="Register">
+
+<P><CENTER><INPUT TYPE=SUBMIT VALUE="Register"></FORM></CENTER>
+</FORM>
+</TD></TR></TABLE>

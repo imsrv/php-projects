@@ -1,0 +1,33 @@
+/**************************************************************
+* Formmail Abuse Reporting - Version 1.1
+*
+* (C)Copyright 2002 Home-port.net, Inc. All Rights Reserved 
+* By using this software you release Home-port.net, Inc. from 
+* all liability relating to this product.
+*
+* This module is released under the GNU General Public License. 
+* See: http://www.gnu.org/copyleft/gpl.html
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+*
+* For latest version, visit:
+* http://www.home-port.net/formmail/
+***************************************************************/
+
+Formmail Abuse Reporting - Version 1.1 
+Release Aug 21, 2002
+
+1. Created index file for testing script and changing the e-mail complaint online.
+2. Removed reporting to ISP for single recipient.
+3. Noticed increase of false positives i.e. formmail.pl, formmail.cgi one right after
+   the other, also noticed testing of single recipient with the same pattern of above
+   Created 404 error page, to hide the existance of script better.
+
+Formmail Abuse Reporting - Version 1.0 
+Launched Jun 14, 2002
+
+1. Simple script with only three files: config.php, formmail.php and ip.txt
+2. Reports all attempts except for possible mistake.
+

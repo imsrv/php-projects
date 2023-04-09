@@ -1,0 +1,61 @@
+A:link  
+{
+	text-decoration: none;
+}
+
+A:visited 
+{
+	text-decoration: none
+}
+
+#TitleDressing
+{
+	font: 12pt sans-serif;
+	font-weight: 700;
+}
+
+
+#LEFTPART 
+{
+	z-index: 1;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100px
+}
+
+#TOPPART
+{
+	z-index: 1;
+	position: absolute;
+	left: 100px;
+	top: 0px;
+}
+
+#TOPNAV 
+{
+	z-index: 1;
+	position: absolute;
+	left: 120px;
+	top: 80px;
+	width: 431px;
+}
+
+#LEFTNAV 
+{
+	z-index: 1;
+	position: absolute;
+	left: 120px;
+	top: 120px;
+	width:130px;
+}
+               
+#CONTENT
+{
+	z-index: 1;
+	position: absolute;
+	left: 280px;
+	top: 120px;
+}
+
+

@@ -1,0 +1,171 @@
+<?php
+	
+/*
+iWare Language Definition file ( IT Italian ) for iWare Professional 3.0.7
+Translation by : Luca Zanardo 2003
+*/
+
+/* control.php */
+	
+define("CONTROL_1","Sommario di Sistema");
+define("CONTROL_2","Gestione Utenti");
+define("CONTROL_3","Permessi dei Gruppi");
+define("CONTROL_4","Intestazione del Sito");
+define("CONTROL_5","Piè Pagina del Sito");
+define("CONTROL_6","Scegli Skin Attiva");
+define("CONTROL_7","Stile di Navigazione");
+define("CONTROL_8","Ordine di Navigazione");
+define("CONTROL_9","Gestione Documenti");
+define("CONTROL_10","Gestione File");
+define("CONTROL_11","Moduli");
+define("CONTROL_12","Anteprima");
+define("CONTROL_13","Disconnetti");
+
+/* iware.php */
+
+define("IWARE_1","Connessione Utente");
+define("IWARE_2","Nome utente e/o password non validi, si prega di riprovare.");
+define("IWARE_3","Nome Utente");
+define("IWARE_4","Password");
+define("IWARE_5","Connetti");
+define("IWARE_6","Sommario di Sistema");
+define("IWARE_7","Piattaforma del Webserver");
+define("IWARE_8","Versione PHP");
+define("IWARE_9","Versione MySQL");
+define("IWARE_10","Versione");
+define("IWARE_11","Account Utenti");
+define("IWARE_12","Gruppi");
+define("IWARE_13","Documenti");
+define("IWARE_14","File archiviati");
+define("IWARE_15","Barre di Navigazione");
+define("IWARE_16","Skin Installate");
+define("IWARE_17","Moduli Installati");
+define("IWARE_18","Gestione Utenti");
+define("IWARE_19","Nome Reale");
+define("IWARE_20","Nome Utente");
+define("IWARE_21","Gruppo");
+define("IWARE_22","Nuovo");
+define("IWARE_23","Modifica");
+define("IWARE_24","Elimina");
+define("IWARE_25","Crea Nuovo Account Utente");
+define("IWARE_26","Nome Reale");
+define("IWARE_27","Gruppo");
+define("IWARE_28","Nome Utente");
+define("IWARE_29","Password");
+define("IWARE_30","Conferma Password");
+define("IWARE_31","Aggiungi Utente");
+define("IWARE_32","Account Utente Creato");
+define("IWARE_33","Modifica Account Utente");
+define("IWARE_34","Nome Reale");
+define("IWARE_35","Gruppo");
+define("IWARE_36","Nome Utente");
+define("IWARE_37","Password");
+define("IWARE_38","Conferma Password");
+define("IWARE_39","Salva Modifiche");
+define("IWARE_40","Account Utente Salvato");
+define("IWARE_41","Account Utente Eliminato");
+define("IWARE_42","Gestione Permessi dei Gruppi");
+define("IWARE_43","Gruppo");
+define("IWARE_44","Nuovo");
+define("IWARE_45","Modifica");
+define("IWARE_46","Elimina");
+define("IWARE_47","Crea Nuovo Gruppo Utenti");
+define("IWARE_48","Nome Gruppo");
+define("IWARE_49","Permesso di gestire account utenti");
+define("IWARE_50","Permesso di gestire impostazioni dei gruppi");
+define("IWARE_51","Permesso di cambiare intestazione del sito");
+define("IWARE_52","Permesso di cambiare piè pagina del sito");
+define("IWARE_53","Permesso di cambiare skin attiva");
+define("IWARE_54","Permesso di cambiare stile di navigazione");
+define("IWARE_55","Permesso di riordinare navigazione");
+define("IWARE_56","Permesso di creare / modificare / gestire documenti");
+define("IWARE_57","Permesso di gestire / caricare file");
+define("IWARE_58","Permesso di amministrare moduli installati");
+define("IWARE_59","Aggiungi Gruppo");
+define("IWARE_60","Gruppo Utenti Creato");
+define("IWARE_61","Modifica Gruppo Utenti");
+define("IWARE_62","Nome Gruppo");
+define("IWARE_63","Permesso di gestire account utenti");
+define("IWARE_64","Permesso di gestire impostazioni dei gruppi");
+define("IWARE_65","Permesso di cambiare intestazione del sito");
+define("IWARE_66","Permesso di cambiare piè pagina del sito");
+define("IWARE_67","Permesso di cambiare skin attiva");
+define("IWARE_68","Permesso di cambiare stile di navigazione");
+define("IWARE_69","Permesso di riordinare navigazione");
+define("IWARE_70","Permesso di creare / modificare / gestire documenti");
+define("IWARE_71","Permesso di gestire / caricare file");
+define("IWARE_72","Permesso di amministrare moduli installati");
+define("IWARE_73","Salva Modifiche");
+define("IWARE_74","Gruppo Utenti Salvato");
+define("IWARE_75","Gruppo Utenti Eliminato");
+define("IWARE_76","Intestazione del Sito");
+define("IWARE_77","Attiva Intestazione");
+define("IWARE_78","Mostra testo come intestazione del sito");
+define("IWARE_79","Testo");
+define("IWARE_80","Stile Carattere");
+define("IWARE_81","Dimensione Carattere");
+define("IWARE_82","Colore Carattere");
+define("IWARE_83","Mostra Immagine come intestazione del sito");
+define("IWARE_84","Nome File Immagine");
+define("IWARE_85","Testo ALT dell'immagine");
+define("IWARE_86","Bordo Immagine");
+define("IWARE_87","Salva Modifiche");
+define("IWARE_88","Impostazioni Intestazione Sito Salvate");
+define("IWARE_89","Piè Pagina del Sito");
+define("IWARE_90","Attiva Piè Pagina");
+define("IWARE_91","Solo Testo / HTML");
+define("IWARE_92","Salva Modifiche");
+define("IWARE_93","Impostazioni Piè Pagina del Sito Salvate");
+define("IWARE_94","Scegli Skin Attiva");
+define("IWARE_95","Scegli Skin");
+define("IWARE_96","Salva Modifiche");
+define("IWARE_97","Impostazione Skin Attiva Salvata");
+define("IWARE_98","Immagine di anteprima non disponibile");
+define("IWARE_99","Gestione Documenti");
+define("IWARE_100","Titolo Documento");
+define("IWARE_101","Nuovo");
+define("IWARE_102","Nuovo");
+define("IWARE_103","Modifica");
+define("IWARE_104","Modifica");
+define("IWARE_105","Elimina");
+define("IWARE_106","Documento Creato");
+define("IWARE_107","Modifiche al Documento Salvate");
+define("IWARE_108","Il documento che stai tentando di eliminare contiene all'interno dei sotto-documenti. Bisogna rimuovere prima questi.");
+define("IWARE_109","Documento Eliminato");
+define("IWARE_110","Stile di Navigazione");
+define("IWARE_111","Scegli Stile di Navigazione");
+define("IWARE_112","Salva Modifiche");
+define("IWARE_113","Impostazione Stile di Navigazione Salvata");
+define("IWARE_114","Ordine di Navigazione");
+define("IWARE_115","Salva Modifiche");
+define("IWARE_116","Ordine di Navigazione Aggiornato");
+define("IWARE_117","Carica un File");
+define("IWARE_118","Tratta come immagine e ridimensiona alle seguenti dimensioni");
+define("IWARE_119","Altezza");
+define("IWARE_120","Larghezza");
+define("IWARE_121","Carica File");
+define("IWARE_122","Il caricamento del File non è riuscito");
+define("IWARE_123","Caricamento del File completato");
+define("IWARE_124","La funzione di ridimensionamento immagine non è riuscita nel tentativo di ridimensionare l'immagine caricata, verificare che l'host web disponga del supporto GDLib per il PHP.");
+define("IWARE_125","Il tipo di file che hai tentato di caricare non è consentito.");
+define("IWARE_126","Gestione File");
+define("IWARE_127","Elimina File");
+define("IWARE_128","Nessun modulo è installato");
+define("IWARE_129","Moduli Installati");
+define("IWARE_130","Impostazioni non disponibili");
+define("IWARE_131","Impostazioni");
+define("IWARE_132","La struttura di tabella del database richiesta per questo modulo non sembra essere stata installata.");
+
+/* editor.php */
+
+define("EDITOR_0","Modifica Documento");
+define("EDITOR_1","Crea Documento");
+define("EDITOR_2","Testo Collegamento");
+define("EDITOR_3","Includi nella navigazione del sito");
+define("EDITOR_4","Imposta come un sotto-collegamento di");
+define("EDITOR_5","Integra un modulo");
+define("EDITOR_6","META Titolo Pagina");
+define("EDITOR_7","META Parole Chiave (separate da virgole)");
+define("EDITOR_8","META Descrizione");
+define("EDITOR_9","Salva Documento");
+?>

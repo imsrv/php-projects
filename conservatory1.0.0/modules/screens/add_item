@@ -1,0 +1,23 @@
+<?
+	print("<SCRIPT SRC=\"include/checkDescription.js\">\n");
+	print("document.write('Unable to open Javascript file...');\n");
+	print("</SCRIPT>\n\n");
+	
+	/* 
+	** display form for adding item 
+	*/
+	print("<FORM ACTION=\"$IndexScript\" METHOD=\"post\" NAME=\"addItemForm\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"SCREEN\" VALUE=\"stroll\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"ACTION\" VALUE=\"ADD_ITEM\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"what\" VALUE=\"item\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"wing\" VALUE=\"$wing\">\n");
+	
+	print("Title: <INPUT TYPE=TEXT NAME=\"inputTitle\" VALUE=\"\" SIZE=\"36\"><BR>\n");
+	print("URL: <INPUT TYPE=TEXT NAME=\"inputURL\" VALUE=\"http://\" SIZE=\"36\" onFocus=\"this.form.inputURL.select();\"><BR>\n");
+	print("Description: (255 Characters or less)");
+	print("<BR><TEXTAREA NAME=\"inputDesc\" COLS=50 ROWS=5 WRAP=\"virtual\"></TEXTAREA><BR>\n");
+	print("Don't Send to List: <INPUT TYPE=\"checkbox\" NAME=\"inputSendMail\" VALUE=\"CHECK\" ><BR>\n");
+	
+	print("<INPUT TYPE=SUBMIT VALUE=\"Add Item\" onClick=\"return(checkDescription())\"><BR>\n");
+	print("</FORM>\n");
+?>

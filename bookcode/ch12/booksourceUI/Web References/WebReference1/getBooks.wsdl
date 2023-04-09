@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://tempuri.org/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="AllBooks">
+        <s:complexType />
+      </s:element>
+      <s:element name="AllBooksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AllBooksResult" nillable="true">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllBooksByCat">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="catId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllBooksByCatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AllBooksByCatResult" nillable="true">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="AllBooksSoapIn">
+    <part name="parameters" element="s0:AllBooks" />
+  </message>
+  <message name="AllBooksSoapOut">
+    <part name="parameters" element="s0:AllBooksResponse" />
+  </message>
+  <message name="AllBooksByCatSoapIn">
+    <part name="parameters" element="s0:AllBooksByCat" />
+  </message>
+  <message name="AllBooksByCatSoapOut">
+    <part name="parameters" element="s0:AllBooksByCatResponse" />
+  </message>
+  <message name="AllBooksHttpGetIn" />
+  <message name="AllBooksHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="AllBooksByCatHttpGetIn">
+    <part name="catId" type="s:string" />
+  </message>
+  <message name="AllBooksByCatHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="AllBooksHttpPostIn" />
+  <message name="AllBooksHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="AllBooksByCatHttpPostIn">
+    <part name="catId" type="s:string" />
+  </message>
+  <message name="AllBooksByCatHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="getBooksSoap">
+    <operation name="AllBooks">
+      <documentation>This will return all books in an XML String</documentation>
+      <input message="s0:AllBooksSoapIn" />
+      <output message="s0:AllBooksSoapOut" />
+    </operation>
+    <operation name="AllBooksByCat">
+      <documentation>This will return all books in an XML String based on the catagory sent</documentation>
+      <input message="s0:AllBooksByCatSoapIn" />
+      <output message="s0:AllBooksByCatSoapOut" />
+    </operation>
+  </portType>
+  <portType name="getBooksHttpGet">
+    <operation name="AllBooks">
+      <documentation>This will return all books in an XML String</documentation>
+      <input message="s0:AllBooksHttpGetIn" />
+      <output message="s0:AllBooksHttpGetOut" />
+    </operation>
+    <operation name="AllBooksByCat">
+      <documentation>This will return all books in an XML String based on the catagory sent</documentation>
+      <input message="s0:AllBooksByCatHttpGetIn" />
+      <output message="s0:AllBooksByCatHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="getBooksHttpPost">
+    <operation name="AllBooks">
+      <documentation>This will return all books in an XML String</documentation>
+      <input message="s0:AllBooksHttpPostIn" />
+      <output message="s0:AllBooksHttpPostOut" />
+    </operation>
+    <operation name="AllBooksByCat">
+      <documentation>This will return all books in an XML String based on the catagory sent</documentation>
+      <input message="s0:AllBooksByCatHttpPostIn" />
+      <output message="s0:AllBooksByCatHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="getBooksSoap" type="s0:getBooksSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="AllBooks">
+      <soap:operation soapAction="http://tempuri.org/AllBooks" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AllBooksByCat">
+      <soap:operation soapAction="http://tempuri.org/AllBooksByCat" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="getBooksHttpGet" type="s0:getBooksHttpGet">
+    <http:binding verb="GET" />
+    <operation name="AllBooks">
+      <http:operation location="/AllBooks" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AllBooksByCat">
+      <http:operation location="/AllBooksByCat" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="getBooksHttpPost" type="s0:getBooksHttpPost">
+    <http:binding verb="POST" />
+    <operation name="AllBooks">
+      <http:operation location="/AllBooks" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AllBooksByCat">
+      <http:operation location="/AllBooksByCat" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="getBooks">
+    <port name="getBooksSoap" binding="s0:getBooksSoap">
+      <soap:address location="http://66.129.68.165/bookSource/getBooks.asmx" />
+    </port>
+    <port name="getBooksHttpGet" binding="s0:getBooksHttpGet">
+      <http:address location="http://66.129.68.165/bookSource/getBooks.asmx" />
+    </port>
+    <port name="getBooksHttpPost" binding="s0:getBooksHttpPost">
+      <http:address location="http://66.129.68.165/bookSource/getBooks.asmx" />
+    </port>
+  </service>
+</definitions>

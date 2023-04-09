@@ -1,0 +1,18 @@
+<?PHP 
+include ("include/connect.txt");
+
+$result = mysql_query("SELECT reference FROM ds_articles WHERE seo_url = '$id'");  
+
+if (mysql_result($result,0,"reference"))
+	{
+		printf("%s",mysql_result($result,0,"reference"));
+	}
+else
+	{
+		printf("No Reference");
+	}  
+
+
+include ("include/close.txt");
+
+?>

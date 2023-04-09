@@ -1,0 +1,118 @@
+################################################################################
+# Clicks Counter                               Version 1.0                     #
+# Copyright 2000 Frederic TYNDIUK (FTLS)       All Rights Reserved.            #
+# E-Mail: tyndiuk@ftls.org                     Script License: GPL             #
+# Created  02/28/2000                          Last Modified 02/28/2000        #
+# Scripts Archive at:                          http://www.ftls.org/php/        #
+################################################################################
+
+
+1. Qu'est ce que c'est ?
+========================
+
+	Ce script permet de compter les clics sur un lien...
+
+
+2. Dépendances:
+===============
+
+	- Un serveur web avec PHP3 ou une version plus récente...
+
+
+3. Que contient cette archive ?
+===============================
+
+	Cette Archive contient différents fichiers:
+	    1) COPYING:             La licence de ce programme (GPL).
+	    2) README:              La doc en anglais...
+	    3) LISEZMOI:            Ce fichier...
+	    4) clicks_counter.php:  Le script PHP du compteur.
+		5) clicks_counter_admin.php : Le script d'affichage du resultat.
+	    6) clicks_counter_data.txt:  Le fichier des données compteur.
+
+
+4. Installation et Configuration:
+=================================
+
+	Comme tout script PHP, l'installation est très simple...
+	
+	Copiez 'clicks_counter.php', 'clicks_counter_admin.php' et
+'clicks_counter_data.txt' dans le répertoire désiré.
+	
+	Changez les permissions en ajoutant les droits d'ecriture pour tous à
+'clicks_counter_data.txt' (chmod a+rw clicks_counter_data.txt)
+
+	Pour le bon fonctionnement de ce script, vous avez quelques configurations
+	à faire...
+	
+		Editez la section "Necessary Variables" de 'clicks_counter.php' et faites les
+		changements suivants :
+
+		$COUNT_FILE = "clicks_counter_data.txt";
+			// Fr: Chemin absolu (complet) et Nom du fichier compteur.
+
+
+		Editez la section "Necessary Variables" de 'clicks_counter.php' et faites les
+		changements suivants :
+
+		$COUNT_FILE = "clicks_counter_data.txt";
+			// Fr: Chemin absolu (complet) et Nom du fichier compteur.
+
+		$LOGIN = "ftls";
+		$PASSWORD = "demo";
+	        // Fr: Login / mot de passe de connextion admin.
+
+
+5. Comment l'utiliser ?
+=======================
+
+	Ajouter modifiez vos liens par en :
+		<A HREF="clicks_counter.php?http://www.mondom.com">Lien</A>
+
+	Faire un ou deux testes et aller voir sur :
+		http://www.mydom.dom/dir/clicks_counter_admin.php
+
+
+6. Histoire:
+============
+
+	Version 1.0         28/02/2000  - Création du Script.
+
+
+7. Copyright:
+=============
+
+	This software is copyright (C) 1999 Frédéric TYNDIUK. It is distributed
+under the terms of the GNU General Public License (GPL). Because it is licensed
+free of charge, there is NO WARRANTY, it is provided AS IS. The author can not
+be held liable for any damage that might arise from the use of this software.
+Use it at your own risk. 
+	See the file COPYING for more details (or http://www.gnu.org/).
+
+	Bien que ce/ces scripts sont des logiciels libres, ça ne vous donne pas le droit
+de pouvoir supprimer le/les copyright...
+
+
+8. Nouvelles versions:
+=====================
+
+	Les nouvelles versions ainsi que d'autres scripts sont disponibles sur:
+
+		http://www.ftls.org/fr/
+
+
+9. Contact:
+===========
+	
+	N'hésitez pas à m'envoyez un mail si vous avez des commentaires, des
+suggestions, si vous trouvez des bugs, ou si vous avez des critiques, ou juste
+pour me dire que vous aimez ce programme...
+
+	Si vous avez des problèmes de configuration, d'utilisation de ces
+scripts, relisez ce document en premier, si vous ne trouvez pas la 
+solution, n'hésitez pas à me contacter...
+
+	E-Mail: tyndiuk@ftls.org
+	Web: http://www.ftls.org/
+
+                                                  Frédéric TYNDIUK

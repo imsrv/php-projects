@@ -1,0 +1,46 @@
+.liste{ font-family:Verdana;
+	font-size:9pt;
+	color:#666666; }
+
+.kucuk{ font-family:Verdana;
+	font-size:9px;
+	color:#666666; }
+
+.form {  font-family: Verdana, Arial, Helvetica, sans-serif; 
+	  font-size: 8pt;
+	  font-weight:bold; 
+	  color: #333333; 
+	  background-color: #FFFFFF; 
+	  border: 1px solid; border-width: 1px 1px 1px 1px; 
+	  border-color: #CCCCCC #999999 #999999 #CCCCCC}
+
+.buton {  font-family: Verdana, Arial, Helvetica, sans-serif; 
+	  font-size: 9pt;
+	  color: #333333; 
+	  background-color: #F6F6F6; 
+	  border: 1px solid #999999;}
+
+A:link{ font-family:Verdana;
+	font-size:11px;
+	color:#666666;
+	text-decoration:none; }
+A:alink{ font-family:Verdana;
+	font-size:11px;
+	color:#666666;
+	text-decoration:none; }
+A:visited{ font-family:Verdana;
+	font-size:11px;
+	color:#666666;
+	text-decoration:none; }
+A:hover{ font-family:Verdana;
+	font-size:11px;
+	color:#000000;
+	text-decoration:underline; }
+
+TABLE{ font-family:Verdana;
+	font-size:11px;
+	color:#666666; }
+
+BODY{ font-family:Verdana;
+	font-size:11px;
+	color:#666666; }

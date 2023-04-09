@@ -1,0 +1,94 @@
+<?PHP 
+include ("include/connect.txt");
+
+$result = mysql_query("SELECT currency,rating FROM ds_options WHERE id = '0'");  
+while ($myrow = mysql_fetch_row($result)) 
+$currency = mysql_result($result,0,"currency");
+$rating = mysql_result($result,0,"rating");
+
+$result = mysql_query("SELECT id,release_date,running_time,aspect_ratio,mpaa_rating,budget,domestic_gross,international_gross,worldwide_gross FROM ds_movies WHERE seo_url = '$id'");  
+while ($myrow = mysql_fetch_row($result)) 
+{ 
+
+
+if ( $myrow[1] == "" )
+	{
+	$released = "N/A";
+	}
+	else
+	{
+	$released = $myrow[1];
+	} 
+if ( $myrow[2] == "" )
+	{
+	$running = "N/A";
+	}
+	else
+	{
+	$running = $myrow[2];
+	}
+if ( $myrow[3] == "" )
+	{
+	$aspect = "N/A";
+	}
+	else
+	{
+	$aspect = $myrow[3];
+	}
+if ( $myrow[4] == "" )
+	{
+	$ratingtemp = "N/A";
+	}
+	else
+	{
+	$ratingtemp = $myrow[4];
+	}
+if ( $myrow[5] == '0' )
+	{
+	$budget = " N/A ";
+	}
+	else
+	{
+	$budget = $myrow[5];
+	}
+if ( $myrow[6] == '0' )
+	{
+	$domestic = " N/A ";
+	}
+	else
+	{
+	$domestic = $myrow[6];
+	}
+if ( $myrow[7] == '0' )
+	{
+	$international = " N/A ";
+	}
+	else
+	{
+	$international = $myrow[7];
+	}
+if ( $myrow[8] == '0' )
+	{
+	$worldwide = " N/A ";
+	}
+	else
+	{
+	$worldwide = $myrow[8];
+	}
+
+printf("<strong>Релиз:</strong> %s<br><br>",$released); 
+printf("<strong>Продолжительность:</strong> %s<br><br>",$running); 
+printf("<strong>Пропорции:</strong> %s<br><br>",$aspect);
+printf("<strong>%s:</strong> %s<br><br>",$rating,$ratingtemp);  
+printf("<strong>Бюджет:</strong><br /> %s%s million<br><br>",$currency,$budget);
+printf("<strong>Домашние сборы:</strong><br /> %s%s million<br>",$currency,$domestic);
+printf("<strong>Международные сборы:</strong><br /> %s%s million<br>",$currency,$international);
+printf("<strong>Мировые сборы:</strong><br /> %s%s million<br>",$currency,$worldwide);
+ 
+
+} 
+
+
+include ("include/close.txt");
+
+?>

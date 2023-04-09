@@ -1,0 +1,21 @@
+
+
+Hello,
+
+As of 27-Jul-05 RockOutMedia made a deal with the programmer of
+ MySpaceContactScript.tk Mark Beard. Rock out Media operates the 
+Site on witch MySpaceContactScript.tk is now hosted Mark Beard 
+Is still the lead programmer of the project. They agreed to change
+the name from MySpaceCotactScript.tk to MySpace Contact Script
+hosted on MySpaceOutFit.com. This officaly takes effect Aug 10,2005
+at 12:01 am.I hope this has not caused any problems for anyone. 
+There have only been two major changes to the script.I would strongly 
+suggest you download the latest release as some of the script contacts
+the old location of the script to check for updates. The old location 
+will be taken offline within the next month.
+Thank You,
+
+Mark Beard
+MySpace Contact Script Lead Devloper/
+Rock Out Media Devloper
+

@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://tempuri.org/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="addItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ISBN" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="author" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="price" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="title" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="description" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="imagePath" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CAT_ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="addItemResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="removeItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ISBN" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="removeItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="removeItemResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ISBN" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="author" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="price" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="title" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="description" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="imagePath" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CAT_ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateItemResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addCat">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CAT_Name" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addCatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="addCatResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateCat">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CAT_ID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CAT_Name" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateCatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateCatResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="removeCat">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CAT_ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="removeCatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="removeCatResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="addItemSoapIn">
+    <part name="parameters" element="s0:addItem" />
+  </message>
+  <message name="addItemSoapOut">
+    <part name="parameters" element="s0:addItemResponse" />
+  </message>
+  <message name="removeItemSoapIn">
+    <part name="parameters" element="s0:removeItem" />
+  </message>
+  <message name="removeItemSoapOut">
+    <part name="parameters" element="s0:removeItemResponse" />
+  </message>
+  <message name="updateItemSoapIn">
+    <part name="parameters" element="s0:updateItem" />
+  </message>
+  <message name="updateItemSoapOut">
+    <part name="parameters" element="s0:updateItemResponse" />
+  </message>
+  <message name="addCatSoapIn">
+    <part name="parameters" element="s0:addCat" />
+  </message>
+  <message name="addCatSoapOut">
+    <part name="parameters" element="s0:addCatResponse" />
+  </message>
+  <message name="updateCatSoapIn">
+    <part name="parameters" element="s0:updateCat" />
+  </message>
+  <message name="updateCatSoapOut">
+    <part name="parameters" element="s0:updateCatResponse" />
+  </message>
+  <message name="removeCatSoapIn">
+    <part name="parameters" element="s0:removeCat" />
+  </message>
+  <message name="removeCatSoapOut">
+    <part name="parameters" element="s0:removeCatResponse" />
+  </message>
+  <message name="addItemHttpGetIn">
+    <part name="ISBN" type="s:string" />
+    <part name="author" type="s:string" />
+    <part name="price" type="s:string" />
+    <part name="title" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="imagePath" type="s:string" />
+    <part name="CAT_ID" type="s:string" />
+  </message>
+  <message name="addItemHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="removeItemHttpGetIn">
+    <part name="ISBN" type="s:string" />
+  </message>
+  <message name="removeItemHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="updateItemHttpGetIn">
+    <part name="ISBN" type="s:string" />
+    <part name="author" type="s:string" />
+    <part name="price" type="s:string" />
+    <part name="title" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="imagePath" type="s:string" />
+    <part name="CAT_ID" type="s:string" />
+  </message>
+  <message name="updateItemHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="addCatHttpGetIn">
+    <part name="CAT_Name" type="s:string" />
+  </message>
+  <message name="addCatHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="updateCatHttpGetIn">
+    <part name="CAT_ID" type="s:string" />
+    <part name="CAT_Name" type="s:string" />
+  </message>
+  <message name="updateCatHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="removeCatHttpGetIn">
+    <part name="CAT_ID" type="s:string" />
+  </message>
+  <message name="removeCatHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="addItemHttpPostIn">
+    <part name="ISBN" type="s:string" />
+    <part name="author" type="s:string" />
+    <part name="price" type="s:string" />
+    <part name="title" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="imagePath" type="s:string" />
+    <part name="CAT_ID" type="s:string" />
+  </message>
+  <message name="addItemHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="removeItemHttpPostIn">
+    <part name="ISBN" type="s:string" />
+  </message>
+  <message name="removeItemHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="updateItemHttpPostIn">
+    <part name="ISBN" type="s:string" />
+    <part name="author" type="s:string" />
+    <part name="price" type="s:string" />
+    <part name="title" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="imagePath" type="s:string" />
+    <part name="CAT_ID" type="s:string" />
+  </message>
+  <message name="updateItemHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="addCatHttpPostIn">
+    <part name="CAT_Name" type="s:string" />
+  </message>
+  <message name="addCatHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="updateCatHttpPostIn">
+    <part name="CAT_ID" type="s:string" />
+    <part name="CAT_Name" type="s:string" />
+  </message>
+  <message name="updateCatHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="removeCatHttpPostIn">
+    <part name="CAT_ID" type="s:string" />
+  </message>
+  <message name="removeCatHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="sellerAdminSoap">
+    <operation name="addItem">
+      <documentation>Adds a new book to the books table</documentation>
+      <input message="s0:addItemSoapIn" />
+      <output message="s0:addItemSoapOut" />
+    </operation>
+    <operation name="removeItem">
+      <documentation>Removes a  book from the book table</documentation>
+      <input message="s0:removeItemSoapIn" />
+      <output message="s0:removeItemSoapOut" />
+    </operation>
+    <operation name="updateItem">
+      <documentation>Updates a  book in the book table</documentation>
+      <input message="s0:updateItemSoapIn" />
+      <output message="s0:updateItemSoapOut" />
+    </operation>
+    <operation name="addCat">
+      <documentation>Adds a new category to the category table</documentation>
+      <input message="s0:addCatSoapIn" />
+      <output message="s0:addCatSoapOut" />
+    </operation>
+    <operation name="updateCat">
+      <documentation>Updates a  category from the category table</documentation>
+      <input message="s0:updateCatSoapIn" />
+      <output message="s0:updateCatSoapOut" />
+    </operation>
+    <operation name="removeCat">
+      <documentation>Removes a  category from the category table</documentation>
+      <input message="s0:removeCatSoapIn" />
+      <output message="s0:removeCatSoapOut" />
+    </operation>
+  </portType>
+  <portType name="sellerAdminHttpGet">
+    <operation name="addItem">
+      <documentation>Adds a new book to the books table</documentation>
+      <input message="s0:addItemHttpGetIn" />
+      <output message="s0:addItemHttpGetOut" />
+    </operation>
+    <operation name="removeItem">
+      <documentation>Removes a  book from the book table</documentation>
+      <input message="s0:removeItemHttpGetIn" />
+      <output message="s0:removeItemHttpGetOut" />
+    </operation>
+    <operation name="updateItem">
+      <documentation>Updates a  book in the book table</documentation>
+      <input message="s0:updateItemHttpGetIn" />
+      <output message="s0:updateItemHttpGetOut" />
+    </operation>
+    <operation name="addCat">
+      <documentation>Adds a new category to the category table</documentation>
+      <input message="s0:addCatHttpGetIn" />
+      <output message="s0:addCatHttpGetOut" />
+    </operation>
+    <operation name="updateCat">
+      <documentation>Updates a  category from the category table</documentation>
+      <input message="s0:updateCatHttpGetIn" />
+      <output message="s0:updateCatHttpGetOut" />
+    </operation>
+    <operation name="removeCat">
+      <documentation>Removes a  category from the category table</documentation>
+      <input message="s0:removeCatHttpGetIn" />
+      <output message="s0:removeCatHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="sellerAdminHttpPost">
+    <operation name="addItem">
+      <documentation>Adds a new book to the books table</documentation>
+      <input message="s0:addItemHttpPostIn" />
+      <output message="s0:addItemHttpPostOut" />
+    </operation>
+    <operation name="removeItem">
+      <documentation>Removes a  book from the book table</documentation>
+      <input message="s0:removeItemHttpPostIn" />
+      <output message="s0:removeItemHttpPostOut" />
+    </operation>
+    <operation name="updateItem">
+      <documentation>Updates a  book in the book table</documentation>
+      <input message="s0:updateItemHttpPostIn" />
+      <output message="s0:updateItemHttpPostOut" />
+    </operation>
+    <operation name="addCat">
+      <documentation>Adds a new category to the category table</documentation>
+      <input message="s0:addCatHttpPostIn" />
+      <output message="s0:addCatHttpPostOut" />
+    </operation>
+    <operation name="updateCat">
+      <documentation>Updates a  category from the category table</documentation>
+      <input message="s0:updateCatHttpPostIn" />
+      <output message="s0:updateCatHttpPostOut" />
+    </operation>
+    <operation name="removeCat">
+      <documentation>Removes a  category from the category table</documentation>
+      <input message="s0:removeCatHttpPostIn" />
+      <output message="s0:removeCatHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="sellerAdminSoap" type="s0:sellerAdminSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="addItem">
+      <soap:operation soapAction="http://tempuri.org/addItem" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="removeItem">
+      <soap:operation soapAction="http://tempuri.org/removeItem" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="updateItem">
+      <soap:operation soapAction="http://tempuri.org/updateItem" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addCat">
+      <soap:operation soapAction="http://tempuri.org/addCat" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="updateCat">
+      <soap:operation soapAction="http://tempuri.org/updateCat" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="removeCat">
+      <soap:operation soapAction="http://tempuri.org/removeCat" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="sellerAdminHttpGet" type="s0:sellerAdminHttpGet">
+    <http:binding verb="GET" />
+    <operation name="addItem">
+      <http:operation location="/addItem" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="removeItem">
+      <http:operation location="/removeItem" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateItem">
+      <http:operation location="/updateItem" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="addCat">
+      <http:operation location="/addCat" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateCat">
+      <http:operation location="/updateCat" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="removeCat">
+      <http:operation location="/removeCat" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="sellerAdminHttpPost" type="s0:sellerAdminHttpPost">
+    <http:binding verb="POST" />
+    <operation name="addItem">
+      <http:operation location="/addItem" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="removeItem">
+      <http:operation location="/removeItem" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateItem">
+      <http:operation location="/updateItem" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="addCat">
+      <http:operation location="/addCat" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateCat">
+      <http:operation location="/updateCat" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="removeCat">
+      <http:operation location="/removeCat" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="sellerAdmin">
+    <port name="sellerAdminSoap" binding="s0:sellerAdminSoap">
+      <soap:address location="http://66.129.68.165/bookSource/sellerAdmin.asmx" />
+    </port>
+    <port name="sellerAdminHttpGet" binding="s0:sellerAdminHttpGet">
+      <http:address location="http://66.129.68.165/bookSource/sellerAdmin.asmx" />
+    </port>
+    <port name="sellerAdminHttpPost" binding="s0:sellerAdminHttpPost">
+      <http:address location="http://66.129.68.165/bookSource/sellerAdmin.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,138 @@
+<TABLE BORDER=0 WIDTH="450">
+<TR><TD [<($CONFIG{'WINCOLOR'})>]>
+<BR><BR>
+<TABLE><TR><TD VALIGN=TOP>
+
+[<(
+	$OUT .= "<!";
+	if (-e "$CONFIG{'CLUB_image_path'}/$FORM{'club'}/icon.gif") {
+		$ext = "gif";
+	}
+	elsif (-e "$CONFIG{'CLUB_image_path'}/$FORM{'club'}/icon.jpg") {
+		$ext = "jpg";
+	}
+	if ($ext ne "") {
+		($width, $height) = &imgsize("$CONFIG{'CLUB_image_path'}/$FORM{'club'}/icon.$ext");
+		$OUT .= "<FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><CENTER>Club Logo/Icon:<BR><IMG SRC=\"$CONFIG{'CLUB_image_dir'}/$FORM{'club'}/icon.$ext?$rn\" WIDTH=$width HEIGHT=$height ALT=\"Club Icon\"></CENTER>\n";
+	}
+#	$OUT .= ">";
+)>]
+
+</TD><TD VALIGN=TOP>
+
+[<(
+	$OUT .= "<!";
+	open (INTRO, "$GPath{'clubs_data'}/$FORM{'club'}/club_intro.txt");
+	my @intro = <INTRO>;
+	close (INTRO);
+
+	foreach my $l (@intro) {
+		$tintro .= $l;
+	}
+	if ($tintro eq "") {
+		$tintro = "Welcome to our club!";
+	}
+	$OUT .= ">";
+)>]
+
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">[<($tintro)>]
+<DIV ALIGN=RIGHT><P ALIGN=RIGHT><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Club Owner: <A HREF="[<($GUrl{'moreinfo.cgi'})>]?UserName=[<($MOD{'username'})>]" TARGET="mainframe"><I>[<($MOD{'name'})>]</I></A></P></DIV>
+
+</TD>
+</TR>
+</TABLE>
+
+</TD></TR>
+<TR><TD>
+
+[<(
+	$OUT .= "<!";
+
+	$log_day = $1;
+	$today = &US_Date($rn);
+	$ltoday = &long_date($rn);
+	$yesterday = $rn - 86400;
+	$lyesterday = &long_date($yesterday);
+	$yesterday = &US_Date($yesterday);
+	$previousday = $rn - 172800;
+	$lpreviousday = &long_date($previousday);
+	$previousday = &US_Date($previousday);
+
+	$td = $today;
+	$td =~ s/\//_/g;
+	$ys = $yesterday;
+	$ys =~ s/\//_/g;
+	$pd = $previousday;
+	$pd =~ s/\//_/g;
+
+	$fn = "$GPath{'cforums_data'}/$FORM{'club'}%$td.log";
+	open (LOG, $fn);
+	@log = <LOG>;
+	close (LOG);
+	chomp(@log);
+
+	$OUT .= ">";
+)>]
+
+
+<BR><BR><TABLE WIDTH=100% BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]" WIDTH="100%" COLSPAN=2><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">Recent Club History</FONT></TD></TR>
+<TR BGCOLOR="[<($CONFIG{'bbs_table1'})>]">
+<TD>[<($ltoday)>]</TD><TD>
+<TABLE><TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+Page Views: [<($log[0])>]<BR>
+<A HREF="[<($GUrl{'cforum.cgi'})>]?clubs=T&forum=[<($FORM{'club'})>]&action=getall">New Posts</A>: [<($log[1])>]<BR>
+<A HREF="[<($GUrl{'cf_utils.cgi'})>]?action=show_members&club=[<($FORM{'club'})>]">New Members</A>: [<($log[2])>]</TD><TD WIDTH=15><BR></TD><TD>
+<A HREF="[<($GUrl{'club_gallery.cgi'})>]?club=[<($FORM{'club'})>]">New Images</A>: [<($log[3])>]<BR>
+<A HREF="[<($GUrl{'club_news.cgi'})>]?club=[<($FORM{'club'})>]">New News Items</A>: [<($log[4])>]<BR>
+<A HREF="[<($GUrl{'club_links.cgi'})>]?club=[<($FORM{'club'})>]">New Links</A>: [<($log[5])>]</TD></TR></TABLE>
+</TD>
+</TR>
+
+[<(
+	$OUT .= "<!";
+	$fn = "$GPath{'cforums_data'}/$FORM{'club'}%$ys.log";
+	open (LOG, $fn);
+	@log = <LOG>;
+	close (LOG);
+	chomp(@log);
+	$OUT .= ">";
+)>]
+
+<TR BGCOLOR="[<($CONFIG{'bbs_table2'})>]" >
+<TD>[<($lyesterday)>]</TD><TD>
+<TABLE><TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+Page Views: [<($log[0])>]<BR>
+<A HREF="[<($GUrl{'cforum.cgi'})>]?clubs=T&forum=[<($FORM{'club'})>]&action=getall">New Posts</A>: [<($log[1])>]<BR>
+<A HREF="[<($GUrl{'cf_utils.cgi'})>]?action=show_members&club=[<($FORM{'club'})>]">New Members</A>: [<($log[2])>]</TD><TD WIDTH=15><BR></TD><TD>
+<A HREF="[<($GUrl{'club_gallery.cgi'})>]?club=[<($FORM{'club'})>]">New Images</A>: [<($log[3])>]<BR>
+<A HREF="[<($GUrl{'club_news.cgi'})>]?club=[<($FORM{'club'})>]">New News Items</A>: [<($log[4])>]<BR>
+<A HREF="[<($GUrl{'club_links.cgi'})>]?club=[<($FORM{'club'})>]">New Links</A>: [<($log[5])>]</TD></TR></TABLE>
+</TD>
+</TR>
+
+[<(
+	$OUT .= "<!";
+	$fn = "$GPath{'cforums_data'}/$FORM{'club'}%$pd.log";
+	open (LOG, $fn);
+	@log = <LOG>;
+	close (LOG);
+	chomp(@log);
+	$OUT .= ">";
+)>]
+
+<TR BGCOLOR="[<($CONFIG{'bbs_table1'})>]">
+<TD>[<($lpreviousday)>]</TD><TD>
+<TABLE><TR><TD>
+Page Views: [<($log[0])>]<BR><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<A HREF="[<($GUrl{'cforum.cgi'})>]?clubs=T&forum=[<($FORM{'club'})>]&action=getall">New Posts</A>: [<($log[1])>]<BR>
+<A HREF="[<($GUrl{'cf_utils.cgi'})>]?action=show_members&club=[<($FORM{'club'})>]">New Members</A>: [<($log[2])>]</TD><TD WIDTH=15><BR></TD><TD>
+<A HREF="[<($GUrl{'club_gallery.cgi'})>]?club=[<($FORM{'club'})>]">New Images</A>: [<($log[3])>]<BR>
+<A HREF="[<($GUrl{'club_news.cgi'})>]?club=[<($FORM{'club'})>]">New News Items</A>: [<($log[4])>]<BR>
+<A HREF="[<($GUrl{'club_links.cgi'})>]?club=[<($FORM{'club'})>]">New Links</A>: [<($log[5])>]</TD></TR></TABLE>
+</TD>
+</TR>
+</TABLE>
+
+</TD></TR>
+</TABLE>

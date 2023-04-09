@@ -1,0 +1,15 @@
+<?PHP 
+include ("include/connect.txt");
+
+$result = mysql_query("SELECT title,film FROM ds_articles WHERE seo_url = '$id'");  
+while ($myrow = mysql_fetch_row($result)) 
+$movie_result = mysql_query("SELECT title FROM ds_movies WHERE seo_url = '$myrow[1]'",$db); 
+$movie_myrow = mysql_fetch_row($movie_result);
+
+printf("%s  ( %s )",mysql_result($result,0,"title"),$movie_myrow[0]);
+
+
+
+include ("include/close.txt");
+
+?>

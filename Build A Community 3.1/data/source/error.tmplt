@@ -1,0 +1,127 @@
+<TABLE WIDTH=550 CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>An Error Has Occured</B></FONT></TD></TR>
+<TR><TD  BGCOLOR="[<($CONFIG{'win_color'})>]" ><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+[<(
+	if ($error eq 'illegal conversion') {
+		$OUT .= "You cannot convert an html file into and an non-html file format, or vice-versa.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'long_PassWord') {
+		$OUT .= "Your password must be less than ten letters long.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'site_listed') {
+		$OUT .= "A site with that address is already listed.  If you wish to modify a listing please select \"Edit\".<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'clubexists') {
+		$OUT .= "You can only create one club.\n";
+	}
+	elsif ($error eq 'myphotobadtype') {
+		$OUT .= "The file that you are trying to upload is not among the permitted types. $filename.\n";
+	}
+	elsif ($error eq 'myphotoempty') {
+		$OUT .= "You did not provide a file to be uploaded or the file is empty.  Please press [Back] and try again.\n";
+	}
+	elsif ($error eq 'myphototoobig') {
+		$OUT .= "This file is $ENV{'CONTENT_LENGTH'} bytes, which exceeds the maximum file size of $CONFIG{'MYPHOTO_kbs'}kbs.\n";
+	}
+	elsif ($error eq 'posting_denied') {
+		$OUT .= "You do not have permission to post a message.\n";
+	}
+	elsif ($error eq 'bad_name') {
+		$OUT .= "You have no name specified for yourself, so please <A HREF=\"$GUrl{'profile.cgi'}\">login</A> and specify one if you want to post.\n";
+	}
+	elsif ($error eq 'bad_url') {
+		$OUT .= "The URL (address) that you entered is invalid.  Please make sure that you include <B>http://</B> at the beginning.\n";
+	}
+	elsif ($error eq 'forum_closed') {
+		$OUT .= "This forum has been closed.\n";
+	}
+	elsif ($error eq 'subject_required') {
+		$OUT .= "You must provide a subject for all messages.\n";
+	}
+	elsif ($error eq 'approval_denied') {
+		$OUT .= "Only the moderator or the administration are allowed to approve messages.\n";
+	}
+	elsif ($error eq 'modification_denied') {
+		$OUT .= "Only the author of a message, the moderator or the administration are allowed to edit a message.\n";
+	}
+	elsif ($error eq 'banned user') {
+		$OUT .= "$BANNEDMESSAGE\n";
+	}
+	elsif ($error eq 'short_PassWord') {
+		$OUT .= "Your password must be more than five letters long.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'bad_referer') {
+		$OUT .= "You cannot access this script from your location.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'missing_info') {
+		$OUT .= "Your full name, username and email address are all required information.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'on_hold') {
+		$OUT .= "Your membership has not been activated yet.  Please check back soon.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'name_taken') {
+		$OUT .= "The username that you specified already exists.  Please press [Back] and choose another username.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'bad_email_on_password') {
+		$OUT .= "The email address that you specified is invalid.  Please press [Back] and try again.<p><hr size=7 width=75%><p>\n";
+	}   
+	elsif ($error eq 'bad_user_name') {
+		$OUT .= "The username that you specified is invalid.  Please press [Back] and try again.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'bad_user') {
+		$OUT .= "Your membership encountered an error.  Please press [Back] and try again.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'no_user_or_email') {
+		$OUT .= "You forgot to specify a username or email address to search for.  Please press [Back] and try again.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'passwords_dont_match') {
+		$OUT .= "The two passwords that you entered do not match.  They must both be lower-case and contain no spaces.  Please press [Back] and try again.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'missing') {
+		$OUT .= "You forgot to fill in the <B>$specific</B> field.  Please press [Back] and fill in all required fields.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'bad_email_address') {
+		$OUT .= "The email address \"$Email\" is not a valid internet address.  Please press [Back] and try again.  <P><B>AOL users</B>, please remember that you must include \"\@aol.com\".<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'Bad Category') {
+		$OUT .= "Only one account is allowed per person.  If you have made a mistake, please edit your account after logging in.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'Bad Owner') {
+		$OUT .= "You must supply a name for the owner of the site.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'Bad Title') {
+		$OUT .= "You must provide a title when submitting a link to our database.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'Bad Description') {
+		$OUT .= "You must provide a description when submitting a link to our database.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'Bad Email') {
+		$OUT .= "You must provide a valid email address when submitting a link to our database.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'Bad URL') {
+		$OUT .= "The URL (address) that you provided is not valid.  Please make sure that you include the <B>http://</B> at the beginning.  Please press [Back] and try again.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'duplicate') {
+		$OUT .= "Only one account is allowed per person.  If you have made a mistake, please edit your account after logging in.<p><hr size=7 width=75%><p>\n";
+	}
+	elsif ($error eq 'email_taken') {
+ 		$OUT .= "The email address that you entered is already registered under a different username.  If you have lost/forgotten your password or username, use the following form to retrieve it.<p><hr size=7 width=75%><p>\n";
+		$OUT .= "<form ENCTYPE=\"application/x-www-form-urlencoded\"  METHOD=\"POST\" action=\"$GUrl{'profile.cgi'}\">\n";
+		$OUT .= "<B>Email Address:</B> <input type=text name=\"Email\" size=20><br>\n";
+		$OUT .= "<INPUT TYPE=HIDDEN NAME=\"action\" VALUE=\"Get Password\">\n";
+		$OUT .= "<INPUT TYPE=SUBMIT VALUE=\"Get Password\">\n";
+		$OUT .= "</FORM>\n";
+
+		$OUT .= "<form ENCTYPE=\"application/x-www-form-urlencoded\"  METHOD=\"POST\" action=\"$GUrl{'profile.cgi'}\">\n";
+		$OUT .= "<B>UserName</B> <input type=text name=\"UserName\" size=20><br>\n";
+		$OUT .= "<INPUT TYPE=HIDDEN NAME=\"action\" VALUE=\"Get Password\">\n";
+		$OUT .= "<INPUT TYPE=SUBMIT VALUE=\"Get Password\">\n";
+		$OUT .= "</FORM>\n";
+
+	}
+	else {
+		$OUT .= "$error<p><hr size=7 width=75%><p>\n";
+	}
+)>]
+</TD></TR></FORM></TABLE>
+

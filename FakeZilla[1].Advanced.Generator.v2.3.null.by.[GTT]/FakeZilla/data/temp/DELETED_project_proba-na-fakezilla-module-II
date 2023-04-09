@@ -1,0 +1,20 @@
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;
+; FakeHits.co.uk Advanced Generator ver2.3
+; Fri, 2004-Apr-09 10:08:08
+;
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+URL=http://www.test.com/tralalala/opa.net?brym=345345&opala=3
+Referer=List
+Referer-Url=
+Referer-List=20040407-093033-[extracted-from ex040131.log]-REFERER.txt
+User-Agent=List
+UserAgent-Exact=
+UserAgent-List=20040407-093506-[extracted-from ex040131.log]-USERAGENT.txt
+Method=GET
+Param=a:0:{}
+Proxy=20040403-125517-PROXY.txt
+Sim-Proxy=1
+Hits-per-hour=
+Total-hits-sent=20

@@ -1,0 +1,401 @@
+<html><head>
+<title>Installation Page</title>
+</head>
+<body bgcolor="FFFFFF">
+<center>
+<br><br>
+
+<table cellspacing="1" cellpadding="4" border="2" bgcolor="#C0C0C0" width="100%">
+<tr><td>
+<table cellspacing="10" cellpadding="3" border="0" bgcolor="#EAEAD5" width="100%">
+<tr>
+<td align="center" bgcolor="#C0C0C0">
+<font color="#400060" size="+1" face="Arial">ICS4.0 Installation Instructions</font>
+</td>
+</tr>
+<tr>
+<td height="10" bgcolor="#EAEAD5">
+<br>
+<font color="#400060" size="3" face="Arial"><h3>Installation Instructions</h3></font>
+</td>
+</tr>
+<tr>
+<td>
+<font color="#808000" face="Verdana, Arial">
+<b>COPYRIGHT NOTICE &amp; Terms of Use:</b><br>
+</font>
+<font face="Verdana, Arial" size="-1">
+Installation and use of this product denotes your acceptance to the terms set forth in this agreement. You have purchased a license to use the code, and not the code itself.  You may modify the code, however, modified versions may not be redistributed or sold without express written permission from ICS Avenue scripts at <a  href="">info@icsave.com</a>
+<p>
+The byline displayed at the bottom of each administration interface must be left clearly visible and may not be modified in any way.
+<p>
+You may not re-redistribute these scripts in whole or in part in any compilation, archive, or in any form whatsoever without express written permission.
+<p>
+The detection methods used by ICS are the result of analyzing many thousands of spider hits and visitor hits over a period of many months. We therefore require that the methods used not be disclosed in any public forum or by any other means which would reveal the specifics of the code or the techniques employed to create the multiple stages. Generic discussions of multiple stages and features are permitted.
+<p>
+You agree not to use ICS to spam the search engines in any way (serving irrelevant content, stolen content, or misleading content), nor use ICS to serve content which is not owned by you and for which you have not obtained permission to use. Violation of this agreemnt will result in immediate revocation of your license without remedy to you. We reserve the right to take such action at our sole discretion. Play nice!!
+<p>
+If you do not agree to these terms, then delete all traces of this program and do not install or use ICS v4.0 and notify <a  href="">info@icsave.com</a>.<br><br>
+COPYRIGHT &copy; 2001 By ICS Avenue
+</font>
+<hr>
+Please ensure you have reviewed and meet the system requirements listed below:
+<br><br>
+<b>Perl 5, cgi capability, Unix (Linux, BSD, etc.), SSI (Server Side Includes)</b>
+<br>
+<hr>
+<br>
+<br>
+<font color="#808000" face="Verdana, Arial">
+<b>INSTRUCTIONS:</b>
+</font>
+<br><br>
+<font face="Verdana, Arial" size="-1">
+
+<font color="#FF0000" face="Verdana, Arial"><b>On your local hard drive:</b></font><br><br>
+
+<h3><u>Getting Ready:</u></h3>
+
+The path to Perl 5 used in the scripts, is the most common location for it on Unix Servers. It should work as is on most of them.
+<br><br>
+If this is not where it is on your web server you will get error messages
+when you try running any of the programs. If you have Telnet access to your web hosting account You can get the path by the command: 
+<br><br>
+	which perl OR whereis perl
+<br><br>
+You will want to make note of the path to Perl 5
+<br><br>
+You must then modify the path, which is the very first line of the scripts,
+making sure <b>not</b> to remove the "#" as the first character of the path.
+<br><br>
+It looks like this:    #!/usr/bin/perl
+<br><br>
+Or alternatively ask the administrator at your ISP what the path is
+for Perl 5. If you do need to change it you should carefully edit each program in the <b>ICScgi</b> directory, be sure to use a text editor such as "Notepad" or your favourite text editor. It is always the first line in the script, some of the programs and files in the ICScgi directory do not have this path in them - just skip those <b>DO NOT ADD THE PATH TO PROGRAMS OR FILES THAT DON'T HAVE IT.</b>
+<p>
+<hr>
+<b>ONLY DO THIS IF REQUIRED ON YOUR WEB HOSTING ACCOUNT</b><br>
+on some servers to use files that have SSI calls in them you need the following to be able to name those files with a .htm or .html extension otherwise you will simply get a blank page:
+<p>
+AddHandler server-parsed .html<br>
+AddHandler server-parsed .htm
+<p>
+Place these two lines in a new file using notepad or your favourite text editor, and name it .htaccess then upload it to your root web directory in ASCII mode. If you already have an .htaccess file in your root web directory then make a backup of it and add these two lines to your existing one.
+<hr> 
+<br><br><br>
+
+
+<font color="#FF0000" face="Verdana, Arial"><b>On your web host server:</b></font><br><br>
+<font face="Verdana, Arial">
+For security reasons it is a good idea to change the names of the directories to something other than the default name. This is indicated in blue text for directories where you have a choice of naming them something other than the default name.
+<p>
+<h3><u>STEP 1</u></h3> 
+<li>Create a directory named <b>ICScgi</b> and chmod to 755</li><br>
+<font color=blue size=-1>This can be a directory name of your choosing. You will be asked for the name you chose in the Global Variables interface. For reference, it will continue to be referred to as <font color=green>ICScgi</font> in instructions and other examples.</font>
+<p>
+Upload the files from the <b>ICScgi</b> directory on your hard drive to the directory you just created above. The upload MUST BE DONE IN ASCII format NOT BIN, the programs will not work if they are not uploaded in ASCII. Then change the permissions on the files you just uploaded using your FTP client as follows:
+<p>
+<b>chmod the following to 766</b><br>
+default.cgi<br>
+options.cgi<br>
+pwfile.cgi<br>
+<p>
+<b>chmod the remaining files in ICScgi (listed below) to 755</b><br>
+GetCookie.cgi<br>
+GetSiteInfo.cgi<br>
+GlobalVariables.cgi<br>
+ICSengine.cgi<br>
+ICSspider.cgi<br>
+ICSstart.cgi<br>
+IPadmin.cgi<br>
+LogAnalyzer.cgi<br>
+Navigation.cgi<br>
+nslookup.cgi<br>
+PswAdmin.cgi<br>
+SetCookie.cgi<br>
+SetMultiStage.cgi<br>
+StepByStep.cgi<br>
+<p>
+</font>
+</td>
+</tr>
+<tr>
+<td align="left">
+<font size="2" face="verdana, arial">
+<b>Note:</b><br>
+permissions of 755 equate to read-write-execute for owner, -read-execute for group, and other.<br>
+permissions of 766 equate to read-write-execute for owner, -read-write for group, and other.<br>
+permissions of 777 equate to read-write-execute for owner, -read-write-execute for group, and other.
+<p>
+<ul>
+<li>Create a directory named <b>IPDirect</b> and chmod to 777</li><br>
+<font color=blue size=-1>This can be a directory name of your choosing. You will be asked for the name you chose in the Global Variables interface. For reference, it will continue to be referred to as <font color=green>IPDirect</font> in instructions and other examples.<br>
+</font>Upload the contents of <font color=green>IPDirect</font> from the zip files you received to the directory of the same name on your web server and chmod to 766
+<p>
+<li>Create a directory named <b>SEdirect</b> and chmod to 755</li><br>
+<font color=blue size=-1>This can be a directory name of your choosing. You will be asked for the name you chose in the Global Variables interface. For reference, it will continue to be referred to as <font color=green>SEdirect</font> in the following instructions and other examples. The directories below must be named exaclty as shown, and are case sensitive.</font>
+<p>
+<li>Create a directory named <b>ICShtml</b> and upload the contents of ICShtml from your hard drive to ICShtml on your web server. No chmod required<br>
+<font color=blue size=-1>This can be a directory name of your choosing. You will be asked for the name you chose in the Global Variables interface. It is best for now to leave it named ICShtml, then when ICS is completely installed you may change it. For reference, it will continue to be referred to as <font color=green>ICShtml</font> in the following instructions and other examples. </font>
+</ul>
+<p>
+<font size=3>The directories below <u>must be named exaclty as shown</u>, and are case sensitive.</font>
+<p>
+<ul>
+<li>Create a directory named <b>HumanVisitor</b> within SEdirect and chmod permissions to 755</li><br><br>
+<li>Create a directory named <b>AltaVista</b> within SEdirect and chmod permissions to 755</li><br><br>
+<li>Create a directory named <b>Excite</b> within SEdirect and chmod permissions to 755</li><br><br>
+<li>Create a directory named <b>Inktomi</b> within SEdirect and chmod permissions to 755</li><br><br>
+<li>Create a directory named <b>Lycos</b> within SEdirect and chmod permissions to 755</li><br><br>
+<li>Create a directory named <b>NorthernLight</b> within SEdirect and chmod permissions to 755</li><br><br>
+</ul>
+
+<br>
+<h3><u>Step 2</u></h3>
+Now navigate to the ICS Authentication interface by specifying it's URL address with your browser, i.e. www.yourdomain.com/path-to-ICScgi-directory/you-created/in-step1/ICSstart.cgi
+<p>
+This is the authentication interface for ICS. On login it will set a cookie that will allow you to be authenticated to all of the interfaces for a period of 4 hours, after that you will be required to authenticate again.
+<p>
+The initial login credentials are as follows:<br><br>
+<b>UserID:</b> Admin<br>
+<b>Passwd:</b> password
+<p>
+After you have completely installed ICS, use the <i>Change Password</i> option from the <b>Navigation</b> interface to change your password to something else.
+<p>
+Once you authenticate you will be presented with the <b>Navigation</b> interface. Note that each interface has two links on it, one labelled <i>Navigation</i> and another labelled <i>Help</i>. Use the <i>Navigation</i> link to return to this interface to navigate to the various admin interfaces, and use the <i>Help</i> link to get context sensitive help for the interface you are at.  Ok, now it is time to set up your site information, so choose <b>Set/Change Site Global Variables</b> from the navigation interface to set up your site variables.
+<p>
+<ul>
+At the <b>Set/Change Site Global Variables</b> tell ICS where you created directories and other info about your site by filling out the information in the form so ICS can establish default values and paths for this domain. Please be sure to complete all fields accurately and submit your entries to establish your global variables. If they are incorrect just return to the form with your browser's back button and make changes and resubmit. You can't break anything by resubmitting this information.
+<p>
+<b><font size=-1>Note:</b> You may have to ask your ISP what the absolute path to your web space is , where sendmail is located, and where you can run CGI programs. On some accounts CGI programs must be run from a directory designated by your ISP, normally cgi-bin. 
+<p>
+If the absolute path is incorrect the update will produce an 'open' error. (there is a program included in the ICScgi directory called <font color=green>GetSiteInfo.cgi</font> which can often determine your absolute path, sendmail path and other info. To use it, simply navigate to it using your browser i.e. http://www.yourdomain.com/path-to-ICScgi/GetSiteInfo.cgi</font>
+</ul> 
+<br><br>
+<h3><u>Step 3</u></h3>
+In response to submitting your variable information ICS will display what your variables have been set to. Please verify that they are correct.
+<p>
+Next you will upload a test page <i>icstest.html</i> to each of the search engine directories. This page will be used to test ICS once you have completed the installation steps.
+<ul>
+<li>Upload the contents of <font color=green>HumanVisitor</font> from the zip files you received to the directory of the same name on your web server</li><br>
+<li>Upload the contents of <font color=green>AltaVista</font> from the zip files you received to the directory of the same name on your web server</li><br>
+<li>Upload the contents of <font color=green>Excite</font> from the zip files you received to the directory of the same name on your web server</li><br>
+<li>Upload the contents of <font color=green>Inktomi</font> from the zip files you received to the directory of the same name on your web server</li><br>
+<li>Upload the contents of <font color=green>Lycos</font> from the zip files you received to the directory of the same name on your web server</li><br>
+<li>Upload the contents of <font color=green>NorthernLight</font> from the zip files you received to the directory of the same name on your web server.</li><br><br>
+This is a test page that you have just uploaded in each of the search engine directories and to the HumanVisitor directory, and will be used to test ICS. Notice that these are all named <font color=green>icstest.html</font>, but each of these pages has different content.
+<p>
+Now you need to create the <i>icstest.html</i> page that will call the script. This page will have a single SSI statement in it. The SSI statement is specific to your site paths and to the page being cloaked. To help you cloak your first pages a <b>Cloaking Pages - Step By Step</b> option is available from the navigation interface that will create site specific instructions for you, and also create the SSI statement to use in the page you will cloak. The statement produced in the instructions is ready for you to cut and paste in to the SSI page. After you have cloaked a few pages you will likely find it much faster to simply copy other statements and modify them as required. Remember to use the <i>Help</i> link for additional information when in doubt.
+<p>
+Ok, let's create the SSI <i>icstest.html</i> page now. Use your HTML editor, notepad, or your favourite text editor and create a blank page and name it <i>icstest.html</i>. Upload this page to your public html web space (where your other regular html pages are). Next, navigate to the <b>Cloaking Pages - Step By Step</b> interface and enter <i>icstest.html</i> as the page name and click on <i>Show Steps</i>.
+<p>
+Although you would normally follow all of these steps when cloaking one of your existing pages, in this case you will only follow step 3. The other steps were already performed when you loaded the test page to the HumanVisitor and the search engine directories above. Copy the SSI statement and paste it into the blank <i>icstest.html</i> page you just uploaded.
+</ul><br><br>
+<h3><u>Step 3.1</u></h3>
+<h4><font color="red">IMPORTANT:</font></h4>
+<b>If you don't perform this step you will not have an up to date IP address list.</b><br><br>
+From the <i>Navigation</i> interface select <b>IP Address And User Agent Admin</b> and click on the "go" button, this will bring up the <i>Administer IP's/Directories/User Agents</i> interface with statements defining IP addresses, dirctories, and user agents to ICS. These are not the most current however, they must be updated.
+<p>
+To get the most current list visit the member's area at www.icsave.com/members and select the link "IP Management Tools"
+Then using the "Display IP Addresses:" tool, choose to display IP's for
+"Original 5 supplied with ICS" and for format, choose "ICS Entry Format".
+<p>
+This will display the most current list of IP addresses in a format that is ready
+to use in the script.
+<p> 
+Copy and then paste this list over the entries currently displayed
+in the <b>IP Address And User Agent Admin</b> interface completely replacing the entries currently there. <u>Make sure there are no blank lines at the top or bottom of the entries</u>. Then hit the update button to bring the addresses up to date.<br><br>
+
+<h3><u>Step 4</u></h3>
+Now go to the ICS navigation interface again and explore the other options there by selecting each in turn to familiarize yourself with what is available. Click on the <i>Help</i> link as you visit each interface to get specific information for that interface and it's use. This might be a good time to change your password to something other than <i>password</i>, but don't change anything else  just yet. When you are done with that, it's time to test the install.
+<p>
+<h3><u>Step 5</u></h3>
+Use the <i>Navigation</i> interface and choose <b>Set Cloaking And Notification Options</b>, you will notice that all of the options that determine how pages are served are set to <i>Stopped</i>. In this state ICS will deliver the HumanVisitor page to any visitor requesting a page, whether it is a search engine or regular surfer does not matter, all will get the human version of the page requested. In essence, no cloaking is taking place.
+<p>
+Also note that the <b>Notification And Logging Options</b> are all set to <i>Active</i>, it is recommended that these be left <i>Active</i> so that you can adequately track what is being served. In addition, the e-mail notification of spider visits will contain the directory name and path the content was retrieved from for a detected spider request. Later, once you are comfortable with ICS, and cloaking in general, you may decide to turn off some of these notification options. Even then it is ill advised, they are a very useful source of information for your optimization efforts.
+<p>
+Ok let's begin testing the installation. For the tests that follow it is best to use two browsers open at the same time, so that you can easily make changes on the <b>Set Cloaking And Notification Options</b> interface, and then use the other open browser to navigate to the URL for <i>icstest.html</i> to see the results.
+<ul>
+<li><u><font color="#800080">Test 1</font></u>
+<ul>
+<li>Without making any changes to the settings on the <b>Cloaking And Notification Options</b> interface, navigate to the URL for icstest.html, i.e. http://www.yourdomain.com/icstest.html 
+<br>
+</ul>
+<li><u><font color="#800080">Result 1</font></u>
+<ul>
+<li>You should have been served the <i>icstest.html</i> content from the HumanVisitor directory. If for some reason you received a blank page instead of the human version of <i>icstest.html</i> then scoot back up to the top of the installation instructions and make sure you followed the steps for adding or updating your <b>.htaccess</b> file.
+<p>
+<li>Using the <i>Navigation</i> interface choose <b>View, Delete, Rotate Logs</b>, once at the log interface for <b>Choose A Log File</b> select <i>visitor.log</i> from the drop down list. The other options can be left as they are for this, and click on <i>Perform Action For This Log</i>. You should see a "hit" recorded in the log with your IP Address for the page <i>icstest.html</i>. This is the request you just made for Test 1. Ok, now return to the <b>Set Cloaking And Notification Options</b> interface. 
+</ul>
+<p> 
+<li><u><font color="#800080">Test 2</font></u>
+<ul>
+<li>On the <b>Cloaking And Notification Options</b> interface set <b>Human Browser Footprint Detection</b> to <i>Active</i> and click on <i>Activate Settings</i>. Now navigate to the URL for icstest.html, i.e. http://www.yourdomain.com/icstest.html you will have to hit the <i>refresh</i> button on your browser to force it to retrieve the page again.
+<br>
+</ul>
+<li><u><font color="#800080">Result 2</font></u>
+<ul>
+<li>You should have been served the <i>icstest.html</i> content from the HumanVisitor directory. In Test 1 you simply bypassed all the stages and fell through as a Human Visitor. This time, although not discernable by you, you were detected by the stage you just made <i>Active</i>. 
+<p>
+<li>Using the <i>Navigation</i> interface choose <b>View, Delete, Rotate Logs</b>, once at the log interface for <b>Choose A Log File</b> select <i>visitor.log</i> from the drop down list. The other options can be left as they are for this, and click on <i>Perform Action For This Log</i>. You should see another "hit" recorded in the log with your IP Address for the page <i>icstest.html</i>. These are the requests you made for Test 1 and now a second hit from Test 2. Ok, now return to the <b>Set Cloaking And Notification Options</b> interface. 
+</ul>
+<p> 
+<li><u><font color="#800080">Test 3</font></u>
+<ul>
+<li>The ICS<i>spider</i> will allow you to to spider <font color=green>icstest.html</font>  or any URL for that matter, and it will present the server with the user agent of any spider you wish. Even though ICS<i>spider</i> is a true spider (i.e. it actually retrieves the page into it's URL space it does not simply do a redirect to the page), it can only fool UA STAGE 2, and UA STAGE 3 into thinking it is a real search engine spider. This is because it does not contain all of the elements required to satisfy any of the IP STAGES 1 - 3 or UA STAGE 1 that it is a true major search engine spider.
+<p>
+On the <b>Cloaking And Notification Options</b> interface <b>Human Browser Footprint Detection</b> should still be set to <i>Active</i>, now also set <b>IP STAGE 1, IP STAGE 2, IP STAGE 3, and UA STAGE 1</b> to <i>Active</i> and click on <i>Activate Settings</i>. ICS will immediately begin using these settings. 
+<p>
+Next, Using the <i>Navigation</i> interface choose <b>ICS Spider - Fetch URL</b>, and in the <b>URL To Spider</b> field specify the URL of <i>icstest.html</i>, i.e. www.yourdomain.com/icstest.html and for the <b>Using User Agent</b> field leave as ICSspider/1.0 and click on <i>Go Spider</i>
+<p>
+<b>Please do not use ICSspider/1.0 or any reference to ICS for a User Agent</b> if you choose to spoof a User Agent with ICSspider to retrieve pages from other sites to check for cloaking etc.
+<br>
+</ul>
+<li><u><font color="#800080">Result 3</font></u>
+<ul>
+<li>The Spider should have been fed the <i>icstest.html</i> content from the HumanVisitor directory by ICS, and therefore should have returned the Human Visitor version of <i>icstest.html</i> in it's URL space.  
+<p>
+<li>Using the <i>Navigation</i> interface choose <b>View, Delete, Rotate Logs</b>, once at the log interface for <b>Choose A Log File</b> select <i>footprints.log</i> from the drop down list. The other options can be left as they are for this, and click on <i>Perform Action For This Log</i>. You should see a "hit" recorded in the log with the IP Address of the Web Host Server and with the User Agent of ICSspider/1.0 having requested the page <i>icstest.html</i>. This is the request you sent the ICS spider to make, it was rejected as a search engine spider and was fed the human content of <i>icstest.html</i> but it was detected as having a partial spider footprint therefore it was logged in the <i>footprints.log</i>. Ok, now return to the <b>Set Cloaking And Notification Options</b> interface.
+</ul>
+<p> 
+<li><u><font color="#800080">Test 4</font></u>
+<ul>
+<li>On the <b>Cloaking And Notification Options</b> leave the currently active stages as they are and now also set UA STAGE 2</b> to <i>Active</i> and click on <i>Activate Settings</i>. ICS will immediately begin using these settings. 
+<p>
+Next, Using the <i>Navigation</i> interface choose <b>ICS Spider - Fetch URL</b>, and in the <b>URL To Spider</b> field specify the URL of <i>icstest.html</i>, i.e. www.yourdomain.com/icstest.html and for the <b>Using User Agent</b> this time specify the User Agent <i>Scooter</i> (<i>Scooter</i> is the user agent used by AltaVista spiders) and click on <i>Go Spider</i>
+<p>
+</ul>
+<li><u><font color="#800080">Result 4</font></u>
+<ul>
+<li>The Spider should have been fed the <i>icstest.html</i> content from the AltaVista directory by ICS, and therefore should have returned the AltaVista version of <i>icstest.html</i> in it's URL space.  
+<p>
+<li>Using the <i>Navigation</i> interface choose <b>View, Delete, Rotate Logs</b>, once at the log interface for <b>Choose A Log File</b> select <i>spider.log</i> from the drop down list. The other options can be left as they are for this, and click on <i>Perform Action For This Log</i>. You should see a "hit" recorded in the log with the IP Address of the Web Host Server and with the User Agent of <i>Scooter</i> having requested the page <i>icstest.html</i>. This is the request you sent the ICS spider to make, it was accepted as a search engine spider by UA STAGE 2 because it was detected as having a partial spider footprint <b>AND</b> a User Agent of a known major spider, it was therefore fed the AltaVista content of <i>icstest.html</i> and it was logged in the <i>spider.log</i>.
+</ul>
+<p>
+Check your e-mail, since this is a match by user agent but the IP address was not in the ICS db of known spiders you will get the warning email, with YOUR WEB HOST SERVER IP address in it and an additional e-mail with a notice that the page was spidered (because the cloaked page was served). If you don't get the e-mail, double check the e-mail address and the path to sendmail.
+<p>
+Ok, now return to the <b>Set Cloaking And Notification Options</b> interface and set <b>UA STAGE 2</b> to <i>Stopped</i> and click on <i>Activate Settings</i>. The settings as they sit now are a good starting point for good spider detection and good theft protection. You can safely cloak with these settings as they are. Go through the <i>Help</i> information on the <b>Cloaking And Notification Options</b> interface to decide if you want to <i>Activate</i> or <i>Stop</i> options and to learn more about what they do.
+<p>
+You can repeat Test 4 using different User Agents, It will work in exactly the same way except that the page served will depend on the engine you pretend to be. This test would also work with UA STAGE 3 since stage 3 only checks for a known User Agent.
+<p> 
+If you want to repeat Test 4 with different User Agents, the User Agents for the search engines are:
+<ul>
+For Alta Vista Specify <b>Scooter</b> as the user agent<br>
+For Excite Specify <b>ArchitextSpider</b> as the user agent<br>
+For Northern Light Specify <b>Gulliver</b> as the user agent<br>
+For Inktomi Specify <b>Slurp</b> as the user agent<br>
+For Lycos Specify <b>Lycos_Spider_(T-Rex)</b> as the user agent<br>
+</ul>
+<h3><u>Step 6</u></h3>
+When you are finished testing you can now consider cloaking your HTML pages. Although as an aid the <b>Cloaking A Page - Step By Step</b> interface will provide specific instructions for cloaking a page, eventually you will find that it is really easy to do and you will be able to cloak many pages much faster, and probably won't bother with the interface. The following provides information on cloaking pages without the <b>Cloaking A Page - Step By Step</b> interface, a faster approach once you have done one or two.
+<p>
+As an example, let's assume you are cloaking your<br><br>
+index.html, page1.html, and page2.html pages.<br>
+You would place a index.html, page1.html and page2.html in each directory.<br>
+i.e. you would have an index.html, page1.html, page2.html in the HumanVisitor directory,<br> an index.html, page1.html, page2.html in the AltaVista directory,<br> an index.html, page1.html, page2.html in the Excite directory, and so on for the remaining directories.<br> Each of these pages can have identical content or be different, but the name must be the same.
+<p>
+For each page you cloak you replace the contents of the original HTML page with a single line SSI call (after you have uploaded copies of the original HTML pages to the HumanVisitor, AltaVista, Excite, Inktomi, Lycos, and NorthernLight directories. This is what you did in Step 3. above for the page icstest.html when you were asked to copy that single line into a file and save it as icstest.html and upload to your server. <br><br>
+
+You always use the same SSI line, but you must change the part of the statement after the question mark "?" <font color="green">?<i>this-page-name</i>.html</font> to the name of the page you are cloaking.  You can even make copies of the icstest.html file that has that single line in it and keep "saving it as" the corresponding page you are cloaking making sure you change the name of the page after the question mark "?" in each SSI statement to the page being cloaked. 
+<p>
+That's it, that's all there is to it. Upload your pages to each directory, when you want to change what AltaVista gets, change the page content for <i>this-page-name.html</i> in the AltaVista directory. If you want to change what your human visitors get, then change <i>this-page-name.html</i> in the HumanVisitor directory, and so on.  
+<p>
+Now you can change each version as desired knowing that when one of these pages is requested by a visitor, ICS will determine who the visitor is and a human will get the version in the HumanVisitor directory, AltaVista will get the version in the AltaVista directory and no one can steal you well ranking code <br><br>
+
+<h3> Described below in greater detail is the process of cloaking pages</h3><br>
+<b>Some Things To Consider After You Are Done With the Install:</b><br>
+
+Basically once you are done with the install and have gone through the test you are ready to cloak.<br><br>  
+
+There are variations to using the cloaking capability you have acquired. The following is the simplest way to begin:<br><br> 
+
+
+Place all of your HTML pages in the HumanVisitor directory and duplicates of these pages in the AltaVista, Excite, Inktomi, Lycos, and NorthernLight directories. i.e. if your site consists of thirty pages you would place ALL thirty in each directory so that each directory has the same thirty pages in it.<br><br>  
+
+For each page you are cloaking you will have an equivalent page with the SSI tag in it. This page now takes the place of the original HTML page both in name and location (if the original was in a subdirectory for instance). Keep making copies of this page until you have thirty of them all named after one of the thirty pages you placed in the HumanVisitor directory and the search engines directories. 
+<p>
+The SSI tag is the SAME for all of these pages but you must change the part of the statement after the question mark "?" <font color="green">?<i>this-page-name</i>.html</font> to the name of the page you are cloaking and is the ONLY line in them, i.e. no other tags, HTML or META, these will be picked up from the pages in the directories for search engines and humans.<br><br> 
+
+When you have completed this step, any request for one of these pages, let's say index.html, will be parsed by the the ICS engine and it will determine if the request is being made by a Search Engine. If it is a Search Engine, then it will determine which one it is, and serve it the content of the page named index.html from the directory for that engine. If it is a Human visitor then it will retrieve the content of index.html from the HumanVisitor directory and serve it to the human visitor.<br><br><br> 
+As you modify the content of pages in these directories, Search Engines will get the modified (optimized) index.html from each of their directories and Human visitors will get whatever the index.html page looks like in the HumanVisitor directory.<br><br> 
+
+Remember, if you currently have high ranking pages you can simply leave them unchanged in the directory for the engine you have a good ranking for. You can modify the HumanVisitor equivalent of that page at will without being concerned with how it may affect your rankings for that engine, because only Human visitors will see it.<br><br> 
+
+
+
+<h3>ANOTHER EXAMPLE TO SOLIDIFY THE CONCEPT:</h3><br>
+For clarity let's assume your entire site consists of three pages; index.html, otherpage1.html, and otherpage2.html and you are going to cloak all 3 of them.<br><br> 
+
+You upload a copy of your original index.html, otherpage1.html, and otherpage2.html to the HumanVisitor directory.<br><br> 
+
+You upload a copy of your original index.html, otherpage1.html, and otherpage2.html to the AltaVista directory.<br><br> 
+
+You upload a copy of your original index.html, otherpage1.html, and otherpage2.html to the Excite directory.<br><br> 
+
+You upload a copy of your original index.html, otherpage1.html, and otherpage2.html to the Inktomi directory.<br><br> 
+
+You upload a copy of your original index.html, otherpage1.html, and otherpage2.html to the Lycos directory.<br><br> 
+
+You upload a copy of your original index.html, otherpage1.html, and otherpage2.html to the NorthernLight directory.<br><br> 
+
+Replace the contents of the original index.html page with the single SSI call to the ICSengine and the name of the page. (This is what you did in Step 3. above setting up the test page). The statement would look like this (your path may vary depending on your site directory structure):<p><font color="green">&lt;!--# include virtual = "/ICScgi/ICSengine.cgi?index.html" --&gt;</font> <br><br> 
+
+You replace the contents of the original otherpage1.html page with the single SSI call to the ICSengine. The statement would look like this (your path may vary depending on your site directory structure):<p><font color="green">&lt;!--# include virtual = "/ICScgi/ICSengine.cgi?otherpage1.html" --&gt;</font><br><br> 
+
+You replace the contents of the original otherpage2.html page with the single SSI call to the ICSengine. The statement would look like this (your path may vary depending on your site directory structure):<p><font color="green">&lt;!--# include virtual = "/ICScgi/ICSengine.cgi?otherpage2.html" --&gt;</font><br><br> 
+
+When a person visiting your site requests www.yourdomain.com/index.html they will get the content displayed from the index.html page in the HumanVisitor directory.<br><br> 
+
+When the AltaVista spider visits your site and requests www.yourdomain.com/index.html it will get the content displayed from the index.html page in the AltaVista directory.<br><br> 
+
+When the Excite spider visits your site and requests www.yourdomain.com/index.html it will get the content displayed from the index.html page in the Excite directory.<br><br> 
+
+When the Inktomi spider visits your site and requests www.yourdomain.com/index.html it will get the content displayed from the index.html page in the Inktomi directory.<br><br> 
+
+When the Lycos spider visits your site and requests www.yourdomain.com/index.html it will get the content displayed from the index.html page in the Lycos directory.<br><br> 
+
+When the NorthernLight spider visits your site and requests www.yourdomain.com/index.html it will get the content displayed from the index.html page in the NorthernLight directory.<br><br> 
+
+When an engine you have added to ICS comes to spider your site and requests www.yourdomain.com/index.html it will get the content displayed from the index.html page in the directory you associated with either it's IP address and/or User Agent.<br><br> 
+
+
+This of course, works exactly the same way for otherpage1.html, and otherpage2.html when they are requested by a human visitor or a spider.<br><br>  
+
+<br>
+<hr size=2 width=600 color=green>
+<br><br> 
+
+Don't forget to visit the ICS Forums to get the most out of your cloaking script, or 
+if you have questions about cloaking techniques or installation. If you have a question or need installation help and for some reason you don't feel you can post it, then please email me directly at info@icsave.com<br><br> 
+
+The ICS 4.0 <b>FAQ</b> can be accessed from the Private Member's Area @ www.icsave.com/members/ start page. Please consult the FAQ first as many questions will already have been asked and answered here. In addition the <i>Help</i> links on each ICS interface provide a great deal of information and should always be the first reference point.
+<p>
+
+The forum can be accessed @ www.icsave.com/members/UltraBoards/UltraBoard.pl in Private Member's Forum</a><br><br>
+The Member's Home can be accessed @ www.icsave.com/members/</a><br><br>
+You will need to use the Username and password supplied to you with your order confirmation.<br><br>
+Thank you for choosing ICS! 
+</font>
+</td>
+</tr>
+
+
+<tr>
+<td bgcolor="#FBF3D9">
+&nbsp;
+</td>
+</tr>
+
+<tr>
+<td align="right" colspan="2" bgcolor="#C0C0C0">
+<a href=""><font face=arial size="-2" color="maroon">ICS v4.0 By: ICS Avenue</font></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+</body></html>
+

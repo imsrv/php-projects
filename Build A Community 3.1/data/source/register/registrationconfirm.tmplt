@@ -1,0 +1,56 @@
+
+<TABLE CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Register For Membership</B></FONT></CENTER></TD></TR>
+<TR><TD [<($CONFIG{'WINCOLOR'})>]><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+
+<H3>Please verify your information below!</H3><P>It is essential that we have your correct email address, because important information will be sent to you by email.  When you are sure that everything is correct, click [Confirm].
+<form ENCTYPE="application/x-www-form-urlencoded"  METHOD="POST" action="[<($GUrl{'register.cgi'})>]">
+<INPUT TYPE=hidden NAME=USER_LastName VALUE="[<($FORM{'USER_LastName'})>]">
+<INPUT TYPE=hidden NAME=USER_FirstName VALUE="[<($FORM{'USER_FirstName'})>]">
+<INPUT TYPE=hidden NAME=USER_Initial VALUE="[<($FORM{'USER_Initial'})>]">
+<INPUT TYPE=hidden NAME=USER_Referer VALUE="[<($FORM{'USER_Referer'})>]">
+<INPUT TYPE=hidden NAME=UserName VALUE="[<($FORM{'UserName'})>]">
+
+<INPUT TYPE=HIDDEN NAME=USER_Age VALUE="[<($FORM{'USER_Age'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_Sex VALUE="[<($FORM{'USER_Sex'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_Phonenumber VALUE="[<($FORM{'USER_Phonenumber'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_Faxnumber VALUE="[<($FORM{'USER_Faxnumber'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_Address VALUE="[<($FORM{'USER_Address'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_City VALUE="[<($FORM{'USER_City'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_State VALUE="[<($FORM{'USER_State'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_Country VALUE="[<($FORM{'USER_Country'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_ZipCode VALUE="[<($FORM{'USER_ZipCode'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_BirthDay VALUE="[<($FORM{'USER_BirthDay'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_BirthMonth VALUE="[<($FORM{'USER_BirthMonth'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_BirthYear VALUE="[<($FORM{'USER_BirthYear'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_ICQ VALUE="[<($FORM{'USER_ICQ'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_Filler1 VALUE="[<($FORM{'USER_Filler1'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_Filler2 VALUE="[<($FORM{'USER_Filler2'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_Filler3 VALUE="[<($FORM{'USER_Filler3'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_Filler4 VALUE="[<($FORM{'USER_Filler4'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_Filler5 VALUE="[<($FORM{'USER_Filler5'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_Filler6 VALUE="[<($FORM{'USER_Filler6'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_Filler7 VALUE="[<($FORM{'USER_Filler7'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_Filler8 VALUE="[<($FORM{'USER_Filler8'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_Filler9 VALUE="[<($FORM{'USER_Filler9'})>]">
+<INPUT TYPE=HIDDEN NAME=USER_Filler10 VALUE="[<($FORM{'USER_Filler10'})>]">
+
+Confirm Your Email Address:<BR><INPUT TYPE=TEXT NAME=Email SIZE=30 VALUE="[<($FORM{'Email'})>]"><BR>
+
+[<(
+if ($CONFIG{'COMMUNITY_Assign_password'} ne "YES") {
+	$OUT .= << "GEND";
+	<P>PassWord<BR>
+	<FONT SIZE=-2><I>Please make sure that it is easy to remember.  Lower case only, no spaces and no punctuation.</I></FONT><P>
+	<INPUT TYPE=TEXT NAME=PassWord SIZE=30 VALUE=""><BR>
+	<P>Please type your password again here just to be sure:<BR>
+	<INPUT TYPE=TEXT NAME=PassWord2 SIZE=30 VALUE=""><BR>
+GEND
+}
+)>]
+<INPUT TYPE=HIDDEN NAME="action" VALUE="Confirm">
+<P><CENTER><INPUT TYPE=SUBMIT VALUE="Confirm"></FORM></CENTER>
+</FORM>
+</TD></TR></TABLE>
+
+

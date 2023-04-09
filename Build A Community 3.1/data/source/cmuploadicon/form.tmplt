@@ -1,0 +1,28 @@
+<TABLE WIDTH=550 CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>[<($IUSER{'FirstName'})>] [<($IUSER{'Initial'})>] [<($IUSER{'LastName'})>]'s Icon Selection Page</B></FONT></CENTER></TD></TR>
+<TR><TD [<($CONFIG{'WINCOLOR'})>]><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+
+<CENTER><form ENCTYPE="multipart/form-data" METHOD="POST" action="[<($GUrl{'upload_icons.cgi'})>]">
+<TABLE BORDER="4" CELLSPACING="0" CELLPADDING="0">
+<TR BORDER="0" [<($CONFIG{'WINCOLOR'})>]>
+<TD BORDER="0">
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<B>Enter File For Upload....</B><A HREF="javascript:OpenHelpWin('[<($GUrl{'help.cgi'})>]?action=upload');"><I><B>Help/Hints</B></I></A><BR>
+<B>Select a File:</B><input type="file" name="uploaded_file"><BR>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<P><center><input type=submit name="uploadthis" value="Upload This File">
+</TD></TR></TABLE>
+</FORM>
+
+<CENTER><form ENCTYPE="application/x-www-form-urlencoded" METHOD="POST" action="[<($GUrl{'upload_icons.cgi'})>]">
+<TABLE BORDER="4" CELLSPACING="0" CELLPADDING="0">
+<TR BORDER="0" [<($CONFIG{'WINCOLOR'})>]>
+<TD BORDER="0">
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<B>Enter File For Transloading....</B><A HREF="javascript:OpenHelpWin('[<($GUrl{'help.cgi'})>]?action=fetch');"><I><B>Help/Hints</B></I></A><BR>
+<B>Select a File:</B><input type="text" name="transload_file" value="http://"><BR>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<P><center><input type=submit name="action" value="Transload This File">
+</TD></TR></TABLE>
+</FORM>
+</TD></TR></TABLE>

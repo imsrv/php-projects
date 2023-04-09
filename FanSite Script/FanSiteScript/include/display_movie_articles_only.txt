@@ -1,0 +1,24 @@
+<?PHP 
+include ("include/connect.txt");
+$entry =0;
+$result = mysql_query("SELECT seo_url,title,type FROM ds_articles WHERE film = '$id'");  
+while ($myrow = mysql_fetch_row($result)) 
+{ 
+if ( $myrow[2] == "article" )
+{
+
+$staticurl = $myrow[0].".html";
+
+printf("<A HREF=article_%s>%s</A><br>",$staticurl,$myrow[1]); 
+$entry=1;
+}
+  
+} 
+if ($entry ==0)
+	{
+		printf("Нет записей");
+	}
+
+include ("include/close.txt");
+
+?>

@@ -1,0 +1,128 @@
+#content {position: absolute;}
+
+body, p, td {
+	font-family: Verdana, Arial;
+	font-size: 11px;
+	color: #111111;
+}
+
+p,div,img.para,input,form {
+
+margin: 0 0 6px 0;
+
+
+}
+
+h1 {font-size: 14px; color: #111111; font-family:Verdana;}
+a {font-family:Verdana; font-size:8pt; color: #000099; text-decoration:none;}
+a:hover {text-decoration: underline;}
+ img { border: 0px; }
+
+.table_decoration {
+	font-family: Verdana, Arial;
+	font-size: 11px;
+	border-collapse: collapse;
+	background-color: #ffffff;
+	border: solid 1px;
+	border-color: #CCCCCC;
+	empty-cells: hide;
+	padding: 5px;
+}
+
+.table_decoration2 {
+
+       font-family: Verdana, Arial;
+        font-size: 11px;
+        border-collapse: collapse;
+        background-color: #ffffff;
+    border: solid 1px;
+        border-color: #CCCCCC;
+        empty-cells: hide;
+        padding: 5px;
+
+
+}
+
+.table_decoration3 {
+	font-family: Verdana, Arial;
+	font-size: 11px;
+	border-collapse: collapse;
+	background-color: #ffffff;
+	border-color: #CCCCCC;
+	empty-cells: hide;
+	padding: 3px;
+	}
+
+
+.button {
+	font-family: Verdana, Arial;
+	font-size: 11px;
+	color: #FFFFFF;
+	background-color: #4e4e4e;
+	border: solid 1px;
+}
+
+.textfield {
+        font-family: Verdana, Arial;
+        font-size: 11px;
+        color: #111111;
+        border: solid 1px;
+        border-color: #111111;
+        background-image: url('textfield.gif');
+}
+
+
+textarea,input,select {
+
+font: 1.0em Verdana, Tahoma, Arial, Helvetica, sans-serif;
+background-color: #f9f9f9;
+border: solid 1px;
+border-color: #bbbbbb; 
+padding: 0.2em;
+margin-bottom: 0.3em;}
+
+.select {
+	font-family: Verdana, Arial;
+	font-size: 11px;
+	color: #111111;
+	background-color: #FFFFFF;
+}
+
+.don{
+position: absolute;
+top: 0px;
+right: 0px
+}
+
+.moreinfo {
+font-family: Verdana, Arial;
+font-size: 11px;
+color: #990000;
+} 
+
+.hidden {
+font-family: Verdana, Arial;
+font-size: 11px;
+border-collapse: collapse;
+background-color: #ffffff;
+border: solid 1px;
+border-color: #CCCCCC;
+padding: 5px;
+margin: 0% 5% 5% 5%;
+}
+
+.medium {
+border: solid 1px;
+border-color: #CCCCCC;
+padding: 5px;
+}
+
+.thumbstuff
+{
+border: solid 1px #CCCCCC;
+background-color: #F9F9F9;
+padding: 5px;
+margin: 5px 0 5px 0;
+
+}
+

@@ -1,0 +1,66 @@
+.text {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+}
+.header {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	color: #000000;
+}
+.small_header {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #000000;
+	font-weight: normal;
+}
+.grey_text {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666666;
+}
+.black_arial11 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+}
+.link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: underline;
+}
+.link:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+.link_small {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	text-decoration: underline;
+	color: #000000;
+}
+.link_small:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	text-decoration: none;
+	color: #000000;
+}.form {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.buton {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+.arial11 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+.text_11 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+}

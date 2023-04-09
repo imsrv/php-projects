@@ -1,0 +1,90 @@
+Geeklog theme "XSilver" by Matt Jones admin@geeksta.com
+
+XSilver README
+
+Contents:
+
+License
+Introduction
+Installation
+Caveats
+Bug Reports
+Credits
+
+
+
+
+License
+------------
+http://www.gnu.org
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.  See the  GNU General Public License for more details.
+
+
+
+Introduction
+------------
+
+XSilver is a Geeklog (http://www.geeklog.net) theme. This theme has
+been tested on the following browsers.
+
+Windows - Netscape 4.78, Netscape 6.2, Internet Explorer 6.0, Opera 6
+Linux - Konquerer 2.2.1, Mozilla 0.9.4, Galleon 0.12.1
+
+
+
+Installation
+------------
+
+Option 1. Put the tarball in your public_html directory and extract the
+tarball, then select your preferences link in Geeklog, and you
+should now have the option to select this theme.
+
+Option 2. Extract package locally and upload the theme folder "XSilver" into
+your layout directory.
+
+
+
+Caveats
+-----------
+
+This software has been tested only with Geeklog 1.3.3. There are several known
+factors you will need to consider before installing this software.
+
+1. In file lib-common.php, there is no call for the layout_url variable for
+function Com_endblock, therefore I'm "hard-coding" the theme name in the
+blockfooter, please make the necessary adjustments if you wish to change the
+theme name.
+
+2. In file lib-common.php, the comments have no style element, therefore they
+render black text on the dark background. I have rectified this for my Geeklog
+by adding commentbar4 to the stylesheet and to the appropraite table cells in
+the lib-common.php file. If you need help determining how to do this, please
+email me.
+
+3. This theme is not W3 validated HTML, although it's a goal I have in mind. I
+did not do too much to the calendar to stream-line the look. I have to leave
+something for you to do! :)
+
+
+
+Bug Reports
+------------
+Please report all bugs at http://geeksta.com. Please do not post theme bugs at the Geeklog site!
+
+
+
+Credits
+------------
+Gnome - http://gnome.org
+Geeklog and it's developers - http://www.geeklog.net
+GIMP - http://gimp.org
+And the many other wonderful programs I used to create this theme.
+

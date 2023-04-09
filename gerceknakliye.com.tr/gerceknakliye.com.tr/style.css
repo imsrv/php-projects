@@ -1,0 +1,15 @@
+body{margin:0px; background-color: #3F82EB;}
+.navbeyaz{font-family: Verdana, Arial, Helvetica, sans-serif;color: #FFFFFF;font-size: small;text-decoration:none;}
+.copybeyaz{font-family: Verdana, Arial, Helvetica, sans-serif;color: #FFFFFF;font-size: 10px;text-decoration:none;}
+a.navbeyaz:link{text-decoration:none;}
+a.navbeyaz:hover{text-decoration:underline;}
+.metin{font-family: Verdana, Arial, Helvetica, sans-serif;color: #333333;font-size: small;text-decoration:none;}
+a.metin:link{text-decoration:none;}
+a.metin:hover{color: #BE0000;text-decoration:underline;}
+.navblue{font-family: Verdana, Arial, Helvetica, sans-serif;color: #326AC7;font-size: small;text-decoration:none;}
+a.navblue:link{text-decoration:none;}
+a.navblue:hover{text-decoration:underline;}
+.kirmizi{font-family: Verdana, Arial, Helvetica, sans-serif;color: #FF0000;font-size: small;text-decoration:none;}
+.yesil{font-family: Verdana, Arial, Helvetica, sans-serif;color: #009900;font-size: small;text-decoration:none;}
+.mavib{font-family: Verdana, Arial, Helvetica, sans-serif;color: #3679AE;font-size: small;text-decoration:none;}
+.bordob{font-family: Verdana, Arial, Helvetica, sans-serif;color: #BD1212;font-size: small;text-decoration:none;}

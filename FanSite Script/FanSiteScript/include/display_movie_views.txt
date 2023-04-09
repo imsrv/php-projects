@@ -1,0 +1,14 @@
+<?PHP 
+include ("include/connect.txt");
+
+$result = mysql_query("SELECT views FROM ds_movies WHERE seo_url='$id'");  
+while ($myrow = mysql_fetch_row($result)) 
+{ 
+
+printf("%s",$myrow[0]);  
+} 
+
+
+include ("include/close.txt");
+
+?>

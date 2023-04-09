@@ -1,0 +1,191 @@
+<?
+include_once "logincheck.php"; 
+include_once "../config.php";
+function main()
+{
+
+ 
+if (isset($_REQUEST["msg"]) && $_REQUEST["msg"]<>"")
+{
+?>
+        <table align="center" bgcolor="#FEFCFC"   border="0" cellpadding="5" >
+        <tr> 
+          <td><b><font face="verdana, arial" size="1" color="#666666"> 
+            <?
+echo $_REQUEST["msg"] ; 
+
+?>
+            </font></b></td>
+        </tr>
+      </table>
+        <?
+}//end if 
+
+$rs0=mysql_fetch_array(mysql_query("select * from sbwmd_config"));
+$recperpage=$rs0["recperpage"];
+
+$sql0="select * from sbwmd_feedback where title<>''  ";
+
+$keyword="";
+
+if (isset($_REQUEST["keyword"]) && $_REQUEST["keyword"]<>"")
+{		
+$keyword=$_REQUEST["keyword"];
+$sql0=$sql0." and ( title like '%".$_REQUEST["keyword"]."%' or  comment like '%".$_REQUEST["keyword"]."%')";
+}//end if
+
+$sql0=$sql0." order by id desc";
+
+$query=mysql_query($sql0);
+$rs_query=mysql_fetch_array($query);
+
+///////////////////////////////////PAGINATION /////////
+	if(!isset($_REQUEST["pg"]))
+	{
+			$pg=1;
+	}
+	else 
+	{
+	$pg=$_REQUEST["pg"];
+	}
+
+$rcount=mysql_num_rows($query);
+
+if ($rcount==0 )
+{ 
+	$pages=0;
+}	
+else
+{
+	$pages=floor($rcount / $recperpage);
+	if  (($rcount%$recperpage) > 0 )
+	{
+		$pages=$pages+1;
+	}
+}
+$jmpcnt=1;
+while ( $jmpcnt<=($pg-1)*$recperpage  && $rs_query = mysql_fetch_array($query) )
+    {	
+		$jmpcnt = $jmpcnt + 1;
+	}
+
+////////////////////////////////////////////////////////////////////////
+?>
+
+<table width="700" border="0" align="center" cellpadding="5" cellspacing="0">
+  <tr> 
+    <td><div align="center"></div></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#FFFFFF"><font color="#666666" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>Feedback 
+      from users</strong></font></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#666666"> <div align="center"></div></td>
+  </tr>
+  <tr> 
+    <td><div align="center"> 
+        <table width="100%" border="0" align="center" cellpadding="1" cellspacing="0">
+          <?
+  $cnt=1;
+  while ( ($rs_query) && ($cnt<=$recperpage))
+  {
+?>
+          <tr bgcolor='<? if ($cnt%2==0) echo "#FFFFFF"; else echo "#EEEEEE"?>'> 
+            <td width="4%"><strong><font color="#000000" size="1" face="Verdana, Arial, Helvetica, sans-serif"><? echo $jmpcnt;?></font></strong></td>
+            <td width="30%"><strong><font color="#004080" size="1" face="Verdana, Arial, Helvetica, sans-serif"><? echo $rs_query["title"];?></font></strong></td>
+            <td width="30%"><strong><font color="#004080" size="1" face="Verdana, Arial, Helvetica, sans-serif"><? echo $rs_query["fname"];?><? echo " ".$rs_query["lname"];?>(<? echo $rs_query["email"]?>)</font></strong></td>
+            <td width="12%"><strong><font color="#333333" size="1" face="Verdana, Arial, Helvetica, sans-serif">&nbsp;</font></strong><font color="#333333" size="1" face="Verdana, Arial, Helvetica, sans-serif">&nbsp;</font><font size="1"><font size="1"><a href="email.php?id=<? echo $rs_query["email"];?>"><font color="#0066ff" face="Verdana, Arial, Helvetica, sans-serif">Reply</font></a></font></font></td>
+            <td width="10%"><font size="1"><font size="1"><a target=other href="view_fb.php?id=<? echo $rs_query["id"];?>&pg=<? echo $pg; ?>"><font color="#0066ff" face="Verdana, Arial, Helvetica, sans-serif">View</font></a></font></font></td>
+            <td width="14%"><font size="1"><font size="1"><a href="delete_fb.php?id=<? echo $rs_query["id"];?>&pg=<? echo $pg; ?>"><font color="#FF0000" face="Verdana, Arial, Helvetica, sans-serif">Delete</font></a></font></font></td>
+          </tr>
+          <?
+	  $cnt=$cnt+1;
+	  $jmpcnt=$jmpcnt+1;
+	  $rs_query=mysql_fetch_array($query);
+	  }//  wend
+	?>
+        </table>
+        <br>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td bgcolor="#666666" height=1></td>
+          </tr>
+          <tr> 
+            <td bgcolor="#ffffff"> 
+              <p> <font color="#FFFFFF" size="2" face="Verdana, Arial, Helvetica, sans-serif"> 
+                <strong><font color="#FFFFFF" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong><font color="#666666">Pages: 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></strong></font> <font color="#666666"> 
+                <?
+
+if ($pg>1) 
+{
+?>
+                <a href="feedback.php?pg=<? echo ($pg-1); ?>"> <font size="2"> 
+                <?
+}//end if
+if ($pages<>1)
+echo "Previous";
+if ($pg>1)
+{
+?>
+                </font></a> &nbsp;&nbsp; 
+                <?
+}//end if
+echo " ";
+for ($i=1; $i<=$pages; $i++)
+{
+	if ($pg<>$i)
+	{
+	?>
+                <a href="feedback.php?pg=<? echo $i;?>"> <font size="2"> 
+                <?
+ }//end if
+?>
+                <? echo $i; ?> 
+                <?
+if ($pg<>$i)
+{
+?>
+                </font></a> &nbsp;&nbsp; 
+                <? 
+				}
+}//for
+
+if ($pg<$pages )
+{
+?>
+                <a href="feedback.php?pg=<?   echo ($pg+1); ?>"><font  size="2"> 
+                <?
+}//end if
+if ($pages<>1)
+{
+?>
+                Next 
+                <?
+}//end if
+if ($pg<>($pages))
+{
+?>
+                </font></a> &nbsp;&nbsp; 
+                <?
+}//end if
+?>
+                </font> </strong> </font></p></td>
+          </tr>
+        </table>
+      </div></td>
+  </tr>
+  <tr> 
+    <td><div align="center"></div></td>
+  </tr>
+</table>
+<p>&nbsp; </p>
+<p><br>
+
+
+
+<?
+}//main()
+include "template.php";
+?>

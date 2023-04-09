@@ -1,0 +1,5 @@
+<td class="featureblock" valign="top">
+  {geeklog_blocks}
+  <br>
+  <img src="{site_url}/images/speck.gif" width="180" height="1" alt="">
+</td>

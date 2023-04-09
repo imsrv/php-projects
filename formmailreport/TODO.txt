@@ -1,0 +1,46 @@
+/**************************************************************
+* Formmail Abuse Reporting - Version 1.1
+*
+* (C)Copyright 2002 Home-port.net, Inc. All Rights Reserved 
+* By using this software you release Home-port.net, Inc. from 
+* all liability relating to this product.
+*
+* This module is released under the GNU General Public License. 
+* See: http://www.gnu.org/copyleft/gpl.html
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+*
+* For latest version, visit:
+* http://www.home-port.net/formmail/
+***************************************************************/
+
+1. Better error checking for test buttons. To stop any mistakes that may arrise
+   when the script is not in test mode.
+
+2. Find way to hide full url of images and links in 404.php file. Should be 
+   possible using apache ErrorDocument redirect with .htaccess file.
+   
+3. Hide script better so simple probes are detected from savvy spammers that 
+   have heard of this script. Such as the url in 404.php file above.
+   
+4. Allow for both obnoxious and friendly complaint reporting to ISP. Currently 
+   the script reports every instance of abuse that have multiple recipients. Our 
+   views are, since the spammer is going to use our bandwidth by continuously 
+   trying to abuse formmail, then they should be reported each and every 
+   time. Plus this illegal activity, if successful would have sent out on 
+   each report the number of e-mails in the recipient address with the hopes 
+   of directing all complaints to the owner of the abused server. We know how 
+   that feels, since we have received hundreds of bounces and complaints because 
+   of an insecure formmail script that one of our customers had running.
+
+   But we can see how this may be upsetting to the ISP and anyone using the script. 
+   So this is on our to-do list. A poll we are going to create will determine 
+   how fast this option gets done.
+
+5. Some day learn asp for porting over to Microsoft servers. If anyone know this 
+   already we would be happy for any assistance you can provide.
+
+
+

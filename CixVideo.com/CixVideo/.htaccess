@@ -1,0 +1,7 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteRule ^kategori/(.*).html$ index.php?sayfa=kategori&kat=$1 [L,NC]
+RewriteRule ^kategori/(.*)/(.*).htm$ index.php?sayfa=kategori&kat=$1&page=$2 [L,NC]
+RewriteRule ^izle/(.*)/(.*)/(.*).html$ index.php?sayfa=izle&kat=$1&video=$2&kod=$3 [L,NC]
+RewriteRule ^izle/izlesene\.html$ index.php?sayfa=izle&kod=salla [L,NC]
+RewriteRule ^etiket/(.*)$ index.php?sayfa=ara&ara=$1 [L,NC]

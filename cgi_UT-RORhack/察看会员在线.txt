@@ -1,0 +1,8 @@
+方法：topic_show.cgi 
+
+
+    print         "<br><br>$status\n";后面加上： 
+
+
+  my $activeTime = time() - $cfg{'inactiveTime'} * 60;      if ($post->{'lastOnTime'} > $activeTime and !$post->{'hidden'}) {      print "<font size=1 color=#FF3300>online</font>";    }    else {      print "<font size=1 color=#717171>offline</font>";    }  
+thread_show.cgi一样 

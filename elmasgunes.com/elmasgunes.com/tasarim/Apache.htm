@@ -1,0 +1,48 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+<head>
+<title>« Apache Web Server Kurulumu ve Ayarları, PHP Kurulumu » elmasgunes.net - Web Hosting, Web Design</title>
+<meta name="description" content="elmasgunes.net - E-Mail Servisi, Web Hosting, Web Design,Hosting,Design,hosting,design,register,domain,domain register,host,web">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1254">
+<style>
+BODY{ font-family:Verdana;
+	font-size:11px;
+	color:#000000;
+	line-height:13pt;
+	text-align:justify; }
+A{ font-family:Verdana;
+	font-size:11px;
+	color:#000000;
+	text-decoration:underline; }
+</style>
+</head>
+<body bgcolor="#FFFFFF" style="margin: 10px" onMouseOver="status='elmasgunes.net'; return true" onLoad="window.defaultStatus='elmasgunes.net';" onSelectStart="return false">
+<center>
+<a href="http://www.elmasgunes.net" style="font-family: Courier New; font-size: 12px; color: #0066cc;text-decoration:none; line-height:3px;">
+                                             <center>        C O D E R T U R K                                                                                                                                                                                       <br>
+                                                                                                                       <br>
+                                                                                                                                                                                                           <br>
+</a>
+</center><br>
+  <font color=red><b><u>APACHE WEB SERVER KURULUMU VE AYARLARI</u></b></font><br>
+   Eğer elinizde Apache Server yazılımı yoksa <a href="http://www.apache.org/" target="_blank">www.apache.org</a> veya <a href="http://apache.bilkent.edu.tr/" target="_blank">apache.bilkent.edu.tr</a> adresinden ücretsiz olarak indirebilirsiniz. İndirmeniz gereken dosya win32 klasörünün içinde <u>apache_1.3.26-win32-x86-no_src.msi</u> (2,07 MB) adındaki dosyadır.
+ Kurulumu çalıştırdıktan sonra "Network Domain" ve "Server Name" kısmına <u>localhost</u> "Administrator's Email Address" kısmına email adresinizi girin. Daha sonra "Run when started maually, only for me (msu)" seçeneğini işaretleyin. 
+ Kurulum seçeneği olarak "Complete"i seçin. Kurulumu bitirdikten sonra Apache Server'ı çalıştırmak için "Başlat->Programlar->Apache HTTP Server" içindeki "Start Apache in Console"a tıklayın. Bunu PHP kodlarını denemek için her bilgisayarın açılışında çalıştırmalısınız.
+ Daha sonra Apache'nin kurulu olduğu "C:\Program Files\Apache Group\Apache\conf" dizini içindeki "httpd.conf" dosyasını Notepad yardımıyla açın. Bu dosyanın içine aşağıdaki kodları ekleyin. <br>
+ <b>LoadModule php4_module c:\php\sapi\php4apache.dll</b><br>
+ <b>AddModule mod_php4.c</b><br>
+ <b>AddType application/x-httpd-php .php</b><br>
+Dosyanın içindeki <br><br>
+ <b>&lt;IfModule mod_dir.c&gt;<br>
+     DirectoryIndex index.html index.phtml<br>
+ &lt;/IfModule&gt;<br><br></b>
+satırını bulup<br><br>
+ <b>&lt;IfModule mod_dir.c&gt;<br>
+     DirectoryIndex <u>index.php</u> index.html index.phtml<br>
+ &lt;/IfModule&gt;<br><br></b>
+olarak değiştirin. <br><br>
+   <font color=red><b><u>PHP KURULUMU VE AYARLARI</u></b></font><br>
+   Apache'de PHP kodları çalıştırmak için <a href="http://www.php.org/" target="_blank">www.php.org</a> adresinin "Download" bölümünden Windows için uygun olan PHP 4.3.2 sürümünün dosyası <u>php-4.3.2-installer.exe</u> (1,01 MB) indirip kurmak gerekir. Kurarken tek önemli nokta PHP'nin çalıştırılacağı server olarak Apache seçilmesidir. Diğer sorulanları "Next" butonuna basarak geçin. 
+ Kurulumu tamamladıktan sonra "C:\PHP" dizini içindeki <u>php.ini-dist</u> dosyasını Windows dizinine kopyalayıp adını "php.ini" olarak değiştirin. Eğer böyle bir dosya mevcutsa hiçbir değişiklik yapmayın.<br>
+<center><font color="red"><b>ÖNEMLİ:</b> PHP Kodlarını çalıştırmak için dosyaları "C:\Program Files\Apache Group\Apache\htdocs" dizinine kopyalayın!</center>
+</html>

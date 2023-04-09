@@ -1,0 +1,41 @@
+<CENTER><form ENCTYPE="application/x-www-form-urlencoded" METHOD="POST" action="[<($GUrl{'club_gallery.cgi'})>]">
+<TABLE BORDER="4" CELLSPACING="0" CELLPADDING="0">
+<TR BORDER="0" [<($CONFIG{'WINCOLOR'})>]>
+<TD BORDER="0">
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+
+[<(
+	$OUT .= "<!";
+	&get_image_info;
+	$totalsize = int($totalsize /1024);
+	$OUT .= ">";
+)>]
+
+<TABLE WIDTH=100%><TR><TD><B>Space Available:</B> [<($CONFIG{'CLUB_max_kb'})>] KBs<BR>
+<B>Space Used:</B> [<($totalsize)>] KBs</TD><TD>
+<B># Files Allowed:</B> [<($CONFIG{'CLUB_max_images'})>]<BR>
+<B># files Uploaded:</B> [<($filecount)>]</TD></TR></TABLE>
+<HR>
+<B>Enter File For Transloading....</B><A HREF="javascript:OpenHelpWin('[<($GUrl{'help.cgi'})>]?action=fetch');"><I><B>Help/Hints</B></I></A><BR>
+<B>Select a File:</B><input type="text" name="transload_file" value="http://"><BR>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<input type=hidden name="club" value="[<($FORM{'club'})>]">
+<B>Select a Category:</B><SELECT NAME="category">
+
+[<(
+	foreach $c (@cats) {
+		if ($c eq $FORM{'cat'}) {
+			$OUT .= "<OPTION VALUE=\"$c\" SELECTED>$c</OPTION>\n";
+		}
+		else {
+			$OUT .= "<OPTION VALUE=\"$c\">$c</OPTION>\n";
+		}
+	}
+)>]
+
+</SELECT>
+<BR><B>A Short Description:</B><BR>
+<TEXTAREA NAME="description" COLS=40 ROWS=3 WRAP=VIRTUAL></TEXTAREA>
+<P><center><input type=submit name="action" value="Transload This File">
+</TD></TR></TABLE>
+</FORM>

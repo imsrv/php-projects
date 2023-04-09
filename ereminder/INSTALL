@@ -1,0 +1,87 @@
+**************
+**************
+DOCUMENTATION
+**************
+**************
+
+#########################################################
+#                                                       #
+# PHPSelect Web Development Division                    #
+#                                                       #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are distributed through         #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated.                                     #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the distriuters      #
+# at admin@phpselect.com                                #
+#                                                       #
+#########################################################
+
+Make sure you read the LICENSE file.  The GPL does not allow you to
+incorporate any of this code into proprietary software, but it allows free
+use otherwise. 
+
+UPGRADES:
+
+Please read the CHANGES file.
+
+Also, read the UPGRADE file for information about the change in database
+formats.
+
+INSTALLATION:
+
+To install, edit the config.php3 file and set the appropriate parameters
+for database name, user, password, timezone and timezone correction factor. 
+Make sure you have MySQL installed and working properly, and Apache configured 
+with mod_php3 (3.05 or higher is best), otherwise this software will not work.
+
+First, you need to create the appropriate tables in your MySQL database. 
+These are the tables you will need:  (If you don't know how to do this,
+please refer to the mysql documentation.) Create a database, called reminders:
+
+   mysqladmin create reminders
+
+If you want to use another name, make sure you specify it in the
+config.php3 file!
+
+Inside that database, create the tables from the dump file
+"reminders.mysql" which was included as part of this program:
+
+   mysql reminders < reminders.mysql
+
+Ok, the hard part is done.  
+
+The normal way to install E*Reminders is to simply place the entire 
+archive folder into the root HTML document directory of your web server
+and make links to point people there!  You can use the reminder.gif file 
+included in the archive for your web page.
+
+Another way to install this is to create a new user, and copy all of the
+files that come with this program into the public_html directory of that
+new user. Make sure config.php3 isn't readable by users on the system, 
+because it has password for the MySQL database coded inside
+it.  (If it is readable from the web, it's okay, because nothing will 
+be reveled if it is run from the web.  
+
+The mail.php3 file should be set to run every 15 minutes or so via a cron
+job.  To do this, you can use cron entries that briefly execute a web browser
+that accesses mail.php3 and triggers waiting reminder events to be mailed.
+Here are some sample cron entries for using wget (lynx may also be used):
+
+   00 * * * * /usr/bin/wget -q -O /dev/null -nd http://localhost/reminder/mail.php3
+   15 * * * * /usr/bin/wget -q -O /dev/null -nd http://localhost/reminder/mail.php3
+   30 * * * * /usr/bin/wget -q -O /dev/null -nd http://localhost/reminder/mail.php3
+   45 * * * * /usr/bin/wget -q -O /dev/null -nd http://localhost/reminder/mail.php3
+
+You can then use the cron log as a E*Reminders log, since
+mail.php3 outputs information about what is getting sent out where.
+
+

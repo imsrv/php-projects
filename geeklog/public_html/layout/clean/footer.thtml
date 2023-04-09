@@ -1,0 +1,38 @@
+
+            <!-- End Content Area -->
+
+        </td>
+        {right_blocks}
+    </tr>
+</table>
+
+<table bgcolor="#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td align="center" height="20" background="{layout_url}/theme-images/clean-menubar-b.gif"><img src="{layout_url}/theme-images/pixel.gif" alt="" height="24" width="3" align="middle" border="0"><span class="welcomeName">{execution_textandtime}</span></td>
+	</tr>
+	<tr><td>
+	<br><br>
+	<center>
+	<span class="copyRight">{copyright_notice}<P><a href="{geeklog_url}"><img src="{layout_url}/images/buttons/geekpower2.gif" alt="{powered_by}" border="0"></a></span>
+	</center>
+	<br><br>
+	</td>
+	</tr>
+</table>
+
+
+</td>
+				<td width="10" background="{layout_url}/theme-images/clean-r.gif"><img src="{layout_url}/theme-images/pixel.gif" width="10" height="5"></td>
+			</tr>
+			<tr>
+				<td width="10" background="{layout_url}/theme-images/clean-bl.gif"><img src="{layout_url}/theme-images/pixel.gif" width="10" height="24"></td>
+				<td height="10" background="{layout_url}/theme-images/clean-b.gif"><img src="{layout_url}/theme-images/pixel.gif" height="10"></td>
+				<td width="10" background="{layout_url}/theme-images/clean-br.gif"><img src="{layout_url}/theme-images/pixel.gif" width="10" height="24"></td>
+			</tr>
+		</table>
+		</center>
+		
+</body>
+
+</html>
+

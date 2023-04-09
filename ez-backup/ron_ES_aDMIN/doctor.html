@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>ES Doctor</TITLE>
+</HEAD>
+<BODY BGCOLOR="#000000">
+
+<FORM METHOD="POST" ACTION="../cgi-bin/es/esadmin/checkau.cgi"
+ENCTYPE="x-www-form-urlencoded">
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P><CENTER><TABLE WIDTH="497" BORDER="0" CELLSPACING="2" CELLPADDING="0">
+  <TR>
+    <TD WIDTH="492" BGCOLOR="#ffffce">
+    <P><CENTER><B><FONT SIZE="+1">ES Doctor</FONT></B></CENTER></TD>
+  </TR>
+  <TR>
+    <TD WIDTH="492" BGCOLOR="#ffffff">
+    <P><CENTER>ES Doctor will go through your database file by file
+    and make sure that everything is healthy. It will print any errors
+    that occur.</CENTER></P>
+
+    <P><CENTER>This program does the following:<BR>
+    - Opens your aU.dat (your main user list)<BR>
+    - Swings through all the user files and makes sure they have
+    an entry for the IN hits, OUT hits, and Return URL.</CENTER></P>
+
+    <P><CENTER>Doctors Notes (the things he will tell you when you
+    run it):</CENTER></P>
+
+    <UL>
+      <LI><CENTER><FONT COLOR="#ff0000">All done - Total Number of
+      uses = # Number of healthy users = #</FONT><BR>
+      If this is the only response you get back, then everything is
+      perfect with your database (from the doctors view).</CENTER>
+      <LI><CENTER><FONT COLOR="#ff0000">Error opening up aU.dat </FONT>-
+      This is the worst one you can get because it means that your
+      user list isn't functional. You need to go replace the aU.dat
+      from your backup. Go to the &quot;use backup&quot; and click
+      on the &quot;user entire database&quot;. Then run the doctor
+      again. You may have to go into your es/data directory and actually
+      delete the users files that don't belong.</CENTER>
+      <LI><CENTER><FONT COLOR="#ff0000">Error- user file (user) is
+      unable to be opened. Please check it.</FONT> - This means that
+      your user list has an entry in it that shouldn't be there or
+      is unreachable. Just go delete that user using the &quot;delete&quot;
+      program and readd them...you may get an error trying to delete
+      them but it is ok.</CENTER>
+      <LI><CENTER><FONT COLOR="#ff0000">It appears user file (user)
+      is empty. Delete and readd this user</FONT> - This means the
+      stat file for that particular user is empty. You will need to
+      go and delete it using the &quot;delete&quot; progran and readd
+      it with the &quot;add partner&quot;. Or you could use the backup
+      copy and try using the backup copy for that user. Go to &quot;back
+      up&quot; and add the user in the bottom field, NOT the entire
+      backup, just the single user.</CENTER>
+      <LI><CENTER><FONT COLOR="#ff0000">User file (user) is missing
+      either an IN hits stat, an OUT hits stat, or a return url. Delete
+      and readd this user</FONT> - This means that the user file is
+      corrupted. Either they don't have an IN hit, OUT hit, or URL
+      stat. Just go either delete and readd or use the backup copy
+      as mentioned above.</CENTER>
+    </UL>
+</TD>
+  </TR>
+  <TR>
+    <TD WIDTH="492" BGCOLOR="#ffffce">
+    <P><CENTER>&nbsp;<INPUT NAME="name" TYPE="submit" VALUE="Run Doctor"></CENTER></TD>
+  </TR>
+</TABLE></CENTER></FORM>
+
+</BODY>
+</HTML>

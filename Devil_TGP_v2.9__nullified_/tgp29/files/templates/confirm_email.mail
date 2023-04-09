@@ -1,0 +1,18 @@
+Hello #NAME#,
+
+Thank you for submitting your gallery to our TGP. Here is the information we received:
+
+Gallery URL: #GALLERYURL#
+Category submitted to: #CATEGORY#
+IP address of submitter: #IP#
+Date received: #DATE#
+
+You will need to visit the following URL to verify your post.
+Your post WILL NOT be reviewed UNTIL you visit the URL below!
+
+http://www.YOUR_URL.com/cgi-bin/tgp/verify.cgi?#UNIQUEID#
+
+If you did not make the post above, simply ignore this email.
+
+Thanks again!
+WEBMASTER

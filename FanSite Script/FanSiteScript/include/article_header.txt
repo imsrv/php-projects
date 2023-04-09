@@ -1,0 +1,14 @@
+<?PHP 
+include ("include/connect.txt");
+ $result = mysql_query("SELECT meta_title,meta_description,meta_keywords FROM ds_articles WHERE seo_url = '$id'");
+
+
+ 
+printf("<TITLE>%s</TITLE>",mysql_result($result,0,"meta_title"));
+printf("<META NAME=\"Keywords\" CONTENT=\"%s\">",mysql_result($result,0,"meta_description"));
+printf("<META NAME=\"Description\" CONTENT=\"%s\">",mysql_result($result,0,"meta_keywords"));
+ 
+
+include ("include/close.txt");
+
+?>

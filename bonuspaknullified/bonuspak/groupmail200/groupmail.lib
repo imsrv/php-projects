@@ -1,0 +1,1819 @@
+# -----------------------------------------------------------------
+#                     GroupMail Secure Version 2.00
+#
+#                           Library functions
+#                          Supplied by  Virus
+#                          Nullified by CyKuH
+#    Filename : groupmail.lib
+# -------------------------------------------------------------------
+
+################## Formats a message for printing
+sub Print_message {
+    my $email_message = shift;
+    my $boundary1 = shift;
+    my $alternative1 = shift;
+    my $normal_header = shift;
+
+    my $start_attach_line = $message_line_number + 1;
+
+    (my $ref_header,$message_line_number) = &Get_head(\@message,$message_line_number);
+    my %header = Parse_header($ref_header);
+
+    if ($email_message) {   # This is an email message, so print out the header info.
+	if ($start_attach_line) {    # Print out this line if we are in an attachment
+	    push (@msg, "<center>This attachment is an email sent by <b>",HTML_encode($header{'from'}),".</b></center><br>");
+	}
+	else {      # This is the main email ( since it's line 0 ), this are the names from the header
+	    $names = "$header{'from'},$header{'to'},$header{'cc'}";    #This is for the adding addresses
+	    $names =~ s/,,/,/g;        # Take out any 2 commas in a row
+	    $names =~ s/"/&quot;/g;       # so as not to confuse the html, replace quotes
+	    $names =~ s/'/&#39;/g;
+	}
+
+    if ($normal_header)   {&Print_header(\%header,$start_attach_line)}
+    else   {&Print_full_header (\%header)}
+    }
+    if ($header{'content-type'} =~ /multipart\/(alternative)?.*boundary/i) { # we have an attachment
+	my $alternative = $1 ? 1 : 0;
+	(undef,my $boundary)= split /boundary\=/i,$header{'content-type'},2;
+	$boundary =~ s/.*?([^";]{1,69}).*/--$1/;   # boundary stops at ; or "
+	$boundary =~ s/(.*?)\s+$/$1/;   # take off trailing space just in case
+	&Junk_to_boundary($ref_message,$boundary); # Trash up to the first boundary
+	my $more_attachments = 1; # This is the flag that we haven't seen the last attachment
+	while ($more_attachments) {    # Go through and take out the attachments (it's not an alternative)
+	    $more_attachments = &Print_message(0,$boundary,$alternative);
+	    push (@msg, "<hr>") if ($more_attachments and !$alternative);
+	}
+	# If we have a multipart/alternative this might not be our last attachment
+	$more_attachments = &Junk_to_boundary($ref_message,$boundary1) if $boundary1;
+	return $more_attachments;
+    }
+    if ($header{'content-type'} =~ /rfc822/i) { # IF ITS RFC, take out the header and print it
+	my $more_attachments = &Print_message(1,$boundary1,0);
+	return $more_attachments;
+    }
+    my ($ref_attach_body,$more_attachments);
+
+    if ($boundary1) {
+	($ref_attach_body,$more_attachments) = &Get_to_boundary($ref_message,$boundary1);
+	return 1 if ($alternative1 and $more_attachments);
+    }
+    else {
+	$ref_attach_body = $ref_message;
+    }
+    if ($header{'content-transfer-encoding'} =~ /base64/i) { # IT'S A BASE64 CODING SCHEME (DO NOTHING WITH IT NOW)
+	# Now lets show them how to get the file
+	my $filename = &Get_name(\%header);
+
+	if ($header{'content-type'} =~/(image|video|application\/octet-stream)/i) { #it's an IMAGE or VIDEO, just show it, no link
+	    push (@msg, "<CENTER><IMG SRC=\"attach.cgi/$filename?member=$Cookies{'name'}&MID=$MID&sal=$start_attach_line&eal=$message_line_number\">",
+	      "<br>Right-click to save image",
+		"</CENTER>");
+	}		# End of IMAGE
+	else {		#OK, it's BASE64, but it's NOT an image.  (future: add to both types to show and decoding types
+	    push (@msg, "<center><TABLE border=1 cellspacing=0 cellpadding=2 bgcolor='#CCCCCC'>",
+	      "<tr><td colspan=2 align='center'>Attachment</td><tr>",
+		"<tr><td>attachment type:</td><td>",(split /;/,$header{'content-type'},2)[0],"</td></tr>",
+		  "<tr><td>attachment name:</td><td><b>$filename</b></td></tr>",
+		    "<tr><td colspan=2 align='center'><a href=\"attach.cgi/$filename?member=$Cookies{'name'}&MID=$MID&sal=$start_attach_line&eal=$message_line_number\" target=\"new\">View/Save &quot;$filename&quot; in new window</a></td></tr>",
+#		      "<tr><td colspan=2 align='center'><a href='javascript:Detach($start_attach_line,$message_line_number)'>Save &quot;$filename&quot; to Upload Area</a></td></tr>",
+			"</table></center>");
+	}		# End of No Image
+	return $more_attachments;
+    }			# End of BASE64   ----   put in for UUencode too
+
+    if ($header{'content-type'} =~/^application/i) { #it's an application but in text format it seems
+	my $filename = &Get_name(\%header);
+	push (@msg, "<center><TABLE border=1 cellspacing=0 cellpadding=2 bgcolor='#CCCCCC'>",
+	  "<tr><td colspan=2 align='center'>Attachment</td><tr>",
+	    "<tr><td>attachment type:</td><td>",(split /;/,$header{'content-type'},2)[0],"</td></tr>",
+	      "<tr><td>attachment name:</td><td><b>$filename</b></td></tr>",
+		"<tr><td colspan=2 align='center'><a href=\"attach.cgi/$filename?member=$Cookies{'name'}&MID=$MID&sal=$start_attach_line&eal=$message_line_number\" target=\"new\">View/Save &quot;$filename&quot; in new window</a></td></tr>",
+#		  "<tr><td colspan=2 align='center'><a href='javascript:Detach($start_attach_line,$message_line_number)'>Save &quot;$filename&quot; to Upload Area</a></td></tr>",
+		    "</table></center>");
+	return $more_attachments;
+    }
+
+    # FROM HERE WE JUST PRINT OUT THE MESSAGE
+    if ($header{'content-transfer-encoding'} =~ /^quoted-printable/i) {   # Check for quoted-printable
+
+&trace ("qp-before","<br>@$ref_attach_body") if($debug);
+
+	&QP_decode($ref_attach_body);
+	push (@quote,  @$ref_attach_body);  # Only want message text for reply quote
+
+&trace ("qp-after","<br>@quote") if($debug);
+
+    }
+    # NOW WE JUST PRINT IT
+    elsif ($header{'content-type'} =~ /html/i) {   # make sure all the links goto a new window
+	push (@quote,  @$ref_attach_body);  # Only want message text for reply quote
+
+&trace ("html","<br>@quote") if($debug);
+
+	foreach (@$ref_attach_body) {
+#	    s/(<a href=\S*?).*?>/$1 target=new>/gi;
+	    s/(<a href=\S*).*>/$1 target=new>/gi; # Alex didn't catch this little sucker
+	}
+    }
+    else {  # it's not html, so HTML-ify it if possible.
+	push (@quote,  @$ref_attach_body);  # Only want message text for reply quote
+
+&trace ("text-plain","<br>@quote") if($debug);
+
+	&HTML_encode($ref_attach_body) unless ($header{'content-type'} =~ /html/i);
+    }
+
+    $num_lines_printed += @$ref_attach_body;
+#    push (@msg, "<DIV style='background-color:yellow; layer-background-color:yellow; width:100%'>");
+    push (@msg,  "\n<DIV>");
+    push (@msg,  @$ref_attach_body);
+    push (@msg,  "</DIV>");
+    return $more_attachments;
+}
+
+################# Convert email header to key-value array
+sub Parse_header {
+    my $header;
+    my %header=();
+
+    while ($header = pop @{$_[0]}) { # Go through the header from the end.
+	while ($header =~ s/^\s+// && # If it starts with space (take it out too) and more @header (rfc822 says this one)
+
+	       ($_ = pop @{$_[0]})) { # Not taking out trailing space - I can see using it
+	    $header = ($_ . $header);
+	}
+	my ($header_field, $header_value) = split /:\s*/,$header,2; # split after the colon
+	$header{lc $header_field} .= ($header_value); # assign all fields with lowercase field
+    }
+    return %header;
+}
+##################### Format current date with time zone abbreviations
+sub Parse_email_date {
+
+use Time::Local;
+
+    my @MoY = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
+    my %MoY;
+    @MoY{@MoY} = (1..12);
+    my @Zone = qw/AST ADT EST EDT CST CDT MST MDT PST PDT/;
+    my %Zone;
+    @Zone{@Zone} = qw/-0400 -0300 -0500 -0400 -0600 -0500 -0700 -0600 -0800 -0700/;
+    if ($_[0] =~ /\s*(\d\d?)\s*([JFMASOND][a-z][a-z])\s*(\d\d\d\d)\s*(\d\d):(\d\d):?(\d\d)?\s*([\w+-]{1,5})?/)
+      {
+	  my $zone_offset = 0;
+	  return eval {
+	      my $t = Time::Local::timegm($6, $5, $4, $1, $MoY{$2}-1, $3-1900);
+	      if ($7) {
+		  my $time_adjust = $Zone{$7} || $7;
+		  # the timezone better be all numbers now ( with a + or - ), or set it to GMT.
+		  if ($time_adjust !~ /^[+-]\d{4}$/) {$time_adjust = '+0000'};
+		  my ($sign, $hour_off, $min_off) = unpack("a a2 a2",$time_adjust);
+		  $zone_offset = ($min_off * 60) + ($hour_off * 3600) * (($sign eq '+') ? 1 : -1);
+	      }
+	      $t < 0 ? time : ($t - $zone_offset);   # current time is the default time for the message
+	  }
+      }
+    else { return time }
+}
+############# Extract message header
+sub Get_head {
+    my $message_line_number = $_[1];
+    my (@head);
+    while ($_ = shift @{$_[0]}) { # take off the header
+
+	$message_line_number++;
+	if ($_ eq "\n") {
+	    last;
+	}
+	$_ =~ s/<//g;  # Email addresses enclosed with these don't show
+	$_  =~ s/>//g;
+	push @head, $_;
+    }				# Now message is just the body
+    chomp @head;
+    return (\@head,$message_line_number);
+}
+################ Format friendly header with Address Book add button
+sub Print_header {
+    my %head=%{$_[0]};
+    my $start_attach_line = $_[1];
+
+    $head{'date'}		="Unknown" 			unless ($head{'date'});	# Default entries for mail info
+
+### MOD 2001/04/10 (convert GMT offset to absolute time zone)
+    $head{'date'} = &Format_date ($head{'date'});
+### MOD END
+
+    $head{'from'}		="Unknown" 			unless ($head{'from'});
+    $head{'subject'}	        ="-None-" 			unless ($head{'subject'});
+    $head{'to'}			="None Listed" 	                unless ($head{'to'});
+
+### MOD 2001/04/08 (add to address book)
+    my $address;
+    if ($head{'reply-to'})   {
+       $head{'reply-to'} =~ s/<//g;
+       $head{'reply-to'} =~ s/>//g;
+       $address = $head{'reply-to'};
+       if ($address =~ /([\w.-]+@[\w.-]+)/) { $address = $1 } 
+       $address =~ s/"//g;       # gotta take out all the quotes, just in case
+       $address =~ s/([|%])/uc sprintf("%%%02x",ord($1))/eg;   #escape these characters for saving
+      $head{'reply-to'} .= " &nbsp; <input type=submit name=action value=\"Add\"> <font size=1>(to address book - close new window when done)</font>";
+    }
+    else   {
+       $head{'from'} =~ s/<//g;
+       $head{'from'} =~ s/>//g;
+       $address = $head{'from'};
+       if ($address =~ /([\w.-]+@[\w.-]+)/) { $address = $1 } 
+       $address =~ s/"//g;       # gotta take out all the quotes, just in case
+       $address =~ s/([|%])/uc sprintf("%%%02x",ord($1))/eg;   #escape these characters for saving
+      $head{'from'} .= " &nbsp; <input type=submit name=action value=\"Add\"> <font size=1>(to address book - close new window when done)</font>";
+    }
+### MOD END
+    
+    push (@msg, "<table width=100%><tr><td><table cellspacing=0 cellpadding=0 border=0>");
+
+### MOD 2001/09/24 (add paperclip.gif for attachment)
+    if ($head{'content-type'} =~ /multipart\/(alternative)?.*boundary/i) { # we have an attachment
+       push (@msg, "$attachgif");
+    }
+### MOD END
+
+    push (@msg, "<form action=$ENV{'SCRIPT_NAME'}  method=put target=\"new\"><font size=2> <input type=hidden name=EMAIL value=\"$address\">"); 
+    foreach my $field ('Date', 'From', 'Resent-From', 'Sender', 'Reply-To', 'Subject', 'To', 'cc') {
+	push (@msg, "<tr><td align='right' valign='top'>$mainfont<b>$field:\&nbsp\;</b></td><td valign='top'>$mainfont", $head{lc $field},"</td></tr>") if $head{lc $field};
+    }
+    push (@msg, "</form></table></td></tr><tr><td><hr width=100%></td></tr></table><br>");
+
+}
+###################  Entire email header with bolded headings
+sub Print_full_header {
+    my %head=%{$_[0]};
+
+    push (@msg, "<table width=100%><tr><td><table cellspacing=0 cellpadding=0 border=0>");
+ 
+    foreach (keys %head)   {
+	push (@msg, "<tr><td align='right' valign='top'><b>$_:\&nbsp\;</b></td><td valign='top'>", $head{lc $_},"</td></tr>") if $head{lc $_};
+    }
+    push (@msg, "</form></table></td></tr><tr><td><hr width=100%></td></tr></table><br>");
+
+}
+#####################  Skip through message until next boundary
+sub Junk_to_boundary {
+    while ($_ = shift @{$_[0]}) {
+	$message_line_number++;
+	if (/^\Q$_[1]\E(\-\-)?/) { # Take off the top until we get to the first attach
+	    return $1 ? 0 : 1; # If there is -- at end of boundary, we are done with attachments.
+	}
+    }
+    &End_of_file;
+}
+##############
+sub Get_name {
+    foreach (values %{$_[0]}) {	# through the header, line by line
+	if (/name\=/) {
+	    (undef,my $attach_name) = split /name\=/;
+	    $attach_name =~ tr/ "'?&,/_/d;   # replace spaces and remove everything else
+	    return $attach_name;
+	}
+    }
+    return "no_name";
+}
+###################
+sub Get_to_boundary {
+    my (@body);
+    while ($_ = shift @{$_[0]}) {
+	$message_line_number++;
+	if (/^\Q$_[1]\E(\-\-)?/) {
+	    return \@body, (($1) ? 0 : 1);
+	}
+	push @body, $_;
+    }
+    &End_of_file;       # this means we reached the end of the file before we should
+}
+############### # Decode Quoted Printable attachment
+sub QP_decode {
+    foreach (@{$_[0]}) {
+	s/[ \t]+?(\r?\n)/$1/g;	# These are the rules for QP
+	s/=\r?\n//g;
+	s/=([\da-fA-F]{2})/pack("C",hex($1))/ge;
+    }
+}
+################## Complete HTML tags wherever possible
+sub HTML_encode {
+    if (ref $_[0] eq "ARRAY" ) {
+	foreach (@{$_[0]}) {
+	    s/</\&lt\;/g;  s/>/\&gt\;/g;   # replace the < and >
+
+	    if (/(https?|ftp|telnet):[^\s"'>]*/)   {
+	       s/((https?|ftp|telnet):[^\s"'>)]*)/<A href\=\"$1\" target=new><font color=red>$1<\/font><\/a>/g; # if is's a URL, anything till the next space
+	    }
+	    else   {
+	       s/([\w.-]+@[\w.-]+)/<a href=\"$ENV{'SCRIPT_NAME'}?action=email&to=$1\" target=new><font color=red>$1<\/font><\/a>/g; # And mail
+	   }
+
+	   s/\n/<br>/;     # Change all new lines to html new lines
+	}
+    }
+    else {
+	$_ = shift;
+	s/</\&lt\;/g;  s/>/\&gt\;/g; # replace the < and >
+
+	 if (/(https?|ftp|telnet):[^\s"'>]*/)   {
+	    s/((https?|ftp|telnet):[^\s"'>)]*)/<A href\=\"$1\" target=new><font color=red>$1<\/font><\/a>/g; # if is's a URL, anything till the next space
+	 }
+	 else   {
+	    s/([\w.-]+@[\w.-]+)/<a href=\"$ENV{'SCRIPT_NAME'}?action=email&to=$1\" target=new><font color=red>$1<\/font><\/a>/g; # And mail
+	}
+
+    return $_;
+    }
+}
+##############
+sub End_of_file {
+    print"<br><br><font size='+1' color='red'><center>There seems to be a problem reading your attachments.  The end  of the file was reached before it was expected.  There may be additional attachments in the file.</body><\html>";
+    die "End of file $member/$MID reached before it should.";
+}
+
+################## Change time zone offset to zone abbreviation
+sub Format_date   {
+
+    my @Zone = qw/-0100 -0200 -0330 -0230 -0400 -0300 -0500 -0400 -0600 -0500 -0700 -0600 -0800 -0700 -0900 -1000 -1100/;
+    my %ZONE;
+    @ZONE{@Zone} = qw/_0100 _0200 NST NDT AST ADT EST EDT CST CDT MST MDT PST PDT _0900 _1000 _1100/;
+
+    if ($_[0] =~ /\d{1,2}:\d\d:?\d\d?\s*\+/)
+   {
+         return $_[0];
+   }
+
+    if ($_[0] =~ /\d{1,2}:\d\d:?\d\d?\s*(\-\d{1,5})?/)
+   {
+        my $zone = $1;
+
+       if ($ZONE{$zone})   {
+          $_[0] =~ s/$zone/$ZONE{$zone}/;
+       }
+
+      $_[0] =~ s/-/_/;
+   }
+return $_[0];
+}
+
+################ Formats friendly header and dumps important values into vars
+sub Fmt_header  {
+if ($head{'from'} =~ s/([\w.-]+@[\w.-]+)//) {$address = $1}    # Take out the email address
+if ($head{'reply-to'} =~ /([\w.-]+@[\w.-]+)/) { $address = $1 }  # If there is a reply to, use it.
+$head{'from'} =~ s/^[\s()<>"]*(.*?)[\s()<>"]*$/$1/;      # Take out leading and trailing space and enclosers
+$address =~ s/^[\s()<>"]*(.*?)[\s()<>"]*$/$1/;      # Take out leading and trailing space and enclosers
+
+if ($head{'from'} and $address) {
+$from = "($head{'from'}) $address";
+}
+else { $from = $address }
+
+$from =~ s/"//g;       # gotta take out all the quotes, just in case
+$from = "- not given -" unless $from;
+$from =~ s/([|%])/uc sprintf("%%%02x",ord($1))/eg;   #escape these characters for saving
+$head{'from'} = $from;
+$subject = $head{'subject'} || "- none -";
+$subject =~ s/([|%])/uc sprintf("%%%02x",ord($1))/eg;   #escape these characters
+$subject =~ s/\s/ /g;  # Remove troublesome non-alpha
+$head{'subject'} = $subject;
+if ($head{'to'} =~ s/([\w.-]+@[\w.-]+)//) {$address = $1}    # Take out the email address
+$head{'to'} = $address;
+if ($head{'cc'} =~ s/([\w.-]+@[\w.-]+)//) {$address = $1}    # Take out the email address
+$head{'cc'} = $address if ($head{'cc'});
+$head{'boundary'} =~ s/\"//g if ($head{'boundary'});
+$head{'date'} = &Format_date ($head{'date'}); # Change time offset to zone abbrev.
+
+return;
+}
+
+############# Upload files from user computer
+sub psupload {
+    my $path    	= shift;
+    my $inputfieldname	= shift;
+    my $newname 	= shift;
+    my $maxsize		= shift;
+    if($path) {
+	if($inputfieldname) {
+	    my $req = new CGI; 
+	    if($req->param($inputfieldname)) {
+		my $file = $req->param($inputfieldname); 
+		my $filename = $file; 
+		$filename =~ s/^.*(\\|\/)//;
+		$filename = $newname if $newname;
+		if(open(OUTFILE, ">$path/$filename")) {
+		    while (my $bytesread = read($file, my $buffer, 1024)) { 
+			print OUTFILE $buffer; 
+		    } 
+		    close (OUTFILE);
+		    if($maxsize > 0) {
+			if((-s "$path/$filename") > ($maxsize * 1024)) {
+			    unlink("$path/$filename");
+			    return("$filename was too big and has been removed.");
+			} else {
+			    return(1);
+			}
+		    } else {
+			return(1);
+		    }
+		} else {
+		   return("Unable to open the destination file $path/$filename: $!");
+		}
+
+	    } else {
+		return("The upload form was submitted without a file being uploaded.");
+	    }
+	} else {
+	    return("Can't find the name of the form input field.");
+	}
+    } else {
+	return("Can't find the absolute path to the directory where the uploaded file should be stored.");
+    }
+}
+########## General error routine
+sub oops {
+print "\n";
+print "<center>Oops! <b>$_[0]</b>.  Go <b>Back</b> to try again!</center>\n";
+exit;
+}
+
+############ Notify sender if address@this-domain not a GroupMail member
+sub oops1 {
+&sendemail($admin_email, 'User unknown', "mailer$domain", $mailserver, "FATAL ERROR: USER DOES NOT EXIST.\n\n Message received:\n\n\nFrom: $from\n\n To: $recip\n\nMessage:\n\n@msg\n$mailadd") if ($notify_unknown);
+}
+############
+sub oops2 {
+&sendemail($admin_email, "Mail box full", "mailer$domain", $mailserver, "FATAL ERROR: Mail Box Full. Please send again later.\n\n Message received:\n\n\nFrom: $from\n\n To: $recip\n\n Cc: $cc\n\n Message:\n\n@msg\n$mailadd");
+}
+
+############## Saves some script coding...
+sub Set_location {   # this sets the file location variable for each script
+    $mailpath = "$basepath$maildir";
+    return ($real_url, $mailpath, $real_url);
+}
+
+################  Create a random initial password for group member
+sub randompass {
+srand(time ^ $$);
+@passset = ('a'..'k', 'm'..'n', 'p'..'z', '2'..'9');
+$randpass = "";
+
+for ($i = 0; $i < 8; $i++) {
+$randum_num = int(rand($#passset + 1));
+$randpass .= $passset[$randum_num];
+	}
+return $randpass;
+}
+
+###########  Compose admin EMAIL to all group members
+sub mailer {
+$banner = &makebanner ('EMAIL <font size=2>members');
+print "<body $bodytext $bodybg> $mainfont $banner<center>";
+
+print "<b>Previous action:</b> $bulletin<p>" if ($bulletin);
+
+print <<"EOF";
+<form method="POST" action="$ENV{'SCRIPT_NAME'}">
+<input type=hidden name=adminid value=$admin_id> 
+<input type=hidden name=adminpass value=$admin_password> 
+<input type="hidden" name="action" value="mailall">
+<b>Subject:</b> <input type="text" name="SUBJECT" size="20"><p>
+<b>Message:</b><br>
+<textarea NAME="MESSAGE" ROWS="15" COLS="70"></textarea><p>
+<!--b>Admin Password:</b> <input type="password" name="ADMINPASS" size="20"-->
+<b>Test:</b> <input type="checkbox" name="TEST"><p>
+<input type="submit" value="Submit"></form></center</body>
+EOF
+exit;
+}
+########## Send admin Email To All
+sub mailall{
+&oops('ADMINID') unless ($form{'adminid'} eq $admin_id);
+&oops('ADMINPASS') unless ($form{'adminpass'} eq $admin_password);
+&oops('SUBJECT') unless ($form{'SUBJECT'});
+&oops('MESSAGE') unless ($form{'MESSAGE'});
+$from = ucfirst($admin_id);
+
+if ($form{'TEST'})   {
+$file = $from;
+
+&sendemail("$file$domain", $form{'SUBJECT'}, $admin_email, $mailserver, "$form{'MESSAGE'}\n\n$mailadd");
+push(@sent, $file);
+}
+else   {
+opendir THEDIR, "$basepath$regdir" || die "Unable to open directory: $!";
+@allfiles = readdir THEDIR;
+closedir THEDIR;
+
+foreach $file (sort { int($a) <=> int($b) } @allfiles) {
+
+if ($file =~ /\.dat/)   {
+open THEFILE, "$basepath$regdir/$file";
+($password, $email,$realname,$sponsor, $address, $telephone, $active,$question,$answer) = <THEFILE>;
+chomp($password, $email,$realname,$sponsor, $address, $telephone, $active,$question,$answer) ;
+close THEFILE;
+
+if($active)   {
+$file =~ s/\.dat//;
+&sendemail("$file$domain", $form{'SUBJECT'}, $admin_email, $mailserver, "$form{'MESSAGE'}\n\n$mailadd");
+push(@sent, "$file ");
+}
+}
+}
+}
+
+$bulletin = "Mail sent to @sent";
+#print "<CENTER><h3>Mail sent to @sent</h3></CENTER>";
+$MID = time;
+open (READFILE,">$basepath$maildir/$from/sent/$form{'SUBJECT'}-$MID-$date-$from.htm");
+print READFILE "<b>To</b>: All Members<br><br><b>Date</b>: $date<br><b>Subject</b>: $form{'SUBJECT'}<hr><p>\n$form{'MESSAGE'}<P>";
+close READFILE;
+
+}
+###########  Compose admin INTERCOM message to all
+sub interer {
+$banner = &makebanner ('INTERCOM <font size=2>members');
+print "<body $bodytext $bodybg> $mainfont $banner<center>";
+
+print "<b>Previous action:</b> $bulletin<p>" if ($bulletin);
+
+print <<EOF;
+<form method="POST" action="$ENV{'SCRIPT_NAME'}">
+<input type="hidden" name="action" value="interall">
+<input type=hidden name=adminid value=$admin_id> 
+<input type=hidden name=adminpass value=$admin_password> 
+<b>Subject:</b> <input type="text" name="SUBJECT" size="20"><p>
+<b>Message: </b><br><textarea NAME="MESSAGE" ROWS="15" COLS="70"></textarea><p>
+<!--b>Admin Password:</b> <input type="password" name="ADMINPASS" size="20"--> <b>Test:</b> <input type="checkbox" name="TEST"><p>
+<input type="submit" value="Submit"></form></center></body>
+EOF
+exit;
+}
+
+##########  Send admin INTERCOM To All
+sub interall{
+&oops('ADMINID') unless ($form{'adminid'} eq $admin_id);
+&oops('ADMINPASS') unless ($form{'adminpass'} eq $admin_password);
+&oops('Subject') unless($form{'SUBJECT'});
+&oops('Message') unless($form{'MESSAGE'});
+$from = ucfirst($admin_id);
+
+if ($form{'TEST'})   {  # For test only
+$file = $from;
+$MID = time;
+unless (open(MAILFILE,">>$basepath$maildir/$file/$form{'SUBJECT'}-$MID-$date-$from.htm"))   {
+print "<b>Cannot send to $file</b><br>";
+exit;
+}
+print MAILFILE "<center><b>*INTERCOM MESSAGE*</b></center><p><b>From:</b> $from}<br><b>Date:</b> $date<br><b>Subject:</b> $form{'SUBJECT'}<hr><p>\n$form{'MESSAGE'}<p><center><b>*END OF MESSAGE*</b></center>";
+close (MAILFILE);
+
+push(@sent, "$file ");
+}
+else   {
+opendir THEDIR, "$basepath$regdir" || die "Unable to open directory: $!";
+@allfiles = readdir THEDIR;
+closedir THEDIR;
+
+foreach $file (sort { int($a) <=> int($b) } @allfiles) {
+
+if ($file =~ /\.dat/)   {
+&oops("Can't open $file") unless(open (THEFILE, "$basepath$regdir/$file"));
+($password, $email,$realname,$sponsor, $address, $telephone, $active,$question,$answer) = <THEFILE>;
+chomp($password, $email,$realname,$sponsor, $address, $telephone, $active,$question,$answer) ;
+close THEFILE;
+
+if($active)   {
+$file =~ s/\.dat//;
+$MID = time;
+unless (open(MAILFILE,">>$basepath$maildir/$file/$form{'SUBJECT'}-$MID-$date-$from.htm"))   {
+print "<b>Cannot send to $file</b><br>";
+next;
+}
+print MAILFILE "<center><b>*INTERCOM MESSAGE*</b></center><p><b>From:</b> $from<br><b>Date:</b> $date<br><b>Subject:</b> $form{'SUBJECT'}<hr><p>\n$form{'MESSAGE'}<p><center><b>*END OF MESSAGE*</b></center>";
+close (MAILFILE);
+
+push(@sent, "$file ");
+}
+}
+}
+}
+$bulletin = "Message sent to @sent";
+
+#print "<CENTER><h3>Message sent to @sent</h3></CENTER>";
+&oops("can't open $from/sent") unless (open(SENTFILE,">>$basepath$maildir/$from/sent/$form{'SUBJECT'}-$MID-$date-$Cookies{'name'}.htm"));
+print SENTFILE "<center><b>*INTERCOM MESSAGE*</b></center><p>To: All Members<br>Sent Date: $date<br>Subject: $form{'SUBJECT'}<hr><p>\n$form{'MESSAGE'}<P><center>*END OF MESSAGE*</center>";
+close (SENTFILE);
+
+}
+
+############  Display REGISTRATION page
+sub register {
+$banner = &makebanner ('REGISTRATION');
+print "\n";
+&oops('No Register HTML File Found!') unless (open(REG, "$basepath$reghtm"));
+(@ALL) = <REG>;
+close REG;
+&printhtm(@ALL);
+exit;
+}
+
+############# Change PASSWORD form
+sub chngpass {
+$banner = &makebanner ('PASSWORD <font size=2>change');
+&oops('No Change Password HTML File Found!') unless (open(CHANGE, "$basepath$passhtm"));
+(@ALL) = <CHANGE>;
+&oops("Can't access registration for $Cookies{'name'}") unless (open(REGFILE, "$basepath$regdir/$Cookies{'name'}.dat"));
+($password, $email,$realname,$sponsor, $address, $telephone, $active,$question,$answer,$logged) = <REGFILE>;
+close REGFILE;
+chomp($password, $email,$realname,$sponsor, $address, $telephone, $active,$question,$answer,$logged);
+&printhtm(@ALL);
+}
+
+############  Process new REGISTRATION 
+sub procreg {
+if (@_)   {
+   $admin = $_[0] ;  # May be $admin_id registering
+   $pw = $_[1];
+   $admin = lc($admin);
+   $id = lc($admin_id);
+   
+&trace ("admin",$admin,"pw",$pw,"admin_id",$id) if ($debug);
+
+   unless ($id eq $admin)   {
+      return 0;
+   }
+
+   $username = $admin;
+}
+else {$admin = ""}
+
+## Create $regdir if not exist
+unless (-d "$basepath$regdir")   {
+   &oops ("Unable to create $basepath$regdir: $!") unless (mkdir("$basepath$regdir", 0777));
+}
+
+unless ($admin)   {  # User registration only
+&oops('USERNAME') unless ($form{'USERNAME'} =~ /^\w+$/ and length($username) <= 12 );
+$username = $form{'USERNAME'};
+
+&trace ("username1",$username) if ($debug);
+
+## Disallow reserved names/prefixes
+foreach (@reserved)   {
+   &oops("You can not use the name $_") if ($username eq $_);
+}
+
+&oops('REALNAME') unless ($form{'REALNAME'});
+
+if ($form{'EMAIL'})	{
+&oops('EMAIL') unless ($form{'EMAIL'} =~ /.+\@.+/);
+$form{'EMAIL'} = lc($form{'EMAIL'});
+}
+
+&oops('ADDRESS') unless ($form{'ADDRESS'});
+&oops('TELEPHONE or EMAIL') unless ($form{'EMAIL'} or $form{'ADDRESS2'});
+&oops('QUESTION') unless ($form{'QUESTION'});
+&oops('ANSWER') unless ($form{'ANSWER'});
+}  # End user only
+
+$username = lc($username);
+$username = ucfirst($username);
+
+&trace ("username2",$username) if($debug);
+
+# See if this username is already registered
+if (-e "$basepath$regdir/$username.dat") {
+   $bulletin .= "$username already registered";
+   return 0 if ($admin);
+   &oops ("$username already registered");
+}
+
+# Now see if username already  in $redirect 
+unless ($nopop)   {  # $redirect not required if we don't receive email
+
+if (-e "$redirect")   {
+  &oops ("Unable to open $redirect: $!. If this persists notify webmaster") unless (open (REDIR, "$redirect"));
+  @redir = <REDIR>;
+&trace ("username3",$username) if ($debug);
+
+  foreach (@redir)   {
+    if ($_ =~ /^\s*$username/i)   {
+     $bulletin .= "$username already in $redirect";
+     return 0 if ($admin);
+    &oops ("$username is taken");
+   }
+ }
+}
+}
+
+if ($admin)   {  # Admin reg only
+   $password = &cryptpass ($pw);
+   $answer = &randompass; # garble for answer
+   $regrec = "$password\n$admin_email\n?\n?\n?\n?\n0\n?\n$answer";
+
+&trace ("admin",$admin,"regrec",$regrec) if ($debug);
+}  # End admin
+
+else   {  # User reg only
+$pass = &randompass;
+$password = &cryptpass($pass); # One-way encryption of password
+$active = 0; # inactive until authorized
+$regrec = "$password\n$form{'EMAIL'}\n$form{'REALNAME'}\n$form{'SPONSOR'}\n$form{'ADDRESS'}\n$form{'ADDRESS2'}\n$active\n$form{'QUESTION'}\n$form{'ANSWER'}";
+}  # End user
+
+&trace ("username4",$username,"regrec",$regrec) if ($debug);
+
+&oops("Can't create registration record for $username: $!") unless (open NEWREG, ">$basepath$regdir/$username.dat");
+print NEWREG $regrec;
+close NEWREG;
+
+&trace ("basepath/maildir/username","$basepath$maildir/$username") if($debug);
+
+umask(000);
+mkdir("$basepath$maildir/$username", 0777);
+umask(000);
+mkdir("$basepath$maildir/$username/read", 0777);
+umask(000);
+mkdir("$basepath$maildir/$username/sent", 0777);
+umask(000);
+mkdir("$tempdir/$username", 0777);
+
+if ($debug)   {
+   my $rc;
+   if (-e "$basepath$maildir/$username")   {
+      $rc = "YES";
+   }
+   else {$rc = "NO"}
+   &trace("$basepath$maildir/$username",$rc);
+}
+my $member = lc ($username);
+
+if ($admin)   {  # Admin reg only
+   $bulletin .= " Administrator $admin REGISTERED";
+   return 1;
+}
+
+## User registration only
+## Notification messages to mail
+$message = "Thank you $form{'REALNAME'} for joining us at our GroupMail email service.\n\nRemember to save your password in a safe place.\n\nYour username is: $member\nYour NEW email address is $member$domain.\n\nYour account will be activated following verification.\n\nSincerely,\n$admin_id";
+
+if($form{'EMAIL'})	{
+&sendemail($form{'EMAIL'},"Registration for $username",$admin_email , $mailserver, $message);
+}
+else   {
+# Always notify postmaster
+&sendemail($admin_email,"Registration for $username",$admin_email , $mailserver, $message);
+}
+
+print "\n";  # Enable output to browser
+
+## Send intercom message to user inbox
+$MID = time;
+$bulletin = "<b>ERROR:</b> unable to send welcoming mail to $username<br>Please notify admin<p>" unless (open(MAILFILE, ">>$basepath$maildir/$username/Welcome-$MID-$date-$admin_id.htm"));
+$welcome = "Welcome $username";
+print MAILFILE
+"<center><b>*INTERCOM MESSAGE*</b></center><p><b>From:</b> $admin_id<br><b>Date:</b> $date<br><b>Subject:</b> $welcome <hr><p>\n$newmessage<p><center><b>*END OF MESSAGE*</b></center>";
+close (MAILFILE);
+$named = lc($username);
+
+$banner = &makebanner ('REGISTRATION');
+print <<EOF;
+<html><head><title>New Registration</title></head>
+<body $bodybg $bodytext> $mainfont $banner<p>
+$bulletin<p>
+<center><table width=80% border=1 $subtablebg><tr><td>$mainfont
+<b>$username</b>,<BR>
+Your NEW Email address is <b>$named$domain</b> and your password is <b>$pass</b>. This is the one and only time this password will be seen by anyone as it is now stored in encrypted form. Please keep it in a safe place.<p>
+Thank you for registering! Your account will  be activated following verification.</font><p>
+<center><a href="$transfer_url"><b>Return to $transfer_name</b></a></center></td></tr>
+</table></center></body></html>
+EOF
+exit;
+}
+
+#############  Change password
+sub procpass   {
+&oops('Your new passwords do not match') unless ($form{'NEWPASSWORD2'} eq $form{'NEWPASSWORD'});
+$form{'USERNAME'} = lc($form{'USERNAME'});
+$form{'USERNAME'} = ucfirst($form{'USERNAME'});
+&oops('Invalid Username') unless (open(REGFILE, "$basepath$regdir/$form{'USERNAME'}.dat"));
+($password, $email,$realname,$sponsor, $address, $telephone, $active,$question,$answer,$logged) = <REGFILE>;
+close REGFILE;
+chomp($password, $email,$realname,$sponsor, $address, $telephone, $active,$question,$answer,$logged);
+$cryptpass = &cryptpass($form{'PASSWORD'});
+&oops('invalid PASSWORD') unless ($password eq $cryptpass);
+&oops("Unable to update registration file: $!") unless (open NEWREG, ">$basepath$regdir/$form{'USERNAME'}.dat");
+
+if ($form{'EMAIL'})	{
+&oops('EMAIL') unless ($form{'EMAIL'} =~ /.+\@.+/);
+$form{'EMAIL'} = lc($form{'EMAIL'});
+$email = $form{'EMAIL'};
+}
+else {$email = ""}
+
+$cryptpass = &cryptpass($form{'NEWPASSWORD'});
+print NEWREG "$cryptpass\n$email\n$realname\n$sponsor\n$address\n$telephone\n$active\n$question\n$answer\n$logged";
+close NEWREG;
+
+$bulletin = "<b>$form{'USERNAME'}</b>, your new password is <b>$form{'NEWPASSWORD'}</b> which is now<br>stored in encrypted form. Please save this in a safe place.";
+
+if($form{'EMAIL'})	{
+&sendemail($form{'EMAIL'}, "Password changed for $form{'USERNAME'}", $admin_email, $mailserver, "PLEASE DO NOT REPLY TO THIS E-MAIL.\n\n\n\nThis is confirmation that your password has been successfully changed. Please store it in a safe place.\n\n");
+}
+&main;
+}
+
+############  Provide help to confused user not logged in
+sub nologin   {
+print <<"EOF";
+<body $bodytext link="#FFFFFF" vlink="#FFFFFF" alink="#FFFFFF"> $mainfont
+<p><center><h4>Please ensure cookies are enabled in your browser and login</h4>
+<table width="60%" cellpadding=0 cellspacing=0 border=2 $subtablebg><tr align=center><td>
+<table width="100%" cellpadding=2 cellspacing=3 border=0 $titlebg><tr align=center>
+<td><font face="Arial black" size="2" color="#FFFFFF"><A HREF=$ENV{'SCRIPT_NAME'}?action=register>Register</A></font> </td>
+<td><font face="Arial black" size="2" color="#FFFFFF"><A HREF=$ENV{'SCRIPT_NAME'}?action=login>Login</A></font> </td>
+<td><font face="Arial black" size="2" color="#FFFFFF"><A HREF=$ENV{'SCRIPT_NAME'}?action=help>Help</A> </td></tr></table></td></tr></table></center></body>
+EOF
+exit;
+}
+
+#############  Show SENT folder
+sub listsent {
+&oops('username does not exist') unless (open(REGFILE, "$basepath$regdir/$Cookies{'name'}.dat"));
+($password, $email, $realname,$sponsor, $null, $null2) = <REGFILE>;
+close REGFILE;
+chomp($password, $email, $realname,$sponsor, $null, $null2);
+opendir THEDIR, "$basepath$maildir/$Cookies{'name'}/sent" || die "Unable to open directory: $!";
+@allfiles = readdir THEDIR;
+closedir THEDIR;
+$numfiles = @allfiles;
+
+if ($numfiles <= 2) { $caption = "---No Messages---"; }
+else { $caption = "-----Please select a message-----"; }
+
+$banner = &makebanner ('SENT');
+print <<"EOF";
+<body $bodytext $bodybg> $mainfont $banner
+<p><div align="center">
+EOF
+
+print "<b>Previous action:</b> $bulletin<p>" if ($bulletin);
+
+print <<EOF;
+<center><table border="0" cellpadding="0" width="100%" $bodybg>
+<tr><td align=center><FORM ACTION="$ENV{'SCRIPT_NAME'}"  METHOD=POST>
+<INPUT TYPE=HIDDEN NAME=action VALUE=showsent>
+<SELECT NAME=selection SIZE=10>
+<OPTION SELECTED><b>$caption</b></OPTION>
+EOF
+
+%seen = ();
+
+foreach $item (@allfiles) {
+push(@uniq, $item) unless $seen{$item}++;
+}
+foreach $file (sort { ($a =~ /-(\d{8,})/)[0] <=> ($b =~ /-(\d{8,})/)[0]  } @uniq) {
+next unless ($file =~ /\.htm/i);
+
+if (-e "$basepath$maildir/$Cookies{'name'}/sent/$file") {
+$file =~ s/\.htm//;
+@ort = split(/-/, $file);
+$nort = @ort;
+
+for ($i=4; $i<$nort; $i++)   { # recover orts connected to $ort[3] with '-'
+   $ort[3] .= "-$ort[$i]";
+}
+
+print "<OPTION VALUE=\"$file\">$ort[0] - $ort[3] - $ort[2]</OPTION>";
+}
+}
+print <<"EOF";
+</SELECT></td></tr></table>
+<table border=0><tr><td align=left>
+<input type=submit value="Read message" name=B1></form></td><td width=40>&nbsp;</td>
+<td align=right><form method=POST action=$ENV{'SCRIPT_NAME'}>
+<input type=hidden name=action value=delsent>
+<input type=hidden name=DOIT value=1>
+<input type=submit value="Delete All Messages" name=B1></form></td></tr></table></center></div>
+EOF
+}
+
+#############  Display selected SENT message
+sub showsent {
+$selection = "$form{'selection'}";
+
+&oops ('There are no messages') if ($selection eq "---No Messages---");
+&oops ('You must select a message') if ($selection eq "-----Please select a message-----"); 
+
+&oops ("Cant open $Cookies{'name'}/sent/$selection: $!")  unless (open (SENTFILE, "$basepath$maildir/$Cookies{'name'}/sent/$selection\.htm"));
+(@msg) = <SENTFILE>;
+close SENTFILE;
+chomp(@msg);
+
+foreach (@msg)   {
+   if (/\n\n/)   {
+    s/\n\n/<p>/g;
+  }
+  elsif (/\n/)   {
+    s/\n/<br>/g;
+  }
+  else   {
+    $_ .= "<br>";
+  }
+  push (@body, $_);
+}
+
+print <<"EOF";
+<body $bodytext $bodybg> $mainfont
+<!--center>$banner</center-->
+<p><div align="center">
+<table width=90% $toptablebg border="2" cellpadding="12"><tr><td>$mainfont
+@body<p>
+
+<center><form method=POST action=$ENV{'SCRIPT_NAME'}>
+<input type="hidden" name="action" value="delsent">
+<input type="hidden" name="FILED" value="$selection">
+<input type="hidden" name="ALIAS" value=$form{'ALIAS2'}>
+<input type=submit value="Delete" name=B1></form></center></td></tr></table></div>
+EOF
+}
+
+############  Delete all SENT messages
+sub delsent  {
+if ($form{'DOIT'}) {
+opendir THEDIR, "$basepath$maildir/$Cookies{'name'}/sent" || die "Unable to open directory: $!";
+@allfiles = readdir THEDIR;
+closedir THEDIR;
+
+foreach $file (sort { int($a) <=> int($b) } @allfiles) {
+
+if (-e "$basepath$maildir/$Cookies{'name'}/sent/$file") {
+unlink("$basepath$maildir/$Cookies{'name'}/sent/$file");
+}
+}
+
+$bulletin = "All messages DELETED!";
+#print "<H2 align=center>All Messages Deleted!</h2>";
+}
+else {
+if (unlink("$basepath$maildir/$Cookies{'name'}/sent/$form{'FILED'}\.htm"))  {
+   $bulletin = "Message DELETED";
+}
+else {$bulletin = "Message NOT deleted!"}
+}
+&listsent
+}
+
+############  Show messages in TRASH
+sub listtrash {
+&oops('username does not exist') unless (open(REGFILE, "$basepath$regdir/$Cookies{'name'}.dat"));
+($password, $email, $realname,$sponsor, $null, $null2) = <REGFILE>;
+close REGFILE;
+chomp($password, $email, $realname,$sponsor, $null, $null2);
+opendir THEDIR, "$basepath$maildir/$Cookies{'name'}/read" || die "Unable to open directory: $!";
+@allfiles = readdir THEDIR;
+closedir THEDIR;
+$numfiles = @allfiles;
+
+if ($numfiles <= 2) { $caption = "---No Messages---"; }
+else { $caption = "-----Please select a message-----"; }
+
+$banner = &makebanner ('TRASH');
+print <<"EOF";
+<body $bodytext $bodybg> $mainfont $banner
+<p><div align="center">
+EOF
+
+print "<b>Previous action:</b> $bulletin<p>" if ($bulletin);
+
+print <<EOF;
+<center><table border="0" cellpadding="0" width="100%" $bodybg>
+<tr><td align=center><FORM ACTION="$ENV{'SCRIPT_NAME'}"  METHOD=POST>
+<INPUT TYPE=HIDDEN NAME=action VALUE=showtrash>
+<SELECT NAME=selection SIZE=10>
+<OPTION SELECTED><b>$caption</b></OPTION>
+EOF
+
+%seen = ();
+
+foreach $item (@allfiles) {
+push(@uniq, $item) unless $seen{$item}++;
+}
+foreach $file (sort { ($a =~ /-(\d{8,})/)[0] <=> ($b =~ /-(\d{8,})/)[0]  } @uniq) {
+next unless ($file =~ /\.htm/i);
+
+if (-e "$basepath$maildir/$Cookies{'name'}/read/$file") {
+@ort = split(/-/, $file);
+$nort = @ort;
+
+for ($i=4; $i<$nort; $i++)   { # recover orts connected to $ort[3] with '-'
+   $ort[3] .= "-$ort[$i]";
+}
+
+$file =~ s/\.htm//;
+print "<OPTION VALUE=\"$file\">$ort[0] - $ort[3] - $ort[2]</OPTION>";
+}
+}
+print <<"EOF";
+</SELECT></td></tr></table>
+<table border=0><tr><td align=left>
+<input type=submit value="Read message" name=B1></form></td><td width=40>&nbsp;</td>
+<td align=right><form method=POST action=$ENV{'SCRIPT_NAME'}>
+<input type=hidden name=action value=deltrash>
+<input type=hidden name=DOIT value=1>
+<input type=submit value="Delete All Messages" name=B1></form></td></tr></table></center></div>
+EOF
+}
+##############  Display selected message from TRASH folder
+sub showtrash {
+&oops ('There are no messages') if ($form{'selection'} eq "---No Messages---");
+&oops ('You must select a message') if ($form{'selection'} eq "-----Please select a message-----");
+
+my $selection = $form{'selection'};
+my $file = $selection;
+
+# Restore banned characters from command line
+$file =~ s/\%20/ /g;
+$file =~ s/\%2B/+/g;
+$file =~ s/\%2C/./g;
+$file =~ s/\%3A/:/g;
+
+my $print = 0;
+$print = $form{'print'} if ($form{'print'});
+@msg = ();  # Prepare message collector
+
+($subject, $MID, $datetime, $from) = split (/-/, $file);
+
+if (-e "$basepath$maildir/$Cookies{'name'}/read/$MID")   {  # must be email
+$email_msg = 1;
+
+&trace ("sub trashmail file",$file) if ($debug);
+
+&Fmt_email ("read/", $file);
+
+} # End email
+
+else   { # Must be Intercom
+open (INTFILE, "$basepath$maildir/$Cookies{'name'}/read/$file\.htm");
+(@body) = <INTFILE>;
+close INTFILE;
+chomp(@body);
+
+foreach $item(@body) { 
+$item =~ s/\n//g;
+
+if ($item =~ /http:\/\/.*/i)   {
+$item = &hyperlink ($item) unless ($item =~ /<a href/i) ;
+}
+$item = "$item<BR>" unless ($item =~ /<br>/i); 
+push(@msg, $item);
+}
+}  # End Intercom
+
+# Show all messages here
+print <<"EOF" unless ($print);
+<body $bodytext $bodybg> $mainfont
+<p><div align="center">
+<table width="80%" border="2" cellpadding="12" $toptablebg><tr><td width=100% >
+$mainfont
+EOF
+
+print "<table width=100% border=0><tr><td>$mainfont";
+
+foreach (@msg)   {
+print $_;
+}
+print "<hr>";
+print "</td></tr></table>";
+
+exit if ($print);
+$file = $selection;
+
+# Hexify banned chars in command line
+$selection =~ s/ /\%20/g; 
+$selection =~ s/\+/\%2B/g;
+$selection =~ s/\,/\%2C/g;
+$selection =~ s/\:/\%3A/g;
+
+print << "EOF"; 
+<center><table width=80% border="0"><tr>
+<td align=center>$mainfont
+<a href=$ENV{'SCRIPT_NAME'}?action=showtrash&selection=$selection&header=$headsw><font color=red>$headmsg</font></a></td>
+
+<td align=center>$mainfont<a href=$ENV{'SCRIPT_NAME'}?action=showtrash&selection=$selection&print=1 $TARGET><font color=red>View printer-ready message</font></a><br><font size=1>Close new window when done</font></td>
+
+<td align=center><form method=POST action=$ENV{'SCRIPT_NAME'}>
+<input type="hidden" name="action" value="deltrash">
+<input type="hidden" name="FILED" value="$file">
+<input type="hidden" name="ALIAS" value=$form{'ALIAS2'}><p>
+<center><input type=submit value=Delete name=B1></center><p>
+</form></td>
+</tr></table></center></td></tr></table></div>
+EOF
+}
+
+########  Delete selected or all messages from TRASH
+sub deltrash  {
+if ($form{'DOIT'})  {
+opendir THEDIR, "$basepath$maildir/$Cookies{'name'}/read" || die "Unable to open directory: $!";
+@allfiles = readdir THEDIR;
+closedir THEDIR;
+
+foreach $file (sort { int($a) <=> int($b) } @allfiles) {
+
+if (-T "$basepath$maildir/$Cookies{'name'}/read/$file") {
+unlink("$basepath$maildir/$Cookies{'name'}/read/$file");
+}
+}
+
+$bulletin = "All messages DELETED!";
+
+}
+else {
+&oops ("Cookies{'name'}/read/$form{'FILED'}\.htm not deleted: $!") unless (unlink("$basepath$maildir/$Cookies{'name'}/read/$form{'FILED'}\.htm"));
+@ort = split(/-/, $form{'FILED'});
+
+if (-e "$basepath$maildir/$Cookies{'name'}/read/$ort[1]")   {
+$bulletin = "Cookies{'name'}/read/$ort[1] not deleted: $!<br>" unless ( unlink("$basepath$maildir/$Cookies{'name'}/read/$ort[1]"));
+}
+
+$bulletin .= "Message DELETED";
+}
+&listtrash;
+}
+
+#########  Default page when no action selected
+sub main {
+&oops('No Main HTML File Found!') unless (open(MAIN, "$basepath$mainhtm"));
+(@ALL) = <MAIN>;
+$banner = &makebanner ('CONTINUE');
+&printhtm(@ALL);
+}
+
+#############  Display form to request lost password
+sub password {
+$question .= "?";
+
+$banner = &makebanner ('PASSWORD <font size=2>retrieval');
+print <<EOF;
+<body $bodytext $bodybg> $mainfont $banner
+<center><table width="450" border="1"><tr><td align=center>
+<form ACTION="$ENV{'SCRIPT_NAME'}"   METHOD="POST">
+<input type="hidden" name="action" value="password1">
+<table width="100%" border="0" cellpadding="10" $subtablebg>
+<th colspan="2">This form is to be used ONLY if you are registered and have lost your password</th>
+<TR><TD VALIGN=TOP>$mainfont<B>Your IP address</B> <font size="-1">(record this for security reasons):</font></TD>
+<TD><INPUT TYPE=HIDDEN NAME=IP VALUE=$ENV{'REMOTE_ADDR'}>$ENV{'REMOTE_ADDR'}</td></tr>
+<TR><TD VALIGN=TOP>$mainfont<B>Your User Name</B>:</TD><TD>$named <input type=hidden name=ALIAS value=$named></TD></TR>
+<tr><td>$mainfont<b>Question</b>:</td><td>$mainfont $question</td></tr>
+<tr><td>$mainfont<b>Answer</b>:</td><td>$mainfont<input type=text name="ANSWER" size=30></td></tr></TABLE>
+</td></tr></table><p><INPUT TYPE=SUBMIT VALUE="Send Password">
+</FORM></center></body>
+EOF
+exit;
+}
+
+###############  Process request for lost password
+sub password2 {
+print "\n";
+$form{'ALIAS'} =~ s/\W//g;
+$named = lc($form{'ALIAS'});
+$named = ucfirst($named);
+&oops("$named: $!") unless (open(REGFILE,"$basepath$regdir/$named.dat"));
+($password,$email,$realname,$sponsor,$add1,$add2,$active,$question,$answer) = <REGFILE>;
+chomp($password,$email,$realname,$sponsor,$add1,$add2,$active,$question,$answer);
+close REGFILE;
+&oops('Account is inactive') unless ($active);
+&logintries unless ($form{'ANSWER'} eq $answer);
+$pass = &randompass;
+$cryptpass = &cryptpass($pass);
+&oops ("Unable to update registration file: $!") unless (open(REGFILE,">$basepath$regdir/$named.dat"));
+print REGFILE "$cryptpass\n$email\n$realname\n$sponsor\n$add1\n$add2\n$active\n$question\n$answer";
+
+$bulletin = "<b>$named</b> ... your password is: <b>$pass</b><br>
+Please save it in a safe place!";
+
+if($email)  {
+&sendemail($email, "GroupMail password request", $admin_email, $mailserver,
+"Our GroupMail service received a request for your lost password.\nThis request came from IP address: $form{'IP'} which you may wish to check.\n\nYou should have received your password online ... please write it down and save it.\n\nSincerely,\n$admin_id");
+}
+&main;
+}
+
+#########  Elementary HELP page
+sub help {
+$named = $Cookies{'name'} if (&initialize);
+print "\n";
+&oops("Unable to load Help page! $!") unless (open(HELP, "$basepath$helphtm"));
+(@ALL) = <HELP>;
+close HELP;
+$banner = &makebanner ('HELP');
+&printhtm(@ALL);
+}
+################ Add attachments to outgoing email $message
+sub attachments   {
+   my $attachdir = shift @_;
+   my $temp, $type, $ext;
+   my %attach_type = ('jpg' =>'image/jpeg',  # These are the content types to check
+		   'jpeg'=>'image/jpeg',  # Otherwise we give whatever.
+		   'gif' =>'image/gif',
+		   'png' =>'image/png',
+		  );
+
+
+   foreach $attach (@uploaded)   {
+	next unless (-e "$attachdir/$attach");
+	if (-T "$attachdir/$attach") { # this is a test for a text file
+	    &oops ("Unable to open  attachment $attach: $!") unless (open (ATTACH,  "$attachdir/$attach"));
+	    $temp = "--$boundary$LF";
+	    $type = 'plain';
+	    $attach =~ /.*\.(.*)$/; # Grap the extention as $1
+	    if ($1 =~ /^htm/i) {
+		$type = 'html';
+	    }		# both these work
+	    $temp .= "Content-Type: text/$type;$LF\tname=\"$attach\"$LF";
+	    $temp .= "Content-Disposition: inline;$LF\tfilename=\"$attach\"$LF";
+	    $temp .= "$LF";
+	    $full_body .= $temp;
+	    print MAIL $temp;
+
+	    while (<ATTACH>) {
+		print MAIL $_; # send to mail
+	#	$full_body .= $_; # keep for saved message
+	    }
+	    close ATTACH;
+	    print MAIL $LF; # end of attach header
+	    $full_body .= "$LF";	# same for saved
+	    push @attached_these, $attach; # record list
+	}
+	else {	# Not a text file
+	    &oops ("Unable to open  attachment $attach: $!") unless (open (ATTACH,  "$attachdir/$attach"));
+	    $temp = "--$boundary$LF";	# MAKE SURE TO PUT IN THE = AND NOT .= TO RESET IT
+	    $attach =~ /[^.]*\.(.*)$/; # Grap the extention as $1
+	    $ext = lc($1);
+	    $type = $attach_type{$ext} || 'application/x-unknown'; # default content type
+
+#&trace ("attach", $attach, "grep", $1, "type", $type) if $debug;
+
+	    $temp .= "Content-Type: $type;$LF\tname=\"$attach\"$LF"; # with a tab in front of line, treated as
+	    $temp .= "Content-Disposition: inline;$LF\tfilename=\"$attach\"$LF"; # continuation of previous line
+	    $temp .= "Content-Transfer-Encoding: base64$LF";
+	    $temp .= "$LF";
+	    print MAIL $temp;
+	    $full_body .= $temp;
+	    $temp = "";	# reset the temp variable
+	    while (read(ATTACH, $_, 60*57)) { # takes it in a chunk at a time
+		$temp .= encode_base64($_,$LF); # Code it up baby
+	    }
+	    close ATTACH;
+	    print MAIL $temp,$LF; # temp is now the encoded attachment
+#	    $full_body .= $temp . "$LF";
+	    push @attached_these, $attach;
+	} # End else not text file
+    } # End foreach	
+    print MAIL "--$boundary--$LF";
+    $full_body .= "$boundary";
+    return ($full_body, @attached_these);
+} # End sub attachments
+
+############  Upload attachment files
+sub upload   {
+my ($file, $result, $i, $path);
+
+for ($i = 1; $i <= 3; $i++)   {
+$file = "file$i";  # Form field name
+
+if ($form{$file})   {
+$filename = $form{$file};  # Source file name to upload
+$filename =~ s/^.*(\\|\/)//;  # Strip off source path
+$path = "$tempdir/$named";
+mkdir ($path, 0755) unless (-e "$path");
+$result = &psupload($path, $file);
+&oops ($result) unless ($result eq "1");
+push (@uploaded, $filename);
+}
+}
+}
+
+#############  Delete Intercom attachments
+sub killattach   {
+my $path = "$tempdir/$named";
+&oops ("Unable to open $path: $!") unless (opendir (DIR,  "$path"));
+my @attach;
+my @allfiles = readdir (DIR);
+
+foreach (@allfiles)   {
+   push (@attach, $_) unless ($_ eq '.' or $_ eq '..');
+}
+
+unless (@attach)   {
+   $bulletin = "NO uploaded files to delete";
+}
+else   {
+   &oops ("One or more uploaded attachments NOT deleted") unless (&kill_files ($path, @attach));
+   $bulletin = "Uploaded files DELETED";
+}
+
+&intercom;
+}
+
+#############  Delete list of files in given directory - attachments etc.
+sub kill_files   {
+# @_ = path, list of filenames . Path includes $basepath
+my $thedir = shift (@_);
+my $killed = 1;
+
+foreach $file (@_) { 
+   $killed = 0 unless (unlink("$thedir/$file"));
+}
+return $killed;
+}
+
+########### Show group MEMBERS
+sub viewall {
+&oops ("Unable to open member files: $!") unless (opendir THEDIR, "$basepath$regdir");
+@allfiles = readdir THEDIR;
+closedir THEDIR;
+
+$banner = &makebanner ('MEMBERS');
+print <<"EOF";
+<body $bodytext $bodybg> $mainfont $banner
+<p><div align="center">
+EOF
+
+print "<b>Previous action:</b> $bulletin<p>" if ($bulletin);
+
+print <<EOF;
+<form method=post action=$ENV{'SCRIPT_NAME'}>
+<center><table width=50% $subtablebg border=0><tr>
+<td align=center><input type=submit name=action value="Show profile"></td>
+<td align=center><select name=member size=$selectsize>
+EOF
+
+foreach $member (sort @allfiles) {
+
+if ($member =~ /\.dat$/)   {
+#if (-T "$basepath$regdir/$member") {
+open REGFILE, "$basepath$regdir/$member";
+($password, $email, $realname, $sponsor, $address, $telephone, $active,$question,$answer,$logged) = <REGFILE>;
+close REGFILE;
+chomp($password, $email,$realname, $sponsor,  $address, $telephone, $active,$question,$answer,$logged);
+
+next if(not $active);
+$member =~ s/\.dat//;
+print "<OPTION>$member</OPTION>";
+}
+}
+
+print <<EOF;
+</select></td><td align=center>
+<input type=submit name=action value="Send message"></td>
+</tr></table></form></center></div></body>
+EOF
+}
+
+###############  Construct banner with title specific to each page
+sub makebanner   {
+my $banner = "<table width=100% cellpadding=5><tr><td width=75% align=left $titlebg>$titlefont<b>$_[0]</b></font></td>
+<td width=25% align=center $bannbg>$banngif</td></tr></table><p>";
+return $banner;
+}
+
+##############  Send EMAIL message using server 'sendmail' command
+sub sendemail {
+$TO=$_[0];  @TO=split('\0',$TO);
+$SUBJECT=$_[1];
+$FROM=$_[2];
+$REMOTE = $_[3];
+$THEMESSAGE = $_[4];
+$REPLYTO = $_[5];
+$CC = $_[6];
+open(S, "| $REMOTE -t");
+print S "Subject: $SUBJECT\n";
+print S "From: $FROM\n";
+print S "To: $TO[0]\n";
+print S "Cc: $CC\n" if($CC);
+print S "Reply-To: $REPLYTO\n" if($REPLYTO);
+print S "$THEMESSAGE\n";
+print S "\n";
+print S ".\n";
+close (S);
+}
+
+######### Convert 'time' command output (secs) to full date and short date
+sub Time_to_date   {
+	my ($day, $month, $no, $hr, $year);
+	my $date=localtime($_[0]);
+	($day, $month, $no, $hr, $year) = split (/\s+/,$date);
+	my $long_date = "$day, $no $month $year $hr";
+	$long_date .= " $zone";  # $zone is global from &Set_date
+	if ($month =~ /jan/i) {$month="01"}     
+	elsif ($month =~ /feb/i) {$month="02"}  
+	elsif ($month =~ /mar/i) {$month="03"}  
+	elsif ($month =~ /apr/i) {$month="04"}  
+	elsif ($month =~ /may/i) {$month="05"}  
+	elsif ($month =~ /jun/i) {$month="06"}  
+	elsif ($month =~ /jul/i) {$month="07"}  
+	elsif ($month =~ /aug/i) {$month="08"}  
+	elsif ($month =~ /sep/i) {$month="09"}  
+	elsif ($month =~ /oct/i) {$month="10"} 
+	elsif ($month =~ /nov/i) {$month="11"} 
+	elsif ($month =~ /dec/i) {$month="12"} 
+	my $short_date = "$no/$month/$year $hr $zone";
+	return  ($long_date, $short_date);
+}
+
+###############  Use system for best format
+sub Set_date   {
+   $date_command = "/bin/date";
+   $date = `$date_command +"%A, %d %B, %Y %T %Z"`; chop($date);
+   $date =~ /^(\w+).+(\w{3})$/;
+   $day = $1;
+   $zone = $2;
+   $day = substr($day,0,3);
+   $date =~ s/$1/$day/;
+   $shortdate = `$date_command +"%D %T"`; chop($shortdate);
+   return ($zone);
+}
+
+########## Simple data trace if $debug = 1
+sub trace   {
+my $n = @_;
+my $h;
+print "\n";
+
+for ($i=0; $i < $n - 1; $i += 2)   {
+   $h = uc($_[$i]);
+   print "$h=$_[$i+1]<br>";
+}
+print "<br>";
+}
+
+############## One-way encrypt of passwords
+sub cryptpass   {
+my $password = $_[0];
+my $salt = substr($password, -3, 2);
+my $cryptpass = crypt($password, $salt);
+return $cryptpass;
+}
+
+############  Substitute values for variables and print html page
+sub printhtm  {
+$htm = join(' ',@_);
+$htm =~ s/\$ENV{'SCRIPT_NAME'}/$ENV{'SCRIPT_NAME'}/g;
+$htm =~ s/\$Cookies{'name'}/$Cookies{'name'}/g;
+$htm =~ s/\$to/$to/g;
+$htm =~ s/\$from/$from/g;
+$htm =~ s/\$subject/$subject/g;
+$htm =~ s/\$message/$message/g;
+$htm =~ s/\$member/$member/g;
+$htm =~ s/\$banner/$banner/g;
+$htm =~ s/\$email/$email/g;
+$htm =~ s/\$bodybg/$bodybg/g;
+$htm =~ s/\$bodytext/$bodytext/g;
+$htm =~ s/\$titlebg/$titlebg/g;
+$htm =~ s/\$titlefont/$titlefont/g;
+$htm =~ s/\$toptablebg/$toptablebg/g;
+$htm =~ s/\$subtablebg/$subtablebg/g;
+$htm =~ s/\$mainfont/$mainfont/g;
+$htm =~ s/\$bulletin/$bulletin/g;
+print "$htm";
+}
+
+##############
+sub Nslookup   {
+# nslookup.pl from xavatoria.com
+$ip =  $ENV{'REMOTE_ADDR'};
+
+	if ($ip =~ m!(\d+)\.(\d+)\.(\d+)\.(\d+)!) {
+		$host = (gethostbyaddr(pack('C4', $1, $2, $3, $4), 2))[0];
+		$host = 'no reverse DNS for this IP' unless $host;
+		}
+	else {
+		$host = 'Query string does not pattern match to dd.dd.dd.dd';
+		}
+return $host;
+}
+
+###########  Logs unsuccessful login attempts and warns user
+sub logintries   {
+   my $status = $active;
+   my $warn = "";
+   my $host = &Nslookup;
+   open (LOG, ">>$loginlog"); # Record actual login attempts before incrementing $active
+   print LOG "$shortdate\t$named\t$active\t$host\n";
+   close LOG;
+   $active++; # Record no. of attempts - always 1 more than actual
+
+   if ($active <= $maxlogintries)   {
+      $warn = ". Go Back to try again.";
+   }
+   elsif ($active > $maxlogintries)   {
+      $warn = ". Goodbye!";
+      $active = 0; # Set member inactive if exceeded login attempts
+      my $msg = "$date $loginmsg";
+      &sendemail ($email, "GroupMail account $named deactivated", $admin_email, $mailserver, $msg,'',$admin_email);
+   }
+   else   {$status =  $active - 1} # Show true count before incrementing
+
+   print "\n";
+   &warning ("Unable to update $basepath$regdir/$named.dat: $!") unless(open(REGFILE, ">$basepath$regdir/$named.dat"));
+   print REGFILE "$password\n$email\n$realname\n$sponsor\n$address\n$telephone\n$active\n$question\n$answer\n$time";
+close REGFILE;
+
+   &warning("Incorrect PASSWORD - attempt number $status $warn");
+}
+
+sub warning   {
+print "\n";
+print "<b>WARNING!</b> $_[0]";
+exit;
+}
+
+############ Forward email message
+sub forwardmail   {
+&trace ("forwardmail form filed",$form{'FILED'}) if ($debug);
+
+($subject, $MID, $datetime, $from) = split (/-/, $form{'FILED'});
+
+$banner = &makebanner ('FORWARD <font size=2>email');
+print <<EOF;
+<html><body $bodytext $bodybg>$mainfont $banner
+<p><div align="center">
+EOF
+
+print "<b>Previous action:</b> $bulletin <p>" if ($bulletin);
+
+print <<"EOF";
+<center><table width="90%" $subtablebg border="1"><tr><td align=center>
+<table border="0" cellpadding="5" width="100%" >
+<FORM ACTION="$ENV{'SCRIPT_NAME'}"  METHOD=POST>
+<INPUT TYPE=HIDDEN NAME=action VALUE=procemail>
+<INPUT TYPE=HIDDEN NAME=FILED VALUE="$form{'FILED'}">
+
+  <tr>
+    <td width="15%"><font face="Arial" size="-1"><b>To</b>:</font></td>
+    <td><font face="Arial"><input type="text" name="TO" value="$form{'to'}"  size="20">&nbsp;&nbsp;</font>
+    <select name="TO1"><font size="-1">
+    <option selected><b>------- Address Book -------</b></option>
+EOF
+
+if (open (ADDR, "$basepath$adddir/$named.dat"))   {
+  @book = <ADDR>;
+   close ADDR;
+
+  if(@book)   {
+  foreach (@book)   {
+   ($email, $name, $location, $phone) = split(/\t/, $_);
+   $name = "($name)" if($name);
+   print "<option>$name $email</option>";
+}
+}
+}
+
+print <<EOF;
+</select></font></td>
+  </tr>
+  <tr>
+    <td width="15%"><font face="Arial" size="-1"><b>Cc</b>:</font></td>
+    <td><font face="Arial"><input type="text" name="CC" size="20">&nbsp;&nbsp;</font>
+    <select name="CC1"><font size="-1">
+    <option selected><b>------- Address Book -------</b></option>
+EOF
+
+  if(@book)   {
+  foreach (@book)   {
+   ($email, $name, $location, $phone) = split(/\t/, $_);
+   $name = "($name)" if($name);
+   print "<option>$name $email</option>";
+}
+}
+
+print <<EOF;
+</select></font></td>
+  </tr>
+
+  <tr>
+    <td align=center width="25%">$mainfont<b>Subject</b>:</font></td>
+    <td width="75%">$mainfont<font size="+1"> <input type="text" name="SUBJECT" size="50" value="[Fwd: $subject]"></font></td>
+  </tr>
+  <tr>
+    <td align=center width="100%"align="center" colspan=2>
+      $mainfont<b>Optional message</b> <font size=1>(width=80 chars)</font>:<br>
+      <font size="+1"><textarea NAME="MESSAGE" ROWS="20" COLS="80" WRAP="physical"></textarea></td></tr>
+  <tr>
+    <td align=center colspan=2><input type="submit" value="Forward" name="B1"></td>
+  </tr>    
+</form></table></td></tr></table></center>
+EOF
+}
+
+############ Reply to email message
+sub replymail   {
+&trace ("replymail form filed",$form{'FILED'}) if ($debug);
+my $file = $form{'FILED'};
+
+@msg = ();  # Init collector for email and intercom message
+@quote = (); # Init quoted text for reply
+
+&Fmt_email ("", $file);
+
+# Assemble quoted message for reply
+if ($head{'content-type'} =~ /multi.*part\//i)   {
+   $multipart = "> Content-type: $head{'content-type'}";
+   $multipart =~ s/;boundary=.+$//i;
+   $multipart .= " (attachments removed)\n";
+}
+
+$div = "------------------------------------------------------------";
+
+#@text = ("\n\n$div\n$from wrote on $date:\n\n"); # Insert reply prefix at top
+@text = "\n\nOn $date $from wrote:\n\n"; # Insert reply prefix at top
+
+# De-mystify @quote from sub QP_decode
+@temp = ();
+
+foreach (@quote)   {
+   if ($_ eq "\n")   {
+      $_ = ">".$_;
+      push (@temp, $_);
+      next;
+   }
+
+   $_ =~ s/<.*>(.+)<*/$1/;
+   $_ =~ s/<.*>*//g;
+   $_ =~ s/.*>//;
+   $_ =~ s/\n{2,}/\n/g;
+   $_ = "> ".$_;
+   push (@temp, $_) unless ($_ eq "\n");
+}
+
+@quote = @temp;
+
+&trace ("reply head","<br>@text","multipart", $multipart,"quote", "<br>@quote") if($debug);
+
+push (@text, $multipart) if ($multipart); # Add header line if multi-part message
+push (@text, ">\n") if ($multipart); 
+push (@text, @quote); # Insert quoted text
+
+&trace ("reply text", "<br>@text") if($debug);
+
+$banner = &makebanner ('REPLY <font size=2>email');
+print <<EOF;
+<html><body $bodytext $bodybg>$mainfont $banner
+<p><div align="center">
+EOF
+
+print "<b>Previous action:</b> $bulletin <p>" if ($bulletin);
+
+print <<"EOF";
+<center><table width="90%" $subtablebg border="1"><tr><td align=center>
+<table border="0" cellpadding="5" width="100%" >
+<FORM ACTION="$ENV{'SCRIPT_NAME'}"  METHOD=POST ENCTYPE="multipart/form-data">
+<INPUT TYPE=HIDDEN NAME=action VALUE=procemail>
+<INPUT TYPE=HIDDEN NAME=option VALUE=upload>
+
+  <tr>
+    <td width="15%"><font face="Arial" size="-1"><b>To</b>:</font></td>
+    <td><font face="Arial"><input type="text" name="TO" value="$from"  size="20">&nbsp;&nbsp;</font>
+    <select name="TO1"><font size="-1">
+    <option selected><b>------- Address Book -------</b></option>
+EOF
+
+if (open (ADDR, "$basepath$adddir/$named.dat"))   {
+  @book = <ADDR>;
+   close ADDR;
+
+  if(@book)   {
+  foreach (@book)   {
+   ($email, $name, $location, $phone) = split(/\t/, $_);
+   $name = "($name)" if($name);
+   print "<option>$name $email</option>";
+}
+}
+}
+
+print <<EOF;
+</select></font></td>
+  </tr>
+  <tr>
+    <td width="15%"><font face="Arial" size="-1"><b>Cc</b>:</font></td>
+    <td><font face="Arial"><input type="text" name="CC" size="20">&nbsp;&nbsp;</font>
+    <select name="CC1"><font size="-1">
+    <option selected><b>------- Address Book -------</b></option>
+EOF
+
+  if(@book)   {
+  foreach (@book)   {
+   ($email, $name, $location, $phone) = split(/\t/, $_);
+   $name = "($name)" if($name);
+   print "<option>$name $email</option>";
+}
+}
+
+print <<EOF;
+</select></font></td>
+  </tr>
+  <tr>
+    <td align=center width="25%">$mainfont<b>Subject</b>:</font></td>
+    <td width="75%">$mainfont<font size="+1"> <input type="text" name="SUBJECT" size="50" value="Re: $subject"></font></td>
+  </tr>
+  <tr>
+    <td align=center width="100%"align="center" colspan=2>
+      $mainfont<b>Message</b> <font size=1>(width=80 chars)</font>:<br>
+      <font size="+1"><textarea NAME="MESSAGE" ROWS="20" COLS="80" WRAP="physical">@text</textarea></td></tr></table>
+
+<table border="0" cellpadding="0" width="100%" >
+  <tr>
+    <td align=center width=50%><b>Attachments</b><font size=1>(any file)</font> <br>
+      <input type="file" name="file1"><br>    
+      <input type="file" name="file2"><br>    
+      <input type="file" name="file3"> </td>
+    <td align=center width=50%><input type="submit" value="Send Reply" name="B1"></td>
+  </tr>    
+</form></table></td></tr></table></center>
+EOF
+}
+
+############### Process forwarding
+sub procforward   {
+my $file = $_[0];
+my $text = $_[1];
+my $message_header = $_[2];
+my $full_message;
+
+&trace("file",$file,"message_header",$message_header) if ($debug);
+
+($subject, $MID, $datetime, $from) = split (/-/, $file);
+
+&oops ("Cannot open $MID: $!") unless (open (MAILFILE, "$basepath$maildir/$Cookies{'name'}/$MID"));
+my (@message) = <MAILFILE>;
+close MAILFILE;
+
+# Remove header from message and convert to hash array
+(my $ref_header,$message_line_number) = &Get_head(\@message,1); # remove header
+my %head = Parse_header($ref_header); # create readable header
+
+if ($debug)   {
+  foreach (keys %head)   {
+     print "<b>$_:</b> $head{$_}<br>";
+  }
+}
+
+# Re-construct message header
+unshift (@message, "\n");
+unshift (@message, "Cc: $head{'cc'}\n") if ($head{'cc'});
+unshift (@message, "Reply-to: $head{'reply-to'}\n") if ($head{'reply-to'});
+unshift (@message, "From: $head{'from'}\n");
+unshift (@message, "To: $head{'to'}\n");
+unshift (@message, "Date: $head{'date'}\n");
+my $subject = $head{'subject'} or "-- none --";
+unshift (@message, "Subject: $subject\n");
+
+# Label package
+my $prefix = "\n\n-------- Original Message --------\n"; # Insert prefix at top
+unshift (@message, $prefix);
+
+&trace ("content-type",$head{'content-type'}) if ($debug);
+
+if ($head{'content-type'} =~ /multipart\/mixed;\s*boundary=(.+)/i)   {
+   my $boundary = $1; 
+   $boundary =~ s/"//g;
+
+print "BOUNDARY=$boundary<br>" if ($debug);
+      
+   $message_header .= "MIME-version: 1.0$LF";
+   $message_header .= "Content-type: multipart/mixed\;$LF";
+   $message_header .= "\tboundary=\"$boundary\"$LF$LF";
+   $full_message = $message_header;  # Start saving for 'sent' folder
+   print MAIL $message_header;
+   $message_header = "This is a multi-part message in MIME format.$LF$LF";
+   $message_header .= "--$boundary$LF";
+   $message_header .= "Content-type: text/plain; charset=\"US-ASCII\"$LF$LF$text$LF";
+   $full_message .= $message_header;
+   print MAIL $message_header;
+   print MAIL @message;
+
+# Copy text portion of original for 'sent' folder
+   my $part = "";
+   foreach (@message)   {
+      $part .= $_;
+      last if (/content-transfer-encoding:\s*base64/i);
+   }
+
+&trace ("part",$part) if($debug);
+   $full_message .= $part;
+}
+
+else {	# if no attachments, just print the header and message
+    $full_message = $message_header;
+    print MAIL "$message_header$LF";# Give server the message header, just to rev it up
+    $full_message .= $text; # Add message to header
+    print MAIL "$text$LF";
+}
+return $full_message;
+}
+1;

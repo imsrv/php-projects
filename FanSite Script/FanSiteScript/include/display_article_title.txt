@@ -1,0 +1,12 @@
+<?PHP 
+include ("include/connect.txt");
+
+$result = mysql_query("SELECT title FROM ds_articles WHERE seo_url = '$id'");  
+while ($myrow = mysql_fetch_row($result)) 
+
+printf("%s<br>",mysql_result($result,0,"title"));  
+
+
+include ("include/close.txt");
+
+?>

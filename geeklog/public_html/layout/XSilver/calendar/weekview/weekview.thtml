@@ -1,0 +1,66 @@
+                            <table width="100%" cellpadding="5" cellspacing="0" border="0">
+                                <tr align="center"  bgcolor="#C0C0C0">
+                                    <td align="center"><a href="{site_url}/calendar.php?mode={mode}&view=day">{lang_day}</a></td>
+                                    <td align="center"><b>{lang_week}</b></td>
+                                    <td align="center"><a href="{site_url}/calendar.php?mode={mode}">{lang_month}</a></td>
+                                </tr>
+                            </table><br>
+                            <table width="100%" cellspacing="0" border="0">
+                                <tr>
+                                    <td colspan="2" class="weekview_daterange"><a href="{site_url}/calendar.php?mode={mode}&view=week&month={prevmonth}&day={prevday}&year={prevyear}"><<</a>&nbsp;&nbsp;{date_range}&nbsp;&nbsp<a href="{site_url}/calendar.php?mode={mode}&view=week&month={nextmonth}&day={nextday}&year={nextyear}">>></a></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="weekview_caltitle">{calendar_title} {calendar_toggle}</td>
+                                    <td>
+                                </tr>
+                                <tr class="{class1}">
+                                    <td class="weekview_dayformat">{day1}</td><td align="right" class="weekview_addevent">{langlink_addevent1}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" valign="bottom" class="dayview_times">{events_day1}</td>
+                                </tr>
+                                <tr><td colspan="2">&nbsp;</td></tr>
+                                <tr class="{class2}">
+                                    <td class="weekview_dayformat">{day2}</td><td align="right" class="weekview_addevent">{langlink_addevent2}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="dayview_times">{events_day2}</td>
+                                </tr>
+                                <tr><td colspan="2">&nbsp;</td></tr>
+                                <tr class="{class3}">
+                                    <td class="weekview_dayformat">{day3}</td><td align="right" class="weekview_addevent">{langlink_addevent3}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="dayview_times">{events_day3}</td>
+                                </tr>
+                                <tr><td colspan="2">&nbsp;</td></tr>
+                                <tr class="{class4}">
+                                    <td class="weekview_dayformat">{day4}</td><td align="right" class="weekview_addevent">{langlink_addevent4}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="dayview_times">{events_day4}</td>
+                                </tr>
+                                <tr><td colspan="2">&nbsp;</td></tr>
+                                <tr class="{class5}">
+                                    <td class="weekview_dayformat">{day5}</td><td align="right" class="weekview_addevent">{langlink_addevent5}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="dayview_times">{events_day5}</td>
+                                </tr>
+                                <tr><td colspan="2">&nbsp;</td></tr>
+                                <tr class="{class6}">
+                                    <td class="weekview_dayformat">{day6}</td><td align="right" class="weekview_addevent">{langlink_addevent6}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="dayview_times">{events_day6}</td>
+                                </tr>
+                                <tr><td colspan="2">&nbsp;</td></tr>
+                                <tr class="{class7}">
+                                    <td class="weekview_dayformat">{day7}</td><td align="right" class="weekview_addevent">{langlink_addevent7}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="dayview_times">{events_day7}</td>
+                                </tr>
+                                <tr><td colspan="2">&nbsp;</td></tr>
+                            </table><br>
+                            {quickadd_form}

@@ -1,0 +1,23 @@
+
+<?php
+
+include ("../include/connect.txt");
+//convert id from film number to image number
+$result = mysql_query("SELECT image FROM ds_movies WHERE id = '$id'",$db);
+$imageid = mysql_result($result,0,"image"); 
+$result = mysql_query("SELECT filename FROM ds_images WHERE id = '$imageid'",$db);
+
+if ( mysql_result($result,0,"filename") =="" )
+{
+?>
+
+<img src="../images/default.gif" alt="Картинок для этого фильма нет">
+<?php
+}
+else
+{
+?>
+<img src="../include/display_image_admin.php?id=<?php print ("$id");?>" <?PHP include ("../include/display_image_alt_admin.txt"); ?>
+<?php
+}
+

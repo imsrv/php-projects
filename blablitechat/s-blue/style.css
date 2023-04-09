@@ -1,0 +1,30 @@
+body{color:#ffffff;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px}
+td{font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px}
+input{font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px}
+textarea{font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px;width:99%}
+
+.a{background-color:#366bc2;color:#ffffff}                                                /* table row #1 */
+.b{background-color:#5180ce;color:#ffffff}                                                /* table row #2 */
+.c{background-color:#2b5499;font-weight:bold;color:#ffffff;text-transform:uppercase}      /* title row    */  
+.d{background-color:#3A63A8;padding:1px;font-size:10px;white-space:nowrap}                /* info row     */
+.e{background-color:#3A63A8;font-weight:bold;white-space:nowrap}                          /* user list    */
+.f{background-color:#ffffff}                                                              /* border color */
+.g{color:#ffffff;background-color:#5180ce;border:1px solid #ffffff}                       /* text input   */
+.h{color:#ffffff;background-color:#5180ce;border:1px solid #ffffff}                       /* submit input */
+.i{color:#ffffff;background-color:#5180ce;border:1px solid #ffffff;overflow:auto}         /* textarea     */
+.j{text-transform:uppercase}
+.k{font-size:10px}                                                                        /* smallest     */
+.l{white-space:nowrap}                                                                    /* nowrap       */
+.m{font-size:10px;text-align:right;font-style:italic}                                     /* private mssg */
+.n{color:#ffe800;background-color:transparent}                                            /* colored text */
+.t{position:relative;height:90%}                                                          /* main table   */
+
+
+.x{background-color:#003588;background-image:url(bg1.png);background-repeat:repeat-x}     /* bg top frame    */
+.y{background-color:#225fc0;background-image:url(bg2.png);background-repeat:repeat}       /* bg middle frame */
+.z{background-color:#003588;background-image:url(bg3.png);background-repeat:repeat-x}     /* bg bottom frame */
+
+A:link{color:#ffffff;background-color:transparent}
+A:visited{color:#ffffff;background-color:transparent}
+A:hover{color:#ffe800;background-color:transparent;text-decoration:none}
+A:active{color:#ffe800;background-color:transparent}

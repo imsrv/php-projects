@@ -1,0 +1,31 @@
+#
+# $Id: Make.common.in,v 1.2 2001/05/28 15:40:36 fluffy Exp $
+#
+
+CC	= gcc
+DEBUG	= -g
+CFLAGS	= $(RPM_OPT_FLAGS) -Wall -D_GNU_SOURCE $(DEBUG)
+LDFLAGS	=
+
+MKINSTALLDIRS	= ../../mkinstalldirs
+DESTDIR	= <<phputils>>
+DESTDIR_PERMS	= 750
+PROGS_PERMS	= 4750
+DESTDIR_OWNER	= <<owner>>
+DESTDIR_GROUP	= <<group>>
+
+install: $(PROGS)
+	$(MKINSTALLDIRS) $(DESTDIR)
+	chown $(DESTDIR_OWNER):$(DESTDIR_GROUP) $(DESTDIR)
+	chmod $(DESTDIR_PERMS) $(DESTDIR)
+	for i in $(PROGS); do \
+		cp $$i $(DESTDIR); \
+		chown $(DESTDIR_OWNER):$(DESTDIR_GROUP) $(DESTDIR)/$$i; \
+		chmod $(PROGS_PERMS) $(DESTDIR)/$$i; done	
+
+%.o : %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+clean:
+	rm -f *.o *~ $(PROGS)
+

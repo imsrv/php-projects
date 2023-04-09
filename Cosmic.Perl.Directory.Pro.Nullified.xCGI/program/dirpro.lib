@@ -1,0 +1,66 @@
+sub errormessage {
+  print <<EndHTML
+  <hr>
+    <center><font face="verdana" size=5 color="#FF0000">An error has occured</font></center>
+    <p><font face="verdana" size=3>$_[0]</font></p>
+  <hr>
+EndHTML
+;
+  exit;
+}
+
+sub errornote {
+  print <<EndHTML
+  <hr>
+    <center><font face="verdana" size=5 color="#FF0000">An error MAY have occured</font></center>
+    <p><font face="verdana" size=3>$_[0]</font></p>
+  <hr>
+EndHTML
+;
+}
+
+sub message {
+  print <<EndHTML
+  <hr>
+    <center><font face="verdana" size=5 color="#0000FF">$_[0]</font></center>
+    <p><font face="verdana" size=3>$_[1]</font></p>
+  <hr>
+EndHTML
+;
+}
+
+sub message_end {
+  print <<EndHTML
+  <hr>
+    <center><font face="verdana" size=5 color="#0000FF">$_[0]</font></center>
+    <p><font face="verdana" size=3>$_[1]</font></p>
+  <hr>
+EndHTML
+;
+  exit;
+}
+
+sub get_post_data {
+  read(STDIN, $buffer, $ENV{'CONTENT_LENGTH'});
+  @pairs = split(/&/, $buffer);
+  foreach $pair (@pairs) {
+    ($name, $value) = split(/=/, $pair);
+    $value =~ tr/+/ /;
+    $value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
+    $FORM{$name} = $value;
+  }
+} ## End sub
+
+sub get_get_data {
+  @values = split(/\&/,$ENV{'QUERY_STRING'});
+  foreach $i (@values) {
+    ($varname, $mydata) = split(/=/,$i);
+    $mydata =~ tr/+/ /;
+    $mydata =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
+    $WHATWANT{$varname} = $mydata;
+  }
+}
+
+
+
+1;

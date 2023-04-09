@@ -1,0 +1,14 @@
+<?
+	//connect to database server
+	$DatabaseLink = mysql_pconnect($DatabaseServer, $DatabaseUser, $DatabasePassword);
+	if(!$DatabaseLink)
+	{
+		print("<!--mysql_pconnect " . mysql_errno().": ".mysql_error()."-->\n");
+	}
+
+	//select the database
+	if(!(mysql_select_db($DatabaseName, $DatabaseLink)))
+	{
+		print("<!--mysql_select_db($DatabaseName, $DatabaseLink) " . mysql_errno().": ".mysql_error()."-->\n");
+	}
+?>

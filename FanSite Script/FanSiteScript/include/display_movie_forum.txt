@@ -1,0 +1,31 @@
+<?PHP 
+include ("include/connect.txt");
+
+$result = mysql_query("SELECT id,forum FROM ds_movies WHERE seo_url = '$id'");  
+while ($myrow = mysql_fetch_row($result)) 
+{ 
+
+{ 
+if ( $myrow[1] == "")
+	{
+	printf("Обсудить - N/A ");
+	}
+	else
+	{
+printf("<A HREF=%s TARGET=_blank>Обсудить этот фильм</A><br>",$myrow[1],$myrow[1]) ; 
+	}
+ 
+
+} 
+
+
+
+
+ 
+  
+} 
+
+
+include ("include/close.txt");
+
+?>

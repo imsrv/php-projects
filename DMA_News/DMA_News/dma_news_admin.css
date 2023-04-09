@@ -1,0 +1,217 @@
+/************************************************/
+/* These are the main (default) style settings	*/				
+/************************************************/
+
+body
+{
+	background: #FFFFFF;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	color: #000000;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: none;
+}
+
+a:link
+{
+	color: #000000;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: underline;
+}
+
+a:visited 
+{
+	color: #000000; 
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: underline;
+}
+
+a:hover 
+{
+	color:#C93125; 
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: underline;
+}
+
+
+/************************************************/
+/* .maintitle									*/				
+/************************************************/
+
+.maintitle
+{
+	color: #FFFFFF;
+	background-color: #6E7C9C;
+	font-family: verdana,arial,sans-serif;
+	font-size: 12 px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/************************************************/
+/* .subtitle_table								*/				
+/************************************************/
+
+.subtitle_table
+{
+	color: #FFFFFF;
+	background-color: #6E7C9C;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+.subtitle_table a:link
+{
+	color: #FFFFFF;
+	background-color: #6E7C9C;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+.subtitle_table a:visited 
+{
+	color: #FFFFFF;
+	background-color: #6E7C9C;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+.subtitle_table a:hover 
+{
+	color: #C93125;
+	background-color: #6E7C9C;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+
+/************************************************/
+/* .standard_table_1							*/				
+/************************************************/
+
+.standard_table_1
+{
+	color: #000000;
+	background-color: #DEDEDE;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: none;
+}
+
+.standard_table_1 a:link
+{
+	color: #000000;
+	background-color: #DEDEDE;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: underline;
+}
+
+.standard_table_1 a:visited 
+{
+	color: #000000;
+	background-color: #DEDEDE;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: underline;
+}
+
+.standard_table_1 a:hover 
+{
+	color: #C93125;
+	background-color: #DEDEDE;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: underline;
+}
+
+/************************************************/
+/* .standard_table_2							*/				
+/************************************************/
+
+.standard_table_2
+{
+	color: #000000;
+	background-color: #EFEFEF;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: none;
+}
+
+.standard_table_2 a:link
+{
+	color: #000000;
+	background-color: #EFEFEF;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: underline;
+}
+
+.standard_table_2 a:visited 
+{
+	color: #000000;
+	background-color: #EFEFEF;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: underline;
+}
+
+.standard_table_2 a:hover 
+{
+	color: #C93125;
+	background-color: #EFEFEF;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: underline;
+}
+
+
+
+/************************************************/
+/* .dma_credits									*/				
+/************************************************/
+
+.dma_credits
+{
+	color: #000000;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: none;
+}
+
+.dma_credits a:link
+{
+	color: #000000;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: underline;
+}
+
+.dma_credits a:visited 
+{
+	color: #000000;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: underline;
+}
+
+.dma_credits a:hover 
+{
+	color: #C93125;
+	font-family: verdana,arial,sans-serif;
+	font-size: 10 px;
+	text-decoration: underline;
+}

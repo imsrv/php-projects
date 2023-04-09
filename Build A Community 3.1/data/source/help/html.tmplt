@@ -1,0 +1,104 @@
+<TABLE CELLPADDING=0 CELLSPACING=0>
+<TR><TD><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Help & Hints</B></FONT></CENTER><BR><BR></TD></TR>
+<TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+
+<P><FONT COLOR="[<($BrightColor)>]">&lt;P><FONT COLOR="[<($DarkText)>]">The paragraph tag must be used whenever you want to start a new paragraph.  Blank lines will not show up on a web page.</FONT></CENTER>
+
+[<(
+	if ($CONFIG{'Weaver_use_bonhomme'} eq "YES") {
+		$OUT .= "<IMG SRC=\"$CONFIG{'button_dir'}/myguy/teacher1.gif\" WIDTH=93 HEIGHT=128 ALIGN=RIGHT ALT=\"Let me be your guide\">";
+	}
+)>]
+
+<P><FONT COLOR="[<($BrightColor)>]">&lt;BR><FONT COLOR="[<($DarkText)>]">This tag will provide you with a single line break, in the same sized font as the previous line of text.</FONT>
+
+<P><FONT COLOR="[<($DarkText)>]"><B>Bold Text</B></FONT> - <FONT COLOR="[<($DarkText)>]">Requires a matching closing tag.
+
+<P>
+
+</FONT>
+
+<FONT COLOR="[<($BrightColor)>]">&lt;B><B><FONT COLOR="[<($DarkText)>]">Bold is the way to go if you want to catch people's attention</FONT></B><FONT COLOR="[<($BrightColor)>]">&lt;/B></FONT></CENTER>
+
+<P>
+<FONT COLOR="[<($DarkText)>]"><I>Italic Text</I></FONT> <FONT COLOR="[<($DarkText)>]"> - Requires a matching closing tag.
+
+<BR><FONT COLOR="[<($BrightColor)>]">&lt;I><I><FONT COLOR="[<($DarkText)>]">Everybody who is anybody, is a member here!</FONT></I><FONT COLOR="[<($BrightColor)>]">&lt;/I></FONT></CENTER>
+
+<P>
+
+<FONT COLOR="[<($DarkText)>]"><B><I>Bold Italic Text</I></B></FONT> <FONT COLOR="[<($DarkText)>]"> - Requires a matching closing tag.
+
+<BR><B></B><FONT COLOR="[<($BrightColor)>]">&lt;B>&lt;I><B><I><FONT COLOR="[<($DarkText)>]">Anybody who is not, should be invited! </FONT></I><FONT COLOR="[<($DarkText)>]">:~)</FONT><FONT COLOR="[<($BrightColor)>]"></B>&lt;/B>&lt;/I></FONT></CENTER>
+
+
+<P><FONT COLOR="[<($DarkText)>]"><CENTER>Centered Text</FONT> <FONT COLOR="[<($DarkText)>]"> - Requires a matching closing tag.</FONT>
+
+<P><CENTER><FONT COLOR="[<($BrightColor)>]">&lt;CENTER><FONT COLOR="[<($DarkText)>]">Shameless promotion to friends and family, should be carried out at all times!</FONT><FONT COLOR="[<($BrightColor)>]">&lt;/CENTER></FONT></CENTER>
+
+<P><FONT COLOR="[<($DarkText)>]"><CENTER><B><I>Centered Bold Italic Text</I>:~)</B></FONT></CENTER>
+
+<P>
+<CENTER><B></B><FONT COLOR="[<($BrightColor)>]">&lt;CENTER>&lt;B>&lt;I><B><FONT COLOR="[<($DarkText)>]"><I>Everyone will thank you! </I></FONT></B><FONT COLOR="[<($BrightColor)>]">&lt;/I>&lt;/B>&lt;/CENTER></FONT></CENTER>
+
+<P><FONT COLOR="[<($DarkText)>]">Linked Text</FONT></CENTER>
+
+<P><FONT SIZE=+1></FONT><FONT COLOR="[<($BrightColor)>]">&lt;A HREF="<FONT COLOR="[<($DarkText)>]">http://microsoft.com</FONT>"><FONT COLOR="[<($DarkText)>]">Go to Microsoft's site!</FONT><FONT COLOR="[<($BrightColor)>]">&lt;/A></FONT></CENTER>
+
+<P><FONT COLOR="[<($DarkText)>]"><B><I>Bold Italic, Linked Text</I></B></FONT></CENTER>
+
+<P><FONT COLOR="[<($BrightColor)>]">&lt;A HREF="<FONT COLOR="[<($DarkText)>]">http://netscape.com</FONT>">&lt;B>&lt;I><B><I><FONT COLOR="[<($DarkText)>]">Or go to Netscape's!</FONT></I></B><FONT COLOR="[<($BrightColor)>]">&lt;/B>&lt;/I>&lt;/A></FONT></CENTER>
+
+<P><FONT COLOR="[<($DarkText)>]">The Horizontal Rule</FONT></CENTER>
+
+<HR>
+
+<FONT COLOR="[<($BrightColor)>]">&lt;HR><FONT COLOR="[<($DarkText)>]">This will draw a line across the page or column depending on where you use it.</FONT></CENTER>
+
+<P>
+
+<FONT COLOR="[<($DarkText)>]">Adding an Image</FONT></CENTER>
+
+<P>
+
+<FONT COLOR="[<($BrightColor)>]">&lt;IMG SRC="<FONT COLOR="[<($DarkText)>]">http://us.yimg.com/i/main33.gif</FONT>"></FONT></CENTER>
+
+<P>
+
+<FONT COLOR="[<($DarkText)>]">Centering an Image</FONT></CENTER>
+
+<P>
+
+<FONT COLOR="[<($BrightColor)>]">&lt;CENTER>&lt;IMG SRC="<FONT COLOR="[<($DarkText)>]">http://us.yimg.com/i/main33.gif</FONT><FONT COLOR="[<($BrightColor)>]">">&lt;/CENTER></FONT></CENTER>
+
+<P>
+
+<FONT COLOR="[<($DarkText)>]">Linking an Image</FONT> <FONT COLOR="[<($DarkText)>]"> - Requires a matching closing tag.</FONT>
+
+<P>
+
+<FONT COLOR="[<($BrightColor)>]">&lt;a HREF="<FONT COLOR="[<($DarkText)>]">http://moviething.com/buffs/inertia/index.shtml</FONT>">&lt;IMG SRC="<FONT COLOR="[<($DarkText)>]"> http://moviething.com/fans/inertia/Merlin.gif</FONT>" ALT="<FONT COLOR="[<($DarkText)>]">Press Me to Enter</FONT>" BORDER=<FONT COLOR="[<($DarkText)>]">0</FONT>>&lt;/a></FONT></CENTER>
+<P>
+</CENTER>
+[<(
+	if ($CONFIG{'Weaver_use_bonhomme'} eq "YES") {
+		$OUT .= "<IMG SRC=\"$CONFIG{'button_dir'}/myguy/experiment.gif\" WIDTH=82 HEIGHT=128 ALIGN=LEFT ALT=\"Let me be your guide\">";
+	}
+)>]
+<P><B><FONT COLOR="[<($DarkText)>]">The Laboratory</FONT><FONT SIZE=-2></FONT></B>
+
+<P><I><FONT COLOR="[<($DarkText)>]">You can use the box below to test your html.  Fill in your text and click the button
+
+</FONT></I></FONT></CENTER>
+
+<BR CLEAR=ALL>
+
+
+<CENTER><BR><form ENCTYPE="application/x-www-form-urlencoded"  METHOD="POST" ACTION="test_html.cgi">
+<INPUT TYPE="SUBMIT" NAME="SUBMIT" VALUE="Run The Test"><BR>
+<TEXTAREA NAME="html" COLS=25 ROWS=4></TEXTAREA>
+<BR><INPUT TYPE="SUBMIT" NAME="SUBMIT" VALUE="Run The Test">
+</FORM></CENTER>
+
+</TD></TR></TABLE>
+

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://tempuri.org/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="orderIem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CT_ID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="BK_ISBN" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="BKOR_Quantity" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="BKOR_Price" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="orderIemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="orderIemResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="orderIemSoapIn">
+    <part name="parameters" element="s0:orderIem" />
+  </message>
+  <message name="orderIemSoapOut">
+    <part name="parameters" element="s0:orderIemResponse" />
+  </message>
+  <message name="orderIemHttpGetIn">
+    <part name="CT_ID" type="s:string" />
+    <part name="BK_ISBN" type="s:string" />
+    <part name="BKOR_Quantity" type="s:string" />
+    <part name="BKOR_Price" type="s:string" />
+  </message>
+  <message name="orderIemHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="orderIemHttpPostIn">
+    <part name="CT_ID" type="s:string" />
+    <part name="BK_ISBN" type="s:string" />
+    <part name="BKOR_Quantity" type="s:string" />
+    <part name="BKOR_Price" type="s:string" />
+  </message>
+  <message name="orderIemHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="orderBooksSoap">
+    <operation name="orderIem">
+      <documentation>This will input books into the database</documentation>
+      <input message="s0:orderIemSoapIn" />
+      <output message="s0:orderIemSoapOut" />
+    </operation>
+  </portType>
+  <portType name="orderBooksHttpGet">
+    <operation name="orderIem">
+      <documentation>This will input books into the database</documentation>
+      <input message="s0:orderIemHttpGetIn" />
+      <output message="s0:orderIemHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="orderBooksHttpPost">
+    <operation name="orderIem">
+      <documentation>This will input books into the database</documentation>
+      <input message="s0:orderIemHttpPostIn" />
+      <output message="s0:orderIemHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="orderBooksSoap" type="s0:orderBooksSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="orderIem">
+      <soap:operation soapAction="http://tempuri.org/orderIem" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="orderBooksHttpGet" type="s0:orderBooksHttpGet">
+    <http:binding verb="GET" />
+    <operation name="orderIem">
+      <http:operation location="/orderIem" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="orderBooksHttpPost" type="s0:orderBooksHttpPost">
+    <http:binding verb="POST" />
+    <operation name="orderIem">
+      <http:operation location="/orderIem" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="orderBooks">
+    <port name="orderBooksSoap" binding="s0:orderBooksSoap">
+      <soap:address location="http://66.129.68.165/bookSource/orderBooks.asmx" />
+    </port>
+    <port name="orderBooksHttpGet" binding="s0:orderBooksHttpGet">
+      <http:address location="http://66.129.68.165/bookSource/orderBooks.asmx" />
+    </port>
+    <port name="orderBooksHttpPost" binding="s0:orderBooksHttpPost">
+      <http:address location="http://66.129.68.165/bookSource/orderBooks.asmx" />
+    </port>
+  </service>
+</definitions>

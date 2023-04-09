@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://tempuri.org/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="AllCat">
+        <s:complexType />
+      </s:element>
+      <s:element name="AllCatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AllCatResult" nillable="true">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="AllCatSoapIn">
+    <part name="parameters" element="s0:AllCat" />
+  </message>
+  <message name="AllCatSoapOut">
+    <part name="parameters" element="s0:AllCatResponse" />
+  </message>
+  <message name="AllCatHttpGetIn" />
+  <message name="AllCatHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="AllCatHttpPostIn" />
+  <message name="AllCatHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="getCategoriesSoap">
+    <operation name="AllCat">
+      <documentation>This will return all categories in an XML String</documentation>
+      <input message="s0:AllCatSoapIn" />
+      <output message="s0:AllCatSoapOut" />
+    </operation>
+  </portType>
+  <portType name="getCategoriesHttpGet">
+    <operation name="AllCat">
+      <documentation>This will return all categories in an XML String</documentation>
+      <input message="s0:AllCatHttpGetIn" />
+      <output message="s0:AllCatHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="getCategoriesHttpPost">
+    <operation name="AllCat">
+      <documentation>This will return all categories in an XML String</documentation>
+      <input message="s0:AllCatHttpPostIn" />
+      <output message="s0:AllCatHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="getCategoriesSoap" type="s0:getCategoriesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="AllCat">
+      <soap:operation soapAction="http://tempuri.org/AllCat" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="getCategoriesHttpGet" type="s0:getCategoriesHttpGet">
+    <http:binding verb="GET" />
+    <operation name="AllCat">
+      <http:operation location="/AllCat" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="getCategoriesHttpPost" type="s0:getCategoriesHttpPost">
+    <http:binding verb="POST" />
+    <operation name="AllCat">
+      <http:operation location="/AllCat" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="getCategories">
+    <port name="getCategoriesSoap" binding="s0:getCategoriesSoap">
+      <soap:address location="http://66.129.68.165/bookSource/getCategories.asmx" />
+    </port>
+    <port name="getCategoriesHttpGet" binding="s0:getCategoriesHttpGet">
+      <http:address location="http://66.129.68.165/bookSource/getCategories.asmx" />
+    </port>
+    <port name="getCategoriesHttpPost" binding="s0:getCategoriesHttpPost">
+      <http:address location="http://66.129.68.165/bookSource/getCategories.asmx" />
+    </port>
+  </service>
+</definitions>

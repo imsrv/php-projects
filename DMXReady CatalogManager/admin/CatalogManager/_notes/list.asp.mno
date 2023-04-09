@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_gpcmenu" value="name:GPCID;datatype:3,name:GPCName;datatype:202,name:GPCDesc;datatype:203,name:GPCImageFile;datatype:202" />
+	<infoitem key="UD_category" value="name:GPCID;datatype:3,name:CategoryID;datatype:3,name:CategoryName;datatype:202,name:GPCIDkey;datatype:3,name:CategoryDesc;datatype:203,name:CategoryImageFile;datatype:202" />
+	<infoitem key="UD_subcategorymenu" value="name:SubCategoryImageFile;datatype:202,name:SubCategoryID;datatype:3,name:SubCategoryName;datatype:202,name:SubCategoryDesc;datatype:203" />
+</info>

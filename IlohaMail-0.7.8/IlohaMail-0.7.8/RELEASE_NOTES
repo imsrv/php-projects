@@ -1,0 +1,15 @@
+Version: 0.7.8
+Date: 9/8/02
+
+For a complete change log, see the development log at:
+	http://ilohamail.org/main.php?page=DevLog
+
+
+NOTES
+=====
+This version includes performance enhancements in the POP3 library, custom SMTP
+support, persistent database connections, and 5 new languages (Chinese, 
+Italian, Polish, Brazilian Portuguese, and Swedish).  This version also 
+includes numerous bug fixes.
+
+

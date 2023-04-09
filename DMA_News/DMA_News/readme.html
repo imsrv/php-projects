@@ -1,0 +1,410 @@
+<html>
+<head>
+	<style type="text/css">
+	body
+	{
+		background: #EEEEEE;
+		margin: 20;
+		padding: 0;
+		border: 0;
+		color: #000000;
+		font-family: verdana,arial,sans-serif;
+		font-size: 10 px;
+		text-decoration: none;
+	}
+	
+	a:link
+	{
+		color: #000000;
+		font-family: verdana,arial,sans-serif;
+		font-size: 10 px;
+		text-decoration: underline;
+	}
+	
+	a:visited 
+	{
+		color: #000000; 
+		font-family: verdana,arial,sans-serif;
+		font-size: 10 px;
+		text-decoration: underline;
+	}
+	
+	a:hover 
+	{
+		color:#C93125; 
+		font-family: verdana,arial,sans-serif;
+		font-size: 10 px;
+		text-decoration: underline;
+	}
+	
+	.maintitle	
+	{
+		color: #000000;
+		font-family: verdana,arial,sans-serif;
+		font-size: 13 px;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	
+	.subtitle
+	{
+		color: #000000;
+		font-family: verdana,arial,sans-serif;
+		font-size: 11 px;
+		font-weight: bold;
+	}
+	
+	.subsubtitle	
+	{
+		color: #000000;
+		font-family: verdana,arial,sans-serif;
+		font-size: 10 px;
+		font-weight: bold;
+		text-decoration: none;
+		font-style: italic;
+	}
+	
+	.gentle_warning_title
+	{
+		color: olive;
+		font-family: verdana,arial,sans-serif;
+		font-size: 11 px;
+		font-weight: bold;
+	}
+	
+	.gentle_warning	
+	{
+		color: olive;
+		font-family: verdana,arial,sans-serif;
+		font-size: 10 px;
+		font-weight: normal;
+	}
+	
+	td	
+	{
+		color: #000000;
+		font-family: verdana,arial,sans-serif;
+		font-size: 10 px;
+		font-weight: normal;
+	}
+	</style>
+</head>
+
+<body>
+
+<span class="maintitle">DMANews - News Management System</span>
+<br><br><br>
+
+<span class="subtitle">Copyright notice</span>
+<br><br>
+
+DMANews is copyright © 2002 by Simon Troup of DigitalMediaArt.Com.<br>
+All rights are reserved.<br>
+You may use the scripts solely for the purpose for which they were 
+designed, as part of a news management solution.
+<br><br><br>
+
+<span class="subtitle">Liability</span>
+<br><br>
+
+You may only install and use these scripts if you agree to assume full 
+liability for their use. They are intended for the use of knowledgeable web 
+professionals. DMANews is, and always will be, in development, and as such it 
+is unlikely that it will ever be deemed anything other than beta software. 
+We hope that you find it useful, but remind you that you use it entirely 
+at your own risk.
+<br><br><br>
+
+<span class="subtitle">Author Contact Information</span>
+<br><br>
+
+Simon Troup<br>
+<a href="http://www.digitalmediaart.com/" target="_blank">http://www.digitalmediaart.com/</a><br>
+<a href="mailto:webmaster@digitalmediaart.com">webmaster@digitalmediaart.com</a><br>
+<br><br><br>
+
+<span class="gentle_warning_title">Note</span>
+<br><br>
+<span class="gentle_warning">Throughout this document [ and ] are used instead of < and > tags for the 
+purposes of display in this HTML file only. We've found this preferable to using code tags as it gives 
+more readable output in most browsers.</span>
+<br><br><br>
+
+<span class="subtitle">Installation</span>
+<br><br>
+
+<ol>
+	<li>
+		Place all the scripts in a separate folder on your webserver.
+	</li>
+	<li>
+		Open "dma_news_admin.php" in a text editor and enter your MySQL database configuration 
+		information in the config section at the top. (You can use either a new database or an 
+		existing database, all the tables that are created are prefixed with "dma_news" and will not 
+		overwrite anything in an existing database.)
+	</li>
+	<li>
+		Open "dma_news_display.php" in a text editor and enter exactly the same information.
+	</li>
+	<li>
+		CHMOD the scripts  to something reasonable, such as 644, and protect the directory 
+		with .htaccess for security purposes. DMANews may get its own login routines in the future, 
+		but for the time being please ensure your own security.
+	</li>
+	<li>
+		Open a browser and run "dma_news_admin.php".
+	</li>
+	<li>
+		When run for the first time, the script will attempt to configure the selected database, 
+		simply follow the instructions on screen. As long as you have followed these instructions 
+		carefully you should get a list of successful upload reports followed by a link back into 
+		the script.
+	</li>
+	<li>
+		Hopefully use of the script itself is self explanatory.
+	</li>
+</ol>
+<br><br>
+ 
+
+<span class="subtitle">Templates</span>
+<br><br>
+
+<span class="subsubtitle">Admin Template</span>
+<br><br>
+
+You can use this to integrate the admin control panel (dma_news_admin.php) into the design 
+of the rest of your site. Simply enter all the HTML code that you want to use and insert 
+XXX_CONTENT_XXX where you want the admin control panel to appear. The script then places the 
+control panel within the template when the page is called (where you specified with 
+XXX_CONTENT_XXX).
+<br><br>
+
+<span class="subsubtitle">News Article Header</span>
+<br>
+<span class="subsubtitle">News Article Template</span>
+<br>
+<span class="subsubtitle">News Article Footer</span>
+<br><br>
+
+This is where you specify the design of the news articles as they are output to visitors 
+to your website. "News Article Header" appears once above the whole block of articles, 
+"News Article Template" governs the look of each article and "News Article Footer" appears 
+once at the bottom of the whole block of articles.
+<br><br>
+
+For example, if you have three news articles, the templates are called as follows ...
+<br><br>
+
+<table bgcolor="#ffffff" cellpadding="4" cellspacing="0" border="0" width="">
+	<tr>
+		<td>News Article Header</td>
+	</tr>
+	<tr>
+		<td>News Article Template<br>
+	</tr>
+	<tr>
+		<td>News Article Template<br>
+	</tr>
+	<tr>
+		<td>News Article Template<br>
+	</tr>
+	<tr>
+		<td>News Article Footer<br>
+	</tr>
+</table>
+<br>
+
+"News Article Header" and "News Article Footer" are there primarily for use with tables 
+(as [table] and [/table] respectively), but no doubt they can be used for other things such 
+as copyright info.
+<br><br>
+
+Here's a better example of the table idea ...
+<br><br>
+
+<table bgcolor="#ffffff" cellpadding="4" cellspacing="0" border="0" width="">
+	<tr>
+		<td>(News Article Header)</td>
+		<td>[table]</td>
+	</tr>
+	<tr>
+		<td>(News Article Template)</td>
+		<td>[tr] [td] XXX_NEWS_XXX [/td] [/tr]</td>
+	</tr>
+	<tr>
+		<td>(News Article Template)</td>
+		<td>[tr] [td] XXX_NEWS_XXX [/td] [/tr]</td>
+	</tr>
+	<tr>
+		<td>(News Article Template)</td>
+		<td>[tr] [td] XXX_NEWS_XXX [/td] [/tr]</td>
+	</tr>
+	<tr>
+		<td>(News Article Footer)</td>
+		<td>[/table]</td>
+	</tr>
+</table>
+
+<br><br>
+
+<span class="gentle_warning_title">IMPORTANT!</span>
+<br><br>
+<span class="gentle_warning">DMA News uses the following markers within "News Article Template" 
+to insert information from the database ...</span>
+<br><br>
+
+<table bgcolor="#ffffff" cellpadding="4" cellspacing="0" border="0" width="">
+	<tr>
+		<td>
+			XXX_NEWS_XXX
+		</td>
+		<td>
+			is replaced with the actual news
+		</td>
+	</tr>
+	<tr>
+		<td>
+			XXX_TIME_XXX
+		</td>
+		<td>
+			is replaced with the time the article was written
+		</td>
+	</tr>
+	<tr>
+		<td>
+			XXX_AUTHOR_XXX
+		</td>
+		<td>
+			is replaced with the author of the article
+		</td>
+	</tr>
+	<tr>
+		<td>
+			XXX_ALTCOLOR_XXX
+		</td>
+		<td>
+			is replaced with once of the two alternating colors specified in the "Configure colors" 
+             section of the admin script.
+		</td>
+	</tr>
+</table>
+
+<br><br>
+
+Example:<br><br>
+
+<table bgcolor="#ffffff" cellpadding="5" cellspacing="0" border="0" width="">
+	<tr>
+		<td>
+			[tr bgcolor="#XXX_ALTCOLOR_XXX"]
+		</td>
+	</tr>
+	<tr>
+		<td>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			[td align="left"]XXX_TIME_XXX[/td]
+		</td>
+	</tr>
+	<tr>
+		<td>
+			[/tr]
+		</td>
+	</tr>
+	<tr>
+		<td>
+			[tr bgcolor="#XXX_ALTCOLOR_XXX"]
+		</td>
+	</tr>
+	<tr>
+		<td>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			[td align="left"]XXX_NEWS_XXX[/td]
+		</td>
+	</tr>
+	<tr>
+		<td>
+			[/tr]
+		</td>
+	</tr>
+	<tr>
+		<td>
+			[tr bgcolor="#XXX_ALTCOLOR_XXX"]
+		</td>
+	</tr>
+	<tr>
+		<td>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			[td align="right"]XXX_AUTHOR_XXX[/td]
+		</td>
+	</tr>
+	<tr>
+		<td>
+			[/tr]
+		</td>
+	</tr>
+</table>
+<br><br>
+
+Note that XXX_ALTCOLOR_XXX changes between articles, not WITHIN articles. This means that in the example 
+above, the same color is used three times, in the next article however, the other alt color will be used 
+three times.
+<br><br>
+
+You don't need to use all the markers, you may not be using tables, in which case you probably won't use 
+XXX_ALTCOLOR_XXX in your templates. Likewise, if you don't want to add the authors name, don't put it in 
+the template.
+<br><br><br>
+
+<span class="subtitle">Displaying the news on your site in a PHP script</span>
+<br><br>
+
+Call "dma_news_display.php" as an include or require.
+<br><br>
+
+<span class="subsubtitle">... using relative paths</span>
+<br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+include ("./DMA_News/dma_news_display.php");
+<br><br>
+
+<span class="subsubtitle">... using absolute paths, a little more difficult for the inexperienced</span>
+<br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+include ("/home/~your_user_id/www/DMA_News/dma_news_display.php");
+<br><br>
+
+<span class="subsubtitle">... or you could even try a URL ...</span>
+<br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+include ("http://www.yourdomain.com/DMA_News/dma_news_display.php");
+<br><br><br>
+
+<span class="subtitle">Displaying the news on your site in a .SHTML SSI page</span>
+<br><br>
+
+To call as an SSI (server side include) in an .shtml or similar file use a virtual command.
+<br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[!--#include virtual="./DMA_News/dma_news_display.php"--]
+<br><br>
+
+<span class="gentle_warning">Don't forget the point we made earlier about [ and ] being used instead of < and > 
+tags for the purposes of display in this HTML file only. When you try these things yourself, use < and > tags.</span>
+<br><br><br>
+
+<span class="subtitle">Bug reports and suggestions.</span>
+<br><br>
+
+We welcome your comments and suggestions. Please contact DMA via our website or email addresses. We're aware that 
+not everything will work perfectly, or work exactly as you may want it to, and that the documentation isn't quite like 
+an O'Reilly manual, however, when contacting DMA please remember that this is freeware, it is written and maintained 
+separately from our main business activities and is released in the spirit that we may help others as others have helped 
+us. We will attempt to answer all courteous contacts as quickly as free time allows, and will direct any abuse to > dev/null. 
+Have fun!
+</body>
+</html>

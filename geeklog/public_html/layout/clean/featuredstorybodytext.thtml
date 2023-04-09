@@ -1,0 +1,6 @@
+                <tr>
+		            <td bgcolor="#FFFFFF" colspan="2" align="center">
+                            {readmore_link} <a href="{comments_url}">{comments_text}</a><br>
+                            {recent_post_anchortag}
+                    </td>
+                </tr>

@@ -1,0 +1,1 @@
+<img src="<?php print $skin_dir;?>/blab.png" hspace="10" vspace="8" width="160" height="50" alt="" />

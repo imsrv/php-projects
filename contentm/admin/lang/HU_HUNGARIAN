@@ -1,0 +1,205 @@
+<?php
+	
+/*
+iWare Language Definition file ( HU Hungarian ) for iWare Professional 3.0.5
+Translation by : George Nadhazy 2003
+*/
+
+/* control.php */
+	
+define("CONTROL_1","Rendszerinformáció");
+define("CONTROL_2","Felhasználókezelés");
+define("CONTROL_3","Csoportbeállítások");
+define("CONTROL_4","Oldal fejléc");
+define("CONTROL_5","Oldal lábléc");
+define("CONTROL_6","Felület kiválasztása");
+define("CONTROL_7","Navigáció stílusa");
+define("CONTROL_8","Navigáicós sorrend");
+define("CONTROL_9","Dokumentum rendezõ");
+define("CONTROL_10","File manager");
+define("CONTROL_11","Modulok");
+define("CONTROL_12","Elõnézet");
+define("CONTROL_13","Kijelentkezés");
+
+/* iware.php */
+
+define("IWARE_1","Bejelentkezés");
+define("IWARE_2","Érvénytelen felhasználó név / jelszó, Kérlek próbáld újra!");
+define("IWARE_3","Felhasználónév");
+define("IWARE_4","Jelszó");
+define("IWARE_5","Belépés");
+
+define("IWARE_6","Rendszerállapot");
+define("IWARE_7","Kiszolgáló");
+define("IWARE_8","PHP Verzió");
+define("IWARE_9","MySQL Verzió");
+define("IWARE_10","Verzió");
+define("IWARE_11","Felhasználók száma");
+define("IWARE_12","Csoportok száma");
+define("IWARE_13","Oldalak száma");
+define("IWARE_14","Tárolt file-ok");
+define("IWARE_15","Telepített navigáció stílusok");
+define("IWARE_16","Telepített skin-ek");
+define("IWARE_17","Telepített modulok");
+
+define("IWARE_18","Felhasználói fiókok");
+define("IWARE_19","Valódi név");
+define("IWARE_20","Felhasználónév");
+define("IWARE_21","Csoport");
+define("IWARE_22","Új");
+define("IWARE_23","Módosítás");
+define("IWARE_24","Törlés");
+
+define("IWARE_25","Új felhasználó létrehozása");
+define("IWARE_26","Valódi név");
+define("IWARE_27","Csoport");
+define("IWARE_28","Felhasználónév");
+define("IWARE_29","Jelszó");
+define("IWARE_30","Jelszó (mégegyszer)");
+define("IWARE_31","Hozzáadás");
+
+define("IWARE_32","A felhasználó létrejött");
+
+define("IWARE_33","Felhsználó szerkersztése");
+define("IWARE_34","Valódi név");
+define("IWARE_35","Csoport");
+define("IWARE_36","Felhasználónév");
+define("IWARE_37","Jelszó");
+define("IWARE_38","Jelszó (mégegyszer)");
+define("IWARE_39","Módosítások mentése");
+
+define("IWARE_40","Felhasználó elmentve");
+
+define("IWARE_41","Felhasználó törölve");
+
+define("IWARE_42","Csoport jogok beállítása");
+define("IWARE_43","Csoport");
+define("IWARE_44","Új");
+define("IWARE_45","Módosítás");
+define("IWARE_46","Törlés");
+
+define("IWARE_47","Új csoport létrehozása");
+define("IWARE_48","Csoport neve");
+define("IWARE_49","Hozzáférhet a felhasználó beállításokhoz?");
+define("IWARE_50","Hozzáférhet a csoport beállításokhoz?");
+define("IWARE_51","Módosíthatja a fejlécet?");
+define("IWARE_52","Módosíthatha a láblécet?");
+define("IWARE_53","Módosíthatja az aktuális kinézetet?");
+define("IWARE_54","Módosíthatja az aktuális navigációt?");
+define("IWARE_55","Átrendezheti az oldalak sorrendjét?");
+define("IWARE_56","Létrehozhat / szerkeszthet / törölhet oldalakat ?");
+define("IWARE_57","Hozzáférhet a fájlokhoz?/ feltölthet fájlt?");
+define("IWARE_58","Hozzáférhet a modulokhoz ?");
+define("IWARE_59","Csoport hozzáadása");
+
+define("IWARE_60","A csoport elkészült");
+
+define("IWARE_61","Csoport szerkesztése");
+define("IWARE_62","A csoport neve");
+define("IWARE_63","Hozzáférhet a felhasználókhoz ?");
+define("IWARE_64","Hozzáférhet a csoport beállításokhoz ?");
+define("IWARE_65","Módosíthatja a fejlácet?");
+define("IWARE_66","Módosíthatja a láblécet ?");
+define("IWARE_67","Módosíthatja az aktuális kinézetet?");
+define("IWARE_68","Módosíthatja az aktuális navigációt?");
+define("IWARE_69","Átrendezheti az oldalak sorrendjét?");
+define("IWARE_70","Létrehozhat / szerkeszthet / törölhet oldalakat ?");
+define("IWARE_71","Hozzáférhet a fájlokhoz?/ feltölthet fájlt?");
+define("IWARE_72","Hozzáférhet a modulokhoz ?");
+define("IWARE_73","Mentés");
+
+define("IWARE_74","Beállítások elmentve");
+
+define("IWARE_75","Csoport törölve");
+
+define("IWARE_76","Fejléc");
+define("IWARE_77","Fejléc enegélyezve");
+define("IWARE_78","Szöveg mutatása fejlécben");
+define("IWARE_79","Szöveg");
+define("IWARE_80","Betûtípus");
+define("IWARE_81","Betûméret");
+define("IWARE_82","Betûszín");
+define("IWARE_83","Kép mutatása fejlécben");
+define("IWARE_84","Kép fileneve");
+define("IWARE_85","ALT szöveg a képhez");
+define("IWARE_86","Kép kerete");
+define("IWARE_87","Mentés");
+
+define("IWARE_88","Fejléc beállítások elmetve!");
+
+define("IWARE_89","Lábléc");
+define("IWARE_90","Lábléc engedélyezése");
+define("IWARE_91","Szöveg / HTML kód");
+define("IWARE_92","Mentés");
+
+define("IWARE_93","Lábléc beállításai elmentve!");
+
+define("IWARE_94","Felület kiválasztása");
+define("IWARE_95","Felület kiválasztása");
+define("IWARE_96","Mentés");
+
+define("IWARE_97","Felület beállítás elmentve!");
+
+define("IWARE_98","Nincs elõnézeti kép");
+
+define("IWARE_99","Dokumentum rendezõ");
+define("IWARE_100","Az oldal neve");
+define("IWARE_101","Új HTML");
+define("IWARE_102","Új, látványszerkeztõvel");
+define("IWARE_103","Szerkesztés HTML");
+define("IWARE_104","Szerkesztés, látványszerkeztõvel");
+define("IWARE_105","Törlés");
+
+define("IWARE_106","Oldal létrejött");
+
+define("IWARE_107","Változtatások elmentve");
+
+define("IWARE_108","Az oldalnak aloldalai vannak, Elõbb azokat távolítsd el!");
+define("IWARE_109","Oldal törölve");
+
+define("IWARE_110","Navigáció stílusa");
+define("IWARE_111","Válassz stílust.");
+define("IWARE_112","Mentés");
+
+define("IWARE_113","A Stílus elmentve");
+
+define("IWARE_114","Navigációs sorrend");
+define("IWARE_115","Mentés");
+
+define("IWARE_116","Sorrend elmentve");
+
+define("IWARE_117","File filtöltés");
+define("IWARE_118","Kezeld képként és méretezd az alábbiak szerint");
+define("IWARE_119","Magasság");
+define("IWARE_120","Szélesség");
+define("IWARE_121","Feltöltés");
+
+define("IWARE_122","A feltöltés sikertelen!");
+define("IWARE_123","A feltöltés sikerült!");
+define("IWARE_124","Az átméretezé nem sikerült! Ellenõrizd, hogy a GDLib rendben van-e.");
+define("IWARE_125","Ilyen file-t nem tölthetsz fel!");
+
+define("IWARE_126","File kezelõ");
+define("IWARE_127","File törlése");
+
+define("IWARE_128","Nincs telepített modul");
+define("IWARE_129","Telepített modulok");
+define("IWARE_130","Nincs beállítási lehetõség");
+define("IWARE_131","Beállítások");
+define("IWARE_132","A szükséges adattáblák nincsenek telepítve!");
+
+/* editor_t.php, editor_w.php */
+
+define("EDITOR_0","Dokumentum szerkesztése");
+define("EDITOR_1","Dokumentum létrehozása");
+define("EDITOR_2","Hivatkozás szövege");
+define("EDITOR_3","Megjelenjen a site-on?");
+define("EDITOR_4","Legyen ez valamelyik oldal aloldala?");
+define("EDITOR_5","Modul beillesztése");
+define("EDITOR_6","META oldal név");
+define("EDITOR_7","META kulcsszavak (vesszõvel elválasztva)");
+define("EDITOR_8","META leírás");
+define("EDITOR_9","Mentés");
+define("EDITOR_10","Ha képet illesztesz be, akkor a furrás URL címét meg kell adnod!. (Például : http://yoursite.com/files/mypicture.jpg) Ha helyileg használod, akkor a Browse gombbal tudod a képet a merevlemezrõ kiválasztani");
+
+?>

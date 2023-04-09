@@ -1,0 +1,314 @@
+<TABLE WIDTH=550 CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]" COLSPAN=2><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>[<($IUSER{'realname'})>]'s Forum Preferences</B></FONT></CENTER></TD></TR>
+<TR><TD VALIGN=TOP><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<form ENCTYPE="application/x-www-form-urlencoded"  METHOD="POST" action="[<($GUrl{'myforum.cgi'})>]">
+
+<INPUT TYPE=hidden NAME="cfilteron" VALUE="1">
+<INPUT TYPE=hidden NAME="cfilteredusers" VALUE="1">
+<INPUT TYPE=hidden NAME="cfilteredwords" VALUE="1">
+<INPUT TYPE=hidden NAME="cfilterhow" VALUE="1">
+<INPUT TYPE=hidden NAME="chighlightedposts" VALUE="1">
+<INPUT TYPE=hidden NAME="cnotifywords" VALUE="1">
+<INPUT TYPE=hidden NAME="cnotifyhow" VALUE="1">
+<INPUT TYPE=hidden NAME="cemailonreponse" VALUE="1">
+<INPUT TYPE=hidden NAME="cthreadstoshow" VALUE="1">
+<INPUT TYPE=hidden NAME="cmyforums" VALUE="1">
+<INPUT TYPE=hidden NAME="cdaystoshow" VALUE="1">
+<INPUT TYPE=hidden NAME="badwords_override" VALUE="T">
+<INPUT TYPE=hidden NAME="returnto" VALUE="[<($FORM{'returnto'})>]">
+<TABLE BORDER WIDTH=400 [<($CONFIG{'WINCOLOR'})>]>
+<TR><TD COLSPAN=4>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<CENTER><H3>My Forums</H3></CENTER>Select which forums to subscribe to (at least 2).  
+When you subscribe to forums, only those forums will appear on your screen when you arrive.  This can help you focus on the subjects you are interested in.</FONT>
+</TD></TR>
+
+<TABLE BORDER=0 WIDTH=100% [<($CONFIG{'WINCOLOR'})>]>
+<TR BGCOLOR=[<($CONFIG{'title_color'})>]><TD BGCOLOR=[<($CONFIG{'title_color'})>]><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><CENTER>Subscribe</CENTER></TD><TD BGCOLOR=[<($CONFIG{'title_color'})>]><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><CENTER>Forum</CENTER></FONT></TD></TR>
+
+[<(
+	my @myforums = split(/!!/, $myforums);
+	opendir(FILES, "$GPath{'cforums_data'}/") || &diehtml("Can't open $GPath{'cforums_data'}/");
+    	while($file = readdir(FILES)) {
+        	if($file =~ /\.(cfg)/) {
+			my %forum = &readbbs("$GPath{'cforums_data'}/$file");
+			if (($forum{'public'} eq "No") || ($forum{'title'} eq "")) {next;}
+			my $forumid = $file;
+			$forumid =~ s/\..*//g;
+			my $forumon = "F";
+			foreach my $myforum (@myforums) {
+				if ($myforum eq $forumid) {
+					$forumon = "T";
+				}
+			}
+			$OUT .= "<TR><TD>\n";
+			if ($forumon eq "T") {
+				$OUT .= "<CENTER><INPUT TYPE=checkbox NAME=\"f_$forumid\" VALUE=$forumid CHECKED></CENTER>\n";
+			}
+			else {
+				$OUT .= "<CENTER><INPUT TYPE=checkbox NAME=\"f_$forumid\" VALUE=$forumid></CENTER>\n";
+			}
+			$OUT .= "</TD>\n";
+			$URL = undef;
+			if ($forum{'clubforum'} ne "Club") {
+				$clubflag = undef;
+				$URL = "<A HREF=\"$GUrl{'cforum.cgi'}?action=getall&forum=$forumid\" TARGET=\"_top\">";
+			}
+			else {
+				$clubflag = "$CONFIG{'clubflag'}";
+				$URL = "<A HREF=\"$GUrl{'clubs.cgi'}?action=open&club=$forumid\" TARGET=\"_top\">";
+			}
+			$OUT .= "<TD><FONT COLOR=\"$CONFIG{'ttxt_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><B>$URL$forum{'title'}</A></B><BR>$clubflag</FONT></TD>\n";
+			$OUT .= "</TR>\n";
+		}
+	}
+)>]
+
+<TR><TD COLSPAN=2>
+<CENTER><INPUT TYPE=SUBMIT NAME=action VALUE="Save My Preferences"></CENTER>
+</TD></TR></TABLE>
+
+<TABLE BORDER WIDTH=400 [<($CONFIG{'WINCOLOR'})>]>
+<TR><TD>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<CENTER><H3>Hightlighted Posts</H3></CENTER>
+Highlighting a message (by clicking the highlighter icon in the forums) allows to "mark" message so that you can easily find it later.
+<TABLE WIDTH=100%>
+
+[<(
+	$OUT .= "<!";
+	$FIRST = "<TR><TD><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"1\" FACE=\"$CONFIG{'font_face'}\">delete?</FONT></TD><TD><BR></TD></TR>\n";
+	$OUT .= ">";
+	my @myhighlight = split(/!+/, $highlightedposts);
+	foreach $th (@myhighlight) {
+		$OUT .= "<! ";
+		@thishighlight = split(/%%/, $th);
+		tie my %postsdb, "DB_File", "$GPath{'cforums_data'}/$thishighlight[0].db";
+		my %post = readpost($postsdb{$thishighlight[1]});
+		$OUT .= ">";
+		$OUT .= "$FIRST<TR><TD><CENTER><INPUT TYPE=CHECKBOX NAME=\"h_$th\" VALUE=\"$th\"></CENTER></TD><TD><FONT COLOR=\"$CONFIG{'text_color'}\" SIZE=\"$CONFIG{'font_size'}\" FACE=\"$CONFIG{'font_face'}\"><A HREF=\"$GUrl{'cforum.cgi'}?forum=$thishighlight[0]&thread=$post{'thisthread'}&action=message&highlight=$thishighlight[1]&showall=T\">$post{'subject'}</A><BR>&nbsp; &nbsp; &nbsp; &nbsp; <I>by $post{'name'} on $post{'date'}</I></TD></TR>\n";
+		$FIRST = undef;
+	}
+)>]
+
+</TABLE>
+
+<CENTER><INPUT TYPE=SUBMIT NAME=action VALUE="Save!"></CENTER>
+
+</TD></TR></TABLE>
+
+</TD><TD VALIGN=TOP>
+
+
+<TABLE BORDER WIDTH=200 [<($CONFIG{'WINCOLOR'})>]>
+<TR><TD>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<CENTER><H3>Posts To Show</H3></CENTER>
+Only show posts within the following number of days:
+<SELECT NAME=daystoshow>
+
+[<(
+	if ($daystoshow eq "1") {
+		$OUT .= "<OPTION VALUE=1 SELECTED> 1 </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=1> 1 </OPTION>\n";
+	}
+	if ($daystoshow eq "2") {
+		$OUT .= "<OPTION VALUE=2 SELECTED> 2 </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=2> 2 </OPTION>\n";
+	}
+	if ($daystoshow eq "5") {
+		$OUT .= "<OPTION VALUE=5 SELECTED> 5 </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=5> 5 </OPTION>\n";
+	}
+	if ($daystoshow eq "10") {
+		$OUT .= "<OPTION VALUE=10 SELECTED> 10 </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=10> 10 </OPTION>\n";
+	}
+	if ($daystoshow eq "14") {
+		$OUT .= "<OPTION VALUE=14 SELECTED> 14 </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=14> 14 </OPTION>\n";
+	}
+	if ($daystoshow eq "21") {
+		$OUT .= "<OPTION VALUE=21 SELECTED> 21 </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=21> 21 </OPTION>\n";
+	}
+	if ($daystoshow eq "30") {
+		$OUT .= "<OPTION VALUE=30 SELECTED> 30 </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=30> 30 </OPTION>\n";
+	}
+	if ($daystoshow eq "60") {
+		$OUT .= "<OPTION VALUE=60 SELECTED> 60 </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=60> 60 </OPTION>\n";
+	}
+	if ($daystoshow eq "90") {
+		$OUT .= "<OPTION VALUE=90 SELECTED> 90 </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=90> 90 </OPTION>\n";
+	}
+)>]
+
+</SELECT>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<CENTER><H3>Max Threads To Show</H3></CENTER>
+On the first page, show only this many threads maximum:
+<SELECT NAME=threadstoshow>
+
+[<(
+	if ($threadstoshow eq "10") {
+		$OUT .= "<OPTION VALUE=10 SELECTED> 10 </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=10> 10 </OPTION>\n";
+	}
+	if ($threadstoshow eq "15") {
+		$OUT .= "<OPTION VALUE=15 SELECTED> 15 </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=15> 15 </OPTION>\n";
+	}
+	if ($threadstoshow eq "20") {
+		$OUT .= "<OPTION VALUE=20 SELECTED> 20 </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=20> 20 </OPTION>\n";
+	}
+	if ($threadstoshow eq "30") {
+		$OUT .= "<OPTION VALUE=30 SELECTED> 30 </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=30> 30 </OPTION>\n";
+	}
+	if ($threadstoshow eq "50") {
+		$OUT .= "<OPTION VALUE=50 SELECTED> 50 </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=50> 50 </OPTION>\n";
+	}
+)>]
+
+</SELECT>
+
+</TD></TR></TABLE>
+
+
+<TABLE BORDER WIDTH=200 [<($CONFIG{'WINCOLOR'})>]>
+<TR><TD>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<CENTER><H3>Email Responses</H3></CENTER>
+Would you like to receive only the first response to your messages or all messages posted after yours?
+<SELECT NAME=emailonreponse>
+
+[<(
+	if ($emailonreponse eq "FIRST") {
+		$OUT .= "<OPTION VALUE=FIRST SELECTED> The First </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=FIRST> The First </OPTION>\n";
+	}
+	if ($emailonreponse eq "ALL") {
+		$OUT .= "<OPTION VALUE=ALL SELECTED> All </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=ALL> All </OPTION>\n";
+	}
+	if ($emailonreponse eq "NONE") {
+		$OUT .= "<OPTION VALUE=NONE SELECTED> No Emails </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=NONE> No Emails </OPTION>\n";
+	}
+)>]
+
+</SELECT>
+
+</TD></TR></TABLE>
+
+<TABLE BORDER WIDTH=200 [<($CONFIG{'WINCOLOR'})>]>
+<TR><TD>
+<FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+<CENTER><H3>Message Filtering</H3></CENTER>
+<FONT SIZE=-1>Message filtering allows you to block certain messages from being shown to you.  If certain words of members offend you, you don't need to see them.</FONT>
+<P>Filtering (On or Off):
+
+<SELECT NAME=filteron>
+
+[<(
+	if ($filteron eq "OFF") {
+		$OUT .= "<OPTION VALUE=OFF SELECTED> Off </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=OFF> Off </OPTION>\n";
+	}
+	if ($filteron eq "ON") {
+		$OUT .= "<OPTION VALUE=ON SELECTED> On </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=ON> On </OPTION>\n";
+	}
+)>]
+
+</SELECT>
+
+<BR><BR>
+
+[<(
+	$filteredusers =~ s/!+//g;
+)>]
+
+Users to filter (one per line):<BR>
+<TEXTAREA NAME=filteredusers COLS=12 ROWS=5>[<($filteredusers)>]</TEXTAREA>
+
+<BR><BR>
+
+[<(
+	$filteredwords =~ s/!+//g;
+)>]
+
+Words to filter (one per line):<BR>
+<TEXTAREA NAME=filteredwords COLS=12 ROWS=5>[<($filteredwords)>]</TEXTAREA>
+<BR><BR>
+
+How would you like messages to be filtered?
+<SELECT NAME=filterhow>
+
+[<(
+	if ($filterhow eq "HIDE") {
+		$OUT .= "<OPTION VALUE=HIDE SELECTED> Hide it from me. </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=HIDE> Hide it from me. </OPTION>\n";
+	}
+	if ($filterhow eq "SKIP") {
+		$OUT .= "<OPTION VALUE=SKIP SELECTED> Just skip it. </OPTION>\n";
+	}
+	else {
+		$OUT .= "<OPTION VALUE=SKIP> Just skip it. </OPTION>\n";
+	}
+)>]
+
+</SELECT>
+
+<BR><BR>
+<CENTER><INPUT TYPE=SUBMIT NAME=action VALUE="Save My Preferences"></CENTER>
+</TD></TR></TABLE>
+
+
+</TD></TR></TABLE>
+</FORM>

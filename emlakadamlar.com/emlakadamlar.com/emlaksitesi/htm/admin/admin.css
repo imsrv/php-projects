@@ -1,0 +1,114 @@
+Body{
+	Font-Family: Verdana;
+	Font-Size: 7pt;
+	Background-Color: #FFFFFF;
+	Cursor: Default;
+	Color: Black;
+	Scrollbar-Highlight-Color: White;
+	Scrollbar-Shadow-Color: Darkgray;
+	Scrollbar-3Dlight-Color: Black; 
+	Scrollbar-Arrow-Color: Gray;
+	Scrollbar-Track-Color: #E5E5E5;
+	Scrollbar-Darkshadow-Color: Black
+}
+
+a
+{
+	Text-Decoration: None;
+	Color: #000000;
+}
+
+
+TD
+{
+	Font-Family: Verdana;
+	Font-Size: 8pt;
+}
+
+Table
+{
+	border-width: 0;
+	border-style: solid;
+}
+
+.TabloMenu
+{
+	cellspacing="1"
+}
+
+.TabloBaslik
+{
+	Background-Color: #666699;
+	Font-Weight: Bolder;
+	Height:20;
+	Padding-Left: 3;
+	Color: White;
+}
+
+.SecTabloSatir1
+{
+	Background-Color: #F0F1F2;
+	Border: 1 Solid #F1F1F1;
+	Padding-Left: 5;
+	Color: Black;
+	Cursor: Hand;	
+}
+
+.SecTabloSatir2
+{
+	Background-Color: #F0F1F2;
+	Border: 1 Solid #F1F1F1;
+	Padding-Left: 5;
+	Color: Black;
+	Cursor: Hand;
+}
+
+.DuzTabloSatir1
+{
+	Background-Color: #F0F1F2;
+	Border: 1 Solid #F1F1F1;
+	Padding-Left: 5;
+	Color: Black;
+}
+
+.DuzTabloSatir2
+{
+	Background-Color: #F0F1F2;
+	Border: 1 Solid #F1F1F1;
+	Padding-Left: 5;
+	Color: Black;
+}
+
+.TabloSatirDetail
+{
+	Background-Color: #F1F1F3;
+	Border: 1 Solid #F1F1F1;
+	Padding-Left: 5;
+	Color: Black;
+}
+
+.TabloSatirOver
+{
+	Background-Color: RGB(147,190,226);
+	Border: 1 Solid #6699CC;
+	Padding-Left: 5;
+	Color: Black;
+	Cursor: Hand;
+}
+
+.TablosatirDown
+{
+	Background-Color: #6699CC;
+	Border: 1 Solid #6699CC;
+	Padding-Left: 5;
+	Color: White;
+	Cursor: Hand;
+}
+
+.SayfaTopSatir{
+	Background-Color: #90AC90;
+}
+
+.SayfaBottomSatir{
+	Background-Color: #90AC90;
+}

@@ -1,0 +1,82 @@
+<?
+
+	print(doTitleDressing("What <I>is</I> the Link Conservatory? ") . "<BR>\n");
+	print("Well, a link is connecting element or factor.  A conservatory is school ");
+	print("specializing in one of the fine arts.  So, the Link Conservatory is a ");
+	print("school specializing in the fine art of Web surfing.  Only the best and ");
+	print("brightest attend this remarkable institution.  The rooms and hallways are ");
+	print("filled with the choicest items.<BR>\n");
+	print("<BR>\n");
+
+	print(doTitleDressing("What do the links on the left do? ") . "<BR>\n");
+	print("If you're wondering about all the commands running down the left side of the page, ");
+	print("look no further!");
+
+	print("<DL>\n");
+	
+	print("<DT>" . doTitleDressing("Expand") . "\n");
+	print("<DD>Based on the room you are in, all doors leading further into the ");
+	print("conservatory are expanded until every link is displayed.  Incidently, ");
+	print("the format is suitable for dropping into your Netscape bookmark file.");
+
+	print("<DT>" . doTitleDressing("Subscribe") . "\n");
+	print("<DD>Every link added to the conservatory is sent to a mailing list. ");
+	print("This allows you to stay current on what's new.  You may choose to get ");
+	print("a new piece of mail for each link, or be more conservative and go with ");
+	print("the digest version: one message a day with all the day's new links. ");
+	print("Some people are only interested in the occasional 'cool' site.  For those ");
+	print("we offer a list just for the top-level wing Cool Sites.");
+	
+	print("<DT>" . doTitleDressing("Suggest") . "\n");
+	print("<DD>While the content in the Link Conservatory comes from us, ");
+	print("we are always open to suggestions.  Your contribution will not immediately ");
+	print("appear; we will take a look at it and put it in the right room.  Look for your ");
+	print("suggestions to appear in the mailing list. \n");
+	
+	print("<DT>" . doTitleDressing("Top 10") . "\n");
+	print("<DD>Each time a visitor clicks on a link and leaves the Link Conservatory, we ");
+	print("count it.  If you are interested, check out the top ten most popular links. \n");
+
+	print("<DT>" . doTitleDressing("Last 10") . "\n");
+	print("<DD>The system also keeps track of when a link was added.  If you want, you can ");
+	print("see a list of the last ten items added. \n");
+
+	print("<DT>" . doTitleDressing("Random") . "\n");
+	print("<DD>For the spontaneous, we offer the list of random links.  Each time you visit ");
+	print("this room you are treated to a five links pulled at random from the entire conservatory. \n");
+
+	print("<DT>" . doTitleDressing("Find") . "\n");
+	print("<DD>Search for items is usually easy if you follow the doors to other rooms as you narrow ");
+	print("the topic of you interest.  Alternatively, you may find items by the words in their descriptions ");
+	print("and titles. \n");
+
+	
+	if($Browser_Admin == "YES")
+	{
+
+		print("<DT>" . doTitleDressing("Tidy Up") . "\n");
+		print("<DD>This option switches you over into a mode where you may make changes to existing ");
+		print("items and wings.  It also gives you some information about items, like who added them, ");
+		print("when they were added and when they were last checked.  You may re-classify an item, which ");
+		print("means moving it to another room.  You may throw it out completely, or you may choose to ");
+		print("change its name or description.\n");
+
+		print("<DT>" . doTitleDressing("Add Wing") . "\n");
+		print("<DD>When you add a new wing, you choose a name and also who can get there.  You may have ");
+		print("rooms that are off-limits to the public.  These private rooms will never be shown to the ");
+		print("the public or appear in the Top 10, Last 10 and Random lists.\n");
+
+		print("<DT>" . doTitleDressing("Add Item") . "\n");
+		print("<DD>Adding an item is a matter of putting together a title, an URL and a description. ");
+		print("The a full URL should be specified, including the protocol (http://) and a trailing slash ");
+		print("if necessary.  You may choose to add an item without annoucing it to the mailing list, too.\n");
+
+		print("<DT>" . doTitleDressing("Dump") . "\n");
+		print("<DD>A some time you may wish to print the entire list of links on paper.  This screen puts ");
+		print("the list into a hierarchical list suitable for doing so.");
+
+	}
+		
+	print("</DL>\n");
+
+?>

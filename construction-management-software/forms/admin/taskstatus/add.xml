@@ -1,0 +1,38 @@
+<form>
+	<title>Add / Edit Task Status</title>
+	<action>index.php?sub=taskstatus&action=store</action>
+	<name>edit</name>
+	<width>540</width>
+
+	<formtag>true</formtag>
+	<border>true</border>
+	
+	<buttons>		
+		<set>
+			<footer>true</footer>
+			<header>true</header>
+		</set>
+
+		<return onclick="" button="return" >
+			<location>index.php?sub=taskstatus</location>
+		</return>
+
+		<save onclick="" button="saveall">
+			<location>javascript:document.forms[0].submit();</location>
+		</save>
+
+	</buttons>
+
+	<redirect>index.php?sub=taskstatus</redirect>
+
+	<fields>
+
+		<status_id type="hidden" hidden="true"/>
+
+		<status_name type="textbox" size="40:100" unique="true" required="true" validate="A:1:100">
+			<title>Status Name</title>
+			<description>Enter an unique name for this task status.</description>
+		</status_name>
+
+	</fields>
+</form>

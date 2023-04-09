@@ -1,0 +1,92 @@
+                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-tl.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9" width="9"></td>
+					<td height="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-t.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9"></td>
+					<td width="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-tr.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9" width="9"></td>
+				</tr>
+				<tr>
+					<td width="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-l.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9" width="9"></td>
+					<td bgcolor="#ffffff" width="100%">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+								<td align="left" valigh="top" nowrap bgcolor="#051535"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" align="top" height="20" width="1"><span class="articleTitle">{calendar_title}&nbsp;</span></td>
+						</tr>
+						</table>
+						
+						<table bgcolor="#2e4166" width="100%" border="0" cellspacing="0" cellpadding="3">
+						<tr><td>
+						
+					<!-- end first half theme -->
+					
+					  <table width="100%" cellpadding="5" cellspacing="0" border="0">
+                                <tr align="center">
+                                    <td align="center"><a href="{site_url}/calendar.php?mode={mode}&amp;view=day">{lang_day}</a></td>
+                                    <td align="center"><b>{lang_week}</b></a></td>
+                                    <td align="center"><a href="{site_url}/calendar.php?mode={mode}">{lang_month}</a></td>
+                                </tr>
+                            </table><br>
+                            <table bgcolor="#051535" width="100%" cellpadding="2" cellspacing="1" border="0">
+                                <tr>
+                                    <td bgcolor="#2e4166" colspan="2" class="weekview-daterange"><a href="{site_url}/calendar.php?mode={mode}&view=week&month={prevmonth}&day={prevday}&year={prevyear}"><<</a>&nbsp;&nbsp;{date_range}&nbsp;&nbsp<a href="{site_url}/calendar.php?mode={mode}&view=week&month={nextmonth}&day={nextday}&year={nextyear}">>></a></td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" colspan="2" class="weekview-caltitle">{calendar_title} {calendar_toggle}</td>
+                                  <!--  <td> extra tag?? Simon -->
+                                </tr>
+                                <tr class="{class1}">
+                                    <td bgcolor="#2e4166" class="weekview-dayformat">{day1}</td><td bgcolor="#2e4166" align="right" class="weekview-addevent">{langlink_addevent1}</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" colspan="2" valign="bottom">{events_day1}</td>
+                                </tr>
+                                <tr class="{class2}">
+                                    <td bgcolor="#2e4166" class="weekview-dayformat">{day2}</td><td bgcolor="#2e4166" align="right" class="weekview-addevent">{langlink_addevent2}</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" colspan="2">{events_day2}</td>
+                                </tr>
+                                <tr class="{class3}">
+                                    <td bgcolor="#2e4166" class="weekview-dayformat">{day3}</td><td bgcolor="#2e4166" align="right" class="weekview-addevent">{langlink_addevent3}</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" colspan="2">{events_day3}</td>
+                                </tr>
+                                <tr class="{class4}">
+                                    <td bgcolor="#2e4166" class="weekview-dayformat">{day4}</td><td bgcolor="#2e4166" align="right" class="weekview-addevent">{langlink_addevent4}</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" colspan="2">{events_day4}</td>
+                                </tr>
+                                <tr class="{class5}">
+                                    <td bgcolor="#2e4166" class="weekview-dayformat">{day5}</td><td bgcolor="#2e4166" align="right" class="weekview-addevent">{langlink_addevent5}</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" colspan="2">{events_day5}</td>
+                                </tr>
+                                <tr class="{class6}">
+                                    <td bgcolor="#2e4166" class="weekview-dayformat">{day6}</td><td bgcolor="#2e4166" align="right" class="weekview-addevent">{langlink_addevent6}</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" colspan="2">{events_day6}</td>
+                                </tr>
+                                <tr class="{class7}">
+                                    <td bgcolor="#2e4166" class="weekview-dayformat">{day7}</td><td bgcolor="#2e4166" align="right" class="weekview-addevent">{langlink_addevent7}</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#2e4166" colspan="2">{events_day7}</td>
+                                </tr>
+                            </table><br>
+                            {quickadd_form}
+                            <!-- end of theme -->
+						
+						</td></tr>
+						</table>
+					</td>
+					<td width="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-r.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9" width="9"></td>
+				</tr>
+				<tr>
+					<td width="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-bl.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9" width="9"></td>
+					<td height="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-b.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9"></td>
+					<td width="9" background="{site_url}/layout/gameserver/theme-images/gameserver-block-br.gif"><img src="{site_url}/layout/gameserver/theme-images/pixel.gif" height="9" width="9"></td>
+				</tr>
+			</table><BR>

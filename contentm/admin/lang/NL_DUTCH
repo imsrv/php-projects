@@ -1,0 +1,173 @@
+<?php	
+/*
+iWare Taal Definitie bestand ( NL Dutch ) voor iWare Professional 3.0.7
+Vertaaling door : Gerard Honing 9 sept 2003
+De vertaling is nog niet perfect, maar beter dan niets!
+This translation is not perfect, but better than nothing!
+*/
+
+/* control.php */
+	
+define("CONTROL_1","Systeem Samenvatting");
+define("CONTROL_2","Gebruiker Management");
+define("CONTROL_3","Groep Rechten");
+define("CONTROL_4","Site Koptekst");
+define("CONTROL_5","Site Voettekst");
+define("CONTROL_6","Kies Actieve Skin");
+define("CONTROL_7","Navigatie Stijl");
+define("CONTROL_8","Navigatie Volgorde");
+define("CONTROL_9","Document Manager");
+define("CONTROL_10","Bestand Manager");
+define("CONTROL_11","Modules");
+define("CONTROL_12","Preview");
+define("CONTROL_13","Uitloggen");
+
+/* iware.php */
+
+define("IWARE_1","Gebruiker Login");
+define("IWARE_2","Onjuiste gebruikernaam en / of wachtwoord, probeer opnieuw.");
+define("IWARE_3","Gebruikernaam");
+define("IWARE_4","Wachtwoord");
+define("IWARE_5","Inloggen");
+define("IWARE_6","Systeem Beschrijving");
+define("IWARE_7","Webserver Platform");
+define("IWARE_8","PHP versie");
+define("IWARE_9","MySQL Versie");
+define("IWARE_10","Versie");
+define("IWARE_11","Gebruiker accounts");
+define("IWARE_12","Groepen");
+define("IWARE_13","Documenten");
+define("IWARE_14","Opgeslagen Bestanden");
+define("IWARE_15","Geïnstalleerde Navbars");
+define("IWARE_16","Geïnstalleerde Skins");
+define("IWARE_17","Geïnstalleerde Modules");
+define("IWARE_18","Gebruiker Manager");
+define("IWARE_19","Echte Naam");
+define("IWARE_20","Gebruikernaam");
+define("IWARE_21","Groep");
+define("IWARE_22","Nieuw");
+define("IWARE_23","Bewerken");
+define("IWARE_24","Verwijderen");
+define("IWARE_25","Maak nieuwe Gebruiker Account aan");
+define("IWARE_26","Echte Naam");
+define("IWARE_27","Groep");
+define("IWARE_28","Gebruikernaam");
+define("IWARE_29","Wachtwoord");
+define("IWARE_30","Wachtwoord bevestigen");
+define("IWARE_31","Nieuwe gebruiker aanmaken");
+define("IWARE_32","Gebruiker Account aangemaakt");
+define("IWARE_33","Gebruiker Account aanpassen");
+define("IWARE_34","Echte naam");
+define("IWARE_35","Groep");
+define("IWARE_36","Gebruikernaam");
+define("IWARE_37","Wachtwoord");
+define("IWARE_38","Wachtwoord bevestigen");
+define("IWARE_39","Aanpassingen opslaan");
+define("IWARE_40","Gebruiker Account opgeslagen");
+define("IWARE_41","Gebruiker Account Verwijderd");
+define("IWARE_42","Groeps Rechten Manager");
+define("IWARE_43","Groep");
+define("IWARE_44","Nieuw");
+define("IWARE_45","Bewerken");
+define("IWARE_46","Verwijderen");
+define("IWARE_47","Nieuwe Gebruikers Groep aanmaken");
+define("IWARE_48","Groepnaam");
+define("IWARE_49","Toegestaan Gebruikers Accounts te managen ?");
+define("IWARE_50","Toegestaan Groep instellingen te managen ?");
+define("IWARE_51","Toegestaan site koptekst te veranderen ?");
+define("IWARE_52","Toegestaan site voettekst te veranderen ?");
+define("IWARE_53","Toegestaan actieve skin te veranderen ?");
+define("IWARE_54","Toegestaan navigatie stijl te veranderen ?");
+define("IWARE_55","Toegestaan navigatie te her-schikken ?");
+define("IWARE_56","Toegestaan Aanmaken / Bewerken / managen van documenten ?");
+define("IWARE_57","Toegestaan bestanden te uploaden / managen ?");
+define("IWARE_58","Toegestaan geïnstalleerde modules te administreren ?");
+define("IWARE_59","Groep Toevoegen");
+define("IWARE_60","gebruikers Groep Aangemaakt");
+define("IWARE_61","Bewerk Gebruiker Groep");
+define("IWARE_62","Groep Naam");
+define("IWARE_63","Toegestaan gebruiker accounts te veranderen ?");
+define("IWARE_64","Toegestaan groep instellingen te veranderen ?");
+define("IWARE_65","Toegestaan site koptekst te veranderen ?");
+define("IWARE_66","Toegestaan site voettekst te veranderen ?");
+define("IWARE_67","Toegestaan actieve skin te veranderen ?");
+define("IWARE_68","Toegestaan navigatie stijl te veranderen ?");
+define("IWARE_69","Toegestaan navigatie te herschikken ?");
+define("IWARE_70","Toegestaan aanmaken / edit / manage documents ?");
+define("IWARE_71","Toegestaan manage / uploaden bestanden ?");
+define("IWARE_72","Toegestaan geïnstalled modules te administreren ?");
+define("IWARE_73","Aanpassingen Opslaan");
+define("IWARE_74","Gebruikers Groep opgeslagen");
+define("IWARE_75","Gebruiker Groep Verwijderd");
+define("IWARE_76","Site Koptekst");
+define("IWARE_77","Header activeren");
+define("IWARE_78","Tekst als site koptekst weergeven");
+define("IWARE_79","Tekst");
+define("IWARE_80","Font Stijl");
+define("IWARE_81","Font Grootte");
+define("IWARE_82","Font Kleur");
+define("IWARE_83","Afbeelding als site koptekst gebruiken");
+define("IWARE_84","Afbeelding Bestandsnaam");
+define("IWARE_85","Afbeelding ALT Tekst");
+define("IWARE_86","Afbeelding Rand");
+define("IWARE_87","Aanpassingen Opslaan");
+define("IWARE_88","Site Koptekst Instellingen Opgeslagen");
+define("IWARE_89","Site Voettekst");
+define("IWARE_90","Voettekst activeren");
+define("IWARE_91","Platte Tekst / HTML");
+define("IWARE_92","Aanpassingen Opslaan");
+define("IWARE_93","Site Voettekst instellingen opgeslagen");
+define("IWARE_94","Kies Actieve Skin");
+define("IWARE_95","Kies Skin");
+define("IWARE_96","Opslaan Aanpassingen");
+define("IWARE_97","Actieve Skin instellingen opgeslagen");
+define("IWARE_98","Geen preview afbeelding aanwezig");
+define("IWARE_99","Docs Manager");
+define("IWARE_100","Document Titel");
+define("IWARE_101","New HTML");
+define("IWARE_102","New Visual");
+define("IWARE_103","Bewerk HTML");
+define("IWARE_104","Bewerk Visueel");
+define("IWARE_105","Verwijder");
+define("IWARE_106","Document Aangemaakt");
+define("IWARE_107","Document Aanpassingen opgeslagen");
+define("IWARE_108","Het document dat je probeerd te verwijderen heeft sub-documenten. Je moet deze eerst verwijderen.");
+define("IWARE_109","Document Verwijderd");
+define("IWARE_110","Navigatie Stijl");
+define("IWARE_111","Kies Navigatie Stijl");
+define("IWARE_112","Opslaan Aanpassingen");
+define("IWARE_113","Navigatie Stijl Instelling opgeslagen");
+define("IWARE_114","Navigatie volgorde Weergave");
+define("IWARE_115","Opslaan Aanpassingen");
+define("IWARE_116","Navigatie Volgorde aangepast");
+define("IWARE_117","Bestand Upload");
+define("IWARE_118","Behandel als afbeelding en herdimensioneer automatisch naar de volgende afmeetingen");
+define("IWARE_119","Hoogte");
+define("IWARE_120","Breedte");
+define("IWARE_121","Bestand Upload ");
+define("IWARE_122","Bestand upload is fout gegaan");
+define("IWARE_123","Bestand upload succesvol");
+define("IWARE_124","Het herdimensioneren van de afbeelding die is niet gelukt, vergewis je er van dat de web server GDLib support voor PHP geïnstalleerd heeft.");
+define("IWARE_125","Het document type dat je probeerde te uploaden is niet toegestaan.");
+define("IWARE_126","Bestand Manager");
+define("IWARE_127","Verwijder Bestand");
+define("IWARE_128","Geen modules geïnstalleerd");
+define("IWARE_129","Geïnstalleerde Modules");
+define("IWARE_130","Geen Instellingen beschikbaar");
+define("IWARE_131","Instellingen");
+define("IWARE_132","De benodigde database structuur voor deze module lijkt niet geïnstalleerd te zijn.");
+
+/* editor.php */
+
+define("EDITOR_0","Document bewerken");
+define("EDITOR_1","Document aanmaken");
+define("EDITOR_2","Link Tekst");
+define("EDITOR_3","Invoegen in site navigatie");
+define("EDITOR_4","Maak een sublink van");
+define("EDITOR_5","Embed een module");
+define("EDITOR_6","META Pagina Titel");
+define("EDITOR_7","META Pagina Keywords (gescheiden door commas)");
+define("EDITOR_8","META Beschrijving");
+define("EDITOR_9","Document Opslaan");
+define("EDITOR_10","Bij het invoegen van een afbeelding in een live omgeving moet je de locatie van de afbeelding aangeven met een URL. (Bijvoorbeeld: http://jouwsite.nl/files/mijnafbeelding.jpg) Als je deze applicatie lokaal gebruikt kun je de browse knop gebruiken en bladeren naar een afbeelding op je harddisk.");
+?>

@@ -1,0 +1,12 @@
+<TABLE CELLPADDING=0 CELLSPACING=0>
+<TR><TD><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Help & Hints</B></FONT></CENTER><BR><BR></TD></TR>
+<TR><TD><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+
+[<(
+	if ($CONFIG{'Weaver_use_bonhomme'} eq "YES") {
+		$OUT .= "<IMG SRC=\"$CONFIG{'button_dir'}/myguy/teacher2.gif\" WIDTH=84 HEIGHT=128 ALIGN=RIGHT ALT=\"Let me be your guide\">";
+	}
+)>]
+
+<P>Your personal icon is used throughout the site.  With 450 to choose from, there should be one to match your personality/interests.
+</TD></TR></TABLE>

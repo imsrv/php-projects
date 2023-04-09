@@ -1,0 +1,41 @@
+<?PHP 
+include ("include/connect.txt");
+printf("<b>Наград</b><br>");
+$result = mysql_query("SELECT type,description FROM ds_awards WHERE film = '$id'"); 
+$entry =0; 
+while ($myrow = mysql_fetch_row($result)) 
+{ 
+	if ( $myrow[0] == "win" )
+		{
+			printf("%s<br>",$myrow[1]) ;
+			$entry =1; 
+		}
+
+} 
+ if ( $entry =='0')
+	{
+		printf("N/A");
+	} 
+
+printf("<br><br>");
+printf("<b>Номинаций</b><br>");
+$result = mysql_query("SELECT type,description FROM ds_awards WHERE film = '$id'"); 
+$entry =0; 
+while ($myrow = mysql_fetch_row($result)) 
+{ 
+	if ( $myrow[0] == "nomination" )
+		{
+			printf("%s<br>",$myrow[1]) ; 
+			$entry =1;
+		}
+  
+} 
+
+ if ( $entry =='0')
+	{
+		printf("N/A");
+	} 
+
+include ("include/close.txt");
+
+?>

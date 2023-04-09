@@ -1,0 +1,172 @@
+<?php
+	
+/*
+iWare Language Definition file ( GERMAN ) for iWare Professional 3.0.7
+Translation by : Erich Schlatzer, DIGA-Design (www.diga.com) 2003
+*/
+
+/* control.php */
+	
+define("CONTROL_1","System-Zusammenfassung");
+define("CONTROL_2","Benutzer-Verwaltung");
+define("CONTROL_3","Gruppen-Verwaltung");
+define("CONTROL_4","Kopfzeile der Site");
+define("CONTROL_5","Fußzeile der Site");
+define("CONTROL_6","Aktives Layout auswählen");
+define("CONTROL_7","Navigations-Stil");
+define("CONTROL_8","Navigations-Reihenfolge");
+define("CONTROL_9","Dokument-Manager");
+define("CONTROL_10","Datei-Manager");
+define("CONTROL_11","Module");
+define("CONTROL_12","Vorschau");
+define("CONTROL_13","Abmelden");
+
+/* iware.php */
+
+define("IWARE_1","Benutzer Anmeldung");
+define("IWARE_2","Ungültiger Benutzername und / oder Passwort, bitte nochmal versuchen.");
+define("IWARE_3","Benutzername");
+define("IWARE_4","Passwort");
+define("IWARE_5","Anmelden");
+define("IWARE_6","System Zusammenfasung");
+define("IWARE_7","Webserver Plattform");
+define("IWARE_8","PHP Version");
+define("IWARE_9","MySQL Version");
+define("IWARE_10","Version");
+define("IWARE_11","Benutzerkonten");
+define("IWARE_12","Gruppen");
+define("IWARE_13","Dokumente");
+define("IWARE_14","Dateien gespeichert");
+define("IWARE_15","Installierte NavBalken");
+define("IWARE_16","Installierte Layouts");
+define("IWARE_17","Installierte Module");
+define("IWARE_18","Benutzer-Verwaltung");
+define("IWARE_19","Realer Name");
+define("IWARE_20","Benutzername");
+define("IWARE_21","Gruppe");
+define("IWARE_22","Neu");
+define("IWARE_23","Editieren");
+define("IWARE_24","Löschen");
+define("IWARE_25","Erstelle neues Benutzerkonto");
+define("IWARE_26","Realer Name");
+define("IWARE_27","Gruppe");
+define("IWARE_28","Benutzername");
+define("IWARE_29","Passwort");
+define("IWARE_30","Passwort bestätigen");
+define("IWARE_31","Benutzer hinzufügen");
+define("IWARE_32","Benutzerkonto erstellt");
+define("IWARE_33","Editiere Benutzerkonto");
+define("IWARE_34","Realer Name");
+define("IWARE_35","Gruppe");
+define("IWARE_36","Benutzername");
+define("IWARE_37","Passwort");
+define("IWARE_38","Passwort bestätigen");
+define("IWARE_39","Änderungen speichern");
+define("IWARE_40","Benutzerkonto gespeichert");
+define("IWARE_41","Benutzerkonto gelöscht");
+define("IWARE_42","Gruppenrechte-Verwaltung");
+define("IWARE_43","Gruppe");
+define("IWARE_44","Neu");
+define("IWARE_45","Editieren");
+define("IWARE_46","Löschen");
+define("IWARE_47","Erstelle neue Benutzergruppe");
+define("IWARE_48","Name der Gruppe");
+define("IWARE_49","Darf Benutzerkonten verwalten ?");
+define("IWARE_50","Darf Gruppeneinstellungen verwalten ?");
+define("IWARE_51","Darf Kopfzeile der Site ändern ?");
+define("IWARE_52","Darf Fußzeile der Site ändern ?");
+define("IWARE_53","Darf aktives Layout ändern ?");
+define("IWARE_54","Darf Navigations-Stil ändern ?");
+define("IWARE_55","Darf Navigations-Reihenfolge ändern ?");
+define("IWARE_56","Darf Dokumente schreiben / editieren / verwalten ?");
+define("IWARE_57","Darf Dateien verwalten / hochladen ?");
+define("IWARE_58","Darf installierte Module administrieren ?");
+define("IWARE_59","Gruppe hinzufügen");
+define("IWARE_60","Benutzergruppe erstellt");
+define("IWARE_61","Editiere Benutzergruppe");
+define("IWARE_62","Name der Gruppe");
+define("IWARE_63","Darf Benutzerkonten verwalten ?");
+define("IWARE_64","Darf Gruppeneinstellungen verwalten ?");
+define("IWARE_65","Darf Kopfzeile der Site ändern ?");
+define("IWARE_66","Darf Fußzeile der Site ändern ?");
+define("IWARE_67","Darf aktives Layout ändern ?");
+define("IWARE_68","Darf Navigations-Stil ändern ?");
+define("IWARE_69","Darf Navigations-Reihenfolge ändern ?");
+define("IWARE_70","Darf Dokumente schreiben / editieren / verwalten ?");
+define("IWARE_71","Darf Dateien verwalten / hochladen ?");
+define("IWARE_72","Darf installierte Module administrieren ?");
+define("IWARE_73","Änderungen speichern");
+define("IWARE_74","Benutzergruppe gespeichert");
+define("IWARE_75","Benutzergruppe gelöscht");
+define("IWARE_76","Kopfzeile der Site");
+define("IWARE_77","Kopfzeile aktivieren");
+define("IWARE_78","Zeige Text als Kopf der Site");
+define("IWARE_79","Text");
+define("IWARE_80","Font Stil");
+define("IWARE_81","Font Größe");
+define("IWARE_82","Font Farbe");
+define("IWARE_83","Zeige Bild als Kopf der Site");
+define("IWARE_84","Bild Dateiname");
+define("IWARE_85","Bild ALT Text");
+define("IWARE_86","Bild Rahmen");
+define("IWARE_87","Änderungen speichern");
+define("IWARE_88","Einstellungen der Kopfzeile gespeichert");
+define("IWARE_89","Fußzeile der Site");
+define("IWARE_90","Fußzeile aktivieren");
+define("IWARE_91","Einfacher Text / HTML");
+define("IWARE_92","Änderungen speichern");
+define("IWARE_93","Einstellungen der Fußzeile gespeichert");
+define("IWARE_94","Aktives Layout auswählen");
+define("IWARE_95","Layout auswählen");
+define("IWARE_96","Änderungen speichern");
+define("IWARE_97","Einstellungen des aktiven Layouts gespeichert");
+define("IWARE_98","Kein Vorschaubild verfügbar");
+define("IWARE_99","Dokument Manager");
+define("IWARE_100","Dokument Titel");
+define("IWARE_101","Neu");
+define("IWARE_102","Neu");
+define("IWARE_103","Editiere");
+define("IWARE_104","Editiere");
+define("IWARE_105","Löschen");
+define("IWARE_106","Dokument erstellt");
+define("IWARE_107","Dokument-Änderungen gespeichert");
+define("IWARE_108","Das Dokument, welches Sie versuchen zu löschen, hat Subdokumente unter sich. Sie müssen diese zuerst enfernen.");
+define("IWARE_109","Dokument gelöscht");
+define("IWARE_110","Navigations-Stil");
+define("IWARE_111","Navigations-Stil auswählen");
+define("IWARE_112","Änderungen speichern");
+define("IWARE_113","Einstellungen des Navigations-Stils gespeichert");
+define("IWARE_114","Reihenfolge der Navigations-Anzeige");
+define("IWARE_115","Änderungen speichern");
+define("IWARE_116","Navigations-Reihenfolge aktualisiert");
+define("IWARE_117","Datei hochladen");
+define("IWARE_118","Interpretiere als Bild und führe automatische Größenanpassung auf folgende Werte durch");
+define("IWARE_119","Höhe");
+define("IWARE_120","Breite");
+define("IWARE_121","Datei hochladen");
+define("IWARE_122","Hochladen der Datei ist fehlgeschlagen");
+define("IWARE_123","Hochladen der Datei erfolgreich");
+define("IWARE_124","Das Feature der automatischen Bildgrößenanpassung konnte das hochgeladene Bild nicht bearbeiten. Stellen Sie sicher, daß Ihr Webserver GDLib-Unterstützung für PHP hat.");
+define("IWARE_125","Der Datei-Typ, den Sie versucht haben hochzuladen, ist nicht erlaubt.");
+define("IWARE_126","Datei-Manager");
+define("IWARE_127","Datei löschen");
+define("IWARE_128","Es sind keine Module installiert");
+define("IWARE_129","Installierte Module");
+define("IWARE_130","Keine Einstellungen verfügbar");
+define("IWARE_131","Einstellungen");
+define("IWARE_132","Die erforderliche Datenbankstruktur für dieses Modul scheint nicht installiert zu sein.");
+
+/* editor.php */
+
+define("EDITOR_0","Dokument Editieren");
+define("EDITOR_1","Dokument erstellen");
+define("EDITOR_2","Link Text");
+define("EDITOR_3","In Site-Navigation einbinden");
+define("EDITOR_4","Als Sublink setzen von");
+define("EDITOR_5","Ein Modul einbetten");
+define("EDITOR_6","META Titel der Seite");
+define("EDITOR_7","META Schlüsselwörter (getrennt durch Kommas)");
+define("EDITOR_8","META Beschreibung");
+define("EDITOR_9","Dokument speichern");
+define("EDITOR_10","Wenn Sie Bilder in eine Live-Umgebung einfügen, sollten Sie stets die Bildquelle auf eine URL setzen! (Beispiel: http://ihrehomepage.com/files/meinbild.jpg). Wenn Sie das Programm nur lokal benutzen, können Sie auch den Knopf DURCHSUCHEN benutzen, um die Bildquelle auf ein Bild auf Ihrer Festplatte zu setzen.");
+?>

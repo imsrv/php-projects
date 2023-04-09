@@ -1,0 +1,13 @@
+<TABLE WIDTH=550 CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>Your Updates Have Been Recorded</B></FONT></CENTER></TD></TR>
+<TR><TD [<($CONFIG{'WINCOLOR'})>]><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]">
+Here is the image you imported, in the two sizes that will be used on our site<P>
+<![<($rnd=int rand 10000)>]>
+<IMG SRC="[<($CONFIG{'ICON_upload_url'})>]/thumbs/[<($IUSER{'username'})>].[<($ext)>]?[<($rnd)>]">
+<IMG SRC="[<($CONFIG{'ICON_upload_url'})>]/images/[<($IUSER{'username'})>].[<($ext)>]?[<($rnd)>]">
+<form ENCTYPE="application/x-www-form-urlencoded"  METHOD="POST" action="[<($GUrl{'profile.cgi'})>]">
+<input type=hidden name="action" VALUE="login">
+<CENTER><INPUT TYPE=SUBMIT VALUE="Back To Your Profile"></CENTER>
+</TD></TR></TABLE>
+</CENTER></BODY></HTML>
+</FORM>

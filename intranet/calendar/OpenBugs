@@ -1,0 +1,3 @@
+In single-user mode, if no entry in webcal_user, then an error is
+  generated.
+Add option to use AddSlashes() if magic_quotes is not enabled.

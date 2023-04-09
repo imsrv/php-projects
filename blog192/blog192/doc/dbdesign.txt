@@ -1,0 +1,54 @@
+
+blog_entries
+	nEntryId
+	dAdded
+	dEdited
+	nUserAdded
+	nUserEdited
+	cTitle
+	cBody
+	cTags
+	cStatus
+
+blog_entry_categories
+	nEntryCategoryId
+	nEntryId
+	nCategoryId
+
+blog_categories
+	nCategoryId
+	cCategoryName
+
+blog_comments
+	nCommentId
+	nEntryId
+	cComments
+	cName
+	cEMail
+	cURL
+	dAdded
+	
+blog_users
+	nUserId
+	cUsername
+	cPassword
+	cEMail
+	cRole (admin,author) - admin can administer users
+	cPrivAddEntries
+	cPrivEditEntries
+	cPrivAddFiles
+	cPrivDelFiles
+	cPrivAddTemplates
+	cPrivDelTemplates
+	cPrivApproveEntries
+	cPrivDenyEntries
+
+blog_settings
+	cName
+	cValue
+
+blog_statistics
+	nStatId
+	nEntryId
+	dViewed
+	cIP

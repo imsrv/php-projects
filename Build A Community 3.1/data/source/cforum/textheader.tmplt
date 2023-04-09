@@ -1,0 +1,12 @@
+[<($RESTRICTIONS)>]
+<TABLE WIDTH=[<($WIDTH)>]><TR><TD><BR></TD><TD HALIGN=RIGHT ALIGN=RIGHT>[<($MPENDING)>]</TD><TD HALIGN=RIGHT ALIGN=RIGHT>[<($CM)>]</TD></TR></TABLE>
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH=[<($WIDTH)>] BGCOLOR="[<($CONFIG{'title_color'})>]">
+<TR BGCOLOR="[<($CONFIG{'title_color'})>]"><TD BGCOLOR="[<($CONFIG{'title_color'})>]">
+<TABLE WIDTH="[<($WIDTH)>]" BORDER="0" CELLSPACING="0" CELLPADDING="0" BGCOLOR="[<($CONFIG{'title_color'})>]">
+<tr BGCOLOR="[<($CONFIG{'title_color'})>]">
+<TD valign="MIDDLE"><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="[<($CONFIG{'font_size'})>]" FACE="[<($CONFIG{'font_face'})>]"><B>Topic: [<($tpost{'subject'})>] [<($OPENTEXT)>]</B></TD>
+<TD ALIGN="right" VALIGN=middle><A HREF="[<($GUrl{'myforum.cgi'})>]?nextaction=[<($nextaction)>]&returnto=[<($TURL)>]"><FONT FACE="[<($CONFIG{'font_face'})>]" COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE"[<($CONFIG{'font_size'})>]">Personalize</FONT></A>&nbsp;
+</TD>
+</tr>
+</TABLE>
+

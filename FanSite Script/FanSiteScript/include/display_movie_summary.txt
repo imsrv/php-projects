@@ -1,0 +1,24 @@
+<?PHP 
+include ("include/connect.txt");
+
+$result = mysql_query("SELECT id,summary,views FROM ds_movies WHERE seo_url = '$id'");  
+while ($myrow = mysql_fetch_row($result)) 
+{ 
+if ($myrow[1] =="")
+	{
+		printf("Нет описания");
+	}
+else
+	{
+		printf("%s<br>",$myrow[1]);
+	}
+$count = $myrow[2] + 1;  
+
+} 
+
+
+$sql = "UPDATE ds_movies SET views = '$count' WHERE seo_url='$id'";
+mysql_query($sql);
+include ("include/close.txt");
+
+?>

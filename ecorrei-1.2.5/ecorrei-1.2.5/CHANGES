@@ -1,0 +1,76 @@
+CHANGES for eCorrei 1.2.5
+2 February 2002
+======================================
+
+Version 1.2.5 (released 2 February 2002)
+	- Fixed PHP version bug in check.php
+	- Now presets language based on browser settings
+	- Some CSS changes
+	- Changed config options to $cfg->...
+	- Added append option in config
+	- Converted all images to PNG
+	- Fixed signature problem
+	- Added Invert selection feature in Inbox
+	- Fixed some IE6 center problems
+	- Updated SECURITY
+	- Fixed inline imaging
+	- Added option to set timezone in Options
+	- Added UTF-8 support (receiving)
+	- JavaScript included in every page is in a .js-file
+	  now
+	- Magic quotes is disabled now
+	- Possibility to view message header
+	- New configuration option allows you to set refresh
+	  time of Inbox
+	- Fixed bug in autorefresh of Inbox
+	- New address parser in create script allows you to mail
+	  to entire groups of the addressbook at once
+	- Fixed bug with high priority
+	- Tweaked the icons a bit
+	- Fixed JavaScript problem in Inbox and Contacts
+	- Fixed CC and BCC problem
+
+Version 1.2 (released 24 September 2001)
+	- JavaScript checks of form input
+	- Changed <? to <?php everywhere
+	- Limited support for VCards
+	- Fixed some HTML errors
+	- Changed the icons
+	- Added option to include fixed signature with every message
+	- Now includes attachments when forwarding
+	- Added configuration option to set maximum user settings size
+	- Added configuration option to set maximum attachments size
+	- Changed attachment handling, now unlimited number of 
+	  attachments supported
+	- Fixed newline bug with mail() 
+	- Added CC and BCC support 
+	- Changed the Contacts integration in the create script
+	- Workaround for strange Netscape bug in Contacts
+	- Fixed some JavaScript bugs
+	- Added language support
+	- Checks for login now to increase security
+	- Fixed a mail() bug in the create script
+	- Fixed some URL encode and HTML bugs
+
+Version 1.1pl1 (released 15 July 2001)
+	- Fixed bugs in name, group and email check in addressbook
+	- Fixed a color bug in addressbook
+	- Fixed a addressbook bug in create script
+	- Fixed a mail() bug in the create script
+	- Fixed a bug in the attachment script
+	- Extended the info given if replied & forwarded
+	- Fixed a HTML bug in the create script
+
+Version 1.1 (released 7 July 2001)
+	- Now uses PHP sessions
+	- Addressbook with group support
+	- Sorting in Inbox
+	- Ability to use mail() instead of SMTP
+	- Display of new mail in Inbox
+	- Full IMAP support
+	- Use of IUD's
+	- Changed date format in Inbox & message display
+	- Some minor bugs fixed
+
+Version 1.0 (released 15 April 2001)
+	- Initial release

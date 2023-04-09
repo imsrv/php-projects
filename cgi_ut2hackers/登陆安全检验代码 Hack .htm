@@ -1,0 +1,74 @@
+<style>
+<!--
+  .codeStyle {	padding-right: 0.5em; margin-top: 1em; padding-left: 0.5em;  font-size: 9pt; margin-bottom: 1em; padding-bottom: 0.5em; margin-left: 0pt; padding-top: 0.5em; font-family: Courier New; background-color: #000000; color:#ffffff }
+-->
+</style>
+<center>
+<table cellSpacing="1" cellPadding="4" width="95%" border="0">
+  <tr bgColor="#e3e3e3">
+    <td vAlign="top" width="100%" style="font-family: Tahoma,Georgia; color: #000000; font-size: 12px">
+    <span class="javascript" id="text709341">目的：防止密码破解机的暴力破解。检验代码是以图片方式显示的。 <br>
+    <br>
+    替换 2 个文件即可。 <br>
+    <br>
+    你需要安装 Image::Magick 模块，GD 也可以，但画图的写法不同，自己去研究吧。 <br>
+    <br>
+    arial.ttf 是从 windows font 目录里面拿的，随便哪个 ttf 字体文件都可以。 <br>
+    <br>
+    user_login.cgi，user_login_x.cgi，arial.ttf 放进 cgi-bin。 <br>
+    <br>
+    在 $cfg{'nonCgiDir'} 下建个目录，用来存放临时代码图片 <br>
+    <br>
+    user_login.cgi 里面 <br>
+　<pre class="codeStyle">my $codee = MD5-&gt;hexhash(&quot;$code&quot;.&quot;<font color="yellow">put.your.own.string.here</font>&quot;);</pre>
+    <p><br>
+    黄色部分请换上自己的字符串。 <br>
+    <br>
+    user_login_x.cgi 里面 <br>
+　</p>
+    <pre class="codeStyle"> 
+ # Check code 
+ use MD5; 
+ my $c = MD5-&gt;hexhash(&quot;$code&quot;.&quot;<font color="yellow">put.your.own.string.here</font>&quot;); 
+ if ($c ne $codee) { 
+ &nbsp;&nbsp;userError(&quot;请输入正确的检验代码。&quot;); 
+ } 
+ elsif (! -e &quot;$cfg{'nonCgiDir'}/login/$codee.gif&quot;) { 
+ &nbsp;&nbsp;userError(&quot;检验代码过期，请重新 Login。&quot;); 
+ } 
+ elsif (time() - (stat(&quot;$cfg{'nonCgiDir'}/login/$codee.gif&quot;))[9] &gt; <font color="red">60</font>) { 
+ &nbsp;&nbsp;userError(&quot;检验代码过期，请重新 Login。&quot;); 
+ } 
+ </pre>
+    <p><br>
+    黄色部分请换上自己的字符串。 <br>
+    红色部分是图片的有效时间（秒）。 <br>
+    <br>
+    用户每次登陆时，都会在 login 
+    目录下产生一个临时图片，当用户登陆成功后这个图片会被清除。为了防止那些好奇心强的用户不断刷新登陆页面而产生大量无用的图片，login 
+    目录应该被定时清理。简单的 crontab 就可以做到。 <br>
+    <br>
+　</p>
+    <pre class="codeStyle"> 
+ #!/usr/bin/perl 
+  
+ use strict; 
+ use UTConfig; 
+  
+ for my $file (&lt;$cfg{'nonCgiDir'}/login/*.gif&gt;) { 
+ &nbsp;&nbsp;unlink $file if (time() - (stat(&quot;$file&quot;))[9] &gt; 60); 
+ } 
+ </pre>
+    <p><br>
+    <br>
+    每个小时自动跑一次足够了，crontab 的写法自己去研究。 <br>
+    没法用 cron 的只好自己手工清理了。<br>
+    <br>
+    <br>
+    <img src="http://image.rorz.org/forum/images/attachment.gif" align="absMiddle" border="0" width="15" height="15">
+    <a href="http://image.rorz.org/forum/attach/2002/11/25/709341-login_hack.zip" style="color: #000000; text-decoration: underline">
+    附件</a> </span><br>
+　</td>
+  </tr>
+</table>
+</center>

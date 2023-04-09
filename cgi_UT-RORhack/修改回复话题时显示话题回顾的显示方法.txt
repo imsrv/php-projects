@@ -1,0 +1,41 @@
+描述:UT在回复话题时会将所有该话题的回复全部显示出来，但是当一个话题的回复数很多时，页面会拉的很长，数据也会很大，因此写此hack改变显示方法。您可以有两种选择： 
+     1，在回复时使用iframe，将回复话题在iframe中显示，效果同UBB的方式。 
+     2，限制显示回复帖子的数量。 
+
+修改方法 
+1，备份文件。 
+2，打开UTConfig.pm 
+   查找 
+   
+$cfg{'maxBoardPages'} = xx;
+   其中xx为您定义的数字，在下面添加： 
+   
+$cfg{'replyshowmethod'} = "iframe";     $cfg{'reply'} = 23;
+   保存文件 
+3，打开cfg_style.cgi 
+   查找 
+   
+"<tr bgcolor=$cfg{'lightCellColor'}><td width=45%>\n",     "<b>Max. number of page buttons</b></td>\n",     "<td><INPUT TYPE='text' NAME='maxBoardPages' SIZE=6",     " VALUE='$cfg{'maxBoardPages'}' class=subject></td></tr>\n",
+   在下面加入： 
+   
+"<tr bgcolor=$cfg{'lightCellColor'}><td width=45% valign=top>\n",     "<b>reply show method if replying a topic</b></td><td>\n";     $cfg{'replyshowmethod'} eq "iframe"      ? print       "<INPUT TYPE='radio' NAME='replyshowmethod' value='iframe' checked> iframe (Netscape user can't see the content)<br>\n",     "<INPUT TYPE='radio' NAME='replyshowmethod' value='limitpostshow'}> Limit post     Limit number:<INPUT TYPE='text' NAME='reply' SIZE=6 VALUE='$cfg{'reply'}' class=subject> posts",     : print      "<INPUT TYPE='radio' NAME='replyshowmethod' value='iframe' > iframe (Netscape user can't see the content)<br>\n",     "<INPUT TYPE='radio' NAME='replyshowmethod' value='limitpostshow'} checked> Limit post     Limit number:<INPUT TYPE='text' NAME='reply' SIZE=6 VALUE='$cfg{'reply'}' class=subject> posts";     print     " </td></tr>\n",
+   保存文件 
+4，打开cfg_style_x.cgi 
+    查找 
+    
+$output .= "\$cfg\{\'maxBoardPages\'\} = " . int($cgi->param('maxBoardPages')) . ";\n"; 
+    后面加入 
+    
+$output .= "\$cfg\{\'replyshowmethod\'\} = \"" . $cgi->param('replyshowmethod') . "\";\n";       $output .= "\$cfg\{\'reply\'\} = " . int($cgi->param('reply')) . ";\n"; 
+    保存文件 
+5，打开post_reply.cgi 
+   查找 
+   
+# Print all posts if replying a topic     # Get posts
+   将下面所有行覆盖如下： 
+ 
+    # i love hehechuan     if ($cfg{'replyshowmethod'} eq "iframe" )  {    print       tableStart($user, $lng{'postReplyResp'}, 1);    print "<TR BGCOLOR=$cfg{'lightCellColor'}><td><iframe SRC='topic_show.cgi?id=$parent->{'topicId'}&h=1&bpg=1&age=0' FRAMEBORDER=0 ALLOWTRANSPARENCY='true' SCROLLING='YES' WIDTH='100%' HEIGHT=300></iframe></td></tr>";    print       tableEnd($user);  }  else  {  $query = "    SELECT ut_posts.*, ut_users.userName     FROM ut_posts LEFT JOIN ut_users      ON ut_users.id = ut_posts.userId     WHERE ut_posts.topicId = $parent->{'topicId'}    ORDER BY ut_posts.postTime $cfg{'replyOrder'} LIMIT $cfg{'reply'}";  $sth = query($query);  my $posts = $sth->fetchall_arrayref({});  $sth->finish;    # Put posts in lookup tables  my %idTable;  my @pid;  for my $post (@$posts) {      push @pid, $post->{'id'};    $idTable{$post->{'id'}} = $post;  }    # Recursively print posts  my $postCnt = 0;  print "<BR>\n\n";  my $bgScolor = $cfg{'lightCellColor'};    print       tableStart($user, $lng{'postReplyResp'}, 2);    foreach my $p (@pid) {  printPost($p);  }    #added by chuan,limit reply post.  if ($postCnt>=$cfg{'reply'}) {        print         "<tr><td colspan=2 bgcolor=$cfg{'darkCellColor'} align=center>这个话题的回复超过$cfg{'reply'}个，请点<a href=topic_show.cgi?id=$parent->{'topicId'}&h=1&bpg=1&age=0 target=_blank>这里</a>察看整个话题。</td></tr>"  }  #end  print       tableEnd($user);  sub printPost  {    my $postId = shift();        # Skip if not on current page    my $first = 0;    my $last = 9999;      unless ($user->{'postsPP'} and $postCnt < $first || $postCnt > $last) {      # Prepare values      my $post = $idTable{$postId};      dbToDisplay($board, $post) if ($post->{'markup'} && $board->{'markup'});      dbToDisplayS($post) if ($post->{'smiley'} && $cfg{'smileys'});            if ($board->{'score'} && $post->{'semiHidden'} &&          $user->{'score'} < $board->{'threshold'} && !$boardAdmin &&          $user->{'id'} != $post->{'userId'})  {        $post->{'body'} = "<font class=thd1>&lng{'topicHidden'} $board->{'threshold'};</font>";      }      elsif ($post->{'deleted'}) {        $post->{'body'} = "<font class=thd1>" . $post->{'body'} . "</font>";      }        # Print post      print        "<TR BGCOLOR=$bgScolor><TD width=15% valign=top>\n",        "<B>$post->{'userName'}</B>\n",              "</td>\n",        "<td>$post->{'body'}\n",              "<br><br></td></tr>\n";            if ($bgScolor eq $cfg{'lightCellColor'}) {              $bgScolor = $cfg{'lightCellColor2'};          }          else {              $bgScolor = $cfg{'lightCellColor'};          }    }        $postCnt++;  }    }    # Update online users stats  updateOnlineUsers($user, $lng{'post_reply'});    # Print popup box if new PM comes  print     "<script language=javascript>\n",    "alert(\"$lng{'forumPmNew1'} $user->{'pmNew'} $lng{'forumPmNew2'}\")\n",    "</script>\n"     if (!$user->{'defaultUser'} && $user->{'pmNew'} && $user->{'pmPopup'} && $cfg{'pm'});    # Print footer  printFooter();    #------------------------------------------------------------------------------    # Sub for post tree recursion    
+保存文件 
+
+6，上传所有文件到服务器。 
+

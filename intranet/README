@@ -1,0 +1,83 @@
+November 20, 2000
+
+This is version 0.2.9 of the BHC Intranet by Scott Greathouse
+
+
+
+#########################################################
+#                                                       #
+# PHPSelect Web Development Division                    #
+#                                                       #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are distributed through         #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated.                                     #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the distriuters      #
+# at admin@phpselect.com                                #
+#                                                       #
+#########################################################
+
+
+Please read all the instructions before starting.
+
+1. mysql -u root -p intranet < setup.sql
+(assumes database "intranet" already exists; if it doesn't, you should
+create it first)
+This takes care of WebCalendar's tables, too. You can log into WebCalendar
+as admin with the password admin or sgreathouse with the password password.
+IF YOU ARE UPGRADING from 0.2.6 or lower to any higher version, you should:
+mysql -u root -p intranet < upgrade0.2.7.sql
+IF YOU ARE UPGRADING from 0.2.7 or lower to any higher version, you should:
+mysql -u root -p intranet < upgrade0.2.8.sql
+2. Move the .tar.gz archive to the location where you want it installed
+(e.g., /usr/local/apache/htdocs/) and
+tar -zxvf bhcintranet.tar.gz
+It will create a directory called "intranet" and put all of the files and
+directories under that.
+3. Point your workstation's web browser at 
+http://whatever.the.server.is.called/path/to/files/               
+4. Use "sgreathouse" for the login name and "password" for the password.
+5. Go to "Setup" and add yourself as a user. (Use the pull-down menu to
+change "sgreathouse" to "CREATE NEW USER" and click "Go")  Make sure you
+give yourself all possible priviledges and that the IP address matches the
+static IP of your workstation. If you do not have a static IP address, your
+users will have to log in at least once. All IP addresses must be unique --
+you will not be able to add a user with a duplicate address, login name,
+or machine name!
+6. Look at config.php and edit as needed.
+7. If everything is working, you'll want to delete sgreathouse from the users.
+Also, create a WebCalendar account for yourself with admin priviledges and
+delete both the admin and sgreathouse accounts.
+8. If you want dependable security, you should now 
+	mv staff.users /usr/local/apache/ 
+	mv *.sh /root/bin
+	mv bhcintranet.htaccess .htaccess
+and use Setup (or phpMyAdmin) to change all of the users' IP addresses to 
+values that are unique and not possible... for example, you might choose
+001, 002, 003 and so on.
+9. If you want to use the Upload program, you should 
+	mv *.sh /root/bin
+(skip this if you did it in the previous step)
+	cat root.cron >> /var/spool/cron/root 
+10. If you want to use phpMyAdmin and the WebCalendar, you will have to modify
+additional config files. They are:
+	phpMyAdmin/config.inc.php
+	calendar/includes/config.inc
+Just use the same MySQL user and password as you did in config.php
+11. Some of the scripts assume that you are using WinPopUp on your workstations and
+that you have Samba installed. With the Windows monopoly, that is pretty much the
+closest thing to a universal instant messaging standard that I could think of. Sick,
+I know.
+12. If you have problems with seeing the source code of scripts instead of them
+executing as you would expect, make sure apache is setup to parse .php files (in
+addition to .php3 files).
+
+

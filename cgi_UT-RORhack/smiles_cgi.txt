@@ -1,0 +1,73 @@
+#!/usr/bin/perl
+#------------------------------------------------------------------------------
+#    UltraThreads
+#    Copyright (c) 2000 Kelvin Wu
+#
+#    2001.04
+#------------------------------------------------------------------------------
+BEGIN  
+	{ 
+		($0 =~ m,(.*)/[^/]+,)   && unshift (@INC, "$1");
+		($0 =~ m,(.*)\\[^\\]+,) && unshift (@INC, "$1");  
+	} 
+use strict;
+
+# Imports
+use CGI::Carp qw(fatalsToBrowser);
+use DBI;
+use UTConfig;
+use UTLanguage;
+use UTMain;
+
+#------------------------------------------------------------------------------
+
+# Get user
+connectDb();
+my $user = authUser();
+
+# Print header
+printCpHeader($user, "添加笑脸");
+
+
+ my $imageDir = $cfg{'nonCgiDir'} . "/images/smile";
+ my $imagepath = $cfg{'nonCgiPath'} . "/images/smile";
+ my @imgfiles;
+print "<center>单击下列图标就可以插入图片</center><br><br>";
+		print qq~
+<script language="JavaScript">
+function smilie(smilietext) {
+	opener.document.forms[0].body.value += smilietext+" ";
+	//opener.forms[0].body.focus();
+}
+</script>
+		~;
+
+
+ 	chdir($imageDir);
+	opendir (DIR, $imageDir) || paramError("Error Reading Directory: $!");
+	my @allfiles = readdir(DIR);
+	closedir (DIR);
+
+	for (my $x = 0; $x <= $#allfiles; $x++) {
+		next if (($allfiles[$x] eq ".") || ($allfiles[$x] eq ".."));
+		if ($allfiles[$x] =~ /\.jpg|\.gif|\.png/i) {
+			if (($allfiles[$x] =~ /^/i) or ($allfiles[$x] =~ /^bar/i)) {
+				push(@imgfiles,"$allfiles[$x]");
+			}
+		}
+	}
+
+	for (my $i = 0; $i <= $#imgfiles; $i++) {
+            print "<a href=\"javascript:smilie('[img]$cfg{'baseUrl'}",
+				  "$imagepath",
+				  "/$imgfiles[$i]",
+				  "[/img]')\"><img src=$imagepath",
+				  "/$imgfiles[$i] border=0></a>\n";
+	}
+
+
+# Print footer
+# 如果您使用了此hack，请不要删掉下面这行~ :D:D:D:D
+print "<p align=center><a href=http://www.photoshopcn.com class=page target=_blank>Smiles Hack By Hehechuan</a></p>";
+printFooter();
+

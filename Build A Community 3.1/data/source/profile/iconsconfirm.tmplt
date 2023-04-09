@@ -1,0 +1,14 @@
+<TABLE WIDTH=550 CELLPADDING=0 CELLSPACING=0>
+<TR><TD BGCOLOR="[<($CONFIG{'title_color'})>]"><CENTER><FONT COLOR="[<($CONFIG{'ttxt_color'})>]" SIZE="+1"><B>[<($IUSER{'FirstName'})>] [<($IUSER{'Initial'})>] [<($IUSER{'LastName'})>]'s Profile</B></FONT></CENTER></TD></TR>
+<TR><TD  BGCOLOR="[<($CONFIG{'win_color'})>]" ><FONT COLOR="[<($CONFIG{'text_color'})>]" SIZE="[<($CONFIG{'text_size'})>]" FACE="[<($CONFIG{'text_face'})>]">
+<CENTER>
+<P>Your information has been updated in our files.  Thank you for keeping your membership up to date.
+<form ENCTYPE="application/x-www-form-urlencoded"  METHOD="POST" action="[<($GUrl{'profile.cgi'})>]">
+<input type=hidden name="UserName" VALUE="[<($IUSER{'username'})>]" size=20>
+<input type=hidden name="PassWord" VALUE="[<($IUSER{'password'})>]" size=20>
+<input type=hidden name="action" VALUE="login">
+<CENTER><INPUT TYPE=SUBMIT VALUE="Back To Your Profile!"></CENTER>
+
+</TD></TR></TABLE>
+</CENTER></BODY></HTML>
+</FORM>

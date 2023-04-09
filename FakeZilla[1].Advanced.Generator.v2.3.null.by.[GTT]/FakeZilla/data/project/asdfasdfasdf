@@ -1,0 +1,20 @@
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;
+; FakeZilla.com Advanced Generator ver2.3
+; Wed, 2004-May-12 09:17:24
+;
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+URL=sfsdfasdf
+Referer=URL
+Referer-Url=asdfasdfasdf
+Referer-List=20040404-205559-Copy of access_log.processed-REFERER.txt
+User-Agent=List
+UserAgent-Exact=
+UserAgent-List=20040404-205559-Copy of access_log.processed-USERAGENT.txt
+Method=GET
+Param=a:0:{}
+Proxy=20040403-124611-PROXY.txt
+Sim-Proxy=
+Hits-per-hour=
+Total-hits-sent=

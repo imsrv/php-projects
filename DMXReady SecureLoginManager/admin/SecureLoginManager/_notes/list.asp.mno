@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Category" value="name:SecurityLevelID;datatype:3,name:SecurityLevelName;datatype:202,name:SecurityLevelDesc;datatype:202,name:LoginSuccessURL;datatype:202,name:LogoutURL;datatype:202" />
+</info>

@@ -1,0 +1,16 @@
+Merhaba {NAME},
+
+Benimle iletiþim kurduðunuz için teþekkür eder, esenlikler dilerim...
+
+Tarih: {DATE}
+Ýsim: {NAME}
+E-Posta: {EMAIL}
+Mesajýnýz: 
+
+{COMMENTS}
+
+
+En kýsa zamanda mesajýnýza cevap yazmak için bilgisayar baþýnda olacaðým. Ýyi çalýþmalar. Saygýlar...
+
+            HabipOguz.Com
+         "hayal etmek güzeldir"

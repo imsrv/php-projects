@@ -1,0 +1,171 @@
+<?php
+	
+/*
+iWare Language Definition file ( US English ) for iWare Professional 3.0.7
+Translation by : David N. Simmons 2002
+*/
+
+/* control.php */
+	
+define("CONTROL_1","System Summary");
+define("CONTROL_2","User Management");
+define("CONTROL_3","Group Permissions");
+define("CONTROL_4","Site Header");
+define("CONTROL_5","Site Footer");
+define("CONTROL_6","Choose Active Skin");
+define("CONTROL_7","Navigation Style");
+define("CONTROL_8","Navigation Order");
+define("CONTROL_9","Documents Manager");
+define("CONTROL_10","File Manager");
+define("CONTROL_11","Modules");
+define("CONTROL_12","Preview");
+define("CONTROL_13","Log Out");
+
+/* iware.php */
+
+define("IWARE_1","User Login");
+define("IWARE_2","Invalid username and / or password, please try again.");
+define("IWARE_3","Username");
+define("IWARE_4","Password");
+define("IWARE_5","Log In");
+define("IWARE_6","System Summary");
+define("IWARE_7","Webserver Platform");
+define("IWARE_8","PHP Version");
+define("IWARE_9","MySQL Version");
+define("IWARE_10","Version");
+define("IWARE_11","User Accounts");
+define("IWARE_12","Groups");
+define("IWARE_13","Documents");
+define("IWARE_14","Files Stored");
+define("IWARE_15","Installed Navbars");
+define("IWARE_16","Installed Skins");
+define("IWARE_17","Installed Modules");
+define("IWARE_18","User Manager");
+define("IWARE_19","Real Name");
+define("IWARE_20","Username");
+define("IWARE_21","Group");
+define("IWARE_22","New");
+define("IWARE_23","Edit");
+define("IWARE_24","Delete");
+define("IWARE_25","Create New User Account");
+define("IWARE_26","Real Name");
+define("IWARE_27","Group");
+define("IWARE_28","Username");
+define("IWARE_29","Password");
+define("IWARE_30","Confirm Password");
+define("IWARE_31","Add User");
+define("IWARE_32","User Account Created");
+define("IWARE_33","Edit User Account");
+define("IWARE_34","Real Name");
+define("IWARE_35","Group");
+define("IWARE_36","Username");
+define("IWARE_37","Password");
+define("IWARE_38","Confirm Password");
+define("IWARE_39","Save Changes");
+define("IWARE_40","User Account Saved");
+define("IWARE_41","User Account Deleted");
+define("IWARE_42","Group Permissions Manager");
+define("IWARE_43","Group");
+define("IWARE_44","New");
+define("IWARE_45","Edit");
+define("IWARE_46","Delete");
+define("IWARE_47","Create New User Group");
+define("IWARE_48","Group Name");
+define("IWARE_49","Allowed to manage user accounts ?");
+define("IWARE_50","Allowed to manage group settings ?");
+define("IWARE_51","Allow to change site header ?");
+define("IWARE_52","Allow to change site footer ?");
+define("IWARE_53","Allow to change active skin ?");
+define("IWARE_54","Allow to change navigation style ?");
+define("IWARE_55","Allow to re-order navigation ?");
+define("IWARE_56","Allow to author / edit / manage documents ?");
+define("IWARE_57","Allow to manage / upload files ?");
+define("IWARE_58","Allow to administer installed modules ?");
+define("IWARE_59","Add Group");
+define("IWARE_60","User Group Created");
+define("IWARE_61","Edit User Group");
+define("IWARE_62","Group Name");
+define("IWARE_63","Allowed to manage user accounts ?");
+define("IWARE_64","Allowed to manage group settings ?");
+define("IWARE_65","Allow to change site header ?");
+define("IWARE_66","Allow to change site footer ?");
+define("IWARE_67","Allow to change active skin ?");
+define("IWARE_68","Allow to change navigation style ?");
+define("IWARE_69","Allow to re-order navigation ?");
+define("IWARE_70","Allow to author / edit / manage documents ?");
+define("IWARE_71","Allow to manage / upload files ?");
+define("IWARE_72","Allow to administer installed modules ?");
+define("IWARE_73","Save Changes");
+define("IWARE_74","User Group Saved");
+define("IWARE_75","User Group Deleted");
+define("IWARE_76","Site Header");
+define("IWARE_77","Enable Header");
+define("IWARE_78","Display Text / HTML as site header");
+define("IWARE_79","");
+define("IWARE_80","Font Style");
+define("IWARE_81","Font Size");
+define("IWARE_82","Font Color");
+define("IWARE_83","Display Image as site header");
+define("IWARE_84","Image Filename");
+define("IWARE_85","Image ALT Text");
+define("IWARE_86","Image Border");
+define("IWARE_87","Save Changes");
+define("IWARE_88","Site Header Settings Saved");
+define("IWARE_89","Site Footer");
+define("IWARE_90","Enable Footer");
+define("IWARE_91","Footer Content");
+define("IWARE_92","Save Changes");
+define("IWARE_93","Site Footer Settings Saved");
+define("IWARE_94","Choose Active Skin");
+define("IWARE_95","Choose Skin");
+define("IWARE_96","Save Changes");
+define("IWARE_97","Active Skin Setting Saved");
+define("IWARE_98","No preview image available");
+define("IWARE_99","Docs Manager");
+define("IWARE_100","Document Title");
+define("IWARE_101","New");
+define("IWARE_102","New");
+define("IWARE_103","Edit");
+define("IWARE_104","Edit");
+define("IWARE_105","Delete");
+define("IWARE_106","Document Created");
+define("IWARE_107","Document Changes Saved");
+define("IWARE_108","The document you are attempting to delete has sub documents present beneath it. You must remove these first.");
+define("IWARE_109","Document Deleted");
+define("IWARE_110","Navigation Style");
+define("IWARE_111","Choose Navigation Style");
+define("IWARE_112","Save Changes");
+define("IWARE_113","Navigation Style Setting Saved");
+define("IWARE_114","Navigation Display Order");
+define("IWARE_115","Save Changes");
+define("IWARE_116","Navigation Order Updated");
+define("IWARE_117","File Upload");
+define("IWARE_118","Treat as image and auto resize to the following dimensions");
+define("IWARE_119","Height");
+define("IWARE_120","Width");
+define("IWARE_121","Upload File");
+define("IWARE_122","File upload has failed");
+define("IWARE_123","File upload sucessfull");
+define("IWARE_124","The image resize feature failed when attempting to resize the uploaded image, verify your web host has GDLib support for PHP.");
+define("IWARE_125","The file type you have attempted to upload is not allowed.");
+define("IWARE_126","File Manager");
+define("IWARE_127","Delete File");
+define("IWARE_128","No modules are installed");
+define("IWARE_129","Installed Modules");
+define("IWARE_130","No settings available");
+define("IWARE_131","Settings");
+define("IWARE_132","The required database table structure for this module doesnt appear to be installed.");
+
+/* editor.php */
+
+define("EDITOR_0","Edit Document");
+define("EDITOR_1","Create Document");
+define("EDITOR_2","Link Text");
+define("EDITOR_3","Include in site navigation");
+define("EDITOR_4","Set as a sublink of");
+define("EDITOR_5","Embed a module");
+define("EDITOR_6","META Page Title");
+define("EDITOR_7","META Page Keywords (seperated by commas)");
+define("EDITOR_8","META Description");
+define("EDITOR_9","Save Document");
+?>

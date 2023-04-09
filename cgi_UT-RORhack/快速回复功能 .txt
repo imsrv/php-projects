@@ -1,0 +1,131 @@
+我刚替人顺手改了一下。说实话并不喜欢这种快速回复，都这样做的话树型目录就没意义了。
+
+for UT 1.0
+
+topic_show.cgi
+把下面的代码加在 
+
+# Print topic admin bar
+
+前面就可以。
+
+[code]
+######### quick reply box
+if ($replyPostBtn) {
+
+my $htmlCode = $board->{'html'} 
+    ? "<IMG SRC='$cfg{'nonCgiPath'}/images/on.gif' BORDER=0 $imgAlign>" 
+    : "<IMG SRC='$cfg{'nonCgiPath'}/images/off.gif' BORDER=0 $imgAlign>";
+my $boardCode = $board->{'markup'} 
+    ? "<IMG SRC='$cfg{'nonCgiPath'}/images/on.gif' BORDER=0 $imgAlign>" 
+    : "<IMG SRC='$cfg{'nonCgiPath'}/images/off.gif' BORDER=0 $imgAlign>";
+my $smileyCode = $cfg{'smileys'} 
+    ? "<IMG SRC='$cfg{'nonCgiPath'}/images/on.gif' BORDER=0 $imgAlign>" 
+    : "<IMG SRC='$cfg{'nonCgiPath'}/images/off.gif' BORDER=0 $imgAlign>";
+my $imageCode = $board->{'imgTag'} 
+    ? "<IMG SRC='$cfg{'nonCgiPath'}/images/on.gif' BORDER=0 $imgAlign>" 
+    : "<IMG SRC='$cfg{'nonCgiPath'}/images/off.gif' BORDER=0 $imgAlign>";
+
+my $textCols = $user->{'editWidth'} ? $user->{'editWidth'} : getBrowserAttr('textCols');
+my $textRows = $user->{'editHeight'} ? $user->{'editHeight'} : 13;
+my $inputCols = getBrowserAttr('inputCols');
+
+my $disableMarkupChecked = $board->{'markup'} ? "" : "CHECKED";
+my $disableSmileyChecked = $cfg{'smileys'} ? "" : "CHECKED";
+my $postSignChecked = $user->{'dispSign'} ? "CHECKED" : "";
+my $semiHiddenChecked = ($board->{'score'} && $idTable{$pid[0]}->{'semiHidden'}) ? "CHECKED" : "";
+
+print qq~
+<script language=javascript>
+function popUp(url) {
+ var newwindow = window.open(url, "_blank","width=300,height=500,resizable=no,scrollBars=yes,menuBar=no, directories=no,toolBar=no,location=No,status=No");
+}
+</script>~; 
+
+print 
+  "<br>\n",
+  tableStart($user, $lng{'postTpcTtlReply'}, 2),
+  "<tr bgcolor=$cfg{'lightCellColor'}><td width=15%>\n",
+  "<FORM ACTION='post_reply_x.cgi' METHOD='post' name=form1 ENCTYPE=\"multipart/form-data\">\n",
+  "<b>$lng{'postTpcSbj'}</b></td>\n",
+  "<td><INPUT TYPE='text' NAME='postSubject' SIZE=$inputCols MAXLENGTH='$cfg{'maxSubjectLen'}'",
+  " VALUE='$lng{'reSubject'} $topic->{'subject'}' class=subject></td></tr>\n",
+  "<tr bgcolor=$cfg{'lightCellColor'}><td valign=top width=15%>\n",
+  "<b>$lng{'postTpcBody'}</b>\n",
+  "<br><br><br>$htmlCode&nbsp;&nbsp;$lng{'postHtmlTags'}\n",
+  "<br>$smileyCode&nbsp;&nbsp;<a href=\"javascript:popUp('$cfg{'nonCgiPath'}/smileys.html')\">$lng{'postSmileys'}</a>\n",
+  "<br>$boardCode&nbsp;&nbsp;<a href=\"javascript:popUp('$cfg{'nonCgiPath'}/uttags.html')\">$lng{'postUtTags'}</a>\n",
+  "<br>$imageCode&nbsp;&nbsp;$lng{'postImgTag'}\n",
+  "</td>\n",
+  "<td>",
+  "<TEXTAREA COLS=$textCols ROWS=$textRows NAME='body' WRAP='VIRTUAL'></TEXTAREA>",
+  "</td></tr>\n",
+  "<tr bgcolor=$cfg{'lightCellColor'}><td valign=top>\n",
+  "<b>$lng{'postOptions'}</b></td>\n",
+  "<td>";
+
+print    
+  "<INPUT TYPE='checkbox' NAME='notify'> $lng{'postNotify'}<br>\n"
+  if $cfg{'emailOn'};
+
+print
+  "<INPUT TYPE='checkbox' NAME='disableMarkup' $disableMarkupChecked> $lng{'postDisUt'}<br>\n",
+  "<INPUT TYPE='checkbox' NAME='disableSmiley' $disableSmileyChecked> $lng{'postDisSm'}<br>\n",
+  "<INPUT TYPE='checkbox' NAME='postSign' $postSignChecked> $lng{'postDisSi'}\n";
+
+my $scoreSel = "<option value=$board->{'threshold'}>$board->{'threshold'}</option>\n";
+if ($board->{'scoreMax'} >= $board->{'threshold'}) {
+  for ($board->{'threshold'}+1 .. $board->{'scoreMax'}) {
+    $scoreSel .= ($idTable{$pid[0]}->{'credits'} == $_) 
+	? "<option value=$_ selected>$_</option>\n" 
+	: "<option value=$_>$_</option>\n" ;
+  }
+}
+
+print 
+  "<br><INPUT TYPE='checkbox' NAME='semiHidden' $semiHiddenChecked> $lng{'postHidden'} ",
+  "<select name=postCredits class=selStyle>$scoreSel</select>&nbsp;",
+  "<a href=$cfg{'nonCgiPath'}/analysis/ca.html target=_blank>Statistics</a>" 
+  if $board->{'score'};
+
+  if ($board->{'attachments'}) {
+    my $fileSize = int($cfg{'maxAttachLen'} / 1024);
+    print
+      "</td></tr>\n",
+      "<tr bgcolor=$cfg{'lightCellColor'}><td valign=top>\n",
+      "<b>$lng{'postAttTtl'} (Max: $fileSize KB)</b></td>\n",
+      "<td>&nbsp;",
+      "<INPUT TYPE=file NAME=attach class=inpStyle size=$inputCols>\n";
+    
+    print
+      "<br>",
+      "<INPUT TYPE='checkbox' NAME='embed' checked> $lng{'postAttEmbed'}\n" 
+    if $cfg{'attachImg'};
+}
+
+if ($user->{'altAccount'}) {
+    print
+      "</td></tr>\n",
+      "<tr bgcolor=$cfg{'lightCellColor'}><td>\n",
+      "<b>Post by other account</b></td>\n",
+      "<td>Name: <input type=text name=altUser size=15 class=subject>&nbsp;&nbsp;",
+      "Password: <input type=password name=altPass size=15 class=subject>\n";
+}
+
+print 
+  cellEnd($user),
+  tableEnd($user),
+  "<br>\n",
+  "<table border=0><tr><td>\n",
+  "<INPUT TYPE='submit' VALUE=' $lng{'postTpcBtnReply'} ' class=btnStyle>\n",
+  "</td></tr></table>\n",
+  "<INPUT TYPE='hidden' NAME='id' VALUE='$idTable{$pid[0]}->{'post_id'}'>\n",
+  "<INPUT TYPE='hidden' NAME='bid' VALUE='$board->{'id'}'>\n",
+  "<INPUT TYPE='hidden' NAME='pg' VALUE='$page'>\n",
+  "<INPUT TYPE='hidden' NAME='bpg' VALUE='$boardPage'>\n",
+  "<INPUT TYPE='hidden' NAME='age' VALUE='$age'>\n",
+  "<INPUT TYPE='hidden' NAME='ori' VALUE=''>\n",
+  "</FORM>\n";
+}
+#########################
+[/code]

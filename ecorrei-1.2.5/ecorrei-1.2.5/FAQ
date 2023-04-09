@@ -1,0 +1,59 @@
+FAQ for eCorrei 1.2.5
+2 February 2002
+======================================
+
+
+1. How do I use eCorrei?
+
+That should be pretty straight-forward. Yet I will include a help system
+in the future.
+
+
+2. Does it work on my local network?
+
+Sure it does. Just make sure you've got a web server and a mail server
+configured for your local network.
+
+
+3. Where can I change the fonts?
+
+Have a look at the style.css file in the "images" directory.
+
+
+4. I have found bugs. Where can I report them?
+
+Please go to the eCorrei webpage (http://ecorrei.sourceforge.net), click on
+"Bugs" and submit your bug report. Please be a little specific with your
+description, and mention which webserver/browser/PHP version you're using.
+And check your PHP environment using the check.php script.
+
+
+5. Why doesn't the sort on From: in the Inbox work properly?
+
+eCorrei uses the standard IMAP function imap_sort() for sorting
+messages. Apparently this function sorts the messages on the
+from emailaddress, and eCorrei only displays the emailaddress only
+when no name is given. This is done to save space.
+
+
+6. Can I translate eCorrei?
+
+Yes, you can create you own language file based on the English
+translation (lang.en.php). If you would like to share your
+translation with all of the eCorrei users, mail the translation
+to me. Read the README file for more information.
+
+
+7. What's the eCorrei history?
+
+A few years ago I started programming in Perl. I downloaded some
+webmail scripts, but none of them was what I was looking for. I
+started modifying a script called QD-POP, and wrote my own version.
+It had the same interface eCorrei has now. I programmed my own
+session support. Then I discovered PHP and rewrote my webmail
+program in PHP because it was much faster. It used a own written
+class to access POP3-servers. I called it eCorrei. This version
+was never released. I had some problems with large e-mails so
+I rewrote it to use the IMAP extension. eCorrei 1.0 was born.
+And the rest of the story you know :-).
+

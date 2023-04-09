@@ -1,0 +1,215 @@
+<?
+	/* 
+	** run this script for an hour if needed
+	*/
+	set_time_limit(3600);
+
+
+	function checkURL_GET($searchURL, &$ErrorDescription)
+	{
+		$returnValue = FALSE;
+		$ErrorDescription ="";
+	
+		$url = parse_url($searchURL); 
+		if($url["port"] != "")
+		{
+			$port = $url["port"];
+		}
+		else
+		{
+			$port = 80;
+		}
+
+		$host = $url["host"];
+	
+		$fp = fsockopen($host, $port, &$errno, &$errstr);
+		if($fp)
+		{
+			$document = $url["path"];
+			if($url["query"] != "")
+			{
+				$document .= "?" . $url["query"];
+			}
+			$request = "GET $document HTTP/1.0\r\n";
+			$request .= "Host: $host\r\n\r\n";
+
+			
+			fputs($fp, $request);
+
+			$line = fgets($fp,255);
+			$ErrorDescription .= $line;
+						
+			$responseProtocol = strtok($line, " ");
+			$responseCode = intval(strtok(" "));
+			
+			switch($responseCode)
+			{
+				case 200:
+				case 401:
+				case 500:
+				case 302:
+					$returnValue = TRUE;
+					break;
+				default:
+					// Looks like a bad code
+					while(!feof($fp)) 
+					{
+						$ErrorDescription .= fgets($fp,255);
+					}
+			}
+		
+			fclose($fp);
+		}
+		else
+		{
+			$ErrorDescription = "Can't connect to host";
+		}
+
+		return($returnValue);
+	}
+
+
+
+	function checkURL($searchURL, &$ErrorDescription)
+	{
+		$returnValue = FALSE;
+		$ErrorDescription ="";
+	
+		$url = parse_url($searchURL); 
+		if($url["port"] != "")
+		{
+			$port = $url["port"];
+		}
+		else
+		{
+			$port = 80;
+		}
+
+		$host = $url["host"];
+	
+		$fp = fsockopen($host, $port, &$errno, &$errstr);
+		if($fp)
+		{
+			$document = $url["path"];
+			if($url["query"] != "")
+			{
+				$document .= "?" . $url["query"];
+			}
+			/*
+				$request = "HEAD $document HTTP/1.0\r\n\r\n";
+			*/
+			$request = "HEAD $document HTTP/1.0\r\n";
+			$request .= "Host: $host\r\n\r\n";
+
+			
+			fputs($fp, $request);
+
+			$line = fgets($fp,255);
+			$ErrorDescription .= $line;
+						
+			$responseProtocol = strtok($line, " ");
+			$responseCode = intval(strtok(" "));
+			
+			switch($responseCode)
+			{
+				case 200:
+				case 401:
+				case 500:
+				case 302:
+					$returnValue = TRUE;
+					break;
+				case 405:
+				case "";
+				case 501:
+					//Web server doesn't allow HEAD
+					$returnValue = checkURL_GET($searchURL, $ErrorDescription);
+					break;
+				default:
+					// Looks like a bad code
+					while(!feof($fp)) 
+					{
+						$ErrorDescription .= fgets($fp,255);
+					}
+			}
+		
+			fclose($fp);
+		}
+		else
+		{
+			$ErrorDescription = "Can't connect to host";
+		}
+
+		return($returnValue);
+	}
+
+	/*
+	** Find Suspended wing
+	*/
+	$Query = "SELECT ID ";
+	$Query .= "FROM wing ";
+	$Query .= "WHERE Title='Suspended' ";
+	$DatabaseResult = mysql_query($Query, $DatabaseLink);
+	$DatabaseRow = mysql_fetch_row($DatabaseResult);
+	$SuspendedWing = $DatabaseRow[0];
+		
+
+	/*
+	** get LinkCheckDepth oldest links
+	*/	
+	$Query = "SELECT i.ID, i.URL, i.Title, i.Wing, i.Description ";
+	$Query .= "FROM item i ";
+	$Query .= "WHERE i.Wing != $SuspendedWing "; 
+	$Query .= "ORDER BY LastChecked ";
+	$Query .= "LIMIT $LinkCheckDepth ";
+	$DatabaseResult = mysql_query($Query, $DatabaseLink);
+	while($DatabaseRow = mysql_fetch_row($DatabaseResult))
+	{
+		$item_ID[] = $DatabaseRow[0];
+		$item_URL[] = $DatabaseRow[1];
+		$item_Title[] = $DatabaseRow[2];
+		$item_Wing[] = $DatabaseRow[3];
+		$item_Description[] = $DatabaseRow[4];
+	}
+
+
+	$MailBody = "Bad Links\n\n";
+	
+	print("<DL>\n");
+
+	for($index = 0; $index < count($item_ID); $index++)
+	{
+
+		if(checkURL($item_URL[$index], $Problems))
+		{
+			/*
+			** Update LastChecked
+			*/
+			$Query = "UPDATE item ";
+			$Query .= "SET LastChecked = now() ";
+			$Query .= "WHERE ID=$item_ID[$index] ";
+			$DatabaseResult = mysql_query($Query, $DatabaseLink);
+		}
+		else
+		{
+			print("<DT><B>$item_Title[$index]</B><DD>$item_URL[$index]<BR>\n");
+			print("<DD>Problem: $Problems\n\n");
+			flush();
+
+			$MailBody .= "Wing: <http://$SiteURL/$IndexScript?SCREEN=stroll&wing=$item_Wing[$index]>\n";
+			$MailBody .= "Site: $item_Title[$index] <$item_URL[$index]>\n";
+			$MailBody .= "Description: $item_Description[$index]\n";
+			$MailBody .= "Problem: $Problems\n\n";
+		}
+
+	}
+
+	print("</DL>\n");
+
+
+	$MailTo = $LinkCheckAdmin;
+	$MailFrom = "$RemoteMachine <$MailingList_Add>";
+	$MailSubject = "[$MailingList_Name] Bad Links";
+	
+	Mail($MailTo, $MailSubject, $MailBody, "From: $MailFrom");
+
+?>

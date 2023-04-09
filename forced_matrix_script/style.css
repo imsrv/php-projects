@@ -1,0 +1,66 @@
+.border {
+	BORDER-RIGHT: #217b55 1px solid; BORDER-LEFT: #ffffff 1px solid
+}
+.pzero {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px
+}
+.sizepad {
+	PADDING-LEFT: 12px; BORDER-LEFT: #032a17 1px solid; WIDTH: 170px; PADDING-TOP: 12px
+}
+.topmenu {
+	PADDING-RIGHT: 4px; BACKGROUND-POSITION: center 50%; BORDER-TOP: #ffffff 1px; PADDING-LEFT: 4px; FONT-WEIGHT: bold; FONT-SIZE: 11px; PADDING-BOTTOM: 3px; MARGIN-LEFT: 1px; VERTICAL-ALIGN: middle; WIDTH: 20px; COLOR: #ffffff; PADDING-TOP: 3px; BORDER-BOTTOM: #247e58 1px; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: Arial, Helvetica, sans-serif; HEIGHT: 20px; TEXT-DECORATION: none
+}
+A.topmenu:hover {
+	BACKGROUND-IMAGE: none; COLOR: #666666
+}
+.leftmenu {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 4px; FONT-SIZE: 11px; PADDING-BOTTOM: 2px; WIDTH: 100%; COLOR: #116666; PADDING-TOP: 2px; FONT-FAMILY: Tahoma; TEXT-DECORATION: none
+}
+A.leftmenu:hover {
+	BACKGROUND-COLOR: #eef7f2
+}
+.hrl {
+	BORDER-TOP: #ffffff 1px solid; BORDER-BOTTOM: #1d7e53 1px solid
+}
+.tablehead {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 12px; PADDING-BOTTOM: 3px; COLOR: #ffffff; PADDING-TOP: 3px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.tableheadhard {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 12px; PADDING-BOTTOM: 3px; COLOR: #ffffff; PADDING-TOP: 3px; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: Arial, Helvetica, sans-serif; HEIGHT: 21px
+}
+.tableheadharddark {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 12px; PADDING-BOTTOM: 3px; COLOR: #FFFFFF; PADDING-TOP: 3px; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: Arial, Helvetica, sans-serif; HEIGHT: 21px; BACKGROUND-COLOR: 517889
+}
+.tableblack {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; FONT-SIZE: 11px; PADDING-BOTTOM: 2px; COLOR: #ffffff; PADDING-TOP: 2px; FONT-FAMILY: Arial, Helvetica, sans-serif; HEIGHT: 16px; TEXT-DECORATION: none
+}
+.tablecontent {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; FONT-SIZE: 11px; PADDING-BOTTOM: 2px; COLOR: #000000; PADDING-TOP: 2px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.tablesubhead {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 11px; PADDING-BOTTOM: 3px; COLOR: #032a17; PADDING-TOP: 3px; BORDER-BOTTOM: #032a17 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.tablesubheaddark {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 11px; PADDING-BOTTOM: 3px; COLOR: #000000; PADDING-TOP: 3px; BORDER-BOTTOM: #032a17 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: B5DFB7
+}
+.tablecontentbewel {
+	PADDING-RIGHT: 2px; BORDER-TOP: #ffffff 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 11px; PADDING-BOTTOM: 2px; COLOR: #000000; PADDING-TOP: 2px; BORDER-BOTTOM: #b8be9c 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.tablecontentbeweldark {
+	PADDING-RIGHT: 2px; BORDER-TOP: #ffffff 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 11px; PADDING-BOTTOM: 2px; COLOR: #000000; PADDING-TOP: 2px; BORDER-BOTTOM: #b8be9c 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: BBE2CE
+}
+.tablecontentbewellite {
+	PADDING-RIGHT: 2px; BORDER-TOP: #ffffff 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 11px; PADDING-BOTTOM: 2px; COLOR: #000000; PADDING-TOP: 2px; BORDER-BOTTOM: #b8be9c 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #f3f3f3
+}
+.boxed {
+	BORDER-RIGHT: #1a7a4c 1px solid; BORDER-TOP: #ffffff 1px solid; BORDER-LEFT: #d8ece1 1px solid; BORDER-BOTTOM: #032a17 1px solid
+}
+.formelement {
+	BORDER-RIGHT: #032a17 1px solid; BORDER-TOP: #032a17 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #032a17 1px solid; BORDER-BOTTOM: #032a17 1px solid; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.formbutton {
+	BORDER-RIGHT: #032a17 1px solid; BORDER-TOP: #25925b 1px solid; FONT-SIZE: 11px; BACKGROUND-IMAGE: url(images/menufill.jpg); BORDER-LEFT: #207e4c 1px solid; COLOR: #000000; BORDER-BOTTOM: #000000 1px solid; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.plaintext {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}

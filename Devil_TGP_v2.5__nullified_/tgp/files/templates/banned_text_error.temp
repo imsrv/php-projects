@@ -1,0 +1,16 @@
+<html>
+<head>
+<title>Error</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div align="center">
+  <p><font face="Verdana">Error!</font></p>
+  <p><font face="Verdana" color="#FF0000"><b><font size="7">Oops!</font></b></font></p>
+  <p>&nbsp;</p>
+  <p><font face="Verdana">We can't accept your gallery!</font></p>
+  <p><font face="Verdana">#ERRORMSG#</font></p>
+</div>
+</body><!--CyKuH-->
+</html>

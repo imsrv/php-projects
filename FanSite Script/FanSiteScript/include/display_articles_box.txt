@@ -1,0 +1,96 @@
+<?PHP 
+include ("include/connect.txt");
+
+if ( !(isset ( $pagenumber )))
+	{
+		$pagenumber ="1";
+	}
+
+$result = mysql_query("SELECT article_page,article_summary FROM ds_options WHERE id = '0'");  
+while ($myrow = mysql_fetch_row($result)) 
+$article_page = mysql_result($result,0,"article_page");
+$article_summary = mysql_result($result,0,"article_summary");
+
+$result = mysql_query("SELECT id,title FROM ds_articles ORDER BY (title) ASC",$db); 
+$articles = mysql_num_rows($result);
+if ( $articles == $article_page )
+	{
+	$skip =1;
+	}
+if ( ($articles/2) != (intval($articles/2)))
+{
+$articles = $articles+1;
+}
+
+ 
+$pagescount = ($articles/$article_page)+1;
+ 
+if ((($pagescount-1) > 1) && (!(isset($skip))))
+	{
+		for ($j=1;$j<$pagescount;$j++) 
+			{ 
+ 
+			} 
+		printf("<B>Страница %s из %s</B><br>",$pagenumber,$j-1); 
+		for ($i=1;$i<$pagescount;$i++) 
+			{ 
+				printf("<a href=articles_%s.html>%s<a> ",$i,$i); 
+			} 
+
+		printf("<br><br>");
+	}
+	$pagenumber = $pagenumber -1; 
+	$pagenumber = $pagenumber*$article_page;
+ 
+	$result = mysql_query("SELECT seo_url,title,article,film FROM ds_articles ORDER BY (title) ASC LIMIT $pagenumber,$article_page",$db); 
+	 
+	while ($myrow = mysql_fetch_row($result))
+ 
+		{
+$movie_result = mysql_query("SELECT title FROM ds_movies WHERE seo_url = '$myrow[3]'",$db); 
+$movie_myrow = mysql_fetch_row($movie_result);
+$id = $myrow[0]; 
+?>
+<?PHP 
+
+ 
+?>
+<div id="filmslist"><div>
+<?PHP
+
+
+?>
+<div id="filminfo"><h2>
+<?PHP
+
+
+
+			$staticurl = $myrow[0].".html";
+			printf("<img src='images/bullet2.gif'> <A HREF=article_%s>%s</A>  (%s)<br>",$staticurl,$myrow[1],$movie_myrow[0]) ;
+			$commentstring = $myrow[2];
+?>
+</h2><br />
+<?PHP
+
+			$varlength = strlen($commentstring);
+			if ( $article_summary > '0')
+				{
+					if ( $varlength > $article_summary )
+						{
+							$commentstring = substr($commentstring,0,$article_summary);
+							printf("%s ....<br>",$commentstring);
+						}
+					else
+						{
+							$commentstring = substr($commentstring,0,$article_summary);
+							printf("%s<br>",$commentstring);
+						}
+				}
+
+printf("<A HREF=article_%s>Подробнее...</A><br>",$staticurl) ;
+?>
+</div></div></div><div id="filmsbgbot"></div><br />
+<?php
+} 
+
+?>

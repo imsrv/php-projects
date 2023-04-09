@@ -1,0 +1,149 @@
+# ---------------------------------------------------------------
+# bookmarker
+# A WWW based bookmark management, retrieval, and search tool.
+# Copyright (C) 1998  Padraic Renaghan
+# Licensed under terms of GNU General Public License
+# (see http://www.renaghan.com/bookmarker/source/LICENSE)
+# ---------------------------------------------------------------
+# Database create script for mysql databases.
+# $Id: create_db.mysql,v 1.4 2000/09/08 19:43:08 prenagha Exp $
+# ---------------------------------------------------------------
+
+#
+# Table structure for table 'active_sessions'
+#
+CREATE TABLE active_sessions (
+  sid  varchar(32) NOT NULL,
+  name varchar(32) NOT NULL,
+  val text,
+  changed varchar(14) DEFAULT '' NOT NULL,
+  PRIMARY KEY (name,sid),
+  KEY changed (changed)
+);
+
+#
+# Table structure for table 'auth_user'
+#
+CREATE TABLE auth_user (
+  user_id  varchar(32) DEFAULT '' NOT NULL,
+  username varchar(32) DEFAULT '' NOT NULL,
+  password varchar(32) DEFAULT '' NOT NULL,
+  perm_auth_cookie varchar(32) DEFAULT '' NULL,
+  perms varchar(255),
+  name varchar(50) DEFAULT '' NOT NULL,
+  email varchar(50) DEFAULT '' NOT NULL,
+  default_public char(1) DEFAULT 'N' NOT NULL,
+  include_public char(1) DEFAULT 'Y' NOT NULL,
+  total_public_bookmarks int(6) DEFAULT 0 NOT NULL,
+  PRIMARY KEY (user_id),
+  UNIQUE k_username (username)
+);
+
+#
+# sample data for table 'auth_user'
+#
+
+INSERT INTO auth_user (user_id, username, password, perms, name, email, default_public, include_public, perm_auth_cookie) VALUES ('5647980gfdsjklgfduiyo78','bk','7e7ec59d1f4b21021577ff562dc3d48b','admin', 'Bookmarker Admin', 'bookmarker@myhost.com', 'N', 'N', 'rthjgf7refiur8y7g5syerd6');
+
+#
+# Table structure for table 'bookmark'
+#
+CREATE TABLE bookmark (
+  id int(10) unsigned NOT NULL,
+  url varchar(255) DEFAULT '' NOT NULL,
+  name varchar(255) DEFAULT '' NOT NULL,
+  ldesc varchar(255) DEFAULT '' NOT NULL,
+  keywords varchar(255),
+  category_id tinyint(4) DEFAULT '0' NOT NULL,
+  subcategory_id tinyint(4) DEFAULT '0' NOT NULL,
+  rating_id tinyint(4) DEFAULT '0' NOT NULL,
+  username varchar(32) DEFAULT '' NOT NULL,
+  added date DEFAULT '1998-01-01' NOT NULL,
+  public_f char(1) DEFAULT 'N' NOT NULL,
+  PRIMARY KEY (id),
+  KEY username (username)
+);
+
+#
+# sample data for table 'bookmark'
+#
+INSERT INTO bookmark (id, url, name, ldesc, keywords, category_id, subcategory_id, rating_id, username, public_f) VALUES (1,'http://www.php.net/','PHP','PHP: Hypertext Preprocessor','php',1,1,3,'bk', 'Y');
+INSERT INTO bookmark (id, url, name, ldesc, keywords, category_id, subcategory_id, rating_id, username, public_f) VALUES (2,'http://phplib.netuse.de/','PHPLIB','PHPLIB: Class Library for PHP','php library',1,1,3,'bk', 'Y');
+INSERT INTO bookmark (id, url, name, ldesc, keywords, category_id, subcategory_id, rating_id, username, public_f) VALUES (3,'http://www.mysql.net/','MySQL','MySQL Relational Database','db sql php',1,1,3,'bk', 'Y');
+INSERT INTO bookmark (id, url, name, ldesc, category_id, subcategory_id, rating_id, username, public_f) VALUES (4,'http://www.apache.org/','Apache','Apache Web Server',1,1,3,'bk', 'Y');
+INSERT INTO bookmark (id, url, name, ldesc, category_id, subcategory_id, rating_id, username, public_f) VALUES (5,'http://renaghan.com/bookmarker/','bookmarker','bookmarker Web based bookmark mangement tool',1,1,3,'bk', 'Y');
+INSERT INTO bookmark (id, url, name, ldesc, category_id, subcategory_id, rating_id, username, public_f) VALUES (6,'http://www.postgresql.org/','PostgreSQL','PostgreSQL Relational Database',1,1,3,'bk', 'Y');
+
+#
+# Table structure for table 'category'
+#
+CREATE TABLE category (
+  id tinyint(3) unsigned DEFAULT '0' NOT NULL,
+  name varchar(30) DEFAULT '' NOT NULL,
+  username varchar(32) DEFAULT '' NOT NULL,
+  PRIMARY KEY (id,username)
+);
+
+#
+# sample data for table 'category'
+#
+
+INSERT INTO category (id, name, username) VALUES (0,'--','bk');
+INSERT INTO category (id, name, username) VALUES (1,'linux','bk');
+
+#
+# Table structure for table 'rating'
+#
+CREATE TABLE rating (
+  id tinyint(3) unsigned DEFAULT '0' NOT NULL,
+  name varchar(30) DEFAULT '' NOT NULL,
+  username varchar(32) DEFAULT '' NOT NULL,
+  list_tag varchar(255),
+  PRIMARY KEY (id,username)
+);
+
+#
+# sample data for table 'rating'
+#
+INSERT INTO rating (id, name, username, list_tag) VALUES (0,'--','bk','');
+INSERT INTO rating (id, name, username, list_tag) VALUES (1,'weak','bk',NULL);
+INSERT INTO rating (id, name, username, list_tag) VALUES (2,'good','bk',NULL);
+INSERT INTO rating (id, name, username, list_tag) VALUES (3,'excellent','bk',NULL);
+
+#
+# Table structure for table 'subcategory'
+#
+CREATE TABLE subcategory (
+  id tinyint(3) unsigned DEFAULT '0' NOT NULL,
+  name varchar(30) DEFAULT '' NOT NULL,
+  username varchar(32) DEFAULT '' NOT NULL,
+  PRIMARY KEY (id,username)
+);
+
+#
+# sample data for table 'subcategory'
+#
+INSERT INTO subcategory (id, name, username) VALUES (0,'--','bk');
+INSERT INTO subcategory (id, name, username) VALUES (1,'development','bk');
+
+#
+# Table structure for table 'search'
+#
+CREATE TABLE search (
+  id int(10) unsigned NOT NULL,
+  name varchar(30) DEFAULT '' NOT NULL,
+  query varchar(255) DEFAULT '' NOT NULL,
+  username varchar(32) DEFAULT '' NOT NULL,
+  PRIMARY KEY (id,username)
+);
+
+#
+# Table structure for table 'db_sequence'
+#
+CREATE TABLE db_sequence (
+  seq_name varchar(30)    DEFAULT '' NOT NULL,
+  nextid int(10) unsigned DEFAULT '0' NOT NULL,
+  PRIMARY KEY (seq_name)
+);
+INSERT INTO db_sequence (seq_name, nextid) VALUES ('bookmark', 7);
+INSERT INTO db_sequence (seq_name, nextid) VALUES ('search'  , 0);
