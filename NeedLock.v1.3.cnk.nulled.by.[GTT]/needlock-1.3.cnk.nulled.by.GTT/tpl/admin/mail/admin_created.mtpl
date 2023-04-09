@@ -1,0 +1,31 @@
+
+Dear [tag]name[/tag]!
+
+Your administrator's account created successfully and activated.
+Now You are free to use it.
+
+Your account details:
+
+================================================================
+
+Login              : [tag]name[/tag]
+Password           : [tag]plain_password[/tag]
+Access level       : [tag]level[/tag]
+Interface language : [tag]lang[/tag]
+Email address      : [tag]email[/tag]
+
+================================================================
+
+For information:
+
+According to Your access level, You can access these parts of
+adminstrative area:
+
+[tag]access_rights[/tag]
+
+
+---
+With best regards,
+Secure access manager
+www.somesecuresite.com
+info@somesecuresite.com

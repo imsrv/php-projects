@@ -1,0 +1,4 @@
+Simply upload the script into the directory you wish to install YaWPS into.
+Check with your webhost for the correct CHMOD value for executing perl scripts 
+(usually 755).
+Chmod the script to that value, and call it through your web browser.

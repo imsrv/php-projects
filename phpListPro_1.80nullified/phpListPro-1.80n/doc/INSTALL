@@ -1,0 +1,115 @@
+#################################################################################################                #                                                                                                                
+#  project           	: phpListPro                                                                                   
+#  filename         	: INSTALL                                                                             
+#  last modified by  	: Erich Fuchs                                                                               
+#  supplied by          : CyKuH [WTN]
+#  nullified by      	: CyKuH [WTN]                                                                               
+#  purpose           	: INSTALLATION                                                                                 
+#                                                                                                                
+#################################################################################################                
+
+IMPORTANT !!! PLEASE LEAVE THE COPYRIGHT NOTICE INTACT !!! THANK YOU !!!
+
+Note: Please read the LICENSE file included in the distribution to get the license
+      this program is subject to.
+
+Intro:
+------
+
+phpListPro is a PHP script that allows you to run a fast, nice looking 
+rating TopList on your website.
+
+To see this script in action, you can browse the following websites :
+- http://www.smartisoft.com/products/listpro		(Developer and Demo-Version)
+- http://rated100.com 				(Live-Version !!! PLEASE NO TESTPOSTINGS HERE !!!)
+
+Requires:
+- PHP3.x/PHP4.x or higher.
+- mySQL 3.22.xx or higher.
+- Apache
+
+    NOTE: Micro$oft IIS is NOT supported, there is a major BUG inside
+
+Not required but VERY useful:
+- phpMyAdmin (http://www.phpwizard.net) would be a very good idea for db-handling
+
+Installation:
+
+-------------
+
+-) unzip the distribution file into your http documents directory.                                                               
+
+-) edit config.php to your needs                                                                                                 
+
+-) install Database                                                                                                              
+    AUTO:                                                                                                                        
+    -) run Install/Update-Tool in your Browser                                                                                   
+        Filelocation: ./admin/setup.php (e.g.: http://www.domain.com/listpro/admin/setup.php)                                      
+    MANUAL:                                                                                                                      
+    -) create the mysql database (usually phpListPro) with mysqladmin.                                                             
+        mysqladmin  -u<your_mysql_user> -p<your_mysql_pass> create phpListPro                                                      
+    -) create the mysql tables. you have 2 options :                                                                             
+        1) COMMANDLINE: mysql -u<your_mysql_user> -p<your_mysql_pass> phpListPro<./admin/phpListPro.sql                              
+        2) PHPMYADMIN: run the SQL file './admin/phpListPro.sql' to add the tables                                                 
+
+-) SECURE the admin-dir!!!, e.g. httpd.conf or with .htaccess                                                                    
+
+-) CHECK php.ini for this settings                                                                                               
+    register_globals        = On                                                                                                 
+    register_argc_argv      = On                                                                                                 
+    magic_quotes_gpc        = On                                                                                                 
+
+-) all should be ok at this point... Test it with your Browser                                                                   
+
+Customizing:
+------------
+
+-) create and replace your voteimages (images/vote_imageX.gif)
+
+-) edit lang_*.php to your needs (languages, categories, ...) 
+   copy and translate lang_english.php to any language you need, eg. lang_spanish.php.
+
+-) edit *.inc-Files to your needs
+
+Administration:
+---------------
+
+-) run the Admin-Panel in the /admin subdir. (Votelogs, Edit, Delete)
+
+-) create a cronjob to execute "php /path/to/list/admin/schedule.php" with cgi-version of php
+
+Update from phpListPro V1.50
+----------------------------
+
+-) !!! ATTENTION mySQL-TABLES CHANGED !!! YOU MUST RUN doc/updatetables_1.50-1.60.php
+
+Update from phpListPro V1.6x
+----------------------------
+
+-) !!! ATTENTION mySQL-TABLES CHANGED !!! YOU MUST RUN doc/updatetables_1.6x-1.7x.php
+-) delete file "categories.php" -> Categories are now defined in every "lang_*.php" File
+
+Upgrade from phpList
+--------------------
+
+-) edit $site_log_file in /admin/convert_from_phplist.php file.
+-) run admin/convert_from_listpro.php in your browser.
+
+Upgrade from AutorankPro
+------------------------
+
+-) edit $site_log_file in /admin/convert_from_autorankpro.php file.
+-) run admin/convert_from_autorankpro.php in your browser.
+
+Upgrade from TurboTrade
+-----------------------
+
+-) edit $data_path in /admin/convert_from_turbotrade.php file.
+-) run admin/convert_from_turbotrade.php in your browser.
+
+Future Feature's:
+-----------------
+ 
+----------------------------------------------------------
+(c) 2002 SmartISoft
+All rights reserved.

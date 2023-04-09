@@ -1,0 +1,20 @@
+###########################################
+#       Sistema Criado e Desenvolvido     #
+#          Igor Carvalho de Escobar       #
+#                LK Design©               #
+#  http://igorescobar.webtutoriais.com.br #
+#      Suporte em:                        #
+#      http://forum.webtutoriais.com.br   #
+#      Por favor, Mantenham os Créditos   #
+###########################################
+
+Olá pessoal, existem Cuidados a serem tomados, Para enviar erros.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Verifique se na hora da instalacao você colocou a "/" barra no final
+do endereço do seu WebSite.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Quando for colocar o codigo fonte gerado pelo sistema em seu site,
+LEMBRE-SE o arquivo não pode estar dentro da pasta do LinkinNews2.0
+Nao misture os arquivos do seu site com o do linkinNews2.0
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

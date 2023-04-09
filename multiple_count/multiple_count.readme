@@ -1,0 +1,58 @@
+######################################
+#           Multiple Count           #
+######################################
+#  Last Update: August 19 2001       #
+#  Created by RealityWebs            #
+#    ( http://www.realitywebs.com )  #
+#  Contact: support@realitywebs.com  #
+#  Copyright 2000-2001.              #
+######################################
+
+Copyright:
+  This script remains the property of RealityWebs and may not be reproduced
+  and/or modified without the express written permission of RealityWebs.
+
+
+NOTICE:
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE
+  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+  OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+Description:
+  This is a multiple page text-based counter.
+  This script will only work if your server supports Server Side Includes (SSI).
+
+
+How to Install:
+1. Setting the variable.
+   - Open the script (multiple_count.pl) and change the following variable.
+
+     - The full path to the log file.
+         $log='/home/mydirectory/logs/multiple_count.log';
+
+
+2. Activating the Script.
+   - Upload the files. Windows and DOS users should use ASCII mode.
+
+   - Change the access permissions.
+
+               File           Mininum Protect.  Maxinum Protect.
+      - multiple_count.pl  => 755 (rwxr-xr-x).  755 (rwxr-xr-x).
+      - multiple_count.log => 666 (rw-rw-rw-).  660 (rw-rw----).
+
+
+3. Creating the HTML.
+   - The following line of code will tell the Web Server to include the output of the script
+     in the HTML. Assuming that "cgi-bin/multiple_count.pl" is the correct path to the script.
+
+       <!--#include virtual="cgi-bin/multiple_count.pl" -->
+

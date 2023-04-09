@@ -1,0 +1,10 @@
+Estimado %%employer_company%%,
+
+Su empleo "%%job_jobtitle%%" (id: %%job_jobid%%) ha caducado, y ha sido eliminado de nuestro sistema.
+
+Estadísticas:
+     Envíos: %%job_jobdate%%
+     Vistas: %%job_viewed%%
+     Fecha última vista: %%job_lastdate%%
+
+Hoy: %%today_date%%

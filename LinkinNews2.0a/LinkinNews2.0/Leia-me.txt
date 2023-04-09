@@ -1,0 +1,23 @@
+###########################################
+#       Sistema Criado e Desenvolvido     #
+#          Igor Carvalho de Escobar       #
+#                LK Design©               #
+#  http://igorescobar.webtutoriais.com.br #
+#      Suporte em:                        #
+#      http://forum.webtutoriais.com.br   #
+#      Por favor, Mantenham os Créditos   #
+###########################################
+
+:::::Upgrades::::
+Para descobrir as novidades da versão 1.0 para a 2.0 abra o arquivo
+Novas Ferramentas.html
+
+::::Instalação:::
+Para instalar o sistema siga as instruções do arquivo
+Instalar.html
+
+::::Creditos::::
+
+Por favor não tirem os créditos. Foram dias a noites desenvolvendo
+o sistema. Não estrague meu trabalho. Por favor. Estou distribuindo o sistema
+totalmente GRATIS a unica coisa que peço é que mantenham os créditos

@@ -1,0 +1,63 @@
+# ==================================================================
+# Links SQL - enhanced directory management system
+#
+#   Website  : http://gossamer-threads.com/
+#   Support  : http://gossamer-threads.com/scripts/support/
+#   CVS Info : 087,071,086,089,083 
+#   Revision : $Id: UPGRADE,v 1.9 2001/12/30 23:13:45 alex Exp $
+# 
+# Copyright (c) 2001 Gossamer Threads Inc.  All Rights Reserved.
+# Redistribution in part or in whole strictly prohibited. Please
+# see LICENSE file for full details.
+# ==================================================================
+
+UPGRADING FROM A PREVIOUS VERSION OF LINKS
+
+It's very easy to upgrade your existing copy of Links, or Links SQL
+to the latest version. A couple things you should be aware of:
+
+	1. BACKUP YOUR EXISTING COPY AND YOUR SQL DATA BEFORE PROCEEDING! You
+	   can do this using MySQLMan if you are using MySQL (using SQL Dump tool).
+	2. Links SQL 2 uses the same table names as Links SQL 1, so if you
+	   want to install Links SQL 2 in the same database as Links SQL 1,
+	   you MUST USE A TABLE PREFIX. This will prefix all your tables
+	   so they don't conflict with Links SQL 1.
+	3. If you are running under mod_perl, you can NOT run Links 
+	   SQL 1.x and Links SQL 2 under the same mod_perl server!
+
+* Upgrading from an existing Links SQL 2.x:
+
+	1. Unarchive the new LinksSQL2.x.x.tar.gz file (windows users can use
+	   Winzip (http://www.winzip.com/) to unarchive this file.
+	2. FTP in ASCII mode the install.cgi file to your cgi-bin directory and
+	   set permissions on this file to 755 (rwxr-xr-x).
+	3. FTP in BINARY mode the install.dat file to the same directory.
+	4. Point your browser to install.cgi (advanced users can also run it
+	   from shell). At the prompt enter the system path to where Links 
+	   SQL is currently installed, and select Upgrade.
+
+	Note: You must run the upgrade the same way the program was installed 
+	(either from the browser, or from shell).
+
+* Upgrading from Links SQL 1.x
+
+	1. Follow the README instructions and first install Links SQL 2 into a 
+	   separate directory.
+	2. Goto Database->Import/Export and enter the path to your Links
+	   SQL 1.x directory, and the program will import all your links and
+	   categories from Links SQL 1.x.
+
+* Upgrading from Links 2.0 (flat file version)
+	
+	1. Follow the README instructions and install Links SQL into a 
+	   separate directory.
+	2. Goto Database->Import/Export and enter the path to your Links
+	   2.0 directory, and your links and data will be imported.
+			
+That's it! If you run into any problems, please let us know and we'll
+help you out and add the solution to this file for other users.
+
+Cheers,
+
+Alex Krohn
+Gossamer Threads Inc.

@@ -1,0 +1,60 @@
+<script language="JavaScript">
+function checkAll(theForm) {
+    for (i=0,n=theForm.elements.length;i<n;i++)
+        if (theForm.elements[i].name.indexOf('del') !=-1)
+            theForm.elements[i].checked = true;
+}
+</script>
+
+					<%error(plan_exists)
+          	<font color="red">
+            	Plan with this name already exists in database<br>
+              Please select another one
+            </font>
+          <%/error
+        	<tr>
+          	<td colspan="2" class="BlueNoteColumnTD">Membership plans
+        	<tr>
+          	<td>
+       			<input type="submit" name="plan_delete" value="Delete">
+            <table class="BlueNoteFormTABLE">
+            	<tr>	
+              	<td class="BlueNoteDataTD"><input type="checkbox" onClick="if (this.checked) checkAll(this.form);">
+              	<td class="BlueNoteDataTD">Plan name
+                <td class="BlueNoteDataTD">$ per month
+                <td class="BlueNoteDataTD">Domains to monitor
+		<td class="BlueNoteDataTD">Access to Link Popularity
+		<td class="BlueNoteDataTD">Access to Domain Digger
+		<td class="BlueNoteDataTD">Access to Yahoo/Dmoz Analysis
+              <tr>
+              <%table[SELECT id as plan_id,name as plan_name,cost as plan_cost,domains as plan_domains,linkpop as plan_linkpop,digger as plan_digger,yamoz as plan_yamoz FROM plan]
+              <tr>
+              	<td class="BlueNoteAltDataTD"><input type="checkbox" name="del[<%plan_id%>]">
+              	<td class="BlueNoteAltDataTD"><a href="./?page=plan&select=<%plan_id%>"><%plan_name%></a>
+                <td class="BlueNoteAltDataTD"><%plan_cost%>
+                <td class="BlueNoteAltDataTD"><%plan_domains%>
+	        <td class="BlueNoteAltDataTD"><%plan_linkpop%>
+        	<td class="BlueNoteAltDataTD"><%plan_digger%>
+        	<td class="BlueNoteAltDataTD"><%plan_yamoz%>
+              <%/table
+            </table>
+            <table>
+              <tr><td>&nbsp;
+            <tr>
+            	<input type="hidden" name="id" value="<%id%>">
+            	<td>Plan name<td><input type="text" name="name" value="<%name%>">
+            <tr>
+            	<td>Plan cost (per month)<td><input type="text" name="cost" value="<%cost%>">
+            <tr>
+              <td>Domain to monitor<br>(-1 = unlimited)<td><input type="text" name="domains" value="<%domains%>">
+            <tr>
+              <td>Access to Link Popularity<td><input type="checkbox" name="linkpop" <%plan_linkpop%> >
+            <tr>
+              <td>Access to Domain Digger<td><input type="checkbox" name="digger" <%plan_digger%> >
+	    <tr>
+              <td>Access to Yamoz Analysis<td><input type="checkbox" name="yamoz" <%plan_yamoz%> >
+            <tr>
+            	<td>
+              	<input type="submit" name="plan_update" value="Update">
+              	<input type="submit" name="plan_add" value="Add new">
+            </table>

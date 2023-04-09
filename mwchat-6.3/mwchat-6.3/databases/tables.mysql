@@ -1,0 +1,90 @@
+CREATE TABLE chat_license (
+  id int(11) NOT NULL auto_increment,
+  sql_id varchar(20),
+  sql_data text,
+  sql_key varchar(100),
+  PRIMARY KEY (id)
+);
+CREATE TABLE chat_log (
+  id int(11) NOT NULL auto_increment,
+  username varchar(20),
+  ip varchar(100),
+  agent text,
+  logtime text,
+  misc text,
+  PRIMARY KEY (id)
+);
+CREATE TABLE chat_buddy (
+  id int(11) NOT NULL auto_increment,
+  username varchar(10),
+  buddy varchar(10),
+  PRIMARY KEY (id)
+);
+CREATE TABLE chat_lobby (
+  id int(11) NOT NULL auto_increment,
+  username varchar(10),
+  timestamp timestamp,
+  sequence bigint,
+  sequence_check text,
+  administrator varchar(5),
+  registered varchar(5),
+  text_color varchar(10),
+  PRIMARY KEY (id)
+);
+CREATE TABLE chat_process (
+  id int(11) NOT NULL auto_increment,
+  username varchar(10),
+  task varchar(20),
+  info varchar(20),
+  PRIMARY KEY (id)
+);
+CREATE TABLE chat_registered (
+  id int(11) NOT NULL auto_increment,
+  username varchar(10),
+  password varchar(20),
+  hobbies mediumtext,
+  occupation varchar(80),
+  age varchar(5),
+  location varchar(40),
+  comments mediumtext,
+  message_away varchar(80),
+  message_back varchar(80),
+  message_enter varchar(80),
+  message_exit varchar(80),
+  smiles varchar(5),
+  locate varchar(5),
+  text_color varchar(10),
+  ignored_users text,
+  upload varchar(5),
+  icon varchar(100),
+  theme varchar(20),
+  PRIMARY KEY (id)
+);
+CREATE TABLE chat_rooms (
+  id int(11) NOT NULL auto_increment,
+  title varchar(17),
+  topic varchar(17),
+  private varchar(5),
+  private_pass varchar(80),
+  PRIMARY KEY (id)
+);
+CREATE TABLE chat_text (
+  id int(11) NOT NULL auto_increment,
+  to_username varchar(10),
+  from_username varchar(20),
+  is_private varchar(5),
+  room varchar(17),
+  message mediumtext,
+  encrypt_vector varchar(80),
+  private_info varchar(20),
+  PRIMARY KEY (id)
+);
+CREATE TABLE chat_users (
+  id int(11) NOT NULL auto_increment,
+  username varchar(10),
+  room varchar(17),
+  operator varchar(5),
+  block_all varchar(5),
+  away varchar(5),
+  PRIMARY KEY (id)  
+);

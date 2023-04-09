@@ -1,0 +1,181 @@
+Last Modified: March 12th, 2002
+
+----mod_l33t v1.0 Setup-----
+
+Setup is the same for both Windows and Linux.
+
+I assume Apache 1.3.x is installed and running properly...
+
+====================================================
+====================================================
+
+INSTALLATION:
+
+--------------------------------------------------------
+
+1) Install the module - there are two ways of doing this:
+
+  i) With the source at hand (mod_l33t.c):
+
+#/sbin/apxs -ic mod_l33t.c
+
+  ii) With the pre-compiled module (mod_l33t.so):
+
+#cp mod_l33t.so /usr/lib/apache/mod_l33t.so
+#chmod 755 /usr/lib/apache/mod_l33t.so
+
+--------------------------------------------------------
+
+2) Edit your httpd.conf:
+
+Add the following line *just above* all "LoadModule" directives:
+
+LoadModule l33t_module        /usr/lib/apache/mod_l33t.so
+
+Add the following line *just above* all "AddModule" directives:
+
+AddModule mod_l33t.c
+
+--------------------------------------------------------
+
+3) Again, edit your httpd.conf:
+
+
+  i) Add the following directive:
+
+L33TConfFile <full path to conf file>
+
+This directive tells mod_l33t where it can find the virtual host database.  The database file specified must be readable by the server user (ie. "nobody" or "apache").
+
+Ex. L33TConfFile /etc/httpd/conf/l33t.conf
+
+
+  ii) *optional* Add the directive:
+
+L33TBasePath <base path>
+
+This path will be pre-pended to all DocumentRoot and Alias hardpath arguments found in the virtual host database.
+
+Ex. L33TBasePath /home/
+
+and in the l33t.conf database you'd have a virtual host that looks like:
+
+ServerName user.domain.com
+User user
+Group group
+DocumentRoot /user/public_html
+End
+
+The final redirection for "http://user.domain.com/index.html" would be "/home/user/public_html/index.html".
+
+
+  iii) *optional* Add the directive:
+
+L33TLogFile <full path to log output file>
+
+The log output is useful for debugging.  The log file specified must be writable by the server user (ie. "nobody" or "apache").
+
+Ex. L33TLogFile /var/log/l33t
+
+--------------------------------------------------------
+
+4) Configure your "mod_l33t" virtual host database:
+
+Included in the distribution is an example file - "l33t.conf":
+
+--l33t.conf
+GAlias /icons/ /var/www/icons/
+
+ServerName user.domain.com
+User user
+Group group
+DocumentRoot /home/user/public_html
+Alias /forums/ /home/user/public_html/cgi-bin/forums
+End
+--end of l33t.conf
+
+For the above conf file on a linux system, the "L33TBasePath" directive would typically not be specified in httpd.conf
+
+=================The beginning virtual host directive -
+
+  i) ServerName <domain>
+
+Sort of like the <VirtualHost> directive, it begins the virtual host.  Replace <domain> with the hostname in the URL that you want the following directives to act upon.
+
+If you have the ServerName as "user.domain.com" and somoene tries to access a subdomain of it like "www.user.domain.com", it would be the same as if they accessed "user.domain.com".
+
+
+
+=================The ending virtual host directive -
+
+  ii) End
+
+Similar to the </VirtualHost> directive.  Tells mod_l33t when to stop taking in directives for that virtual host.
+
+
+
+=================Directives to be placed between ServerName and End -
+
+  iii) User <user> and Group <group>
+
+These directives must be placed inside a virtual host.
+
+Same as the User and Group directives for real virtual hosts (in Apache's httpd.conf).  Tells suexec what ownership to run scripts as.
+
+
+  iv) DocumentRoot <path>
+
+Same as for real virtual hosts, except this DocumentRoot is appended to the optional "L33TBasePath" argument in httpd.conf.
+
+
+  v) Alias <URI Fakename> <Hardpath Realname>
+
+Creates a DocumentRoot for incoming requests that begin with <URI Fakename>.  
+
+In the above database example, requests that look like "http://user.domain.com/forums/index.cgi" will be translated to the file "/home/user/public_html/cgi-bin/forums/index.cgi" instead of "/home/user/public_html/forums/index.cgi".
+
+Note that <Hardpath Realname> is completely unaffected by the DocumentRoot.
+
+
+
+=================Directives that can be placed anywhere in the database -
+
+  vi) GAlias <URI Fakename> <Hardpath Realname>
+
+Creates a DocumentRoot for *all incoming requests* that begin with <URI Fakename> (we call it a Global Alias).
+                    
+In the above database example, requests that look like "http://user.domain.com/icons/icon.jpg" will be translated to the file "/var/www/icons/icon.jpg" instead of "/home/user/public_html/icons/icon.jpg".
+
+Note that <Hardpath Realname> is completely unaffected by the DocumentRoot directive.
+
+
+
+====================================================
+====================================================
+
+NOTES:
+
+----------------------------------------------------
+
+1. The specifics are a little confusing, but generally the trailing slash in path arguments don't affect the result.  However, all path arguments should begin with a slash.
+
+Ex. GAlias /icons/ /icons/
+
+means the same thing as
+
+GAlias /icons /icons
+
+
+Ex. Alias /stuff/ /home/user/public_html/stuff.html/
+
+means the same thing as
+
+Alias /stuff /home/user/public_html/stuff.html
+
+----------------------------------------------------
+
+2. When adding mod_l33t to httpd.conf, make sure the LoadModule and AddModule directives appear before any other similar directives.  It's important that this module is loaded first, otherwise directives like "Alias" in your httpd.conf will *not* work.  If loaded in the correct way, the Alias directive in httpd.conf will function similar to GAlias in l33t.conf.  Note that GAlias in your l33t.conf will have L33TBasePath pre-pended to it, while Alias in httpd.conf will not.
+
+---------------------------------------------------
+
+3. The DocumentRoot directive in httpd.conf is essentially useless when mod_l33t is running.  If mod_l33t can't locate an appropriate virtual host it will spit out a 404 Error.

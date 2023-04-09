@@ -1,0 +1,28 @@
+  	<table class="BlueNoteFormTABLE">
+    <tr>	
+			<td class="BlueNoteAltDataTD">Recipient(s)
+      <td class="BlueNoteDataTD"><%list(mails)
+      <td>
+    <tr>	
+			<td class="BlueNoteAltDataTD">Carbon copy (CC)
+      <td class="BlueNoteDataTD"><input type="text" class="input" name="cc">
+      <td>
+    <tr>	
+			<td class="BlueNoteAltDataTD">Subject
+      <td class="BlueNoteDataTD"><input type="text" class="input" name="subject" value="WGS-Expire mass mail">
+      <td>
+    <tr>	
+			<td class="BlueNoteAltDataTD">Message
+    <tr>
+      <td class="BlueNoteDataTD" colspan="3">
+      <textarea class="message" name="body" rows="10" cols="50">
+Hello @first@ @last@.
+
+WGS-Expire is proud to introduce a new service to you.
+Now you may download a Windows program for searching and monitoring deleted and expired domains
+
+With best wishes, WGS-Expire
+      </textarea>
+    <tr>	
+			<td><input type="submit" name="send" value="Send messages">
+    </table>

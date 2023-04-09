@@ -1,0 +1,38 @@
+<HTML STYLE="width: 250px; height: 250px">
+<HEAD>
+<TITLE>Emoticons</TITLE>
+<STYLE TYPE="text/css">
+	.CursorOver  {cursor:pointer}
+</STYLE>
+<script type="text/javascript" src="popup.js"></script>
+
+<script language="javascript">
+//opener = window.dialogArguments;
+
+function insertSmiley(smiley){
+	var image = '<IMG SRC=' +smiley + '>';        
+    opener.insertHTML(image);
+  	window.close();   
+} 
+</SCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="#D6D3CE" LEFTMARGIN="0" TOPMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
+<FORM>
+<INPUT TYPE=hidden ID=ReturnValue>
+<TABLE ALIGN="CENTER">
+<TR>
+	<TD ALIGN="CENTER">	
+		<TABLE CLASS="TableStyle" BGCOLOR="WHITE" BORDER="0" CELLSPACING="0" CELLPADDING="4" ALIGN="CENTER">
+		<script src="../../smileys/smileys.js"></script>
+		</TABLE><BR />		
+
+		<BUTTON VALUE="close" ONCLICK="window.close()">close</BUTTON>
+
+	</TD>
+</TR>
+</TABLE>
+</FORM>
+</BODY>
+</HTML>

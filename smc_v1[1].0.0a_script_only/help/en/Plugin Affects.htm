@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Plugin Affects</title>
+</head>
+<body>
+
+<h1>Plugin Affects</h1>
+
+Plugin is used to keep up all affects on you: spells, skills and songs. Affects are
+defined in extrernal text file (by default with name "affects") in format:
+<pre>
+#affect's name
+type _type_ (spell, skill, song)
+priority _N_ (from 1 to 9)
+cmd _command to switch on_
+on line from mud when affect is on (can define several)
+off line from mud when affect is off (can define several)
+</pre>
+If priority is absent, then it is assumed to 9.
+If cmd is absent, then for spells it will be cast 'affect name', for songs - sing 'affect name',
+for skills cmd is equal to affect name.<br>
+Plugin also understands switching off with such spells like dispel magic or cancellation.
+Also mud's command 'affects' will refresh all active affects on you - first all affects are marked
+as off, and then only the ones from the list are activated (this ability heavily depends on format
+of mud's command 'affects' and varies from mud to mud. By default configured for Solace MUD).<br>
+So to keep up full spellup you'll just need to execute !affects up from time to time.<br>
+<font color=red>REQUIRES: defined prompt.</font>
+
+<br><br>
+Exported comands:
+<ul>
+<li><a href=#cmd_affects>affects</a>
+</ul>
+
+<br>
+<hr>
+<a name=cmd_affects>
+<h2>AFFECTS</h2>
+<pre>
+Syntax: !affects [load|list|clear|need|up]
+</pre>
+Interface to plugin. Can be called with following parameters:
+<ul>
+<li>no parameters - show all active affects
+<li>load filename - load affects from file with name filename. If filename is absent, then load from
+file "affects". All previously defined affects are removed
+<li>list - list of defined affects
+<li>clear - mark all affects as off (inactive)
+<li>need - show all inactive affects
+<li>up N - execute command to switch on for all inactive affects (spell up:).
+Also accepts parameter N - priority for required affects, only affects with priority <= N will be
+activated. For example for N=1 affects with priority 1 will be on, for N=2 - 1 and 2, for N=9 - all
+affects. If no N is specified, then assumed N=9. It will be very wise to set priorities for all
+affects, for example for sanctuary 1, for armor 9, this will preserve casting of armor between
+fights and save precious time.
+</ul>
+<pre>
+Show all inactive affects (needed)
+    !affects
+Load affects from file whitemage.aff
+    !affects load whitemage.aff
+List of defined affects
+    !affects list
+Clear affects
+    !affects clear
+Execute the full spellup
+    !affects up
+</pre>
+
+
+</body>
+</html>

@@ -1,0 +1,456 @@
+###############################################################
+#                                                             #
+# Any use of this program is entirely at the risk of the      #
+# user. No liability will be accepted by the author.          #
+#                                                             #
+# This code must not be sold, even in modified form, without  #
+# the written permission of the author. This code must also   #
+# not be distributed without the permission of the author.    #
+#                                                             #
+###############################################################
+
+###############################################################
+#                                                             #
+# Nothing below needs to be modified. You can apply           #
+# modifications if you know what you are doing. Remember that #
+# all credits must remain intact.                             #
+#                                                             #
+###############################################################
+
+
+# Load common templates
+sub templates {
+
+	# Check referring URL
+	&urlcheck;
+
+	# Get Common Heading
+	open(HEAD,"$tmplpath/head.txt") || err("Could not open $tmplpath/head.txt: $!.");
+	@headlist = <HEAD>;
+	close(HEAD);
+
+	# Format Common Heading
+	chomp($headlist[-3]);
+	for ($i = 3; $i < $#headlist - 1; $i++) {
+		$headlist[$i] =~ s/\\\@/\@/g;
+		$headlist[$i] =~ s/\\\$/\$/g;
+		$heading .= $headlist[$i];
+	}
+
+	# Get Common Footer
+	open(FOOT,"$tmplpath/foot.txt") || err("Could not open $tmplpath/foot.txt: $!.");
+	@footlist = <FOOT>;
+	close(FOOT);
+
+	# Format Common Footer
+	chomp($footlist[-3]);
+	for ($j = 2; $j < $#footlist - 1; $j++) {
+		$footlist[$j] =~ s/\\\@/\@/g;
+		$footlist[$j] =~ s/\\\$/\$/g;
+		$footer .= $footlist[$j];
+	}
+
+	# Get Common Vocabulary
+	require "$tmplpath/common.txt";
+
+	# Show Template Selection Screen
+	print "Content-type: text/html\n\n";
+	print <<EOH;
+<html>
+<head>
+<title>RankMaster: Template Editor</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#F4F4FF" text="#000000" link="#000000" vlink="#000000" alink="#000000">
+<div align="center">
+  <h3><font face="Verdana, Arial, Helvetica, sans-serif" size="-1"><b>RankMaster: Template Editor (Common Settings)</b></font></h3>
+  <form method="post" action="admin.cgi">
+    <input type="hidden" name="action" value="tempselect">
+    <table width="750" border="0" cellspacing="0" cellpadding="0" align="center">
+      <tr> 
+        <td bgcolor="#000000"> 
+          <table width="100%" border="0" cellspacing="1" cellpadding="5">
+            <tr> 
+              <td bgcolor="#F4E8EF" colspan="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2">Select 
+                the template that you would like to edit from the list below, 
+                then click the 'Load' button to load selected template.</font></td>
+            </tr>
+            <tr bgcolor="#F4F4FF" valign="top"> 
+              <td nowrap colspan="2"> 
+                <div align="center"> 
+                  <select name="select" size="1">
+                    <option value="common">Common Settings</option>
+                    <option value="index">Top List</option>
+                    <option value="rateform">Rating Form</option>
+                    <option value="success">Submission Success Display</option>
+                    <option value="errors">Submission Errors Display</option>
+                    <option value="regterms">Registration Terms</option>
+                    <option value="regform">Registration Form</option>
+                    <option value="memblogin">Member Login Form</option>
+                    <option value="membarea">Member Area Display</option>
+                  </select>
+                  <input type="submit" name="load" value="Load">
+                </div>
+              </td>
+            </tr>
+            <tr bgcolor="#E8E8FF" valign="top"> 
+              <td nowrap><font face="Verdana, Arial, Helvetica, sans-serif" size="-1"><b>Common 
+                Heading:<font size="-2"><br>
+                *optional</font></b></font></td>
+              <td> 
+                <textarea name="heading" cols="55" rows="10" wrap="VIRTUAL">$heading</textarea>
+                <br>
+                <input type="checkbox" name="commonhead" value="1">
+                <b><font face="Verdana, Arial, Helvetica, sans-serif" size="-2">Apply 
+                Common Heading to all templates</font></b></td>
+            </tr>
+            <tr bgcolor="#F4F4FF" valign="top"> 
+              <td nowrap><font face="Verdana, Arial, Helvetica, sans-serif" size="-1"><b>Common 
+                Footer:<font size="-2"><br>
+                *optional</font></b></font></td>
+              <td> 
+                <textarea name="footer" cols="55" rows="10" wrap="VIRTUAL">$footer</textarea>
+                <br>
+                <input type="checkbox" name="commonfoot" value="1">
+                <b><font face="Verdana, Arial, Helvetica, sans-serif" size="-2">Apply 
+                Common Footer to all templates</font></b></td>
+            </tr>
+            <tr bgcolor="#E8E8FF" valign="top"> 
+              <td nowrap><font face="Verdana, Arial, Helvetica, sans-serif" size="-1"><b>Common 
+                Vocabulary:</b></font></td>
+              <td>
+EOH
+
+	# Initialize line divider
+	$linediv = 0;
+
+	# Display common vocabulary entries
+	foreach $word(@commonvoc) {
+		$word =~ s/&/&amp;/g;
+		$word =~ s/\"/&quot;/g;
+		print "                <input type=\"text\" name=\"list\" size=\"22\" value=\"$word\">";
+		$linediv++;
+		print "<br>" if $linediv % 3 == 0;
+		print "\n";
+		
+	}
+
+	print <<EOH;
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="2" bgcolor="#F4E8EF"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2">You 
+                may edit the templates individually or apply common settings to 
+                all templates.</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <input type="submit" name="Submit" value="Save Common Settings">
+    <input type="button" name="close" value="Close This Window" onClick="self.close()">
+  </form>
+  <font face="Arial, Helvetica, sans-serif" size="-2"><a href="http://scripts.21stcenturyhost.net" target="_blank">Powered 
+  by 21stCenturyScripts</a></font></div>
+</body>
+</html>
+EOH
+	exit;
+}
+
+
+# Template selector
+sub tempselect {
+
+	# Check referring URL
+	&urlcheck;
+
+	# Load selected template
+	if ($FORM{'load'}) {
+		&tempedit;
+
+	# Save common settings
+	} else {
+		# Read templates directory
+		opendir(DIR,"$tmplpath") || err("Could not read directory $tmplpath: $!");
+		@allfiles  = readdir(DIR);
+		@tmplfiles = grep(/\.tmpl/,@allfiles);
+		close(DIR);
+
+		# Format variables
+		$FORM{'heading'} =~ s/\@/\\\@/g;
+		$FORM{'heading'} =~ s/\$/\\\$/g;
+		$FORM{'footer'} =~ s/\@/\\\@/g;
+		$FORM{'footer'} =~ s/\$/\\\$/g;
+		foreach $word(@list) {
+			$word =~ s/\\/\\\\/g;
+			$word =~ s/'/\\'/g;
+		}
+
+		# Save Common Heading
+		open(HEAD,">$tmplpath/head.txt") || err("Could not update $tmplpath/head.txt: $!");
+		flock(HEAD,2);
+		seek(HEAD,0,0);
+		print HEAD "# This is a heading\n";
+		print HEAD "print \"Content-type: text/html\\n\\n\";\n";
+		print HEAD "print <<EOH;\n";
+		print HEAD "$FORM{'heading'}\n";
+		print HEAD "EOH\n";
+		print HEAD "1;\n";
+		close(HEAD);
+
+		# Apply Common Heading to all templates
+		if ($FORM{'commonhead'}) {
+			foreach $tmplfile(@tmplfiles) {
+				open(TEMP,"+<$tmplpath/$tmplfile") || err("Could not update $tmplpath/$tmplfile: $!");
+				flock(TEMP,2);
+				@tmp = <TEMP>;
+				seek(TEMP,0,0);
+				truncate(TEMP,0);
+				$tmp[3] = "\$commonhead = 1;\n";
+				print TEMP @tmp;
+				close(TEMP);
+			}
+		}
+
+		# Save Common Footer
+		open(FOOT,">$tmplpath/foot.txt") || err("Could not update $tmplpath/foot.txt: $!");
+		flock(FOOT,2);
+		seek(FOOT,0,0);
+		print FOOT "# This is a footer\n";
+		print FOOT "print <<EOH;\n";
+		print FOOT "$FORM{'footer'}\n";
+		print FOOT "EOH\n";
+		print FOOT "1;\n";
+		close(FOOT);
+
+		# Apply Common Footer to all templates
+		if ($FORM{'commonfoot'}) {
+			foreach $tmplfile(@tmplfiles) {
+				open(TEMP,"+<$tmplpath/$tmplfile") || err("Could not update $tmplpath/$tmplfile: $!");
+				flock(TEMP,2);
+				@tmp = <TEMP>;
+				seek(TEMP,0,0);
+				truncate(TEMP,0);
+				$tmp[4] = "\$commonfoot = 1;\n";
+				print TEMP @tmp;
+				close(TEMP);
+			}
+		}
+
+		# Save Common Vocabulary
+		open(VOC,">$tmplpath/common.txt") || err("Could not update $tmplpath/common.txt: $!");
+		flock(VOC,2);
+		seek(VOC,0,0);
+		print VOC "# RankMaster Common Vocabulary... Do Not Edit Manually...\n";
+		print VOC "\@commonvoc = (\n";
+		for ($i = 0; $i < $#list; $i++) {
+			print VOC "'$list[$i]',\n";
+		}
+		print VOC "'$list[-1]');\n1;\n";
+		close(VOC);
+
+		# Display Success Screen
+		&adminconfirm("Common Settings Have Been Saved!", "Return to Template Editor", "admin.cgi?action=templates");
+	}
+}
+
+
+# Edit Template form
+sub tempedit {
+
+	# Check referring URL
+	&urlcheck;
+
+	# Load common templates if selected
+	&templates if $FORM{'select'} eq "common";
+
+	# Load template file
+	require "$tmplpath/$FORM{'select'}.tmpl";
+	$temphtml =~ s/&/&amp;/g;
+
+	# Show selected template
+	print "Content-type: text/html\n\n";
+	print <<EOH;
+<html>
+<head>
+<title>RankMaster: Template Editor</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#F4F4FF" text="#000000" link="#000000" vlink="#000000" alink="#000000">
+<div align="center">
+  <h3><font face="Verdana, Arial, Helvetica, sans-serif" size="-1"><b>RankMaster: Template Editor ($tempname)</b></font></h3>
+  <form method="post" action="admin.cgi">
+    <input type="hidden" name="action" value="tempsave">
+    <input type="hidden" name="tempfile" value="$FORM{'select'}">
+    <table width="750" border="0" cellspacing="0" cellpadding="0" align="center">
+      <tr> 
+        <td bgcolor="#000000"> 
+          <table width="100%" border="0" cellspacing="1" cellpadding="5">
+            <tr> 
+              <td bgcolor="#F4E8EF" colspan="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2">To 
+                load a different template, select it from the list below and click 
+                the 'Load' button.</font></td>
+            </tr>
+            <tr bgcolor="#F4F4FF" valign="top"> 
+              <td nowrap colspan="2"> 
+                <div align="center"> 
+                  <select name="select" size="1">
+                    <option value="common">Common Settings</option>
+                    <option value="index">Top List</option>
+                    <option value="rateform">Rating Form</option>
+                    <option value="success">Submission Success Display</option>
+                    <option value="errors">Submission Errors Display</option>
+                    <option value="regterms">Registration Terms</option>
+                    <option value="regform">Registration Form</option>
+                    <option value="memblogin">Member Login Form</option>
+                    <option value="membarea">Member Area Display</option>
+                  </select>
+                  <input type="submit" name="load" value="Load">
+                </div>
+              </td>
+            </tr>
+            <tr bgcolor="#E8E8FF" valign="top"> 
+              <td nowrap colspan="2">
+EOH
+
+	if ($commonhead) {
+		print qq(                <input type="checkbox" name="commonhead" value="1" checked>);
+	} else {
+		print qq(                <input type="checkbox" name="commonhead" value="1">);
+	}
+
+	print <<EOH;
+                <b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Apply 
+                Common Heading to this template</font></b></td>
+            </tr>
+            <tr bgcolor="#F4F4FF" valign="top">
+              <td nowrap colspan="2"> 
+EOH
+
+	if ($commonfoot) {
+		print qq(                <input type="checkbox" name="commonfoot" value="1" checked>);
+	} else {
+		print qq(                <input type="checkbox" name="commonfoot" value="1">);
+	}
+
+	print <<EOH;
+                <b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Apply 
+                Common Footer to this template</font></b></td>
+            </tr>
+            <tr bgcolor="#E8E8FF" valign="top"> 
+              <td nowrap><font face="Verdana, Arial, Helvetica, sans-serif" size="-1"><b>Template 
+                HTML:<font size="-2"><br>
+                *Variables:<br>
+EOH
+
+	foreach $var(@tempsubs) {
+		print "                $var<br>\n";
+	}
+
+	print <<EOH;
+                </font></b></font></td>
+              <td> 
+                <textarea name="body" cols="55" rows="15" wrap="VIRTUAL">$temphtml</textarea>
+              </td>
+            </tr>
+            <tr bgcolor="#F4F4FF" valign="top"> 
+              <td nowrap><font face="Verdana, Arial, Helvetica, sans-serif" size="-1"><b>Template 
+                Vocabulary:</b></font></td>
+              <td> 
+EOH
+
+	# Initialize line divider
+	$linediv = 0;
+
+	# Show template vocabulary
+	foreach $word(@tempvoc) {
+		$word =~ s/&/&amp;/g;
+		$word =~ s/\"/&quot;/g;
+		print "                <input type=\"text\" name=\"list\" size=\"22\" value=\"$word\">";
+		$linediv++;
+		print "<br>" if $linediv % 3 == 0;
+		print "\n";
+		
+	}
+
+	print <<EOH;
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="2" bgcolor="#F4E8EF"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2">Click 
+                the &quot;Save Template&quot; button to save changes.</font></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <input type="submit" name="Submit" value="Save Template">
+    <input type="button" name="close" value="Close This Window" onClick="self.close()">
+  </form>
+  <font face="Arial, Helvetica, sans-serif" size="-2"><a href="http://scripts.21stcenturyhost.net" target="_blank">Powered 
+  by 21stCenturyScripts</a></font></div>
+</body>
+</html>
+EOH
+	exit;
+}
+
+
+# Save template settings
+sub tempsave {
+
+	# Check referring URL
+	&urlcheck;
+
+	# Load selected template
+	if ($FORM{'load'}) {
+		&tempedit;
+
+	# Save template
+	} else {
+		# Format variables
+		$FORM{'body'} =~ s/\\/\\\\/g;
+		$FORM{'body'} =~ s/'/\\'/g;
+		foreach $word(@list) {
+			$word =~ s/\\/\\\\/g;
+			$word =~ s/'/\\'/g;
+		}
+
+		# Save template
+		open(TEMP,"+<$tmplpath/$FORM{'tempfile'}.tmpl") || err("Could not update $tmplpath/$FORM{'tempfile'}.tmpl: $!");
+		flock(TEMP,2);
+		@tmp = <TEMP>;
+		seek(TEMP,0,0);
+		truncate(TEMP,0);
+		print TEMP $tmp[0];
+		print TEMP $tmp[1];
+		print TEMP $tmp[2];
+		if ($FORM{'commonhead'}) {
+			print TEMP "\$commonhead = 1;\n";
+		} else {
+			print TEMP "\$commonhead = 0;\n";
+		}
+		if ($FORM{'commonfoot'}) {
+			print TEMP "\$commonfoot = 1;\n";
+		} else {
+			print TEMP "\$commonfoot = 0;\n";
+		}
+		print TEMP "\@tempvoc = (";
+		for ($j = 0; $j < $#list; $j++) {
+			print TEMP "'$list[$j]',";
+		}
+		print TEMP "'$list[-1]');\n";
+		print TEMP "\$temphtml = '$FORM{'body'}';\n";
+		print TEMP "1; # Do not remove this line\n";
+		close(TEMP);
+
+		# Display Success Screen
+		&adminconfirm("Template Settings Have Been Saved!", "Return to Template Editor", "admin.cgi?action=tempselect&load=1&select=$FORM{'tempfile'}");
+	}
+}
+
+
+1;

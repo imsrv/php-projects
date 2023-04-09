@@ -1,0 +1,20 @@
+
+<h1> jPhotos Photo Gallery </h1>
+
+<loop name="dir">
+<img src="./images/folder32.gif" style="vertical-align: middle" alt="folder"> &nbsp; <a href="{browse_script}foto_dir={dir.dir}">{dir.title}</a> <!-- date --><br>
+  <noloop name="dir">
+  </noloop name="dir">
+</loop name="dir">
+
+<br>
+<loop name="photo">
+<div class="card">
+  <h2 class="card-title">{photo.title}</h2>
+  <p class="card-photo"><a href="{detail_script}foto_dir={photo.dir}&amp;foto={photo.file_name}"><img src="{photo.file_thumb}" alt="{photo.title}"></a></p>
+  <p class="card-desc">{photo.description}</p>
+</div>
+  <noloop name="photo">
+  </noloop name="photo">
+</loop name="photo">
+<div style="clear: right;"><div style="clear: left;">&nbsp;</div></div>

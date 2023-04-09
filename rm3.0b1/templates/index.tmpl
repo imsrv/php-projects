@@ -1,0 +1,29 @@
+# Top List Template... Do Not Edit Manually...
+$tempname = "Top List";
+@tempsubs = ('<font color="#3333CC">{TOT_SITES}</font> - total number of sites','<font color="#3333CC">{UPD_DATE}</font> - date of last update','<font color="#3333CC">{RES_DATE}</font> - date of next reset','<font color="#3333CC">{MEMB_LINK}</font> - member area link','<font color="#3333CC">{REG_LINK}</font> - registration link','<font color="#3333CC">{TOP_LIST}</font> - Top List table','<font color="#3333CC">{POS_IND}</font> - viewing position indicator','<font color="#3333CC">{PAGE_LINKS}</font> - page breakdown links','<font color="#3333CC">{LOG_STATUS}</font> - member logon status');
+$commonhead = 1;
+$commonfoot = 1;
+@tempvoc = ('Total Sites:','List last updated on','Next reset:','Members','Register','Title - Description','There are no sites to display...');
+$temphtml = '<div align="center">
+  <h3><b><font face="Arial, Helvetica, sans-serif" size="-1">Top List</font></b></h3>
+  <font face="Arial, Helvetica, sans-serif" size="-1">{TOT_SITES} | {UPD_DATE} | {RES_DATE}</font><br>
+  <br>
+  <table width="700" border="0" cellspacing="0" cellpadding="1">
+    <tr> 
+      <td><font face="Arial, Helvetica, sans-serif" size="-1">{MEMB_LINK} | {REG_LINK}</font></td>
+      <td> 
+        <div align="right">{LOG_STATUS}</div>
+      </td>
+    </tr>
+  </table>
+{TOP_LIST}
+  <table width="700" border="0" cellspacing="0" cellpadding="1">
+    <tr> 
+      <td>{POS_IND}</td>
+      <td> 
+        <div align="right">{PAGE_LINKS}</div>
+      </td>
+    </tr>
+  </table>
+</div>';
+1; # Do not remove this line

@@ -1,0 +1,5 @@
+<? // Dont Remove this tag it is required for the script to work
+include("/home/jason/moe_config");
+
+
+?>

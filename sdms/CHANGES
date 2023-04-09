@@ -1,0 +1,13 @@
+Version 1.1.4 - 5 January 2001
+  - Space Odyssee release.
+  - Fixed a minor bug in the search page.
+  - Added icons for 'c' code files.
+Version 1.1.2 - 17 November 2000
+  - Fixed a buglet in the user administration code.
+Version 1.1.1 - 16 November 2000
+  - Fixed a buglet in the log listing.
+Version 1.1 - 16 November 2000
+  - Modified the code to use php4 sessions for user authentication.
+    This means users of v1.0 should create the session table manually.
+    See scripts/create_db.sql for details.
+  - Added 4 file types.

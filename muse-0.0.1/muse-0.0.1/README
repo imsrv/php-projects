@@ -1,0 +1,61 @@
+muse v0.0.1 : Copyright (C) 2000 Toby Jaffey
+Fri Jan 21 03:30:03 GMT 2000
+
+LICENSE:
+This program is free software; you can distribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+Thanks to Jack Moffitt, Barath Raghavan, and Alexander Haväng for writing
+icecast.
+http://www.icecast.org
+devel@icecast.org
+
+DESCRIPTION:
+
+Muse is a complete web based playlist manager for icecast released and written
+under the GPL. It uses a single php3 web page, a perl playlist manager and a
+file streamer written by me.
+
+Muse allows users to add, remove randomise and request tracks using a web
+interface. Two playlists are used. The main list cycles infinitely. However,
+users can request tracks for the request list, which will be played before any
+new main list tracks.
+
+Muse can also be used away from the web through the (rather rudimentary) perl
+interface. Commands include add, remove, list, listnow, skip, randomise and
+info.
+
+A complete setup consists of many independent parts. Icecast sits in the middle
+accepting connections from user clients such as xmms, mpg123 and winamp as well
+as streaming clients such as streamer and shout. Httpd accepts connections from
+users, it runs the php3 interface which in turn executes the perl playlist
+manager. This edits playlist files and sends signals to streamer which is
+permanently connected to icecast.
+
+And now for a really confusing diagram.......
+
+           HTTP
+|--------|      |-------------|
+| Apache |<---->| Web Browser |
+|--------|      |-------------|
+|  PHP3  |                       SIGUSR1
+|--------| pipe |-------------|---------->|----------|
+|  Perl  |<---->| playlist.pl |           | streamer |
+|--------|      |-------------|<----------|----------|
+                                  pipes        ^
+                                               | tcp
+                                               v
+                        |------------|      |---------|
+                        | MP3 Player |<---->| icecast |
+                        |------------|      |---------|
+
+
+
+USAGE:
+Read the perl, change the options.
+Run icecast, connect streamer to it.
+Check that the perl options work.
+Stick it all on a web server running php3.
+

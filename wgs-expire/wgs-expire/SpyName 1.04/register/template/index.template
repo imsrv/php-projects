@@ -1,0 +1,77 @@
+<html>
+	<head>
+  	<link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+  <script>
+  	function checkPass() {
+    	pass = document.f.passwd.value;
+    	c = document.f.confirm.value;
+      if (document.f.login.value == "") {
+      	alert("Please enter login");
+      	return false;
+      };
+      if (document.f.email.value == "") {
+      	alert("Please enter email address");
+      	return false;
+      };
+      if (pass == "") {
+      	alert("Please enter password");
+      	return false;
+      }
+      if (pass != c) {
+      	alert("Password and confirmation don't match");
+      	return false;
+      };
+      return true;
+    };
+  </script>
+	<body>
+  		<center>
+    	<form name="f" method="post" onSubmit="return checkPass()">
+      	<table class="BlueNoteFormTABLE">
+          <tr>
+          	<td colspan="2" class="BlueNoteColumnTD">User information
+         	<tr>
+          	<td>Login<font color="red">*</font>
+						<td><input type="text" class="text" name="login">            
+          <tr>
+            <td>First name
+						<td><input type="text" class="text" name="first">
+          <tr>            
+            <td>Last name
+						<td><input type="text" class="text" name="last">
+          <tr>
+            <td>E-mail address<font color="red">*</font>
+						<td><input type="text" class="text" name="email">
+          <tr>
+            <td>Send me the latest news
+						<td><input type="checkbox" class="check" name="news" checked>
+          <tr><td>
+          <tr>
+          	<td colspan="2" class="BlueNoteColumnTD">Password options
+        	<tr>
+          	<td>Enter your password<font color="red">*</font>
+						<td><input type="password" class="text" name="passwd" value="<%admpasswd%>">            
+        	<tr>
+          	<td>Confirm your password<font color="red">*</font>
+						<td><input type="password" class="text" name="confirm" value="<%admpasswd%>">            
+          <tr><td>
+          <tr>
+          	<td colspan="2" class="BlueNoteColumnTD">Account type
+        	<tr>
+          	<td>Choose your account type<font color="red">*</font>
+						<td>
+            <select name="acctype">
+            <%table[SELECT id as plan_id,name as plan_name FROM plan]
+            	<option value="<%plan_id%>"><%plan_name%></option>
+            <%/table
+            </select>            
+        	<tr>
+          	<td align="center" colspan="3">
+            		<input type="submit" name="step1" value="Next step >>">
+        </table>
+        
+    	</form>
+
+  </body>
+</html>

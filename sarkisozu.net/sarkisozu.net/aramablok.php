@@ -1,0 +1,1 @@
+<form name="ara" action="arama.php"><input type="text" name="sarki" value="þarký/þarkýcý/albüm" onFocus="this.value='';"><br><input name="dil" type="radio" value="tr" checked>&nbsp;Türkçe&nbsp;&nbsp;<input name="dil" type="radio" value="yb">&nbsp;Yabancý<br><input name="Submit" type="image" src="images/ara.gif" style="border:1px solid white;"></form>

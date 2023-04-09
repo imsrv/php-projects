@@ -1,0 +1,76 @@
+--------------------------------------------------------------------------------
+phpWatermark 0.3 (c) 2002 Mario Witte 
+--------------------------------------------------------------------------------
+
+#########################################################
+#                                                       #
+# PHPSelect Web Development Division                    #
+#                                                       #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are distributed through         #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated.                                     #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the distriuters      #
+# at admin@phpselect.com                                #
+#                                                       #
+#########################################################
+
+
+Description
+phpWatermark aims to provide a simple way of marking an image with a digital "watermark" to prevent unauthorized use.
+
+--------------------------------------------------------------------------------
+
+Usage
+
+phpWatermark is implemented as a PHP class. Thus you first need to instantiate it with the source image as the only parameter:
+
+$wm = new watermark("/path/to/images/image.png");
+Next you may specify where the watermark should be put on the source image by calling setPosition. Valid parameters for setPosition are:
+
+TL - Top left
+TM - Top middle
+TR - Top right
+CL - Center left
+C  - Center
+CR - Center right
+BL - Bottom left
+BM - Bottom middle
+BR - Botton right
+
+Or:+--+--+--+
+|TL|TM|TR|
++--+--+--+
+|CL|C |CR|
++--+--+--+
+|BL|BM|BR|
++--+--+--+
+
+As a gimmick you may specify "RND" which will choose a
+position by random - SCNR ;-)
+
+Optionally your max specify a fixed color or the text. If you don't specify one phpWatermark will try to determine the best color$wm->setFixedColor('#E4E4E4'); // Set color using hex-code $wm->setFixedColor(array(255, 255, 255)); // Set color by rgb
+
+Next you should call "addWatermark" and give the watermark text as a parameter:
+$wm->addWatermark("phpWatermark");
+
+Finally you can fetch a reference to the newly created image by calling getMarkedImage: $im = $wm->getMarkedImage();
+
+A simple example file with comments is included in this package: example_usage_text.php
+
+--------------------------------------------------------------------------------
+
+Features
+Current features include:
+
+- Accepts either resources or filenames
+- Automatic choosing of best color for watermark text
+- Configurable position of watermark on image

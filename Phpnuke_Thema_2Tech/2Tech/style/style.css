@@ -1,0 +1,68 @@
+@font-face { font-family:Pixel Classic ; src:local(Pixel Classic), url(http://www.userwear.de/fonts/PixelClassic.TTF) format(TrueType); }
+
+@font-face { font-family:Micro ; src:local(Micro), url(http://www.userwear.de/fonts/micro___.TTF) format(TrueType); }
+
+
+TABLE{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size:11px;
+  color: #CCCCCC;
+
+   }
+.arthead {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size:11px;
+  color:FFD26A;
+  font-weight: bold;
+   }
+.artsubhead {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size:10px;
+; color: #FFFFFF
+   }
+.art {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size:11px;
+; color: #CCCCCC
+   }
+.menuehead {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size:11px;
+  font-weight: bold;
+; color: FFD26A
+   }
+TEXTAREA{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  color: #CCCCCC;
+   }
+
+
+A:active { text-decoration : none; font-weight : normal; color : #FFFFFF; font-family: Verdana, Arial, Helvetica, sans-serif; }
+A:link { text-decoration : none; font-weight : normal; color : #FFFFFF; font-family: Verdana, Arial, Helvetica, sans-serif; }
+A:visited { text-decoration : none; font-weight : normal; color : #FFFFFF; font-family: Verdana, Arial, Helvetica, sans-serif; }
+A:hover { text-decoration : underline; font-weight : normal; color : #FF9900; font-family: Verdana, Arial, Helvetica, sans-serif; }BODY { 
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size:11px;
+  color: #CCCCCC;
+ } DIV  { 
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size:11px;
+  color: #CCCCCC;
+ } 
+
+
+
+INPUT { 
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  color: FFD26A;
+ } P { 
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size:11px;
+  color: #CCCCCC;
+ } SELECT  { 
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  color: #CCCCCC;
+ } 

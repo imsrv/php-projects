@@ -1,0 +1,14 @@
+Dear {name}
+
+%enewpass%
+
+%username%: {username}
+%password%: {password}
+
+%ulogin% URL: {baseurl}/{mainfile}.cgi
+
+
+%kregards%,
+
+
+Help Desk

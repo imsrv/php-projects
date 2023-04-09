@@ -1,0 +1,33 @@
+
+    QuickGallery ver 1.0.3
+
+    Author : Marcin Chmielecki (marcin@chiliweb.com.pl)
+    Design : Marcin Slifirski (sliwka@kmstudio.com.pl)
+
+    Why QuickGallery ?
+    
+    QuickGallery is very simple script, no need MySQL or any datebase.
+    Just put your images to images directory and that's all, now you can see your thumbs.
+    You don't have to resize your images.
+    What else QuickGallery can do :
+    - sort (ASC or DESC)
+    - have some skins
+    
+    How much it cost ?
+    
+    Nothing, it's free.   
+    GNU General Public License
+    
+    
+    Requirements
+    
+    PHP 4 or 5, GD library (with JPG)
+    
+    
+    Download ?
+    
+    http://www.chiliweb.com.pl/freesoft/quickgallery.zip
+    
+    
+    
+    

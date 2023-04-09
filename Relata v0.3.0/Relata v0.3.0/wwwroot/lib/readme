@@ -1,0 +1,9 @@
+This is where all the library functions are stored that are used throughout the site such as session, db & user verification management. Relatamate uses PHPlib for session & user authentication.
+
+md5.js - client side md5 javascript to encrypt the username / password at login as opposed to sending them over an open connnection to the server.
+formcheck.js - form checking functions.
+popupcalendar.js - popup calendar used on opportunity & activity pages.
+class.calendar.php - calendar class.
+global.inc.php - commonly used functions such as template management & encryption.
+phpmailer.inc.php - class used to send emails.
+prepend.php - phplib file that includes all of the phplib files.

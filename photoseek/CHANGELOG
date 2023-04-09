@@ -1,0 +1,323 @@
+PhotoSeek General Changelog
+kept by jeff b (jeff@univrel.pr.uconn.edu)
+
+* Thu Oct 26 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - dbRecCount -> db_rec_count in API with caching capabilities added
+    (references in search forms fixed as well)
+  - hilite now outputs semantically correct HTML
+  - added PULLDOWNS define in config for disabling cat/keywd pulldowns for
+    those who like speed hacks, with all changes across search forms
+  - cleaned up config.inc
+  - fixed typo in searchform.php
+
+* Wed Oct 25 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - added highlighting for main search buttons on simple and advanced search
+    forms (Peter Morenus)
+  - added city as search field in regular and advanced search pages
+  - added CITY_TEXT define for installations that categorize by "Location"
+    instead of "City" (search pages, iptc_edit, image_information)
+  - check for DISABLE_CATEGORIES in advancedsearchform.php
+
+* Tue Oct 24 2000 jeff b <jeff@univrel.pr.uconn.edu> 
+  - fixed stupid breaking out of PHP bug in advanced search page. compound
+    searches now work. I rule.
+  - small semantic fix in header.php
+  - added DISABLE_CATEGORIES option in config.inc, implemented in search.php,
+    advancedsearchform.php, searchform.php, image_information.php
+
+* Mon Oct 23 2000 jeff b <jeff@univrel.pr.uconn.edu> 
+  - committed changes to advanced search page
+  - added sql_search_for() function in API to deal with query portion
+    formation, then implemented in search.php
+
+* Wed Oct 18 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - added pass_{url,form} functions and $passed_vars array in API to
+    centralize var passing
+  - updated search.php, image_information.php, iptc_edit.php to use the
+    new passing functions
+
+* Wed Oct 11 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - fixed overwrite problem when reloading catsearch/keysearch (checking
+    to see if there is a value before overwriting)
+  - fixed up search page to look a little nicer
+  - added Advanced Search page
+
+* Thu Oct 05 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - finally fixed up search page for seperate actions. too hacked, tho.
+
+* Mon Sep 25 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - added support for unique_array function
+  - added commadelim_list function for pulldowns
+  - tested pulldowns ... for some reason sort and duplicate remove is
+    not currently functioning. hm.
+
+* Tue Sep 12 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - fixed locationsearch to use REGEXP to avoid displaying subdirectories
+    (must check the implications of this while using other SQL engines
+     besides MySQL...)
+  - location link from image_information actually passes $style now, so
+    that frames work properly
+  - locationsearch now pulls out beginning slash properly, so that link
+    from image_information performs proper query
+  - redesigned admin page to be less fugly
+  - added link to admin page, able to be turned off from config file
+  - moved class.{Image,Eps}.php, generate_thumbnail.php to C define style
+  - moved from incredibly legacy cloud{Image,Repository} to
+    ps{Image,Repository} in API
+  - removed old class imageNode from API, since class Tree obsoletes it
+  - minor API fixes: SQL speed hack in existsInDatabase, fixing of
+    photoseek_authenticate to look for $style (for top & bottom)
+  - {repository,user}detail.php, made sure openDatabase() is used, cleaned
+    up defines
+  - class.{data_object,repository_data_object,user_data_object}.php now use
+    C define style
+  - fixed keywords and categories links from search to work with frames
+
+* Mon Sep 11 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - added class.tree.php (from class.tree.php3, modified slightly) to
+    make tree browsing function
+  - added tree_view.php, with hooks in other modules... it does use frames
+  - optimized MySQL table for images to have fullfilename as an index
+  - moved BGCOLOR, VLINK, LINK colors to defines in config.inc, to allow
+    for frames support with consistant colors
+
+* Fri Sep 08 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - whatever happened to keeping this updated?
+  - complete move to phpwebtools finished, with several old files removed
+  - tentatively moved to version 0.3 (Mackey)
+  - old sql layer removed in favor of phpwebtools' class.sql.php
+  - revamped search form on front page, now much easier to use
+  - fixed variable passing between modules
+  - added switchable thumbs/list view for search
+  - IPTC editing now available linked from image_information.php
+  - IPTC edit's image now links to image_information
+
+* Fri Jun 23 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - committed changes for weird cataloging problems
+
+* Mon May 22 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - CLICK_DOWNLOAD -> IMAGE_CLICK_ACTION (info|download|false) with hooks
+  - reactivated BINHEX downloads
+  - added ZIP file downloads, with slight change in download area
+  - moved from exec()s in config.inc to increase speed
+  - updated AUTHORS and README to be up to date (finally)
+  - $package_name -> PACKAGE_NAME, $version -> VERSION, $coded_by -> CODED_BY
+  - added $binhex_exec
+  - created RPM spec file for Photoseek package with autoconfiguring
+  - advanced version to 0.2.2
+
+* Tue May 16 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - moved to is_array() for category/keyword compress in discoverRepository
+  - cleaned up API a little
+
+* Mon May 15 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - cleanup of some of Todd's changes
+  - shell_exec() moved back to exec() to avoid breaking things
+
+* Thu May 11 2000 Todd Kirby <kirbyt@yahoo.com>
+  - rewrite of SQL layer
+  - $CONFIG and other loading variables moved to define()'s
+
+* Thu May 11 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - began to create nonjpeg_iptcembed() function, using ImageMagick
+    convert's -profile option
+  - small fix for file_magic() to check for file existing
+
+* Wed Apr 19 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - fixed problem of "Array" being written to keyword and category fields
+    in the database, due to bad planning and sloppy coding
+
+* Thu Apr 13 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - rewrote messy search.php link creation for keywords and categories
+  - added catsearch action for categories
+  - added CLICK_DOWNLOAD option in config to allow disabling of thumbnail
+    click to download
+  - added date widgets in iptc_edit.php with EPOCH option in config file
+  - generate_eps_thumbnail now reports its function name correctly upon
+    death
+  - version 0.2.1 release, next will most likely be 0.3.0 if we can get
+    some more IPTC editing support. consider this 0.3.0presomething.
+
+* Tue Apr 04 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - finally tracked down error in build_iptc_block() that was causing
+    half of the fields not to be passed
+  - modified IPTC edit to only show up for JPEGs, since I need to ask
+    the PHP maintainer for the code to add in the parts for TIFFs, etc,
+    or else I have to do it myself
+  - keyword links now pass $repository in the middle
+  - added keysearch action for keyword searches
+  - began conversion to combo boxes for IPTC editing
+  - moved version number to 0.2.1pre2
+
+* Fri Mar 31 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - 90% done with forms based IPTC editing for images
+  - added build_iptc_block() function and other supporting functions
+  - added iptc_edit.php with links in search.php for qualified users
+  - still loads of debug code to pull out -- don't use this for your
+    production server quite yet -- I'll get 0.3 ready before you know
+    it
+
+* Tue Mar 28 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - released 0.2.0 -- expect massive bug reports
+  - just noticed undocumented iptcembed() function. now feel dumb.
+
+* Tue Mar 21 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - bug in either file or linux magic causes some JPEGs not to be seen as
+    JPEGs, but as magic "data"... put in workaround in discoverRepository
+
+* Mon Mar 20 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - moved db_???? variables to DB_???? defines with changes across all
+    modules
+  - moved get_thumbnail.php to API conventions
+  - fixes for root level of the repository locationsearch
+  - added db_layer.php (database abstraction layer), currently only with
+    MySQL and PostgreSQL support
+
+* Thu Mar 16 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - pulled EXCEPTION_IMAGE_TYPES into Image->new_image()
+  - changed join() logic for keywords and categories in discoverRepository.php
+    (thanks to Lawrence Manning <lawrence@aslak.demon.co.uk>)
+
+* Wed Mar 15 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - addition of EPS class by Tom Duffey <trout@uwm.edu>
+  - creation of super-class class.Image.php
+  - moving from class.(imagetype).php to one class.Image.php with exceptions
+    for non-standard types
+  - fixed up discoverRepository.php to actually check proper magic before
+    determining image status
+  - added Photoseek.db.pgsql initial PostgreSQL definitions
+  - cleaned out API.inc a little more
+ 
+* Mon Mar 13 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - moved lstat() to stat() in discoverRepostory, changing index values
+    sent in by Tom Duffey <cortex@execpc.com>
+  - moved officially to 0.1.8 for release
+  - fixed pesky variable scope problem preventing generate_thumbnail from
+    working
+  - fixed lstat => stat in all image classes
+
+* Wed Mar 01 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - improved footer with GPL information on it.
+
+* Tue Feb 29 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - implemented search.php skipping hack by Tom Duffey <cortex@execpc.com>
+  - implemented switching of between ImageMagick and UNIX-type image
+    manipulation commands (contributed by Robert Wahler
+    <robert@GearHeadForHire.com>)
+
+* Fri Feb 25 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - broken mysql_db_query statement in searchform fixed (paper bag)
+  - changed images.source to images.image_source to avoid MySQL
+    conflict with name (Peter Lieverdink <cafuego@creativecontingencies.com>)
+  - added $convert_exec to config, and changed references to it to avoid
+    not finding executable (Peter Lieverdink)
+  - moved version number to 0.1.7 (sorry everyone for the silly bugs)
+
+* Thu Feb 24 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - minor cleanups in user and repositories modules
+  - released 0.1.6 (finally)
+
+* Mon Feb 20 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - misc minor fixes in the last few days
+  - coverting from mysql_query => mysql_db_query in all modules
+  - patch from Bert Hubert (aha@casema.net) which allows clicking on
+    the image thumbnails to obtain the image/(mime) image, instead
+    of a download image type, along with support for supplying parts
+    of mime-types in get_image.php ...
+  - moved version number to 0.1.6
+
+* Thu Feb 10 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - corrected legacy rpublic SQL query forcing no repositories to be
+    displayed in searchform.php
+
+* Wed Feb 09 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - small typo in class.Gif.php3 fixed
+  - implemented levels support 0-3 currently
+  - decided to remove rpublic in favor of rlevel
+  - upgraded version number to 0.1.5, officially
+  - repositories not displayed if user does not have access to any
+    in searchform.php
+  - levels seem to work
+  - valid_user() now returns user level if authenticated instead of
+    true
+  - changed db name from "cloud" to "photoseek"
+  - added catalog-all.pl to discover/rediscover all repositories in
+    Photoseek's database
+
+* Tue Feb 08 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - modified db def to include user levels in repositories and in
+    actual user records
+  - modified user module to take care of levels as well
+  - should we remove rpublic and just use rlevel? broken from CVS
+    until we decide
+  - used IPTC field extraction in class.Gif.php but no luck so far...
+    will switch over for JPEGs and add PNG support *very* soon. perhaps
+    inheirited classes?
+
+* Wed Feb 02 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - implemented public/private checking and users with user editting
+    module, across all modules
+  - changed displayed DPI in information to 120,200,300
+  - rewrite of search queries with perms and repositories in mind
+  - moved official version to 0.1.4, not moving to 0.2 until all bugs
+    with users/repositories removed and speed hacks implemented
+  - initial binhex/other compression image encoding for download
+
+* Tue Feb 01 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - fixed case of null haystack in hilite() function in API.inc
+  - dates of 0000-00-00 now do not display in image_information.php
+  - initial support for public/private repositories
+  - new logo graphic from John Bailey (jbailey@univrel.pr.uconn.edu)
+  - redid download image with nicer palette
+  - hilite() function works with zero length queries now
+  - logo now links back to search page
+
+* Mon Jan 31 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - added hilighting of query results
+  - more information presented
+  - fixed dumb paper-bag bug in cron shell script creating 1's
+  - added INSTALL installation instructions for those who can't figure
+    everything out for themselves
+  - prettified the header code, added photoseek.gif temp logo
+  - more icons, added switchable GRAPHICS variable in config.inc
+  - released 0.1.2
+
+* Thu Jan 27 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - added imageNode class to API for future tree view functions
+  - added INSTALL file with basic instructions on setup
+  - forced image routines to produce Pragma: no-cache header to
+    stop browsers from caching images
+
+* Wed Jan 26 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - added shell scripts for repository discovering, to allow it to
+    be cron'd
+  - added delete/dereference action for repositories
+  - added LICENSE file with the GPL v2
+
+* Mon Jan 24 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - 0.1 released
+
+* Fri Jan 21 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - moved requires back to includes to be able to be switched
+  - repositories can now be editted
+  - admin functions have basic authentication on them from config.inc
+
+* Wed Jan 12 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - set up search.php and get_information.php to pass the variable
+    $repository back and forth
+
+* Tue Jan 11 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - changed name of project from Cloud to PhotoSeek
+  - moved includes to requires
+  - changed cloud-config -> config and cloud-API -> API
+  - added repository select on searchform and search
+  - set up CVS repository on sourceforge.net for project
+
+* Wed Jan 05 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - implemented multiple page return searches to save our browsers
+
+* Tue Jan 04 2000 jeff b <jeff@univrel.pr.uconn.edu>
+  - first tarballed release, mostly for backup purposes
+  - simple search seems to run, although not sure all image data needed
+    is being stored
+  - download links work properly, as well as thumbnail gen (phew!)

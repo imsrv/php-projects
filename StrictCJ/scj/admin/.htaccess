@@ -1,0 +1,5 @@
+AuthUserFile /your/path/to/scj/admin/.htpasswd
+AuthGroupFile /dev/null
+AuthName 'yourdomain.com admins only'
+AuthType Basic
+require valid-user

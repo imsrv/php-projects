@@ -1,0 +1,79 @@
+
+#########################
+#  - is bug fix		#
+#  + is new feature	#
+#  * is misc		#
+#########################
+
+
+[ December 28, 2002 -- 1.2.5 ]
+
+- Fixed minor bug with file uploads when open_basedir was restricted.
+
+[ December 10, 2002 -- 1.2.4 ]
+
+- Fixed (hopefully) the periodic data corruption when certain 
+  browser versions used the preview and save buttons. ("Disabled" 
+  the back button after saving, added target window for save 
+  function, added meta tags to force data reload)
+
+[ December 2, 2002 -- version 1.2.3 ]
+* Fixed small bug in IE 5.5 browsers without recent service packs.
+
+[ November 14, 2002 -- version 1.2.2 ]
+* Minor (non-critical) security enhancements
+* Fixed a few things that didn't work with older versions of PHP.
++ Added a help file.  (Thanks Dan!)
+
+[ November 4, 2002 -- version 1.2.1 ]
++ Security enhancements
+* A few minor cosmetic changes
+
+[ October 20, 2002 -- version 1.2 ]
++ Added support for multiple languages.  See README.html for details.
+* Several small bug fixes and tweaks.
+
+[ September 18, 2002 -- version 1.1.1 ]
++ Preview now opens into a new window with a "close button" on it.
+- Fixed javascript window close error in upload.php file.
+
+[ September 14, 2002 -- version 1.1.0 ]
++ Can now add and modify links for images!
+* More code was cleaned up.
+* Minor changes to editor layout.
+
+[ September 5, 2002 -- version 1.0.2 ]
++ Added file upload ability.
+* After saving, the "View in new window" button now opens an IE window with all 
+  IE options enabled.  (Location bar, toolbar, menu bar, status bar, etc..)  
+  So now you can force a refresh if IE doesn't do it automatically.
+
+[ September 4, 2002 -- version 1.0.1 ]
+- Removed needless call that was left over from debugging.
+- Removed some error checking for required template files that was actually 
+  causing errors.
+- Removed tidyedit function.  It just wasn't needed, and I never plan to use it.
+
+[ August 28, 2002 -- version 1.0 ]
+- Fixed several small bugs
+
+[ March 29, 2002 -- version 1.0 beta 4 ]
++ Ability to specify displayed file types when browsing for images or links.
+- File extensions are now displayed when browsing for links.
+- Spaces now work for all folders.
+
+[ March 23, 2002 -- version 1.0 beta 3 ]
++ Ability to create new links.
++ Ability to remove existing links.
+- Better error handling for link function.
+* Better documentation to insert link window. (For the Target option)
+
+[ March 17, 2002 -- version 1.0 beta 2 ]
+- Fixed a problem with template javascript. 
+  (document.menu.file.value is null error when changing dir's and no snippets 
+  are present.)
+* Tweak of html display code to speed up display.
+* Tested on Win 95, Win 98, W2k, XP - all with no problems.
+
+[ March 16, 2002 -- version 1.0 beta 1 ]
++ Initial release.

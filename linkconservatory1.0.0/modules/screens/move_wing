@@ -1,0 +1,36 @@
+<?
+	/*
+	** Get function for getting list of wings
+	*/
+	include("$Application_Root/modules/include/getWingContents");
+
+	$Query = "SELECT Parent ";
+	$Query .= "FROM wing ";
+	$Query .= "WHERE ID=$wing";
+	$DatabaseResult = mysql_query($Query, $DatabaseLink);
+	$DatabaseRow = mysql_fetch_row($DatabaseResult);
+	$parentWing = $DatabaseRow[0];
+
+
+	/* 
+	** display form for moving wing 
+	*/
+	print("<FORM ACTION=\"$IndexScript\" METHOD=\"GET\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"SCREEN\" VALUE=\"tidy\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"ACTION\" VALUE=\"MOVE_WING\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"what\" VALUE=\"wing\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"wing\" VALUE=\"$wing\">\n");
+
+	print("<INPUT TYPE=\"radio\" NAME=\"inputWing\" VALUE=\"0\"");
+	if($parentWing == 0)
+	{
+		print(" CHECKED");
+	}
+	print(">Main Hall\n");
+
+	getWingContents(0);
+
+	print("<INPUT TYPE=\"SUBMIT\" VALUE=\"Move Wing\"><BR>\n");
+	print("</FORM>\n");
+
+?>

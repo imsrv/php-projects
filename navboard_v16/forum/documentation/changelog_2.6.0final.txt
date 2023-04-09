@@ -1,0 +1,20 @@
+CHANGELOG 
+NavBoard 2.6.0 beta2 to 2.6.0 final
+Released 6/9/2003
+
+IMPROVEMENTS:
+-correct copyright logo
+-changed last edit formatting
+-addition of php3 file system type
+
+FIXES:
+-some clean script fixes
+-changed default setting for last edit notice
+
+FILES CHANGED FROM BETA 2:
+(always best to just upload all the php files)
+admin_clean.php
+admin_config.php
+functions.php
+footer.php
+admin_convert.php

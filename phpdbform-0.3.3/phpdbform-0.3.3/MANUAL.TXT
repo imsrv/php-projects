@@ -1,0 +1,127 @@
+This is a very simple manual, I'm improving it...
+
+See INSTALL to get some hints to start, and see contact.php, type.php, and contact2.php to start your own forms.
+
+These are the main functions of the phpdbform class to create a db form:
+
+phpdbform constructor:
+phpdbform( $database_object, $db_table_name, $table_cols, $form_field_show, $form_field_order, $form_field_key )
+
+database_object: Object with some database parameters. (see below)
+db_table_name: Main table to edit.
+table_cols: Maximum number of cols in the html table. Used with every colspan's field to get a new row.
+form_field_show: What field of the main table to show in the selection list (Should be unique in the table, but it's not required). May list more than one field, separated by comma (,).
+form_field_order: What field to use to order the selection list. Perhaps the same field that is used in the form_field_show.
+form_field_key: The primary key of the table to find the selected row in the selection list.
+
+add_textbox( $field_name, $field_title, $field_size, $field_max, $field_colspan )
+field_name: field name to link this textbox.
+field_title: text to show above the field.
+field_size: size of the textbox (html), if set to auto width will be the same as the max lenght of the field from db.
+field_colspan: colspan used in this cell.
+
+add_checkbox( $field_name, $field_title, $field_colspan )
+field_name: field to link this checkbox
+field_title: text on the right of the checkbox
+field_colspan: colspan used in this cell.
+
+add_textarea( $field_name, $field_title, $area_cols, $area_rows, $field_colspan )
+field_name: field to link this textarea.
+field_title: text to show above the field.
+area_cols: number of cols to size the textarea.
+area_rows: number of rows to size the textarea.
+field_colspan: colspan used in this cell.
+
+add_listbox( $field_name, $field_title, $field_colspan, $field_lb_show, $field_lb_key, $field_lb_order, $field_lb_table  )
+field_name: field to link this listbox
+field_title: text to show above the field.
+field_colspan: colspan used in this cell.
+field_lb_show: field in the other table to show in the list. To show several fields, separate them with comma.
+field_lb_key: field in the other table that links with the main table.
+field_lb_order: field in the other table to order the list
+field_lb_table: name of the other table
+
+add_image( $field_name, $field_title, $field_colspan )
+Add an image field in phpdbform. To use it you will need to create a blob field and a char field to hold the image, the char field must have a size of 11 to store the image info, the name must be the image field name plus "_ctrl". If the image field (blob) is named "photo", then the table must have another field called "photo_ctrl" of type char(11).
+field_name: field to link image data. (don't forget the "_ctrl" field!)
+field_title: text to show above the field.
+field_colspan: colspan used in this cell.
+To see the image inside any page, you'll have to use phpdbimage.php using it as the "src" field of the "img" tag. See the phpdbimage.php for more informations.
+
+set_field_ereg($pattern, $message)
+Use this function to perform some checks before an insert or update.
+pattern: the regular expression to check, for example, to check if it is not a invalid e-mail address enter this code in $pattern: "^.+@.+\\..+$". This will not ensure that the e-mail address is valid at all!
+message: the message to display if the check fail
+*this function must be called after an add_textbox or add_textarea only, and it will refer to the last field added to phpdbform just before this call. Several set_field_ereg may be used in a phpdbform form, putting each call to set_field_ereg just after each add_textbox or add_textarea
+
+function add_combobox_fixed( $field_name, $field_title, $field_options, $field_colspan)
+field_name: field name to link this combobox.
+field_title: text to show above the field.
+field_options: the values for the combobox, each value separated by comma(,) "male,female".
+field_colspan: colspan used in this cell.
+To use the value substitution feature type each value separated by comma(,) with the real value afterward a equal sign(=) "male=1,female=2".  The first value is presented to the user, the second value is stored in the database.
+
+function add_radiobox_fixed( $field_name, $field_title, $field_options, $field_colspan)
+field_name: field name to link this radiobox.
+field_title: text to show above the radioboxes.
+field_options: the values for each radiobox, each value separated by comma(,) "male,female".
+field_colspan: colspan used in this cell.
+
+function add_date_field( $field_name, $field_title, $field_colspan, $field_format )
+field_name: field name to link this textbox.
+field_title: text to show above the field.
+field_colspan: colspan used in this cell.
+field_format: format to edit the date, possible values are: fmtUS (mm/dd/yyyy), fmtEUR (dd/mm/yyyy), fmtSQL (yyyy-mm-dd)
+
+function set_control_readonly($field_num, $value)
+function set_control_disabled($field_num, $value)
+These functions need a handle to the field, this handle can be obtained at the creation of the field, like: $val1 = $formdb->add_textbox( "name", "Name", "auto", 2 );
+They use the readonly and disabled properties of the html input. For the combobox the readonly property is implemented with javascript.
+
+*Filter functions
+add_filter_textbox( $field_stmt, $field_title, $field_size, $field_max, $field_colspan )
+field_stmt: statement of the where clause. Ex: "codigo > %val%" or "nome LIKE '%%val%%'"
+*** it must have a %val% inside it for replacement of the filter value. The function used here is str_replace, and from php manual, str_replace() was added in PHP 3.0.6, but was buggy up until PHP 3.0.8. See contact3.php to view it.
+field_title: text to show above the field.
+field_size: size of the textbox (html).
+field_max: maximum number to accept in the field.
+field_colspan: colspan used in this cell.
+
+* Function to join another table
+add_extra_field($extra_field_name, $extra_field_source, $extra_field_target, $extra_table_name, $extra field_order)
+extra_field_name: field (take from an extra table) to show in the select box
+extra_field_source: field for the join take from the main table
+extra_field_target: field for the join take from the target table
+extra_table_name: table name with wich we make the join 
+extra_field_order: 
+draw()
+This is the function that put phpdbform inside the page.
+
+*Properties:
+show_select_form = true;
+	Shows the selection list in the form to select a record. Without it user may only insert records.
+	
+show_edit_button = true;
+	Shows the Insert/Edit button in the form. Without it user may only see or delete records, but don't change or insert one.
+
+show_delete_button = true;
+	Shows th Delete button. Without it user may not delete a record.
+	
+If you put a phpdbform without the select_form and delete_button, users will only insert a record, this is good to the users insert theirs name and e-mail in your site.
+
+*** phpdbform_db class
+
+$db = new phpdbform_db( $database, $host, $user, $password );
+
+This is the database class for use with phpdbform. If you are using phpdbform inside its files (index, menu, etc.) you may put the values that these files give:
+$db = new phpdbform_db( $database, $db_host, $AuthName, $AuthPasswd ); // From contact.php
+
+but if you are using only phpdbform, you must supply the values: (see contact2.php)
+$db = new phpdbform_db( "DatabaseName", "localhost:3306", "nobody", "nobody" );
+** this is only an example supposing that your MySQL contains a database named DatabaseName, and the user nobody with the password nobody.
+
+This object will be used in the phpdbform constructor.
+
+*** themes ***
+Now phpdbform has themes! Look at siteconfig.inc.php to select your theme. The templ01 theme do not work very well with netscape, change the adm_ne.css to adm.css in phpdbform/themes/templ01 to correct it.
+Every theme consist of adm.css, footer.php and header.php and its own graphics. So it's easy to create a new theme. If you create one and think that anybody will like it, send it to me and I'll put in www.phpdbform.com!

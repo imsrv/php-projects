@@ -1,0 +1,2 @@
+<table width=100% align="center"><tr><td class="subheader" align="center">TEAM CREATION</td></tr></table>
+Your team has now been created. You can now access it in your control panel.<br>You will be linked to your control panel.

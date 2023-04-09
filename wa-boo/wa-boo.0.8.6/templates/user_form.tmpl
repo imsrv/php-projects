@@ -1,0 +1,335 @@
+<html>
+<head>
+<title>wa-boo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <style><? include ("includes/css.php"); ?></style>
+
+</head>
+
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<div align="center">
+  <table cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td class="versionfont"><img src="images/wa-boo_small.gif"><? echo $G_version ;?></td>
+    </tr>
+    <tr>
+      <td>
+        <table border="0" cellspacing="0" cellpadding="0" background="images/bg1.gif">
+          <tr>
+            <td background="images/left_top_corner.gif" height="7"></td>
+            <td background="images/h_line_top.gif" height="7" colspan="5"></td>
+            <td background="images/right_top_corner.gif" height="7"></td>
+          </tr>
+          <tr>
+            <td background="images/v_line_left.gif" width="7"> 
+              </td>
+            <td class="stdtitle" align="left" bgcolor="<? echo $s_user_context["color"]["menu"] ?>">
+	            <a title="<? echo $lab[20] /* Retour */ ?>" href="contacts.php"><img src="images/prev.gif" border="0"></a>
+		        </td>
+            <td class="stdtitle" align="center" bgcolor="<? echo $s_user_context["color"]["menu"] ?>" colspan="3">
+	            
+              <? echo $lab[0] /* Compte de */ . $s_user->getUserFirstname() . " " . $s_user->getUserName(); ?>
+            </td>
+            <td class="stdtitle" height="15" align="center" bgcolor="<? echo $s_user_context["color"]["menu"] ?>">&nbsp;</td>
+            <td valign="top" background="images/v_line_right.gif" width="7"></td>
+          </tr>
+          <tr>
+            <td background="images/v_line_left.gif" width="7"></td>
+            <td colspan="5" height="7" align="center" background="images/h_line.gif"></td>
+            <td valign="top" background="images/v_line_right.gif" width="7"></td>
+          </tr>
+          <tr>
+            <td background="images/v_line_left.gif" width="7"></td>
+            <td colspan="5"></td>
+            <td valign="top" background="images/v_line_right.gif" width="7"></td>
+          </tr>
+          <tr>
+            <td background="images/v_line_left.gif" width="7" height="10"></td>
+            <td class="stdfont" align="right">&nbsp;</td>
+            <td class="boldstdsubtitle" align="left" colspan="3">:: 
+              <? echo $lab[1]; /* Votre compte */ ?>
+            </td>
+            <td class="texteg"></td>
+            <td valign="top" background="images/v_line_right.gif" width="7"></td>
+          </tr>
+          <tr>
+            <td background="images/v_line_left.gif" width="7"></td>
+            <td class="stdfont" align="right" width="10">&nbsp;</td>
+            <td class="stdfont" align="right">
+              <? echo $lab[2]; /* Prénom */ ?>
+            </td>
+            <td width="5"></td>
+            <td width="130" class="boldcontactlistfont">
+              <? echo $s_user->getUserFirstname(); ?>
+            </td>
+            <td width="10" class="stdfont"></td>
+            <td valign="top" background="images/v_line_right.gif" width="7"></td>
+          </tr>
+          <tr>
+            <td background="images/v_line_left.gif" width="7"></td>
+            <td class="stdfont" align="right">&nbsp;</td>
+            <td class="stdfont" align="right">
+              <? echo $lab[3]; /* Nom */ ?>
+            </td>
+            <td>&nbsp;</td>
+            <td width="130" class="boldcontactlistfont">
+              <? echo $s_user->getUserName(); ?>
+          </td>
+            <td class="stdfont">&nbsp;</td>
+            <td valign="top" background="images/v_line_right.gif" width="7"></td>
+          </tr>
+          <form name="user" method="post" action="user.php">
+            <input type="hidden" name="account_whichaction" value="SAVE">
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td class="stdfont" align="right">
+                <? echo $lab[4]; /* Login */ ?>
+              </td>
+              <td>&nbsp;</td>
+              <td width="130" class="texteg">
+                <input type="text" name="login" value="<? echo $s_user->getUserLogin(); ?>" size="30" maxlength="50" height="30">
+              </td>
+              <td class="texteg">&nbsp;</td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td class="stdfont" align="right">
+                <? echo $lab[5]; /* Mot de passe */ ?>
+              </td>
+              <td>&nbsp;</td>
+              <td width="130" class="texteg">
+                <input type="password" name="passwd" value="<? echo $s_user->getUserPasswd(); ?>" size="30" maxlength="50">
+              </td>
+              <td class="texteg">&nbsp;</td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td class="stdfont" align="right">
+                <? echo $lab[6]; /* Mot de passe (confirmation) */ ?>
+              </td>
+              <td>&nbsp;</td>
+              <td width="130" class="texteg">
+                <input type="password" name="confirm" value="<? echo $s_user->getUserPasswd(); ?>" size="30" maxlength="50" height="30">
+              </td>
+              <td class="texteg">&nbsp;</td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td class="stdfont" align="right">
+                <? echo $lab[7]; /* E-mail */ ?>
+              </td>
+              <td>&nbsp;</td>
+              <td width="130" class="texteg">
+                <input type="text" name="email" value="<? echo $s_user->getUseremail(); ?>" size="30" maxlength="50" height="30">
+              </td>
+              <td class="texteg">&nbsp;</td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td>&nbsp;</td>
+              <td width="130" class="texteg">&nbsp;</td>
+              <td class="texteg">&nbsp;</td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td class="stdfont" align="right" colspan="3">
+                <input type="submit" value="<? echo $lab[8]; /* Enregistrer les modifications */ ?>" name="submit" class="userbutton">
+              </td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+          </form>
+          <?  if ($s_user->getUserDomains()) {  ?>
+          <form name="emailgroup" action="user_email_action.php" method="post">
+            <tr>
+              <td background="images/v_line_left.gif" width="7" height="10"></td>
+              <td class="stdfont" align="right"></td>
+              <td class="stdfont" align="right" colspan="3" background="images/h_line.gif"></td>
+              <td></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7" height="10"></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td class="boldstdsubtitle" align="left" colspan="3">:: 
+                <? echo $lab[9]; /* Vos groupes */ ?>
+              </td>
+              <td class="texteg"></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7" height="10"></td>
+              <td class="stdfont" align="right"></td>
+              <td class="stdfont" align="right"></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+      
+            <?          for ($i = 0 ; $i < count($user_membership) ; $i++) { ?>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td align="right" valign="top">&nbsp;</td>
+              <td align="right" valign="top">
+                <div class="boldstdsubtitle">
+                         
+                  <input type="radio" name="i_email_to_domain" value="<? echo $user_membership[$i]["domainID"]; ?>"<? echo((session_is_registered("s_email_to_domain") && $user_membership[$i]["domainID"] == $s_email_to_domain->getDomainId()) ? " checked" : ""); ?>>
+                  <?                  echo $user_membership[$i]["domainName"]; ?>
+                </div>
+                <div class="stdsubtitle"> 
+                  <?                echo $user_membership[$i]["misc"];  ?>
+                </div>
+              </td>
+              <td>&nbsp;</td>
+              <td width="130" class="stdfont" valign="top">
+                <? echo $lab[10]; /* Administrateurs : */ ?>
+                <br>
+          
+                <?    for ($j = 0 ; $j < count($user_membership[$i]["admins"]) ; $j++) { ?>
+                    <a href="mailto:<? echo $user_membership[$i]["admins"][$j]["email"]; ?>">
+                <?        echo $user_membership[$i]["admins"][$j]["firstname"] . " " . $user_membership[$i]["admins"][$j]["name"] . "<br>"; ?>
+                    </a>
+          
+                <?    } ?>
+          
+                <br>
+                <a title="<? echo $lab[15]; /* Afficher les Membres du groupe */ ?>" href="user.php?action=SHOWUSERS&group=<? echo $i; ?>"><img src="images/drill_down.gif" border="0"></a>
+                <? echo $lab[12]; /* Membres : */ ?>
+          
+                <?    if (isset($group) && $group == $i && count($user_membership[$i]["users"]) > 0) { ?>
+                    <br>
+                <?        for ($j = 0 ; $j < count($user_membership[$i]["users"]) ; $j++) { ?>
+                        <a href="mailto:<? echo $user_membership[$i]["users"][$j]["email"]; ?>">
+                <?            echo $user_membership[$i]["users"][$j]["firstname"] . " " . $user_membership[$i]["users"][$j]["name"] . "<br>"; ?>
+                        </a>
+          
+                <?        } 
+                }  ?>
+        
+              </td>
+              <td class="stdfont" valign="top">&nbsp;</td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7" height="10"></td>
+              <td class="stdfont" align="right"></td>
+              <td class="stdfont" align="right" colspan="3"></td>
+              <td></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7" height="10"></td>
+              <td class="stdfont" align="right"></td>
+              <td class="stdfont" align="right" colspan="3" background="images/h_line.gif"></td>
+              <td></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+      
+            <?  } ?>
+            
+            <tr>
+              <td background="images/v_line_left.gif" width="7" height="10"></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td class="boldstdsubtitle" align="left" colspan="3">
+                :: 
+                <? echo $lab[13]; /* Envoyer un email aux Membres du groupe sélectionné */ ?>
+              </td>
+              <td class="texteg"></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7" height="10"></td>
+              <td class="stdfont" align="right"></td>
+              <td class="stdfont" align="right" colspan="3"></td>
+              <td></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td class="stdfont" align="right" colspan="3" valign="top">
+                <i>
+                <? echo $lab[16]; /* De : */ ?>
+                <?  echo $s_user->getUserFirstname() . " " . $s_user->getUserName() ." (". $s_user->getUserEmail() .")"; ?>
+                </i>
+              </td>
+              <td class="texteg">&nbsp;</td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td class="stdfont" align="right" colspan="3" valign="top">
+                <? echo $lab[17]; /* Objet */ ?>
+                <input type="hidden" name="usr_whichaction" value="SENDMAIL">
+		            
+                <input type="text" name="i_email_subject" size="50" value="<? echo $s_email_subject; ?>">
+              </td>
+              <td class="texteg">&nbsp;</td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td class="stdfont" align="center" colspan="3" valign="top">
+                <? echo $lab[18]; /* Message */ ?>
+                <br>
+                <textarea name="i_email_message" cols="58" rows="5"><? echo $s_email_message; ?></textarea>
+              </td>
+              <td class="texteg">&nbsp;</td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td>&nbsp;</td>
+              <td width="130" class="texteg">&nbsp;</td>
+              <td class="texteg">&nbsp;</td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="left" colspan="2">
+		            <a title="<? echo $lab[20]; /* Retour */ ?>" href="contacts.php"><img src="images/prev.gif" border="0"></a></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td class="stdfont" align="right" valign="bottom">
+                <input type="submit" value="<? echo $lab[19]; /* Envoyer l'email */ ?>" name="submit2" class="userbutton">
+              </td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+          </form>
+          <?  }  ?>
+    
+          <tr>
+            <td class="texteg" height="7" background="images/left_bottom_corner.gif"></td>
+            <td height="7" background="images/h_line_bottom.gif" colspan="5"></td>
+            <td height="7" background="images/right_bottom_corner.gif"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  </div>
+
+<?
+   include ("footer.php");
+?>
+
+</body>
+</html>

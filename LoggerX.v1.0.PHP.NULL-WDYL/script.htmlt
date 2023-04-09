@@ -1,0 +1,40 @@
+<html>
+	<head>
+  		<title> Setup </title>
+  		<link rel="stylesheet" type="text/css" href="css/styles.css">
+	</head>
+<body>
+<br>
+<table border=0 cellpadding=1 cellspacing=1 bgcolor="#EDEDED">
+<tr bgcolor="#323F91" align=center><td>
+<table cellpadding=3 cellspacing=1 bgcolor="#EDEDED">
+<tr bgcolor="#323F91" align=center>
+<td class="subheader"> Copy this text </td> <tr><td bgcolor=white>
+<form method=post>
+<textarea cols=50 rows=15 name="message">
+<script language="javascript">
+var data, p;
+var agt=navigator.userAgent.toLowerCase();
+var img=escape("<? echo $imagename; ?>");
+document.cookie='__support_check=1';
+p='http';
+if((location.href.substr(0,6)=='https:')||(location.href.substr(0,6)=='HTTPS:')) {p='https';} data = '&agt=' + escape(agt) + '&img=' + img + '&r=' + escape(document.referrer) + '&aN=' + escape(navigator.appName) + '&lg=' + escape(navigator.systemLanguage) + '&OS=' + escape(navigator.platform) + '&aV=' + escape(navigator.appVersion);
+if(navigator.appVersion.substring(0,1)>'3') {data = data + '&cd=' + screen.colorDepth + '&p=' + escape(screen.width+ 'x'+screen.height) + '&je=' + navigator.javaEnabled();};
+document.write('<a href="<? echo $site;?>template.php?a=<?echo $userlogin; ?>">');
+document.write('<img border=0 hspace=0 '+'vspace=0 src="<? echo $site;?>counter.php?a=<?echo $userlogin; ?>' + data + '"> </a>');
+</script>
+<noscript>
+<a href="<? echo $site;?>template.php?a=<?echo $userlogin; ?>">
+<img border=0 hspace=0 vspace=0 src="<? echo $site;?>counter.php?a=<?echo $userlogin; ?>"></a></noscript>
+</textarea>
+</td></tr>
+<tr><td class="subheader">
+	<input type=hidden name="email" value="<? echo $email; ?>">
+	<input type=hidden name="login" value="<? echo $userlogin; ?>">
+	<input type=submit name="join" value="Finish">
+</td></tr>
+</table>
+</td></tr>
+</table><br>
+</form>
+</body>

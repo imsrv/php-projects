@@ -1,0 +1,246 @@
+<html>
+<head>
+       <title>wa-boo</title>
+       <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <style><? include ("includes/css.php"); ?></style> 
+       
+<script language="javascript">
+	function checkleft() {
+		for (var i = 2; i < document.duplicateform.elements.length; i++) {
+			if (document.duplicateform.elements[i].type == "radio") {
+				document.duplicateform.elements[i].checked = "1";
+				i++;
+			}
+		}
+	}
+	
+	function checkright() {
+		for (var i = 2; i < document.duplicateform.elements.length; i++) {
+			i++;
+			if (document.duplicateform.elements[i].type == "radio") {
+				document.duplicateform.elements[i].checked = "1";
+			}
+		}
+	}
+</script>      
+         
+    </head>
+
+
+<body topmargin="0">
+
+
+
+<form name="duplicateform" method="POST" action="import5.php">  
+  <table cellspacing="5" cellpadding="5" align="center">
+    <tr>
+      <td class="versionfont"><img src="images/wa-boo_small.gif">
+        <? echo $G_version ;?>
+      </td>
+    </tr>
+  
+    <tr>
+      <td colspan="2">
+        <table border="0" cellpadding="0" bgcolor="#F5F5F9" cellspacing="0">
+          <tr>
+            <td background="images/left_top_corner.gif" height="7"></td>
+            <td background="images/h_line_top.gif" height="7"></td>
+            <td background="images/right_top_corner.gif" height="7"></td>
+          </tr>
+          <tr> 
+            <td background="images/v_line_left.gif" width="7"> 
+              </td>
+            <td class="boldstdfont" bgcolor="#EEEEFF" >
+              <table border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" background="images/bg1.gif">
+                <tr align="center" bgcolor="<? echo $s_user_context["color"]["menu"] ?>"> 
+                  <td colspan="3" class="stdtitle"><? echo $lab[0]; /* Etape 4 : Traitement des doublons */ ?></td>
+                </tr>
+                <tr>
+                  <td background="images/h_line.gif" align="center" colspan="7" height="7"></td>
+                </tr>
+                <tr align="center"> 
+                  <td width="15" class="stdfont">&nbsp;</td>
+                  <td align="left" class="boldstdfont" height="25">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                      <tr align="center" valign="middle">
+                        <td class="boldstdfont" colspan="3" height="100">
+						<br>
+						<? echo $lab[1]; /* Votre fichier contient */ ?><span class="bolddarkredfont"><? echo $duplicate; ?></span><? echo $lab[2]; /*  doublon(s) de votre wa-boo actuel. */ ?>
+							<br>
+                          <br>
+                          <div align="left">
+                            <? echo $lab[3]; /* Par doublons, vous devez entendre que certains contacts déjà présents dans wa-boo existent aussi dans le fichier que vous essayez d'importer. */ ?>
+                            <br>
+                            <br>
+                            <? echo $lab[4]; /* Les doublons sont détectés si, sans tenir compte de la casse [MAJUSCULES ou minuscules] : */?>
+                            <br>
+                            <? echo $lab[5]; /* - le couple */ ?><span class="bolddarkredfont"><? echo $lab[6]; /* nom - prénom */ ?></span><? echo $lab[7]; /* existe ET dans wa-boo ET dans le fichier */ ?>
+								            <br>
+							              <? echo $lab[5]; /* - le couple */ ?><span class="bolddarkredfont"><? echo $lab[8]; /* nom - email */ ?></span><? echo $lab[7]; /* existe ET dans wa-boo ET dans le fichier */ ?>
+							              <br>
+                            <hr>
+                            <? echo $lab[9]; /* Exemple : wa-boo détectera un doublon dans les cas suivants : */ ?>
+                            </div>
+                          <ul>
+                            <li>
+                              <div align="left">
+                                  <? echo $lab[10]; /* Julia Dupont existe dans le fichier et Julia Dupont existe déjà dans wa-boo */ ?>
+                              </div>
+                            </li>
+                            <br>
+                            <li>
+                              <div align="left">
+                                  <? echo $lab[11]; /* Eléonore Giraud a pour email egiraud@freee.fr dans le fichier, alors qu'il existe déjà<br>un contact du nom de Giraud dans wa-boo avec la même adresse email egiraud@freee.fr. */ ?>
+                              </div>
+                            </li>
+                          </ul>
+                          <hr>
+                        </td>
+                      </tr>
+                      <tr align="center" valign="middle">
+                        <td class="boldstdfont" colspan="3" height="60" align="left">
+                          <? 						if ($s_import_params["duplicates"]) { // we show duplicates only if no duplicates exist in base. $s_import_params["duplicates"] was set at end of import2.php ?>
+                          <? echo $lab[12]; /* A présent, à vous de choisir : vous pouvez remplacer le contact existant dans la base 
+                          <br>par la nouvelle entrée trouvée dans le fichier, ou le conserver la version actuelle. */ ?>
+                          <br>
+                          <br>
+                          <? echo $lab[13]; /* Sélectionnez ci dessous le contact qui doit être */ ?>
+                          <span class="bolddarkredfont"><? echo $lab[14]; /* présent */ ?></span>
+                          <? echo $lab[15]; /* dans wa-boo après l'import. */ ?>
+                          <br>
+                          <br>
+                                                    
+                          <div align="center">
+                            <table cellpadding="2" cellspacing="0" bgcolor="#FFFFFF" border="0">
+                              <tr>
+							    <td width="15">&nbsp;</td>
+                                <td class="boldcontactlistfont" align="center" colspan="4">
+                                <? echo $lab[16]; /* Contacts du fichier */ ?>
+                                  <hr>
+							      <div align="left">
+							        <input type="button" name="all" value="<? echo $lab[18]; /* Tous */ ?>" onclick="checkleft();" class="userbutton">
+                                   </div>
+                                </td>
+                                <td width="10">&nbsp;</td>
+                                <td colspan="4" class="boldstdfont" align="center">
+                                <? echo $lab[17]; /* Contacts de la base */ ?>
+								  <hr>
+								  <div align="left">
+							        <input type="button" name="all" value="<? echo $lab[18]; /* Tous */ ?>" onclick="checkright();" class="userbutton">
+                                   </div>
+                                </td>
+                                <td width="15">&nbsp;</td>
+                              </tr>
+							  <tr>
+                                <td width="15"></td>
+                                <td colspan="9" height="10" bgcolor=""></td>
+                                <td width="15" height="10"></td>
+                              </tr>
+                              <?  for ($i = 0 ; $i < $duplicate ; $i++) {  ?>
+                              <? tuneDisplay();  // usual way in this project to cure win servers when displaying large html lists ?>
+                              <tr>
+                                <td width="15">&nbsp;</td>
+                                <td bgcolor="<? echo $G_list_bg_color; ?>">
+                                  <input type="radio" name="i_duplicate_radio[<? echo $i; ?>]" value="file">
+                            </td>
+                                <td class="boldcontactlistfont" bgcolor="<? echo $G_list_bg_color; ?>">
+                                  <?  echo $s_duplicate_array[$i]["file_name"]; ?>
+                              </td>
+                                <td class="boldcontactlistfont" align="left" bgcolor="<? echo $G_list_bg_color; ?>">
+                                  <?  echo $s_duplicate_array[$i]["file_firstname"]; ?>
+                              </td>
+                                <td class="boldcontactlistfont" align="left" bgcolor="<? echo $G_list_bg_color; ?>">
+                                  <?  echo $s_duplicate_array[$i]["file_email"]; ?>
+                                  </td>
+                                <td bgcolor="<? echo $G_list_bg_color; ?>">&nbsp;</td>
+                                <td bgcolor="<? echo $G_list_bg_color; ?>">
+                                  <input type="radio" name="i_duplicate_radio[<? echo $i; ?>]" value="db" checked>
+                                </td>
+                                <td class="boldstdfont" align="left" bgcolor="<? echo $G_list_bg_color; ?>">
+                                  <?  echo $s_duplicate_array[$i]["db_name"]; ?>
+							                  </td>
+                                <td class="boldstdfont" align="left" bgcolor="<? echo $G_list_bg_color; ?>">
+                                  <?  echo $s_duplicate_array[$i]["db_firstname"]; ?>
+							                  </td>
+                                <td class="boldstdfont" align="left" bgcolor="<? echo $G_list_bg_color; ?>">
+                                  <?  echo $s_duplicate_array[$i]["db_email"]; ?>
+                                  </td>
+                                <td width="15">&nbsp;</td>
+                              </tr>
+                              <tr align="center" valign="top">
+                                <td width="15"></td>
+                                <td colspan="9" height="10"></td>
+                                <td width="15" height="10"></td>
+                              </tr>
+							  <?  }  ?>
+                              <tr align="center" valign="top">
+                                <td width="15">&nbsp;</td>
+                                <td height="35" colspan="9">
+                                  <? 						if ($s_import_params["duplicates"]) { // we show duplicates only if no duplicates exist in base. $s_import_params["duplicates"] was set at end of import2.php ?>
+                                  													  
+		                  
+		                          <input type="button" name="cleanimport" value="<? echo $lab[19]; /* Importer avec mes choix */ ?>" onClick="document.duplicateform.action='import5.php?action=CHECK'; submit()" class="userbutton">
+                                  <?						}           ?>
+								</td>
+                                <td width="15">&nbsp;</td>
+                              </tr>
+                            
+                        
+                            </table>
+                          </div>
+                          <?						} else {    ?>
+							            <span class="bolddarkredfont">Attention !!</span> 
+							            <? echo $lab[19]; /* L'état de votre base ne permettra pas à wa-boo de vous aiser à trier <br>les doublons à conserver ou à remplacer. Pour cela, il faudrait que votre base ne contienne pas 
+							            <br>de doublon avant l'import. Si vous dérirez nettoyer préalablement votre base, faites le maintenant. */ ?>
+							            <br>
+                          <br>
+                          Si vous cliquez sur le bouton <span class="bolddarkredfont">Importer le fichier sans contrôle !</span> l'import sera r&eacute;alis&eacute; sans contr&ocirc;le des doublons.</td>
+                        <?						}           ?>
+                      </tr>
+
+                      <tr valign="middle" align="center">
+                        <td class="boldstdfont" colspan="3" height="80">
+                          <input type="button" name="prev" value="<? echo $lab[20]; /* << Retour */ ?>" onClick="document.location.href='import1.php'" class="userbutton">
+							&nbsp;
+                          <input type="submit" value="<? echo $lab[21]; /* Importer sans contrôler les doublons */ ?>" name="mainsubmit" class="userbutton">
+                          &nbsp;
+                            </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td width="15" class="stdfont">&nbsp;</td>
+                </tr>
+                
+              
+              </table>
+            </td>
+            <td valign="top" background="images/v_line_right.gif" width="7"></td>
+          </tr>
+          
+          
+          <tr>
+            
+            
+            <td class="texteg" height="7" background="images/left_bottom_corner.gif"></td>
+            <td height="7" background="images/h_line_bottom.gif"></td>
+            <td height="7" background="images/right_bottom_corner.gif"></td>
+          </tr>
+        
+        
+        </table>
+      </td>
+    </tr>
+ 
+  </table>
+ 
+</form>
+
+<?
+   include ("footer.php");
+   
+?>
+
+
+
+</body>
+</html>

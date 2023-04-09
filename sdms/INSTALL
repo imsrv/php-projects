@@ -1,0 +1,65 @@
+    Simple Document Management System version 1.1
+
+
+#########################################################
+#                                                       #
+# PHPSelect Web Development Division                    #
+#                                                       #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are distributed through         #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated.                                     #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the distriuters      #
+# at admin@phpselect.com                                #
+#                                                       #
+#########################################################
+
+
+
+
+To install the simple document management system, simply untar the
+file you downloaded (eg sdms-1.1.tar.gz) in a directory that's
+accessible via your web server. Rename the result to whatever
+you like.
+
+Then make sure you have PHP 4.0 or higher and MySQL installed. PHP
+must live on the web server hosts, but the MySQL server can be
+anywhere (this system was tested with MySQL servers up to 20,000
+km removed from the web server)
+
+If you're satisfied you have the software you need, create the tables
+required for the system by running the following command:
+
+  mysql [-u user -p] < create_db.sql
+
+Alternatively you may edit the file first and change any values you
+like (as long as you don't modify the table names or structures).
+
+Now the tables have been created and the system is nearly ready.
+
+Edit the file lib/config.inc and change the mysql details if required.
+You may also edit any of the other values, they're pretty much self
+explanatory and have a bit of comments too.
+
+Now point your browser at:
+
+  http://your_webserver_address/sdms_directory/index.php
+
+Voila, enjoy!
+
+--
+Note about decent sized documents: By default, MySQL allows you to only
+upload documents up to about 1 Mb in size. If you want to change this
+to something a bit more useful, start your MySQL server with the following
+command line option `-O max_allowed_packet=max_size_in_bytes'.
+
+ie: For a 16 Mb document size limit, use `-O max_allowed_packet=16777216'.
+

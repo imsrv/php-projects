@@ -1,0 +1,10 @@
+Estimado %%employer_company%%,
+
+Su plan "%%planning_title%%" " caducará el  %%planning_expiredate%%.
+Para lo que quedan %%planning_remaining%% días para ello.
+
+Empleos disponibles: %%employer_jobs%%
+Tipos de Empleo disponibles: %%employer_featuredjobs%% 
+Cosultas de curriculums disponibles: %%employer_consult%%
+
+Hoy: %%today_date%%

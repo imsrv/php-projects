@@ -1,0 +1,102 @@
+# $Id: sensors.dat 101 2005-06-25 15:20:51Z jim $
+#
+# This file is used by some EXIF functions of phpgraphy
+# Get last release at http://phpgraphy.sourceforge.net
+#
+# It's used to calculate the 35mm film equivalent of a given focal lenght
+# For that it use the diagonal of the sensor size, see some examples below:
+#
+#       Size    Width  Height  Diagonal
+#
+#       1/3.2"                 5.680
+#       1/2.7"  5.371  4.035   6.721
+#       1/1.8"  7.176  5.319   8.933  
+#         2/3"  8.800  6.600   11.0
+#       APS-C   22.7   15.1    27.263
+#    35mm film  36.0   24.0    43.3
+#
+# For more details about sensor sizes, you can read this nice article:
+# http://www.dpreview.com/learn/?/Glossary/Camera_System/Sensor_Sizes_01.htm
+#
+# Lines beginning with a # or with a space are considered as comments
+# Format is: Make|Model|SensorSize (Where Make and Model are found in the exif header)
+#
+# Your camera isn't listed here ?
+# Please contact me by sending me an email (jim [at] aegis [dash] corp [dot] org) and
+# include an URL pointing to a picture taken with the given camera so I can perform 
+# some tests.
+#
+
+Asahi Optical Co.,Ltd|PENTAX Optio 430|8.933
+CASIO|QV-3000EX|8.933
+CASIO|QV-4000|8.933
+CASIO|QV-8000SX|6.0
+Canon|Canon EOS D30|27.263
+Canon|Canon EOS D60|27.263
+Canon|Canon EOS 10D|27.263
+Canon|Canon EOS 300D DIGITAL|27.263
+Canon|Canon EOS 350D DIGITAL|26.681
+Canon|Canon EOS 20D|27.263
+Canon|Canon EOS-1D|34.475
+Canon|Canon EOS-1D Mark II|34.475
+Canon|Canon EOS-1Ds|43.3
+Canon|Canon EOS-1Ds Mark II|43.3
+Canon|Canon DIGITAL IXUS 300|6.592
+Canon|Canon DIGITAL IXUS v3|6.721
+Canon|Canon DIGITAL IXUS v|6.592
+Canon|Canon DIGITAL IXUS|6.592
+Canon|Canon PowerShot A10|6.721
+Canon|Canon PowerShot A20|6.721
+Canon|Canon PowerShot A100|5.680
+Canon|Canon PowerShot A200|5.680
+Canon|Canon PowerShot A400|6.721
+Canon|Canon PowerShot A20|6.721
+Canon|Canon PowerShot A40|6.721
+Canon|Canon PowerShot A85|6.721
+Canon|Canon PowerShot A95|8.933
+Canon|Canon PowerShot G1|8.933
+Canon|Canon PowerShot G2|8.933
+Canon|Canon PowerShot G3|8.933
+Canon|Canon PowerShot G5|8.933
+Canon|Canon PowerShot G6|8.933
+Canon|Canon PowerShot Pro90 IS|8.933
+Canon|Canon PowerShot S10|8.0
+Canon|Canon PowerShot S20|8.933
+Canon|Canon PowerShot S40|8.933
+Canon|Canon PowerShot S70|8.933
+Canon|Canon PowerShot S330|6.592
+Eastman Kodak Company|KODAK DC290 Zoom Digital Camera (V01.00)
+FUJIFILM|FinePix S602 ZOOM
+FUJIFILM|FinePix1400Zoom|6.721
+FUJIFILM|FinePix2400Zoom|6.721
+FUJIFILM|FinePix2600Zoom
+FUJIFILM|FinePixA201
+FUJIFILM|FinePix A303|6.721
+FUJIFILM|MX-1200
+FUJIFILM|MX-2700|8.0
+FUJIFILM|MX-2900Z|8.0
+Hewlett-Packard|HP PhotoSmart C812 (V09.33)|8.933
+Minolta Co., Ltd.|DiMAGE 7i|11.0
+NIKON CORPORATION|NIKON D70|28.373
+NIKON CORPORATION|NIKON D1X|28.373
+NIKON|E2500|6.592
+NIKON|E4500|8.933
+NIKON|E5000|11.0
+NIKON|E5700|11.0
+NIKON|E700|6.592
+NIKON|E775|6.592
+NIKON|E800|8.0
+NIKON|E880|8.933
+NIKON|E885|8.933
+NIKON|E950|8.0
+NIKON|E990|8.933
+NIKON|E995|8.933
+OLYMPUS OPTICAL CO.,LTD|C2040Z
+OLYMPUS OPTICAL CO.,LTD|C3030Z
+OLYMPUS OPTICAL CO.,LTD|C4100Z,C4000Z
+OLYMPUS OPTICAL CO.,LTD|C5050Z|8.933
+OLYMPUS OPTICAL CO.,LTD|E-10|11.0
+OLYMPUS OPTICAL CO.,LTD|E-20|11.0
+SEIKO EPSON CORP.|PhotoPC 3000Z|8.933
+SONY|DSC-W1|8.933
+SONY|DSC-F828|11.0

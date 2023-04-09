@@ -1,0 +1,96 @@
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+ModernBill .:. Client Billing System, Copyright - 2001,2002
+Authors:  ModernGigabyte, LLC
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+--------------------------> INSTALL <--------------------------
+
+1) NEW INSTALL: Create a NEW database AND user for ModernBill.
+   UPGRADE INSTALL: Backup your current ModernBill Database.
+
+2) Edit the master database config file and enter your settings:
+
+        FILE: include/config/config.locale.php
+
+3) If you have not done so already, please upload all of your
+   ModernBill files to your web server using your favorite
+   FTP program. Then, point your browser to:
+
+       Tier1 Version: http://path_to_modernbill/install_tier1/
+       Tier2 Version: http://path_to_modernbill/install_tier2/
+       Zend  Version: http://path_to_modernbill/install_tierZ/
+
+4) Follow the step-by-step installation guide and you will be
+   installed or upgraded within a few clicks!
+
+       WARNING: PLEASE DELETE THE INSTALL DIRECTORY _AFTER_
+                YOU HAVE SUCCESSFULLY INSTALLED MODERNBILL.
+
+                IF YOU LEAVE IT ON YOUR SERVER, ANYONE CAN
+                ACCESS IT AND WIPE YOUR DATABASE CLEAN. :(
+
+
+--------------------------> SUPPORT <--------------------------
+
+Each ModernBill license comes with 6 months of access to the
+members' area. This is where you will find the support forums.
+All upgrades and future releases will also be available in the
+member's area only.
+
+You must have a valid Registration to access the members' area:
+
+http://www.modernbill.com/support/
+
+Once your membership expires, you will no longer be able to
+access the support forums or download manager. However, you will
+be able to login and purchase extended support which will reset
+your access again for an additional 6 months.
+
+NOTICE: ALL SUPPORT IS WILL BE WEB OR EMAIL BASED. CURRENTLY,
+        WE DO NOT OFFER PHONE SUPPORT AND IT WILL BE AT OUR
+        DISCRETION IF WE OFFER IT IN THE FUTURE.
+
+
+-------------------------> SECURITY <--------------------------
+
+We do not recommend storing any credit card information online!
+This is disabled by default. If you are going against our
+recommendation, do so AT YOUR OWN RISK. You will need "agree" to
+enable this feature in the payments config section after a
+successful install
+
+
+--------------------------> LICENSE <--------------------------
+
+ModernBill is NOT free software and you DO NOT OWN this copy.
+However, you do own a License to use ModernBill as per our "End
+User License Agreement (EULA)". Please read the LICENSE file
+for details.
+
+--------------------------> COPYING <--------------------------
+
+You may install a single licensed copy of ModernBill on one
+server accessing one database. If you need to install another
+instance of ModernBill with a new database, you will need to
+purchase an additional license for this copy. Under no
+circumstances are you allowed to lend, lease, give away, transfer,
+or copy ModernBill. Doing so will void your current registered or
+expired license. Please read the "End User License Agreement
+(EULA)" for details.
+
+---------------------------------------------------------------
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+             Thank you for choosing ModernBill.
+
+                    The ModernBill Team
+                 http://www.modernbill.com
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////

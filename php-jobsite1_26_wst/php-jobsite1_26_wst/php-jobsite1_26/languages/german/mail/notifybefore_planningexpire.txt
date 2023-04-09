@@ -1,0 +1,10 @@
+Dear %%employer_company%%,
+
+Your "%%planning_title%%" " will expire on  %%planning_expiredate%%.
+Remaining %%planning_remaining%% days.
+
+Available jobs: %%employer_jobs%%
+Available featuredjobs: %%employer_featuredjobs%% 
+Available resume to consult: %%employer_consult%%
+
+Today: %%today_date%%

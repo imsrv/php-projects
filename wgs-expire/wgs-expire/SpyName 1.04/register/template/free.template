@@ -1,0 +1,15 @@
+<html>
+	<head>
+  	<link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+	<body>
+	 		<center>
+      <table class="BlueNoteFormTABLE" width="40%">
+      <tr>
+      	<td colspan="2" class="BlueNoteColumnTD">
+        <pre>
+You have selected the "Free" membership plan
+This doesn't require any payment.
+You may go to <a href="../member">login page</a> right now
+        </pre>
+</table>

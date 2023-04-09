@@ -1,0 +1,216 @@
+<html>
+<head>
+       <title>wa-boo</title>
+       <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <style><? include ("includes/css.php"); ?></style>   
+    </head>
+
+
+<body topmargin="0">
+    
+<table border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <td class="versionfont"><img src="images/wa-boo_small.gif"> 
+      <? echo $G_version; ?>
+    </td>
+  </tr>
+  
+    
+  <tr>
+      
+    <td colspan="2">
+      <table border="0" cellpadding="0" bgcolor="#F5F5F9" cellspacing="0" width="100%">
+        <tr>
+          <td background="images/left_top_corner.gif" height="7"></td>
+          <td background="images/h_line_top.gif" height="7"></td>
+          <td background="images/right_top_corner.gif" height="7"></td>
+        </tr>
+          
+          
+        <tr> 
+            
+            
+          <td background="images/v_line_left.gif" width="7"> 
+              </td>
+          <td class="boldstdfont">
+              
+            <table border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" background="images/bg1.gif" width="100%">
+                
+          
+                  
+                
+              <tr align="center" bgcolor="<? echo $s_user_context["color"]["menu"] ?>"> 
+                    
+                  
+                <td colspan="3" class="stdtitle">
+                  <? echo $lab[0]; /* Suppression par lots de vos contacts */ ?>
+                </td>
+              </tr>
+                  
+                
+              <tr>
+                    
+                  
+                <td background="images/h_line.gif" align="center" colspan="7" height="7"></td>
+              </tr>
+                  
+                
+              <tr align="center"> 
+                    
+                  
+                <td width="15" class="stdfont" height="25"></td>
+                <td align="left" class="boldstdfont" height="25">
+		  
+		          <br>
+                  <? echo $lab[1]; /* Vous pouvez supprimer des lots de contacts pour des besoins de maintenance.<br>Tous les contacts que vous pouvez détruire ici ont été créés / importés par vos soins. */ ?>
+              <br>
+                  <? echo $lab[2]; /* La procédure étant irréversible, il est conseillé de réaliser un export de vos contacts  */ ?><br>
+                  <span class="bolddarkredfont"><? echo $lab[3]; /* avant */ ?></span>
+                  <? echo $lab[4]; /* de lancer la suppression par lots. */ ?>
+              <br>
+                  <br>
+                  <? echo $lab[5]; /* Sélectionnez les ensembles de contacts que vous désirez supprimer, entrez votre mot de passe et cliquez sur OK. */ ?>
+                  <br>
+                  <br>
+				  <div align="center">
+				  <span class="bolddarkredfont" align="center">
+                    <? echo $lab[6]; /* Attention !!*/ ?>
+                    </span>
+                    <? echo $lab[7]; /* Aucune confirmation ne sera demandée. */ ?>
+				  <br>
+                  
+                  </div>
+                  <hr>
+	              <form name="multidel" method="POST" action="cleaning_action.php">
+	                <table cellspacing="3" cellpadding="0" align="center" bgcolor="<? echo $G_list_bg_color; ?>">
+                      <tr>
+                        <td class="bolddarkredfont" align="center" colspan="2">
+                          <? echo $lab[8]; /* Supprimer : */ ?>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="stdfont" align="right" valign="top" height="7" colspan="2"></td>
+                      </tr>
+                      
+                      <tr>
+                        <td class="boldstdfont" align="right">
+                          <? echo $lab[9]; /* Tous mes contacts publics */ ?>
+                          </td>
+                        <td align="left" valign="top">
+                          <input type="checkbox" name="i_public" value="1">
+                          </td>
+                      </tr>
+                      <tr>
+                        <td class="boldstdfont" align="right" colspan="2" height="7">
+                          </td>
+                      </tr>
+                      <tr>
+                        <td class="boldstdfont" align="right">
+                          <? echo $lab[10]; /* Tous mes contacts privés */ ?>
+                        </td>
+                        <td class="boldstdfont" align="left">
+                          <input type="checkbox" name="i_private" value="1">
+                          <? echo $lab[11]; /* de la catégorie */ ?>
+						                
+                          <SELECT name="i_category">
+                            <option value="-1" selected>
+                            <? echo $lab[12]; /* Tous< */ ?>
+                            </option>
+                            <?  for($i = 0; $i < 10; $i++) {  
+                                    if (trim($user_cat[$i] != "")) { ?>
+                                        
+                            <option value="<? echo $i; ?>">
+                            <? echo $user_cat[$i]; ?>
+                            </option>
+                            <?      }
+                                }       ?>
+                          </SELECT>
+                      
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="boldstdfont" align="right" colspan="2" height="7"></td>
+                      </tr>
+                      <tr>
+                        <td class="boldstdfont" align="right" valign="top">
+                          <? echo $lab[13]; /* Tous mes contacts visibles par les groupes */ ?>
+						
+                        </td>
+                        <td class="boldstdfont" align="left">
+                        
+                        
+                          <?  //$temp_array = $current_contact->getContactDomains();
+                        $cpt = 0;
+                        while (list($key, $value) = each($user_domains)) {  ?>
+                            
+                          <?  //echo $key . " = > " . $value["id"]; ?>
+                            
+                          <input type="checkbox" name="i_domain[<? echo $cpt; ?>]" value="<? echo $value["id"]; ?>">
+                          <?      echo $value["name"]; 
+                            $cpt++;   ?>
+                            <br>
+                          <?  }   ?>
+                            
+                        
+                        
+                      </TD>
+                      </tr>
+                      
+                      <tr>
+                        <td class="stdfont" align="right" valign="top" height="15" colspan="2"></td>
+                      </tr>
+                      
+                      <tr>
+                        <td class="boldstdfont" align="right">
+                          <? echo $lab[14]; /* Votre mot de passe (obligatoire) */ ?>
+                        </td>
+                        <td class="stdfont" align="left">
+                          <input type="password" name="i_password" maxlength="50" size="20">
+                        </td>
+                      </tr>
+                                            
+                    </table>
+                    <br>
+				    <div class="boldstdfont" align="center">
+                      <input type="button" name="prev" value="<? echo $lab[15]; /* << Retour */ ?>" onClick="document.location.href='contacts.php'" class="userbutton">
+                      <input type="submit" name="delete" value="<? echo $lab[16]; /* Supprimer les contacts ! */ ?>" class="userbutton">
+					</div>
+                  </form>
+                </td>
+                <td width="15" class="stdfont" height="25">&nbsp;</td>
+              </tr>
+                
+              
+            </table>
+          </td>
+          <td valign="top" background="images/v_line_right.gif" width="7"></td>
+        </tr>
+          
+          
+        <tr>
+            
+            
+          <td class="texteg" height="7" background="images/left_bottom_corner.gif"></td>
+          <td height="7" background="images/h_line_bottom.gif"></td>
+          <td height="7" background="images/right_bottom_corner.gif"></td>
+        </tr>
+        
+        
+      </table>
+    </td>
+  </tr>
+    
+  <tr>
+      
+    <td align="center" colspan="2" class="contactlistfont">
+         
+      <p>
+        <?
+   include ("footer.php");
+?>
+        </p>
+    </td>
+  </tr>
+  
+</table>
+  

@@ -1,0 +1,172 @@
+<html>
+
+<head>
+<title>phpAutoMembersArea installer</title>
+<link rel="stylesheet" type="text/css" href="pama.css">
+</head>
+
+<body>
+<div align="center"><center>
+
+<table cellSpacing="3" cellPadding="0" border="0" width="490" class="table-bg">
+  <tr>
+    <td height="1" bgcolor="#808080" width="481" colspan="4"></td>
+  </tr>
+  <tr>
+    <td align="middle" width="5"></td>
+    <td align="middle"><div align="center"><center><table border="1" cellspacing="0">
+      <tr>
+        <td width="100%"><a href="http://www.seiretto.com/"><img src="pamalogo.gif" width="165"
+        height="75" alt="phpAutoMembersArea" border="0"></a></td>
+      </tr>
+    </table>
+    </center></div></td>
+    <td align="middle" width="153"><strong>INSTALLER<br>
+    </strong><small>Please refer to the <a href="readme.html" target="_new">readme.html</a>
+    file for assistance</small></td>
+    <td align="middle" width="5"></td>
+  </tr>
+  <tr>
+    <td height="1" bgcolor="#808080" width="481" colspan="4"></td>
+  </tr>
+</table>
+</center></div>
+
+<form action="install.php" method="POST" NAME="I_F" align="center">
+  <input type="hidden" name="install" value="1"><div align="center"><center><table
+  class="table-bg" cellSpacing="0" cellPadding="2" width="721" height="426">
+<TBODY>
+    <tr bgColor="#ffffff" align="center">
+      <td vAlign="top" align="right" width="195" bgcolor="#FFFFFF" height="15"></td>
+      <td align="left" width="495" bgcolor="#FFFFFF" height="15"><b>Database Parameters</b></td>
+    </tr>
+    <tr>
+      <td vAlign="top" align="right" width="195" height="41"><small><b>Database Host:</b></small></td>
+      <td align="left" width="495" height="41"><input class="box" size="18" value="localhost"
+      name="dbhost"> <font size="2">MySQL host address - localhost is fine if you host with <a
+      href="http://www.seiretto.com">Seiretto</a></font></td>
+    </tr>
+    <tr align="center">
+      <td width="195" height="57"><div align="right"><p><small><b>Database Name:</b></small></td>
+      <td width="495" height="57"><div align="left"><p><input class="box" size="18"
+      name="dbname"> <font size="2">The database must already exist before installation<br>
+      - this is the same as your username for FTP if you host with <a
+      href="http://www.seiretto.com">Seiretto</a></font></td>
+    </tr>
+    <tr align="center">
+      <td width="195" height="41"><div align="right"><p><small><b>Database Username:</b></small></td>
+      <td width="495" height="41"><div align="left"><p><input class="box" size="18"
+      name="dbuser"> <font size="2">Username to access MySQL<br>
+      - this is the same as your username for FTP if you host with <a
+      href="http://www.seiretto.com">Seiretto</a></font></td>
+    </tr>
+    <tr align="center">
+      <td width="195" height="41"><div align="right"><p><small><b>Database Password:</b></small></td>
+      <td width="495" height="41"><input class="box" type="password" size="18" value
+      name="dbpass"> <font size="2">Password to access MySQL (this will also used as the initial
+      admin login password).</font></td>
+    </tr>
+</TBODY>
+    <tr>
+      <td vAlign="top" align="right" width="195" bgcolor="#FFFFFF" height="28"></td>
+      <td align="left" width="495" height="28" bgcolor="#FFFFFF"><strong>Personalisation</strong></td>
+    </tr>
+    <tr>
+      <td vAlign="top" align="right" width="195" height="41"><small><b>Your Company Name:</b></small></td>
+      <td align="left" width="495" height="41"><input class="box" size="18" value name="coname">
+      <font size="2">This will be used to personalise the pages on your members area.</font></td>
+    </tr>
+    <tr>
+      <td vAlign="top" align="right" width="195" height="54"><small><b>Admin Folder name:</b></small></td>
+      <td align="left" width="495" height="54"><input class="box" size="18" value
+      name="adminfolder"> <font size="2">You should enter a unique name more than 7 chars </font><font
+      size="1">(use only letters and numbers, do not use spaces, and do not use your password).</font></td>
+    </tr>
+    <tr>
+      <td vAlign="top" align="right" width="195" height="41"><small><b>Your email address:</b></small></td>
+      <td align="left" width="495" height="41"><input class="box" size="18" value name="email"> <font
+      size="2">Used as the admin login username, to notify you when a new member joins, and as
+      the initial contact email address.</font></td>
+    </tr>
+    <tr>
+      <td vAlign="top" align="right" width="195" height="27"></td>
+      <td align="left" width="495" height="27"><input class="button" type="button"
+      onclick="warn_backup()" value="Install  phpAutoMembersArea" name="button"></td>
+    </tr>
+  </table>
+  </center></div>
+</form>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <p align="left">When the form is complete click the button above.<br>
+        If the details are entered correctly and a connection is made to your database the
+        following <strong><font color="#FF8000">tables</font></strong> will be created:</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <p align="left"><font color="#FF8000"><strong><big>pama_admin</big><br>
+              <big>pama_members</big><br>
+              <big>pama_logins</big></strong></font></p>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<hr width="85%" color="#808080" align="center">
+<font size="-1">
+
+<p align="center"></font><small><small><strong>phpAutoMembersArea</strong></small></small><font
+size="1"> © Copyright <script language="JavaScript">
+<!--
+var tDate = new Date();
+document.write( tDate.getFullYear())
+//-->
+</script> <a
+href="http://www.seiretto.com">Seiretto</a></font></p>
+<script language="JavaScript"><!--
+function check_input()
+{
+ var inputok = -1;
+ var validchars = "ABCDEFGHIJKLNMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+ var i = 0;
+ while (i < document.I_F.adminfolder.value.length)
+  {  
+   inputok = validchars.indexOf(document.I_F.adminfolder.value.charAt(i),0);
+   i+=1;
+  }
+ if (document.I_F.adminfolder.value.length <8) inputok=-1;
+ if (inputok < 0)
+  {
+   i = document.I_F.adminfolder.value.length +1;
+   document.I_F.adminfolder.focus();
+   alert("Admin folder name TOO short or contains chars other than:\n\n"+validchars); 
+   document.I_F.adminfolder.select();
+   document.I_F.adminfolder.focus();
+  }
+ return inputok;
+}
+
+var msg="You are about to install or re-install phpAutoMembersArea \n\nThis will remove any previous data within the phpAutoMembersArea database tables.\n\nPlease backup your existing database data BEFORE continuing.\n\nARE YOU READY to continue?";
+function warn_backup()
+{
+ if (check_input()>0)
+ {
+  if (confirm(msg)) document.I_F.submit();
+ }
+}
+// --></script>
+
+</body>
+</html>

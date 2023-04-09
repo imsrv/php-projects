@@ -1,0 +1,8 @@
+NavBoard TODO
+
+features:
+-filters
+-pruning
+-mass edits
+-more templates (all at beginning eventually)
+-languages

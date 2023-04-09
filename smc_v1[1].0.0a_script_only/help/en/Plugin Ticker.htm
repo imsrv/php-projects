@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Plugin Ticker</title>
+</head>
+<body>
+
+<h1>Plugin Ticker</h1>
+
+Plugin is used to track time events (ticks).
+Ticker can be restarted by key phrases coming from mud. To set them edit ticker.php and add to
+array $tick_clears desired lines. All Ticker options are stored in variables starting with "tick",
+that can be directly set when playing.
+<br><br>
+Exported commands:
+<ul>
+<li><a href=#cmd_ticksize>ticksize</a>
+<li><a href=#cmd_ticknotify>ticknotify</a>
+<li><a href=#cmd_tick>tick</a>
+</ul>
+
+<br>
+<hr>
+<a name=cmd_ticksize>
+<h2>TICKSIZE</h2>
+<pre>
+Syntax: !ticksize [seconds]
+</pre>
+Sets the number of seconds in tick. If no param, then shows current value.
+<pre>
+Set the tick size to 45 seconds
+    !ticksize 45
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_ticknotify>
+<h2>TICKNOTIFY</h2>
+<pre>
+Syntax: !ticknotify [n1 n2 n3 ...]
+</pre>
+Sets times to tick, when you'll be notified. If no params, then shows current value.
+Notifications are emulated as lines from MUD, so they can activate your actions, triggers, etc.
+<pre>
+Notify on 10, 5 and 3 seconds to tick
+    !ticknotify 10 5 3
+Notify about tick (0 seconds)
+    !ticknotify 0
+Turn off notifications (set non-existing seconds)
+    !ticknotify -1
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_tick>
+<h2>TICK</h2>
+<pre>
+Syntax: !tick [start|stop]
+</pre>
+If start, then restart to count seconds to tick, stop - stop the counting. If no params, then show
+seconds to tick.
+<pre>
+Show seconds to tick
+    !tick
+Turn off ticker
+    !tick stop
+</pre>
+
+
+</body>
+</html>

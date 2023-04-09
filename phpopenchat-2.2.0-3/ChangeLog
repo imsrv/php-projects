@@ -1,0 +1,2196 @@
+2001-07-18 17:36  letreo
+
+	* includes/: exit_inc.php, session_inc.php: minor changes
+
+2001-07-18 17:35  letreo
+
+	* html/: sendpwd.php, user_profile.php: add new design
+
+2001-07-18 17:35  letreo
+
+	* html/input.php: bugfix in chat logout minor changes
+
+2001-07-18 17:33  letreo
+
+	* html/getlines.php: optimization of generating HTML output for
+	decrease Internet traffic.
+
+2001-07-18 17:27  letreo
+
+	* html/edit.php: minor changes
+
+2001-07-17 12:46  letreo
+
+	* html/getlines.php, includes/login_inc.php: the channel login
+	works fine now
+
+2001-07-17 11:36  letreo
+
+	* includes/session_inc.php: minor changes
+
+2001-07-17 11:22  letreo
+
+	* html/getlines.php: regarding network traffic optimized code
+
+2001-07-17 10:53  letreo
+
+	* html/sendpwd.php: minor changes
+
+2001-07-17 10:53  letreo
+
+	* html/index.php: add colored friends if a cookie was found
+
+2001-07-17 10:39  letreo
+
+	* html/sendpwd.php: bugfix, missing attributes within the form tag
+	and a hidden input field were added.
+
+2001-07-17 10:34  letreo
+
+	* includes/index_tpl.php: JavaScript was modified, in order to
+	enable the representation of chat within frames problem-free.
+
+2001-07-17 10:29  letreo
+
+	* html/chat_notify.php: bugfix, add hidden fields (nick, checksum,
+	sessionId) to search form
+
+2001-07-17 10:27  letreo
+
+	* html/chatmail/: chatmail_inbox.php, chatmail_sentmail.php: bugfix
+	for some session related functions ignoring $ENABLE_SESSION = FALSE
+
+2001-07-17 09:47  letreo
+
+	* html/input.php: minor changes
+
+2001-07-16 20:50  letreo
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php,
+	spanish_inc.php: little bugfix ' changed to "
+
+2001-07-16 20:48  letreo
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php,
+	spanish_inc.php: minor changes
+
+2001-07-16 20:37  letreo
+
+	* html/getlines.php: add code to remove status comment of each line
+
+2001-07-16 20:36  letreo
+
+	* INSTALL: remove the old ram usage statement
+
+2001-07-16 20:05  letreo
+
+	* includes/index_tpl.php: the login form is changed to work with
+	javascript only
+
+2001-07-16 20:00  letreo
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php,
+	index_tpl.php, spanish_inc.php: add a noscript tag
+
+2001-07-16 19:29  letreo
+
+	* html/: getlines.php, register.php: minor changes
+
+2001-07-16 18:55  letreo
+
+	* includes/index_tpl.php: show the index.php never in frames
+
+2001-07-16 17:56  letreo
+
+	* html/edit.php, html/frame_set.php, html/getlines.php,
+	html/index.php, html/input.php, html/output.php, html/register.php,
+	includes/defaults_inc.php, includes/english_inc.php,
+	includes/exit_inc.php, includes/french_inc.php,
+	includes/index_tpl.php, includes/login_inc.php,
+	includes/register_tpl.php, includes/spanish_inc.php: completely new
+	principle to read and write new lines in the chat. We run not any
+	longer a never ending script, now we poll the new lines for no more
+	server hogging.
+
+2001-07-16 17:45  letreo
+
+	* html/images/: bg.gif, shadow_kl.gif: new images
+
+2001-07-06 13:45  letreo
+
+	* html/frame_set.php: http header fields completed
+
+2001-07-06 13:44  letreo
+
+	* includes/defaults_inc.php: add announce to $NICK_NOT_ALLOWED
+
+2001-07-06 13:38  letreo
+
+	* includes/filter_inc.php: add irc-command /announce to enable
+	global	 broadcast postings for the group of godfathers
+
+2001-06-27 10:52  mgiese
+
+	* includes/exit_inc.php, includes/login_tpl.php, html/input.php:
+	bugfixes
+
+2001-06-26 17:47  mgiese
+
+	* html/: frame_set.php, index.php: new login update
+
+2001-06-22 16:59  aleitenberger
+
+	* html/frame_set.php: added session ID for output
+
+2001-06-18 15:28  aleitenberger
+
+	* includes/: english_inc.php, german_inc.php, french_inc.php,
+	spanish_inc.php: changes in toplist
+
+2001-06-18 15:27  aleitenberger
+
+	* html/toplist.php: added ranks 31 - 100 and a search
+
+2001-06-18 01:45  mgiese
+
+	* html/register.php, includes/register_tpl.php: new login
+
+2001-06-18 01:20  mgiese
+
+	* html/frame_set.php, html/index.php, html/input.php,
+	includes/write_line_inc.php, includes/german_inc.php,
+	includes/index_tpl.php, includes/login_inc.php,
+	includes/session_inc.php: new login
+
+2001-06-14 16:24  letreo
+
+	* includes/defaults_inc.php: add hint for ENTRYCHANNELNAME
+
+2001-06-14 16:08  letreo
+
+	* INSTALL: add win32 php.ini path
+
+2001-06-14 15:57  letreo
+
+	* includes/: check_flooder_inc.php, english_inc.php,
+	french_inc.php, german_inc.php, spanish_inc.php: Flooding-filter
+	multilingual now
+
+2001-06-12 17:40  mgiese
+
+	* html/choose_color.php: better faster cooler
+
+2001-06-06 17:28  mgiese
+
+	* html/whoisonline.php: sorts now channels by their size
+
+2001-06-06 13:49  mgiese
+
+	* includes/check_flooder_inc.php, html/input.php: flooding-filter
+
+2001-06-03 00:13  stephant
+
+	* html/invite.php: Bugfix : A kicked chatter can no longer invite
+	any user.
+
+2001-06-03 00:08  stephant
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php,
+	spanish_inc.php: Included variable $MSG_KICKED
+
+2001-05-31 16:03  mgiese
+
+	* html/: ignore.php, invite.php: better mysql-code
+
+2001-05-31 14:56  mgiese
+
+	* html/frame_set.php: finally, i did it right with scrolling
+
+2001-05-31 14:11  mgiese
+
+	* html/output.php: no message
+
+2001-05-31 12:52  mgiese
+
+	* html/admin/service.php: dumps are now compressed
+
+2001-05-30 04:51  aleitenberger
+
+	* includes/: english_inc.php, french_inc.php, spanish_inc.php: new
+	toplist, whoisonline, invite/ignore
+
+2001-05-30 02:18  aleitenberger
+
+	* html/input.php, html/whoisonline.php, includes/german_inc.php,
+	includes/input_tpl.php, includes/defaults_inc.php: new whoisonline
+
+2001-05-30 01:48  aleitenberger
+
+	* includes/german_inc.php, html/toplist.php: new toplist
+
+2001-05-30 01:37  aleitenberger
+
+	* html/ignore.php, html/invite.php, html/input.php,
+	includes/ignore_tpl.php, includes/invite_tpl.php,
+	includes/german_inc.php: new ignore/invite
+
+2001-05-30 01:37  aleitenberger
+
+	* html/in_out.php, includes/in_out_tpl.php: removed from cvs
+
+2001-05-29 15:18  mgiese
+
+	* html/frame_set.php: what the hell have these netscape-guys made
+	with their javascript?
+
+2001-05-29 15:18  mgiese
+
+	* html/input.php, includes/login_inc.php: bugfix. sometimes i got
+	an error about declaring schreib_zeile twice. fixed
+
+2001-05-29 13:46  mgiese
+
+	* html/output.php: slower blink at internet explorer
+
+2001-05-29 10:53  mgiese
+
+	* html/frame_set.php, html/input.php, includes/english_inc.php,
+	includes/french_inc.php, includes/german_inc.php,
+	includes/spanish_inc.php: change auf scrolling
+
+2001-05-23 16:34  letreo
+
+	* html/input.php: bugfix to make it possible to write text lines
+	containing chars like ' and "
+
+2001-05-23 16:26  letreo
+
+	* html/output.php: add colored scrollbars
+
+2001-05-23 14:34  mgiese
+
+	* html/output.php: important bugfix in set_sleep_time
+
+2001-05-22 21:05  derfloh
+
+	* openchatbot/: bot.ini, botdll.ini, chat_dll.dll, megahal.aux,
+	megahal.ban, megahal.grt, megahal.swp, megahal.trn,
+	openchatbot.exe: 
+	OpenChatBot-Files Noch sehr Alpha-Stadium!!!!
+
+2001-05-22 11:10  letreo
+
+	* includes/spanish_inc.php: minor changes
+
+2001-05-21 11:38  stephant
+
+	* html/input.php: Bugfix for the /locate-whisper-problem
+
+2001-05-21 02:52  aleitenberger
+
+	* includes/timeupdate_inc.php: now updates "last login" in
+	chat_data for chat_notify function
+
+2001-05-21 02:42  aleitenberger
+
+	* includes/: french_inc.php, spanish_inc.php: added time display in
+	chat_notify
+
+2001-05-21 02:39  aleitenberger
+
+	* includes/: german_inc.php, english_inc.php: added time display in
+	chat_notify
+
+2001-05-21 02:38  aleitenberger
+
+	* html/chat_notify.php, includes/notify_add_tpl.php,
+	includes/notify_list_tpl.php: bugfix - removed css
+
+2001-05-18 17:44  aleitenberger
+
+	* includes/notify_tpl.php: removed
+
+2001-05-18 17:43  aleitenberger
+
+	* includes/english_inc.php, includes/french_inc.php,
+	includes/german_inc.php, includes/spanish_inc.php,
+	includes/login_inc.php, includes/notify_add_tpl.php,
+	includes/notify_list_tpl.php, html/input.php: new chat_notify
+
+2001-05-18 17:42  aleitenberger
+
+	* html/chat_notify.php: new chat_notify interface
+
+2001-05-18 17:41  aleitenberger
+
+	* db.schema: removed some fields from chat_notify
+
+2001-05-18 14:46  mgiese
+
+	* html/admin/service.php: new_ sql-dump-rotation for 5 days
+
+2001-05-17 18:44  aleitenberger
+
+	* html/input.php: bugfix with the new /me
+
+2001-05-17 16:55  aleitenberger
+
+	* html/input.php: added another * at the end of the /me line
+
+2001-05-17 13:53  mgiese
+
+	* includes/input_tpl.php: bugfix for privat-channel-graphic
+
+2001-05-17 10:16  tentakel
+
+	* includes/filter_inc.php: /me made look more similar to IRC. Also
+	needed to add code to input.php (rev. 1.41)
+
+2001-05-17 10:12  tentakel
+
+	* html/input.php: use htmlentities() to avoid problems with
+	charsets as well as some strange effects like the chat eating up
+	backslashes
+
+2001-05-16 22:41  tentakel
+
+	* includes/filter_inc.php: now smileys containing the
+	pipe-character also work
+
+2001-05-16 22:05  aleitenberger
+
+	* includes/index_tpl.php: bugfix - wrong entrylink when there was
+	no cookie
+
+2001-05-16 21:48  tentakel
+
+	* html/input.php: more intelligent detection for URLs
+
+2001-05-16 21:37  tentakel
+
+	* html/jump.php: wa for jumping to URLs with >1 #parameters
+
+2001-05-16 21:34  tentakel
+
+	* includes/filter_inc.php: forgot to remove comments with old
+	version
+
+2001-05-16 21:29  tentakel
+
+	* includes/filter_inc.php: again new smileycode
+
+2001-05-16 19:48  mgiese
+
+	* html/input.php: no longer javascript-errors
+
+2001-05-16 14:35  aleitenberger
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php,
+	spanish_inc.php: bugfix with $SAYS variable
+
+2001-05-16 02:33  aleitenberger
+
+	* html/input.php: fixed error in toplist info when joining the chat
+
+2001-05-15 22:57  stephant
+
+	* html/: help_de.html, help_en.html: small documentation updates
+
+2001-05-15 19:30  aleitenberger
+
+	* html/input.php: added space in front of the §SAY or $WHISPER
+	variables
+
+2001-05-15 17:20  aleitenberger
+
+	* html/images/phpopenchat.gif: phpopenchat button
+
+2001-05-15 17:17  aleitenberger
+
+	* includes/index_tpl.php: new template for index.php
+
+2001-05-15 17:16  aleitenberger
+
+	* html/index.php: separated php and html - new index_tpl.php is
+	necessary, available in /includes
+
+2001-05-15 09:50  letreo
+
+	* html/edit.php: checking for moderator
+
+2001-05-15 09:48  letreo
+
+	* html/output.php: the sessionID will be transfered
+
+2001-05-15 09:41  letreo
+
+	* html/toplist.php: for users, who have umlauts in the name, the
+	icon will also displayed now.
+
+2001-05-14 20:24  stephant
+
+	* html/sendpwd.php: bugfixes, code-optimation
+
+2001-05-14 20:23  stephant
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php,
+	spanish_inc.php: updates for sendpassword
+
+2001-05-14 17:46  mgiese
+
+	* html/chatmail/messages_tpl.php: bugfix
+
+2001-05-14 16:11  mgiese
+
+	* html/input.php: bugfix
+
+2001-05-14 15:58  mgiese
+
+	* html/input.php: statusfilter "forgots" his state at changing a
+	channel
+
+2001-05-14 15:28  mgiese
+
+	* html/output.php: twaddelfilter was not working properly
+
+2001-05-14 13:45  mgiese
+
+	* includes/german_inc.php: bugfix
+
+2001-05-13 20:11  stephant
+
+	* html/admin-neu/: admin_mailall.php, admin_mailall.tpl.php,
+	admin_mailall_create.tpl.php: some additions
+
+2001-05-13 20:11  stephant
+
+	* html/admin-neu/admin_mailall_show.tpl.php: initial release
+
+2001-05-13 20:10  stephant
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php,
+	spanish_inc.php: Updates for admin/mailall
+
+2001-05-13 16:40  aleitenberger
+
+	* html/user_profile.php: check built in if chatter is in top 30
+
+2001-05-13 06:33  aleitenberger
+
+	* html/toplist.php: bugfix: conflict with $nick variable
+
+2001-05-13 03:27  aleitenberger
+
+	* includes/: english_inc.php, french_inc.php, spanish_inc.php: new
+	chat_mail
+
+2001-05-13 03:22  aleitenberger
+
+	* includes/german_inc.php: new chat_mail
+
+2001-05-13 03:13  aleitenberger
+
+	* html/chat_mail.php, includes/messages_tpl.php: removed old
+	chat_mail
+
+2001-05-13 03:12  aleitenberger
+
+	* html/input.php: new chat_mail
+
+2001-05-13 03:10  aleitenberger
+
+	* html/chatmail/messages_tpl.php: divided chat_mail.php for easier
+	overview and future changes
+
+2001-05-13 03:02  aleitenberger
+
+	* html/chatmail/chatmail_writemail.php: divided chat_mail.php for
+	easier overview and future changes
+
+2001-05-13 02:59  aleitenberger
+
+	* html/chatmail/: chatmail_inbox.php, chatmail_sentmail.php:
+	divided chat_mail.php for easier overview and future changes
+
+2001-05-12 23:39  stephant
+
+	* html/admin-neu/admin_navigation.tpl.php,
+	includes/english_inc.php, includes/french_inc.php,
+	includes/german_inc.php, includes/spanish_inc.php: additions for
+	admin/mailall
+
+2001-05-12 23:39  stephant
+
+	* html/admin-neu/: admin_mailall.php, admin_mailall.tpl.php,
+	admin_mailall_create.tpl.php: initial release
+
+2001-05-12 11:35  stephant
+
+	* html/admin-neu/: admin_channels.tpl.php, admin_forum.tpl.php,
+	admin_forum_messages.tpl.php: added confirmation dialog before
+	delete
+
+2001-05-12 11:34  stephant
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php,
+	spanish_inc.php: additions for the admin-module
+
+2001-05-12 09:10  stephant
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php,
+	spanish_inc.php: some additions for the admin-module
+
+2001-05-12 08:05  aleitenberger
+
+	* includes/: german_inc.php, english_inc.php, french_inc.php,
+	spanish_inc.php: new chat_mail var $no_selection
+
+2001-05-12 08:04  aleitenberger
+
+	* html/chat_mail.php: now the chatter gets en error message if he
+	forgets to select a name out of the search list
+
+2001-05-12 00:55  aleitenberger
+
+	* html/chat_mail.php: bugfix: problem with nicks that had a space
+	in it
+
+2001-05-11 14:47  stephant
+
+	* html/admin-neu/: admin_channels.php,
+	admin_channels_create.tpl.php, admin_channels_edit.tpl.php,
+	admin_comoderators.php, admin_comoderators.tpl.php,
+	admin_operators.php, admin_operators.tpl.php: Bugfixes
+
+2001-05-11 14:46  stephant
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php,
+	spanish_inc.php: Bugfixes / Additions für the admin-module
+
+2001-05-10 23:14  stephant
+
+	* includes/: english_inc.php, french_inc.php, spanish_inc.php:
+	added english translation for the admin-module
+
+2001-05-10 21:07  mgiese
+
+	* includes/messages_tpl.php, html/chat_mail.php: bugfix
+
+2001-05-10 20:10  mgiese
+
+	* includes/: connect_db_inc.php, english_inc.php, french_inc.php,
+	german_inc.php, spanish_inc.php: mail if db-connect fails
+
+2001-05-10 19:42  mgiese
+
+	* includes/german_inc.php: better eerror-message
+
+2001-05-10 19:38  mgiese
+
+	* html/index.php: bugfix for wrong db_handle
+
+2001-05-10 18:42  mgiese
+
+	* html/admin/service.php: important update: bug deleted all forums
+
+2001-05-10 00:18  stephant
+
+	* includes/timeupdate_inc.php: Bugfix: The channel in the Toplist
+	should now be updated - by HF
+
+2001-05-10 00:17  stephant
+
+	* includes/german_inc.php: additions for admin/vips
+
+2001-05-10 00:16  stephant
+
+	* html/admin-neu/: admin_vips.php, admin_vips.tpl.php: admin/vip
+	should work fine now
+
+2001-05-10 00:15  stephant
+
+	* html/admin-neu/admin_vips_create.tpl.php: initial release
+
+2001-05-08 20:47  stephant
+
+	* html/admin-neu/: admin_operators.php, admin_operators.tpl.php,
+	admin_vips.tpl.php: inital release
+
+2001-05-08 20:45  stephant
+
+	* html/online_text.php: Initial Release. Outputs the status of a
+	user in plain text using javascript
+
+2001-05-08 20:44  stephant
+
+	* includes/german_inc.php, html/admin-neu/admin_navigation.tpl.php,
+	html/admin-neu/admin_vips.php: some changes
+
+2001-05-08 14:17  mgiese
+
+	* includes/filter_inc.php: new smileycode
+
+2001-05-08 13:26  mgiese
+
+	* html/user_profile.php: bugfix for php3
+
+2001-05-08 13:23  mgiese
+
+	* html/forum/: eingabe.php, eintrag.php, forum.php, index.php,
+	links.php, rechts.php: changes hardcoded .php to $FILE_EXTENSION
+
+2001-05-07 15:52  mgiese
+
+	* includes/german_inc.php: bugfix for missing $SAY
+
+2001-05-04 14:29  stephant
+
+	* includes/german_inc.php: some bugfixes for admin/forum
+
+2001-05-04 14:27  stephant
+
+	* includes/: english_inc.php, french_inc.php, spanish_inc.php:
+	added english translation for admin/forum
+
+2001-05-04 13:48  stephant
+
+	* includes/german_inc.php: admin/forum additions
+
+2001-05-04 13:47  stephant
+
+	* html/admin-neu/: admin_forum_messages.tpl.php,
+	admin_forum_msg_edit.tpl.php: enhancements
+
+2001-05-04 13:47  stephant
+
+	* html/admin-neu/admin_forum.php: fixes and admin/forum additions
+
+2001-05-03 22:11  stephant
+
+	* html/admin-neu/admin_forum.php: misc changes and additional code
+	for admin/forum
+
+2001-05-03 22:09  stephant
+
+	* html/admin-neu/admin_forum.tpl.php: warning message add. The page
+	also shows the number of messages in a topic
+
+2001-05-03 22:08  stephant
+
+	* html/admin-neu/: admin_forum_messages.tpl.php,
+	admin_forum_msg_edit.tpl.php: initial release
+
+2001-05-03 22:08  stephant
+
+	* includes/german_inc.php: more changes for the admin-module
+
+2001-05-02 20:49  stephant
+
+	* html/admin-neu/: admin_forum.php, admin_forum.tpl.php: fixed bug
+	of muliple topic selection
+
+2001-05-02 15:14  mgiese
+
+	* includes/login_tpl.php: bugfix: user with php3.x got an error
+
+2001-05-02 15:14  mgiese
+
+	* html/chat_mail.php, includes/messages_tpl.php: bugfix: wrong html
+
+2001-05-02 15:13  mgiese
+
+	* html/output.php: now the whisper-message is shown with the
+	not_lowercase-nicknames
+
+2001-04-27 13:15  mgiese
+
+	* html/user_profile.php: bugfixed version thanks to mark
+	(markv@firstnetconsult.com)
+
+2001-04-27 12:51  stephant
+
+	* includes/german_inc.php: some additions for admin/forum
+
+2001-04-27 12:50  stephant
+
+	* html/admin-neu/: admin_forum.tpl.php, admin_forum_topic.tpl.php:
+	initial release
+
+2001-04-27 12:49  stephant
+
+	* html/admin-neu/admin_forum.php: more work done. Now it is
+	possible to manage topics
+
+2001-04-27 12:48  stephant
+
+	* html/admin-neu/admin_channels.php: correct time/date selection
+	for channel-edit
+
+2001-04-25 16:01  mgiese
+
+	* html/admin/install.php: new functions, still not working
+
+2001-04-24 09:00  letreo
+
+	* includes/notify_tpl.php: add error message, shown if the given
+	nickname is not found
+
+2001-04-24 08:59  letreo
+
+	* html/chat_notify.php: add check of given nickname
+
+2001-04-23 19:28  mgiese
+
+	* includes/: english_inc.php, spanish_inc.php: bugfix
+
+2001-04-23 18:38  mgiese
+
+	* html/input.php: fixed a problem for users of php3.x which comes
+	without sessions
+
+2001-04-23 14:11  letreo
+
+	* ChangeLog: release 2.1.2
+
+2001-04-23 11:29  letreo
+
+	* html/chat_mail.php: minore changes
+
+2001-04-23 11:22  letreo
+
+	* includes/: in_out_tpl.php, notify_tpl.php: security changes
+
+2001-04-23 11:22  letreo
+
+	* includes/defaults_inc.php: minor changes
+
+2001-04-23 11:19  letreo
+
+	* html/forum/forum.php, html/forum/index.php, html/forum/links.php,
+	html/forum/rechts.php, includes/check_permissions_inc.php: security
+	update
+
+2001-04-23 11:16  letreo
+
+	* html/: chat_mail.php, chat_notify.php, in_out.php, input.php,
+	forum/eingabe.php, forum/eintrag.php: security changes
+
+2001-04-22 10:15  stephant
+
+	* html/admin-neu/admin_forum.php: correct time/date information
+	while editing a channel
+
+2001-04-20 22:53  letreo
+
+	* includes/channels_inc.php: minor changes
+
+2001-04-20 22:49  letreo
+
+	* includes/: spanish_inc.php, german_inc.php, french_inc.php,
+	english_inc.php: minor changes
+
+2001-04-20 22:47  letreo
+
+	* html/input.php: fixed an entry_channels bug, there was no
+	entry-channel
+
+2001-04-20 22:44  letreo
+
+	* INSTALL: add hint to protect the admin-tool
+
+2001-04-20 22:04  letreo
+
+	* html/input.php: minor changes
+
+2001-04-20 17:57  letreo
+
+	* includes/defaults_inc.php: rewrite of login procedure
+
+2001-04-20 17:53  letreo
+
+	* includes/spanish_inc.php: new vars for chat mail interface
+
+2001-04-20 17:52  letreo
+
+	* includes/messages_tpl.php: better chat mail interface
+
+2001-04-20 17:51  letreo
+
+	* includes/: login_inc.php, login_tpl.php: rewrite of login
+	procedure
+
+2001-04-20 17:50  letreo
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php: new
+	vars for chat mail interface
+
+2001-04-20 17:47  letreo
+
+	* html/: input.php, output.php, user_profile.php: rewrite of login
+	procedure
+
+2001-04-20 17:47  letreo
+
+	* html/chat_mail.php: better chat mail interface
+
+2001-04-20 17:46  letreo
+
+	* db.schema: type of time field in chat_mail changed
+
+2001-04-19 18:46  letreo
+
+	* includes/login_inc.php: any chat-notify messages for a chatter
+	merged in one chat-mail
+
+2001-04-19 18:44  letreo
+
+	* html/input.php: add code to prevent ghost-posts
+
+2001-04-17 15:42  mgiese
+
+	* html/choose_color.php: in color-table less -> less code -> faster
+	loading
+
+2001-04-17 15:18  letreo
+
+	* includes/: english_inc.php, german_inc.php, spanish_inc.php: var
+	$SAYS_TO changed to $SAY_TO
+
+2001-04-17 14:25  letreo
+
+	* includes/login_inc.php: add code to prevent postings by ghosts
+	(empty nick name)
+
+2001-04-17 14:24  letreo
+
+	* html/input.php: add code to prevent postings by ghosts (no nick
+	name)
+
+2001-04-17 13:59  letreo
+
+	* html/choose_color.php: minor changes
+
+2001-04-15 10:25  stephant
+
+	* includes/: english_inc.php, french_inc.php, spanish_inc.php: some
+	translation fixes for the admin-module
+
+2001-04-14 14:37  stephant
+
+	* includes/german_inc.php: added language variables for
+	forum-administration
+
+2001-04-14 14:36  stephant
+
+	* includes/: english_inc.php, french_inc.php, spanish_inc.php:
+	first translation of the new admin-module (english)
+
+2001-04-14 11:48  stephant
+
+	* html/admin-neu/: admin_comoderators.php,
+	admin_comoderators.tpl.php, admin_hints.php, admin_hints.tpl.php,
+	admin_moderators.tpl.php: more changes
+
+2001-04-14 11:46  stephant
+
+	* includes/german_inc.php: More admin-module changes
+
+2001-04-13 14:54  stephant
+
+	* includes/german_inc.php: Some additions for the-admin-module
+
+2001-04-13 14:53  stephant
+
+	* ChangeLog: [no log message]
+
+2001-04-13 14:49  stephant
+
+	* html/admin-neu/admin_moderators.tpl.php: initial release.
+
+2001-04-13 14:49  stephant
+
+	* html/admin-neu/admin_moderators.php: Seems to work fine now
+
+2001-04-13 13:25  stephant
+
+	* html/admin-neu/: admin_channels.php,
+	admin_channels_create.tpl.php, admin_channels_edit.tpl.php: *
+	html/admin-neu: Some changes. The channel-administration now seems
+	to work well.
+
+2001-04-13 13:24  stephant
+
+	* includes/defaults_inc.php: Added variable $DEFAULT_BG_COLOR
+
+2001-04-13 00:09  stephant
+
+	* html/admin-neu/: admin_channels.php, admin_channels.tpl.php,
+	admin_channels_create.tpl.php, admin_channels_edit.tpl.php,
+	admin_comoderators.php, admin_forum.php, admin_hints.php,
+	admin_moderators.php, admin_navigation.tpl.php, admin_vips.php,
+	index.php, module.php, navigation.php: initial version of the new
+	admin-module
+
+2001-04-13 00:08  stephant
+
+	* includes/german_inc.php: added variables for the new admin-module
+
+2001-04-13 00:06  stephant
+
+	* includes/defaults_inc.php: [no log message]
+
+2001-04-11 16:49  mgiese
+
+	* html/admin/install.php: chat-install-script, not ready yet
+
+2001-04-10 11:00  mgiese
+
+	* includes/input_tpl.php: backgroundcolor of the
+	backgroundcolorlink is now the channel-background-color
+
+2001-04-10 10:43  mgiese
+
+	* includes/defaults_inc.php: default-text-color and default.look-in
+	color are now dynamic
+
+2001-04-10 10:39  mgiese
+
+	* html/frame_set.php, html/input.php, includes/defaults_inc.php:
+	look-in-color and default-text-colors are now dynamic within  the
+	defaults_inc.php
+
+2001-04-06 16:34  letreo
+
+	* INSTALL: add new information (upload images)
+
+2001-04-06 16:04  letreo
+
+	* includes/defaults_inc.php: add spanish language include
+
+2001-04-06 12:45  letreo
+
+	* includes/defaults_inc.php: add setting for file upload
+
+2001-04-05 15:11  mgiese
+
+	* html/input.php, includes/exit_inc.php: session in exit-link
+
+2001-04-05 13:43  mgiese
+
+	* html/admin/service.php: new  service and bugfix
+
+2001-04-04 20:55  letreo
+
+	* includes/spanish_inc.php: add some language vars
+
+2001-04-04 20:54  letreo
+
+	* includes/english_inc.php: format changes only
+
+2001-04-04 20:53  letreo
+
+	* includes/defaults_inc.php: version information changed
+
+2001-04-04 20:51  letreo
+
+	* html/images/new.gif: new image to mark new chat-mails
+
+2001-04-04 20:18  letreo
+
+	* includes/spanish_inc.php: new language file
+
+2001-04-04 16:44  mgiese
+
+	* html/chat_mail.php: ups there was my debug-uncomment
+
+2001-04-04 16:08  mgiese
+
+	* html/chat_mail.php, includes/english_inc.php,
+	includes/french_inc.php, includes/german_inc.php,
+	includes/messages_tpl.php: next update
+
+2001-04-04 13:35  mgiese
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php,
+	messages_tpl.php: new chat_mail
+
+2001-04-04 13:10  mgiese
+
+	* html/chat_mail.php: new chat_mail-code
+
+2001-03-06 15:27  mgiese
+
+	* html/admin/service.php: delete only the private channels when
+	there empty
+
+2001-03-06 15:16  mgiese
+
+	* html/admin/service.php: service-file for all service-procedures
+	like delting old user, optimze table and so on. should be opened
+	every day (or better night) by a cron job like lynx
+	chatservername/path_to_chat/admin/service.php
+
+2001-03-06 11:05  mgiese
+
+	* html/forum/links.php: bugfix
+
+2001-02-26 12:02  letreo
+
+	* includes/filter_inc.php: add an '@' to prevent a warning by an
+	empty result set
+
+2001-02-23 17:05  letreo
+
+	* includes/: fileupload_class.php, filter_inc.php: add urlencode()
+	to correct the link to the user icon (icons of	nicks with umlauts
+	in it crashed)
+
+2001-02-23 17:04  letreo
+
+	* html/user_profile.php: add urlencode() to correct the link to the
+	user icon (icons of nicks with umlauts in it crashed)
+
+2001-02-23 13:47  letreo
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php: add
+	lang vars for user profile login
+
+2001-02-23 13:45  letreo
+
+	* html/user_profile.php: bug fixed, there was no check for nick
+	exists some HTML changes for a better look and feel
+
+2001-02-23 13:32  letreo
+
+	* html/sendpwd.php: bug fixed, during input of a not registered
+	nickname the script bailed out
+
+2001-02-23 12:24  letreo
+
+	* includes/german_inc.php: add lang vars for upload icons
+
+2001-02-23 12:20  letreo
+
+	* includes/french_inc.php: 
+	minor changes
+
+2001-02-23 12:19  letreo
+
+	* includes/english_inc.php: add language vars for upload user icons
+
+2001-02-23 12:17  letreo
+
+	* html/output.php: fixed a bug in code to get the nick by user
+	given cases
+
+2001-02-23 11:09  letreo
+
+	* html/user_profile.php: add multilanguage support
+
+2001-02-23 11:08  letreo
+
+	* includes/fileupload_class.php: add translation tags in error
+	messages
+
+2001-02-22 20:44  letreo
+
+	* html/output.php: fixed a bug, the nicknames were always output in
+	lower cases
+
+2001-02-21 15:31  mgiese
+
+	* html/chat_mail.php: bugfix for german umlaute
+
+2001-02-21 14:09  mgiese
+
+	* includes/: english_inc.php, german_inc.php: replacing all " with
+	'
+
+2001-02-21 14:09  mgiese
+
+	* html/input.php: bugfix for chat_mail
+
+2001-02-20 15:55  letreo
+
+	* includes/fileupload_class.php: minor changes
+
+2001-02-20 15:44  letreo
+
+	* includes/fileupload_class.php: initial checkin
+
+2001-02-20 15:43  letreo
+
+	* ChangeLog: some changes
+
+2001-02-20 14:54  letreo
+
+	* html/input.php, includes/input_tpl.php: add JavaScript code to
+	stop submitting text lines twice
+
+2001-02-20 13:54  letreo
+
+	* includes/english_inc.php: minor changes
+
+2001-02-20 13:53  letreo
+
+	* html/chat_mail.php, includes/messages_tpl.php: add SessionId to
+	the GET parameters
+
+2001-02-19 17:40  letreo
+
+	* html/edit.php: in a moderated channel, moderated wispered lines
+	transformed to said lines
+
+2001-02-19 17:19  letreo
+
+	* includes/messages_tpl.php: add a hint for sending chat mail
+
+2001-02-19 17:18  letreo
+
+	* includes/login_inc.php: bugfix on diplaying notify-message about
+	friends
+
+2001-02-19 17:14  letreo
+
+	* includes/: filter_inc.php, english_inc.php, french_inc.php,
+	german_inc.php: minor changes
+
+2001-02-19 17:03  letreo
+
+	* html/output.php: improved code for moderating
+
+2001-02-19 16:48  letreo
+
+	* html/input.php: fixed a bug in transforming a url or email
+	address to a anchor in text frame
+
+2001-02-19 15:53  letreo
+
+	* html/chat_mail.php: minor changes, add some spaces
+
+2001-02-19 15:52  letreo
+
+	* db.schema: add a default forum topic "help"
+
+2001-02-19 14:41  mgiese
+
+	* html/input.php: bug fix
+
+2001-02-17 14:55  letreo
+
+	* includes/defaults_inc.php: minor changes
+
+2001-02-17 14:54  letreo
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php: add
+	lang vars for chat mail
+
+2001-02-17 14:52  letreo
+
+	* includes/login_inc.php: fixed a bug in code to notify a friend
+
+2001-02-17 14:47  letreo
+
+	* includes/messages_tpl.php: add a comment
+
+2001-02-17 14:45  letreo
+
+	* html/chat_mail.php: add a comment for choosing a nickname for
+	writing a chat mail
+
+2001-02-17 14:43  letreo
+
+	* html/input.php: minor changes
+
+2001-02-17 14:41  letreo
+
+	* html/output.php: fixes a bug in status output (bla wispers to
+	foo)
+
+2001-02-16 17:40  letreo
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php: add
+	lang vars for chat mail
+
+2001-02-16 17:39  letreo
+
+	* includes/: defaults_inc.php, messages_tpl.php: minor changes
+
+2001-02-16 17:38  letreo
+
+	* html/input.php: fixed a bug, a moderator lost the rights to
+	moderate a channel by choosing a new color
+
+2001-02-16 17:37  letreo
+
+	* html/choose_color.php: fixed a bug, a moderator lost the rights
+	to moderate by choosing a color
+
+2001-02-16 17:35  letreo
+
+	* html/chat_mail.php: minor changes
+
+2001-02-16 16:21  letreo
+
+	* includes/messages_tpl.php: fixes some html bugs
+
+2001-02-16 16:21  letreo
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php: add
+	lang vars for chat_mail interface
+
+2001-02-16 16:20  letreo
+
+	* html/chat_mail.php: fixes some little html/language support bugs
+
+2001-02-16 16:20  letreo
+
+	* db.schema, includes/defaults_inc.php: minor changes
+
+2001-02-16 16:19  letreo
+
+	* INSTALL: add hint for the use of sessions on win32 plattforms
+
+2001-02-16 11:30  letreo
+
+	* html/output.php: wispering within moderated channels works
+	properly now
+
+2001-02-16 11:27  letreo
+
+	* html/input.php: bugfix: reset of moderator-rights while changing
+	the channel works properly now
+
+2001-02-16 11:20  letreo
+
+	* html/edit.php: changes to work properly with session enabled
+
+2001-02-15 15:40  mgiese
+
+	* html/chat_mail.php, html/input.php, html/message_popup.php,
+	includes/english_inc.php, includes/german_inc.php,
+	includes/messages_tpl.php: chatmail-redesign
+
+2001-02-14 17:01  letreo
+
+	* includes/session_inc.php: add a variable session name defined in
+	defaults_inc.php
+
+2001-02-14 17:00  letreo
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php: add
+	lang vars for moderation
+
+2001-02-14 16:59  letreo
+
+	* html/output.php: rewrite of filter function
+
+2001-02-14 16:58  letreo
+
+	* html/input.php: add session id to parent.refresh.location.href
+
+2001-02-14 14:28  mgiese
+
+	* html/index.php: better html
+
+2001-02-09 21:30  letreo
+
+	* html/forum/links.php: minor changes
+
+2001-02-09 21:30  letreo
+
+	* includes/session_inc.php: add set of session name to
+	PHPOPENCHAT_ID and all files now under session control except
+	index.php and output.php
+
+2001-02-09 21:26  letreo
+
+	* html/index.php: minor html changes
+
+2001-02-09 13:54  mgiese
+
+	* html/edit.php: replaced ereg_replace with str_replace ->
+	performance
+
+2001-02-09 13:45  mgiese
+
+	* html/index.php: replaced ereg_replace with str_replace ->
+	performance
+
+2001-02-09 13:35  mgiese
+
+	* html/index.php: file_exists works better than linkinfo cause it
+	works in winXX too
+
+2001-02-09 13:06  mgiese
+
+	* html/index.php: better html
+
+2001-02-08 18:24  mgiese
+
+	* includes/french_inc.php: update
+
+2001-02-08 17:48  mgiese
+
+	* includes/english_inc.php: update
+
+2001-02-08 17:48  mgiese
+
+	* includes/: channels_inc.php, exit_inc.php, login_inc.php:
+	performance tuning
+
+2001-02-08 17:26  letreo
+
+	* html/choose_color.php, html/frame_set.php, html/input.php,
+	includes/exit_inc.php, includes/filter_inc.php,
+	includes/login_inc.php: add session code minor changes
+
+2001-02-08 16:37  mgiese
+
+	* html/choose_color.php: new way of choosing color again
+
+2001-02-08 16:37  mgiese
+
+	* html/input.php: javascript bugfixes
+
+2001-02-08 15:55  letreo
+
+	* includes/filter_inc.php: completes the code for the irc-command
+	/locate
+
+2001-02-08 15:52  letreo
+
+	* html/input.php: fixes some bugs in the optimized mysql-query code
+
+2001-02-08 15:38  mgiese
+
+	* html/choose_color.php: ooppss... i comment the wrong line out
+
+2001-02-08 15:34  mgiese
+
+	* html/choose_color.php: now much faster
+
+2001-02-08 11:55  letreo
+
+	* html/frame_set.php: minor changes
+
+2001-02-08 10:39  mgiese
+
+	* html/input.php: bugfix
+
+2001-02-07 17:29  mgiese
+
+	* includes/exit_inc.php: on logout the session gets destroyed
+
+2001-02-07 16:33  mgiese
+
+	* html/chat_mail.php: nick should not search for themselves
+
+2001-02-07 16:22  mgiese
+
+	* html/chat_mail.php: new way of searching users in chat_mail now
+	users can search for the nick to mail to.
+
+2001-02-07 16:17  mgiese
+
+	* includes/: english_inc.php, german_inc.php, messages_tpl.php: new
+	way of searching users in chat_mail
+
+2001-02-07 15:25  mgiese
+
+	* includes/defaults_inc.php: new define for \t
+
+2001-02-06 11:06  mgiese
+
+	* html/forum/rechts.php: small changes
+
+2001-02-06 10:47  mgiese
+
+	* html/forum/: links.php, rechts.php: new forum version: themes are
+	now dynamic. administrate them in the admin toolll
+
+2001-02-06 10:46  mgiese
+
+	* includes/german_inc.php: setting up forum is now multi-lingual
+
+2001-02-06 10:21  mgiese
+
+	* html/admin/index.php, includes/english_inc.php,
+	includes/german_inc.php: setting up forum is now multi-lingual
+
+2001-02-05 20:12  mgiese
+
+	* html/: output.php, input.php: took back changes
+
+2001-02-05 17:36  mgiese
+
+	* html/output.php: turned almost every double-quote to a single
+	quto to increase speed and readability
+
+2001-02-05 16:44  mgiese
+
+	* includes/defaults_inc.php: /n is now a constant
+
+2001-02-05 15:09  letreo
+
+	* html/output.php: minor changes, http header corrected
+
+2001-02-05 15:08  letreo
+
+	* html/input.php, includes/session_inc.php: minor changes
+
+2001-02-02 20:08  letreo
+
+	* includes/: login_inc.php, session_inc.php: minor changes
+
+2001-02-02 20:07  letreo
+
+	* html/input.php: bugfix sessions
+
+2001-02-02 19:44  letreo
+
+	* html/chat_mail.php, html/input.php, html/output.php,
+	html/forum/forum.php, includes/check_permissions_inc.php,
+	includes/defaults_inc.php, includes/session_inc.php: add sessions
+
+2001-02-01 17:09  mgiese
+
+	* html/output.php: switching from double quota to single quota to
+	make code better radable and faster
+
+2001-02-01 15:50  mgiese
+
+	* includes/input_tpl.php: $chanthese is now better html
+
+2001-02-01 15:49  mgiese
+
+	* html/input.php: changed hidden field chanthese to better html
+	with urlencode changed almost all double quotas to single quotas to
+	make it better readable and improve speed
+
+2001-01-30 10:52  mgiese
+
+	* includes/filter_inc.php: this should increase speed a bit
+
+2001-01-30 10:37  mgiese
+
+	* html/admin/wartung.php: bugfixing
+
+2001-01-29 15:13  letreo
+
+	* license.txt: add more contact info
+
+2001-01-29 14:07  letreo
+
+	* includes/session_inc.php: add sessions
+
+2001-01-29 14:02  letreo
+
+	* includes/input_tpl.php: move the hidden fields to input.php
+
+2001-01-29 14:00  letreo
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php: add
+	messages for irc-command /locate
+
+2001-01-29 13:58  letreo
+
+	* includes/: defaults_inc.php, filter_inc.php: add sessions
+
+2001-01-29 13:56  letreo
+
+	* html/output.php: del of to mutch status output
+
+2001-01-29 13:18  letreo
+
+	* html/input.php: add sessions
+
+2001-01-28 22:56  letreo
+
+	* html/input.php, includes/english_inc.php,
+	includes/filter_inc.php, includes/french_inc.php,
+	includes/german_inc.php: add interpretation of the IRC-Command
+	/locate, in order to give the users the possibility of inquiring of
+	current channels of other users
+
+2001-01-27 14:02  letreo
+
+	* includes/english_inc.php, includes/french_inc.php,
+	includes/german_inc.php, html/index.php: add multi-language support
+	for the entry-link at start page
+
+2001-01-23 12:01  mgiese
+
+	* html/admin/index.php: added entry for forum
+
+2001-01-23 12:01  mgiese
+
+	* html/admin/wartung.php: administrates forum, still beta and
+	untested
+
+2001-01-22 08:41  letreo
+
+	* INSTALL: add hint for db-import under win32
+
+2001-01-18 09:29  letreo
+
+	* ChangeLog: some changes
+
+2001-01-18 09:27  letreo
+
+	* html/: help_de.html, help_en.html: add hints for irc-commands
+
+2001-01-18 09:04  letreo
+
+	* includes/filter_inc.php: add irc-command /me
+
+2001-01-18 09:03  letreo
+
+	* includes/defaults_inc.php: minor changes
+
+2001-01-17 19:05  letreo
+
+	* includes/login_tpl.php: minor changes
+
+2001-01-17 19:03  letreo
+
+	* includes/filter_inc.php: add IRC-command /MSG
+
+2001-01-17 18:55  letreo
+
+	* html/output.php, includes/defaults_inc.php: minor changes
+
+2001-01-17 18:54  letreo
+
+	* html/help_en.html: minor html code changes
+
+2001-01-16 18:46  letreo
+
+	* ChangeLog: changes
+
+2001-01-16 18:45  letreo
+
+	* includes/session_inc.php: minor changes
+
+2001-01-16 18:44  letreo
+
+	* includes/login_tpl.php: minor html bugfix
+
+2001-01-16 18:43  letreo
+
+	* includes/login_inc.php: add code to set a cookie
+
+2001-01-16 18:42  letreo
+
+	* includes/filter_inc.php: better multilingual output add
+	interpretation of IRC-Commands	       /join <channel>	      
+	/<chatter>
+
+2001-01-16 18:42  letreo
+
+	* includes/: english_inc.php, french_inc.php, german_inc.php: add
+	new language variables
+
+2001-01-16 18:41  letreo
+
+	* includes/defaults_inc.php: minor changes
+
+2001-01-16 18:37  letreo
+
+	* html/: sendpwd.php, toplist.php, user_profile.php,
+	forum/eingabe.php, forum/eintrag.php, forum/forum.php,
+	forum/links.php, forum/rechts.php: multilingual output minor
+	changes
+
+2001-01-16 18:34  letreo
+
+	* html/: message_popup.php, output.php: minor changes
+
+2001-01-16 18:32  letreo
+
+	* html/input.php: better multilingual output add interpretation of
+	IRC-Commands	     /join <channel>	     /<chatter>
+
+2001-01-16 18:29  letreo
+
+	* html/index.php: add a cookie containing the last used nickname
+	multilingual output
+
+2001-01-16 18:27  letreo
+
+	* html/in_out.php: minor changes
+
+2001-01-16 18:26  letreo
+
+	* html/: help_de.html, help_en.html: add multilingual help section
+
+2001-01-16 18:18  letreo
+
+	* html/help.php: add multilingual help section
+
+2001-01-16 18:17  letreo
+
+	* html/frame_set.php: add a cookie containing the last used
+	nickname
+
+2001-01-16 18:15  letreo
+
+	* html/: chat_mail.php, chat_notify.php, choose_color.php,
+	edit.php: minor changes
+
+2001-01-16 18:14  letreo
+
+	* INSTALL: add hint for smaller webserver processes
+
+2001-01-03 11:58  mgiese
+
+	* includes/german_inc.php: new forum-words
+
+2001-01-03 11:50  mgiese
+
+	* html/forum/links.php: multi-language-support, as afr as it make
+	sense. this part of forum will be rewritten in order to give the
+	admin the possibility to change topics
+
+2001-01-03 11:41  mgiese
+
+	* html/forum/forum.php: multi language support
+
+2001-01-03 11:35  mgiese
+
+	* html/forum/eingabe.php: multi-language-support
+
+2001-01-03 11:23  mgiese
+
+	* html/forum/eintrag.php: security-update: no html in all
+	forum-fields
+
+2000-12-22 12:47  mgiese
+
+	* includes/german_inc.php: new vars for forum
+
+2000-12-22 12:46  mgiese
+
+	* html/forum/eingabe.php: messags are now dynamic
+
+2000-12-22 12:32  mgiese
+
+	* html/forum/eintrag.php: text-output is now dynamic
+
+2000-12-20 18:07  letreo
+
+	* html/online.php: Added image for user's online status and fixed a
+	bug in image names
+
+2000-12-20 17:45  letreo
+
+	* html/images/: offline.gif, online.gif: Added image for user's
+	online status
+
+2000-12-20 11:08  letreo
+
+	* ChangeLog: [no log message]
+
+2000-12-20 10:59  letreo
+
+	* includes/write_line_inc.php: delete the old low-performance code
+	for moderating
+
+2000-12-20 10:51  letreo
+
+	* includes/notify_tpl.php: [no log message]
+
+2000-12-20 10:50  letreo
+
+	* includes/login_inc.php: added the database identifier as a
+	parameter to the mysql_close	   function added a new line flag
+	for a more efficient moderating code.	       Each line contains
+	in the comment string at the front of line	    data over
+	itself (separated by a pipe symbol). Format:	      <!--
+	nickname(spoken to)|nickname(spoken from)|wispered/or not|from	   
+	    a godfather/or not|line is moderated/or not|-->
+
+2000-12-20 10:46  letreo
+
+	* includes/input_tpl.php: fixed a bug: By sending a text line as a
+	moderator you lost the special rights
+
+2000-12-20 10:34  letreo
+
+	* includes/exit_inc.php: added the database identifier as a
+	parameter to the mysql_close function
+
+2000-12-20 10:33  letreo
+
+	* includes/: defaults_inc.php, english_inc.php, french_inc.php,
+	german_inc.php: minor changes
+
+2000-12-20 10:29  letreo
+
+	* html/user_profile.php: minor fixes
+
+2000-12-20 10:28  letreo
+
+	* html/sendpwd.php, includes/channels_inc.php,
+	includes/connect_db_inc.php: added the database identifier as a
+	parameter to the mysql_close function
+
+2000-12-20 10:27  letreo
+
+	* html/output.php: added a new line flag for a more efficient
+	moderating code.	  Each line contains in the comment string
+	at the front of line	      data over itself (separated by a pipe
+	symbol). Format:	  <!-- nickname(spoken to)|nickname(spoken
+	from)|wispered/or not|from	    a godfather/or not|line is
+	moderated/or not|-->  fixed a bug in the "nick name link". With a
+	click on a nick name,  the correct nick name was not selected and
+	as a moderator or a  vip one lost thereby its special rights.
+
+2000-12-20 10:05  letreo
+
+	* html/online.php: added the database identifier as a parameter to
+	the mysql_close function
+
+2000-12-20 10:03  letreo
+
+	* html/input.php: added a new line flag for a more efficient
+	moderating code.	  Each line contains in the comment string
+	at the front of line	      data over itself (separated by a pipe
+	symbol). Format:	  <!-- nickname(spoken to)|nickname(spoken
+	from)|wispered/or not|from	    a godfather/or not|line is
+	moderated/or not|-->
+
+2000-12-20 10:01  letreo
+
+	* html/index.php: added the database identifier as a parameter to
+	the mysql_close function
+
+2000-12-20 10:00  letreo
+
+	* html/chat_notify.php: added a list of users to inform a user
+	about his friends
+
+2000-12-20 09:57  letreo
+
+	* html/: edit.php, frame_set.php, in_out.php, message_popup.php:
+	added a new line flag for a more efficient moderating code.    Each
+	line contains in the comment string at the front of line   data
+	over itself (separated by a pipe symbol). Format:	   <!--
+	nickname(spoken to)|nickname(spoken from)|wispered/or not|from a
+	godfather/or	  not|line is moderated/or not|-->
+
+2000-12-20 09:47  letreo
+
+	* html/chat_mail.php: added a new line flag for a more efficient
+	moderating code.       Each line contains in the comment string at
+	the front of line   data over itself (separated by a pipe symbol).
+	Format: 	 <!-- nickname(spoken to)|nickname(spoken
+	from)|wispered/or not|from a godfather/or      not|line is
+	moderated/or not|-->
+
+2000-12-20 09:21  letreo
+
+	* db.schema: added table 'chat_notify'
+
+2000-12-13 17:26  letreo
+
+	* db.schema: added DROP TABLE IF EXISTS before table creation
+
+2000-12-13 17:23  letreo
+
+	* html/output.php: added new http header fields to prevent caching
+
+2000-12-06 18:30  letreo
+
+	* includes/login_inc.php: added a logout message for inactive users
+
+2000-12-06 18:26  letreo
+
+	* includes/: defaults_inc.php, exit_inc.php: minor changes
+
+2000-12-06 18:22  letreo
+
+	* html/: input.php, output.php: minor changes
+
+2000-12-06 18:21  letreo
+
+	* html/chat_mail.php: minor bug fixes
+
+2000-12-06 18:20  letreo
+
+	* INSTALL: added new installation/administration hints
+
+2000-12-05 17:50  letreo
+
+	* html/aendern.html, html/chat_mail.html, html/choose_color.html,
+	html/edit.html, html/frame_set.html, html/hilfe.html,
+	html/in_out.html, html/index.html, html/input_permanent.html,
+	html/jump.html, html/message_popup.html, html/online.html,
+	html/permanent.html, html/sendpwd.html, html/stammtisch.html,
+	html/admin/admin.html, html/forum/eingabe.html,
+	html/forum/eintrag.html, html/forum/forum.html,
+	html/forum/index.html, html/forum/links.html,
+	html/forum/rechts.html, html/forum/wartung.html,
+	includes/channel_expired.tpl, includes/channels.inc,
+	includes/check_permissions.inc, includes/connect_db.inc,
+	includes/defaults.inc, includes/english.inc, includes/exit.inc,
+	includes/filter.inc, includes/french.inc, includes/german.inc,
+	includes/in_out.tpl, includes/input.tpl, includes/login.inc,
+	includes/login.tpl, includes/messages.tpl,
+	includes/mysql_update.inc, includes/output.tpl: filenames renamed
+	to extension 'php'
+
+2000-12-05 17:39  letreo
+
+	* html/chat_mail.php, html/choose_color.php, html/edit.php,
+	html/frame_set.php, html/help.php, html/in_out.php, html/index.php,
+	html/input.php, html/jump.php, html/message_popup.php,
+	html/online.php, html/output.php, html/sendpwd.php,
+	html/toplist.php, html/user_profile.php, html/admin/index.php,
+	html/forum/eingabe.php, html/forum/eintrag.php,
+	html/forum/forum.php, html/forum/index.php, html/forum/links.php,
+	html/forum/rechts.php, html/forum/wartung.php,
+	includes/channel_expired_tpl.php, includes/channels_inc.php,
+	includes/check_permissions_inc.php, includes/connect_db_inc.php,
+	includes/defaults_inc.php, includes/english_inc.php,
+	includes/exit_inc.php, includes/filter_inc.php,
+	includes/french_inc.php, includes/german_inc.php,
+	includes/in_out_tpl.php, includes/input_tpl.php,
+	includes/login_inc.php, includes/login_tpl.php,
+	includes/messages_tpl.php, includes/mysql_update_inc.php,
+	includes/output_tpl.php, includes/session_inc.php,
+	includes/timeupdate_inc.php, includes/write_line_inc.php: filenames
+	renamed to extension 'php'
+
+2000-12-05 17:30  letreo
+
+	* includes/: schreib_zeile.inc, session.inc, timeupdate.inc: [no
+	log message]
+
+2000-12-05 17:06  letreo
+
+	* INSTALL: minor changes
+
+2000-12-05 11:08  letreo
+
+	* html/images/: accept.gif, no_accept.gif: added images used in the
+	moderating script (edit.php)
+
+2000-12-04 21:53  letreo
+
+	* includes/german.inc: minor changes
+
+2000-12-04 21:41  letreo
+
+	* includes/login.tpl: minor changes
+
+2000-11-30 09:48  letreo
+
+	* html/admin/admin.html: minor changes; correct the directory
+	statements in 'form action' and 'a href'
+
+2000-11-27 14:57  letreo
+
+	* html/in_out.html: minor changes
+
+2000-11-27 14:56  letreo
+
+	* html/chat_mail.html: minor fixes
+
+2000-11-23 18:17  letreo
+
+	* includes/login.inc: fixed a bug in channel login form fixed a bug
+	in these of privat channels
+
+2000-11-23 18:12  letreo
+
+	* includes/input.tpl: added an error output on changing color
+
+2000-11-23 17:59  letreo
+
+	* includes/filter.inc: ereg_replace replaced with str_replace
+
+2000-11-23 16:07  letreo
+
+	* includes/: english.inc, french.inc, german.inc: some new language
+	variables
+
+2000-11-23 15:56  letreo
+
+	* html/images/trash.gif: new image
+
+2000-11-23 15:55  letreo
+
+	* html/images/exit_logo.gif: image changed
+
+2000-11-23 15:54  letreo
+
+	* html/admin/admin.html: fixed a bug in the form to change channels
+	properties (the password value was 'Password' all the time) added a
+	field to edit the NICKNAME_COLOR field in table channels minor
+	other changes
+
+2000-11-23 15:50  letreo
+
+	* html/input_permanent.html: replaced ereg_replace with str_replace
+	added check of posted color code
+
+2000-11-23 15:45  letreo
+
+	* html/choose_color.html: added a form to submit color codes
+
+2000-11-21 16:07  letreo
+
+	* ChangeLog: [no log message]
+
+2000-11-20 17:55  letreo
+
+	* html/input_permanent.html, html/permanent.html,
+	includes/channels.inc, includes/defaults.inc, includes/exit.inc,
+	includes/input.tpl, includes/output.tpl: color of nickname depends
+	on channel and can be set for each channel
+
+2000-11-20 17:20  letreo
+
+	* INSTALL: added text for bug workaround mysql_close() function
+	concerning
+
+2000-11-20 17:17  letreo
+
+	* db.schema: added field NICK_COLOR in table channels
+
+2000-11-20 16:10  letreo
+
+	* ChangeLog: [no log message]
+
+2000-11-20 16:02  letreo
+
+	* INSTALL: add system requirement add version information
+
+2000-11-20 14:42  letreo
+
+	* html/: input_permanent.html, permanent.html: Suppression of the
+	possible error message at the mysql_close workaround
+
+2000-11-20 14:12  letreo
+
+	* html/message_popup.html: add link identifyer to func
+	mysql_close()
+
+2000-11-20 14:07  letreo
+
+	* html/input_permanent.html: add link identifyer to func
+	mysql_close()
+
+2000-11-20 14:02  letreo
+
+	* html/chat_mail.html: add link identifyer to func mysql_close()
+
+2000-11-20 13:52  letreo
+
+	* html/permanent.html: add check connection status
+
+2000-11-19 16:01  mgiese
+
+	* html/permanent.html: a time limit is set. its 20 seconds, maybe
+	this value should set in defaults.inc.
+
+2000-11-19 15:50  mgiese
+
+	* includes/german.inc: changed INVIDED to INVITED
+
+2000-11-19 15:47  mgiese
+
+	* html/permanent.html: workaround for buggy mysql_close, should be
+	removed whenever this bug is debuged in future php4.x
+
+2000-11-19 15:21  mgiese
+
+	* html/frame_set.html: scrolling in input frame is now auto
+
+2000-11-17 16:38  mgiese
+
+	* html/input_permanent.html: bugfix for color-changing
+
+2000-11-17 13:54  letreo
+
+	* INSTALL: text was completed
+
+2000-11-17 13:52  letreo
+
+	* includes/defaults.inc: add comments
+
+2000-11-17 13:39  letreo
+
+	* db.schema: table 'umfrage' removed
+
+2000-11-17 13:37  letreo
+
+	* html/index.html: unused stuff removed
+
+2000-11-17 13:36  letreo
+
+	* html/permanent.html: bug fix in highlighting nickname code change
+	eregi_replace to str_replace
+
+2000-11-17 13:32  letreo
+
+	* includes/: footer.inc, hauptmenu.inc: [no log message]
+
+2000-11-17 11:47  letreo
+
+	* includes/english.inc: Corrections of grammar and spelling by
+	Trevor
+
+2000-11-15 18:45  letreo
+
+	* includes/messages.tpl: file name for chat mails moved from
+	nachrichten_an to chat_mail
+
+2000-11-15 18:43  letreo
+
+	* includes/login.inc: special characters in nicknames now
+	configurable in defaults.inc
+
+2000-11-15 18:41  letreo
+
+	* includes/in_out.tpl: add ignore hint output
+
+2000-11-15 18:30  letreo
+
+	* includes/: english.inc, french.inc, german.inc: new text vars
+	added for chat_mail hints
+
+2000-11-15 18:29  letreo
+
+	* includes/defaults.inc: new vars added to manage the min. time to
+	be active in the chat
+
+2000-11-15 18:20  letreo
+
+	* html/message_popup.html: file name in link to chat_mail moved
+	from nachricht_an to chat_mail
+
+2000-11-15 18:18  letreo
+
+	* html/input_permanent.html: file name in BUTTON_MESSAGES link
+	moved from nachricht_an to chat_mail
+
+2000-11-15 18:09  letreo
+
+	* html/in_out.html: add a hint for ignoring users
+
+2000-11-15 18:04  letreo
+
+	* html/chat_mail.html: add html template to seperate code and
+	design
+
+2000-11-15 18:03  letreo
+
+	* html/nachricht_an.html: [no log message]
+
+2000-11-14 17:31  letreo
+
+	* html/nachricht_an.html, includes/messages.tpl: add HTML template
+	to separat code and design
+
+2000-11-14 17:29  letreo
+
+	* html/input_permanent.html: minor fixes
+
+2000-11-14 16:53  letreo
+
+	* includes/login.inc: fix a bug in SQL statement to insert the
+	users privat channel. the field Passwort was moved to PASSWORD
+
+2000-11-14 16:51  letreo
+
+	* includes/in_out.tpl: add this template to separate code and
+	design
+
+2000-11-14 16:48  letreo
+
+	* includes/: english.inc, french.inc, german.inc: add new vars for
+	ignore/invite users
+
+2000-11-14 16:47  letreo
+
+	* html/input_permanent.html: old style DB queries moved to
+	'mysql_query("sql",$db_handle)' style
+
+2000-11-14 16:44  letreo
+
+	* html/in_out.html: all HTML output moved to the template
+	'in_out.tpl' add functions for add and delete users
+
+2000-11-13 17:32  letreo
+
+	* includes/defaults.inc: add var $VERSION_NUMBER
+
+2000-11-13 17:31  letreo
+
+	* includes/output.tpl, html/permanent.html: add output HTML
+	template
+
+2000-11-13 17:06  letreo
+
+	* html/permanent.html: add PHPDoc documentation tags
+
+2000-11-08 17:50  letreo
+
+	* INSTALL: completion of installation guide
+
+2000-11-08 15:36  letreo
+
+	* INSTALL: now we have an install guide
+
+2000-11-07 09:38  letreo
+
+	* ChangeLog, db.schema, license.txt, html/aendern.html,
+	html/choose_color.html, html/edit.html, html/frame_set.html,
+	html/hilfe.html, html/in_out.html, html/index.html,
+	html/input_permanent.html, html/jump.html, html/message_popup.html,
+	html/nachricht_an.html, html/online.html, html/permanent.html,
+	html/sendpwd.html, html/stammtisch.html, html/style.css,
+	html/admin/admin.html, html/forum/eingabe.html,
+	html/forum/eintrag.html, html/forum/forum.html,
+	html/forum/index.html, html/forum/links.html,
+	html/forum/rechts.html, html/forum/wartung.html,
+	html/images/dot_clear.gif, html/images/exit_logo.gif,
+	html/images/leer.gif, html/images/chatter/administrator.gif,
+	html/images/chatter/moderator.gif, html/images/smileys/:-).gif,
+	html/images/smileys/;-).gif, html/images/smileys/smileys.tar.gz,
+	includes/channels.inc, includes/check_permissions.inc,
+	includes/connect_db.inc, includes/channel_expired.tpl,
+	includes/defaults.inc, includes/english.inc, includes/exit.inc,
+	includes/filter.inc, includes/footer.inc, includes/french.inc,
+	includes/german.inc, includes/hauptmenu.inc, includes/input.tpl,
+	includes/login.inc, includes/login.tpl, includes/mysql_update.inc,
+	includes/schreib_zeile.inc, includes/session.inc,
+	includes/timeupdate.inc: Initial revision
+
+2000-11-07 09:38  letreo
+
+	* ChangeLog, db.schema, license.txt, html/aendern.html,
+	html/choose_color.html, html/edit.html, html/frame_set.html,
+	html/hilfe.html, html/in_out.html, html/index.html,
+	html/input_permanent.html, html/jump.html, html/message_popup.html,
+	html/nachricht_an.html, html/online.html, html/permanent.html,
+	html/sendpwd.html, html/stammtisch.html, html/style.css,
+	html/admin/admin.html, html/forum/eingabe.html,
+	html/forum/eintrag.html, html/forum/forum.html,
+	html/forum/index.html, html/forum/links.html,
+	html/forum/rechts.html, html/forum/wartung.html,
+	html/images/dot_clear.gif, html/images/exit_logo.gif,
+	html/images/leer.gif, html/images/chatter/administrator.gif,
+	html/images/chatter/moderator.gif, html/images/smileys/:-).gif,
+	html/images/smileys/;-).gif, html/images/smileys/smileys.tar.gz,
+	includes/channels.inc, includes/check_permissions.inc,
+	includes/connect_db.inc, includes/channel_expired.tpl,
+	includes/defaults.inc, includes/english.inc, includes/exit.inc,
+	includes/filter.inc, includes/footer.inc, includes/french.inc,
+	includes/german.inc, includes/hauptmenu.inc, includes/input.tpl,
+	includes/login.inc, includes/login.tpl, includes/mysql_update.inc,
+	includes/schreib_zeile.inc, includes/session.inc,
+	includes/timeupdate.inc: Imported sources
+

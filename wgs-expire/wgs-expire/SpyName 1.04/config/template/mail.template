@@ -1,0 +1,42 @@
+					<tr>
+          	<td colspan="2" class="BlueNoteColumnTD">Mail settings
+          <tr><td>
+        	<tr>
+          	<td colspan="2"><b>From</b> field
+					<tr>
+          	<td colspan="2">
+            <input style="width:100%" type="text" name="mail_from" value="<%mail_from%>">            
+        	<tr>
+          	<td colspan="2">Password Forget Subject
+					<tr>
+          	<td colspan="2">
+            <input style="width:100%" type="text" name="restore_subject" value="<%restore_subject%>">            
+        	<tr>
+          	<td colspan="2">Password Forget Message
+					<tr>
+          	<td colspan="2">
+            <textarea cols="50" rows="5" style="width: 100%" name="restore_message"><%restore_message%></textarea>            
+        	<tr>
+          	<td colspan="2">Monitor Notification Subject
+					<tr>
+          	<td colspan="2">
+            <input type="text" name="monitor_subject" value="<%monitor_subject%>">            
+        	<tr>
+          	<td colspan="2">Monitor Notification Message
+					<tr>
+          	<td colspan="2">
+            <textarea rows="5" style="width: 100%" name="monitor_message"><%monitor_message%></textarea>            
+        	<tr>
+          	<td colspan="2">Welcome Email Subject
+					<tr>
+          	<td colspan="2">
+            <input type="text" name="welcome_subject" value="<%welcome_subject%>">            
+        	<tr>
+          	<td colspan="2">Welcome Email Message
+					<tr>
+          	<td colspan="2">
+            <textarea rows="5" style="width: 100%" name="welcome_message"><%welcome_message%></textarea>            
+        	<tr>
+          	<td>
+            		<input type="submit" name="save" value="Ok">
+          			<input type="reset" name="save" value="Reset">

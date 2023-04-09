@@ -1,0 +1,1 @@
+Your inquiry has been sent. We will reply as soon as possible.

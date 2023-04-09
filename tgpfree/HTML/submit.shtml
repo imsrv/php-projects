@@ -1,0 +1,82 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Submit your gallery to our TGP</title>
+</head>
+
+<body>
+
+
+<p align="center"><center><font size="+2"><font face="Verdana">Please read the
+rules before submitting</font></font><font face="Verdana"></font></center><font face="Verdana"><br>
+<center>
+    
+  <p><font face="Verdana"><font color="#FF0000">If linking to us, you <i>MUST</i> 
+    send traffic to http://www.DOMAIN.com/</font></font><br>
+      <font color="red" size="3">Your gallery must have at least 10 thumbs/pics, 
+      the more the better.<br>
+      Your gallery must not have too many banners or click thru text links.<br>
+      The cleaner the page the more likely it will get listed.<br>
+      No banners that look like thumbnails...if your free host has them your page 
+      will not get listed either.<br>
+      No html pages for full size pictures, consoles, frames, redirects, meta-refreshes, 
+      Ips in the url , etc.<br>
+      No child porn, bestiality, rape, torture, etc.</font> </p>
+    </center>
+  </font> <BR>
+<p align="center"><font face="Verdana">!</font></p>
+<form method="POST" action="/cgi-bin/tgp/submit.pl">
+<div align="center">
+  <center>  
+
+ <table border="0" cellpadding="0" cellspacing="0" width="360">
+      <tr>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>Your Name</b></font></td>
+        <td bgcolor="#C0C0C0"> 
+        
+       <font face="Verdana"><b><input type="text" name="webname" size="20"></b></font>
+
+</td>
+  </tr>
+  <tr>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>Email Address</b></font></td>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b> 
+          <input type="text" name="webemail" size="20"></b></font></td>
+  </tr>
+  <tr>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>Gallery URL</b></font></td>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b> 
+          <input type="text" name="weburl" size="20"></b></font></td>
+  </tr>
+  <tr>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>Category</b></font></td>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>
+          <select name="webcate">		  
+<!--#include virtual="/cgi-bin/tgp/categories.cgi" -->
+          </select>
+          </b></font></td>
+  </tr>
+  <tr>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>Number of Pics</b></font></td>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b> 
+          <input type="text" name="webpics" size="20"></b></font></td>
+  </tr>
+  <tr>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b>Description</b></font></td>
+        <td bgcolor="#C0C0C0"><font face="Verdana"><b> 
+          <input type="text" name="webdesc" size="20"></b></font></td>
+  </tr>
+
+</table>
+
+  </center>
+  </div>
+    <p align="center"><input type="submit" value="Submit" name="B1">
+</p></form>
+  
+
+</body>
+
+</html>

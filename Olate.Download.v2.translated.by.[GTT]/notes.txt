@@ -1,0 +1,26 @@
+//	- - File: notes.txt
+
+// Full translated by GTT
+// Not translated only in file /languages/russian/main.php following:
+// $language['title_download']					= 'Download';
+// and
+// $language['title_rate']						= 'Rate';
+// I cannot find during test of this script where script use this strings
+// Not translated folder /setup, because мне лень :)))
+
+// - - Процесс инсталляции скрипта
+
+// Шаг 1. Копируем содержимое архива в любую папку
+// Шаг 2. Заходим в папку /setup/
+// Шаг 3. Инсталлируем, указываем данные к mysql и др. настройки
+// Шаг 4. Переименовываем .htaccess.txt в .htaccess
+// Скрипт почему-то не хочет инсталлироваться, если сделать шаг 4 перед шагом 1
+// Можно было конечно вырезать проверку папки setup и файла db.php на существование, но проще переименовать :)
+
+// - - Модификация ЧПУрлов
+
+// Если захотите менять ЧПУ, не забудьте в коде пхп-скриптов изменить имена того, что меняете.
+// Например, если меняете строку RewriteRule file-([1-9][0-9]*).* download.php?id=$1 скажем на
+// строку RewriteRule getit-([1-9][0-9]*).* download.php?id=$1, то и в скриптах (исп. поиск по тексту)
+// измените file- на getit. Ну и так далее...
+

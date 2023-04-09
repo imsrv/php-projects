@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE> jPhotos - Photo Gallery script Manual </TITLE>
+ <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=windows-1250" LANG="cs">
+ <style type="text/css">
+ <!--
+  BODY { margin: 0px; }
+  H1   {
+         font-size: 150%; font-weight: normal; font-family: verdana; text-align: center;
+         width: 98%; margin: 0px; padding: 1%; background-color: #efefef;
+       }
+  H2   { margin: 10px; margin-top:35px; font-size: 120%; font-weight: normal;}
+  P    { margin: 15px 10px 15px 10px; }
+  .footer
+       { font-size: 65%; font-family: verdana;
+         width: 98%; margin: 0px; padding: 1%; bottom: 0px;
+         background-color: #efefef;
+       }
+ -->                                                                                
+ </style>
+</HEAD>
+<BODY>
+
+<h1> jPhotos - Photo gallery script</h1>
+
+<h2>What is jPhotos?</h2>
+<p>
+jPhotos is PHP script which able simple managing photo gallery.
+</p>
+
+<h2> Features: </h2>
+<p>
+- Automatic displaying of directory <br>
+- Description of photos are in separately files (no SQL needed) <br>
+- Automatic generation of thumbnails (GD2 library required) <br>
+- Tree structure galleries <br>
+- EXIF
+</p>
+
+<h2> Deployment: </h2>
+<p>
+<a href="./example.php">example</a> - simple example script<br>
+edit foto_browse.htx, foto_detail.htx, style.css to change layout<br>
+edit config.php (directory structures, etc.)
+</p>
+
+<h2> Structure of gallery: </h2>
+<ul>
+  <li> <I>foto</I> 
+    <ul>
+      <li> <I>thumb</I> - automatic generated directory with thumnails (check permissions) 
+         <ul>
+           <li> Photo1.jpg </li> 
+           <li> Photo2.jpg </li> 
+           <li> Photo3.jpg </li> 
+         </ul>
+      </li>
+      <li> <I>desc</I>  - directory with descriptions
+         <ul>
+           <li> Photo1.jpg.txt </li> 
+           <li> Photo2.jpg.txt </li> 
+           <li> Photo3.jpg.txt </li> 
+         </ul>
+      </li>
+      
+      <li> <I>Hollyday photos</I> - subgallery </li> 
+      <li> Photo1.jpg </li> 
+      <li> Photo2.jpg </li> 
+      <li> Photo3.jpg </li> 
+    </ul>
+  </li>
+</ul>
+
+<h2>Thanks to:</h2>
+<p>
+<a href="http://pukomuko.esu.lt/phemplate/">pukomuko's template engine</a><br>
+<a href="http://www.wellstyled.com/css-photo-cards.html">pixy's web</a><br>
+</p>
+
+<div class="footer">
+licence: BSD &nbsp;&nbsp; &bull; &nbsp;&nbsp; author: joejoe &nbsp;&nbsp; &bull; &nbsp;&nbsp; web: <a href="http://joe.rar.cz">http://joe.rar.cz</a>
+</div>
+
+</BODY>
+</HTML>

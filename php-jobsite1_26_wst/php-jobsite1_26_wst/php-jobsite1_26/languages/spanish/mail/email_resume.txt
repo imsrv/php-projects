@@ -1,0 +1,52 @@
+Estimado %%employer_company%%,
+
+Le enviamos los detalles del curriculum requerido de "%%jobseeker_name%%" 
+Comentarios:
+%%employer_comment%%
+
+Información de Contacto:
+Nombre: %%jobseeker_name%%
+Dirección: %%jobseeker_address%%
+Ciudad: %%jobseeker_city%%
+Estado: %%jobseeker_province%%
+Código Postal: %%jobseeker_zipcode%%
+Localización: %%jobseeker_location%%
+Teléfono: %%jobseeker_phone%%
+Email: %%jobseeker_email%%
+Sitio Web: %%jobseeker_url%%
+
+*******Información del Curriculum************
+
+Asunto: %%resume_summary%%
+
+Categorías del curriculum: %%resume_jobcategories%%
+
+Curriculum:
+%%resume_resume%%
+
+Habilidades:
+%%resume_skills%%
+
+Tipo de Empleo: %%resume_jobtypes%%
+
+Sueldo preferido: %%resume_salary%%
+
+Formación:
+%%resume_education%%
+
+Años de experiencia: %%resume_experience%%
+
+Experiencia de Trabajo:
+%%resume_workexperience%%
+
+Titulación: %%resume_degree%%
+
+Localización preferida: %%resume_location%%
+
+********Fin de la Información del Curriculum*******
+
+Enlace al curriculum: %%resume_link%%
+
+
+
+Gracias,

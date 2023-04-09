@@ -1,0 +1,23 @@
+Estimado %%employer_company%%,
+
+Detalles de la factura (NO: %%invoice_id%%)
+
+Pedido número de Authorize.net: %%authorize_order_number%%
+Estado de pedido Authorize.net: %%authorize_order_status%%
+
+Información del comprador:
+Domiciliio: %%cc_address%%
+Ciudad: %%cc_city%%
+Estado: %%cc_state%%
+Código Postal: %%cc_zip%%
+País: %%cc_country%%
+Teléfono: %%cc_phone%%
+Email: %%cc_email%%
+
+Precio de Tarifa: %%invoice_listprice%%
+Descuento: %%invoice_discount%%
+Importe del pago: %%invoice_totalprice%%
+Fecha de pago: %%invoice_paymentdate%%
+Dirección IP: %%ip_address%%
+
+Gracias por su pedido.

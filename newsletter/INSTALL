@@ -1,0 +1,47 @@
+--= phpMyNewsletter installation guide =
+
+#########################################################
+#                                                       #
+# This script was provided by:                          #
+#                                                       #
+# PHPSelect Web Development Division.                   #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are © 2004                      #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated in the script.                       #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# Any copying, distribution, modification with          #
+# intent to distribute as new code will result          #
+# in immediate loss of your rights to use this          #
+# program as well as possible legal action.             #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the authors at       #
+# admin@phpselect.com or info@phpselect.com             #
+#                                                       #
+#########################################################
+
+
+
+--
+
+
+Needed:
+------ 
+	- a webserver (eg: apache)
+	- a MySQL server
+	- PHP (3 o 4)
+	
+* Unpack the archive, and upload the files on the webserver.
+* If you can, give to the webserver the writting permission on include/ directory (with chmod command)
+  if you can't, that's not really a problem.
+* point your web browser to http://www.yourhost.com/yourdir/phpMyNewsletter/admin.php 
+* Choose your language, and then fill out all the fields, click on "ok" button
+* Now you should be at the admin area login screen, fill out the filed with your chosen password,
+* Enjoy

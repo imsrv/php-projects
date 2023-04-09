@@ -1,0 +1,27 @@
+<opt name="prev_foto"><a href="{detail_script}foto_dir={photo.dir}&amp;foto={prev_foto}"></opt name="prev_foto">Previous<opt name="prev_foto"></a></opt name="prev_foto">
+<opt name="next_foto"><a href="{detail_script}foto_dir={photo.dir}&amp;foto={next_foto}"></opt name="next_foto">Next<opt name="next_foto"></a></opt name="next_foto">
+<a href="{browse_script}foto_dir={photo.dir}">Browse</a>
+<br><br>
+<div class="detail">
+  <h2 class="card-title">{photo.title}</h2>
+  <p class="card-photo"><img src="{photo.dir}/{photo.file_name}" alt="{photo.title}"></p>
+  <p class="card-desc">{photo.description}</p>
+{photo.size} kb <br>
+{photo.date}<br>
+<opt name="exif">
+<!-- {photo.exif.FILE}
+{photo.exif.COMPUTED}
+{photo.exif.IFD0}
+{photo.exif.THUMBNAIL} -->
+{photo.exif.EXIF}
+<opt name="exif_makernote">
+{photo.exif.MAKERNOTE}
+</opt name="exif_makernote">
+<!-- 
+{photo.exif.INTEROP}
+-->
+</opt name="exif">
+
+</div>
+
+<div style="clear: right;"><div style="clear: left;">&nbsp;</div></div>

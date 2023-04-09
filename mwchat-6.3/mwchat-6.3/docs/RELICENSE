@@ -1,0 +1,15 @@
+If you are upgrading MWChat, or for some odd reason need to change licenses, you 
+can do so simply by entering your NEW serial number into the license screen.
+
+If you've upgraded MWChat, you should have gotten a new serial number, if you didn't you 
+will need to re-apply and get a new serial number.
+
+Once you have your new serial number, go to:
+
+http://yourhost/mwchat/license.php
+
+Enter your new serial number and MWChat will re-license your software.
+
+If your serial number has changed, make sure you put your new serial number into mwchat/config/license.php
+
+If you have further questions concerning software licensing, see the README file.

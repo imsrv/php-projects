@@ -1,0 +1,71 @@
+<table width="172" border="0">
+  <tr>
+    <td width="100%">
+    <table cellSpacing="0" cellPadding="1" width="170" border="0">
+      <tr>
+        <td width="172" bgColor="#CEE3FD">
+        <table cellSpacing="0" cellPadding="2" width="170" bgColor="#f1f0f0" border="0">
+          <tr>
+            <td bgColor="#CEE3FD">
+            <img src="./links.gif" border="0" width="100" height="20"></td>
+          </tr>
+          <tr>
+            <td class="bodytext" height="44">
+            <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px">
+            <font face="arial" size="2">
+            <img src="./mustardarrow.gif" border="0" width="16" height="13"></font><a href="./?page=database"><span style="text-decoration: underline"><b><font face="arial" size="2" color="#F26522">Database 
+            Options</font></b></span></a></p>
+            <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px">
+            <font face="arial" size="2">
+            <img src="./mustardarrow.gif" border="0" width="16" height="13"></font><a href="./?page=admin"><span style="text-decoration: underline"><b><font face="arial" size="2" color="#F26522">Admin 
+            Settings</font></b></span></a></p>
+            <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px">
+            <font face="arial" size="2">
+            <img src="./mustardarrow.gif" border="0" width="16" height="13"></font><a href="./?page=mail"><span style="text-decoration: underline"><b><font face="arial" size="2" color="#F26522">Mail 
+            Settings</font></b></span></a></p>
+            <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px">
+            <font face="arial" size="2">
+            <img src="./mustardarrow.gif" border="0" width="16" height="13"></font><a href="./?page=plan"><span style="text-decoration: underline"><b><font face="arial" size="2" color="#F26522">Membership 
+            Plans</font></b></span></a></p>
+            <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px">
+            <font face="arial" size="2">
+            <img src="./mustardarrow.gif" border="0" width="16" height="13"></font><a href="./?page=paypal"><span style="text-decoration: underline"><b><font face="arial" size="2" color="#F26522">Paypal options            </font></b></span></a></p>
+            <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px">
+            <font face="arial" size="2">
+            <img src="./mustardarrow.gif" border="0" width="16" height="13"><b><a href="./?page=members"><span style="color: #F26522; text-decoration: underline">User 
+            Accounts</span></a></b></font></p>
+            <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px">
+            <font face="arial" size="2">
+            <img src="./mustardarrow.gif" border="0" width="16" height="13"></font><a href="./?page=template"><span style="text-decoration: underline"><b><font face="arial" size="2" color="#F26522">Templates 
+            Editing</font></b></span></a></p>
+            <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px">
+            <font face="arial" size="2">
+            <img src="./mustardarrow.gif" border="0" width="16" height="13"></font><a href="./?page=cron"><span style="text-decoration: underline"><b><font face="arial" size="2" color="#F26522">Cron 
+            Control</font></b></span></a></p>
+            <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px">
+            <font face="arial" size="2">
+            <img src="./mustardarrow.gif" border="0" width="16" height="13"><b><span style="text-decoration: underline"><a target="_new" href="http://www.webguystudios.com"><font color="#F26522">Support</font></a></span></b></font></p>
+            <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px">
+            <font face="arial" size="2">
+            <img src="./mustardarrow.gif" border="0" width="16" height="13"></font><b><a href="<%bugtrack_url%>"><font face="arial" size="2" color="#F26522">Bug 
+            Report</font></a></b></p>
+            <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px">
+            <font face="arial" size="2">
+            <img src="./mustardarrow.gif" border="0" width="16" height="13"></font><a href="./?logout=1"><span style="text-decoration: underline"><b><font face="arial" size="2" color="#F26522">Log 
+            Out</font></b></span></a><p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px">
+            &nbsp;<p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center">
+            <b><font face="Arial" size="1">Powered By</font></b></p>
+            <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align="center"><b>
+            <font face="Arial" size="1">
+            <a href="<%poweredby_url%>" target="_new">
+            <%poweredby_text%> </a></font></b></p>
+            <p style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; WORD-SPACING: 0px" align="center">
+            &nbsp;</td>
+          </tr>
+        </table>
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>

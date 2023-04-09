@@ -1,0 +1,6 @@
+Info:
+  LoggerX is a powerful php script with a mySQL backend    
+  that will allow you to create your own web statistics hit
+  counter service similar to Webtrends Live or Hitbox.com  
+                                                           
+  http://www.loggerx.com

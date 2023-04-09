@@ -1,0 +1,16 @@
+Estimado %%employer_company%%,
+
+Detalles de factura (NO: %%invoice_id%%)
+
+Precio de tarifa: %%invoice_listprice%%
+Descuento: %%invoice_discount%%
+Importe total: %%invoice_totalprice%%
+Fecha de pago: %%invoice_paymentdate%%
+
+Información de la Empresa:
+%%company_information%%
+Información de pago:
+%%payment_information%%
+
+
+Thank you.

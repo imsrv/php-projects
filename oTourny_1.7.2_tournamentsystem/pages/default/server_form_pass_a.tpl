@@ -1,0 +1,1 @@
+<tr><td class="text">Admin Password: {SERVER_APASS}</td></tr>

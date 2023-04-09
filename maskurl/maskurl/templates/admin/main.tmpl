@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>PerlCoders MaskUrl -- Admin Interface</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<center>
+<table border="0" width="90%">
+<tr>
+	<td align="center" colspan="2" bgcolor="blue">
+	<font color="#FFFFFF">Main Menu</font>
+	</td>
+</tr>
+<tr>
+	<td align="center" colspan="2">
+	The Admin Interface can be used to manage your users and manage
+	a few settings for the MaskURL script.	
+	</td>
+</tr>
+<tr>
+	<td align="center" colspan="2" bgcolor="blue">
+	<font color="#FFFFFF">User Menu</font>
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Delete Users</td>
+	<td align="left">
+		<form action="%url%" method="post">
+		<input type="hidden" name="action" value="deleteuser">
+		<input type="submit" value="Next &gt;&gt;">
+		</form>
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Edit Users</td>
+	<td align="left">
+		<form action="%url%" method="post">
+		<input type="hidden" name="action" value="edituser">
+		<input type="submit" value="Next &gt;&gt;">
+		</form>
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Send List of E-Mail Addresses</td>
+	<td align="left">
+		<form action="%url%" method="post">
+		<input type="hidden" name="action" value="sendmail">
+		<input type="submit" value="Next &gt;&gt;">
+		</form>
+	</td>
+</tr>
+<tr>
+	<td align="center" colspan="2" bgcolor="blue">
+	<font color="#FFFFFF">Script Menu</font>
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Edit Configuration</td>
+	<td align="left">
+		<form action="%url%" method="post">
+		<input type="hidden" name="action" value="editconfig">
+		<input type="submit" value="Next &gt;&gt;">
+		</form>
+	</td>
+</tr>
+</table>
+</center>
+</body>
+</html>

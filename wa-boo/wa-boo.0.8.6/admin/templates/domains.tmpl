@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <style>
+            <? include ("../includes/css.php"); ?>
+        </style> 
+    </head>
+    
+<body topmargin="0">
+    
+<table border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <td class="versionfont"><img src="../images/wa-boo_small.gif"> 
+      <? echo $G_version; ?>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td background="../images/left_top_corner.gif" height="7"></td>
+          <td background="../images/h_line_top.gif" height="7"></td>
+          <td background="../images/right_top_corner.gif" height="7"></td>
+        </tr>
+        <tr> 
+          <td background="../images/v_line_left.gif" width="7"></td>
+          <td class="stdfont">
+            <table border="0" cellspacing="0" cellpadding="0" background="../images/bg2.gif">
+              <form name="domains" action="domains.php" method="post">
+                <input type="hidden" name="action" value="INSERT">
+                <input type="hidden" name="dID" value="<? echo $dID; ?>">
+                <tr align="center"> 
+                  <td class="stdtitle" bgcolor="<? echo $G_admin_menu_color ?>" align="left"><a title="Retour Menu" href="adm_index.php"><img src="../images/prev.gif" border="0"></a></td>
+                  <td class="stdtitle" bgcolor="<? echo $G_admin_menu_color ?>" colspan="4"><? echo $s_user->getUserFirstname() . " " . $s_user->getUserName() . " - " . $s_user_type . " mode"; ?></td>
+                  <td class="stdtitle" bgcolor="<? echo $G_admin_menu_color ?>">&nbsp;</td>
+                </tr>
+		        <tr> 
+                  <td class="stdtitle" height="7" colspan="6" background="../images/h_line.gif"></td>
+                </tr>
+                <tr>
+                  <td align="right" class="stdfont" colspan="6" valign="middle" height="10"></td>
+                </tr>
+                <tr>
+                  <td align="right" class="stdfont" width="50" valign="middle" height="40">&nbsp;</td>
+                  <td align="right" class="stdfont">
+                  Domain name &nbsp;</td>
+                  <td align="left" class="stdfont">
+                    <input type="text" name="name"  size="35" maxlength="50" value="<? echo $i_domain_name; ?>">
+            </td>
+                  <td valign="top" class="stdfont" width="10"></td>
+                  <td valign="top" class="stdfont" rowspan="2">
+				
+                    <table bgcolor="#EEEEEE" cellpadding="2" cellspacing="2" border="0">
+				      <tr>
+				        <td class="stdfont">
+                          <?                       if (isset($current_domain)) {
+                            if ($admins = $current_domain->getDomainAdmins()) {
+                                echo "<b>Admins :</b><br>";
+                                for ($i = 0 ; $i < count($admins) ; $i++ ) {
+                                    echo $admins[$i]["firstname"] . " " . $admins[$i]["name"]."<br>";
+                                }
+                            }
+                          
+                            if ($users = $current_domain->getDomainUsers()) {
+                                echo "<hr><b>Users :</b><br>";
+                                for ($i = 0 ; $i < count($admins) ; $i++ ) {
+                                    echo $users[$i]["firstname"] . " " . $users[$i]["name"]."<br>";
+                                }
+                            }
+                        }
+              
+			?>
+			</td>
+                      </tr>
+			        </table>
+                  </td>
+                  <td width="20">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td align="right" class="stdfont" width="50">&nbsp;</td>
+                  <td align="right" class="stdfont">Misc &nbsp;</td>
+                  <td align="left" class="stdfont">
+                    <textarea name="misc" cols="35" rows="5"><? echo $i_domain_misc;?></textarea>
+          </td>
+                  <td valign="top" class="stdfont" width="10"></td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td align="right" height="40" class="stdfont" width="50">&nbsp;</td>
+                  <td height="40" align="center" class="stdfont">&nbsp;</td>
+                  <td height="40" align="right" class="stdfont">
+                    <input type="submit" name="OK" value="OK" class="adminbuttons">
+                        
+                    <input type="reset" name="Reset" value="Reset" class="adminbuttons">
+          </td>
+                  <td valign="top" class="stdfont"></td>
+                  <td valign="top" class="stdfont">&nbsp;</td>
+                  <td height="40">&nbsp;</td>
+                </tr>
+              
+                <tr> 
+                
+                  <td height="5" >&nbsp;</td>
+                  <td height="5" colspan="2" >
+                    <table border="0" align="right" cellpadding="1" cellspacing="1" bgcolor="#EEEEEE">
+                      <?              for ($j=0; $j < count($domains_list); $j++) {   ?>
+                      <tr>
+                        <td class="boldstdfont">
+                    <a href="domains.php?dID=<? echo $domains_list[$j]["id"]; ?>&action=MODIF" >
+                          <? echo $domains_list[$j]["name"];?>
+                    </a>
+                  </td>
+                        <td class="stdfont">
+                    <i>
+                          <? echo $domains_list[$j]["misc"];?>
+                    </i>
+                  </td>
+                        <td><a href="domains.php?dID=<? echo $domains_list[$j]["id"]; ?>&action=DEL"><img src="../images/delete.gif" border="0"></a></td>
+                      </tr>
+                      <?
+    }
+?>
+                  
+                    </table>
+                  </td>
+                  <td height="5" >&nbsp;</td>
+                  <td height="5" >&nbsp;</td>
+                  <td height="5" >&nbsp;</td>
+                </tr>
+                <tr>
+                  <td height="5" colspan="6" >&nbsp;</td>
+                </tr>
+           
+              </form>
+            </table>
+          </td>
+          <td valign="top" background="../images/v_line_right.gif" width="7"></td>
+        </tr>
+        
+        <tr>
+          
+          <td class="texteg" height="7" background="../images/left_bottom_corner.gif"></td>
+          <td height="7" background="../images/h_line_bottom.gif"></td>
+          <td height="7" background="../images/right_bottom_corner.gif"></td>
+        </tr>
+      
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

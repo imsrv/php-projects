@@ -1,0 +1,16 @@
+...Upgrading from 0.6
+- Replace all cgi files with the files from current release.
+- Update yawps.pm with the current file.
+- Update your language and themes files!
+- Update yawpsrc.pl and edit your settings.
+
+...Upgrading from all older versions (0.1, 0.0.1, 0.1.2, 0.2, 0.3)
+- Replace everything but your db-directory and your images-directory 
+  with the files from the current release.
+- Move censor.txt from /db/forum to /db.
+- Create db/blocks and db/pages.
+- Create the modules directories modules and db/modules.
+- Move the images/forum/smilies folder into the images folder.
+  If you've created your own theme, you have to adapt the theme.pl as well.
+  Please refer to the standard theme.pl for more information.
+  Not needed anymore: yawps.cgi, config.pl, the cgi-lib folder, the smilies.pl in the db folder.

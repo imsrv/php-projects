@@ -1,0 +1,26 @@
+<html>
+	<head>
+  	<link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+	<body>
+  	<center>
+    	<%error(no_user)%>
+      	<font color="red">
+        <b>There is no user with this email in our database</b>
+        </font>
+    	<%/error%>      
+    	<h3><font color="red"><%invalid_mail%></font></h3>
+    	<form method="post">
+      	<table class="BlueNoteFormTABLE">
+        	<tr>
+          	<td colspan="2" class="BlueNoteColumnTD" align="center">Forgot password?
+        	<tr>
+          	<td colspan="2">Enter you email and it'll be send to you
+          <tr> 
+						<td>e-mail<td><input type="text" class="text" name="email">            
+        	<tr>
+          	<td colspan="2" align="center"><input type="submit" name="save" value="Retrieve password">
+        </table>
+    	</form>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Seir Anphin v1.1.1</title>
+<style type="text/css">
+A:hover {
+ color: #0000a0;
+ text-decoration: underline;
+}
+A:link {
+ text-decoration: underline;
+}
+A:visited {
+ text-decoration: underline;
+}
+td.cell {
+ background-color: #c0c0c0;
+ padding: 3px;
+}
+table {
+ background-color: #808080;
+}
+</style>
+</head>
+<body text="#000000" bgcolor="#e0e0e0" link="#000000" vlink="#000000">
+<br />
+<font face="tahoma" size="-0"><b>Seir Anphin v1.1.1 Beta Readme</b></font><br /><br />
+<font size="-1" face="arial">
+
+			<center>
+			<form action="install.php" method="post">
+			  <table class="table" cellspacing="0" cellpadding="0"><tr><td>
+			  <table width="550" cellspacing="1">
+			    <tr>
+			      <td colspan="2" width="100%" class="cell">
+			      	<p align="justify"><font size="-1" face="arial">
+
+-Requires-<br>
+<ol>
+<li>PHP 4.0 or higher. Try to avoid 4.1.1, it was only meant as an April fools joke.</li>
+<li>MySQL 3.2x.</li>
+</ol>
+<br>
+-Installation Instructions-<br>
+<ol>
+<li>Create a database. This typically entails sending an email to your webhost
+or creating it yourself with a utility they have provided for you.</li>
+<li>Open upload/lib/config.php from the zip and fill in your database
+connection details between the quotes.</li>
+<li>Upload the contents of "root" to a directory on your webserver, maintaining
+the directory structure of all contents.</li>
+<li>Set the permissions for lib/images/dock and lib/files/dock at 777. This
+may not be necessary on all servers.</li>
+<li>Go to http://yourdomain.com/install_v111.php and follow the instructions there.</li>
+</ol>
+<br>
+Finally, be sure to change the Administrator password and delete install.php
+when you're finished with it.<br>
+<br>
+<br>
+<br>
+-Upgrade Instructions-<br>
+<ol>
+<li>Delete all PHP files from the previous installation.</li>
+<li>Upload the contents of the"upload" folder and fill in your database connectivity
+details in lib/config.php.</li>
+<li>Important: If you want to keep the "default" template set you will have to export it
+under a different name and reimport it later. Unfortunately, this process may be imperfect.
+I hope I've fixed that bug in this version, sorry.</li>
+<li>Open up http://yourdomain.com/install_v111.php in your web browser and follow the
+instructions there.</li>
+<li>Send me a case of beer for writing this awesome manual.</li>
+</ol>
+Support is available at seir.anphin.com and
+www.anphin.com. I welcome any questions regarding
+Seir Anphin use and Administration, as I will answer these questions by
+writing documentation which is maintained at seir.anphin.com.<br>
+<br>
+-Darrel Grant, Important-sounding-title, Anphin Development
+</font></p>
+			      </td>
+			    </tr>
+			  </table>
+			</td></tr></table>
+			</form>
+			</center>
+			 </body>
+</html>

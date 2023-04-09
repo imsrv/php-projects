@@ -1,0 +1,8 @@
+Estimado %%employer_company%%,
+
+Su Plan de Empleo ha caducado.
+Se han eliminado los empleos y tipos de empleo enviados por usted.
+Su cuenta está aun disponible. Por lo que puede comprar cualquier otro Plan en cualquier momento.
+Todos sus empleos y tipos de empleo están aun disponibles hasta su fecha de caducidad.
+
+Hoy: %%today_date%%

@@ -1,0 +1,10 @@
+Dear %%jobseeker_name%%,
+
+A message was sent from "%%employer_company%%".
+The message is:
+%%private_message%%
+
+You can find more details about this company here:
+%%employer_link%%
+
+Thank you.

@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>!TITLE! - !SLOGAN!</title>
+</head>
+
+<body bgcolor="#FFFFCC" text="#000000" background="!BACKGROUND!">
+
+<form method="POST" action="!HOMECGI!/adminsystem2.pl">
+  <div align="center"><center><table border="0" cellpadding="5" width="90%">
+    <tr>
+      <td width="100%" colspan="2" valign="top" align="center"><div align="center"><center><p><font
+      face="!FONT!" size="!SIZE!"><small><img src="!HOME!/pics/system.gif"
+      alt="System Configuration" border="0"></small></font></p>
+      </center></div><div align="center"><center><p><font face="!FONT!" size="!SIZE!">To change
+      any system configurations shown below, just replace it with your new value.<br>
+      </font><font color="#FF0000" face="!FONT!" size="!SIZE!">* Required Fields</font></td>
+    </tr>
+    <tr>
+      <td width="100%" colspan="2"><hr noshade color="#FF9933" size="1">
+      </td>
+    </tr>
+    <tr>
+      <td width="15%" bgcolor="#FFE699" valign="top" align="right"><font face="!FONT!"
+      size="!SIZE!"><strong>1.</strong></font></td>
+      <td width="85%" bgcolor="#FFE699" valign="top" align="left"><font face="!FONT!"
+      size="!SIZE!"><strong>Your Name:*<br>
+      <input type="text" name="admin" size="60" value="!ADMIN!"></strong></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>2.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!"><strong>Your Password:*<br>
+      <input type="password" name="adminpwd" size="60" value="!ADMINPWD!"></strong></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>3.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!"><strong>Web Address:*<br>
+      </strong><font color="#000000">The url of your site. (e.g.
+      &quot;http://www.yourdomain.com&quot;)</font><strong><br>
+      <input type="text" name="url" size="60" value="!URL!"></strong></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>4.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!"><strong>Company Name:*<br>
+      <input type="text" name="company" size="60" value="!COMPANY!"></strong></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>5.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!"><strong>Web Site Name:*<br>
+      </strong>The name of your home page where you install this program.<strong><br>
+      <input type="text" name="website" size="60" value="!WEBSITE!"></strong></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>6.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!"><strong>Yellow Page Title:*<br>
+      </strong>The name of this program.<strong><br>
+      <input type="text" name="title" size="60" value="!TITLE!"></strong></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>7.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!"><strong>Yellow Page Slogan:*<br>
+      <input type="text" name="slogan" size="60" value="!SLOGAN!"></strong></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>8.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!"><strong>Copyright Notice:*<br>
+      <input type="text" name="copyright" size="60" value="!COPYRIGHT!"></strong></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>9.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!"><strong>E-mail Address:*<br>
+      </strong><font color="#000000">Your e-mail address. (e.g.
+      &quot;webmaster@yourdomain.com&quot;)</font><strong><br>
+      <input type="text" name="webmaster" size="60" value="!WEBMASTER!"></strong></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>10.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!"><strong>Document Root:*<br>
+      </strong>The directory out of which you will serve your documents. (e.g.
+      &quot;/home/userid/htdocs&quot;)<br>
+      <strong><input type="text" name="root" size="60" value="!ROOT!"></strong></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>11.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!"><strong>CGI Folder:*<br>
+      </strong>The top of the directory tree under which the CGI files are kept<font
+      color="#000000">.</font><strong> </strong><font color="#000000">(e.g. &quot;cgi-bin&quot;)</font><strong><br>
+      <input type="text" name="cgi" size="60" value="!CGI!"></strong></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>12.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!"><strong>Document &amp; CGI Subdirectory:*<br>
+      </strong></font><font face="!FONT!" size="!SIZE!" color="#000000">The subdirectory where
+      the CGI files &amp; all documents are located under Document Root above.</font><font
+      face="!FONT!" size="!SIZE!"><strong><br>
+      <input type="text" name="sub" size="60" value="!SUB!"></strong></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>13.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!"><strong>E-mail Function:*<br>
+      </strong><font color="#000000">Choose the type of method this program should send mail by.
+      &nbsp; (e.g. &quot;SendMail&quot; or &quot;SMTP&quot;)<br>
+      </font><strong><input type="text" name="emailfunction" size="60" value="!EMAILFUNCTION!"></strong></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>14.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!"><strong>SendMail Location:*<br>
+      </strong><font color="#000000">Please fill in the location of the sendmail program on your
+      server. (e.g. &quot;/usr/bin/sendmail&quot;)</font><strong>. </strong><font
+      color="#000000">If you choose to use your smtp server, please fill in the address of your
+      smtp server. (e.g. &quot;smtp.yourdomain.com&quot;)</font><strong><br>
+      <input type="text" name="sendmaillocation" size="60" value="!SENDMAILLOCATION!"></strong></font><br>
+      <br>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" colspan="2"><hr noshade color="#FF9933" size="1">
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" colspan="2"><div align="center"><center><p><font face="!FONT!"
+      size="!SIZE!"><input src="!HOME!/pics/enter.gif" name="I1" alt="Enter" type="image"
+      border="0"></font></td>
+    </tr>
+  </table>
+  </center></div>
+</form>
+</body>
+</html>

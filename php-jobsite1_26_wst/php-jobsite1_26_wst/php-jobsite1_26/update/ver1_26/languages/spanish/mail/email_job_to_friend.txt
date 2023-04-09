@@ -1,0 +1,20 @@
+Estimado %%friend_name%%,
+
+Su amigo %%visitor_name%% ha encontrado un empelo que puede ser que le interese.
+%%visitor_name%% email %%visitor_email%%
+Mensaje de %%visitor_name%%'s:
+%%visitor_message%%
+
+Por favor leas los detalles del mismo a continuación: 
+
+Título: %%job_jobtitle%%
+Categoría: %%job_category%%
+Tipo de Empleo: %%job_jobtype%%
+Descripción: 
+%%job_description%%
+Localización: %%job_location%%
+
+Puede ver mas detalles del empelo y de la empresa que los envió en:
+%%job_link%%
+
+Gracias.

@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /
+RewriteRule ^Home$ index.php
+RewriteRule ^Grid$ index.php?page=grid
+RewriteRule ^Blog$ index.php?page=blog
+RewriteRule ^FAQ$ index.php?page=faq
+RewriteRule ^Contact$ index.php?page=contacts
+RewriteRule ^Buy$ index.php?page=buy
+RewriteRule ^Static/(.*)$ index.php?page=static&p=$1
+RewriteRule ^Success$ index.php?page=success
+RewriteRule ^Redir/(.*)$ index.php?page=redir&id=$1

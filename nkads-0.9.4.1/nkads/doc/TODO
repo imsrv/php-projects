@@ -1,0 +1,6 @@
+- Hacer un verificador para saber si el cliente soporta flash y en caso negativo, muestre otro de reemplazo
+- Hacer un generador de codigo =)
+- ACLs (Por IP, Dominio, Horario, Dias, etc)
+- Agregar la posibilidad de generar Banners tipo POPUP
+- Estadisticas: Envio manual o programado de estadisticas por email
+- Otras cosas que estan en mente y se ocurren justo en el momento en el que no hay en donde anotar

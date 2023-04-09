@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>PerlCoders MaskURL</title>
+</head>
+<body>
+<p align="left">
+This is the signup form. Customise as you see fit but leave all the form
+entries intact. This form is shown when the user has made an error.
+</p>
+<form action="%url%" method="post">
+<input type="hidden" name="action" value="editsave">
+<input type="hidden" name="username" value="%username%">
+User Name: %username%<br>
+Password: <input type="password" name="password" value="%password%" maxlength="20"><br>
+Verify: <input type="password" name="password_vfy" value="%password_vfy%" maxlengh="20"><br>
+Site Name: <input type="text" name="sitetitle" maxlength="255" value="%sitetitle%"><br>
+Site Description: <input type="text" name="sitedescription" maxlength="255" value="%sitedescription%"><br>
+Site Keywords: <input type="text" name="sitekeywords" maxlength="255" value="%sitekeywords%"><br>
+Site URL: <input type="text" name="siteurl" maxlength="255" value="%siteurl%"><br>
+E-Mail Addy: <input type="text" name="email" maxlength="255" value="%email%"><br>
+<br>
+<input type="submit" value="Save">
+</form>
+</body>
+</html>

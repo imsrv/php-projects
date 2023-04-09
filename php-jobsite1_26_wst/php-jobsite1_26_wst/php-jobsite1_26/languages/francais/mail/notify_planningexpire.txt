@@ -1,0 +1,8 @@
+Dear %%employer_company%%,
+
+Your planning has expired.
+Your job, featured job posting was annulated. But your account is still available.
+So you can buy another planning at any time.
+All your job, featured job posted until now are still available until their own expiration date
+
+Today: %%today_date%%

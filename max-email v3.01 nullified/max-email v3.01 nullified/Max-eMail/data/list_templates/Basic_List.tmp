@@ -1,0 +1,12 @@
+Fields=UserID,Email,FirstName,LastName,Receiving,Format,SubscribeDate
+FieldDelim=,
+RecordDelim=NEWLINE
+EmailField=Email
+UniqueField=UserID
+ReceivingField=Receiving
+FormatField=Format
+DateField=SubscribeDate
+ReceivingValues=yes/no
+FormatValues=html/text
+DefaultFormat=text
+DefaultReceiving=no

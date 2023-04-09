@@ -1,0 +1,62 @@
+/*************************************
+ php Simple Count 0.1
+**************************************/
+
+Thank you for downloading php Simple Count! Simple Count is a basic, easy to implement visitor counter for your web site. It uses cookies to keep track of who's been counted and stores the data in a plain text file; no database is required.
+
+Simple Count was written 100% on open source software and is distributed under the GNU General Public License. A copy of the GPL is accompanied with this document and is also available online at http://www.gnu.org/licenses/licenses.html#GPL.
+
+/*************
+ Installation
+**************/
+
+Before you install, make sure you have the following:
+
+	- Web Server
+	- PHP > 4.x
+
+..Check with your hosting company/ISP or Webmin if your not sure.
+
+* Step 1.
+
+Copy the 'counter' directory to the web server.
+
+* Step 2.
+
+Change the permissions on 'counter/counter.txt' so it is writable by your web visitors. 
+
+	In Unix: chmod 646 counter.txt
+
+/******
+ Usage
+*******/
+
+To implement Simple Count into your web site, you will need to add two lines of code to the page you want the counter to be displayed. The very first line of your page, before any other code you will need to add the following line:
+
+	<?PHP include ("counter/counter.php"); ?>
+
+... this will add 1 to the counter if the visitor is unique; the cookie must be set before any out put is sent to the web browser. 
+
+The second line to add is the counter line. Where ever you want the count total to e displayed, add the following:
+
+	<?PHP echo "Total Visitors: $count"; ?>
+
+Look at the 'example.php' file included in this package for a working example.
+
+Note:
+Depending on your setup, you may need to rename the page you include the above code on to a .php extension. For example, if you have 'index.html' and the above code doesn't work, you'll need to rename it to 'index.php'.
+
+
+/********
+ Support
+*********/
+
+Keep in mind that this is beta code and may contain bugs or other unintended 'features'.
+
+Email me - chris@chaoscontrol.org
+ICQ - 4580012
+Web Site - http://www.chaoscontrol.org/projects-simplecount.php
+
+
+
+

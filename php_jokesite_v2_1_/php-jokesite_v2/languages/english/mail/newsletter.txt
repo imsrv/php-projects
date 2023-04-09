@@ -1,0 +1,9 @@
+%%newsletter_type%% newsletter
+
+%%joke_title%%
+--------------
+%%joke_text%%
+
+
+You can unsubscribe from our newsletter clicking by this link:
+%%unsubscribe_link%%

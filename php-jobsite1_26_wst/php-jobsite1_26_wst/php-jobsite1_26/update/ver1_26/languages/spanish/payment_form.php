@@ -1,0 +1,30 @@
+<?php
+define('TEXT_PAY_NOW','Pagar por Trajeta de Crédito ahora (seguro)');
+define('TEXT_BACK_TO_MY_SITE','Atrás a '.SITE_NAME.' y actualizar la Información de Pago');
+define('TEXT_UPGRADE','Actualizar');
+define('TEXT_FOLLOWING_INFORMATION','Si paga por factura esta es la infomración que será guardada');
+define('TEXT_INVOICE_PAYMENT','Pago de Factura');
+define('TEXT_PAY_NOW_INVOICE','Pago Contado');
+define('TEXT_PAYMENT_LIST_PRICE','Lista de Precios');
+define('TEXT_PAYMENT_DISCOUNT_PRICE','Descuento');
+define('TEXT_PAYMENT_TOTAL_PRICE','Precio Total');
+define('TEXT_PAYMENT_DESCRIPTION','Descripción del pago');
+define('TEXT_PAYMENT_DATE','Fecha');
+define('TEXT_NUMBER_OF_JOBS','Número de empleos');
+define('TEXT_PRICE_OF_JOBS','Precio de empleos');
+define('TEXT_TOTAL_OF_JOBS','Total de empleos');
+define('TEXT_NUMBER_OF_FJOBS','Número de tipos de empleos');
+define('TEXT_PRICE_OF_FJOBS','Precio de tipos de empleos');
+define('TEXT_TOTAL_OF_FJOBS','Total de tipos de empleos');
+define('TEXT_NUMBER_OF_CONTACTS','Numero de contactos');
+define('TEXT_PRICE_OF_CONTACTS','Precio de contactos');
+define('TEXT_TOTAL_OF_CONTACTS','Ttotal de contactos');
+define('TEXT_DESCRIPTION','Descripción');
+define('TEXT_PAYMENT_DESCRIPTION_HINT','Hint: Aquí puede explicar brevemente las condiciones de pago, modalidades, varios...');
+define('TEXT_INVALID_CC_PAYMENT','Operación de Tarjeta de Crédito no válida:');
+define('TEXT_INVALID_CC_PAYMENT_ERRORS','Hay errores en el procesado de su Tarjeta de Crédito:');
+define('TEXT_DETAILED_ERROR','Lea el error detallado abajo:');
+define('TEXT_PAYMENT_VAT','VAT Value');
+define('TEXT_DISCOUNTED_PRICE','Price with discount');
+define('TEXT_PEDING_CC_PAYMENT','Peding Credit Card Payment.<br> Waiting for admin for validation!');
+?>

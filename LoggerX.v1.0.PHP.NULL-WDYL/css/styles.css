@@ -1,0 +1,79 @@
+.Header {
+	background-color : #4776AF;
+	color : White;
+	font-size : 14px;
+	font-weight : bold;
+	text-align : center;
+}
+
+.subheader {
+	background-color : #4776AF;
+	color : White;
+	font-size : 12px;
+	text-align : center;
+}
+
+
+.Table {
+	background-color : #CECECE;
+	font-size : 14px;
+}
+
+a.reg  {
+      text-decoration: none;
+      color: #4a5a84;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #4a5a84;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+	
+a.back  {
+	color: White;
+	font-size : 18px;
+	text-decoration : underline;
+	text-align : left;
+}
+
+    a.back:active  {
+      color: #ff0000;
+    }
+	
+    a.reg:hover  {
+      color: #990000;
+    }
+	
+    a.back:visited {
+      color: #ffffff;
+    }
+	
+  a.back:visited:hover {
+      color: #990000;
+    }
+
+    a.back:visited:active  {
+      color: #ff0000;
+    }
+
+table.norepeat {  background-repeat: no-repeat}

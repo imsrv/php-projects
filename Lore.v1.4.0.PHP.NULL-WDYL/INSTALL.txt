@@ -1,0 +1,55 @@
++------------------------------------------------------------------------+
+| Lore INSTALL.txt                                                       |
+| (c)2003-2004 Pineapple Technologies                                    |
+| http://www.pineappletechnologies.com                                   |
++------------------------------------------------------------------------+
+
+This file contains instructions for doing a FRESH installation of
+Lore (starting with a clean database). Do not follow these instructions
+if you are upgrading.
+
+Installation Instructions:
+
+1. Open up the configuration file, which is packaged with the
+   software under '/upload/inc/config.inc.php', into a text editor
+   (such as notepad). Edit the database configuration options to 
+   match your database setup, and save the file.
+   
+   MAKE SURE YOU DO NOT ENTER A SINGLE LINE OR SPACE AT THE END
+   OF THE FILE! SOME TEXT EDITORS AUTOMATICALLY ENTER A LINE AT
+   THE BOTTOM OF FILES; THIS WILL CAUSE PROBLEMS.
+
+2. Log into your web site via FTP (or some other file transfer 
+   utility). Create a folder in your web site where you would like to 
+   place the Lore software, such as '/lore' (this document
+   will assume you are using '/lore').
+
+3. Upload everything within the 'upload' folder to the '/lore'
+   folder on your web site, exactly as it is shown on your local 
+   computer. Make sure the subfolders within the 'upload' folder 
+   are intact, meaning that you should end up with '/lore/cp', 
+   '/lore/inc' etc. on your web site, with the respective files inside 
+   each of those folders.
+
+4. Set the directory '/lore/var/templates_c/' to world writeable. 
+   Most FTP clients will allow you to do this - simply give the 
+   'other' or 'world' group write and execute permission. Otherwise 
+   you can telnet/ssh into your account (if available) and run the following 
+   command (from within the '/lore' folder on your site):
+
+	chmod 777 var/templates_c
+
+5. Open your web browser and direct it to the install program where 
+   you uploaded the software. Example: if you uploaded the software to 
+   '/lore' and your domain name is example.com, point your web browser to: 
+   
+   http://example.com/lore/install/index.php
+
+6. Follow the step by step instructions in the installation wizard.
+
+7. Delete the '/lore/install' and the '/lore/upgrade' directories 
+   and all of their contents, as they pose a security hazard. The 
+   software will not run if the directories still exist.
+
+8. Enjoy using Lore! Please use the technical support ticket system
+   at http://pineappletechnologies.com/customers/ if you need any help.

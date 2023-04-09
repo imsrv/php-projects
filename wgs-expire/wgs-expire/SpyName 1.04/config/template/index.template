@@ -1,0 +1,19 @@
+<html>
+	<head>
+  	<link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+
+	<body>
+  	<left>
+  	<table width="90%">
+    <tr>
+  	<td valign="top" width="30%"><%include(menu.template)
+   	<td valign="top" width="100%">
+	
+    	<form action="./?page=<%page%>" name="f" method="post">
+      	<table class="BlueNoteFormTABLE">
+			    <%include(<%page%>.template)
+        </table>
+    	</form>
+  </body>
+</html>

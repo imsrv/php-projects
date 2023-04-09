@@ -1,0 +1,223 @@
+#######################################################################################
+#
+#	PSUpload Library [NT Version] V3.0
+#	©2000, Perl Services
+#
+#	Requirements:		NT Server, Perl5+, CGI.pm
+#	Created:		September 22nd, 2000
+#	Author: 		Jim Melanson
+#	Contact:		www.perlservices.net
+#				Phone:		1-877751-5900, ext. 908
+#				Fax:		1-208-694-1613
+#				E-Mail:		info@perlservices.com
+#						info@charityware.ws
+#
+#
+#	http://www.perlservices.net/en/programs/psupload/users_guide.shtml
+#
+#######################################################################################
+#
+#	This utility is a modification of the PSUpload Helper so that it can by used
+#	with another custom program as a supporting library.
+#
+#	This utility is distributed under the same terms as Perl itself. It may be
+#	modified and utilized as you will so long as the original copyright notice
+#	remains in the header and that any modifications you make are state in the
+#	header along with the date of the modification and the name and email addy
+#	of the person who made the modification.
+#
+#	Additionally, this utility has been designated as Charity Ware. That means
+#	that if you use the utility you are required to make a charitable donation to a
+#	charity of YOUR choice in the amount of YOUR choice. We'd appreciate your dropping
+#	by Charity Ware (www.charityware.ws) to register your donation so others can
+#	see who is benefiting from our work. If your too busy, drop us a line telling
+#	us who benefited and how much you gave them and we'll post the registration
+#	for you. E-Mail us at:   icare@charityware.ws
+#
+#	This utility requires installation on a UNIX server running Perl4 or higher.
+#
+#	This utility require the use of the CGI.pm module. If it is not installed
+#	on your server, you can have your sysadmin obtain the latest version of CGI.pm
+#	form the CPAN site at www.cpan.org
+#
+#	Please see the accompanying HTML demonstration file for instructions on
+#	creating the upload form you will put on your HTML page.
+#
+#	It was the authors choice that PSUpload Library should be distributed from
+#	the Charity Ware site at www.charityware.ws so that others less fortunate may
+#	benefit from his efforts.
+#
+#######################################################################################
+#
+#	Library Instructions
+#
+#	This library is a modification of PSUpload Helper 2.0. This library can not be
+#	called on it's own as a regular cgi script. It was written so that other
+#	programs could easily add upload capabilities.
+#
+#	RULE #1: 	If you are uploading this file, the upload form tag must have
+#	the ENCTYPE attribute specified in it like this:
+#	<FORM METHOD="POST" ACTION="psupload.cgi" ENCTYPE="multipart/form-data">
+#
+#	RULE #2:	If you are using this subroutine, the uploaded file is accessed
+#	through the CGI module. Therefore, if you are using a parsing routine other than
+#	the CGI module, you must set an exclusion on it so that it does not parse the
+#	data input when you are uploading. If your parsing routine was in a subroutine
+#	called "Parse" then you could add something like this to your code:
+#		unless($ENV{'QUERY_STRING'} =~ /^upload/) {
+#		    &Parse;
+#		}
+#	You must do this becuase most parsing routines will corrupt the upload, however,
+#	the CGI module won't.
+#
+#	RULE #3; 	Somewhere in your program you must initiate the use of the CGI
+#	module before you call this subroutine. You do this by placing the following
+#	statement in your script:
+#
+#	use CGI;
+#
+#	If you want to cut and paste the subroutine into your other program, that's fine.
+#	Otherwise, if you want to use it as a supporting library, then you will have to
+#	put the following line in your program somewhere before you call the psupload()
+#	subroutine:
+#
+#	require 'upload.lib';
+#
+#
+#
+#	RULE #4:	This subroutine handles only ONE upload file. Therefore, if you
+#	are uploading multiple files, you must set it inside a loop like this:
+#		for(my $a = 1; $a <= 5; $a++) {
+#		    &psupload([path], [inputfieldname], [newname], [maximum size], [serialization]);
+#		}
+#
+#	RULE #5:	This library subroutine always returns true. If the file upload
+#	was successful, then the subroutine will return the number 1. In any other
+#	cirumstance, the upload failed so the subroutine returns an error message telling
+#	you exactly what the error was.
+#
+#	RULE #6:	This subroutine can be passed up to five arguments. The first
+#	two arguments are mandatory. The arguments in order are:
+#		path 		= This is the absolute path to the directory where the
+#				  file will be stored.
+#
+#		inputfieldname = This is the name of the form input field where the file
+#				 was uploaded form. Therefore, if it was a form field
+#				 named "FILE2", then this will be passed "FILE2" as the
+#			 	 second argument. You have to do this because we need to
+#				 tell the CGI module exactly which input field it will
+#				 be accessing for this iteration of the sub-routine.
+#
+#		new name	= If you want the uploaded file to be saved under a
+#				  name that is different from it's original name, specify
+#				  the new name and extension as the third argument.
+#
+#		max. size	= If you want to limit the actual size of the file being
+#				  uploaded, pass the subroutine the maximum size expressed
+#				  in Kilobytes as the fourth argument.
+#
+#               serialization   = If you want to ensure that uploaded files don't over
+#                                 write other files by the same name, set the serialization
+#                                 argument to "1". If you have a file sitting on the
+#                                 server named "biogrpahy.doc" and upload another file
+#                                 by the same name, the second file will acutally be
+#                                 saved as "biorgraphy1.doc", etc.
+#
+#	Here is a sample call to the subroutine uploading one file only from a form where
+#	the file was uploaded form a field named "document" and has been specified to have
+#	a maximum size of 150KB, serialization is off (since it is the last argument, no
+#       value needs to be specified):
+#	    &psupload($Data, 'document', 0, 150);
+#
+#	Here is another sample where up to five files are being uploaded, all from form
+#	fields named FIELD1, FIELD2, FIELD3, FIELD4 and FIELD5. Each file uploaded is being
+#	renamed as the number of the field plus the extension ".txt". There is no maximum
+#	size, serialization is on (since it is the fifth argument, the max size [4th argument]
+#       still needs a placeholder so we use a zero):
+#
+#	for(my $a = 1; $a <= 5; $a++) {
+#	    &psupload($Data, "FIELD$a", "$a.txt", 0, 1);
+#	}
+#
+#######################################################################################
+#
+#	FINAL WORD:	Do you have comments or criticisms (constructive ones) please
+#			send them to jim@perlservices.com or info@charityware.ws. This
+#			library and the V2 of PSUpload Helper are the results of input
+#			from end users and incorporate the most common requests.
+#
+#######################################################################################
+#
+#			DO NOT EDIT ANYTHING BELOW THIS LINE
+#			 UNLESS YOU KNOW WHAT YOU ARE DOING
+#
+
+sub psupload {
+    my $path    	= shift;
+    my $inputfieldname	= shift;
+    my $newname 	= shift;
+    my $maxsize		= shift;
+    my $auto_rename     = shift;
+    if($path) {
+	if($inputfieldname) {
+	    my $req = new CGI; 
+	    if($req->param($inputfieldname)) {
+		my $file = $req->param($inputfieldname);
+		my $filename = $file; 
+		$filename =~ s/^.*(\\|\/)//;
+                $filename =~ s/ +/\_/g;
+                #For IE
+		$filename =~ s/ +/\_/g;
+                #For Opera
+                $filename =~ s/\"//g;
+		$filename = $newname if $newname;
+                if((-e "$path/$filename") && ($auto_rename == 1)) {
+                    my $pick_new_name = 1;
+                    my $fore_num = 1;
+                    $filename =~ /^(.+)\.([^\.]+)$/;
+                    my $front = $1;
+                    my $ext = $2;
+                    while($pick_new_name) {
+                        my $test_name = $front . $fore_num . '.' . $ext;
+                        unless(-e "$path/$test_name") {
+                            $pick_new_name = 0;
+                            $filename = $test_name;
+                        }
+                        $fore_num++;
+                    }
+                }
+		if(open(OUTFILE, ">$path/$filename")) {
+		    binmode(OUTFILE);
+		    while (my $bytesread = read($file, my $buffer, 1024)) { 
+			print OUTFILE $buffer; 
+		    } 
+		    close (OUTFILE);
+		    if($maxsize > 0) {
+			if((-s "$path/$filename") > ($maxsize * 1024)) {
+			    unlink("$path/$filename");
+			    return("The uploaded file was too big and has been removed.");
+			} else {
+			    return(1);
+			}
+		    } else {
+			return(1);
+		    }
+		} else {
+		   return("The subroutine could not open the destination file: $path/$filename");
+		}
+
+	    } else {
+		return("The upload form was submitted without a file being uploaded.");
+	    }
+	} else {
+	    return("The subroutine was not told the name of the form input field so that it could look for the uploaded file.");
+	}
+    } else {
+	return("The subroutine was not told the absolut path to the directory where the uploaded file should be stored.");
+    }
+}
+
+1;
+
+
+

@@ -1,0 +1,138 @@
+===============================================================================
+PhotoSeek Installation Instructions
+===============================================================================
+
+#########################################################
+#                                                       #
+# PHPSelect Web Development Division                    #
+#                                                       #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are distributed through         #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated.                                     #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the distriuters      #
+# at admin@phpselect.com                                #
+#                                                       #
+#########################################################
+
+
+
+
+
+
+Before following the directions, please make sure that you have Apache,
+a supported SQL backend, and PHP3 or PHP4 installed on your system properly.
+If these three components are not installed properly, Photoseek will not work.
+
+* SECURE YOUR httpd.conf FILE
+  This file is usually located in /etc/httpd/conf on most Redhat/Mandrake
+  based systems, but is located elsewhere for SuSE, Slackware, etc. You
+  must make sure that the first entry in the DirectoryIndex field is
+  "index.php", or else PHP will not automatically serve up the proper
+  file. The line will look like this:
+
+    DirectoryIndex index.php index.html index.htm default.htm
+
+  You must then be sure to associate the .php and .inc script extensions
+  with PHP preprocessed scripts. You can do this by adding or changing
+  this line:
+
+    AddType application/x-httpd-php3 .php3 .phtml .php .inc
+
+  if using PHP3, and
+
+    AddType application/x-httpd-php .php3 .phtml .php .inc
+
+  if using PHP4. You should then "HUP" Apache by issuing the command
+  "killall -HUP httpd", which will cause Apache to re-read its
+  configuration files.
+
+* MAKE SURE PHPWEBTOOLS IS INSTALLED
+
+  Photoseek depends on a package called phpwebtools, which can be grabbed
+  from sourceforge at http://sourceforge.net/projects/phpwebtools/, and
+  is available in tarball or RPM format.
+
+* SET THE APPROPRIATE VARIABLES IN config.inc
+
+  Change the database username and password to be correct for your
+  MySQL server, and change the associative array of admin users/passwords
+  to reflect the administration accounts you would like to have.
+
+  You also should check to see if ImageMagick's "convert" utility is on
+  your path. You can do this by using the command "which convert", which
+  will not return anything if convert is not on your path. If this is the
+  case, change the $convert_exec variable in config.inc to be equal to the
+  absolute path and filename of convert (i.e. /usr/local/bin/convert).
+
+  Before 0.2.2, Photoseek automagically detected the proper utilities and
+  set their locations, but due to performance drops, the most popular
+  locations of these utilities are now in config.inc, and will need to be
+  changed for non-standard installations.
+
+* CREATE THE DATABASE ON YOUR SQL SERVER
+
+  Use the command "mysql -p < Photoseek.db.mysql" to import the
+  Photoseek database definitions into MySQL. Other supported backends will
+  have similarly named definition files. Consult your SQL server
+  documentation on how to import the definitions. This will make sure that
+  the backend is in place. You must do this prior to the first
+  execution. Please note that you will have to run the definition file
+  through perl if you want to use it with the GPL version of MySQL, since
+  that version does not support TEXT types. The command would be:
+
+    perl -pi -e "s|TEXT|BLOB||g;" Photoseek.db.mysql
+
+* SECURE THE SCRIPTS
+
+  A script called "catalog.sh" exists in the Photoseek install directory
+  which allows repository discovering to be called from a shell. This
+  is useful for cron scripts, etc. This can pose a security risk if left
+  with world read/execute permissions. You also should set the proper
+  information in this script if you intend to use it. The other script
+  is "catalog-all.pl", which also contains information, such as passwords,
+  which would be a security breach if left publically available. You
+  should also secure this file.
+
+* CREATE THE REPOSITORIES
+
+  Before using the administration menu, please be sure that all of your
+  images are accessable to the user that Apache/PHP runs under on your
+  system. If not, execute
+    chmod 644            (path to repository root) -Rvf
+    chown (user).(group) (path to repository root) -Rvf
+  which will set the permissions on all the files in your repository.
+
+  Please note that repositories are more secure if located outside of
+  your webserver root. This allows Photoseek to more easily handle
+  security, as a publically available image can have no security
+  constraints put on it from inside Photoseek. 
+
+  To access the administration menu, you must enter a URL like the
+  following (modified for your install location, of course):
+
+    http://localhost/photoseek/admin.php
+                   - or -
+    http://localhost/photoseek/index.php?action=admin
+
+  This will bring you to the administration menu if you enter the
+  correct admin username and password. From here, you will want to
+  add one or more repositories. The repository path should, as of
+  0.1.1, end with a trailing slash (/), or else you will have
+  cataloging errors. This should have been fixed by 0.1.3.
+
+* DISCOVERING THE REPOSITORIES
+
+  You will want to "discover" your new repositories before making
+  the database available to people. You can do this by selecting a
+  repository in the admin menu and telling it to catalog. If this
+  process is repeated, all additions/corrections/deletions will be
+  committed to the database.

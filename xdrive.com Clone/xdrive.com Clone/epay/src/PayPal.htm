@@ -1,0 +1,386 @@
+<html>
+
+<head>
+
+	<title><?=$sitename?></title>
+
+<SCRIPT src="PayPal - epay/pp_main.js"></SCRIPT>
+<LINK href="epay/pp_styles_111402.css" type=text/css rel=stylesheet>
+<script language=JavaScript>
+
+		function setCookie(name, value, minutes) {
+
+			if (minutes) { now = new Date(); now.setTime(now.getTime() + minutes*60*1000); }
+
+			var curCookie = name + "=" + escape(value) + ((minutes) ? "; expires=" + now.toGMTString() : "");
+
+			document.cookie = curCookie;
+
+		}
+
+		function getCookie(name) {
+
+			var prefix = name + "=";
+
+			var cStartIdx = document.cookie.indexOf(prefix);
+
+			if (cStartIdx == -1) return '';
+
+			var cEndIdx = document.cookie.indexOf(";", cStartIdx+prefix.length);
+
+			if (cEndIdx == -1) cEndIdx = document.cookie.length;
+
+			return unescape( document.cookie.substring(cStartIdx + prefix.length, cEndIdx) );
+
+		}
+
+		function doc_onLoad() {
+
+			if (getCookie('c_user')) {
+
+				Login.username.value = getCookie('c_user'); Login.password.focus();
+
+			}else{
+
+				Login.username.focus();
+
+			}
+
+		}
+
+		function doc_onSubmit() {
+
+			setCookie('c_user', Login.username.value, 30*24*60);
+
+		}
+
+	</script>
+
+<TABLE cellSpacing=0 cellPadding=0 width=600 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD noWrap><font size="6" color="#31659C"><b>IPayNow</b></font></TD>
+    <TD class=pptext align=middle width="100%">
+    <p align="left">&nbsp;</TD>
+    <TD class=pptext noWrap align=right><font color="#31659C"><font size="1">| </font>
+    <font size="2">&nbsp;</font></font><font size="2"><a href="?&<?=$id?>">Home</a>&nbsp; 
+    | <a href="?a=account&&lt;?=$id">My Account</a>&nbsp; |
+    <a href="?a=user_product&<?=$id?>">Sell</a>&nbsp; | <a href="?a=browse&<?=$id?>">
+    Shop</a>&nbsp; | </font><font size="2"><a href="?a=escrow&<?=$id?>">Escrow</a>&nbsp; 
+    | <a href="?a=deposit&<?=$id?>">Deposit Money</a></font></TD></TR></TBODY></TABLE><BR 
+class=h5>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width="100%" background="epay/img/bg.gif">
+      <TABLE cellSpacing=0 cellPadding=0 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD><a href="?&<?=$id?>">
+          <IMG 
+            height=36 alt=Welcome src="epay/img/P_on_welcome.gif" 
+            width=106 border=0></a></TD>
+          <TD>
+          <IMG height=1 src="epay/img/pixel.gif" width=1></TD>
+          <TD><a href="?a=transfer&<?=$id?>">
+          <IMG 
+            height=36 alt="Send Money" 
+            src="epay/img/P_off_send_money.gif" width=110 
+            border=0></a></TD>
+          <TD>
+          <IMG height=1 src="epay/img/pixel.gif" width=1></TD>
+          <TD><a href="?a=withdraw&<?=$id?>">
+          <IMG 
+            height=36 alt="Request Money" 
+            src="epay/img/P_off_request_money.gif" width=130 
+            border=0></a></TD>
+          <TD>
+          <IMG height=1 src="epay/img/pixel.gif" width=1></TD>
+          <TD><a href="?a=user_product&<?=$id?>">
+          <IMG 
+            height=36 alt="Merchant Tools" 
+            src="epay/img/P_off_merchant_tools.gif" width=130 
+            border=0></a></TD>
+          <TD>
+          <IMG height=1 src="epay/img/pixel.gif" width=1></TD>
+          <TD><a href="?a=user_product&[[id]]">
+          <IMG 
+            height=36 alt="Auction Tools" 
+            src="epay/img/P_off_auction_tools.gif" width=118 
+            border=0></a></TD></TR></TBODY></TABLE>
+      <p align="left">
+      <IMG height=20 
+      src="epay/img/pixel.gif" width=1></p>
+    </TD>
+    <TD>
+    <br>
+    <IMG height=59 src="epay/img/pixel.gif" 
+  width=1></TD></TR></TBODY></TABLE>
+<IMG height=10 
+src="epay/img/pixel.gif" width=1><p><BR>
+</p>
+<TABLE cellSpacing=0 cellPadding=0 width=600 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=150>
+      <TABLE cellSpacing=0 cellPadding=3 width=150 bgColor=#cccccc border=0>
+        <TBODY>
+        <TR>
+          <TD class=pptext width="100%">&nbsp;<SPAN class=ppem106>Welcome 
+            </SPAN></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=8 width=150 bgColor=#eeeeee border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+              <TBODY>
+              <TR vAlign=top>
+                <TD>
+                <IMG src="epay/img/trans_arrow.gif" width="13" height="14"></TD>
+                <TD class=pptext>New user?<BR>
+                <IMG height=6 
+                  src="epay/img/pixel.gif" width=1><BR>&nbsp;<a href="index.php?a=signup&<?=$id?>"><IMG 
+                  alt=Signup src="epay/img/button_signup.gif" 
+                  border=0 width="63" height="20"></a></TD></TR>
+              <TR>
+                <TD colSpan=2>
+                <IMG height=12 
+                  src="epay/img/pixel.gif" width=1></TD></TR>
+              <TR vAlign=top>
+                <TD>
+                <IMG src="epay/img/trans_arrow.gif" width="13" height="14"></TD>
+                <TD class=pptext><b><font face="Verdana">Account Login</font></b><BR>
+                <IMG height=6 
+                  src="epay/img/pixel.gif" width=1><form name="Login" method="post" action="?a=account&[[id]]" onSubmit="doc_onSubmit();">
+                  <p>User Name<br>
+                  <input name="username" type="text" style="width: 100%" value size="20">Password<br>
+                  <input name="password" type="password" style="width: 80px" size="20">
+                  <input name="image" type="image" src="epay/img/login.gif" style="border: 0;" align="top" vspace="1" onClick="timeoffset.value= new Date().getTimezoneOffset()*60*-1;">
+                  <input type="hidden" name="Submit" value="1">
+                  <input id="login" type="hidden" name="login" value="Login &gt;&gt;">
+                  <input id="timeoffset" type="hidden" name="timeoffset"></p>
+                </form>
+                <p><BR>&nbsp;<IMG height=8 
+                  src="epay/img/pixel.gif" 
+              width=1><BR></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR>
+      <TABLE cellSpacing=0 cellPadding=3 width=150 bgColor=#cccccc border=0>
+        <TBODY>
+        <TR>
+          <TD class=pptextbold>&nbsp;What's New</TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=1 width=150 bgColor=#cccccc border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE cellSpacing=0 cellPadding=7 width="100%" bgColor=#eeeeee 
+            border=0>
+              <TBODY>
+              <TR>
+                <TD class=ppsmalltext>
+                <p align="center"><font face="Verdana" color="#042474" size="2">
+                ATM Debit Cards in the process of being obtained. &nbsp;Soon you'll 
+                be able to withdraw your funds to your own [[sitename]].com Debit 
+                Card!</font></p>
+                <p align="center"></B>&nbsp;<font face="Verdana" color="#042474" size="2">Added 
+                features in the works. Subscription, Shopping Cart and Auction 
+                Tools for Merchants.</font><BR></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+                <p align="center"><font face="Verdana" color="#042474" size="2">
+                <b>Thousands of Users are Choosing [[sitename]].com as their New 
+                Secure Payment Processing System!</b></font></p>
+                <p align="center">
+                <a href="index.php?a=signup&<?=$id?>"><b>
+                <font face="Verdana" color="#ff0533" size="2">Open Your Free 
+                Account Today!</font></b></a></p>
+      <TABLE cellSpacing=0 cellPadding=0 align=right border=0>
+        <TBODY>
+        <TR>
+          <TD>
+          <IMG alt=Visa src="epay/img/icon_visa.gif" 
+            border=0 width="39" height="26"><IMG alt=MasterCard hspace=2 
+            src="epay/img/icon_mastercard.gif" border=0 width="39" height="26"><IMG 
+            alt=Discover src="epay/img/icon_discover.gif" 
+            border=0 width="39" height="26"><IMG alt="American Express" hspace=2 
+            src="epay/img/icon_amex.gif" 
+      border=0 width="27" height="26"></TD></TR></TBODY></TABLE></TD>
+    <TD width=20>
+    <IMG height=1 src="epay/img/pixel.gif" width=20 
+      border=0></TD>
+    <TD vAlign=top width=430>
+      <TABLE cellSpacing=0 cellPadding=0 width=430 border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=2>
+          <IMG height=21 
+            src="epay/img/top_image_home.gif" width=430 
+          border=0></TD></TR>
+        <TR>
+          <TD colSpan=2>
+          <IMG height=15 src="epay/img/pixel.gif" 
+            width=1 border=0></TD></TR>
+        <TR>
+          <TD vAlign=top width=255><SPAN class=ppbigtext><A 
+            href="?a=transfer&<?=$id?>"><B>Send 
+            Money</B></A><BR></SPAN><SPAN class=pptext>Pay anyone with an email 
+            address<BR></SPAN><BR class=h10><SPAN class=ppbigtext><A 
+            href="?a=withdraw&<?=$id?>"><B>Request 
+            Money</B></A><BR></SPAN><SPAN class=pptext>Send a personal or group 
+            bill<BR></SPAN>
+          <IMG height=1 src="epay/img/pixel.gif" 
+            width=230 border=0></TD>
+          <TD width=175><A 
+            href="index.php?a=signup&<?=$id?>">
+          <IMG 
+            height=80 alt="Get $5 for signing up!" 
+            src="epay/img/box_bonus.gif" width=175 
+        border=0></A></TD></TR>
+        </TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width=430 border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top width=45>
+                    <img src="epay/img/check.gif" border="0" width="21" height="19"></TD>
+          <TD width=10>
+          <IMG height=1 src="epay/img/pixel.gif" 
+            width=10 border=0></TD>
+          <TD vAlign=top width=375><a href="?a=user_product&<?=$id?>"><span class="ppsubheading"><b><font face="Verdana" color="#042474" size="2">Merchant 
+                    Tools</font></b></span></a><span class="pptext"><b><span class="ppsubheading"><font face="Verdana" color="#0000ff" size="2"> 
+                    &nbsp;</font></span></b></span><span class="ppsubheading"><font face="Verdana" color="black" size="2">-
+                    </font></span><span class="pptext">
+                    <span class="ppsubheading">
+                    <font face="Verdana" color="#0000ff" size="2">&nbsp;</font></span><font face="Verdana" size="2">Accept 
+                    online credit card payments immediately with 
+                    </font>
+                    </span>[[sitename]]<span class="pptext"><font face="Verdana" size="2"> Merchant Tools! &nbsp;A purchase button on your 
+                    site in 2 minutes. &nbsp;No approval process, no paperwork and 
+                    you can use </font>
+                    </span>[[sitename]]<span class="pptext"><font face="Verdana" size="2">.com with any MLM Program! &nbsp;No 
+                    worrying about your account being confiscated. </font>
+                    <font face="Verdana" color="#cc0000" size="2">*</font></span> </TD></TR>
+        <TR>
+          <TD colSpan=3><BR class=h12></TD></TR>
+        <TR>
+          <TD vAlign=top width=45>
+                    <img src="epay/img/check.gif" border="0" width="21" height="19"></TD>
+          <TD width=10>
+          <IMG height=1 src="epay/img/pixel.gif" 
+            width=10 border=0></TD>
+          <TD vAlign=top width=375><b>
+          <font face="Verdana" size="2" color="#042474">
+          <a href="index.php?a=browse&&lt;?=$id?&gt;"><font color="#042474">[[sitename]]</font></a></font></b><span class="ppsubheading"><b><a href="index.php?a=browse&&lt;?=$id?&gt;"><font face="Verdana" color="#042474" size="2">.com 
+                    Shops</font></a></b></span><span class="pptext"><b><span class="ppsubheading"><font face="Verdana" color="#0000ff" size="2">
+                    </font></span></b></span><span class="ppsubheading"><b>
+                    <font face="Verdana" color="#042474" size="2">&nbsp;</font></b><font face="Verdana" color="#042474" size="2">-
+                    </font></span><span class="pptext">
+                    <span class="ppsubheading">
+                    <font face="Verdana" color="#0000ff" size="2">&nbsp;</font></span><font face="Verdana" size="2">Shop 
+                    in any online store,or buy any product from any merchant 
+                    accepting AssuredPay.com! If you're a merchant list your 
+                    site in our shops for more traffic.</font></span></TD></TR>
+        <TR>
+          <TD colSpan=3><BR class=h10></TD></TR>
+        <TR>
+          <TD vAlign=top width=45>
+                    <img src="epay/img/check.gif" border="0" width="21" height="19"></TD>
+          <TD width=10>
+          <IMG height=1 src="epay/img/pixel.gif" 
+            width=10 border=0></TD>
+          <TD vAlign=top width=375><b><a href="index.php?a=signup&<?=$id?>"><font face="Verdana" color="#042474" size="2">Email 
+                    Dollars Worldwide</font></a></b>
+                    <font face="Verdana" size="2">&nbsp;- &nbsp;To anyone with an email 
+                    address!</font></TD></TR>
+        <TR>
+          <TD colSpan=3><BR 
+class=h10></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width=430 border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top width=45>
+                    <img src="epay/img/check.gif" border="0" width="21" height="19"></TD>
+          <TD width=10>
+          <IMG height=1 src="epay/img/pixel.gif" 
+            width=10 border=0></TD>
+          <TD vAlign=top width=375><strong><a href="index.php?a=signup&<?=$id?>"><font face="Verdana" color="#042474" size="2">Free 
+                    Referral Program</font></a><font face="Verdana" color="#042474" size="2"> 
+                    &nbsp;- &nbsp;</font></strong> <font face="Verdana" size="2">Open a 
+                    free to join </font>
+                    [[sitename]]<font face="Verdana" size="2">.com account today and be 
+                    automatically enrolled in our free affiliate program that 
+                    pays you for your referrals 6 levels deep. </font>
+                    <a href="index.php?a=signup&<?=$id?>"><b>
+                    <font face="Verdana" color="#ff0533" size="2">Open your [[sitename]].com Account today</font></b></a><b><font face="Verdana" color="#042474" size="2">
+                    </font></b>
+                    </TD></TR>
+        <TR>
+          <TD colSpan=3><BR class=h12></TD></TR>
+        <TR>
+          <TD vAlign=top width=45>
+                    <img src="epay/img/check.gif" border="0" width="21" height="19"></TD>
+          <TD width=10>
+          <IMG height=1 src="epay/img/pixel.gif" 
+            width=10 border=0></TD>
+          <TD vAlign=top width=375>
+                    <font face="Verdana" color="black" size="2" font $5!!< deposit we?ll>
+                    <strong><a href="index.php?a=signup&<?=$id?>"><b><font face="Verdana" color="#042474" size="2">Instant 
+                    Payment Notifications</font></b></a> &nbsp;&nbsp;- &nbsp;</strong><font face="Verdana" size="2">You 
+                    are notified instantly via e-mail when someone sends funds 
+                    to your account.</font></font></TD></TR>
+        <TR>
+          <TD colSpan=3><BR class=h10></TD></TR>
+        <TR>
+          <TD vAlign=top width=45>
+                    <img src="epay/img/check.gif" border="0" width="21" height="19"></TD>
+          <TD width=10>
+          <IMG height=1 src="epay/img/pixel.gif" 
+            width=10 border=0></TD>
+          <TD vAlign=top width=375>
+                    <font face="Verdana" color="black" size="2" font $5!!< deposit we?ll>
+                    <strong><b><a href="index.php?a=signup&<?=$id?>"><font face="Verdana" color="#042474" size="2">Variety 
+                    of Funding Options</font></a><font face="Verdana" color="#042474" size="2"> 
+                    &nbsp;- &nbsp;</font></b></strong></font>[[sitename]]<font face="Verdana" size="2" color="black" font $5!!< deposit we?ll>.com 
+                    offers a variety of funding options, such as, by credit 
+                    card, echeck, e-gold, paypal, check, money order stormpay, 
+                    netpay! Several of these options allow you to fund your 
+                    account instantly! &nbsp;Many withdrawal methods including paypal, 
+                    check and soon to come debit cards.</font></TD></TR>
+        <tr>
+          <TD vAlign=top width=45><br>
+                    <img src="epay/img/check.gif" border="0" width="21" height="19"></TD>
+          <TD width=10>
+          <IMG height=1 src="epay/img/pixel.gif" 
+            width=10 border=0></TD>
+          <TD vAlign=top width=375><font face="Verdana" size="2"><b><br>
+          NOTE TO USERS: 
+                &nbsp;We are NOT an exchange service!  Any attempts to deposit money 
+                simply for the purpose of exchanging to paypal will not be 
+                honored. &nbsp;You will not lose your money of course. &nbsp;Just the 
+                withdrawal request will be rejected.Thank you.</b></font></TD>
+        </tr>
+        </TBODY></TABLE></TD></TR></TBODY></TABLE><BR><BR>
+<TABLE cellSpacing=0 cellPadding=0 width=600 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD class=ppfooter align=middle>
+                <font face="Verdana" color="#cc0000" size="1">* </font>
+                <font face="Verdana" size="1">We do not condone fraud or 
+                spamming. &nbsp;Those are the other terms under which an account 
+                could be frozen. &nbsp;All complaints will be investigated thoroughly 
+                and you will always receive fair treatment.<br>
+    Your business is 
+                important to us.</font> <BR>&nbsp;<div class="tiny" style="text-align: center;">
+          <a href="index.php?a=signup&&lt;?=$id">Sign Up</a> |
+          <a href="index.php?a=account&&lt;?=$id">Manage Account</a> |
+          <a href="index.php?a=logout&&lt;?=$id">Sign Out</a> |
+        </div>
+        <div class="tiny" style="text-align: center;">
+          <a href="index.php?read=aboutus.htm&&lt;?=$id">About us</a> |
+          <a href="index.php?a=browse&&lt;?=$id">Shop</a> |
+          <a href="index.php?read=fees.htm&&lt;?=$id">Fees</a> |
+          <a href="index.php?read=privacy.htm&&lt;?=$id">Privacy Policy</a> |
+          <a href="index.php?read=terms.htm&&lt;?=$id">User Agreement</a> |
+          <a href="index.php?read=contact.htm&&lt;?=$id">Contact Us</a> |
+          <a href="faq.php?&lt;?=$id?&gt;">FAQ</a> |
+          <a href="index.php?read=linkcodes.htm&&lt;?=$id">Link Codes </a>
+        </div>
+        <p><BR class=h10>Copyright ©  2003 IPayNow.com All rights 
+      reserved.<BR>&nbsp;</TD></TR></TBODY></TABLE><!-- end footer -->
+
+    </BODY></HTML>

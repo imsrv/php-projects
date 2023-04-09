@@ -1,0 +1,49 @@
+
+#########################################################
+#                                                       #
+# This script was provided by:                          #
+#                                                       #
+# PHPSelect Web Development Division.                   #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are © 2004                      #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated in the script.                       #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# Any copying, distribution, modification with          #
+# intent to distribute as new code will result          #
+# in immediate loss of your rights to use this          #
+# program as well as possible legal action.             #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the authors at       #
+# admin@phpselect.com or info@phpselect.com             #
+#                                                       #
+#########################################################
+
+First of all sorry for my english :-)
+
+I think that the largest problem  you can found in piFAQ is to redesign it. 
+Someone can ask: "when i open up the edit.php in textpad it doesn't have any html in it". 
+Well it is true. There is no html in php files, Because piFAQ use FastTemplate (templates helps to separate program code from html).
+And because of that templates it's even more easy to redesign script then in simple php and html file.
+
+You just need to edit files  in the "tpl" directory. Lets look at them.
+(NOTE: don't edit data which are in "{" "}" quotes).
+
+index.tpl - This is a base of your design there you can edit bgcolor of page etc.
+body.tpl this is a table that you can see at faq.php (don't touch the comments FastTemplate use it to found dynamic blocks).
+edit.tpl - table that you can see at edit.php (also don't touch the comments).
+login.tpl - Login form where program asks you to enter login and password.
+addq.tpl - Adding question form.
+error.tpl - better don't touch it :-)
+copy.tpl - CopyLeft at the bottom of page (you can add there your Copy left, counters etc).
+
+So as you can see you don't need to understand how FastTemplate works but if you wont to, read about it here http://www.thewebmasters.net/php/FastTemplate.phtml or here http://www.devshed.com/Server_Side/PHP/PHPFastTemplate/print.
+
+Well that's it. If you still have a questions email me pavel_i@yahoo.com.

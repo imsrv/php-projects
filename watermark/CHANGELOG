@@ -1,0 +1,16 @@
+
+--------------------------------------------------------------------------------
+phpWatermark 0.3 (c) 2003 Mario Witte <mario.witte@chengfu.net>
+--------------------------------------------------------------------------------
+
+CHANGELOG
+--------------------------------------------------------------------------------
+26-10-2003  0.3  - Ability to set fixed color for text
+                 - Experimental supprt for implenting images
+		   (Currently transparency seems to be ignored)
+07-02-2003  0.2  - Position of watermark on image is now configurable
+                 - If getMarkedImage is called before an image has been
+		   created, a default string will be printed onto the
+		   image to prevent errors
+02-02-2003  0.1  - Initial release
+

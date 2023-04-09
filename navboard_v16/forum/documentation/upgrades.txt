@@ -1,0 +1,33 @@
+UPGRADING
+
+(upgrade_to##.php)
+
+****
+BACKUP YOUR DATA FILES BEFORE UPGRADING
+****
+
+ONLY MOVING UP 1 VERSION (ex: v12 to v13)
+1. Upload ALL files for new version
+(replace everything)
+(you may delete php scripts from your
+current version as they will be replaced)
+
+2. Run a upgrade script for the new version
+if included
+
+MOVING UP MORE THAN 1 VERSION (ex: v11 to v13)
+1. Upload ALL files from version next up
+from yours (replace everything)
+(you may delete php scripts from your
+current version as they will be replaced)
+
+2. Run a upgrade script for that version if
+inlcluded
+
+3. Continue through each version until you
+reach the newest version
+
+****
+THESE INSTRUCIONS ARE TO BE SURE YOUR DATA IS
+SAFE AND YOU GET PROPERLY UPGRADED
+****

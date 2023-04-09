@@ -1,0 +1,54 @@
+First you must expand the archive of the downloaded file to the directory of the server that your website resides. If you are using a unix shell, telnet in and copy the cms.zip file to the root of you web server. Generally it would be /var/www/html/ but if you don't know, ask you ISP.
+
+If you received the tar archive and have shell access, place the archive where you want to install your website and type: tar xvfz cms.tar.gz
+
+Now that the files are on the server, you should verify that the appropriate permissions.
+chmod 777 templates
+chmod 777 cache (and subdirectories)
+chmod 777 config.php
+chmod 777 spiderconfig.php 
+
+If you do not have telnet access from your ISP, you will need to use a program such a WS-FTP to upload and set permissions to your files. Extract the cms.zip file to a folder keeping the directory structure. Ftp into your web server and upload the entire contents.
+
+Change the permissions for the cache directories, config.php and spiderconfig.php files to 777 (Read/Write/Execute). 
+
+Now that you have uploaded and set permissions for your files you need to run the install script. You access the install script via your web publisher but typing in the appropriate URL. For example: http://www.yourwebsite.com/cadmin/cinstall.php
+
+You will be presented with a web page to set the proper variables.
+
+1) MYSQL CONFIGURATION - The installer will auto-detect your Basic Edition (Freeware) database and upgrade the tables for you. However, you may need a few pieces of information If you do not know this information, contact your ISP. They should be able to assist you.
+
+a) Hostname: Usually localhost, however you can use the IP address of the server which your database resides.
+b) Username: Your MySQL Username
+c) Password: Your MySQL Passward
+d) Database: You database name
+
+Make a note of the installation information. To install a second website, (the Standard/Network Edition of the CMS is designed to run up to 99 websites concurrently), you will need to enter the database name of the first installation.
+
+2) CREATE ADMIN USER
+
+Choose the admin name and password, as well as the e-mail you would like to use for the admin account.
+
+3) WEBSITE CONFIGURATION
+
+Input the name of your site and the url to your site. For example http://www.yourwebsite.com
+
+4) DOWNLOAD CONFIGURATION
+
+The Esselbach Storyteller Standard/Network Edition can protect the files your offer for download from unauthorized access. It does this via encryption. For this to happen you must enter a unique checksum for your site. It can be anything you like but try not to make it something easily guessed.
+
+5) OPTIONS
+Options is only available on Standard/Network Edition.
+
+Using Cache: This is recommended. Enabling with help greatly with server load and speed of access to your pages.
+Enable Debug Mode: If you are having problems, enable this setting for a more verbose description.
+Disable GZIP Output: Enabling GZIP output will reduce your bandwidth usage at your ISP, by compressing the pages prior to being sent. Disabling will increase the site load time.
+Disable Stats: Select No for all site statistics for all site statistics.
+
+Now just click SEND and you are ready to start!
+
+Upgrading
+
+To upgrade unzip your new files overwriting the existing files and then run the upgrade script through your browser. http://www.yourwebsite.com/cadmin/cupgrade.php
+
+Be sure to delete both cinstall.php and cupgrade.php when you are done with them.

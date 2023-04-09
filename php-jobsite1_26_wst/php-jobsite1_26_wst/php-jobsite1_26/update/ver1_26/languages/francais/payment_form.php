@@ -1,0 +1,30 @@
+<?php
+define('TEXT_PAY_NOW','Régler maintenant par Carte Bleue (sécurisé)');
+define('TEXT_BACK_TO_MY_SITE','Retour sur Curriculum-Vitae.com et mettre à jour les informations de paiement');
+define('TEXT_UPGRADE','Faire évoluer');
+define('TEXT_FOLLOWING_INFORMATION','Si vous payez par facture, voici les informations qui vont être sauvegardées.');
+define('TEXT_INVOICE_PAYMENT','Paiement de la facture');
+define('TEXT_PAY_NOW_INVOICE','Régler maintenant');
+define('TEXT_PAYMENT_LIST_PRICE','Liste des tarifs');
+define('TEXT_PAYMENT_DISCOUNT_PRICE','Remise');
+define('TEXT_PAYMENT_TOTAL_PRICE','Montant total');
+define('TEXT_PAYMENT_DESCRIPTION','Description du paiement');
+define('TEXT_PAYMENT_DATE','Date');
+define('TEXT_NUMBER_OF_JOBS','Nombre d\'offres d\'emploi');
+define('TEXT_PRICE_OF_JOBS','Prix des offres d\'emploi');
+define('TEXT_TOTAL_OF_JOBS','Nombre total d\'offres');
+define('TEXT_NUMBER_OF_FJOBS','Nombre d\'offres à la une');
+define('TEXT_PRICE_OF_FJOBS','Prix des offres à la une');
+define('TEXT_TOTAL_OF_FJOBS','Nombre total d\'offres à la une');
+define('TEXT_NUMBER_OF_CONTACTS','Nombre de contacts');
+define('TEXT_PRICE_OF_CONTACTS','Prix d\'un contact');
+define('TEXT_TOTAL_OF_CONTACTS','Nombre total de contacts');
+define('TEXT_DESCRIPTION','Description');
+define('TEXT_PAYMENT_DESCRIPTION_HINT','Vous pouvez nous faire parvenir un commentaire ici.');
+define('TEXT_INVALID_CC_PAYMENT','Opération par Carte Bleue invalide :');
+define('TEXT_INVALID_CC_PAYMENT_ERRORS','Des erreurs sont survenues durant le traitement de votre carte bleue :');
+define('TEXT_DETAILED_ERROR','Voici le détail des erreurs :');
+define('TEXT_PAYMENT_VAT','TVA');
+define('TEXT_DISCOUNTED_PRICE','Prix avec remise');
+define('TEXT_PEDING_CC_PAYMENT','Peding Credit Card Payment.<br> Waiting for admin for validation!');
+?>

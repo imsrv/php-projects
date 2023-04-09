@@ -1,0 +1,26 @@
+#armor
+type spell
+priority 9
+on You feel someone protecting you.
+on You are already armored.
+off You feel less armored.
+
+#bless
+type spell
+priority 9
+on You feel righteous.
+off You feel less righteous.
+
+#sanctuary
+type spell
+priority 1
+on You are surrounded by a white aura.
+on You are already in sanctuary.
+off The white aura around your body fades.
+
+#protective shield
+type spell
+priority 2
+on You are surrounded by a protective shield.
+off Your protective shield fades away.
+

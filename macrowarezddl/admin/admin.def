@@ -1,0 +1,32 @@
+# Database Definition: ADMIN
+# --------------------------------------------------------
+# Definition of your database file.	
+%db_def = (			
+ID       => [0, 'numer', 5,   8, 1, '', ''],			
+Username => [1, 'alpha', 40, 75, 1, '', ''],			
+Password => [2, 'alpha', 40, 75, 1, '', '']	
+);	
+$ADMIN_username      = 1;	
+$ADMIN_password      = 2;	
+$db_file_name     = "$db_script_path/data/admin.db";	
+$db_id_file_name  = "$db_script_path/data/adminid.txt";	
+$db_key           = 'ID';	
+$db_delim         = '|';	
+$html_title       = 'Admin Database';	
+$html_object      = 'Admin';	
+%db_select_fields = ();	
+%db_radio_fields  = ();	
+$db_max_hits      = 10;	
+$db_key_track     = 1;
+@db_cols = ();
+foreach (sort { $db_def{$a}[0] <=> $db_def{$b}[0] } keys %db_def) {	
+push (@db_cols, $_);	
+$db_sort{$_}            = $db_def{$_}[1];	
+$db_form_len{$_}        = $db_def{$_}[2];	
+$db_lengths{$_}         = $db_def{$_}[3];	
+$db_not_null{$_}        = $db_def{$_}[4];	
+$db_defaults{$_}        = $db_def{$_}[5];	
+$db_valid_types{$_}     = $db_def{$_}[6];	
+($_ eq $db_key)       and $db_key_pos = $db_def{$_}[0];
+}
+1;

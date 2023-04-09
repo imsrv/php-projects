@@ -1,0 +1,24 @@
+# ---------------------------------------------------------------
+# phpop
+# A WWW based POP email management tool 
+# Copyright (C) 1998  Padraic Renaghan
+# Licensed under terms of GNU General Public License
+# (see http://renaghan.com/phpop/LICENSE)
+# ---------------------------------------------------------------
+# Database create script for MySQL databases.
+# $Id: create_db.mysql,v 1.1 2000/04/12 23:23:19 prenagha Exp $
+# ---------------------------------------------------------------
+
+#
+# Table structure for table 'active_sessions'
+#
+CREATE TABLE active_sessions (
+  sid varchar(32) DEFAULT '' NOT NULL,
+  name varchar(32) DEFAULT '' NOT NULL,
+  val text,
+  changed varchar(14) DEFAULT '' NOT NULL,
+  PRIMARY KEY (name,sid),
+  KEY changed (changed)
+);
+
+# -- end

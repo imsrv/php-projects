@@ -1,0 +1,18 @@
+<template name="1">
+ Transfer Control
+</template name="1">
+<template name="2">
+ Open Signup
+</template name="2">
+<template name="3">
+ Close Signup
+</template name="3">
+<template name="4">
+ Start Tournament
+</template name="4">
+<template name="5">
+ Stop Tournament
+</template name="5">
+<template name="6">
+ Delete Tournament
+</template name="6">

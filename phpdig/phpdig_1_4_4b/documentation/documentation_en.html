@@ -1,0 +1,342 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0039)http://biceleron/sablot/doc-en-html.php -->
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<STYLE xmlns:fo="http://www.w3.org/1999/XSL/Format">H1 {
+	FONT-WEIGHT: normal; FONT-SIZE: 18pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+H2 {
+	FONT-WEIGHT: normal; FONT-SIZE: 14pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+BODY {
+	FONT-SIZE: 10pt; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffff
+}
+.grey {
+	BACKGROUND-COLOR: #eeeeee
+}
+.blue {
+	BACKGROUND-COLOR: #ccddff
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY>
+<H1 xmlns:fo="http://www.w3.org/1999/XSL/Format">PhpDig version 1.4 
+Documentation </H1>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P><I>Last update : 2001-12-02</I> <BR><I>Note : The author needs help in 
+  spelling correction in this version. If you want to contribute to it, mail the 
+  author to obtain a XML version of this document.</I><BR><I>Previous 
+  documentations corrections by Brien Louque.</I> </P></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Where find the 
+lastest PhpDig version ? </H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P>At address : <B>http://phpdig.toiletoine.net</B></P></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">PhpDig Features 
+</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P><B>HTTP Spidering</B></P>
+  <P>PhpDig follows links as it was any web browser within a web server, to 
+  build the pages list to index. </P>
+  <P>Links can be in AreaMap, or frames. PhpDig supports relocations. Any syntax 
+  of HREF attribute is followed by Phpdig. Simple javascripts links like 
+  window.open() or window.location() are followed too. </P>
+  <P>PhpDig don't go out the root site you define for the indexing. Spidering 
+  depth is choosen by user. </P>
+  <P>All html content is listed, both static and dynamic pages. PhpDig searches 
+  the Mime-Type of the document, or tests existence of an &lt;HTML&gt; tag at 
+  the beginning of it. </P>
+  <P><B>Full Text Indexing</B></P>
+  <P>PhpDig indexes all words of a document, excepting small words (less than 3 
+  letters) an common words, those are definded in a text file. </P>
+  <P>Lone numbers are not inded, but those included in words. Underscores make 
+  part of a word. </P>
+  <P>Occurences of a word in a document is saved. Words in the title can have a 
+  more important weight in ranking results. </P>
+  <P><B>Other features</B></P>
+  <P>PhpDig Tries to read a robots.txt file at the server root. It searches meta 
+  robots tags too. </P>
+  <P>PhpDig can spider sites served on another port than the default 
+  80.<BR>Password protected sites can be indexed giving to the robot an username 
+  and valid password.<BR><B>Be Careful !</B> This feature could permit to an 
+  unauthorized user reading protected informations. We recommand to create a 
+  specific instance of PhpDig, protected by the same credentials than the 
+  restricted site. You have to create a special account for the robot too. </P>
+  <P>The Last-Modified header value is stored in the database to avoid redundant 
+  indexing. Also the &lt;META&gt; revisit-after tag.<BR></P>
+  <P>If desired, the engine can store textual content of indexed documents. In 
+  this case, relevant extracts of found pages are displayed in the results page 
+  with highlighted search keys. </P>
+  <P><B>Display templates</B></P>
+  <P>A simple templates system permits to adapt search and results page to an 
+  existing site look. Making a template consists only in insert few xml-like 
+  tags in an html page. </P>
+  <P><B>Limits</B></P>
+  <P>PhpDig can't perform an exact expression search. </P>
+  <P>Because of the time consuming indexing process, the Apache/php web server 
+  which performs the process must not be safe_mode configured. <BR>This limit 
+  can be turn :<BR>- Using distant indexing with MySql TCP connexion and FTP 
+  connexion ;<BR>- Launching indexing process in a shell command. This can be 
+  made by a <I>cron</I> task. </P>
+  <P>Spidering and indexing is a bit slow. In the other hand, search queries are 
+  fast, even in an extended content. </P></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Installation</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P><B>Prerequisites</B></P>
+  <P>PhpDig requires a Web server (Apache is my preference) with Php (module or 
+  cgi), and a MySql database server. </P>
+  <P>The following configurations were tested :<BR>PHP 4.0.3pl1 cgi, Apache 
+  1.3.14, MySql 3.23.28, Windows 2000 ;<BR>PHP 4.0.5rc1 module, Apache 1.3.20, 
+  MySql 3.23.28, Windows 2000 ;<BR>PHP 4.0.5 module, Apache 1.3.20, MySql 
+  3.23.39, Linux with 2.4 kernel<BR></P>
+  <P><B>Scripts installation</B></P>
+  <P>Unzip the archive in a directory and configure Apache to serve it. (it will 
+  be named <I>[PHPDIG_DIR]</I> in the following) The engine did not need a 
+  dedicated VirtualHost to operate.<BR>If PhpDig is installed on an Unix 
+  operating system server, set the file permissions to writable on the following 
+  directories, for the suid Apache server is running : </P><PRE>[PHPDIG_DIR]/text_content
+[PHPDIG_DIR]/include
+[PHPDIG_DIR]/admin/temp
+</PRE>
+  <P><B>MySql database installation</B></P>
+  <P>There are two processes to install the database. </P>
+  <P><I>- Php install script</I> :<BR>In your favorite browser, request the page 
+  : </P><PRE>[PHPDIG_DIR]/include/install.php
+</PRE>
+  <P>And follow the instructions.<BR><I>This script uses the form datas to 
+  complete the fields of the "[PHPDIG_DIR]/include/_connect.php" script and 
+  copying it to "[PHPDIG_DIR]/include/connect.php".</I> </P>
+  <P><I>- Manual installation</I> :<BR>You have to create the database (You can 
+  choose any other name than "phpdig") : </P><PRE>#mysql mysql
+mysql&gt; CREATE DATABASE phpdig;
+mysql&gt; quit
+
+#mysql phpdig &lt; [PHPDIG_DIR]/sql/init_db.sql
+</PRE>
+  <P>Verify that all tables are present :</P><PRE>#mysql phpdig
+mysql&gt; SHOW TABLES;
+</PRE>
+  <P>The database answer must be :</P><PRE>+------------------+
+| Tables_in_phpdig |
++------------------+
+| engine           |
+| keywords         |
+| sites            |
+| spider           |
+| tempspider       |
++------------------+
+5 rows in set (0.00 sec)
+
+mysql&gt;
+</PRE>
+  <P>After the database was created, copy the 
+  "[PHPDIG_DIR]/include/_connect.php" file to "[PHPDIG_DIR]/include/connect.php" 
+  and edit the new one.<BR>Replace the values "&lt;host&gt;", "&lt;user&gt;", 
+  "&lt;pass&gt;", and "&lt;database&gt;" to your database server URL, the 
+  username, the password to connect to it (if required) and the name you give to 
+  the phpdig database.<BR><I>In a local installation, the values "localhost", 
+  "root", and "" are sufficient in most cases.</I> </P>
+  <P>To verify the install is complete, open the main page 
+  [PHPDIG_DIR]/index.php with your favorite web browser.<BR>The search form must 
+  be visible. </P></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Configuration</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P>After the install was complete, the engine can work without modifications 
+  in the configuration file. The configuration step depends on your needs. Don't 
+  forget to <B>change the administration login and password</B> if you use a Php 
+  compiled in an Apache dynamic or static module.<BR><I>Notice : 
+  Authentification doesn't operate with a CGI php. In this case, uses an 
+  .htaccess file in order to protect the [PHPDIG_DIR]/admin directory. </I></P>
+  <P>All configuration parameters are in the [PHPDIG_DIR]/include/config.php 
+  file. Each of them is followed by a comment explaining it purpose. </P>
+  <P>In the following, all statements are lines of the config.php file. 
+  <BR><I>The values are default values.</I> </P>
+  <P><B>Configuring administrator access</B></P>
+  <P>Change the following constants. <I>If you don't want to see a clear 
+  password value, use the Apache authentification functions.</I> </P><PRE>define('PHPDIG_ADM_AUTH','1');     //Activates/deactivates the authentification functions
+define('PHPDIG_ADM_USER','admin'); //Username
+define('PHPDIG_ADM_PASS','admin'); //Password
+</PRE>
+  <P><B>Configuring robot and engine</B></P>
+  <P>Change following variables and constants.</P><PRE>$spider_max_limit      = 12; //Max selectable value for the search depth
+$spider_default_limit  = 1;  //Default selected value in the administration form
+$respider_limit        = 5;  //Search depth for re-indexing
+
+$limit_days            = 7;  //Default days before revisiting a page
+$small_words_size      = 2;  //Word to not index length
+$max_words_size        = 30; //Max length of a word
+
+$title_weight          = 3;     //Relative title weight
+$chunk_size            = 8000;  //Chunk size for pages parsing (this value works fine)
+
+$summary_length        = 500;   //Length of page summaries, in characters
+
+define('TEXT_CONTENT_PATH','text_content/'); //Text content files path
+define('CONTENT_TEXT',1); //Activates/deactivates the storage of text content.
+</PRE>
+  <P><B>Configuring templates</B></P>
+  <P>Change following variables and constants.</P><PRE>$phpdig_language = "en";                        //GUI language
+
+$template = './templates/phpdig.html';           //Template file path
+define('HIGHLIGHT_BACKGROUND','yellow');         //Highlighting background color
+define('WEIGHT_IMGSRC','./tpl_img/weight.gif');  //Baragraph image path
+define('WEIGHT_HEIGHT','5');                     //Baragraph height
+define('WEIGHT_WIDTH','50');                     //Max baragraph width
+define('SEARCH_PAGE','index.php');               //The name of the search page
+
+$search_default_limit  = 10; //Default num of displayed results in the results page
+</PRE>
+  <P><B>FTP configuration (if necessary)</B></P>
+  <P>PhpDig doesn't indexes FTP sites. Why by the hell needs it ftp connection 
+  ?</P>
+  <P>Lot of PhpDig users install it on shared web servers, and on those, Php is 
+  always configured with safe_mode activated. On those shared hostings, access 
+  to thecrontab isn't allowed too. </P>
+  <P>Another instance of Php, on a distinct server is the solution. In my case, 
+  a linux server installed at my home and plugged on a câble connexion runs the 
+  update process for the demo version of PhpDig.<BR>Your hosting must only 
+  permits you to connect to your MySql database thru TCP/IP. </P>
+  <P>And what about this famous FTP connection ? It sends textual content of 
+  indexed documents to the adequate directory in the distant server.<BR>If you 
+  deactivate the FTP function (in case of low-bandwidth connections, like by 
+  modem), it is not the extract of documents wich is displayed in results page, 
+  but only the summary stored in the database. </P>
+  <P>FTP parameters are the following.</P><PRE>define('FTP_ENABLE',0);              //Activate/deactivate the ftp connection
+define('FTP_HOST','&lt;ftp host dir&gt;'); //FTP server name
+define('FTP_PORT',21);               //FTP port
+define('FTP_PASV',1);                //Use passive mode (PASV), recommended
+define('FTP_PATH','&lt;phpdig root dir&gt;'); //Path of the phpdig directory on server, relative to the ftp rootdir
+define('FTP_TEXT_PATH','text_content'); //Text content directory (default)
+define('FTP_USER','&lt;ftp username&gt;');  //FTP username account
+define('FTP_PASS','&lt;ftp password&gt;');  //FTP password account
+</PRE></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Update</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P><B>Database update</B></P>
+  <P>The [PHPDIG_DIR]/sql/update_db_to[version].sql contains all required SQL 
+  instructions to update your existing install of PhpDig. </P>
+  <P><B>Scripts update</B></P>
+  <P>Save your configurations files, and just replace the existing scripts by 
+  the new ones. </P></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Manual indexing</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P><B>Index a new host</B></P>
+  <P>Open the admin interface with your browser : [PHPDIG_DIR]/admin/index.php. 
+  Just fill in the url field, PhpDig reconizes if it is a new host or an 
+  existing one. You can also precise a path and/or a file, wich is the starting 
+  point of the robot. </P>
+  <P>Select the maximum search depth in levels and click on the "Dig This !" 
+  button. </P>
+  <P>A new page opens showing the indexing and spidering process. If a double is 
+  displayed, it means that PhpDig has detected that the current document, with a 
+  new url, is a duplicate of an existing one in the database.<BR>Each "+" sign 
+  means that a new link was detected and will be followed at the next spidering 
+  level.<BR>For each level, PhpDig displays the number of new links it has 
+  found. If no new link is found, PhpDig stops its browsing and displays the 
+  list of the documents. </P>
+  <P>You can also launch an indexing process by the shell prompt : </P><PRE>#php -f [PHPDIG_DIR]/admin/spider.php http://mydomain.com
+</PRE>
+  <P><B>Update an existing host</B></P>
+  <P>From the admin page, you can reach the update interface by choosing a site 
+  and clicking on the [update form] button.<BR>A two parts inteface appears. On 
+  the left side of the screen is the client-side folder structure of the site. 
+  The blue arrow displays the "folder" content, in order to reindex the 
+  documents individually. The document's listing of a folder is on the right 
+  side of the screen. </P>
+  <P>On both sides, the red cross deletes all the selected branch or file, 
+  including sub-folders in case of deleting a branch, from the engine.<BR>The 
+  green check mark reindexes the selected branch or document if they were 
+  indexed for more than [$limit_days] days. It also search new links for 
+  documents wich are changed. </P>
+  <P><B>Index maintenance</B></P>
+  <P>3 scripts are used to delete useless data in the PhpDig database. The links 
+  are in the admin page. </P>
+  <P><I>Clean index</I> deletes index records not linked to any page. Useful if 
+  manual deletes are done in the database. </P>
+  <P><I>Clean dictionary</I> deletes keywords which are not used by the index. 
+  Useful for reducing the size of the dictionary, particularly when a large site 
+  contains a great deal of technical words and is deleted from the engine. </P>
+  <P><I>Clean common</I> words must be run when new common words are added in 
+  the [PHPDIG_DIR]/includes/common_words.txt file. It deletes all reference to 
+  those common words. </P></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Auto update</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P>The [PHPDIG_DIR]/admin/spider.php can be launch by a cron task in order to 
+  auto update the index. The recommended periodicity is 7 days. The updated 
+  documents you want to see immediately in the searches can be updated 
+  manually.<BR>Those pages can contain a "revisit-after" metatag with a short 
+  delay. </P>
+  <P>The script as two parameters : </P><PRE>#php -f [PHPDIG_DIR]/admin/spider.php all
+</PRE>
+  <P>Lauches a normal update. </P>
+  <P>The following syntax : </P><PRE>#php -f [PHPDIG_DIR]/admin/spider.php http://www.mydomain.net/
+</PRE>
+  <P>only indexes or updates the http://www.mydomain.net/ website.<BR>Use this 
+  option if you want to have distincts update delays on each site registered in 
+  the engine, making one cron task for each of them. </P>
+  <P>As any shell command, the output can be redirected to a textfile. (If you 
+  want some logs.) </P><PRE>#php -f [PHPDIG_DIR]/admin/spider.php all &gt;&gt; /var/log/phpdig.log
+
+</PRE></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Template tags 
+list</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P>Templates are HTML files containing some xml-like tags wich are replaced 
+  with the dynamic PhpDig content. <BR>See the provided templates source code as 
+  making templates example. </P>
+  <P>All template tags look like : &lt;phpdig:parametre/&gt;. <BR>Excepted the 
+  &lt;phpdig:results&gt;&lt;/phpdig:results&gt; tag, all are stand-alone tags. 
+  </P>
+  <P><B>Tags outside the results table</B></P><PRE>phpdig:title_message   Page title
+
+phpdig:form_head       Starting the search form
+phpdig:form_title      Form title
+phpdig:form_field      Text field of the form
+phpdig:form_button     Submit button of the form
+phpdig:form_select     Select list to choose the num of results per page
+phpdig:form_radio      Radio button to choose the parsing of search keys
+phpdig:form_foot       Ending the search form
+
+phpdig:result_message         Num of results message
+phpdig:ignore_message         Too short words message
+phpdig:ignore_common_message  Too common words message
+
+phpdig:nav_bar         Navigation bar to browse results
+phpdig:pages_bar       Navigation bar without previous/next links
+phpdig:previous_link src='[img src]'   "Previous" icon
+phpdig:next_link src='[img src]'       "Next" icon
+</PRE>
+  <P><B>Results table tags</B></P><PRE>phpdig:results       Contains results list
+
+phpdig:img_tag       Relevance Baragraph
+phpdig:weight        Relevance of the page (in percents)
+phpdig:page_link     Result title and link to the document
+phpdig:limit_links   Links of limitation to an host / path
+phpdig:text          Highlighted text extract or summary
+phpdig:n             Result ranking, starting 1.
+phpdig:complete_path Complete URL of the document
+phpdig:update_date   Last update of the document
+phpdig:filesize      Size of the document (KiloBytes)
+
+</PRE></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Clearings on 
+search</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P>The search form is so simple that it not needs lot of explain. But it could 
+  be useful to know that : </P>
+  <P>- An AND operator is applied between each search key ; <BR>- Putting a '-' 
+  sign before a word excludes it from the search results. No document containing 
+  this word would be displayed ; <BR>- Search is case-insensitive and 
+  accent-insensitive. In the other hand, results highlighting is 
+  accent-sensitive. </P></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Getting help about 
+PhpDig</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P>A small messageboard dedicated to PhpDig can be found at : 
+  <B>http://phpdig.toiletoine.net/messageboard/</B> <BR>Ask there any questions 
+  you have about this script. </P>
+  <P>You can also mail the author at <B>phpdig@toiletoine.net</B> 
+</P></BLOCKQUOTE>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P><I>File created by XSLT parser Php 4.0.5- Sablotron 
+0.60</I></P></BLOCKQUOTE></BODY></HTML>

@@ -1,0 +1,38 @@
+BODY
+{
+	color: #000000;
+	font-family: Georgia, Arial, Sans-Serif;
+	background-color: #ffffff;
+	text-align: center;
+}
+
+H1,H2,H3 { color: #003399; }
+
+TD
+{
+	vertical-align: top;
+}
+TABLE.maintable
+{
+	width: 750px;
+	border: medium solid #000000;
+	background-color: #FAF4F4;
+}
+TD.head
+{
+	height: 150px;
+	width: 650px;
+	background: url(whatismyip.jpg) no-repeat left;
+}
+TD.ip
+{
+	vertical-align: bottom;
+	font-size: 10pt;
+	font-family: Arial, Sans-Serif;
+}
+TD.ad { }
+TD.body
+{
+	vertical-align: middle;
+	padding: 20px 0px 20px 0px;
+}

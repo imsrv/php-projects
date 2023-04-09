@@ -1,0 +1,23 @@
+<html>
+	<head>
+  	<link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+	<body>
+  	<center>
+    	<h3><font color="red"><%invalid_login%></font></h3>
+    	<form method="post">
+      	<table class="BlueNoteFormTABLE">
+        	<tr>
+          	<td colspan="2" class="BlueNoteColumnTD">Please authorize yourself
+        	<tr>
+          	<td>Login
+						<td><input type="text" class="text" name="login">            
+          <tr>
+            <td>Password
+						<td><input type="password" class="text" name="pass">
+        	<tr>
+          	<td><input type="submit" name="save" value="Login">
+        </table>
+    	</form>
+  </body>
+</html>

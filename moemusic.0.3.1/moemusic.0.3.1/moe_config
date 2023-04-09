@@ -1,0 +1,37 @@
+<? // Dont Remove this tag it is required for the script to work
+/* 	
+This is the Moet Music Configuration File
+and it contains all of the needed Settings
+and is included automatically in every page
+that is generated. 
+
+*/
+
+
+// Name Of the Database to connect to
+$db_name = "moetmusic";
+
+// Server Name or IP Address
+$server_addr = "localhost";
+
+// MySQL User Name  
+$db_user_name = "root";
+
+// MySQL Password
+$db_password = "XXXXXX";
+
+// The location of the MP3's 
+$location = "moetmusic";
+
+// The location of your mp3 player and any args it needs to play
+// eg. $mp3player = "/usr/bin/mpg123 -q -m
+// to run mpg123 with no output and in mono 
+$mp3player = "/usr/bin/mpg123";
+
+// The loaction of uploaded mp3's
+$upload = "/home/ftp/pub/upload/";
+
+// Put in an admin password here
+$admin_password = "XXXXXX";
+
+?>

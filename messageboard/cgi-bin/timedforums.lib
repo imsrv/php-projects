@@ -1,0 +1,145 @@
+# This script will allow the administrators to deem that a forum only keep
+# the X newest threads, or threads with a last modified date (or original
+# creation date) newer then X days
+#
+# ScareCrow (C)opyright 2001 Jonathan Bravata.
+#
+# This file is part of ScareCrow.
+#
+# ScareCrow is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free
+# Software Foundation; either version 2 of the License, or (at your option),
+# any later version.
+#
+# ScareCrow is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+# more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with ScareCrow; if not, write to the Free Software Foundation, Inc.,
+# 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
+# The latest version of this software can be found by pointing one's web
+# browser to http://scarecrowmsgbrd.cjb.net
+#
+# Author: Jonathan Bravata
+# Revision: June 2001
+
+my $go = $Pairs{'go'};
+if($go eq 'cleanforum') { cleanforum($Pairs{'forum'}); }
+
+sub cleanforum {
+  $forum = $_[0];
+
+  if(!$forum || !-e "$cgi_path/forum$forum") { return $FALSE; }
+
+  # Check if there are any rules for the forum
+  if(!-e "$cgi_path/forum$forum/forum.rls") { return ""; }
+
+  # Load the rules
+  lock_open(RULES,"$cgi_path/forum$forum/forum.rls","r");
+  my @rules = <RULES>;
+  close(RULES);
+
+  foreach my $rule (@rules) {
+    if($rule =~ /^\s*\#/) { next; }          # Ignore comment lines
+    $rule =~ s/\#\s*(.+?)//ig;               # Filter out comments
+    @parameters = split(/\s/,$rule);
+    if($parameters[0] eq 'time')      { time_enforce();  }
+    elsif($parameters[0] eq 'count')  { count_enforce(); }
+    else {
+      # Otherwise discard the rule as invalid
+    }
+  }
+}
+
+sub time_enforce {
+  # Name the parameters for easier use
+  ($type,$time,$qualifier,$kind) = @parameters;
+
+  # Determine the numerical identity from the time and qualifier.
+  my $base = $time;
+  if($qualifier eq 'second' || $qulifier eq 'seconds')    { $mod = 1; }
+  elsif($qualifier eq 'minute' || $qulifier eq 'minutes') { $mod = 60; }
+  elsif($qualifier eq 'hour' || $qulifier eq 'hours')     { $mod = 60*60; }
+  elsif($qualifier eq 'day' || $qulifier eq 'days')       { $mod = 60*60*24; }
+  elsif($qualifier eq 'month' || $qulifier eq 'month')    { $mod = 60*60*24*31; }
+  elsif($qualifier eq 'year' || $qulifier eq 'years')     { $mod = 60*60*24*365; }
+  else                                                    { $mod = 1; }
+
+  my $noearlierthan = time - ($base * $mod);
+
+  # Get the current threads
+  lock_open(FORUMLIST,"$cgi_path/forum$forum/forum.lst","r");
+  my @threads = <FORUMLIST>;
+  close(FORUMLIST);
+
+  # Sort it -- oldest first
+  @threads = datesort(@threads);   @threads = reverse(@threads);
+
+  # Loop through and check what threads need to be removed
+  foreach $thread (@threads) {
+    my @parts = split(/\|/,$thread);
+    # Get the conditional
+    if($kind eq 'created') { $condition = $parts[7]; }
+    else                   { $condition = $parts[9]; }
+
+    if($condition < $noearlierthan) {
+      delete_thread($forum,$parts[0]);
+
+      # Blank out the entry
+      $threads[$counted] = "";
+      $done = 1;
+    }
+    $counted++;
+  }
+
+  if($done == 1) {
+    # Rewrite the list
+    @threads = reverse(@threads);   # Back to newest first
+    lock_open(FORUMLIST,"$cgi_path/forum$forum/forum.lst","w");
+    truncate(FORUMLIST,0);   seek(FORUMLIST,0,0);
+    foreach $thread (@threads) {
+      if($thread) {  print FORUMLIST $thread;  }
+    }
+    close(FORUMLIST);
+  }
+}
+
+sub count_enforce {
+  # Name the parameters for easier use
+  ($type,$amount) = @parameters;
+
+  # Get the number of current threads
+  lock_open(FORUMLIST,"$cgi_path/forum$forum/forum.lst","r");
+  my @threads = <FORUMLIST>;
+  close(FORUMLIST);
+  my $count = @threads;   $count++;
+
+  if($count > $amount) {   # We have to enforce the rule
+    @threads = datesort(@threads);  # Sort it
+    @threads = reverse(@threads);   # We want it the oldest first
+
+    # Delete the specified threads from the system
+    for($popit = ($count - $amount); $popit >= 0; $popit--) {
+      pop @threads;  # Pop it off
+      my($id) = split(/\|/,$threads[$counted]);
+      delete_thread($forum,$id);
+      $counted++;
+    }
+
+    # Rewrite the list
+    @threads = reverse(@threads);   # Back to newest first
+    lock_open(FORUMLIST,"$cgi_path/forum$forum/forum.lst","w");
+    truncate(FORUMLIST,0);   seek(FORUMLIST,0,0);
+    foreach $thread (@threads) {
+      print FORUMLIST $thread;
+    }
+    close(FORUMLIST);
+  }
+}
+
+
+
+
+1;

@@ -1,0 +1,67 @@
+Version 0.3.0
+* If contact is deleted, associated account is now deleted if a person is the only contact
+* Added Sort By option to contact manager
+* Truncates names of contacts in left pane with periods if they are too long to fit
+* Incorporated address tab into main pane under contact manager
+* Palm phone number fields can now be selected as default type when sync'ing to Palm
+* Fixed issue with Relata hanging when refreshing left and right panes
+* Group email manager and email icons in Relata now call your default mail client
+* Completed to-do items are no longer shown
+* Activities are shown in chronological order now
+* To do items with no date now show 'no date' instead of 0000-00-00
+* An account cannot be created unless it has at least ONE associated contact
+* Fixed issue when adding a new account
+* Fixed issue in settings manager when switching between groups and extra fields
+* Two groups or extra fields cannot have the same name now
+* Opportunities now no longer require a close date
+* Associating a contact with an opportunity is now optional
+* You can associate multiple contacts with an opportunity now
+* Group email manager totally simplified for this release, will be revisitied in a future release
+* Various cosmetic changes and minor bug fixes
+
+Version 0.2.5
+* Added support for untimed calendar items and to do to Activity Manager, for RelataSync
+* Multiple to do entries and untimed calendar items enabled in Activity Manager
+* Fixed refresh problems throughout Relata
+* Fixed problem with Relata looping back to the login page sometimes
+* This release is recommended for use with RelataSync for Palm 0.14b
+
+Version 0.2.4
+* MAJOR: Updated the activity table SQL for use with RelataSync
+* MAJOR: Added no-cache meta tag to a few PHP files that were being cached (IE)
+* MAJOR: Fixed add functionality in 'Accounts'
+* MINOR: Fixed the default contact sort order for contacts by last name
+* MINOR: Fixed date not being shown when sending a test email from Group Email
+* MINOR: Fixed problem with incorrect number of subscribers being shown under 'Report Group Stats' of Group Email
+
+Version 0.2.3
+* Included instructions for installing Relata under Win32 (98/ME/NT/2000/etc)
+* Removed 'Reporting' functionality for the time being until it is developed further
+* Updated Group Email code; bug with double To/Subject header fixed
+* Added Reply-To header for outgoing email
+* Changed almost all table names into variables that be changed from one central config file.
+* Fixed bug with missing toolbar for Group Email
+* Removed remaining bad references to missing CSS files in code
+
+Version 0.2.2
+* Replaced corrupt documentation with new documentation
+* Removed bad references to Javascript files in code
+
+Version 0.2.1
+* Removed last line in config.inc.php since global.inc.php was being declared twice
+* setup.php removed from admin directory -- not used
+
+Version 0.2.0
+* IE5 and IE6 support
+* Toolbar code was redone to simplify addition of more modules
+* Refresh bug fixed
+* Redirect URL problem in Group Email Manager fixed
+* Group Email will not proceed now if you have no recipients in a particular list
+
+Version 0.1.1-beta
+* Fixed JS date checker - gave error on months 08 & 09
+* Pressing <ENTER> on 'Settings' page did not submit form
+
+Version 0.1.0-beta
+* Initial release
+

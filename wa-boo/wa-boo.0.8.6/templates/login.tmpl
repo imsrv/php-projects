@@ -1,0 +1,125 @@
+<html>
+  <head>
+  <title>
+    wa-boo
+  </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <style>
+    <?  include ("includes/css.php"); ?>
+  </style>
+  </head>
+  <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="document.loginform.login.focus()">
+    <div align="center">
+      <table cellspacing="5" cellpadding="5">
+        <tr>
+          <td class="versionfont">
+            <? echo $G_version; ?>
+          </td>
+          <td align="center" colspan="2" class="stdfont"><img src="images/wa-boo.gif">
+    	      <br>
+            <a href="http://ab.nocive.com"><? echo $lab[0]; // wa-boo ?></a> <? echo $lab[1]; // est distribué sous ?> <a href="docs/gpl.txt"><? echo $lab[2]; // licence GPL ?></a>.
+          </td>
+        </tr>
+        <tr>
+          
+      <td valign="top" height="30" align="right">
+		  <a title="wa-boo en français" href="index.php?s_lang=fr"><img src="images/fr_flag.gif" border="0"></a><br>
+        <a title="wa-boo speeks english" href="index.php?s_lang=en"><img src="images/en_flag.gif" border="0"></a>                   
+		  </td>
+          <td colspan="2">
+            <table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td background="images/left_top_corner.gif" height="7"></td>
+                <td background="images/h_line_top.gif" height="7"></td>
+                <td background="images/right_top_corner.gif" height="7"></td>
+              </tr>
+              <tr> 
+                <td background="images/v_line_left.gif" width="7"></td>
+                <td class="stdfont" bgcolor="#EEEEFF" >
+                  <table border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" background="images/bg1.gif">
+                    <form name="loginform" action="index.php" method="post">
+                      <tr bgcolor="<? echo $s_user_context["color"]["menu"]; ?>"> 
+                        <td colspan="5" class="stdtitle" align="center"><? echo $lab[3]; //Login ?></td>
+                      </tr>
+                      <tr>
+                        <td background="images/h_line.gif" align="center" colspan="9" height="7"></td>
+                      </tr>
+                      <tr align="right"> 
+                        <td colspan="5" class="stdfont" height="35">
+                          <b><font color="<? echo $message_color; ?>"><? echo $result_message; ?></font></b>
+                          
+    					          </td>
+                      </tr>
+                      <tr> 
+                        <td align="right" height="40" class="stdfont" width="20">&nbsp;</td>
+                        <td align="right" height="40" class="stdfont"><? echo $lab[4]; //Login ?></td>
+                        <td height="40" width="10" align="center" >&nbsp;</td>
+                        <td height="40" align="left" >
+                          <input type="text" name="login"  size="25" maxlength="50">
+                        </td>
+                        <td height="40" width="58" >&nbsp;</td>
+                      </tr>
+                      <tr> 
+                        <td align="right" height="40" class="stdfont" width="20">&nbsp;</td>
+                        <td align="right" height="40" class="stdfont"><? echo $lab[5]; //Mot de passe?></td>
+                        <td height="40" width="10" align="center" >&nbsp;</td>
+                        <td height="40" align="left" >
+                          <input type="password" name="password"  size="25" maxlength="50">
+                        </td>
+                        <td height="40" width="58" >&nbsp;</td>
+                      </tr>
+                      <tr> 
+                        <td colspan="2" height="38" >&nbsp;</td>
+                        <td height="38" width="10" class="stdfont" >&nbsp;</td>
+                        <td height="38" class="stdfont" >
+                          <input type="checkbox" name="adminlog" value="1"><? echo $lab[6]; //Log en tant qu'administrateur ?>
+                        </td>
+                        <td height="38" width="58" align="center" > 
+                          <input type="hidden" name="s_lang" value="<? echo $s_lang; ?>">
+                          <input type="submit" name="OK" value="OK" class="userbutton">
+                        </td>
+                      </tr>
+                    </form>
+                  </table>
+                </td>
+                <td valign="top" background="images/v_line_right.gif" width="7"></td>
+              </tr>
+              <tr>
+                <td class="texteg" height="7" background="images/left_bottom_corner.gif"></td>
+                <td height="7" background="images/h_line_bottom.gif"></td>
+                <td height="7" background="images/right_bottom_corner.gif"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td align="right">
+            <form name="public" method="post" action="index.php">
+              <input type="hidden" name="s_lang" value="<? echo $s_lang; ?>">
+              <input type="submit" name="public" value="<? echo $lab[7]; // Accès public ?>" class="userbutton">
+            </form>
+          </td>
+          <td align="left">
+            <form name="lostpasswd" method="post" action="index.php">
+              <input type="hidden" name="s_lang" value="<? echo $s_lang; ?>">
+              <input type="submit" name="lostpasswd" value="<? echo $lab[8]; // Mot de passe oublié ?>" class="userbutton">
+            </form>
+          </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td align="center" colspan="2" class="contactlistfont"><a title="GFI Pig by Monika Castella - monika@webmails.com" href="http://www.nocive.com"><img src="images/gfi_1.gif" width="146" height="128" border="0"></a>
+             <br>
+            <? echo $lab[9]; /* Si t'es perdu, clique sur le cochon ! */ ?>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+<?
+   include ("footer.php");
+?>
+ 
+</body>
+</html>

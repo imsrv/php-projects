@@ -1,0 +1,14 @@
+Estimado %%jobseeker_name%%,
+
+Se han enviado nuevos empleos de la categoría de su curriculum.
+<BEGIN REPEAT>
+Título: %%job_jobtitle%%
+Categoría: %%job_category%%
+Tipo de Empleo: %%job_jobtype%%
+Descripcíon: 
+%%job_description%%
+Localización: %%job_location%%
+Enlace al empleo: %%job_link%%
+<END REPEAT>
+
+Hoy: %%today_date%%

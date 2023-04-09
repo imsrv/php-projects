@@ -1,0 +1,434 @@
+CHANGE LOG
+
+=================================
+v15 aka 2.5.0 released 3/4/2003
+-fixed glaring pm view bug that got missed
+-send pm button on bottom of posts
+-flood control for posts and registration
+-ip on bottom of posts with ban link
+-status now has links
+-new file system, dirs dont need to be
+secured, plus faster
+-bug in search module subject display
+-bug when a post is deleted in the middle
+of a thread
+-smilie text cannot be blank anymore
+-mail function added
+-registration can be email confirmation
+or admin approved
+-browser window title on posts fixed
+-forum backup in admin cp
+-fix in 5 largest threads by size list
+-board cleaning section in admin cp
+-went back to old style functions for speed,
+customizability, much easier for flat file
+-bug in forum deleting
+-option to not display post stats in footer
+-optimized forum display routine
+-load stats below footer
+-fixed wrong thread folder date if last
+post in thread was deleted
+-fixed poll voting bug
+-fixed conflict between disable bbcode
+and extra options
+-optimized forum display in footer
+navigation menu
+-fixed slashes on poll items when there is
+apostrophes
+-no more space between items in ban file
+-forum now includes important threads
+when looking for last post
+-thread page auto refreshes after a
+vote on a poll
+-who voted option for polls
+-entire board can be closed with a custom
+message that shows up
+-revamped ban system, admins can manually
+edit ban list, and bans apply to registration
+as well as posting, not only login
+-fixed in array error in user admin with
+empty ban list
+-auto check pms really should have
+defaulted to on
+-display names changing can be turned off
+or set to admin approved
+-tables dont double border
+(thanks to thox for the fix)
+-when posts set to disable bbcode, signature
+bbcode doesnt get disabled also
+-better quotes
+-renovated admin config, was getting
+quite cluttered before
+
+=================================
+v14 aka 2.4.0 released 1/19/2003
+-major new file system function changes now 
+allows much more customization when modding systems
+-fixed some slashing in forum title/description
+-changed forum editing control panel because it
+got very hard to manage your forums the more
+you had
+-more secure login system
+-avatar upload problems should be fixed
+-powerful user groups system, allows users
+to become part of special groups, which in turn
+lets you specify forums for use only by
+certain groups
+-email and website at bottom of forum
+-much better documentation
+-lock icon displayed instead of that
+[Closed] thing when no access or locked
+-attachments deleted when post is deleted
+-images displayed in smilie list
+-all profile fields now protected
+-options page for user
+-read/unread marker for PMs
+-option to auto check for pms
+-option to hide footer icon guide
+-file_uploads being off no longer a problem
+for navboard
+-url can be used for avatars
+-troubleshooting section in admin cp
+-failsafe for servers that dont allow 777
+permissions (trys 775)
+-chars translation error in some fields
+
+=================================
+v13 aka 2.3.0 released 12/20/2002
+-you can optionally change your storage system
+in the global.php file (will need to use converter
+if you have data already and want to change formats)
+-changed attachment storage a little (in upgrade)
+-cfg files changed back to txt (in upgrade)
+-very detailed access system for viewing, new
+threads, replies, offers a lot more control
+over forums, plus a more secure post system
+-improved speed (hard to notice though)
+-user levels
+-choose if posts increase post count
+-guest count in online users fixed
+-max sub forums display
+-the file contents duplication seems to
+be fixed, but I dont know how
+-fixed update post count
+-changed post deleting so script is better
+-edit button only displayed if user has access
+and profile button displayed only if that user
+exists
+-id shown on members list
+-buddy lists which show online status
+-easier to find user ids
+-can disable bbcode in posts
+-admin name bolded in online list
+-private messaging!
+-fixed failed attachment bug
+-added total attachments size option
+-fixed user deleting
+-raw data view section in admin cp
+-more secured fields like profile and register
+
+=================================
+v12 aka 2.2.0 released 12/1/2002
+-renovated admin system
+-modules
+-new button system (might be changed later)
+-themes (css)
+-avatars moved out of data directory
+(security hole in posts)
+-compression option improves load time
+-posting html bugs fixed
+-custom profile fields
+-more organized profile page
+-user can choose own date format
+-thread options page now secure (doh!)
+-new post storage system
+-important stick can only be changed in first post
+-attachments
+-post system code improved
+-polls
+-logged in users can see their profile in normal view
+-temporary post subject word wrap fix
+-fixed displaying of reasons why login failed
+
+=================================
+v11 aka 2.1.0 released 10/16/2002
+-introduction of admin control panel
+-introduction of user id and forum id
+-fix of bug where users can post blank items and
+register blank accounts, bug created from something
+changed in v10
+-users now have display names, which is seen by all
+users and can be changed, account names are used to
+login
+-revamped header system which allows a more detailed
+page title and a better link bar
+-sub forums, and better yet...unlimited sub forums!
+-forums can be changed to be categories
+-improved table, footer, header systems
+-many more graphical updates
+-fixed some places were correct style format not used
+-if forum doesnt exist message is displayed telling
+user
+-much improved new/old post back end (uses sessions)
+-online users displayed in footer
+-forum now works with unix without any modifications,
+was caused by bad permission setting
+-deleting posts would log users out causing them not
+to be able to delete post
+-error with nothing displaying after iframe
+-bbcode renovation
+-can now actually enable html if wanted
+-guest posting option
+-important (sticky) posts that stay at the top of
+a forum
+-custom search options
+-paged members list
+-paged search results
+-better avatar system (should work better)
+-quoting fixed
+-bug with last post date for user
+-bug with reply count when using different data
+folder
+-location profile field removed, will be able
+to bring back with custom profile fields later
+-speed improvements
+-delete/write functions possibly could of not
+worked correctly (preventive fix)
+-date format can be changed in global.php
+-better arrray usage with users and forums
+-thread list not displayed for categories 
+(not needed)
+-only user displayed on last post in forum view,
+like most other forums
+-max chars setting for posts/signatures
+-when logging back in right after logging out,
+board would log you out cuz logout=1 still in url
+
+=================================
+v10 aka 2.0.0 released 7/31/2002
+-lots and lots of graphical updates 
+-footer uses more organized table
+-forum/thread/post views are not functions
+because they are only used once
+-images! buttons on main bar, for new/old icons,
+under each post. location of images can be
+different for each style.
+-style values are now correctly used throughout
+forum, mainly table header stuff
+-reply, new thread links not shown if forum/thread
+is closed
+-order options in members list now in table header
+-functions used for table headers, makes it much
+easier to change style for entire forum
+-tables used for messages that would normally just
+be in the body
+-folders are 'chmodded' again even after the folder
+is created because the mkdir command doesnt always
+give correct permissions
+-when deleting a forum, all the config files are
+also deleted
+-user cant edit anyones post when typing in locations
+manually
+-user cant edit a post that is past the last one
+which would cause a lot of blank posts in between
+the last real post and that post
+-better starting style
+
+=================================
+v9 aka 1.7.0 released 7/3/2002
+-when threads are deleted it deletes the config
+file associated also
+-if thread closed but not forum, then it will
+show no posting warning
+-admins can edit threads in closed forums
+-users can hide their email address from
+the public
+-members list uses same display routine for
+all lists, makes updating much easier and
+less/faster script
+-auto redirectors
+-admin update post count feature, corrects user's
+post count to what is on forum
+-if no moderators in a forum and user logged
+out, then admin thread options available, but
+ONLY under those conditions
+-forum navigation menu
+-new/old post indicators
+-fixed bug where wrong date is displayed for
+when last post was made for individual threads
+(thread list)
+-graphical updates on forms
+-post paging is like thread paging now
+-http:// is auto added to website url if needed
+-changed chmod number of folders
+-posts from current thread are displayed
+in reverse order when replying
+-birthday m/d/y menus
+-when editing default style, default style box
+is checked, and if box is unchecked when editing,
+then default status is removed
+-registering checks for valid email, and 
+username/password must be at least 3 characters,
+fields are trimmed of whitespace on ends also
+-forum descriptions
+-deleting threads can cause error but still work
+when no config file present (not a bad thing)
+-fixed problems when styles have empty entries
+-many, many important graphical updates to make
+forum look better
+-fixed last post recording
+
+=================================
+v8 aka 1.6.0 released 6/22/2002
+-check box by login that will let a user auto
+log in to forum on that computer even if 
+browser was closed
+-bigger post message area
+-changed folder permission stuff
+-more style options: table header font color,
+table font color, and font size
+-styles now affect everything including forms,
+tables, and buttons
+-fixed bug in style editing where style
+being edited would be used as display style
+-fixed big bug when trying to log in as
+admin and using wrong password
+-forum permission error should be fixed,
+0777 didnt seem to work on some webservers
+-erasing login data is done earlier when
+incorrect login is entered
+-newest version available is displayed on
+bottom of forum after user clicks show
+(decreases load on server) if cant find newest 
+verison nothing is displayed
+-newest member shown on bottom
+
+=================================
+v7 aka 1.5.1 released 6/7/2002
+-fixed big moderator bug
+
+=================================
+v6 aka 1.5.0 released 6/4/2002
+-added many more newlines to script to make html
+look better in browser
+-bbcode list says 'none' if no bbcode instead
+of being blank
+-fixed some small spacing errors
+-moderators! admins can go into a forum and
+add moderators to that forum, which can close,
+move, edit posts in that forum
+-thread ratings! when users reply to a post they
+can choose rating from 1-10 for that post
+-when posts are replied to/moved or forums
+are renamed, the cfg file now is changed also
+-default style can be chose, default style
+is what shows for guests and what is the first
+one selected for new users
+-fixed jpg avatar problem
+-fixed columns witdths on empty forums
+-changed avatar code (again)
+
+=================================
+v5 aka 1.4.0 released 6/1/2002
+-fixed font bug where default font always displays,
+grr shoulda been fixed in v4 =(
+-changed total threads/posts function stuff
+-profiles now show % of total posts
+-order options on members page like alphabetical and
+top poster list (# to show can be changed) and 
+registered dates
+-users can search through all other users profiles
+-avatar size not forced but notice printed if
+avatar is too big
+-link to find other posts by user in post view
+-quotes work correctly, and better looking too
+-closed threads/forums can still be viewed but
+no new threads/replies/edits allowed
+-edits now in post.php much better and easier (yay)
+-more un-escaping in profile fields and posts
+-uploadable avatars, includes file size and
+dimension limit
+-threads/posts now can be listed in pages by a
+specified number per page
+-no more installer needed, first registered user
+is admin, other files/dirs created if dont exist,
+this also removes need for upgrading script
+-post page got much need script overhaul, plus
+is now more secure
+-message shown when post doesn't exist and if
+there is no forums
+-fixed more bugs with editing bbcode 0
+-user info in posts is now vertically aligned
+to the top of the cell
+-moved getstyle function since its only used
+once
+-post counts update when posts are deleted,
+now post count should always be correct for users
+
+=================================
+v4 aka 1.3.0 released 5/29/2002
+-fixed bug with editing bbcode #0
+-parse error in intaller (doh)
+-when editing/making post or sig [br] would be displayed
+instead of returning line, caused another [br] when
+saving the text, and \r was not removed/replaced
+-[br] bbcode now hidden in scripts because required
+but still can be used =D
+-after changing user storage location, you would be
+immediately logged out after logging in
+-admin.php not update for changing storage system
+-separate function for revoking admin
+-forum/thread configs stored in .cfg files, still
+can be opened in text editor, same format, but now
+can be in same directory as forum/thread files,
+eventaully to be used for ratings/moderators
+-admins can now see users profile in normal view
+first without having to logout
+-some table formats not updated in admin
+-admins can edit display text (currently only title)
+-single/double quotes are not escaped
+-styles not saving to right text file
+-if no open/closed specified in cfg, 
+forum/thread is open (default)
+
+=================================
+v3 aka 1.2.0 released 5/28/2002
+-admins can enter closed forums/threads
+-website link doesnt display if no address
+-fixed user profiles when username has spaces
+-better bb code storage with descriptions
+-posts can have blank subjects except for new threads
+-fixed large bug where normal users could perform 
+some admin functions
+-admins can move threads
+-last thread time added
+-fixed last post time
+-admins can change location of data files, allows
+you to have one storage place for many forums
+-logs last ip for user
+-logs last post for user (listed in profile view)
+-better interface for editing profiles
+-fixed bug where users could but html in profile 
+fields so it would show up in profile view
+-more advanced search (by user, body etc)
+-search ends searching post at first find in post
+-admins can edit styles and bbcode
+-admins can grant/revoke admin access to users
+-group is shown in profile and members list
+-table headers can have different colors
+
+=================================
+v2 aka 1.1.0 released 5/23/2002
+-added font customization
+-added blank avatar spot if no address
+-added this readme file
+-more helpful error messages in profile page
+-changed thread id on edit page to actual title
+-moved check login script since only used once each page
+-moved admin functions for forums/threads to index
+-show current thread below when replying
+-admin close forum/thread functions now fully work
+
+=================================
+v1 aka 1.0.0 released 5/22/2002
+-1st release

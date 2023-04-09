@@ -1,0 +1,44 @@
+PhpAuction 2.0 - web based auction system
+=====================================
+
+
+#########################################################
+#                                                       #
+# PHPSelect Web Development Division                    #
+#                                                       #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are distributed through         #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated.                                     #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the distriuters      #
+# at admin@phpselect.com                                #
+#                                                       #
+#########################################################
+
+
+Welcome to PhpAuction!
+
+This is  V. 2.0.
+
+PhpAuction is an Open Source project intended to develop a powerful and flexible 
+web-based auction system. It is written using PHP scripting language on a MySQL 
+database engine.
+
+
+For installation instructions please read the INSTALL file.
+Be sure to check out the FEATURES file for the list of unique features PhpAuction has 
+to offer. For licensing information please see the LICENSE file. You can also find out who helped develop PhpAuction in the CREDITS file.
+
+
+Please remember that PhpAuction is released under the GNU GENERAL PUBLIC LICENSE and
+comes without any warranty. If you need technical support, please visit the discussion 
+forums, FAQs, & the online documentation Manual located at www.phpauction.org. There you will find online support and answers to a few common problems.
+

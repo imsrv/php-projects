@@ -1,0 +1,56 @@
+
+Things to do ASAP!
+
+- Add language support to context-sensitive menu's.
+- Save the selected language into the cookie.
+- Add ability to easily select a mailto link type.
+- Add user-selectable ability to filter displayed folders when inserting an image.
+	- Option 1: Ability to show ALL folders
+	- Option 2: Ability to filter specified folders
+	- Option 3: Ability to use only "file upload location" folders specified
+  (http://www.snippetmaster.com/forums/viewtopic.php?t=43)
+- Add user-selectable ability to filter displayed folders when inserting a hyperlink.
+	- Option 1: Ability to show ALL folders
+	- Option 2: Ability to filter specified folders
+  (http://www.snippetmaster.com/forums/viewtopic.php?t=43)
+- Get it working RELIABLY on Windows web servers. (See bug forum for several issues about this.)
+- Support CSS inside the editor.
+  (http://www.snippetmaster.com/forums/viewtopic.php?t=52)
+- Change code to support register_globals=off
+- Fix bug with Times New Roman font not working properly
+  (http://www.snippetmaster.com/forums/viewtopic.php?t=61)
+- Figure out how to change the default bg color of the editor
+  (http://www.snippetmaster.com/forums/viewtopic.php?t=60)
+
+
+Things that would be nice to have:
+
+- In addition to listing the file name (or perhaps make it an option), list the 'name' of the snippet instead. This would greatly simplify things for users, for instead of seeing 'index.html' they could see "Home Page", etc.  (config would have "list filename, snippet name, both)
+- Ability for admin to select which toolbar options should be enabled/disabled.
+- Ability to add custom code snippets from a drop-down list
+- Ability to edit entire page, not just snippet.  (ie: <HTML></HTML>)
+- Ability to change bg color for a table or cell.
+  (http://www.snippetmaster.com/forums/viewtopic.php?t=33)
+- Add scheduling capability.
+- Ability to use the "Link Browser" when adding/modifying an image.
+- Clean up the php code.
+- Improve the navigation mechanism. Maybe a tree instead?  (I'm open to ideas)
+- Make the design more professional. (I'm open to ideas)
+- Ability to: (in order of preference)
+	1. Have multiple snippets on one page
+  	   (http://www.snippetmaster.com/forums/viewtopic.php?t=34)
+ 	2. _OR_ be able to choose which snippet to edit for pages with multiple snippets.
+- Finish help file
+- Move meta-tag and title editing capability to a different file.
+- Ability to see the name of the snippet rather then (or in addition to) file name in the Select page menu
+- "Rollback" feature to restore previous versions of a snippet.
+
+
+
+
+----------------------------
+
+If you have any suggestions or comments about this program, please
+send an email to: comments@snippetmaster.com
+
+

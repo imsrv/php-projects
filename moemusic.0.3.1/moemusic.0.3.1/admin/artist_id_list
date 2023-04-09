@@ -1,0 +1,25 @@
+<?
+include moe_conf;
+
+// open a connection to moetmusic db
+$connection = mysql_connect($server_addr,$db_user_name,$db_password);
+
+// Grab all of the artist names and id's
+$grab_id_query = "SELECT * FROM artist";
+$grab_id_result = mysql_db_query($db_name,$grab_id_query,$connection);
+
+
+print "<TABLE BORDER CELLSPACING=4 CELLPADDING=5>";
+print "<TR><TD><B>Artist</B></TD><TD><B>Artist Id</B></TD></TR>";
+
+while ($row = mysql_fetch_row($grab_id_result))
+{
+	print "<TR>";
+	print "<TD>$row[0]</TD>";
+	print "<TD>$row[1]</TD>";
+	print "</TR>";
+}
+
+print "</TABLE>";
+
+?>

@@ -1,0 +1,9 @@
+Estimado %%jobseeker_name%%,
+
+Ha sido registrado adecuadamente.
+
+Por favor, anote su nombre de usuario y contraseña, que necesitará para futuras operaciones.
+Usuario: %%jobseeker_email%%
+Contraseña: %%jobseeker_password%%
+
+Gracias.

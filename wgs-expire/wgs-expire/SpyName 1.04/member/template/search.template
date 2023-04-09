@@ -1,0 +1,101 @@
+Search for expired an don-hold domain names
+
+    <form method="post" action="./">
+    	<input type="hidden" name="page" value="view_search">
+      <table>
+      <tr align="center"> 
+        <td> 
+          <table border="0" cellspacing="0" cellpadding="2">
+            <tr align="center"> 
+              <td colspan="2" align="left"> <font face="Arial, Helvetica, sans-serif" size="2">Show 
+                <select name="dz">
+                  <option value="0" >.com</option>
+                  <option value="1" >.net</option>
+                  <option value="2" >.org</option>
+
+                  <option value="-1">ALL</option>
+                </select>
+                domains that
+            <tr>
+            <td>
+                were
+            <td>
+                <select name="dt">
+                  <option value="0" >deleted or placed on-hold</option>
+                  <option value="1" >deleted</option>
+                  <option value="2" >placed on-hold</option>
+
+                </select>
+             <tr>
+             <td>
+                in the
+             <td>
+                <select name="db">
+                  <option value="0" >anytime</option>
+                  <option value="60" SELECTED>last 60 days</option>
+                  <option value="30" >last 30 days</option>
+                  <option value="7" >last 7 days</option>
+                  <option value="1" >last 24 HOURS</option>
+
+                </select>
+              <tr>
+              <td>
+                that 
+              <td>
+                <select name="stt1">
+                  <option value="1" >contain</option>
+                  <option value="2" >start with&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                  <option value="3" >end with</option>
+                </select>
+                the letters 
+                <input type="text" name="str1" size="10" maxlength="32" value="">
+                <i><font size="1"><b>(2 characters minimum)</b></font></i><br>
+             <tr>
+             <td>
+                and 
+             <td>
+                <select name="stt2">
+                  <option value="1" >contain</option>
+
+                  <option value="2" >start with</option>
+                  <option value="3" >end with</option>
+                  <option value="-1" >do NOT contain</option>
+                  <option value="-2" >do NOT start with</option>
+                  <option value="-3" >do NOT end with</option>
+                </select>
+
+                the letters 
+                <input type="text" name="str2" size="10" maxlength="32" value="">
+             <tr>
+             <td>
+                and that are 
+             <td>
+                <select name="lct">
+                  <option value="0" >any length</option>
+                  <option value="1" >no more than</option>
+                  <option value="2" >exactly</option>
+
+                  <option value="3" >at least</option>
+                </select>
+                <input type="text" name="lc" size="2" maxlength="2" value="">
+                characters long. </font></td>
+            <tr> 
+              <td colspan="2" align="left"> 
+                <font face="Arial, Helvetica, sans-serif" size="1"> 
+                  <input type="checkbox" name="xh" value="1" >
+                  Exclude domains that contain <b>hyphens</b> (-) <img src="/images/blank.gif" width="20" height="1"> 
+                  <br>
+                  <input type="checkbox" name="xd" value="1" >
+                  Exclude domains that contain <b>numbers</b> </font></div>
+            <tr align="center"> 
+              <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="2"> 
+                <input type="submit" name="Submit" value="Show Domains">
+
+                <input type="reset" name="clearform" value="Clear Form">
+                </font>
+          </table>
+    </table>
+<input type = "hidden"  value ="<%sid%>" name="sid">
+<input type="hidden" name="cid" value="<%cid%>">
+   </form>
+

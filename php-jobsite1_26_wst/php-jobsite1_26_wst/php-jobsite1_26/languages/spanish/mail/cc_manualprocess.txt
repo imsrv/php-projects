@@ -1,0 +1,18 @@
+Estimado %%employer_company%%,
+
+Detalles de la factura (NO: %%invoice_id%%)
+
+Propietario Tarjeta de Crédiot: %%cc_name%%
+Tipo de Tarjeta: %%cc_type%%
+Número de Tarjeta: %%cc_num%%
+Fecha de caducidad: %%cc_exp%%
+Comentarios:
+%%cc_comment%%
+
+Precio de tarifa: %%invoice_listprice%%
+Descuento: %%invoice_discount%%
+Importe del pago: %%invoice_totalprice%%
+Fecha de pago: %%invoice_paymentdate%%
+
+
+Gracias.

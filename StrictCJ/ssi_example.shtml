@@ -1,0 +1,7 @@
+<html>
+<head>
+<!--#include file="ssi.php"-->
+</head>
+<body bgcolor="#FAE0FB" link="550055" topmargin="0">
+This is an example of how to use SSI in a .shtml file instead of index.php
+</body></html>

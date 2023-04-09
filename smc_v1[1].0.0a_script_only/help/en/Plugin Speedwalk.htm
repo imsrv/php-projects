@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>Plugin Speedwalk</title>
+</head>
+<body>
+
+<h1>Plugin Speedwalk</h1>
+
+Plugin is used for executing speedwalks in format like 5wn3suuuu.
+The main difference between SMC and other MUD clients is that they send all commands
+immidiatly, SMC sends path by parts (specified number of steps every second), and
+speedwalking can be interrupted at any time by user or one of key phrases
+from mud (you were attacked or you are stuck). I suppose you can remember
+situations where after sending 25w and got in ass after second step, you watched
+spam like "No way! You are fighting" and etc, loosing time of fight.
+Now forget about this. You can also set reserved combinations that shouldn't be
+treated as a speedwalk, for example "se" or "news".<br>
+To set aborting key phrases and reserved combinations edit speedwalk.php and set
+arrays $sw_reserved and $sw_abort. By default configured for Solace MUD.<br>
+Plugin gets number of steps in second from variable $speedwalk_stepsize, which you can set
+directly in game with command !var.<br>
+<font color=red>REQUIRES: defined prompt.</font>
+
+<br><br>
+Exported commands:
+<ul>
+<li><a href=#cmd_speedwalk>speedwalk</a>
+</ul>
+Exported functons:
+<ul>
+<li><a href=#func_speedwalk_encode>speedwalk_encode</a>
+<li><a href=#func_speedwalk_decode>speedwalk_decode</a>
+</ul>
+
+<br>
+<hr>
+<a name=cmd_speedwalk>
+<h2>SPEEDWALK</h2>
+<pre>
+Syntax: !speedwalk [on|off]
+</pre>
+Turns on/off mode of speedwalking. If no parameters, then switches mode. Also
+aborts currently executing speedwalk if you turn off.
+
+<pre>
+Switch speedwalking
+    !speedwalk
+Abort speedwalk (with alias)
+    !alias {stop} {!@speedwalk off#!@speedwalk on}
+Make 3 steps in a second
+    !var speedwalk_stepsize 3
+</pre>
+
+
+<br>
+<hr>
+<a name=func_speedwalk_encode>
+<h2>speedwalk_encode($path)</h2>
+Compresses path.
+<pre>
+Compress path to var
+    !var $newpath speedwalk_encode("wwwnnunddsssse")
+Compress from var to var
+    !var $path speedwalk_encode($path)
+</pre>
+
+<br>
+<hr>
+<a name=func_speedwalk_decode>
+<h2>speedwalk_decode($path)</h2>
+Unpack path.
+<pre>
+    !var $newpath speedwalk_decode("2n3su")
+    !var $path speedwalk_decode($path)
+</pre>
+
+
+</body>
+</html>

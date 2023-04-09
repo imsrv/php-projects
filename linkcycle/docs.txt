@@ -1,0 +1,224 @@
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+* LinkCycle version 2.0
+*
+* Copyright (c) 2002 Holotech Enterprises (linkcycle@holotech.net)
+*
+* You may freely distribute this script as-is, without modifications,
+* and with the accompanying files. You may use this script freely, and
+* modify it for your own purposes. This script is email-ware: if you
+* find it useful, you MUST e-mail me and let me know. This IS the pay-
+* ment that is required. If you do not make this payment, then you are
+* using this program illegally.
+*
+* Version 2.0 development sponsored by
+*   Creative Innovations
+*   http://get-signups.com/
+*
+*                                                 Alan Little
+*                                                 May 2002
+*
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+LinkCycle cycles through links in a MySQL table, generating impressions
+and hits. Hits to links can be logged in another MySQL table and/or in
+a text log. You can specify groups of links if desired, and cycle through
+them separately.
+
+                       ----------------------------
+                           Installing LinkCycle
+                       ----------------------------
+
+1. Edit conphig.php3 for your settings
+
+2. Place all files in the distribution (except this one) in a
+   directory. Be sure the graphics files are uploaded in binary
+   format and the remaining files in ASCII.
+
+3. Execute the maketable.php3 script ONCE and delete it. This script
+   creates the necessary tables in your database. It will create a table
+   named LinkCycle and one named LinkHits.
+
+                                 UPGRADING
+
+   If you are upgrading from Version 1, run the script convtable.php3
+   rather than the maketable.php3 script. This will convert your existing
+   LinkCycle table to the new format (existing links will be preserved,
+   but it's never a bad idea to make a backup), and it will create the
+   LinkHits table.
+
+   Version 2 has been designed to be fully backward-compatible with calls 
+   set up for Version 1. If you already have LinkCycle calls set up, there 
+   is no need to change them - they will continue to function as before.
+
+                       ----------------------------
+                              Using LinkMaint
+                       ----------------------------
+
+  Execute the linkmaint.php3 script to add and maintain links.
+
+                               ADDING LINKS
+
+  To add a link, fill in the form at the top of the page and click on the
+  "Add" button. Explanations of the fields are below.
+
+Group
+-----
+  All links must have a group code, but if you don't want to use groups,
+  there is a default group initially set up, named '001'. This group code
+  is entered by default in the add-link form, just leave it unchanged.
+
+Imps
+----
+  Specify the number of impressions for this link. This determines the
+  number of times it will be displayed. You can enter -1 to allow unlimited
+  impressions. Note that if $CountImps is false, this field is meaningless.
+
+Hits
+----
+  Specify the number of hits for this link. You can enter -1 to allow
+  unlimited hits. Note that if $CountHits is false, this field is
+  meaningless.
+
+Text
+----
+  Enter the text to be displayed for this link. If you want only part of
+  the text to be a link, put double curly braces around it. For example:
+
+      Get a 2GB drive from OWC for just $99! {{CLICK HERE}}.
+
+  If there are no braces, the entire text will be a link.
+
+Link
+----
+  The URL to re-direct to on a hit. It must be a fully-qualified URL,
+  including the protocol (http://, ftp://, etc.)
+
+                             MAINTAINING LINKS
+
+  Existing links are displayed below the Add form, arranged by Group code.
+
+  The Key column shows the link key assigned to the link. This number is 
+  assigned by LinkCycle, and is unique for every link.
+
+  The columns labeled I (Impression) and H (Hit) indicate which link from
+  that group will be displayed next and which link from that group will be
+  hit next. To change this setting, click in the I or H column for the
+  desired link, and click any Update button.
+
+  The fields "Imps", "Hits", "Text" and "Link" are the same as described
+  above. To change these values for any link, make the change in the
+  appropriate box, and click the Update button next to that link.
+
+  You can enter -2 in the Hits or Impressions values for any link to
+  indicate it is the default link for that group. This link will then be
+  hit or displayed only when all links in that group have no hits or
+  impressions left. Again, note that if $CountHits or $CountImps is false,
+  their respective values here are meaningless. In that case, a link with a
+  -2 will never be hit or displayed.
+
+                       ----------------------------
+                              Using LinkCycle
+                       ----------------------------
+
+  There are a couple of different ways you can use LinkCycle. The primary
+  difference is whether you are generating impressions or generating hits.
+
+Impressions
+-----------
+  To generate an impression, your HTML file must have a PHP extension, or
+  you must set up some other way for the file to be executed by the PHP
+  parser. At the point where you want the impression to appear, insert the
+  following code:
+
+        <?php include("linkcycle.php3") ?>
+
+  If LinkCycle is not in the same directory as your HTML file, you will 
+  need to specify the file system path to it.
+
+  Calling LinkCycle like this will generate an impression from the default 
+  group (001). If you want to indicate a particular group to generate the 
+  impression from, use this format:
+
+        <?php include("linkcycle.php3?I001") ?>
+
+  replacing 001 with the code for the desired group. LinkCycle will display 
+  the next link in the specified group, or in the default group if no group 
+  is specified, and cycle to the next link depending on the cycle schedule 
+  defined in the configuration file. If $CountImps is true, the impression 
+  count for the displayed link will be decreased by one, unless it is -1. 
+  If $CountImps is true and there are no links in the group with 
+  impressions remaining, LinkCycle will look for a default link for the 
+  group (see above under "Using LinkMaint/MAINTAINING LINKS"). If there is 
+  no default link for the group, LinkCycle will display the default link 
+  defined in the configuration file.
+
+  When LinkCyle generates an impression, the link it creates is a link to 
+  itself, with a link key indicating which link's URL to re-direct to. An 
+  impression will *always* re-direct to the URL associated with it, even if 
+  the hit count for that link is zero.
+
+Hits
+----
+  There are two ways for LinkCycle to generate a hit. If it is called with 
+  a specific link key, it will re-direct to the URL for that link, even if 
+  the hit count for that link is zero. When LinkCycle generates an 
+  impression, it creates a link in this format. In this way, you avoid the 
+  possibility of ever creating an impression which links to something other 
+  than what its text says. The following link would re-direct to the URL 
+  belonging to link key 15:
+
+        http://www.mydomain.com/linkcycle.php3?15
+
+  The other way for LinkCycle to generate a hit is to specify a link group 
+  when calling it:
+
+        http://www.mydomain.com/linkcycle.php3?H001
+
+  replacing 001 with the code of the desired group. When calling LinkCycle 
+  to generate a hit, unless you are specifying a specific link to hit as 
+  described above, you must specify a group, even if it's just the default 
+  group 001. LinkCycle will re-direct to the next link in the specified 
+  group, and cycle to the next link depending on the cycle schedule defined 
+  in the configuration file. If $CountHits is true, the hit count for the 
+  link will be decreased by one, unless it is -1. If $CountHits is true and 
+  there are no links in the group with hits remaining, LinkCycle will look 
+  for a default link for the group (see above under "Using LinkMaint/ 
+  MAINTAINING LINKS"). If there is no default link for the group, LinkCycle 
+  will re-direct to the default link defined in the configuration file.
+
+  The second format allows you to, for example, send out a single link in a 
+  mass mailing, and have it cycle through links as respondents start 
+  clicking in.
+
+                       ----------------------------
+                                   Hints
+                       ----------------------------
+
+- If you want a particular link to appear more frequently, enter it 
+  multiple times.
+
+- You can include HTML code in the Text portion, such as an <IMG> tag if 
+  you wanted to display an image.
+
+                       ----------------------------
+                                   Linux
+                       ----------------------------
+
+  If you are using Linux, you may or may not encounter a problem due to an 
+  error in the Linux regular expression library, depending on how your PHP 
+  installation is set up. If this happens, rename the file linkcycleL.php3 
+  to linkcycle.php3, and use it instead. Instead of double curly braces, 
+  use double angle brackets. For example:
+
+        Get a 2GB drive from OWC for just $99! <<CLICK HERE>>.
+
+                         ----------------------------
+                                LinkCycle Tools
+                         ----------------------------
+
+  There are LinkCycle tools available from Creative Innovations, which 
+  allow you to view the hits recorded in the LinkHits database table, and 
+  to assign passwords to link groups, so individuals can log in and view 
+  statistics for their link group or groups.
+
+  For more information, contact tools@sitewhistle.com.

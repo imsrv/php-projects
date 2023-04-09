@@ -1,0 +1,1 @@
+RewriteRule ^/(.*)	/path-to-maskurl-cgis/mask.cgi?$1	

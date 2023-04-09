@@ -1,0 +1,16 @@
+*******************************************
+*                                         *
+* Changelog for SendStudio version 4.0.1: *
+*                                         *
+*******************************************
+
+	- Critical update: Fixed duplicated sending issue and incorrect reporting of send/resume statistics in SendStudio control panel 
+
+********************
+*                  *
+* Changes made by: *
+*                  *
+********************
+
+	- Mitchell Harper (PHP)
+

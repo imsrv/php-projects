@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Plugin Speedwalk</title>
+</head>
+<body>
+
+<h1>Plugin Speedwalk</h1>
+
+Плагин предназначен для выполнения путей (speedwalks) вида 5wn3suuuu.
+В отличие от других клиентов, которые сразу выдают все команды в MUD, данный
+плагин посылает команды по частям (заданное количество шагов в секунду), и в
+любой момент может быть прерван игроком или одной из ключевых строк, пришедшей из
+MUDа (на вас например напали или вы уткнулись в тупик). Каждый наверно не раз
+наступал на "грабли", когда отдав команду 25w и получив по башке от кого-нибудь
+уже на втором шагу, наблюдал спам ("No way! You are fighting" и прочее), теряя
+драгоценное время боя. Теперь такого больше не будет. Также есть возможность
+указать зарезервированные комбинации, не являющиеся путями, например "se" или "news".
+<br>
+Для задания ключевых фраз останова и зарезервированных комбинаций, откройте
+файл speedwalk.php на редактирование и задайте массивы для комбинаций ($sw_reserved)
+и для ключевых фраз ($sw_abort).<br>
+Количество шагов в секунду задается переменной $speedwalk_stepsize непосредственно при игре.<br>
+<font color=red>ТРЕБОВАНИЯ: заданный prompt.</font>
+
+<br><br>
+Экспортируемые команды:
+<ul>
+<li><a href=#cmd_speedwalk>speedwalk</a>
+</ul>
+Экспортируемые функции:
+<ul>
+<li><a href=#func_speedwalk_encode>speedwalk_encode</a>
+<li><a href=#func_speedwalk_decode>speedwalk_decode</a>
+</ul>
+
+<br>
+<hr>
+<a name=cmd_speedwalk>
+<h2>SPEEDWALK</h2>
+<pre>
+Синтаксис: !speedwalk [on|off]
+</pre>
+Включает/выключает режим распознавания путей. (on - включено, off - выключено).
+Если указан без параметров, то переключает режим.
+Помимо этого, если режим в результате исполнения команды будет выключен,
+то отменится текущий исполняемый путь.
+
+<pre>
+Переключить режим
+    !speedwalk
+Прервать текущий исполняемый путь (в виде алиаса)
+    !alias {stop} {!@speedwalk off#!@speedwalk on}
+Делать 3 шага в секунду
+    !var speedwalk_stepsize 3
+</pre>
+
+
+<br>
+<hr>
+<a name=func_speedwalk_encode>
+<h2>speedwalk_encode($path)</h2>
+Сжимает заданный путь.
+<pre>
+Сжать указанный путь в переменную
+    !var $newpath speedwalk_encode("wwwnnunddsssse")
+Сжать из переменной в переменную
+    !var $path speedwalk_encode($path)
+</pre>
+
+<br>
+<hr>
+<a name=func_speedwalk_decode>
+<h2>speedwalk_decode($path)</h2>
+Разжимает заданный путь.
+<pre>
+    !var $newpath speedwalk_decode("2n3su")
+    !var $path speedwalk_decode($path)
+</pre>
+
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+----------------==MAFIASCRiPTS OFFICIAL RELEASE==-----------------
+======================[Proudly Presents]==========================
+
+| NAME        : YouLoader
+| VERSION     : 1.05
+| TYPE        : Youtube video loading script
+| SUPPLIER    : MST member                                  
+| NULLIFIER   : MAFIASCRiPTS                                  
+| PACKER      : MAFIASCRiPTS                                  
+| TESTED      : MAFIASCRiPTS                                  
+| RELEASE     : 07/30/2007                                    
+| LANGUAGE    : PHP/MySQL                                     
+| PROTECTION  : Removed                  
+| WEBSITE     : www.youloader.com
+| RETAIL      : $10                                                      
+| MST PRICE   : $FREE  
+| DISTRO      : via MST                                       
+| DEMO        : youloader.clickcraft.net/demo.php
+| ADDONS      : n/a
+| DOCS        : Check "readme.txt" file
+                                                       
+******************************************************************
+DESCRIPTIONS:
+
+YouLoader is the latest system for video junkies who love YouTube. 
+Have you ever wanted to load multiple videos on your site or even 
+wow your clients? Now you can with the new extreme technology of 
+the YouLoader. YouLoader allows you to skip the clutter or long 
+load times that would occur with many videos loading at the same 
+time. 
+
+******************************************************************
+INSTALL NOTE:
+
+a. unpack 
+b. check readme.txt
+c. edit MST2007.php - change user+pass to what you want
+   dont forget to md5 the pass.
+d. login page is loginchk.php
+e. page to vide videos is view.php
+f. upload/install
+g. enjoy!
+
+******************************************************************
+WE'RE CURRENTLY LOOKING FOR:
+
+* Experienced nuller/coder/programmer:
+(Knowledgeable in ionCube, SourceGaurdian, Codelock, phplock, base64
+SourceCop and Zend encoded scripts is a plus)
+* Retail scripts supplier
+* Quality Assurance Testers
+
+contact us if you fit any of the above categories.
+
+MAFIASCRIPTS Team (MST)
+
+*******************************************************************
+Note:
+We held no responsibility for any releases. 
+Use it at your own risk. If you like it. You buy it! 
+We don't do tech support.
+
+Remember, this for recreational and educational purposes only!
+
+=============================[EnjoY!]==============================

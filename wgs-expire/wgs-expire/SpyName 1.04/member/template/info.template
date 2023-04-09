@@ -1,0 +1,53 @@
+			<font color="red">
+				<%error(bad_login)%>
+					Please enter valid login<br>
+				<%/error%>
+
+				<%error(bad_mail)%>
+      		entered email is invalid<br>
+				<%/error%>
+
+				<%error(bad_password)%>
+      		You cannot use this password. It contains illegal characters, or too short<br>
+	      <%/error%>
+
+				<%error(bad_confirmation)%>
+			  	Password doesn't match confirmation<br>
+				<%/error%>
+			</font>
+
+      <center>      
+    	<form method="post" action="./?page=info">
+      <%table[SELECT 
+      		login as member_login,
+      		passwd,
+      		first,
+      		last,
+      		email,
+      		plan.name as plan_name
+      		FROM member,plan WHERE plan.id=member.acctype AND login='<%login%>']%>
+      <table>
+      	<input type="hidden" name="id" value="<%id%>">
+				<tr>
+					<td>Login<td><b><%member_login%></b>
+				<tr>
+					<td>Account type<td><b><%plan_name%></b>
+        <tr>
+					<td>Password<td><input type="password" name="password" value="<%passwd%>">
+        <tr>
+					<td>Confirmation<td><input type="password" name="confirm" value="<%passwd%>">
+        <tr>
+					<td>First name<td><input type="text" name="first" value="<%first%>">
+        <tr>
+					<td>Last name<td><input type="text" name="last" value="<%last%>">
+        <tr>
+					<td>E-mail<td><input type="text" name="email" value="<%email%>">
+      </table>
+      <%/table%>
+      <table>
+      	<tr>
+					<td><input type="submit" name="info_change" value="Change info">
+					<td><%include(<%cancel%>.template)%>
+			</table>
+      </form>
+

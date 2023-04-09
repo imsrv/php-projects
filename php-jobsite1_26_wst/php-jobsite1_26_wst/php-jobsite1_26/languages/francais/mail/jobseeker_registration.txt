@@ -1,0 +1,9 @@
+Dear %%jobseeker_name%%,
+
+Your registration was successfull.
+
+Please make a note about your username and password, as you will need them in the future every time you login.
+Username: %%jobseeker_email%%
+Password: %%jobseeker_password%%
+
+Thank you.

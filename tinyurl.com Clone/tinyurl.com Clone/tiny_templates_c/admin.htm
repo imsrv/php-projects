@@ -1,0 +1,119 @@
+<?php /* Smarty version 2.5.0, created on 2006-02-27 18:00:19
+         compiled from admin.htm */ ?>
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include("adminheader.htm", array());
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+
+<strong><?php echo $this->_tpl_vars['maxNumb']; ?>
+</strong><br>
+<strong>
+<a href='<?php echo $this->_tpl_vars['page']; ?>
+?page_show_all=<?php echo $this->_tpl_vars['page_show_all']; ?>
+&show_all=all'>[show all]</a> |
+<a href='<?php echo $this->_tpl_vars['page']; ?>
+?page_show_all=<?php echo $this->_tpl_vars['page_show_all']; ?>
+&delete=all' onclick='return c()'>[delete all records]</a> |
+<a href='<?php echo $this->_tpl_vars['page']; ?>
+?page_show_all=<?php echo $this->_tpl_vars['page_show_all']; ?>
+&clear=all' onclick='return c()'>[clear rating]</a> |
+<a href='<?php echo $this->_tpl_vars['page']; ?>
+?page_show_all=<?php echo $this->_tpl_vars['page_show_all']; ?>
+&set=all' onclick='return c()'>[set all to show add]</a> |
+<a href='<?php echo $this->_tpl_vars['page']; ?>
+?page_show_all=<?php echo $this->_tpl_vars['page_show_all']; ?>
+&uset=all' onclick='return c()'>[unset  all]</a>
+</strong>
+
+<?php echo $this->_tpl_vars['pageSelector']; ?>
+
+<form name=admin method=post onsubmit='return c()'>
+<table width='95%' align='center' cellpadding='2' cellspacing='0' border='1' bordercolor='#000000'>
+<tr>
+<th style='width:30px'>#</th>
+<th style='width:100px'><a href='admin.php?page_show_all=<?php echo $this->_tpl_vars['page_show_all']; ?>
+&orderby=ip'>IP</a></th>
+<th style='width:250px'>tiny url</th>
+<th><a href='admin.php?page_show_all=<?php echo $this->_tpl_vars['page_show_all']; ?>
+&orderby=fullurl'>full url</a></th>
+<th style='width:50px'><a href='admin.php?page_show_all=<?php echo $this->_tpl_vars['page_show_all']; ?>
+&orderby=numb'>rating</a></th>
+<th style='width:50px'><a href='admin.php?page_show_all=<?php echo $this->_tpl_vars['page_show_all']; ?>
+&orderby=showsplash'>show ad</a></th>
+<th style='width:150px'><input type='submit' name='remove' value='Delete'></th>
+</tr>
+<?php if (isset($this->_sections['urls'])) unset($this->_sections['urls']);
+$this->_sections['urls']['name'] = 'urls';
+$this->_sections['urls']['loop'] = is_array($this->_tpl_vars['urls']) ? count($this->_tpl_vars['urls']) : max(0, (int)$this->_tpl_vars['urls']);
+$this->_sections['urls']['show'] = true;
+$this->_sections['urls']['max'] = $this->_sections['urls']['loop'];
+$this->_sections['urls']['step'] = 1;
+$this->_sections['urls']['start'] = $this->_sections['urls']['step'] > 0 ? 0 : $this->_sections['urls']['loop']-1;
+if ($this->_sections['urls']['show']) {
+    $this->_sections['urls']['total'] = $this->_sections['urls']['loop'];
+    if ($this->_sections['urls']['total'] == 0)
+        $this->_sections['urls']['show'] = false;
+} else
+    $this->_sections['urls']['total'] = 0;
+if ($this->_sections['urls']['show']):
+
+            for ($this->_sections['urls']['index'] = $this->_sections['urls']['start'], $this->_sections['urls']['iteration'] = 1;
+                 $this->_sections['urls']['iteration'] <= $this->_sections['urls']['total'];
+                 $this->_sections['urls']['index'] += $this->_sections['urls']['step'], $this->_sections['urls']['iteration']++):
+$this->_sections['urls']['rownum'] = $this->_sections['urls']['iteration'];
+$this->_sections['urls']['index_prev'] = $this->_sections['urls']['index'] - $this->_sections['urls']['step'];
+$this->_sections['urls']['index_next'] = $this->_sections['urls']['index'] + $this->_sections['urls']['step'];
+$this->_sections['urls']['first']      = ($this->_sections['urls']['iteration'] == 1);
+$this->_sections['urls']['last']       = ($this->_sections['urls']['iteration'] == $this->_sections['urls']['total']);
+?>
+<tr>
+<td align=center><?php echo $this->_tpl_vars['urls'][$this->_sections['urls']['index']]['n']; ?>
+</td>
+<td><?php echo $this->_tpl_vars['urls'][$this->_sections['urls']['index']]['ip']; ?>
+</td>
+<td align=center><a href="<?php echo $this->_tpl_vars['url_to_index']; ?>
+?<?php echo $this->_tpl_vars['urls'][$this->_sections['urls']['index']]['tinylink']; ?>
+" target="_blank"><?php echo $this->_tpl_vars['urls'][$this->_sections['urls']['index']]['tinylink']; ?>
+</a></td>
+<td>&nbsp;<a title="<?php echo $this->_tpl_vars['urls'][$this->_sections['urls']['index']]['fullurl']; ?>
+" href="<?php echo $this->_tpl_vars['urls'][$this->_sections['urls']['index']]['fullurl']; ?>
+" target="_blank"><?php echo $this->_tpl_vars['urls'][$this->_sections['urls']['index']]['link']; ?>
+</a></td>
+<td align=center><?php echo $this->_tpl_vars['urls'][$this->_sections['urls']['index']]['numb']; ?>
+</td>
+<td align=center><a href='admin.php?page_show_all=<?php echo $this->_tpl_vars['page_show_all']; ?>
+&change=<?php echo $this->_tpl_vars['urls'][$this->_sections['urls']['index']]['tinylink']; ?>
+&val=<?php echo $this->_tpl_vars['urls'][$this->_sections['urls']['index']]['val']; ?>
+'><?php echo $this->_tpl_vars['urls'][$this->_sections['urls']['index']]['showsplash']; ?>
+</a></td>
+<td><input type='checkbox' name='ch<?php echo $this->_tpl_vars['urls'][$this->_sections['urls']['index']]['n']; ?>
+' value='<?php echo $this->_tpl_vars['urls'][$this->_sections['urls']['index']]['tinylink']; ?>
+'></td>
+</tr>
+<?php endfor; endif; ?>
+</table>
+</form>
+<?php echo $this->_tpl_vars['pageSelector']; ?>
+
+<form name="search" method="get">
+<table width='95%' align='center' cellpadding='2' cellspacing='0' border='0' bordercolor='#000000'>
+<tr><td width="50%" align="right"><strong>Find URL:</strong></td><td width="50%"><input name="surl"></td></tr>
+<tr><td width="50%"></td><td><input type="Submit" value="Search" name="search"></td></tr>
+</table><br><br>
+</form>
+<form name=res method=post onsubmit='return c()'>
+<table width='95%' align='center' cellpadding='2' cellspacing='0' border='1' bordercolor='#000000'>
+<tr><th>today</th><th>last week</th><th>last month</th><th>last three month</th><th>since the begining</th></tr>
+<tr><th><?php echo $this->_tpl_vars['total']['day1']; ?>
+</th><th><?php echo $this->_tpl_vars['total']['day7']; ?>
+</th><th><?php echo $this->_tpl_vars['total']['day30']; ?>
+</th><th><?php echo $this->_tpl_vars['total']['day90']; ?>
+</th><th><?php echo $this->_tpl_vars['total']['dayAll']; ?>
+</th></tr>
+</table><br>
+<input type="submit" value="Reset" name="reset">
+</center>
+</form>
+</body>
+</html>

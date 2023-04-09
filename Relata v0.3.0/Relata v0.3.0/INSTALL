@@ -1,0 +1,315 @@
+RELATA INSTALL & CONFIGURATION
+================================
+Last Modified: March 6, 2002
+
+1.0 OS and Environment Settings 
+    (Web Server Settings)  
+    (Database Server Settings)
+2.0 Relata Database 
+3.0 Administrative Setup
+4.0 How to Create a User
+5.0 config.inc.php
+
+1.0 Operating System and Environment Settings
+---------------------------------------------
+
+You need a MySQL server or PostgreSQL server, and an Apache web server
+(all of which can be run on the same physical server).
+
+MySQL: We have done our development & testing with MySQL, version (3.23.32). 
+The latest "development" version of MySQL has not been tested, though it may work fine.
+
+Apache: We use the lastest build of Apache, version 1.3.23.  
+Although running an older version is not recommened for security reasons, 
+there should be no problems doing so.
+
+PHP: PHP needs to have MySQL or PostgreSQL support compiled in.
+
+If you don't have the above settings currently on your web server,
+we have included a script called "web-install" in the "scripts"
+directory that should help you get things going. If you decide to
+use that script, carefully read through the top section to make
+sure you set it up properly for your server.  Also, you will need to
+download the software packages and put them in their apropriate place
+according to the "web-install" script, before your run it.
+
+** Win32 Users: Read the 'WIN32.USERS.README' document.
+
+2.0 Relata Database Setup
+-------------------------
+
+Relata currently uses a MySQL/PostgreSQL database (db) called "relata".  
+In setting up this db, please use the mysql.relata.sql/pgsql.relata.sql text file
+placed in the "scripts" directory to setup the required set of tables.  The tables 
+themselves have been defined in ways to ensure efficient and reliable data access.
+
+Relata security relies heavily upon database security, in particular, 
+secure access to the "relata" db.  It is very important that the acting MySQL db server 
+administrator sets up appropriate privilege systems for the Relata administrator.
+
+All Relata administrative functionality is kept in the "wwwroot/admin" directory, while all 
+Relata user functionality is kept in the "wwwroot/user" directory. 
+
+We HIGHLY insist you edit the files "mysql/pgsql.*.table.sql" and read the comments in them.  
+After you've done that, the MySQL db server administrator can INSERT them with the following 
+instructions.
+
+If you want to change the name of the database, do so.  Then call 'mysql' with the new DB 
+name when doing the following input pipes for table population.
+
+** DO NOT JUST RUN THE FOLLOWING COMMANDS! **
+
+Please look in the "scripts/mysql/pgsql*.table.sql" files and follow the directions in them.  
+
+MySQL:
+
+mysqladmin create relata
+mysql relata < mysql.relata.sql
+mysql mysql < mysql.user.table.sql
+mysql mysql < mysql.db.table.sql
+
+At anytime you can change a MySQL account password as follows:	
+'mysqladmin -u username password new-password-here'
+
+	--------------------------------------------
+	"host" table entry for the "relata" database
+    	--------------------------------------------
+
+		Field			Value	
+		-----			----- 
+	    	Host	    		www.hostname.tld 						
+	    	Db			relata
+		Select_priv 	N
+		Insert_priv 	N
+		Update_priv		N 
+		Delete_priv 	N
+		Create_priv 	N
+		Drop_priv   	N
+		Grant_priv 		N
+		References_priv 	N
+		Index_priv 		N
+		Alter_priv 		N
+
+		
+    	--------------------------------------------------------
+	"user" table entry for ALL "Relata Users" - single entry
+    	--------------------------------------------------------
+
+		Field			Value	
+		-----			----- 
+		Host 			www.hostname.tld
+		User 			relatauser 
+		Password   	    	relata
+		Select_priv 	N
+		Insert_priv 	N
+		Update_priv 	N
+		Delete_priv 	N
+		Create_priv 	N
+		Drop_priv 		N
+		Reload_priv 	N
+		Shutdown_priv 	N
+		Process_priv 	N
+		File_priv 		N
+		Grant_priv 		N
+		References_priv 	N
+		Index_priv 		N
+		Alter_priv enum 	N
+
+		
+    	-----------------------------------------------
+	"user" table entry for the Relata administrator
+    	-----------------------------------------------
+
+		Field			Value	
+		-----			----- 
+		Host 			www.hostname.tld
+		User 			relata 
+		Password   	    	password <- CHANGE THIS
+		Select_priv 	N
+		Insert_priv 	N
+		Update_priv 	N
+		Delete_priv 	N
+		Create_priv 	N
+		Drop_priv 		N
+		Reload_priv 	N
+		Shutdown_priv 	N
+		Process_priv 	N
+		File_priv 		N
+		Grant_priv 		N
+		References_priv 	N
+		Index_priv 		N
+		Alter_priv enum 	N
+
+		
+    	------------------------------------------------------
+	"db" table entry for ALL "Relata Users" - single entry
+    	------------------------------------------------------
+	
+		Field			Value	
+		-----			----- 
+		Host 			www.hostname.tld
+		Db 			relata
+		User 			relata
+		Select_priv 	Y
+		Insert_priv 	Y
+		Update_priv 	Y
+		Delete_priv 	Y
+		Create_priv		N 
+		Drop_priv 		N
+		Grant_priv 		N
+		References_priv 	N
+		Index_priv 		N
+		Alter_priv 		N
+
+		
+    	-----------------------------------------------
+	"db" table entry for the "Relata Administrator"
+    	-----------------------------------------------
+	
+		Field			Value	
+		-----			----- 
+		Host 			www.hostname.tld
+		Db 			relata
+		User 			relata_admin
+		Select_priv 	Y
+		Insert_priv 	Y
+		Update_priv 	Y
+		Delete_priv 	Y
+		Create_priv		Y 
+		Drop_priv 		Y
+		Grant_priv 		N
+		References_priv 	Y
+		Index_priv 		Y
+		Alter_priv 		Y
+
+PostgreSQL instructions:
+
+$ createdb relata
+$ psql relata
+Welcome to psql, the PostgreSQL interactive terminal.
+ 
+Type:  \copyright for distribution terms
+       \h for help with SQL commands
+       \? for help on internal slash commands
+       \g or terminate with semicolon to execute query
+       \q to quit
+
+relata=> \i pgsql.relata.sql
+relata=> \i pgsql.user_admin.tbl.sql
+
+3.0 Administrative Setup
+------------------------
+
+It is assumed that the individual who will downloaded and setup Relata will act as the 
+Relata administrator.  
+
+We recommend, if you don't have experience with Apache access permission settings, 
+that you read up on them at the following URLS.
+
+http://www.apacheweek.com/features/userauth
+http://httpd.apache.org/docs/mod/mod_access.html
+http://httpd.apache.org/docs/mod/mod_auth.html
+
+The following is an example to protect your web directory structure.
+
+<VirtualHost 192.168.0.1>
+  ServerName www.domain.tld
+  ServerAlias domain.tld
+  DocumentRoot /www/hosts/domain.tld/relata/wwwroot
+  ServerAdmin webmaster@domain.tld
+  ScriptAlias  /cgi-bin/  /www/hosts/domain.tld/cgi-bin
+  <Directory /www/hosts/domain.tld/cgi-bin>
+      AllowOverride None
+      Options ExecCGI
+  </Directory>
+  <Directory /www/hosts/domain.tld/relata/wwwroot>
+      Order Allow,Deny
+      Allow from all
+      AllowOverride None
+      Options Indexes IncludesNOEXEC SymLinksIfOwnerMatch
+  </Directory>
+  <Directory /www/hosts/domain.tld/relata/wwwroot/admin>
+      Order Deny,Allow
+	# For greater security, restrict your administrative use
+	# to only be allowed from subnet's or hostnames
+      Allow from 192.168.0.
+      AuthType Basic
+      AuthName "Relata Admin"
+	# This next file is the file that contains your generated
+	# login information with htpasswd
+      AuthUserFile /www/hosts/domain.tld_passwd
+      Require valid-user
+      AllowOverride None
+      Options Indexes IncludesNOEXEC SymLinksIfOwnerMatch
+  </Directory>
+</VirtualHost>
+
+4.0 How to Create a User
+------------------------
+
+Only the Relata administrator is able to add new users.
+The administrator can set himself/herself up as a user as well.
+
+The following are the steps that are required by the administrator when 
+registering a new Relata user.
+
+	1.  Load up the Relata interface.
+	2.  Enter an username and password and then click 'add'.
+
+Note that the adminstrator will set up an initial password for the new user.  
+The user can then change this password after he/she logs in for the first time.
+
+5.0 config.inc.php
+------------------
+
+// the root dir. You must include a trailing /
+$_PHPLIB["basedir"] = "/usr/www/apache/htdocs/relata-0.2.6/wwwroot/";
+
+// this is the web dir. You must include a trailing /
+$_PHPLIB["webdir"] = "http://www.hostname.tld/relata-0.2.6/wwwroot/";
+
+// Database settings
+$db_type = "mysql";	// 'pgsql' or 'mysql'
+$db_name = "relata";
+$db_host = "localhost";
+$db_username = "root";
+$db_password = "";
+
+// SMTP host - leave as localhost unless mail server resides on external server
+$smtp_host="localhost";
+
+// Path to PHP binary
+$php_path="/www/php/bin/php"; //path to PHP binary
+// Windows 9x: "c://php//bin//php.exe"
+
+//url for web page redirection  (ie. //http://www.hostname.tld/.../response/r.php)
+$redirect_url="http://www.hostname.tld/relata-0.2.6/group_email/response/r.php";
+
+// TABLE NAMES
+$account		= "account";
+$activity		= "activity";
+$activity_link	= "activity_link";
+$contact_opportunity = "contact_opportunity";
+
+$contact 		= "contact";
+$contact_account= "contact_account";
+$contact_group	= "contact_group";
+$contact_xfield	= "contact_xfield";
+$extra_field	= "extra_field";
+$group			= "groups";
+// if you modify any of the above variables in this block, then you will have to manually modify
+// contact/lib.php
+
+$opportunity	= "opportunity";
+$relata_user	= "relata_user";
+$sales_stage	= "sales_stage";
+$message = "message";
+$blast_log = "blast_log";
+$contact_message = "contact_message";
+
+$group_message_vars = "group_message_vars";
+// if you modify the table name of group_message_vars, then you will have to manually
+// edit lib/group_email_class.php accordingly
+ These variables are used by Relata and ONLY THE RELATA 
+ ADMINISTRATOR SHOULD BE ABLE TO SET AND CHANGE THEM WHENEVER 
+ APPROPRIATE.

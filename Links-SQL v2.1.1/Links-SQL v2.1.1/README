@@ -1,0 +1,106 @@
+# ==================================================================
+# Links SQL - enhanced directory management system
+#
+#   Website  : http://gossamer-threads.com/
+#   Support  : http://gossamer-threads.com/scripts/support/
+#   CVS Info : 087,071,086,089,083 
+#   Revision : $Id: README,v 1.36 2002/04/02 20:27:40 alex Exp $
+# 
+# Copyright (c) 2001 Gossamer Threads Inc.  All Rights Reserved.
+# Redistribution in part or in whole strictly prohibited. Please
+# see LICENSE file for full details.
+# ==================================================================
+
+TABLE OF CONTENTS
+
+    1. Welcome
+        1.1 About the Script
+        1.2 System Requirements
+    2. Installation
+
+1. Welcome
+====================================================
+
+1.1 About the Script
+----------------------------------------------------
+Links SQL is a natural evolution from Links 2.0. Initialy it was
+designed to satisfy the need for larger and larger links directories,
+something the flat file format of Links 2.0 had troubles with.
+
+In its current form, Links SQL is now a complete rewrite, built and
+designed from the ground up to focus on: scalability, modularity
+and extensibility. The current Links SQL allows complete freedom from
+traditional headaches you may be used to with CGI with such features like:
+
+- Template based output, no editing code to change the look of the program.
+- User defined language files, making it easy to provide multiple translations
+of your directory.
+- Plugin system, allowing you to hook into any aspect of Links SQL, while
+sharing plugins with the user community at the same time.
+
+and much more! For more details, please visit our website at:
+
+    http://www.gossamer-threads.com/scripts/
+
+1.2 System Requirements
+----------------------------------------------------
+Links SQL is 100% perl, and has no o/s dependent code. System
+requirements are:
+
+1. A current version of Perl 5 (version 5.004_04 or better required).
+2. Perl database modules: DBI and the appropriate DBD module loaded.
+3. A database server. We recommend Mysql 3.22+ -- a lightweight, free,
+   and very fast SQL server. It can be downloaded and installed from:
+
+    http://www.mysql.com/
+
+   Links SQL is currently being tested on Oracle and Sybase and should
+   be portable without major modifications.
+
+4. Optional: Links SQL will work under mod_perl or mod_fcgi for even faster
+   performance! More information about mod_perl can be found:
+
+    http://perl.apache.org/
+
+   Those interested, should also be sure to read the mod_perl guide at:
+
+    http://perl.apache.org/guide/
+
+   More information on Fast CGI can be found at:
+
+    http://www.fastcgi.com/
+
+   This usually requires getting your own dedicated server. If you are
+   interested in running a dedicated server with mod_perl and Links SQL,
+   we can host your site for reasonable rates.
+
+2. Installation
+====================================================
+To install Links SQL is very straightforward:
+
+1. Copy the install.dat in BINARY mode to your webserver.
+2. Copy the install.cgi in ASCII mode to your webserver.
+3. Set the permissions of install.cgi to 755.
+4. Set the permissions of the directory you want to install Links SQL into 
+   to 777.
+5. Run install.cgi from your browser (for advanced users, it can also be
+   run from shell. If you do this you can skip steps 3 and 4).
+6. Upgrading? If yes:
+        If you are upgrading from an existing Links SQL 2.x installation, then
+        enter the path to your admin. If you are upgrading from a Links SQL 1.x
+        installation, then you must do a new install.
+   If no:
+        Simply enter in the paths and urls outlined from install.cgi.
+
+That's it!
+
+If you have any questions or problems, please visit our support section
+at:
+
+    http://gossamer-threads.com/scripts/support/
+
+Cheers,
+
+Alex Krohn
+Gossamer Threads Inc.
+

@@ -1,0 +1,26 @@
+Installation instructions.
+
+1) Copy all files and directories from pixeladraptor-xx to 
+   your page's root directory.
+
+2) Create the database structure from database.sql file.
+   
+3) Set the correct permissions to the images directory. 
+   Webserver must have write access to it. Usually, set
+   write access to the 'world' or 'other' and your done.
+   
+   Read this if you don't know what we are talking about:
+   
+   http://en.wikipedia.org/wiki/Unix_security#Permissions
+   
+4) Edit config.php to match your needs.
+
+5) Setup your site though administration panel.
+   Access it through http://(your_url)/admin/ using username
+   and password from config.php.
+
+   Change your site url value in the administration's settings section, don't
+   forget to append the trailing slash, otherwise site links will not work.
+   
+6) That's all. :)
+

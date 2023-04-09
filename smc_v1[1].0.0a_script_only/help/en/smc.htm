@@ -1,0 +1,1080 @@
+<html>
+<head>
+<title>Solace MUD Client</title>
+</head>
+<body>
+
+<h1>Solace MUD Client (SMC)</h1>
+<i>(updated for version 1.0.0a)</i><br>
+Author is sorry for all grammar mistakes below, english is not my native language.
+<br><br>
+
+<a href=#whatis>What is it?</a><br>
+<a href=#where>Who is author and where to get?</a><br>
+<a href=#options>Configuration (smc.ini)</a><br>
+<a href=#run>How to run?</a><br>
+<a href=#regexp>Regular expressions</a><br>
+<a href=#db_mysql>MySQL database</a><br>
+<a href=#other_db>Custom databases</a><br>
+<br>
+<a href=#commands>Commands</a>
+<ul>
+<li><a href=#cmd_about>about</a>
+<li><a href=#cmd_connect>connect</a>
+<li><a href=#cmd_zap>zap</a>
+<li><a href=#cmd_cr>cr</a>
+<li><a href=#cmd_drop>drop</a>
+<li><a href=#cmd_textin>textin</a>
+<li><a href=#cmd_textout>textout</a>
+<li><a href=#cmd_commands>commands</a>
+<li><a href=#cmd_info>info</a>
+<li><a href=#cmd_savelog>savelog</a>
+<li><a href=#cmd_simul>simul</a>
+<li><a href=#cmd_simulvars>simulvars</a>
+<li><a href=#cmd_test>test</a>
+<li><a href=#cmd_php>php</a>
+<li><a href=#cmd_show>show</a>
+<li><a href=#cmd_quite>quite</a>
+<li><a href=#cmd_ignore>ignore</a>
+<li><a href=#cmd_null>null</a>
+<li><a href=#cmd_load>load</a>
+<li><a href=#cmd_clear>clear</a>
+<li><a href=#cmd_colors>colors</a>
+<li><a href=#cmd_loop>loop</a>
+<li><a href=#cmd_N>N</a>
+<li><a href=#cmd_sql>sql</a>
+<li><a href=#cmd_var>var</a>
+<li><a href=#cmd_vasr>vars</a>
+<li><a href=#cmd_alias>alias</a>
+<li><a href=#cmd_aliases>aliases</a>
+<li><a href=#cmd_hl>hl</a>
+<li><a href=#cmd_hls>hls</a>
+<li><a href=#cmd_trigger>trigger</a>
+<li><a href=#cmd_triggers>triggers</a>
+<li><a href=#cmd_action>action</a>
+<li><a href=#cmd_actions>actions</a>
+<li><a href=#cmd_prompt>prompt</a>
+<li><a href=#cmd_sub>sub</a>
+<li><a href=#cmd_subs>subs</a>
+<li><a href=#cmd_gag>gag</a>
+<li><a href=#cmd_gags>gags</a>
+</ul>
+<a href=#userfuncs>User defined functions</a>
+
+
+
+<hr>
+<a name=whatis>
+<h2>What is it?</h2>
+SMC is a <a href="http://www.php.net">PHP</a> script, that allows your telnet-client to connect to
+the MUDs or any other server through a telnet protocol. It acts like a proxy-server between telnet client
+and server, parsing all incoming and outgoing data. SMC has all the features that every modern mud client
+must have: aliases, actions, highlights, gags, timer, speedwalks, logging, etc., but with greater
+abilities (for example databases support). Today PHP is the best and powerful scripting engine in
+the world for all platforms, and continues to grow fast. With SMC you can involve all PHP features
+into your gaming (or any other applications): support of all well-known databases, work with internet
+(sockets, ftp, http, etc.), extended text parsing, and much more. If you dont know what is php, try
+to search for it in internet, there are many documentations on any language. To fully enjoy
+power of php scripts you need to learn the basics of php syntax and regular expressions.
+<p>SMC has other feature, maybe bad for ones and good for others. Since its a proxy, that can be
+executed on  hoster with php support (version 4.1.0 with sockets extension), you can use it
+to fake you real IP with one of hoster's to get through ban.
+<p>SMC also can be used in hacking purposes. Extended text parsing abilities (or to say truth
+unlimited), work with databases, fake IP addresses make SMC a very efficient tool in the hands
+of professional hacker for cracking any type of servers. But I hope that it will be used
+only in "peaceful" way, and author doesnt carry any responsibilities for it's illegal usage.
+<p>And the last - this client will help you to play, and possibly will save you life many times
+(and get others :), so its for professional players. Number of parameters checkings are minimal,
+remember about this when you'll try to create a variable with the name F444$%gr_g&e1...
+
+<br><br>
+<hr>
+<a name=where>
+<h2>Who is author and where to get?</h2>
+Author: Ilya Zubov (Zilav, Velice, Yehat, Nessit, ...)<br>
+E-Mail:
+<a href=mailto:solace@ezmail.ru>solace@ezmail.ru</a>,
+<a href=mailto:zilav@allnetwork.ru>zilav@allnetwork.ru</a>
+<br>
+WWW: <a href="http://solace.allnetwork.ru/smc.php">http://solace.allnetwork.ru/smc.php</a><br>
+If you found any bugs, made some corrections or you simply have something to advise, send your thoughts
+by e-mail or write on forum.<br>
+Programming environment: PII-466, 196MB, Win2k, text editor Aditor 3.10, music by Enya, Blackmore's Night, Era :)
+
+
+<br><br>
+<hr>
+<a name=options>
+<h2>Configuration (smc.ini)</h2>
+There are english comments near every option. If you dont know english, how do you play MUDs and what for
+do you need this client?
+<p>Connection options:
+<ul>
+<li>listen_address - address and port to listen to incoming connections. SMC supports only 1 connection
+at one time, so if many people are going to play, simply copy SMC into different directories and
+run several instances simultaneously, dont forget to set different ports for every copy of SMC.
+<li>mud_address - address and port of mud, to which SMC will try to connect automatically (if set).
+Also this address will be used in !connect command without parameters.
+<li>allowed_ip - addresses mask for allowed connections, for example 192.168.0.*, 202.67.*.*.
+Leave empty or *.*.*.* to disable address checking.
+<li>password - password protection for incoming connections. Leave empty to disable.
+<li>connect_to_mud - enable automatic connection to MUD when the user connects to SMC (0 or 1)
+</ul>
+
+<p>Options for commands and output:
+<ul>
+<li>script_prefix - this string will be inserted to every start of line of SMC output
+<li>cmd_color - color of SMC output
+<li>cmd_prefix - char-identificator of SMC commands
+<li>cmd_quite - char-identificator of output blocking
+<li>cmd_delimiter - char-delimiter of commands
+<li>text_color - mud's text color by default
+<li>brackets - brackets used to enclose paramaters
+</ul>
+
+<p>Profiles:
+<ul>
+<li>profile_extension - extension of profile files
+<li>default_profile - default profile name
+</ul>
+
+<p>Logging:
+<ul>
+<li>maxlogsize - max size of the log in memory before dumping to disk (autosaving)
+<li>logfile - log filename when autosaving. Leave empty to disable autosaving.
+<li>logformat - log format when autosaving (look !savelog command).
+<li>log_input - store user's input in log (0 or 1)
+</ul>
+
+<p>Formats:
+<ul>
+<li>freg - fucntion name for regular expressions search
+<li>varformat - variable name format in actions, subs
+<li>varnameformat - variable name format for !var command
+<li>varvalue - variable value format in actions, subs
+<li>ansi_format - ANSI codes format
+<li>float_format - float format in math expressions (for result)
+</ul>
+
+<p>Databases:
+<ul>
+<li>db_type - type of database server. Leave empty if you dont use DB
+<li>db_host - address (host or IP)
+<li>db_name - base name
+<li>db_user - user
+<li>db_pass - password
+</ul>
+
+<p>Plugins:
+<ul>
+<li>dir_plugins - path to plugins
+<li>[plugins] - section if plugins definition in format name = file_name.php
+</ul>
+
+
+<br><br>
+<hr>
+<a name=run>
+<h2>How to run?</h2>
+SMC can be executed in 2 ways:
+<ul>
+<li>Locally:<br>
+Download full SMC client (SMC script + configured PHP for win32). Unpack in any directory, edit
+smc.ini, and run smc.bat. If now errors are found, you'll see a string like "Waiting for connection..."
+with address and port to connect to. SMC can be aborted as any batch file - Ctrl+Break.
+If you know PHP, or you dont use Windows, you can try to download only script and run it yourself.
+SMC requires PHP version 4.1.0 or greater with sockets extension (maybe it can work on
+earlier versions, I didn't check). If someone will successfully run it on other platforms, please
+send me intructions how-to so I can add them in this help.
+<li>Remote (on hoster):<br>
+Download only script, put it on hoster's server, edit smc.ini.
+Check hoster's php version and sockets extension (create on server file test.php with one
+string inside &lt;? phpinfo(); ?&gt; and open it with browser), and that the script has write
+access to files.
+Open http://myhost.hoster.com/smc.php, if nothing will appear and browser starts to download
+an empty page (this means SMC is working normally) and will continue to do it infinitly until
+script will end its work. Do not push STOP button in browser, this will terminate the script.
+Its a special feature to abort script, because if SMC will hang up locally, you always can
+stop it, but in remote variant it is impossible. So the STOP button is the only way to abort
+remote SMC.
+</ul>
+SMC quits in 4 occasions: fatal error during run-time, user disconnects from SMC, locally - Ctrl+Break,
+remote - STOP in browser.
+
+
+<br><br>
+<hr>
+<a name=regexp>
+<h2>Regular expressions</h2>
+All parameters for commands hl, action, trigger, sub, gag, test, etc. in SMC are
+<a href="PCRE.txt">regular expressions</a>.
+SMC (or php) supports 2 types of expressions:
+<a href="http://www.php.net/manual/ref.regex.php">POSIX</a> and Perl standard
+<a href="http://www.php.net/manual/ref.pcre.php">PCRE</a>.<br>
+By default SMC uses (set in smc.ini)
+POSIX and all formats are in it. It is done because in PCRE all regexps must be parenthesized
+in // : /regexp/, so even if you just want to highlight 'DEAD' with red, you must write
+!hl {/DEAD/} red. But PCRE works much faster and has greater abilities. You can decide yourself
+what format you want to use, just don't forget to update all formats for variables and ANSI-codes
+in smc.ini if you switch to PCRE.
+
+
+<br><br>
+<hr>
+<a name=db_mysql>
+<h2>MySQL database</h2>
+If you are complete lamer in databases, don't be frightened by words like SQL.
+Some awesome plugins in SMC use MySQL, all you must do is install it on your
+computer. MySQL occupies only 20 MB, consumes 5 MB of memory, so you can install
+it as any other program. Download the latest version from
+<a href="http://www.mysql.org">http://www.mysql.org</a>, unpack (if in archive),
+install in any directory. For WinNT, Win2k, WinXP systems execute c:\mysql\bin\mysqld-nt.exe -install,
+then go to servicies control panel, and make sure that MySQL service is loaded automatically.
+For Win9X/Me you need to add in autostart c:\mysql\bin\mysqld.exe.
+Restart computer, in smc.ini for DB specify: type "mysql", host "localhost", base "smc",
+user "root", empty password. Congratulations, you've just installed SQL server!
+
+
+<br><br>
+<hr>
+<a name=other_db>
+<h2>Custom databases</h2>
+Currently supported types of databases are listed in smc.ini. This means that for such
+DB engines SMC will try to create database automatically if not exists, and unique interface
+through class Db_Sql (from PHPLib) is provided in variable $q. You must also check that
+PHP supports such types (make sure you have required dlls in /php/extensions subdir, and they
+are loaded in php.ini).<br>
+If you want to use unsupported type, force PHP to load required extension, make sure that
+required database exists, and then work with it with direct-access functions (consult
+with php manual). If you want implement Db_Sql class, then edit it manually from /include/db subdir.
+Anyway do this only if you know PHP well.
+
+<br><br>
+<hr>
+<a name=commands>
+<h2>Commands</h2>
+Multiple commands are separated with <b>#</b> char. All internal SMC commands must start with
+<b>!</b> char. After it you can optionally specify <b>@</b> to block command's output (useful
+in triggers to block spam). If you want to use other chars, set them in smc.ini.<br>
+You can use short-style commands, for example !tr will be recognized as !trigger.
+If command identificator char is absent, then your input is sended to MUD with parsed in
+defined variables values. For example if $weapon='mace', then get $weapon will produce get mace.
+Avoid conflicts between variables in SMC and in your MUD Client. For example JMC (Jaba MUD Client)
+uses the same symbol $ to identify vars, so if JMC will have defined variable $weapon, then SMC
+will recieve get mace, but not get $weapon. Always remember about this.<br>
+Below you will meet some comments after //. In this version SMC doesn't support comments, they are here
+just in explanation purposes.<br>
+Syntax format: &lt;param&gt; means that param must be specified, [param] - param is optional,
+combinations like param1|param2|param3 mean one of listed.
+And the last some words about slash '\'. In php (and C/C++) this slash is used to specify control
+symbols, for example line feed \n. So to use slash as a char it must prepend himself '\\'.
+You'll meet this combination in some examples below.<br>
+<pre>
+Initialization of 3 variables simultaniously without output
+    !@var $a 1#!@var $b 2#!@var $c $a+$b
+Send to MUD the value of variable $cmd
+    $cmd
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_about>
+<h2>ABOUT</h2>
+<pre>
+Syntax: !about
+</pre>
+Info about SMC: version, PHP version, database (if present).
+
+
+<br>
+<hr>
+<a name=cmd_connect>
+<h2>CONNECT</h2>
+<pre>
+Syntax: !connect &lt;host&gt; &lt;port&gt;
+</pre>
+Establish connection with server. If host and port are absent, they are taken from option mud_address in
+smc.ini.
+<pre>
+    !connect temple.ptt.ru 4000
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_zap>
+<h2>ZAP</h2>
+<pre>
+Syntax: !zap
+</pre>
+Terminate current connection with server.
+
+
+<br>
+<hr>
+<a name=cmd_cr>
+<h2>CR</h2>
+<pre>
+Syntax: !cr
+</pre>
+Send carriage return to MUD.
+
+
+<br>
+<hr>
+<a name=cmd_drop>
+<h2>DROP</h2>
+<pre>
+Syntax: !drop
+</pre>
+Delete the current line from MUD. Can be used in actions and triggers.
+<pre>
+Action + gag combination. Shows red I'm BASHED when triggered, and the real string is dropped.
+    !action {.+ bashes you!} {!showme {I'm BASHED!} red#!drop}
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_textin>
+<h2>TEXTIN</h2>
+<pre>
+Syntax: !textin &lt;filename&gt; [prefix]
+</pre>
+Load the content of file filename and send it to MUD. Useful to write big texts. If optional
+parameter prefix is present, it will be inserted to the beginning of every string.
+<pre>
+Load description from file (append MUD's command desc + to every line)
+    !textin fighter.txt desc +
+</pre>
+
+
+
+<br>
+<hr>
+<a name=cmd_textout>
+<h2>TEXTOUT</h2>
+<pre>
+Syntax: !textout &lt;filename&gt; [text]
+</pre>
+Saves text (with appended new line at the end) to file filename. Text can contain variables.
+If text is absent, then only new line is saved.
+<pre>
+Keep up the log of summonings (with date/time)
+    !action {$attacker has SUMMONED YOU!} {!@var curdate date('d.m.Y H:i')#!@textout log.txt $curdate $attacker summoned me.}
+Miserable replacement for the Items plugin - store all idents to file + new line
+    !trigger {Object .+ is type .+} {!@textout items.txt $reg[0]#!@textout items.txt} block
+</pre>
+
+
+
+<br>
+<hr>
+<a name=cmd_commands>
+<h2>COMMANDS</h2>
+<pre>
+Syntax: !commands [param]
+</pre>
+Show the list of all available commands including the ones exported by plugins. If param is
+present, only commands containing param will be shown.
+<pre>
+List all commands
+    !commands
+List commands containing tick (plugin Ticker)
+    !commands tick
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_info>
+<h2>INFO</h2>
+<pre>
+Syntax: !info
+</pre>
+Show the info about number of aliases, triggers, etc., and also loaded plugins and other info.
+
+
+<br><br>
+<hr>
+<a name=cmd_savelog>
+<h2>SAVELOG</h2>
+<pre>
+Syntax: !savelog &lt;filename&gt; [option1 option2 ...]
+</pre>
+All data coming from MUD is stored automatically. Use this command to save the stored log to file, where
+filename - name of file (if without path, then assumed in directory where SMC resides), can contain
+parameters of current date/time:<br>
+<ul>
+<li>%d - dat
+<li>%m - month
+<li>%y - year
+<li>%h - hours
+<li>%i - minutes
+</ul>
+Also filename can be specified in variable. If instead of filename the keyword 'clear' is specified,
+then the current log is cleared without saving. If no parameters are present, then
+autosaving is executed with options from smc.ini.
+Available options:
+<ul>
+<li>append - append to existing file (create new if absent)
+<li>noclear - don't clear log buffer
+<li>cr - use char \n as the line delimiter (code 10) (default value)
+<li>lf - use char \r as the line delimiter (code 13)
+<li>crlf - use \r\n as the line delimiter
+<li>ansi - store ansi color codes
+<li>html - store in html format (options append and ansi useless)
+</ul>
+<pre>
+Store log to file fightxxxxxx.log (where xxxxxx - current date)
+    !savelog fight%d%m%y.log
+Store log to file with name in variable $logname
+    !savelog $logname
+Append to file travel.txt with delimiter \r\n and ansi colors
+    !savelog travel.txt append crlf ansi
+Store to pk.htm
+    !savelog pk.htm html
+Clear log
+    !savelog clear
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_simul>
+<h2>SIMUL</h2>
+<pre>
+Syntax: !simul &lt;expression | file filename&gt;
+</pre>
+Allows to simulate string (or file) as it comes from MUD. Use to test your highlight, triggers,
+gags and others.
+Parameter can be string or keyword file with file's name after it.
+<pre>
+Simulate string
+    !simul Bajoi's bash injures Shapa
+Simulate file log.txt
+    !simul file log.txt
+</pre>
+
+<br>
+<hr>
+<a name=cmd_simulvars>
+<h2>SIMULVARS</h2>
+<pre>
+Syntax: !simulvars &lt;expression | file filename&gt;
+</pre>
+Same as !simul, but with parsed in variables.
+<pre>
+Simulate string (variable $target=Shapa)
+    !simul Bajoi's bash injures $target
+Simulate content of variable $str
+    !simul $str
+Simulate file (file name in $log)
+    !simul file $log
+</pre>
+
+<br>
+<hr>
+<a name=cmd_test>
+<h2>TEST</h2>
+<pre>
+Syntax: !test &lt;{regexp}&gt; &lt;{text}&gt;
+</pre>
+Command to test regular expressions. Searches for regular expression regexp in string text.
+Shows matched string and substrings (subexpressions enclosed with (), in array $reg).
+In combination with command <a href=#cmd_simul>simul</a> you can attune all your
+gameplay parameters (triggers, etc.) even without any connection to the MUD.
+<pre>
+Search for attacker
+    !test {(^[A-Z][a-z]+)'s strangulation attempt misses you} {Shomberg's strangulation attempt misses you}
+Detection of mage and victim
+    !test {([A-Z][a-z]+) yells "Help! ([A-Z][a-z]+) is casting a spell on me!"} {Siorosh yells "Help! Eleum is casting a spell on me!"}
+</pre>
+
+
+
+<br>
+<hr>
+<a name=cmd_php>
+<h2>PHP</h2>
+<pre>
+Syntax: !php &lt;expression&gt;
+</pre>
+Execute expression as a php expression. Since php uses ';' as command delimiter, which is also
+used by many MUD clients as delimiter too, you can't execute several commands at the same time.
+But it is quite enough to call user-defined functions (defined in userfunc.php). Don't try to
+experiment with this command untill you learn php.
+<pre>
+Set the variable $target
+    !php $GLOBALS['vars']['target'] = 'Shapa'
+Call function myfunc() with parameters as varibale $hp and assigning result to it
+    !php $GLOBALS['vars']['hp'] = myfunc($GLOBALS['vars']['hp'])
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_show>
+<h2>SHOW</h2>
+<pre>
+Syntax: !show &lt;expression&gt;
+</pre>
+Show expression to user with parsing. If even one variable is present in expression, then
+it is executed as php expression, so php rules are applyed (strings are enclosed in ' or ",
+use . to concatenate). Remember that it is system output, so your actions and others
+will not work (and also every line will start with prefix defined in smc.ini).
+To make your actions work use command <a href=#cmd_simul>simul</a>.
+<pre>
+Show string
+    !show Hello world!
+Show var
+    !show $maxhp
+Show math expression
+    !show $hp/$maxhp*100
+    !show "Current hp percentage is ".($hp/$maxhp*100)."%"
+Show string with var
+    !show "My enemy is $target"
+    !show "My enemy is ".$target
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_showme>
+<h2>SHOWME</h2>
+<pre>
+Syntax: !showme &lt;{expression}&gt; &lt;color&gt;
+</pre>
+Same as show, but you can also specify color (look available colors with command
+<a href=#cmd_colors>colors</a>). If expression has more then 1 word (contains spaces), then
+enclose it with brackets {}. This command is not system output, so no prefix is appended.
+<pre>
+Show in yellow
+    !showme {Hello world!} yellow
+Show var with red color
+    !showme $maxhp red
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_quite>
+<h2>QUITE</h2>
+<pre>
+Syntax: !quite [on|off]
+</pre>
+Turn on/off blocking of output. If on, you'll see only text coming from MUD. If no parameters are
+specified, then the curent mode is switched, otherwise you can use 'on' of 'off'.
+<pre>
+Switch the current mode
+    !quite
+Turn off
+    !quite off
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_ignore>
+<h2>IGNORE</h2>
+<pre>
+Syntax: !ignore [type] [on|off]
+</pre>
+Sets the modes for ignoring triggers, actions, etc. If no type is specified, then sets the modes
+for all commands. If no identifier on/off present, then switches the current mode.
+Available types are: actions, triggers, subs, gags, hls.
+<pre>
+Turn off all
+    !ignore on
+Turn subs off
+    !ignore subs on
+Switch mode for triggers
+    !ignore triggers
+</pre>
+
+
+<br><br>
+<hr>
+<a name=cmd_null>
+<h2>NULL</h2>
+<pre>
+Syntax: !null
+</pre>
+Empty command, does nothing. Some commands require at least one parameter to work, and where
+nothing must be done, use null.
+<pre>
+Action will initialize vars, but does nothing
+    !action {$looser falls flat on his face} {!null}
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_load>
+<h2>LOAD</h2>
+<pre>
+Syntax: !load [name]
+</pre>
+Load profile 'name' and make it current (all settings will be saved to it on exit).
+If no 'name' is present, is shows the list of all profiles in directory where SMC resides.
+Profiles have an extension specified in smc.ini (cmd by default).
+<pre>
+Show profiles
+    !load
+Load profile newbie
+    !load newbie
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_clear>
+<h2>CLEAR</h2>
+<pre>
+Syntax: !clear &lt;param&gt;
+</pre>
+Clears the specified set. Param can be: vars, aliases, hls, actions, triggers, subs,
+gags and all to clear all sets.
+<pre>
+Clear vars
+    !clear vars
+Clear all sets
+    !clear all
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_colors>
+<h2>COLORS</h2>
+<pre>
+Syntax: !colors
+</pre>
+Shows all colors with their names (which are used in <a href=#cmd_hl>hl</a>). The 'default'
+color from smc.ini are set after all colorings and SMC messages (at the end of line).
+<pre>
+Show all colors
+    !colors
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_loop>
+<h2>LOOP</h2>
+<pre>
+Syntax: !loop &lt;from&gt; &lt;to&gt; &lt;expression&gt;
+        !loop &lt;array variable&gt; &lt;expression&gt;
+</pre>
+Execution of expression in a loop. Loop can be indexed, in this case you specify 2 numbers (from and to),
+the current loop index is available through the temporary variable %0. If instead of numbers
+you specify variable name of type array, then loop is associative, and walks through all
+array elements, in this case index of array will be in %0, value in %1.
+<pre>
+Get bread from 1st,2d and 3d bag
+    !loop 1 3 get bread %0.bag
+Shows matched subexpression form the last regular expression search
+    !loop $reg !show reg[%0] = %1
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_N>
+<h2>N - number</h2>
+<pre>
+Syntax: !N &lt;expression&gt;
+</pre>
+Execution of expression N times. If expression contains several commands, enclose them with brackets.
+<pre>
+Sacrifice 5 items
+    !5 sacr 1.
+Buy 10 loafs of bread and put them in bag
+    !10 {buy bread#put bread bag}
+In this case buy bread will be executed 10 times, and put bread bag 1 time
+    !10 buy bread#put bread bag
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_sql>
+<h2>SQL</h2>
+<pre>
+Syntax: !sql &lt;sql statement&gt;
+</pre>
+Execute SQL query to the currently conected database. For SELECT shows all returned rows and their
+number, for UPDATE, INSERT, DELETE number of affected rows.
+Displaying large sets in SELECT may consume much memory and time, so be careful and its not a good
+idea for example to execute 'select * from xxx' on the table with 10000 records.
+<pre>
+Shows all databases (for MySQL)
+    !sql show databases
+Deletion
+    !sql delete from items where id&gt;100 and id&lt;200
+</pre>
+
+
+
+<!-- =============================== GAMEPLAY COMMANDS ================================= -->
+
+<br>
+<hr>
+<a name=cmd_var>
+<h2>VAR</h2>
+<pre>
+Syntax: !var &lt;name&gt; [value]
+</pre>
+Definition and evaluation if variables. Name - name of var or it's number
+(from command <a href=#cmd_vars>vars</a>). Value - value of var (php expression).
+If value is absent, then var is deleted. When evaluating, the current values of variables
+are used, this means that !var $a $b+$c will produce in $a the summary of the current values
+of $b and $c, and will not change later if $b or $c will change.<br>
+In php type of var is detected at the moment of evaluation, so use operators in the right
+way. For example $a=1, $b=2. Math expression $a+$b=3, but string $a.$b='12'.<br>
+Elements of expression are: strings (signle words may not be quoted), numbers, functions and
+variables.
+Variables also can be multi-dimensional indexed or associative arrays. String is also
+can be threated as an indexed array of chars, starting from index 0.<br>
+Note: since parameter name always contains name of var, symbol $ can be dropped.<br>
+<font color=red>
+Attention: in this version SMC will terminate if you try to call undefined function (PHP terminates
+script in this case. I'm still working on how to avoid it). So its a good idea to attune
+all expressions offline with no actual connecton to MUD.
+</font>
+<pre>
+Define var
+    !var $target Sebant
+    !var $hours 5
+    !var $sum 1+2+3
+Delete var $var1
+    !var $var1
+Address var by number (delete var number 1)
+    !var 1
+Define var number 3 if it exists (result is 4)
+    !var 3 "2"+2
+Math expressions
+    !var $lefthp $maxhp-$hp
+    !var $super_puper_math tan(max(($a1*$a2)/sqrt(4), 100)*exp(log($b))/cos($b1))
+    !var $random mt_rand(1, 100) // random value from 1 to 100
+String expressions
+    !var $longstr "This is a long string"
+    !var $killcommand "c sleep ".$target
+Get the 5th char of string $str (backward assign is impossible (TODO))
+    !var $char5 $str[5]
+Set empty string
+    !var $target ""
+Define array
+    !var $damages[scratches][min] 1
+    !var $damages[scratches][max] 2
+    !var $damages[grazes][min] 3
+    !var $damages[grazes][max] 5
+Now arrays are $damages, $damages[scratches] and $damages[grazes]. !show $damages will show Array
+Evaluate $graze = 2
+    !var $graze $damages[grazes][max] - $damages[grazes][min]
+Usage of php functions and operators (visit <a href="http://www.php.net">http://www.php.net</a>)
+    !var $condition $hp>500?"good":"bad"
+    !var $condition $hp>500?"good":($hp>300?"bad":"awful")
+    !var $uppercasedsong strtoupper($songname)
+    !var $firstchar substr($target, 0, 1)
+    !var $str_without_leading_spaces ltrim($target)
+    !var $substring_position strpos($string, $substring)
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_vars>
+<h2>VARS</h2>
+<pre>
+Syntax: !vars [param]
+</pre>
+List all defined variables and their numbers. If param is present, then show
+only vars that contain param in their names.
+<pre>
+Show all vars
+    !vars
+Show vars with 'tick' in name
+    !vars tick
+Show regular expression matches (array $reg)
+    !vars reg[
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_alias>
+<h2>ALIAS</h2>
+<pre>
+Syntax: !alias &lt;name&gt; [{value}]
+</pre>
+Definition af aliases. When your input is equal to the name of any alias, it's content will
+be sended to MUD as you typed it in yourself.
+Name - name of alias, value - it's value (if more then 1 word then use brackets). Alias
+can also contain inside other aliases (but not self!).
+Aliases can't be addressed by number, so you can define aliases for numbers.
+If value is empty, alias is deleted.
+Aliases also accept parameters, which are accessible through temporary vars %1-%9
+(%0 - entire string of parameters).
+<pre>
+Definition
+    !alias dis {get sword#wear sword}
+    !alias 1 {strangle $enemy}
+    !alias ppp {!show "Current path is $path"}
+With parameters
+    !alias v {!@var %0}  // now you can define vars as 'v a 1' ($a=1)
+Command x siorosh will produce c summon siorosh and c sleep siorosh
+    !alias x {c summon %0#c sleep %0}
+Alias to return one step back. For example accumulated path in var $path, now we also need an array
+of back steps
+    !var ret[w] e#!var ret[e] w#!var ret[s] n#!var ret[n] s#!var ret[u] d#!var ret[d] u
+    !alias return {!@var $laststep substr($path, -1)#!@var $path substr($path, 0, strlen($path)-1)#$ret[$laststep]#!show "Now the path is $path"}
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_aliases>
+<h2>ALIASES</h2>
+<pre>
+Syntax: !aliases [param]
+</pre>
+List all aliases (optionally containing param).
+<pre>
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_hl>
+<h2>HL</h2>
+<pre>
+Syntax: !hl &lt;{regexp}&gt; &lt;color1&gt; [color2]
+</pre>
+Definition of highlights. Regexp - regular expression to highlight, color1 - color
+at the beginning of matched string, color2 - at the end (if absent then 'default' color is used).
+See available colors with command <a href=#cmd_colors>colors</a>.
+2 colors allow to make multi-line highlights.
+You can test your regular expressions with command <a href=#cmd_test>test</a>.
+<pre>
+Colors all 'bashes' with red
+    !hl {bashes} red
+Color blue sanc off
+    !hl {The white aura around your body fades} cyan
+Color all players with sanc with white (char '(' is meta-char in regular expressions, so
+prepend it with slashes \\).
+    !hl {\\(White aura\\) .+ is .+ here} white
+Multi-line highlight with gray
+    !hl {^[A-Z][a-z]+ is using} default gray
+    !hl {&lt;wielded&gt;    } gray default
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_hls>
+<h2>HLS</h2>
+<pre>
+Syntax: !hls
+</pre>
+List all highlights.
+
+
+<br><br>
+<hr>
+<a name=cmd_trigger>
+<h2>TRIGGER</h2>
+<pre>
+Syntax: !trigger &lt;{regexp}&gt; &lt;{commands}&gt; [block]
+</pre>
+Definition of triggers. Triggers search for regular expression regexp in every line coming from
+MUD, and execute commands when match is found. All matched subexpressions (parts of regexp enclosed
+with '()') are assigned to array $reg in order of appearance in regexp ($reg[0] is equal to entire
+matched string).
+You can also use number of trigger instead of regexp to edit trigger.
+If commands are absent, trigger is deleted.<br>
+If you create a trigger on status line (prompt), then mark it as prompt with command
+<a href=#cmd_prompt>prompt</a>.<br>
+If optional parameter block is present, then trigger will be called on the text between
+prompts. This allows to implement multiline searches.
+You can test your regular expressions with command <a href=#cmd_test>test</a>.
+<pre>
+Simple triggers
+    !trigger {You are hungry} {c 'create food'#get mushroom#eat mushroom}
+    !trigger {You are thirsty} {get $water $bag#drink $water#put $water $bag}
+Delete trigger number 2
+    !trigger 2
+With regular expressions
+    !trigger {([A-Za-z])'s bash .+ you} {!@var $basher $reg[1]}
+Trigger on status line like &lt;10/100hp 20/200mana 40mv tnl:123456 Exits:EWN&gt;
+Matched subexpressions are assigned to vars.
+    !trigger {&lt;([0-9]+)/([0-9]+)hp ([0-9]+)/([0-9]+)mana ([0-9]+)mv tnl:([0-9]+) Exits:(.+)&gt;} {!@var $hp $reg[1]#!@var $maxhp $reg[2]#!@var $mana $reg[3]#!@var $maxmana $reg[4]#!@var $moves $reg[5]#!@var $tnl $reg[6]#!@var $exits $reg[7]}
+Multiline trigger: detection of Majere cleric and storing him in whois database (plugin Whois)
+    !trigger {([A-Z][a-z]+) is using:.+ a sign of the clenched Fist} {!@whois $reg[1] cleric of Majere} block
+</pre>
+
+<br>
+<hr>
+<a name=cmd_triggers>
+<h2>TRIGGERS</h2>
+<pre>
+Syntax: !triggers [param]
+</pre>
+List all triggers (optionally containing param).
+
+
+
+<br><br>
+<hr>
+<a name=cmd_action>
+<h2>ACTION</h2>
+<pre>
+Syntax: !action &lt;{regexp}&gt; &lt;{commands}&gt;
+</pre>
+Definition of actions. Actions search for regular expression regexp in every line coming from
+MUD, and execute commands when match is found. Regexp can contain variables, which will be
+automatically filled with matched substrings. Format for variable's value is defined in smc.ini,
+default value is ".+" (string of length more then 1 containing any chars). Actions are more simple version
+of triggers, but with less abilities. If you know regular expressions well, then actions are
+useless for you. With triggers you can parse any text, actions are limited in parsing
+by var's value format), but assign all vars automatically.<br>
+If commands are absent, action is deleted.<br>
+If you create an action on status line (prompt), then mark it as prompt with command
+<a href=#cmd_prompt>prompt</a>.<br>
+You can test your regular expressions with command <a href=#cmd_test>test</a>.
+<pre>
+Simple actions
+    !action {You are hungry} {eat $food}
+    !action {$basher's bash .+ you} {!null} // $basher will contain the name of attacker
+    !action {$someone leaves $direction\\.} {!show "$someone -> $direction"}
+You can't create an action for status line like &lt;10/100hp 20/200mana 40mv tnl:123456 Exits:EWN&gt;,
+because in this case $maxhp will contain not "100", but "100hp". But if you separate
+numbers from chars, then it is possible (for &lt;10/100 hp 20/200 mana 40 mv&gt;), and evaluate percents
+    !action {&lt;$hp/$maxhp hp $mana/$maxmana mana $moves mv&gt;} {!@var $hpp $hp/$maxhp*100#!@var $mnp $mana/$maxmana*100}
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_actions>
+<h2>ACTIONS</h2>
+<pre>
+Syntax: !actions [param]
+</pre>
+List all actions (optionally containing param).
+
+
+<br><br>
+<hr>
+<a name=cmd_prompt>
+<h2>PROMPT</h2>
+<pre>
+Syntax: !prompt [action|trigger] [N]
+</pre>
+Tells SMC that trigger or action number N is status line. Prompt doesn't track defined number,
+so if your actions/triggers changed their numbers, define prompt again.
+Some SMC funtions and many plugins depend on defined prompt, so set prompt as soon as possible.
+If called without params, then shows the current prompt.
+<pre>
+Show the current prompt
+    !prompt
+Set trigger number 8 as prompt
+    !prompt trigger 8
+</pre>
+
+<br>
+<hr>
+<a name=cmd_sub>
+<h2>SUB</h2>
+<pre>
+Syntax: !sub &lt;{regexp}&gt; &lt;{value}&gt; [later]
+</pre>
+Definition of substitutions. Subs search for regular expression regexp in every line coming from
+MUD and replace it with value. Regexp can contain variables, which will be
+automatically filled with matched substrings. Format for variable's value is defined in smc.ini,
+If value is empty, then substitution acts as a <a href=#cmd_gag>gag</a>.
+If value is absent, substitution is deleted.<br>
+Be default all substitutions are executed before actions and triggers, so they can act on them.
+To make them work after actions and triggers, use optional parameter later.
+<pre>
+Replace fuck with ****
+    !sub {fuck} {****}
+Remove spam from mobs
+    !sub {A merman guard says 'State your business .+, or be gone!'} {} 
+Remove all parried, dodged, etc. strikes on you
+    !sub {^You (parry|dodge|hand block|shield block).+} {}
+... and now your misses
+    !sub {^[A-Z][a-z]+ (parries|dodges|hand blocks|shield blocks) your .+} {}
+With vars
+    !sub {$enemy's kick dirt .+ you} {$enemy DIRTED ME!}
+Usage of later (show the new status line with percents, see example in <a href=#cmd_action>action</a>)
+    !sub {&lt;.+Exits:.+&gt;} {&lt;$hp/$hpp% $mana/$manap% $moves Tnl:$tnl Exits:$exits&gt;} later
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_subs>
+<h2>SUBS</h2>
+<pre>
+Syntax: !subs [param]
+</pre>
+List all subs (optionally containing param).
+
+
+<br><br>
+<hr>
+<a name=cmd_gag>
+<h2>GAG</h2>
+<pre>
+Syntax: !gag &lt;{regexp}&gt; &lt;mode1&gt; [mode2]
+</pre>
+Definition of gags. Gags search for regular expression regexp in every line coming from
+MUD and hide matched string. Regexp can contain variables, which are inserted in it before
+actual search. Don't mess with actions and subs: there variables are filled with matched
+strings, in gags their values used in search.<br>
+Gags use the similar way to hide, as coloring in <a href=#cmd_hl>hl</a>. You can specify 2 modes:<br>
+mode1 - mode that will be set at the beginning of line (entire line, not matched),<br>
+mode2 - mode at the end of line (if absent then vis).<br>
+Values for mode are: vis (visible) and hidden.
+2 modes allow to implement multiline gags.<br>
+When you configure multiline gags you can turn blocking mode on, but for example due to error
+in regular expression to switch it off it won't turn off, and you wont's see anything.
+To avoid such situations blocking is turned off when prompt arrives. If you configure
+gags off-line, you can manually turn it off by specifying keyword 'off' instead of regexp.
+You can check the status of blocking with command <a href=#cmd_simul>simul</a> (it just shows
+nothing).
+<pre>
+Remove all parried, dodged, etc. strikes on you
+    !gag {^You (parry|dodge|hand block|shield block).+} hidden
+Hide the whinning of you victim (with name in variable $victim)
+    !gag {^$victim tells you} hidden
+Multiline gags: hide all songs (for Solace MUD)
+    !gag {the deep words of} vis hidden
+    !gag {^ [A-Z].+'$( )?} hidden vis
+Turn blocking off
+    !gag off
+</pre>
+
+
+<br>
+<hr>
+<a name=cmd_gags>
+<h2>GAGS</h2>
+<pre>
+Syntax: !gags [param]
+</pre>
+List all gags (optionally containing param).
+
+
+<br><br>
+<hr>
+<a name=userfuncs>
+<h2>User defined functions</h2>
+Just learn PHP and write your own functions in userfunc.php. SMC is open source, so you can watch
+yourself how it works., what functions are present and how to use them. See example in
+<a href=#cmd_php>php</a> command how to call your functions.
+
+</body>
+</html>

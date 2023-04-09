@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS `sitebar_acl`;
+DROP TABLE IF EXISTS `sitebar_config`;
+DROP TABLE IF EXISTS `sitebar_group`;
+DROP TABLE IF EXISTS `sitebar_link`;
+DROP TABLE IF EXISTS `sitebar_member`;
+DROP TABLE IF EXISTS `sitebar_node`;
+DROP TABLE IF EXISTS `sitebar_root`;
+DROP TABLE IF EXISTS `sitebar_user`;
+DROP TABLE IF EXISTS `sitebar_session`;

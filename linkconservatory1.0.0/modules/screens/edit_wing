@@ -1,0 +1,50 @@
+<?
+	$Query = "SELECT ID, Title, Private, Description ";
+	$Query .= "FROM wing ";
+	$Query .= "WHERE ID=$inputWing ";
+	$DatabaseResult = mysql_query($Query, $DatabaseLink);
+	$DatabaseRow = mysql_fetch_row($DatabaseResult);
+	$door_ID = $DatabaseRow[0];
+	$door_Title = $DatabaseRow[1];
+	$door_Private = $DatabaseRow[2];
+	$door_Description = $DatabaseRow[3];
+
+	/* 
+	** display form for updating wing 
+	*/
+	print("<FORM ACTION=\"$IndexScript\" METHOD=\"get\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"SCREEN\" VALUE=\"tidy\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"ACTION\" VALUE=\"UPDATE_WING\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"what\" VALUE=\"wing\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"wing\" VALUE=\"$door_ID\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"inputWing\" VALUE=\"$inputWing\">\n");
+
+
+	print("Title of Wing<BR>\n");
+	print("<INPUT TYPE=TEXT NAME=\"inputTitle\" VALUE=\"$door_Title\" SIZE=\"50\"><BR>\n");
+	print("<BR>\n");
+
+	print("Description<BR>\n");
+	print("<TEXTAREA NAME=\"inputDescription\" COLS=\"50\" ROWS=\"10\">$door_Description</TEXTAREA><BR>\n");
+	print("<BR>\n");
+	
+	print("Who can go there<BR>\n");
+	print("<SELECT NAME=\"inputPrivacy\">");
+	print("<OPTION VALUE=\"N\"");
+	if($door_Private == "N")
+	{
+		print(" SELECTED");
+	}
+	print(">Everybody\n");
+	print("<OPTION VALUE=\"Y\"");
+	if($door_Private == "Y")
+	{
+		print(" SELECTED");
+	}
+	print(">Administrators Only\n");
+	print("</SELECT><BR>\n");
+	print("<BR>\n");
+
+	print("<INPUT TYPE=\"submit\" VALUE=\"Update Wing\"><BR>\n");
+	print("</FORM>\n");
+?>

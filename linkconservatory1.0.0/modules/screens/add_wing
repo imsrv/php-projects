@@ -1,0 +1,29 @@
+<?
+	/* 
+	** display form for adding wing 
+	*/
+	print("<FORM ACTION=\"$IndexScript\" METHOD=\"post\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"SCREEN\" VALUE=\"stroll\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"ACTION\" VALUE=\"ADD_WING\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"what\" VALUE=\"wing\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"wing\" VALUE=\"$wing\">\n");
+
+	print("Title of Wing<BR>\n");
+	print("<INPUT TYPE=TEXT NAME=\"inputTitle\" VALUE=\"\" SIZE=\"50\"><BR>\n");
+	print("<BR>\n");
+
+	print("Description<BR>\n");
+	print("<TEXTAREA NAME=\"inputDescription\" COLS=\"50\" ROWS=\"10\"></TEXTAREA><BR>\n");
+	print("<BR>\n");
+	
+	print("Who can go there<BR>\n");
+	print("<SELECT NAME=\"inputPrivacy\">");
+	print("<OPTION VALUE=\"N\" SELECTED>Everybody\n");
+	print("<OPTION VALUE=\"Y\">Administrators Only\n");
+	print("</SELECT><BR>\n");
+	print("<BR>\n");
+
+	print("<INPUT TYPE=SUBMIT VALUE=\"Add Wing\"><BR>\n");
+	print("</FORM>\n");
+
+?>

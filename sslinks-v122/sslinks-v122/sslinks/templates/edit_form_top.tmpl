@@ -1,0 +1,7 @@
+<b><a href="links.php">Links Home</a> : Edit Link : %name%</b><p>
+<form action=links.php method=post><input type=hidden name=action value=editlink><input type=hidden name=id value=%linkid%>
+Link Name: <input type=text name=link_name size=30 value="%name%" maxlength=100><p>
+Link URL: <input type=text name=link_url size=30 maxlength=255 value="%url%"><p>
+Link Description:<br>
+<textarea name=link_desc cols=40 rows=4>%description%</textarea><p>
+Link Category ID: <input type=text name=link_cat size=5 value="%catid%"> - 0 is the front page, any other number is one of the sub category pages.<p>

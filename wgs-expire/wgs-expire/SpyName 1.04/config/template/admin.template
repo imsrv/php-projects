@@ -1,0 +1,25 @@
+          <tr>
+          	<td colspan="2" class="BlueNoteColumnTD">Admin's interface
+        	<tr>
+          	<td>Admin's login
+						<td><input type="text" class="text" name="admlogin" value="<%admlogin%>">            
+        	<tr>
+          	<td>Admin's password
+						<td><input type="password" class="text" name="admpasswd" value="<%admpasswd%>">            
+        	<tr>
+          	<td>Confirmation
+						<td><input type="password" class="text" name="admconfirm" value="<%admpasswd%>">            
+        	<tr><td>
+        	<tr>
+          	<td><b>Powered by</b> text
+						<td><input type="text" class="text" name="poweredby_text" value="<%poweredby_text%>">
+        	<tr>
+          	<td><b>Powered by</b> URL
+						<td><input type="text" class="text" name="poweredby_url" value="<%poweredby_url%>">
+        	<tr>
+          	<td><b>Bugtrack</b> URL
+						<td><input type="text" class="text" name="bugtrack_url" value="<%bugtrack_url%>">
+        	<tr>
+          	<td>
+            		<input type="submit" name="save" value="Ok">
+          			<input type="reset" name="save" value="Reset">

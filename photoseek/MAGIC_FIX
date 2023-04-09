@@ -1,0 +1,12 @@
+Fix for magic file to recognize JPEG images
+-------------------------------------------
+
+As of 2000-03-23, the magic file that is packaged for Linux-Mandrake is missing
+descriptors to identify JPEG images. The following lines can be added to
+properly identify these images:
+
+  # JPEG image patch by jeff b <jeff@univrel.pr.uconn.edu>
+  6     string     JFIF     JPEG image data
+
+If you are using file 3.30, please disregard this message -- they have fixed
+that particular bug in that release.

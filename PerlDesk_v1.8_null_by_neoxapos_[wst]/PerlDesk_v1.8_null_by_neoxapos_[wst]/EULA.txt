@@ -1,0 +1,64 @@
+----------------------------------------------------------------------
+ 
+                PERLDESK CUSTOMER MANAGEMENT SOFTWARE   
+
+   PERLDESK EULA (END USER LICENSE AGREEMENT)
+----------------------------------------------------------------------
+
+PERLDESK is commercial software, only users who have purchased a valid
+license through PERLDESK.com and agree to the terms of this EULA can 
+install this product.
+
+----------------------------------------------------------------------
+
+                             LICENSE FOR ONE (1) PERLDESK INSTALLATION
+
+This EULA is a CONTRACT between you and JBServe LTD (PERLDESK) which covers
+your use of the software product that accompanies this EULA. The software 
+will be referred to herein as the "Software Product". A software license, 
+issued to a designated user only by JBServe LTD, is required for each user
+of the Software Product. 
+
+A software license is required for each installation of PERLDESK, by 
+explicitly accepting this EULA or by purchasing/downloading or installing 
+PERLDESK you are acknowledging and agreeing to the terms outlined below:
+Purchasing PERLDESK grants you the license for one installation on one 
+computer only,  if you require multiple installations of PERLDESK you must 
+have additional licenses for each installation.
+
+
+REFUND POLICY
+Refunds will be given at the discretion of the Company Management. In the 
+event a refund is given your license will be terminated and you, the client, 
+agree to destroy any copies of the software and any installations of PERLDESK.
+
+NO RIGHT TO TRANSFER.
+This license is non transferable, you may not re-sell this product or any 
+of the code included in any way. 
+You must not lease, rent, re-distribute the product to any party without 
+the developers prior written consent and approval.
+
+INTELLECTUAL PROPERTY RIGHTS
+PERLDESK is protected by copyright laws, you must not remove or alter any 
+copyright notices on the PERLDESK software without consent.
+
+
+WITHOUT WARRANTIES
+YOU ACCEPT THE SOFTWARE PRODUCT "AS IS" AND JBSERVE LIMITED MAKE NO WARRANTY 
+AS TO ITS USE, PERFORMANCE, OR OTHERWISE. 
+
+LIMITATION OF LIABILITY
+THE DEVELOPERS OF PERLDESK WILL HOLD NO LIABILITY OVER DAMAGES WHICH MAY 
+RESULT DIRECTLY OR INDIRECTLY FROM THE PRODUCTS USE , INCLUDING BUT NOT 
+LIMITED TO: LOSS OF DATA, FINANCIAL LOSS, LOSS OF BUSINESS. THE ENTIRE RISK 
+ARISING OUT OF USE OR PERFORMANCE OF THE SOFTWARE PRODUCT REMAINS WITH YOU.
+
+TERMINATION OF THIS LICENSE
+
+PERLDESK reserve the right to terminate your license if you fail to 
+comply with any term of this EULA. In such an event, you, the client, 
+agree to destroy any copies of the software and the installation.
+
+--
+
+To contact the developers of PERLDESK, please e-mail support@PERLDESK.com

@@ -1,0 +1,66 @@
+
+
+How to install autosurf 2.5
+
+
+#########################################################
+#                                                       #
+# This script was provided by:                          #
+#                                                       #
+# PHPSelect Web Development Division.                   #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are © 2004                      #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated in the script.                       #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# Any copying, distribution, modification with          #
+# intent to distribute as new code will result          #
+# in immediate loss of your rights to use this          #
+# program as well as possible legal action.             #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the authors at       #
+# admin@phpselect.com or info@phpselect.com             #
+#                                                       #
+#########################################################
+
+
+
+1)
+Please copy the database.sql-file (in database-directory) into your database.
+
+
+2)
+Configuration:
+
+You will need to update the following files:
+prepend.inc.php
+header.inc.php
+var.inc.php
+admin/header.inc.php
+member/header.inc.php
+var.inc.php
+Please insert your database information, so the script will be able to connect to your database.
+
+
+3)
+Upload the files.
+
+
+4)
+Now you may configure some information in the admin menu in www.yourdomain/admin/
+Don't forget to create a password protection (e.g. htaccess) for this directory!!!
+
+That's it. You should now have an working traffic exchange software.
+
+
+ 
+
+Please notice:
+We are not responsible for any damage or disadvantage which you or any user, sponsor or visitor may have.

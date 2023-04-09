@@ -1,0 +1,20 @@
+Dear %%friend_name%%,
+
+Your friend %%visitor_name%% found a job in which you can be interested.
+%%visitor_name%%'s email address: %%visitor_email%%
+%%visitor_name%%'s message:
+%%visitor_message%%
+
+Please read the job details below: 
+
+Title: %%job_jobtitle%%
+Category: %%job_category%%
+Employment Type: %%job_jobtype%%
+Description: 
+%%job_description%%
+Location: %%job_location%%
+
+You can find more details about the job and the company who posted it here:
+%%job_link%%
+
+Thank you.

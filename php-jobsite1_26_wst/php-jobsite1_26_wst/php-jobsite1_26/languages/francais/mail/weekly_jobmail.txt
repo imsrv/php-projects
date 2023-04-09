@@ -1,0 +1,14 @@
+Dear %%jobseeker_name%%,
+
+New jobs posted that match your resume category.
+<BEGIN REPEAT>
+Title: %%job_jobtitle%%
+Category: %%job_category%%
+Employment type: %%job_jobtype%%
+Description: 
+%%job_description%%
+Location: %%job_location%%
+Job Link: %%job_link%%
+<END REPEAT>
+
+Today: %%today_date%%

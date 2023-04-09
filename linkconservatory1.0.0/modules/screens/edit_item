@@ -1,0 +1,36 @@
+<?
+	$Query = "SELECT Title, URL, Description ";
+	$Query .= "FROM item ";
+	$Query .= "WHERE ID=$inputItem ";
+	$DatabaseResult = mysql_query($Query, $DatabaseLink);
+	$DatabaseRow = mysql_fetch_row($DatabaseResult);
+	$item_Title = $DatabaseRow[0];
+	$item_URL = $DatabaseRow[1];
+	$item_Description = $DatabaseRow[2];
+		
+
+	/* 
+	** display form for editing item
+	*/
+	print("<FORM ACTION=$IndexScript METHOD=\"get\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"SCREEN\" VALUE=\"tidy\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"ACTION\" VALUE=\"UPDATE_ITEM\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"what\" VALUE=\"item\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"wing\" VALUE=\"$wing\">\n");
+	print("<INPUT TYPE=HIDDEN NAME=\"inputItem\" VALUE=\"$inputItem\">\n");
+
+	print("Title<BR>");
+	print("<INPUT TYPE=\"text\" NAME=\"inputTitle\" VALUE=\"$item_Title\" SIZE=\"50\"><BR>\n");
+	print("<BR>\n");
+	print("URL<BR>");
+	print("<INPUT TYPE=\"text\" NAME=\"inputURL\" VALUE=\"$item_URL\" SIZE=\"50\"><BR>\n");
+	print("<BR>\n");
+	print("Description<BR>");
+	print("<TEXTAREA NAME=\"inputDesc\" COLS=50 ROWS=5 WRAP=\"soft\">$item_Description</TEXTAREA><BR>\n");
+
+	print("<BR>\n");
+
+	print("<INPUT TYPE=SUBMIT VALUE=\"Update Item\"><BR>\n");
+	print("</FORM>\n");
+
+?>

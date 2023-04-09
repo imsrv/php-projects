@@ -1,0 +1,17 @@
+Esse pequeno arquivo tem o objetivo de facilitar a busca entre os arquivos do seu localhost.
+
+-Com a busca você localiza arquivos dentro dos diretórios pesquisando por partes dos nomes dos arquivos.
+
+-Você pode organizar os arquivos pelo nome, pelo tipo, pela data da criação, e pelo tamanho do arquivo.
+
+-Você pode filtrar a listagem de arquivos pela primeira letra do nome deles, basta, para isso, clicar na letra correspondente, mediante a escolha na barra na parte superior.
+
+-A quantidade de arquivos do servidor.
+
+É muito simples de instalar, basta salvar no diretório root do seu localhost.
+
+Se alguém se interessar em ajudar no consertos de bugs,peço que envie uma cópia do mesmo para o e-mail klawdyo@gmail.com
+
+Atenciosamente,
+
+José Cláudio Medeiros de Lima

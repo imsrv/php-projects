@@ -1,0 +1,17 @@
+[dir]
+path=".";
+inc="./inc";
+
+[file]
+functions="./inc/functions.inc.php";
+password="./inc/password.inc.dat";
+request="./inc/request.inc.dat";
+case="./inc/case.inc.dat";
+host="./inc/host.inc.dat";
+
+[script]
+name="Manlix Site Grabber";
+prefix="manlix_site_grabber_";
+russian="Граббер по сайту";
+version="1.0";
+info="Не забывайте читать файл <a href=info.html><i>info.html</i></a>, в нём немало полезной информации.";

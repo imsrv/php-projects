@@ -1,0 +1,134 @@
+############################################################
+# php-Jobsite(TM)        Version 1.26 (15.07.2003)         #
+# Copyright  2002-2003 BitmixSoft. All rights reserved.    #
+#                                                          #
+# http://www.scriptdemo.com/php-jobsite/                   #
+#            Install Instructions                          #
+############################################################
+Installation:
+1. Manual
+2. Web based 
+
+1. Manual Installation:
+   --- Create a new MySql database (or use an old one)
+   --- Import the database information from mysql.sql in the new
+       database.
+   --- Open application_config_file.php and edit path  
+       and database connection settings
+   --- Change file permissions to 777 to the admin directory (you can 
+       change it back to 755 after you have password protected your
+       admin directory [ADMIN AREA]->[Script Management]->[Change Admin Password])
+   --- Change file permissions to 777 to the following directories
+       and any files(directory) under them :
+		- logs (script log file statistics)
+		- logo (employers logo images)
+                - resumes (jobseekers resume files)
+		- other (language images, language flags)
+		- languages (multilanguage support files)
+   --- Change file permissions to 666 to the following files:
+		- application_settings.php 
+		(the script settings you can change the information from
+		 [ADMIN AREA]->[Script Management]->[Script Settings])
+		- cc_payment_settings.php 
+		(the script Credit Card Processing settings you can change the information from
+		 [ADMIN AREA]->[Script Management]->[Payment Settings])
+		- design_configuration.php 
+		(the script design/layout settings you can change the information from
+		 [ADMIN AREA]->[Script Management]->[Layout Manager])
+   --- Point your browser to [http_server_path]/index.php
+   --- Check if everything is OK.
+   --- If you get an 550 Internal Server Error try to delete the .htaccess file from the main directory
+   --- Check admin directory [http_server_path]/admin/index.php
+   --- Read the given information about Admin Area Usage
+   --- Change Script Settings [ADMIN AREA]->[Script Management]->[Script Settings]
+   --- Change Script Layout [ADMIN AREA]->[Script Management]->[Layout Manager]
+   --- Change Planning Fees [ADMIN AREA]->[Script Management]->[Planning Manager] (change currency sign too)
+   --- Change admin password to password protect your admin directory
+       from curious eyes [ADMIN AREA]->[Script Management]->[Change Admin Password]
+   --- Make a database backup [ADMIN AREA]->[Database Management]->[Backup Database]
+   --- Change header and footer look from html directory (header.html, footer.html)
+   --- Change Terms and Conditions in the main directory (terms.html)
+   --- Make a copy of the all configured files
+   --- Delete install.php, mysql.sql, update.sql, you will not need them anymore.
+   --- When you finished the modification of the files on the admin you can change the file permission back to 644 for every file!
+   --- That's all.
+2. Web installation
+   --- Change file permissions to 777 to the admin directory (you can 
+       change it back to 755 after you have password protected your
+       admin directory [ADMIN AREA]->[Script Management]->[Change Admin Password])
+   --- Change file permissions to 777 to the following directories
+       and any files(directory)  under them :
+		- logs (script log file statistics)
+		- logo (employers logo images)
+                - resumes (jobseekers resume files)
+		- other (language images, language flags)
+		- languages (multilanguage support files)
+    --- Change file permissions to 666 to the following files:
+		- application_config_file.php 
+		( you can change it back after installation )
+		- application_settings.php 
+		(the script settings you can change the information from
+		 [ADMIN AREA]->[Script Management]->[Script Settings])
+		- cc_payment_settings.php 
+		(the script Credit Card Processing settings you can change the information from
+		 [ADMIN AREA]->[Script Management]->[Payment Settings])
+		- design_configuration.php 
+		(the script design/layout settings you can change the information from
+		 [ADMIN AREA]->[Script Management]->[Layout Manager])
+   --- Create a new Mysql database (or use an old one)
+       ! You will be asked during install about connection info.
+   --- Point your browser to [http_server_path]/install.php
+   --- If you get an 550 Internal Server Error try to delete the .htaccess file from the main directory
+   --- Follow the instructions, and enter the correct information
+       (These will install the database used by the script, and make script
+       configuration)
+   --- Point your browser to [http_server_path]/index.php
+   --- Check if everything is OK.
+   --- Check admin directory [http_server_path]/admin/index.php
+   --- Read the given information about Admin Area Usage
+   --- Change Script Settings [ADMIN AREA]->[Script Management]->[Script Settings]
+   --- Change Script Layout [ADMIN AREA]->[Script Management]->[Layout Manager]
+   --- Change Planning Fees [ADMIN AREA]->[Script Management]->[Planning Manager] (change currency sign too)
+   --- Change admin password to password protect your admin directory
+       from curious eyes [ADMIN AREA]->[Script Management]->[Change Admin Password]
+   --- Make a database backup [ADMIN AREA]->[Database Management]->[Backup Database]
+   --- Change header and footer look from html directory (header.html, footer.html)
+   --- Change Terms and Conditions in the main directory (terms.html)
+   --- Make a copy of the all configured files
+   --- Delete install.php, mysql.sql, update.sql, you will not need them anymore.
+   --- When you finished the modification of the files on the admin you can change the file permission back to 644 for every file!
+   --- That's all.
+
+   Note:
+   **** You can also change the design/layout editing job.css and jobn.css (first IE, NS6.x, Opera, second NS4 compatible)
+   **** [ADMIN AREA]->[Script Management]->[Layout Manager] is not working under Netscape 4.x
+  
+Here are the 3 files which have to run once a day, for sending jobmails, resumemails, delete expired jobs and plannings:
+[script_path]/admin/job_cron.php
+[script_path]/admin/jobmail_cron.php
+[script_path]/admin/resumemail_cron.php
+
+Cron job Example  - Linux Control Panel
+
+ 55 23 * * * /path/to/php [script_path]/admin/job_cron.php >/dev/null
+ 56 23 * * * /path/to/php [script_path]/admin/jobmail_cron.php >/dev/null
+ 57 23 * * * /path/to/php [script_path]/admin/resumemail_cron.php >/dev/null
+
+Or if there is no php you can use lynx:
+ 55 23 * * * /usr/local/bin/lynx -auth username:password -accept-all-cookies -dump http://www.yourjobsite.com/admin/job_cron.php >/dev/null
+
+More information:
+http://www.bluereef.net/support/extensions/admin/cron/crontab.html
+or a search on google.com with 'crontab documentation examples'
+
+
+Manually install a new language (if the admin gives an error - SAFE_MODE problem!):
+
+Copy from the "languages" directory the english.php and all "english" directory to a new folder on your home PC...
+Rename english.php to new_language.php and "english" directory to "new_language" directory!
+Copy this files back to the "languages" directory on the server! (chmod 777 all this new files/directories)
+Copy the attached file to the admin....Open the browser www.yoursite.com/admin/create_lng_db.php, enter the "new_language" and
+the new language shoould be created right away!
+
+If something wrong happen or an error occurred (not file permission error!)
+you can just ask our support (support@bitmixsoft.com / php-jobsite@bitmixsoft.com - www.bitmixsoft.com )

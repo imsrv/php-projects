@@ -1,0 +1,44 @@
+#  -----------------------------------------------------------------------------------------
+#  $Id: .htaccess,v 1.1 2003/09/06 21:38:27 fanta2k Exp $
+#
+#  neXTCommerce - ebusiness solutions
+#  http://www.nextcommerce.org
+#
+#  Copyright (c) 2003 neXTCommerce
+#                _  __ _____ _____                                            
+#     ____  ___ | |/ /_  __/ ____/___  ____ ___  ____ ___  ___  _____________ 
+#    / __ \/ _ \|   / / / / /   / __ \/ __ `__ \/ __ `__ \/ _ \/ ___/ ___/ _ \
+#   / / / /  __/   | / / / /___/ /_/ / / / / / / / / / / /  __/ /  / /__/  __/
+#  /_/ /_/\___/_/|_|/_/  \____/\____/_/ /_/ /_/_/ /_/ /_/\___/_/   \___/\___/ 
+#  -----------------------------------------------------------------------------------------
+#  based on: 
+#  (c) 2000-2001 The Exchange Project 
+#  (c) 2002-2003 osCommerce (.htaccess,v 1.1 2002/07/21); www.oscommerce.com 
+#
+#  Released under the GNU General Public License 
+#  -----------------------------------------------------------------------------------------
+# This is used with Apache WebServers
+#
+# The following makes adjustments to the SSL protocol for Internet
+# Explorer browsers
+#
+# For this to work, you must include the parameter 'Limit' to the
+# AllowOverride configuration
+#
+# Example:
+#
+#<Directory "/usr/local/apache/htdocs">
+#  AllowOverride Limit
+#</Directory>
+#
+# 'All' with also work. (This configuration is in your
+# apache/conf/httpd.conf file)
+
+<IfModule mod_setenvif.c>
+  <IfDefine SSL>
+    SetEnvIf User-Agent ".*MSIE.*" \
+             nokeepalive ssl-unclean-shutdown \
+             downgrade-1.0 force-response-1.0
+  </IfDefine>
+</IfModule>
+

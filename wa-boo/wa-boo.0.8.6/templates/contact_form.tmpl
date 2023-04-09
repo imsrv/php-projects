@@ -1,0 +1,379 @@
+<html>
+    <head>
+        <title>wa-boo</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+            <style><? include ("includes/css.php"); ?></style>
+
+        <script language="javascript">
+            function valid_checkbox() {
+                with (document.contactaction) {
+                    if (i_privacy[2].checked == true) { //radio DOMAIN checked
+                        return true;
+                    } else { // radio PUBLIC or PRIVATE checked
+                        alert ("<? echo NoHTML_Spaces($lab[49]); /* Vous ne pouvez sélectionner un groupe que lorsque le type 'Groupe' est sélectionné ! */ ?>");
+                        return false;
+                    }
+                }
+            }
+
+            function valid_radio() {
+                var nbElem = document.contactaction.elements.length; // Warning
+                var cpt = 0;
+                for (i = 23; i <= (nbElem-2); i++) {    // initial value of i is position of radio domains, hidden fields included
+                    document.contactaction.elements[i].checked = false;
+                    cpt++;
+                }
+                return true;
+            }
+        </script>
+    </head>
+
+    <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+    <div align="center">
+  <table border="0" cellspacing="0" cellpadding="0">
+       <tr>
+      <td class="versionfont"><img src="images/wa-boo_small.gif">
+        <? echo $G_version ;?>
+      </td>
+    <tr>
+      <td>
+        <form name="contactaction" method="post" action="contact_action.php">
+          <input type="hidden" name="cID" value="<? echo (session_is_registered("s_contact") ? $s_contact["id"] : $current_contact->getContactId()); ?>">
+          <input type="hidden" name="ct_whichaction" value="SAVE">
+     
+          <? /* Warning the javascript must find the good number of elements */ ?>
+          <table border="0" cellspacing="0" cellpadding="0" background="images/bg1.gif">
+            <tr>
+              <td background="images/left_top_corner.gif" height="7"></td>
+              <td background="images/h_line_top.gif" height="7" colspan="4"></td>
+              <td background="images/right_top_corner.gif" height="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"> 
+              </td>
+              <td colspan="4" class="stdtitle" height="15" align="center" bgcolor="<? echo $s_user_context["color"]["menu"] ?>"><? echo $lab[27]; /* Fiche contact */ ?></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td colspan="4" height="7" align="center" background="images/h_line.gif"></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td colspan="4"></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[30]; /* Prénom */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="contactlistfont">
+                <input type="text" name="i_firstname" value="<? echo (session_is_registered("s_contact") ? $s_contact["firstname"] : $current_contact->getContactFirstname()); ?>" maxlength="50" size="30">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right">[<font color="#FFAA00">*</font>] <? echo $lab[31]; /* Nom */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <input type="text" name="i_name" value="<? echo (session_is_registered("s_contact") ? $s_contact["name"] : $current_contact->getContactName()); ?>" size="30" maxlength="50">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[32]; /* Adresse */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <input type="text" name="i_addr1" value="<? echo (session_is_registered("s_contact") ? $s_contact["addr1"] : $current_contact->getContactAddr1()); ?>" size="30" maxlength="100">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[33]; /* Adresse (2) */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <input type="text" name="i_addr2" value="<? echo (session_is_registered("s_contact") ? $s_contact["addr2"] : $current_contact->getContactAddr2()); ?>" size="30" maxlength="100">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[34]; /* Code postal */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <input type="text" name="i_zip" value="<? echo (session_is_registered("s_contact") ? $s_contact["zip"] : $current_contact->getContactZip()); ?>" size="10" maxlength="10">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[35]; /* Ville */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <input type="text" name="i_city" value="<? echo (session_is_registered("s_contact") ? $s_contact["city"] : $current_contact->getContactCity()); ?>" size="30" maxlength="50">
+             </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[36]; /* Pays */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <input type="text" name="i_country" value="<? echo (session_is_registered("s_contact") ? $s_contact["country"] : $current_contact->getContactCountry()); ?>" size="30" maxlength="50">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[37]; /* E-mail */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <input type="text" name="i_email" value="<? echo (session_is_registered("s_contact") ? $s_contact["email"] : $current_contact->getContactEmail()); ?>" size="30" maxlength="50">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[38]; /* Pseudo messagerie */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <input type="text" name="i_instantmsg" value="<? echo (session_is_registered("s_contact") ? $s_contact["instantmsg"] : $current_contact->getContactInstantmsg()); ?>" size="30" maxlength="50">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[39]; /* www */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <input type="text" name="i_www" value="<? echo (session_is_registered("s_contact") ? $s_contact["www"] : $current_contact->getContactWww()); ?>" size="30" maxlength="100">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[40]; /* Téléphone */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <input type="text" name="i_phone" value="<? echo (session_is_registered("s_contact") ? $s_contact["phone"] : $current_contact->getContactPhone()); ?>" size="20" maxlength="20">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[41]; /* Portable */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <input type="text" name="i_cellular" value="<? echo (session_is_registered("s_contact") ? $s_contact["cellular"] : $current_contact->getContactCell()); ?>" size="30" maxlength="30">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[42]; /* Tél. professionnel */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <input type="text" name="i_phonepro" value="<? echo (session_is_registered("s_contact") ? $s_contact["phonepro"] : $current_contact->getContactPhonepro()); ?>" size="30" maxlength="30">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[43]; /* Fax */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <input type="text" name="i_fax" value="<? echo (session_is_registered("s_contact") ? $s_contact["fax"] : $current_contact->getContactFax()); ?>" size="30" maxlength="30">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[44]; /* Entreprise */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <input type="text" name="i_firm" value="<? echo (session_is_registered("s_contact") ? $s_contact["firm"] : $current_contact->getContactFirm()); ?>" size="30" maxlength="30">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[45]; /* Poste occupé / métier */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <input type="text" name="i_position" value="<? echo (session_is_registered("s_contact") ? $s_contact["position"] : $current_contact->getContactPosition()); ?>" size="30" maxlength="30">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right" valign="top"><? echo $lab[46]; /* Observations */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+                <textarea name="i_misc" cols="30" rows="5"><? echo (session_is_registered("s_contact") ? $s_contact["misc"] : $current_contact->getContactMisc()); ?></textarea>
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[47]; /* Catégorie */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="130" class="stdfont">
+
+                <select name="i_contact_cat">
+                
+                  <?  for ($i = 0 ; $i < 10; $i++) { 
+                    if ($user_cat[$i] != "") { ?>
+                            
+                        
+                  <option value="<? echo $i; ?>"<? 
+                        $selection = "";
+                        if (session_is_registered("s_contact")) {
+                            if ($i == $s_contact["cat"]) {
+                                $selection = " selected";
+                            }
+                        } else {
+                            if ($i == $current_contact->getContactCategory()) {
+                                $selection = " selected";
+                            }
+                        }
+                        echo $selection; ?>>
+                        
+                  <? echo $user_cat[$i]; ?>
+                        </option>
+                
+                  <?      }  
+                }       ?>
+              
+                </select>
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right"><? echo $lab[53]; /* Type */ ?></td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="140" class="stdfont"> 
+              
+                <input type="radio" name="i_privacy" value="PRIVATE"<? echo ($current_contact->getContactPrivacy() == "PRIVATE" || $current_contact->getContactPrivacy() == "" ? " checked" : ""); ?> onClick="return valid_radio();">
+              &nbsp;<? echo $lab[50]; /* Privé */ ?></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="140" class="stdfont"> 
+              
+                <input type="radio" name="i_privacy" value="PUBLIC"<? echo ($current_contact->getContactPrivacy() == "PUBLIC" ? " checked" : ""); ?> onClick="return valid_radio();">
+              &nbsp;<? echo $lab[51]; /* Public */ ?></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="140" class="stdfont"> 
+              
+                <input type="radio" name="i_privacy" value="DOMAIN"<? echo ($current_contact->getContactPrivacy() == "DOMAIN" ? " checked" : ""); ?> onClick="return valid_radio();">
+              &nbsp;<? echo $lab[52]; /* Groupe */ ?></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="right">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td width="5">&nbsp;</td>
+              <td class="stdfont"> 
+            
+                <?  $temp_array = $current_contact->getContactDomains();
+                for ($i = 0; $i < count($user_domains); $i++) { ?>
+               
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="i_chkCtDomain[<? echo $i; ?>]" value="<? echo $user_domains[$i]["id"]; ?>"<? echo (in_array($user_domains[$i]["id"], $temp_array) ? " checked" : ""); ?> onClick="return valid_checkbox();">
+                    
+                <? echo $user_domains[$i]["name"]; ?>
+                    <br>
+            
+                <?  }?>
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td class="stdfont" align="left" rowspan="7" valign="bottom" height="35"><a href="contacts.php"><img src="images/prev.gif" border="0"></a></td>
+              <td class="stdfont" align="right" rowspan="7">&nbsp;</td>
+              <td class="stdfont" align="right" rowspan="7">&nbsp;</td>
+              <td class="stdfont" align="right" rowspan="7" valign="bottom">
+                <input type="reset" value="<? echo $lab[28]; /* Effacer */ ?>" name="reset" class="userbutton">
+                <input type="submit" value="<? echo $lab[29]; /* Enregistrer */ ?>" name="submit" class="userbutton">
+              </td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td background="images/v_line_left.gif" width="7"></td>
+              <td valign="top" background="images/v_line_right.gif" width="7"></td>
+            </tr>
+            <tr>
+              <td class="stdfont" height="7" background="images/left_bottom_corner.gif"></td>
+              <td height="7" background="images/h_line_bottom.gif" colspan="4"></td>
+              <td height="7" background="images/right_bottom_corner.gif"></td>
+            </tr>
+        
+          </table>
+        </form>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<?
+   include ("footer.php");
+?>
+</body>
+</html>

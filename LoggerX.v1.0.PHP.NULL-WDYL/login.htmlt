@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>Untitled</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+		<form action="login.php" method=post><br><br>
+	<table align="center" border=1 bordercolor="#000000">
+		<tr align="center">
+			<td colspan=2 class="Header"> Login </td>
+		</tr>
+		<tr>
+			<td class="subheader"> Username </td> <td class="Table"> <input type=text name="a" value="<? echo $login; ?>"></td>
+		</tr>
+		<tr>
+			<td class="subheader"> Password </td> <td class="Table"> <input type=password name="p"></td>
+		</tr>
+		<tr align="center">
+			<td colspan=2  class="Header"> <input type=submit name="login" value="Login"></td>
+		</tr>
+	</table><br><br>
+	</form>
+
+
+</body>
+</html>

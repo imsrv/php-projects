@@ -1,0 +1,37 @@
+<table width="100%" border="0" cellpadding="15" cellspacing="0" bgcolor="#FFFFFF">
+<tr>
+	<td>
+		<span class="text5">Generic Link Codes (GLC) Integration Manual</span>
+		<hr width="100%" size="1"><br>
+
+		You can use the following form template to create your own forms to link to <?=$sitename?>:
+		<p>
+<table cellpadding="0" cellspacing="0" class="tbin">
+<tr><td class="tdtitle">Example Form 1</td></tr>
+<tr><td height="8" class="tdin"></td></tr>
+<tr>
+	<td class="tdin">
+		&lt;form method="post" action="<?=$siteurl?>/handle.php" target="_blank"&gt;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&lt;input type=hidden name=merchantAccount value="<b><FONT COLOR="#ff3333"><?=$sitename?>_username</font></b>"&gt;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&lt;input type=hidden name="amount" value="<b><FONT COLOR="#ff3333">amount</font></b>"&gt;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&lt;input type=hidden name="item_id" value="<b><FONT COLOR="#ff3333">product id</font></b>"&gt;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&lt;input type=hidden name="return_url" value="<b><FONT COLOR="#ff3333">ANY Return URL you want here </font></b>"&gt;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&lt;input type=hidden name="cancel_url" value="<b><FONT COLOR="#ff3333">ANY Cancel URL you want here </font></b>"&gt;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&lt;input type=hidden name="SUGGESTED_MEMO" value="<b><FONT COLOR="#ff3333">ANY additional info you want here</font></b>"&gt;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&lt;input type=submit name="cartImage" value="<b><FONT COLOR="#ff3333">ANY text you want here</font></b>"&gt;<br>
+		&lt;/form&gt;
+	</td>
+</tr>
+</table>
+		</p>
+		<br><br>
+	</td>
+</tr>
+</table>

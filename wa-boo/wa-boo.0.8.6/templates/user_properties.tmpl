@@ -1,0 +1,323 @@
+<html>
+    <head>
+       <title>wa-boo</title>
+       <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+           <style><? include ("includes/css.php"); ?></style>
+    
+    </head>
+
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<form name="propertiesform" method="post" action="user_properties.php">
+
+<div align="center" class="versionfont">
+    <table cellspacing="0" cellpadding="0" border="0">
+    <? tuneDisplay(); /* to avoid windows server display problems */ ?>
+    <tr>
+      <td class="versionfont"><img src="images/wa-boo_small.gif">
+        <? echo $G_version ;?>
+      </td>
+    </tr>
+    <tr>
+      <td>
+          <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td background="images/left_top_corner.gif" height="7"></td>
+            <td background="images/h_line_top.gif" height="7"></td>
+            <td background="images/right_top_corner.gif" height="7"></td>
+          </tr>
+          <tr>
+            <td background="images/v_line_left.gif" width="7"></td>
+            <td class="stdtitle" height="18" align="left" bgcolor="<? echo $s_user_context["color"]["menu"] ?>" valign="top">
+		        <a title="Retour" href="contacts.php"><img src="images/prev.gif" border="0"></a>
+		        <? echo $lab[0]; /* Preferences - */ ?><? echo $s_user->getUserFirstname() . " " . $s_user->getUserName(); ?></td>
+            <td valign="top" background="images/v_line_right.gif" width="7"></td>
+          </tr>
+      
+          <tr>
+            <td background="images/v_line_left.gif" width="7"></td>
+            <td height="7" align="center" background="images/h_line.gif"></td>
+            <td valign="top" background="images/v_line_right.gif" width="7"></td>
+          </tr>
+           
+          
+
+      
+          <tr>
+            <td background="images/v_line_left.gif" width="7"></td>
+            <td class="stdfont" align="right">
+		  
+              
+		        <input type="hidden" name="properties_whichaction" value="SAVE">
+                <table border="0" cellspacing="1" cellpadding="5" bgcolor="#EEEEEE">
+            
+                  <tr valign="top"> 
+                    <td class="stdtitle" height="25" align="center" width="50%"> 
+                      <table width="100%" border="0" cellpadding="0" cellspacing="0" background="images/bg1.gif">
+                        <tr align="center"> 
+                          <td class="boldstdfont" height="25" align="center" colspan="2"><? echo $lab[1]; /* Catégories */ ?></td>
+                        </tr>
+                        <? for($i = 0; $i < 10; $i++) {  ?>
+                        <tr align="center"> 
+                          <td class="stdfont" align="right"> 
+                            <? echo $lab[3] /* n° */  . ($i+1); ?>
+                      &nbsp;
+                    </td>
+                          <td class="stdtitle" align="left"> 
+                            <input name="<? echo "i_user_cat[". $i . "]"; ?>" value="<? echo $i_user_cat[$i]; ?>" size="24" maxlength="24">
+                    </td>
+                        </tr>
+                        <tr align="center"> 
+                          <td height="5" align="right" colspan="2"></td>
+                        </tr>
+                        <? } ?>
+                      </table>
+                    </td>
+                    <td class="stdtitle" height="25" align="center"> 
+                      <table width="100%" cellspacing="0" cellpadding="0" border="0" background="images/bg1.gif">
+                        <tr align="center"> 
+                          <td class="boldstdfont" height="25" align="center" colspan="2"><? echo $lab[2]; /* Liste des contacts */ ?></td>
+                        </tr>
+                        <? for($k = 0; $k < 4; $k++) {  ?>
+                        <tr> 
+                          <td class="stdfont" height="25" align="right"><? echo $lab[4]; /*  champ n° */ ?><? echo $k + 1; ?>&nbsp;
+                    </td>
+                          <td class="stdtitle" height="25" align="left"> 
+                            <select name="i_list_field[<? echo $k; ?>]">
+                              <option value="-1"<? echo($user_list_prefs[$k] == "no" ? " selected" : ""); ?>><? echo $lab[5]; /* -- Aucun -- */?></option>
+                              <?  for($m = 0; $m < count($s_combo_fields) - 1; $m++) { ?>
+                                
+                              <option value="<? echo $m; ?>"<? echo($user_list_prefs[$k] == $m ? " selected" : ""); ?>> 
+                              <? echo $s_combo_fields[$m]["label"]; // loaded on begining of session by function loadLangParameters ?>
+                        </option>
+                              <?  }  ?>
+                            </select>
+                    </td>
+                        </tr>
+                        <? } ?>
+                        <tr align="center"> 
+                          <td class="boldstdfont" height="25" align="center" colspan="2"><? echo $lab[6]; /* Survol des contacts */ ?></td>
+                        </tr>
+                        <? for($k = 0; $k < 6; $k++) {  ?>
+                        <tr> 
+                          <td class="stdfont" height="25" align="right"><? echo $lab[4]; /*  champ n° */ ?><? echo $k + 1; ?>&nbsp;
+                    </td>
+                          <td class="stdtitle" height="25" align="left"> 
+                            <select name="i_alt_field[<? echo $k; ?>]">
+                              <option value="-1"<? echo($user_alt_prefs[$k] == "no" ? " selected" : ""); ?>><? echo $lab[5]; /* -- Aucun -- */?></option>
+                              <?  for($m = 0; $m < count($s_combo_fields) - 1; $m++) { ?>
+                              <option value="<? echo $m; ?>"<? echo($user_alt_prefs[$k] == $m ? " selected" : ""); ?>> 
+                              <? echo $s_combo_fields[$m]["label"]; // loaded on begining of session by function loadLangParameters ?>
+                        </option>
+                              <?  }  ?>
+                            </select>
+                    </td>
+                        </tr>
+                        <? } ?>
+                        <tr align="center"> 
+                          <td height="5" align="right" colspan="2"></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr align="center"> 
+                    <td class="stdtitle" height="1" colspan="3"></td>
+                  </tr>
+                  
+                  <!-- affichage des checks -->
+                  <tr align="center"> 
+                    <td class="stdtitle" height="25" colspan="3"> 
+                      <table cellpadding="0" cellspacing="0" background="images/bg1.gif" border="0">
+                        <tr align="center"> 
+                          <td class="boldstdfont" align="center" colspan="2"><? echo $lab[7]; /* Recherche */ ?></td>
+                        </tr>
+                        <tr> 
+                          <td class="stdfont" align="center" colspan="2"><i><? echo $lab[8]; /* Dans les options de recherche, sélectionner par défaut : */ ?></i></td>
+                        </tr>
+                        <tr> 
+                          <td class="stdfont" align="right"><? echo $lab[9]; /* les contacts publics */ ?></td>
+                          <td> 
+                            <input type="checkbox" name="i_chkPubCt" value="pubCtOn"<? echo ($i_chkPubCt == "pubCtOn" ? " checked" : ""); ?>>
+                          </td>
+                        </tr>
+                        <tr> 
+                          <td class="stdfont" align="right"><? echo $lab[10]; /* les contacts des groupes */ ?></td>
+                          <td> 
+                            <input type="checkbox" name="i_chkDomCt" value="domCtOn"<? echo ($i_chkDomCt == "domCtOn" ? " checked" : ""); ?>>
+                          </td>
+                        </tr>
+                        <tr> 
+                          <td class="stdfont" align="right"><? echo $lab[11]; /* les contacts privés */ ?></td>
+                          <td> 
+                            <input type="checkbox" name="i_chkPriCt" value="priCtOn"<? echo ($i_chkPriCt == "priCtOn" ? " checked" : ""); ?>>
+                            <select name="i_search_category">
+                              <option value="-1"<? echo($i_search_category == "-1" ? " selected" : ""); ?>><? echo $lab[12]; /* Tous */ ?></option>
+                              <?  for($i = 0; $i < 10; $i++) {  
+                                if (trim($i_user_cat[$i] != "")) { ?>
+                                    
+                                  <option value="<? echo $i; ?>"<? echo($i == $i_search_category ? " selected" : ""); ?>> 
+                              <? echo $i_user_cat[$i]; ?>
+                                    </option>
+                              <?  }
+                                } ?>
+                            </select>
+                    </td>
+                        </tr>
+                        <tr>
+                          <td class="stdfont" align="right"><? echo $lab[13]; /* Recherche de type '<b>Commence par</b> */ ?></td>
+                          <td class="stdfont" align="left">
+                            <input type="radio" name="i_search_position" value="POSITION_START" <? echo($i_search_position == "POSITION_START" ? " checked" : ""); ?>>
+                            <input type="radio" name="i_search_position" value="POSITION_ANYWHERE" <? echo($i_search_position == "POSITION_ANYWHERE" ? " checked" : ""); ?>>
+                            <? echo $lab[14]; /* Recherche de type '<b>contient</b> */ ?></td>
+                        </tr>
+                        <tr> 
+                          <td class="stdfont" align="right"><? echo $lab[15]; /* Recherche limitée au champ '<b>Nom' */ ?></b></td>
+                          <td class="stdfont" align="left"> 
+                            <input type="radio" name="i_search_field" value="FIELD_NAME" <? echo($i_search_field == "FIELD_NAME" ? " checked" : ""); ?>>
+                            <input type="radio" name="i_search_field" value="FIELD_ALL" <? echo($i_search_field == "FIELD_ALL" ? " checked" : ""); ?>>
+                            <? echo $lab[16]; /* Recherche dans <b>tous</b> les champs */ ?></td>
+                        </tr>
+                        <tr> 
+                          <td height="5" align="right" colspan="2"></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td class="stdtitle" height="5" colspan="3" align="center"></td>
+                  </tr>
+                  <tr align="right"> 
+                    <td class="stdtitle" align="center" colspan="2"> 
+                      <table cellspacing="0" cellpadding="0" border="0" background="images/bg1.gif">
+                        <tr> 
+                          <td class="boldstdfont" align="center" colspan="7"><? echo $lab[17]; /* Divers */ ?></td>
+                        </tr>
+                        <tr> 
+                          <td class="stdfont" align="right"><? echo $lab[18]; /* Langue */ ?></td>
+                          <td class="stdfont" colspan="6"> 
+                            <select name="i_language">
+                               
+                              <?  for($x = 0; $x < count($G_languages); $x++) {  ?>
+                              <option value="<? echo $G_languages[$x]["short"]; ?>"<? echo($G_languages[$x]["short"] == $i_language ? " selected" : ""); ?>><? echo $G_languages[$x]["full"]; ?></option>
+                              <?  } ?>
+                            </select>
+                          </td>
+                        </tr>
+						            <tr> 
+                          <td class="stdfont" align="right"><? echo $lab[19]; /* Afficher le <b>NOM</b> des contacts en majuscule */ ?></td>
+                          <td class="stdfont" colspan="6"> 
+                            <input type="checkbox" name="i_name_case" value="UPPER_CASE" <? echo ($i_name_case == "UPPER_CASE" ? "checked" : ""); ?>>
+                      </td>
+                        </tr>
+                        <tr> 
+                          <td class="stdfont" align="right"><? echo $lab[20]; /* Confirmer les suppressions */ ?></td>
+                          <td colspan="6"> 
+                            <input type="checkbox" name="i_confirm_del" value="confirmDelOn" <? echo ($i_confirm_del == "confirmDelOn" ? "checked" : ""); ?>>
+                      </td>
+                        </tr>
+                        <tr> 
+                          <td class="stdfont" align="right"><? echo $lab[21]; /* Nombre de contacts par page */ ?></td>
+                          <td class="stdfont" align="left" colspan="6"> 
+                            <input name="i_page_size" value="<? echo $i_page_size; ?>" size="3" maxlength="2">
+                            <? echo $lab[22]; /* (0 pour désactiver) */ ?></td>
+                        </tr>
+                    
+                        <tr> 
+                          <td class="boldstdfont" align="center" colspan="7" height="15"></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr align="center">
+			              <td colspan=2>
+                      <table cellspacing="0" cellpadding="0" border="0" background="images/bg1.gif">
+                        <tr> 
+                          <td class="boldstdfont" align="center" colspan="7"><? echo $lab[23]; /* Couleurs et polices */ ?></td>
+                        </tr>
+                  
+				                <tr>
+                          <td class="stdfont" align="right"><? echo $lab[24]; /* Couleur des barres de menu */ ?></td>
+                          <td class="stdfont" align="center" bgcolor="<? echo $s_temp_color["menu"]; ?>" width="75" valign="middle" height="30">
+                            <img src="<? echo (buttonFontColor($s_temp_color["menu"]) == "#FFFFFF" ? "images/menu_sample_white.gif" : "images/menu_sample_black.gif"); ?>"></td>
+                          <td class="stdfont" align="center" valign="middle">
+                            <input type="text" name="i_menu_color" size="9" maxlength="7" value="<? echo $s_temp_color["menu"]; ?>">
+                          </td>
+                          <td class="stdfont" align="left" width="21" valign="middle" colspan="4">
+					                  <a href="user_color.php?menubgcolor=<? echo substr($s_user_context["color"]["menu"],1,6); ?>"><img src="images/palette.gif" border="0"></a></td>
+                        </tr>
+				                <tr>
+                          <td class="stdfont" align="right"><? echo $lab[25]; /* Couleur des boutons */ ?></td>
+                          <td class="stdfont" align="center">
+					                  <input type="button" value="<? echo $lab[27]; /* Test */ ?>" name="button" class="tempuserbutton">
+                          </td>
+                          <td class="stdfont" align="center" valign="middle">
+                            <input type="text" name="i_button_color" size="9" maxlength="7" value="<? echo $s_temp_color["button"]; ?>">
+                          </td>
+                          <td class="stdfont" align="left" width="21" valign="middle" colspan="4">
+					                  <a href="user_color.php?buttonbgcolor=<? echo substr($s_user_context["color"]["menu"],1,6); ?>"><img src="images/palette.gif" border="0"></a></td>
+                        </tr>
+				                <tr>
+                          <td class="stdfont" align="right"><? echo $lab[26]; /* Police principale */ ?></td>
+                          <td class="tempstdfont" align="center"><? echo $lab[27]; /* Test */ ?></td>
+                          <td class="stdfont" align="left">
+                            <input type="text" name="i_std_font_color" size="9" maxlength="7" value="<? echo $s_temp_color["stdfontcolor"]; ?>">
+					  
+                          </td>
+                          <td class="stdfont" align="left">
+					                  <a href="user_color.php?stdfontcolor=<? echo substr($s_user_context["color"]["stdfontcolor"],1,6); ?>"><img src="images/palette.gif" border="0"></a> </td>
+                          <td class="stdfont" align="left">&nbsp;</td>
+                          <td class="stdfont"><? echo $lab[28]; /* Taille */ ?></td>
+                          <td class="stdfont" align="left">
+                            <input type="text" name="i_std_font_size" size="3" maxlength="2" value="<? echo $s_temp_color["stdfontsize"]; ?>">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="stdfont" align="right"><? echo $lab[29]; /* Police secondaire */ ?></td>
+                          <td class="templistfont" align="center"><? echo $lab[27]; /* Test */ ?></td>
+                          <td class="stdfont" align="left">
+                            <input type="text" name="i_list_font_color" size="9" maxlength="7" value="<? echo $s_temp_color["listfontcolor"]; ?>">
+                      
+                          </td>
+                          <td class="stdfont" align="left">
+					                  <a href="user_color.php?listfontcolor=<? echo substr($s_user_context["color"]["listfontcolor"],1,6); ?>"><img src="images/palette.gif" border="0"></a></td>
+                          <td class="stdfont" align="left" width="7"></td>
+                          <td class="stdfont" align="left"><? echo $lab[28]; /* Taille */ ?></td>
+                          <td class="stdfont" align="left">
+                            <input type="text" name="i_list_font_size" size="3" maxlength="2" value="<? echo $s_temp_color["listfontsize"]; ?>">
+                          </td>
+                        </tr>
+                  				  
+				                <tr bgcolor="#EEEEEE">
+                          <td class="stdfont" align="left" valign="bottom"><a title="<? echo $lab[31]; /* << Annuler */ ?>" href="contacts.php"><img src="images/prev.gif" border="0"></a></td>
+                          <td class="stdfont" align="right" height="30" valign="bottom" colspan="6">
+                            <input type="submit" name="OK" value="<? echo $lab[30]; /* OK */ ?>" class="userbutton">
+                    		  </td>
+                    		</tr>
+                      </table>
+                    </td>
+                  </tr>
+		        </table>
+              
+            <td valign="top" background="images/v_line_right.gif" width="7"></td>
+		</tr>
+          <tr>
+      
+            <td class="texteg" height="7" background="images/left_bottom_corner.gif"></td>
+            <td height="7" background="images/h_line_bottom.gif"></td>
+            <td height="7" background="images/right_bottom_corner.gif"></td>
+          </tr>
+        
+    
+        </table>
+      </td>
+    </tr>
+  </table>
+  
+</div>
+ </form>
+ <?
+   include ("footer.php");
+?> 
+
+
+</body>
+</html>

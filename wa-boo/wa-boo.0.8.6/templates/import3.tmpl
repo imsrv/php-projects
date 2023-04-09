@@ -1,0 +1,186 @@
+<html>
+<head>
+       <title>wa-boo</title>
+       <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <style><? include ("includes/css.php"); ?></style> 
+    </head>
+
+<body topmargin="0">
+
+<form name="combosform" method="post" action="import3.php" >  
+  <table cellspacing="5" cellpadding="5" align="center">
+    <tr>
+      <td class="versionfont"><img src="images/wa-boo_small.gif">
+        <? echo $G_version ;?>
+      </td>
+    </tr>
+  
+    <tr>
+      <td colspan="2">
+        <table border="0" cellpadding="0" bgcolor="#F5F5F9" cellspacing="0">
+          <tr>
+            <td background="images/left_top_corner.gif" height="7"></td>
+            <td background="images/h_line_top.gif" height="7"></td>
+            <td background="images/right_top_corner.gif" height="7"></td>
+          </tr>
+          
+          <tr> 
+            <td background="images/v_line_left.gif" width="7"></td>
+            <td class="boldstdfont" bgcolor="#EEEEFF" >
+              <table border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" background="images/bg1.gif">
+                <tr align="center" bgcolor="<? echo $s_user_context["color"]["menu"] ?>"> 
+                  <td colspan="3" class="stdtitle"><? echo $lab[0]; /* Etape 3 : sélection des champs à importer */ ?></td>
+                </tr>
+                <tr>
+                  <td background="images/h_line.gif" align="center" colspan="7" height="7"></td>
+                </tr>
+                <tr align="center"> 
+                  <td width="15" class="stdfont">&nbsp;</td>
+                  <td align="left" class="boldstdfont" height="25">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                      <tr align="center" valign="middle">
+                        <td class="boldstdfont" colspan="3" height="30"><? echo $lab[1]; /* Votre fichier contient  */ ?>
+                          <span class="bolddarkredfont"><? echo $s_import_params["nbrows"]; ?></span>
+                          <? echo $lab[2]; /* lignes et */ ?>
+                          <span class="bolddarkredfont"><? echo $s_import_params["nbcolumns"]; ?></span>
+                          <? echo $lab[3]; /* colonnes. */ ?>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="boldstdfont" width="30" align="right"><? echo $lab[4]; /* Afficher */ ?></td>
+                        <td class="boldstdfont" height="10">
+                          <input name="nb_import_displ" value="<? echo $nb_import_displ; ?>" maxlength="2" size="2">
+                          <? echo $lab[5]; /* lignes de prévisualisation */ ?></td>
+                        <td class="boldstdfont" align="right">
+                          <input type="submit" name="display" value="<? echo $lab[6]; /* Prévisualiser */ ?>" class="userbutton">
+                          
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="boldstdfont" width="40" align="right">
+                          <table cellspacing="3" cellpadding="2" width="70%">
+                            <tr>
+                              <td bgcolor="<? echo $G_import_disabled_firstline_color; ?>" height="12"></td>
+                            </tr>
+                          </table>
+                        </td>
+                        <td class="boldstdfont" colspan="2">
+                          <input type="checkbox" name="i_firstline" value="1" <? echo ($i_firstline != "" ? " checked" : "") ?>>
+                          <? echo $lab[7]; /* la première ligne du fichier correspond aux nom des champs, ne pas l'importer */ ?>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="boldstdfont" align="right" width="40">
+                          <table cellspacing="3" cellpadding="2" width="70%">
+                            <tr>
+                              <td bgcolor="<? echo $G_import_truncated_cell_color; ?>" height="12"></td>
+                            </tr>
+                          </table>
+                        </td>
+                        <td class="boldstdfont" colspan="2">
+                          <input type="checkbox" name="i_truncate" value="1" <? echo ($i_truncate != "" ? " checked" : "") ?>>
+                          <? echo $lab[8]; /* Montrer les champs tronqués comme le fera l'import */ ?>
+                        </td>
+                      </tr>
+                      <tr valign="middle" align="center">
+                        <td class="boldstdfont" colspan="3" height="35"><? echo $lab[9]; /* Attention, vous devez sélectionner au minimum le champ 'Nom' */ ?></td>
+                      </tr>
+                      <tr valign="middle" align="center">
+                        <td class="boldstdfont" colspan="3" height="35"><? echo $lab[10]; /* Les contacts importés seront affectés à la catégorie */ ?>
+                         
+                          <select name="i_import_category">
+                            
+                            <?  for($i = 0; $i < 10; $i++) {  
+                                    if (trim($user_cat[$i] != "")) { ?>
+                                        
+                            <option value="<? echo $i; ?>"<? echo ($i_import_category == $i ? " selected" : "" ) ?>>
+                            <? echo $user_cat[$i]; ?>
+                            </option>
+                            <?      }
+                                }       ?>
+                          </select>
+                               
+                          
+                        </td>
+                      </tr>
+                      					  
+                      <tr valign="middle" align="center">
+                        <td class="boldstdfont" colspan="3" height="35">
+                          <input type="button" name="prev" value="<? echo $lab[11]; /* << Retour */ ?>" onclick="document.combosform.action='import1.php'; submit()" class="userbutton">
+                          &nbsp;
+                          <input type="button" name="next" value="<? echo $lab[12]; /* Importer ! */ ?>" onclick="document.combosform.action='import4.php'; submit()" class="userbutton">
+	                    </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td width="15" class="stdfont">&nbsp;</td>
+                </tr>
+                
+              
+              </table>
+            </td>
+            <td valign="top" background="images/v_line_right.gif" width="7"></td>
+          </tr>
+          
+          
+          <tr>
+            
+            
+            <td class="texteg" height="7" background="images/left_bottom_corner.gif"></td>
+            <td height="7" background="images/h_line_bottom.gif"></td>
+            <td height="7" background="images/right_bottom_corner.gif"></td>
+          </tr>
+        
+        
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2" class="contactlistfont">
+  
+      </td>
+    </tr>
+  </table>
+  
+<div align="center">
+   <table cellspacing="0" cellpadding="2" bgcolor="#E0E1ED" bordercolor="#8888AA" border="1">
+    <tr>  
+<? //tuneDisplay(); ?>
+      <td class="stdfont"><? echo $lab[13]; /* ligne n° */ ?></td>
+<?      for($i = 0 ; $i < $s_import_params["nbcolumns"] ; $i++) { ?>
+      <td align="center" class="stdfont">
+<?          echo $toto = displayFieldsCombo($i, $column[$i], $lab[14]); //send "$i" for combo position (firstn second, etc.) and $colum[$i] for the selected value of the combo. $lab[14] is language label for non imported field ?>
+<?  	}  ?>
+	</tr>
+<?      for ($i=0 ; $i < $nb_import_displ ; $i++) { 
+            tuneDisplay();  // usual way in this project to cure win servers when displaying large html lists ?>
+    <tr bgcolor="<? echo ($i_firstline == 1 && $i == 0 ? $G_import_disabled_firstline_color : "") ?>">
+      <td align="center" class="stdfont">
+<?      echo ($i_firstline == 1 ? $i : $i+1) ?>
+      </td>
+<?          for($j = 0 ; $j < $s_import_params["nbcolumns"]+1 ; $j++) { // "+1" because of the first colum that displays num of line ?>
+      <td class="stdfont" bgcolor="<? echo jivaroFieldColor($i_truncate, $i, $s_array_import[$i][$j], getFieldSize($column[$j])) ?>">
+<?              if (trim($s_array_import[$i][$j]) == "") {
+			        echo "&nbsp;";
+			    } else {
+				    echo jivaro($i_truncate, $s_array_import[$i][$j], getFieldSize($column[$j]));
+			    }  ?>
+	  </td>
+<?          } ?>
+    </tr>        
+<?      } ?>
+      
+        
+  </table>
+  </div>
+ 
+</form>
+
+<?
+   include ("footer.php");
+?>
+
+
+
+</body>
+</html>

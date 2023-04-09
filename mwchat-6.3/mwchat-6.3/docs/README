@@ -1,0 +1,60 @@
+What is MWChat?
+--------------
+
+MWChat is a web-based (browser) chat application that doesn't require
+java. MWChat include features such as buddy lists, encryption, file 
+sharing, private messages, ignore lists, private rooms, and more.
+
+The MWChat Application Framework is written in PHP, and provides the
+common tools that make up a robust chat application.
+
+Obtaining MWChat
+---------------
+
+Further information on MWChat and the latest version can be obtained at
+
+  http://www.appindex.net/products/
+
+
+Documentation
+-------------
+
+The following documentation is available in the MWChat distribution:
+
+docs/README           - This file
+docs/NOTICE           - Important information about configuration
+docs/LICENSE          - Copyright and license information
+docs/CHANGES          - List of changes by release
+docs/INSTALL          - Installation instructions
+docs/TODO             - The current TODO list
+docs/RELICENSE        - Instructions on how to re-license or upgrade MWChat
+docs/CONTRIBUTING     - How to contribute to MWChat
+docs/TRANSLATIONS     - Instructions for translations
+docs/UPGRADE  	      - Instructions for upgrading MWChat
+docs/UTILS  	      - Utilities for MWChat
+
+
+Installation
+------------
+
+Instructions for installing MWChat can be found in the file INSTALL
+in the docs/ directory of the MWChat distribution.
+
+
+Assistance
+----------
+
+If you encounter problems with MWChat, help is available!
+
+The MWChat Frequently Asked Questions List (FAQ), available on the Web
+at
+  
+  http://www.appindex.net/products/faq/?product=mwchat
+
+
+You may also find general support available via email at
+
+  http://www.appindex.net/support/
+
+
+Thank you for using MWChat!

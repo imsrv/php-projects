@@ -1,0 +1,10 @@
+BODY{
+   SCROLLBAR-ARROW-COLOR: #FFFFFF;
+    SCROLLBAR-TRACK-COLOR: #E4E2F0;
+    SCROLLBAR-FACE-COLOR: #5F0082;
+    background-color: #FCFBFF;
+    color:#5F0082; font-size: 8pt; font-family: Verdana}
+
+.button {background-color: #5F0082; color:#ffffff; font-size: 8pt; ;font-weight: bold}
+
+.table-bg {background-color:#E9E9E9; background-image: url('table-bg-admin.jpg')}

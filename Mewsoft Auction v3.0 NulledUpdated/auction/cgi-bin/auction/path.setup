@@ -1,0 +1,49 @@
+=Copyright Infomation
+==========================================================
+                                                   Mewsoft 
+
+    Program Name    : Mewsoft Auction Software
+    Program Version : 3.0
+    Program Author  : Elsheshtawy, Ahmed Amin.
+    Home Page       : http://www.mewsoft.com
+    Nullified By    : TNO (T)he (N)ameless (O)ne
+
+ Copyrights © 2000-2001 Mewsoft. All rights reserved.
+==========================================================
+ This software license prohibits selling, giving away, or otherwise distributing 
+ the source code for any of the scripts contained in this SOFTWARE PRODUCT,
+ either in full or any subpart thereof. Nor may you use this source code, in full or 
+ any subpart thereof, to create derivative works or as part of another program 
+ that you either sell, give away, or otherwise distribute via any method. You must
+ not (a) reverse assemble, reverse compile, decode the Software or attempt to 
+ ascertain the source code by any means, to create derivative works by modifying 
+ the source code to include as part of another program that you either sell, give
+ away, or otherwise distribute via any method, or modify the source code in a way
+ that the Software looks and performs other functions that it was not designed to; 
+ (b) remove, change or bypass any copyright or Software protection statements 
+ embedded in the Software; or (c) provide bureau services or use the Software in
+ or for any other company or other legal entity. For more details please read the
+ full software license agreement file distributed with this software.
+==========================================================
+              ___                         ___    ___    ____  _______
+  |\      /| |     \        /\         / |      /   \  |         |
+  | \    / | |      \      /  \       /  |     |     | |         |
+  |  \  /  | |-|     \    /    \     /   |___  |     | |-|       |
+  |   \/   | |        \  /      \   /        | |     | |         |
+  |        | |___      \/        \/       ___|  \___/  |         |
+
+==========================================================
+You are allowed to change this file to reflect your server
+==========================================================
+=cut
+#==========================================================
+#================= Set CGI Directory Path and URL =========
+$Program_CGI_Directory='/home/www/cgi-bin/auction';
+$Program_CGI_Directory_URL='http://www.yordomain.com/cgi-bin/auction';
+#==========================================================
+#================= Set HTML Directory Path and URL ========
+$Program_HTML_Directory='/home/www/auction';
+$Program_HTML_Directory_URL='http://www.yourdomain.com/auction';
+#==========================================================
+#                 ---------- End of Setup File-------------
+#==========================================================

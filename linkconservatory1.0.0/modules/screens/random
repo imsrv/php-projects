@@ -1,0 +1,44 @@
+<?
+	$Query = "SELECT MAX(ID) ";
+	$Query .= "FROM item ";
+	$DatabaseResult = mysql_query($Query, $DatabaseLink);
+	$DatabaseRow = mysql_fetch_row($DatabaseResult);
+	$totalItems = $DatabaseRow[0];
+
+	srand(date("U"));
+
+	$Query = "SELECT i.ID, i.Title, i.URL, i.Description ";
+	$Query .= "FROM item i, wing w ";
+	$Query .= "WHERE i.Wing = w.ID ";
+	$Query .= "AND w.Private='N' ";
+	$Query .= "AND i.ID IN (";
+	for($index = 0; $index < 10; $index++)
+	{
+		$Query .= rand()%($totalItems);
+		$Query .= ",";
+	}
+	$Query .= rand()%($totalItems);
+
+	$Query .= ") ";
+
+	$DatabaseResult = mysql_query($Query, $DatabaseLink);
+
+	print("<B>Some Items Chosen Randomly</B><BR>\n");
+
+	print("<DL>\n");
+
+	while($DatabaseRow = mysql_fetch_row($DatabaseResult))
+	{
+		$item_ID = $DatabaseRow[0];
+		$item_Title = $DatabaseRow[1];
+		$item_URL = $DatabaseRow[2];
+		$item_Description = $DatabaseRow[3];
+
+		print("<DT><A HREF=\"$LocationScript?inputItem=$item_ID\">$item_Title</A>");
+		print("<DD><FONT SIZE=2>$item_Description</FONT><BR>\n");
+
+	}
+
+	print("</DL>\n");
+
+?>

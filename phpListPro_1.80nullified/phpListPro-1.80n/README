@@ -1,0 +1,23 @@
+#################################################################################################
+#
+#  project           	: phpListPro
+#  filename         	: README
+#  last modified by  	: Erich Fuchs
+#  supplied by          : CyKuH [WTN]
+#  nullified by      	: CyKuH [WTN]          
+#
+#################################################################################################
+
+File Location's
+===============
+
+License:		./doc/LICENSE		read
+Installation:		./doc/INSTALL		read
+Configuration:		./config.php		edit
+Optical configuration:	./style*.css		edit (optional)
+Administration:		./admin/admin.php	run (in your browser)
+
+
+-------------------------------------------------------------------------------------------------
+(c) 2001 SmartISoft 
+All rights reserved.

@@ -1,0 +1,159 @@
+RELATA README
+=============
+Last Modified: March 6, 2002
+
+1.0 GPL License
+2.0 About Relata
+3.0 Downloading Relata
+4.0 Distribution Structure
+5.0 Installation
+6.0 Credits
+7.0 History
+
+1.0 GPL License
+---------------
+
+Relata
+
+Copyright (C) 2001-2002 Stratabase, Inc.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+Please see the "COPYING" file for the GNU GPL.
+ 
+2.0 About Relata
+----------------
+
+Relata is a CRM platform that currently features a sales force
+automation module, with additional CRM modules currently being
+developed. Relata has user and administrative interfaces. Being
+web-based, the interface for Relata is a current version of a
+standard web-browser. 
+
+The Relata source code is released under the GPL, and makes use of
+the programming languages PHP and Javascript. We have chosen to use
+Javascript and PHP because our development team believes in making
+our source code accessible to as broad an audience as possible. Both
+Javascript and PHP have a rapidly growing developer base because of
+their ease of use. 
+
+We have made Relata completely web-based in order that it may be run
+without having to install special client software – something of
+specific value to IT managers who want to deploy Relata in an
+organization with many users. 
+
+Relata allows you to manage your contacts and accounts from one
+integrated web interface. Sales professionals can use Relata to
+organize and manage their customers and accounts with ease and
+powerful functionality.
+
+Relata is highly scalable and is appropriate for use in the 
+enterprise. 
+
+Relata can be customized to run with any SQL database. 
+
+Using Relata, you have the power to create custom fields, manage sales
+opportunities, associate your contacts with various categories (groups)
+- e.g. ‘Computer Salespeople’. By adding this functionality, Relata
+allows you to perform rapid queries on key variables, communicating
+with your contacts in a more targeted and efficient capacity. You can
+send email to your specific groups simultaneously with important
+information - saving you from emailing each contact individually.
+
+Relata also records and tracks all your communications with your
+contacts, giving you a more precise history of each relationship,
+allowing you to extract more information and value from your database.
+
+With built-in support for opportunities, users are able to avoid losing
+out on potential sales. Easily associate a particular contact with an
+opportunity using point-and-click functionality. You can keep track of
+the various sales stages associated with a sale and the probability of
+a sale with ease.
+
+Relata also allows you to better organize and prioritize your short-
+term and long-term activities using the to-do and calendar features.
+You can plan ahead with Relata: enter events or to-do items ahead of
+time and print out your daily to-do schedule and calendar whenever you
+require it. 
+
+Relatamail is free and released under the GNU General Public License. 
+
+It is complete with fully commented source code.
+
+3.0 Downloading Relata
+----------------------
+
+Relata may be downloaded from the official "Relata.org" website at 
+http://www.relata.org
+
+4.0 Distribution File Structure
+--------------------------
+              
+^	    	
+|	    	^
+|-[wwwroot]-|-[account]
+|           |-[activity]
+|           |-[admin]
+|           |-[contact]
+|           |-[group_email]
+|           |-[lib]
+|           |-[opportunity]
+|           |-[settings]
+|           |-[templates]
+|           |-index.php
+|           |-config.inc.php
+|           ~
+|           
+|-[scripts]--|-mysql.db.table.sql
+|	     	-|-mysql.relata.sql	
+|	     	-|-mysql.user.table.sql	
+|	   	-|-pgsql.relata.sql
+|	   	-|-pgsql.user_admin.tbl.sql
+|	   		
+|
+|-[docs]----|-[PDF]
+|
+|-ChangeLog (text)
+|-COPYING (text)
+|-INSTALL (text)
+|-README (text)
+|
+~
+
+5.0 Installation
+----------------
+
+Please refer to the 'INSTALL' document.
+Win32 users: refer to the 'WIN32.USERS.README' document.
+
+6.0 Credits
+-----------
+
+Core Relata Development, Installation & Testing - Team Stratabase
+
+Many thanks to the individuals of the open source community for their support and feedback!
+
+7.0 History
+-----------
+
+March 6, 2002		- 0.3.0 released
+December 23, 2001		- 0.2.5 released
+September 6, 2001		- 0.2.4 released
+August 1, 2001		- 0.2.3 released
+July 5, 2001		- 0.2.2 released
+June 7, 2001		- 0.2.1 released
+June 6, 2001		- 0.2.0 released
+May 22, 2001 		- 0.1.1-beta released
+May 18, 2001 		- First Public Release

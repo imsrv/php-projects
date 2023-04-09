@@ -1,0 +1,7 @@
+Dear %%jobseeker_name%%,
+
+Your Resume "%%resume_summary%%" was successfully posted.
+Your resume will expire on %%resume_expiredate%%.
+
+Thank you for using our services.
+Today: %%today_date%%

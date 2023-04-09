@@ -1,0 +1,7 @@
+<b><a href="links.php">Links Home</a> : Confirm Link Deletion</b><p>
+Please confirm you wish to delete the following link:<p>
+<a href="links.php?go=%linkid%" target="_blank">%name%</a> <span class=small>[%hits% hits, %votes% votes, Average Rating %rating%]</span><br>
+%description%<br>URL: %url%<p>
+<form action=links.php method=post><input type=hidden name=action value=dellink>
+<input type=hidden name=id value=%linkid%>
+<input type=submit name=submit value="Delete Link"><p>

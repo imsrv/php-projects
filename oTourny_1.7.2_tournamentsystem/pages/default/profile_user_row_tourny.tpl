@@ -1,0 +1,1 @@
+<a class="section" href="{PROFILE_TOURNY_LINK}">{PROFILE_TOURNY_NAME}</a>

@@ -1,0 +1,77 @@
+CHANGELOG
+NavBoard 2.6.0 beta1
+Released 5/22/2003
+
+IMPROVEMENTS:
+-all occurences of 'thread' changed to 'topic',
+more user friendly
+-static topic ids, never changes except when
+moving to another forum, no speed loss
+-bookmarked posts so you can jump to
+a specific post in a topic
+-option to have reply counts managed
+done during posting rather than counted
+when displaying the forums, for faster
+view of main forum list
+-listing of forums is stored in a file
+to make display much faster, this also
+allows for ordering
+-graphical poll bars (thanks to Leon The Pro)
+-reverse post view on replys, no more
+iframe
+-faster bbcode/smilie performance (translations
+all done at the same time instead of 
+individually)
+-ip logged centered vertically in posts
+-forum ordering
+-improved admin control panel look
+-pages used instead of topicstart and
+poststart
+-page can be set as 'last'
+-buddy list shows last location of users on list
+-much improved theme system, templates,
+many more options in css file
+-revamped variable usage, files only retrieved
+once per page instead of multiple times, gives
+a noticable speed increase
+-moved pm notice to footer
+-hightlights in posts for search terms
+-quote design controlled by css now
+-attachments linked in status page
+-config moved to default admin page, takes less
+time to load than status
+-profile button hidden when not logged in
+-license added
+-reduced space between tables
+-deletedir,copydir functions which
+copy/delete an entire directory and all files
+and subdirectories/files in that directory
+
+FIXES:
+-avatars and attachments chmodded after
+they are uploaded
+-hidden forums dont show up in navigation
+menu
+-email registration works now, and gives
+a much better email
+-nested bbcode works better now, plus
+customizable limits on how many nests
+the board will translate
+-text >) doesnt make a smilie with &gt;)
+-quote button not shown if user doesnt have
+reply access
+-extra line above forum editing/adding
+-standard text colors where defined in wrong
+part of css
+-form buttons and inputs didnt have font type
+customization
+-categories shouldnt be scanned when counting 
+posts
+-replying to a topic with deleted posts overwrites 
+certain posts 
+-admins may have been unable to update members list
+per page or search results per page settings 
+-end textarea tag messes up post box when editing
+-cleaning page was pretty messed up
+-user bans wouldnt go by username like it was
+supposed to, now is done by userid 

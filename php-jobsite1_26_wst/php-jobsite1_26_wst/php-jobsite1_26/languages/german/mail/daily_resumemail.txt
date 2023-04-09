@@ -1,0 +1,18 @@
+Dear %%employer_company%%,
+
+New resumes posted that match your job category.
+<BEGIN REPEAT>
+Job title: %%job_jobtitle%%
+Job Location: %%job_location%%
+Job Employment type: %%job_jobtype%%
+Summary: %%resume_summary%%
+Resume Category: %%resume_jobcategory%%
+Resume Location: %%resume_location%%
+Resume Employment type: %%resume_jobtype%%
+Resume: 
+%%resume_resume%%
+Details: %%resume_link%%
+Download Resume file: %%resume_download%% 
+<END REPEAT>
+
+Today: %%today_date%%

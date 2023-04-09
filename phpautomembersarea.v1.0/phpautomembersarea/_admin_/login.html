@@ -1,0 +1,103 @@
+<html>
+
+<head>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta name="expires" content="Wed, 01 Jan 1997 00:00:00 GMT">
+<meta HTTP-EQUIV="cache-control" VALUE="no-cache, no-store, must-revalidate">
+<title>ADMIN login for your phpAutoMembersArea</title>
+<link rel="stylesheet" href="pama-admin.css" type="text/css">
+</head>
+
+<body leftMargin="0" topMargin="0" marginwidth="0" marginheight="0">
+
+<form method="POST" name="FL" align="center">
+  <input type="hidden" name="login" value="1"><div align="center"><center><p>&nbsp;</p>
+  </center></div><div align="center"><center><table border="0" cellpadding="3"
+  cellspacing="0" class="table-bg" width="250">
+    <tr>
+      <td align="center" bgcolor="#FFFFFF"></td>
+      <td align="center" bgcolor="#FFFFFF"><small><? if (isset($loginerror)) echo $loginerror; ?></small></td>
+      <td align="center" bgcolor="#FFFFFF"></td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center" height="1"></td>
+      <td align="center"></td>
+    </tr>
+    <tr>
+      <td align="center" rowspan="2"></td>
+      <td align="center" bgcolor="#808080" height="1" rowspan="2"></td>
+      <td align="center"></td>
+    </tr>
+    <tr>
+      <td align="center" rowspan="2"></td>
+    </tr>
+    <tr>
+      <td align="center" rowspan="3"></td>
+      <td align="center" rowspan="2"><small><b>ADMIN LOGIN</b></small></td>
+    </tr>
+    <tr>
+      <td align="center" rowspan="2"></td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#808080" height="2"></td>
+    </tr>
+    <tr align="center">
+      <td align="center"><strong><br>
+      </strong></td>
+      <td align="center"><div align="center"><center><p><strong><font size="1"><br>
+      </font><font size="2">Username</strong><br>
+      <input TYPE="text" SIZE="15" NAME="admin_username" maxlength="50" tabindex="1"><br>
+      <strong>Password</strong><br>
+      <input TYPE="password" SIZE="15" NAME="admin_password" maxlength="50" tabindex="2"></font><br>
+      <small><br>
+      <input type="button" onclick="Javascript:send_details()" value="Login" name="login"
+      class="button"></small></td>
+      <td align="center"></td>
+    </tr>
+    <tr align="center">
+      <td align="center"></td>
+      <td align="center" bgcolor="#808080" height="1"></td>
+      <td align="center"></td>
+    </tr>
+    <tr align="center">
+      <td align="center"></td>
+      <td align="center" height="2"></td>
+      <td align="center"></td>
+    </tr>
+    <tr align="center">
+      <td align="center" bgcolor="#FFFFFF"></td>
+      <td align="center" bgcolor="#FFFFFF"><small><? if (isset($loginerror)) echo $loginerror; ?></small></td>
+      <td align="center" bgcolor="#FFFFFF"></td>
+    </tr>
+  </table>
+  </center></div>
+</form>
+<script language="JavaScript" src="../md5.js"></script>
+<script LANGUAGE="JavaScript"><!--
+
+document.FL.admin_username.focus();
+document.onkeydown = post_form;
+
+function post_form()
+{
+ if (event.keyCode == 13) send_details();
+}
+
+function send_details()
+{
+ document.FL.admin_password.value = hex_md5(document.FL.admin_password.value);
+ document.FL.action="login.php";
+ document.FL.submit();
+}
+
+// --></script>
+
+
+<p align="center"><br>
+<br>
+<br>
+</p>
+</body>
+</html>

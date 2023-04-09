@@ -1,0 +1,65 @@
+SETTING UP THE LINK CONSERVATORY
+
+
+#########################################################
+#                                                       #
+# PHPSelect Web Development Division                    #
+#                                                       #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are distributed through         #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated.                                     #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the distriuters      #
+# at admin@phpselect.com                                #
+#                                                       #
+#########################################################
+
+Requirements
+* MySQL 3.21 or later
+* PHP 3.04 or later with MySQL support
+
+
+* Choose a database to use with the link conservatory
+Create or choose an existing database to house the conservatory 
+tables, item and wing.
+
+* Run build.sql in this database
+This creates the two tables.
+
+* put the files in the htdocs directory inside your htdocs directory
+This distribution contains two directories, htdocs and modules.  
+Copy the contents of the htdocs directory into the root of your Web
+server.  With a plain Apache installation this should be called htdocs
+and will be inside the main Apache directory.
+
+* put the modules directory in the same directory with htdocs
+The modules directory should be copied into the same directory that
+contains your document root.  By default the Link Conservatory assumes
+this relationship to guess where the modules are.  Your directory might
+look like:
+Apache/
+	htdocs/
+	modules/
+
+If you choose to put the modules someplace else, you will have to edit
+index.php3 and location.php3.
+
+* edit modules/include/global_settings
+The Link Conservatory may be customized by editing global_settings.  If
+you change the names of the two gateway scripts, you need to change them
+in global settings.  You will need to set up the database information.  You
+need to set up addresses for the mailing list.  The Link Conservatory will
+work with most list servers.  Lastly, you need to set the SiteURL variable
+to reflect the URL to the root of your site.
+
+* edit index.php3 and location.php3
+The scripts should work with Apache without modification.  Other Web servers
+may require you to edit these files.

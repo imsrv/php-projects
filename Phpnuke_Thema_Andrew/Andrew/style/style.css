@@ -1,0 +1,22 @@
+FONT, TD, BODY, P, DIV, INPUT, TEXTAREA, FORM 
+{font-family: Verdana,Arial; 
+font: normal 11px;}
+
+BODY {
+	SCROLLBAR-FACE-COLOR: #d8e2e7;
+ 	SCROLLBAR-HIGHLIGHT-COLOR: #ffffff;
+ 	SCROLLBAR-SHADOW-COLOR: #d8e2e7;
+ 	SCROLLBAR-3DLIGHT-COLOR: #96aabd;
+	 SCROLLBAR-ARROW-COLOR: #606d79;
+ 	SCROLLBAR-TRACK-COLOR: #c2cacf;
+ 	SCROLLBAR-DARKSHADOW-COLOR: #96aabd
+}
+
+
+A:active { text-decoration : none; font-size : 11px; font-family: Verdana; color : #000000; }
+A:link { text-decoration : none; font-size : 11px; font-family: Verdana; color : #000000;  }
+A:visited { text-decoration : none; font-size : 11px; font-family: Verdana; color : #000000;  }
+A:hover { text-decoration : underline overline; font-size : 11px; font-family: Verdana; color : #666666; }
+
+.titre { text-decoration : underline; font-size : 11px; font-family: Verdana; color : #FFFFFF; }
+.titrebox { text-decoration : underline overline; font-size : 11px; font-family: Verdana; color : #FFFFFF; }

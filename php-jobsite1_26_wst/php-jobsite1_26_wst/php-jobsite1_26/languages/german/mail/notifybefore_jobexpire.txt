@@ -1,0 +1,13 @@
+Dear %%employer_company%%,
+
+Your "%%job_jobtitle%%" (id: %%job_jobid%%) job will expire on %%job_expiredate%%.
+Remaining days: %%job_remaining%%
+
+Statistics:
+     Posted: %%job_jobdate%%
+     Viewed: %%job_viewed%%
+     Last viewed date: %%job_lastdate%%
+
+Today: %%today_date%%
+
+Job Link: %%job_link%%

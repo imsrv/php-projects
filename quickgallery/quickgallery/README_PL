@@ -1,0 +1,36 @@
+
+    QuickGallery ver 1.0.3
+
+    Author : Marcin Chmielecki (marcin@chiliweb.com.pl)
+    Design : Marcin Slifirski (sliwka@kmstudio.com.pl)
+
+    Dlaczego QuickGallery ?
+    
+    QuickGalery z zalozenia jest programem umozliwiajacym w krotkim czasie zaprezentowanie swoich zdjec w internecie.
+    Jedyne co trzeba zrobic to umiescic zdjecia w katalogu ktorego nazwa znajduje sie w pliku konfiguracyjnym
+    (domyslnie jest to katalog images) i to wszystko.
+    Skrypt sam przeczyta zdjecia z tego katalogu i wyswietli aby latwo mozna bylo je przegladac.
+    QuickGalery samodzielnie wyswietli je w postaci miniaturek i podzieli na strony.
+    Co jeszcze potrafi :
+    - dodatkowo kompresowac zdjecia oryginalne (nie modyfikuje grafik zrodlowych),
+      dzieki czemu QuickGallery szybciej wyswietla zdjecia
+    - zmieniac wyglad (kilka .css'ow)
+    - sortowac (rosnaco, malejaco)
+    
+    Ile to kosztuje ?
+    
+    Nic, program jest darmowy (licencja w oddzielnym pliku), mozna go uzywac w domu lub pracy.
+    
+    
+    Wymagania
+    
+    PHP 4 lub 5, biblioteka graficzna GD (skompilowana ze wsparciem dla JPG)
+    
+    
+    Skad mozna pobrac QuickGallery ?
+    
+    http://www.chiliweb.com.pl/freesoft/quickgallery.zip
+    
+    
+    
+    

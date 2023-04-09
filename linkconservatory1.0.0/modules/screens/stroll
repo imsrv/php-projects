@@ -1,0 +1,98 @@
+<?
+
+	/* 
+	** Find all the doorways out of this wing 
+	*/
+	$Query = "SELECT ID, Title, Description ";
+	$Query .= "FROM wing ";
+	$Query .= "WHERE Parent=$wing ";
+	if($Browser_Admin != "YES")
+	{
+		$Query .= "AND Private='N' ";
+	}
+	$Query .= "ORDER BY Title ";
+
+	$DatabaseResult = mysql_query($Query, $DatabaseLink);
+	
+	$numRows = mysql_NumRows($DatabaseResult);
+
+	if($numRows > 0)
+	{
+		print(doTitleDressing("Doors to Other Wings"));
+		print("<DL>\n");
+
+		while($DatabaseRow = mysql_fetch_row($DatabaseResult))
+		{
+			$door_ID = $DatabaseRow[0];
+			$door_Title = $DatabaseRow[1];
+			$door_Description = $DatabaseRow[2];
+	
+			print("<DT><A HREF=\"$IndexScript?SCREEN=stroll&amp;wing=$door_ID\">$door_Title</A>\n");
+			print("<DD><FONT SIZE=2>$door_Description</FONT>\n");
+			
+		}
+
+		print("</DL>\n");
+	}
+
+	if($wing > 0)
+	{
+
+		/* Find all links for this wing */
+		$Query = "SELECT ID, Title, URL, Description, (to_days(now()) - to_days(Created)) ";
+		$Query .= "FROM item ";
+		$Query .= "WHERE Wing=$wing ";
+		$Query .= "ORDER BY LinkCount DESC, Title ";
+		$DatabaseResult = mysql_query($Query, $DatabaseLink);
+		
+		$numRows = mysql_NumRows($DatabaseResult);
+
+		if($numRows > 0)
+		{
+			print(doTitleDressing("Items in this Collection"));
+			print("<DL>\n");
+		}
+
+		while($DatabaseRow = mysql_fetch_row($DatabaseResult))
+		{
+			$item_ID = $DatabaseRow[0];
+			$item_Title = $DatabaseRow[1];
+			$item_URL = $DatabaseRow[2];
+			$item_Description = $DatabaseRow[3];
+			$item_DaysOld = $DatabaseRow[4];
+	
+			print("<DT><A HREF=\"$LocationScript?inputItem=$item_ID\">$item_Title</A>");
+
+			print("<DD>");
+
+			/* 
+			** put a 'new' tag next to links that are younger than seven days
+			*/			
+			if($item_DaysOld < 7)
+			{
+				print("<SMALL><FONT COLOR=RED>NEW</FONT></SMALL>\n");
+			}
+			if($item_Description != "")
+			{
+				print("<FONT SIZE=2>$item_Description</FONT><BR>\n");
+			}
+
+		}
+
+		if($numRows > 0)
+		{
+			print("</DL>\n");
+		}
+	
+	}
+	else
+	{
+		print("<BR>\n");
+		print("<BR>\n");
+		
+		print("<FONT SIZE=2 COLOR=\"#000000\" FACE=\"helvetica\">The Link Conservatory&#153;\n");
+		print("Open Source by <A HREF=\"http://www.clearink.com/\">Clear Ink</A>\n");
+		print("</FONT>\n");
+	}
+
+?>

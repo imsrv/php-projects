@@ -1,0 +1,133 @@
+STORAGE FORMAT
+
+NOTE: If one of the lines says 'NONE' then it probably means
+it was used in the past but not anymore
+
+Line#-Item
+
+====USER FILES
+username.txt
+0-username
+1-passwordencoded
+2-email(tab)hide (hide optional)
+3-signature
+4-registered timestamp
+5-previous login timestamp(tab)newest activity in timestamp
+6-post count
+7-avatar
+8-birthday
+9-website
+10-icq
+11-yim
+12-aim
+13-msn
+14-NONE
+15-group
+16-title
+17-style
+18-last post time
+19-last ip
+20-last sess id
+21-date format
+22-last board location
+
+====USER OPTIONS
+0-Turn off auto pm check
+1-Turn off forum icon guide
+2-Turn off footer stats
+3-Dont show name in online list
+
+====POST FILES (same for PMs unless noted)
+0-poster 
+1-post timestamp
+2-subject
+3-body
+4-7-designated lines for extra stuff (polls,attachments)
+(posts only)
+8-read/unread (PMs only)
+9-ip logged when posted (posts only)
+10-disable bbcode in the post on/off
+11-edit list: user,time,user,time (continued)
+
+====BBCODE each bbcode on one line
+0-description(tab)tag(tab)param?(tab)html
+
+====CONFIG
+0-board title
+1-users data location
+2-forum data location
+3-NONE
+4-NONE
+5-custom configs files location
+6-NONE
+7-threads per page
+8-posts per page
+9-avatar file size limit (in bytes)
+10-avatar dimensions limit (height)x(width)
+11-NONE
+12-default theme
+13-seconds of inactivity before user is removed 
+   from online list
+14-allowhtml/denyhtml DEFAULT: denyhtml
+15-NONE
+16-NONE
+17-NONE
+18-max chars in body of posts
+19-max chars in signatures
+20-modules data location
+21-enablegz/disablegz (blank will enablegz)
+22-valid attachment extensions (separated by commas)
+23-attachment size limit
+24-max poll items
+25-max chars in subject of posts
+26-location to get info from
+27-max levels of forums to show
+28-max people on buddy list
+29-max total size of pms (bytes)
+30-max total number of pms
+31-max total size of all attachments
+32-allow duplicate display names (on/off)
+33-default time format
+34-text logo instead of graphic logo (on/off)
+35-admin email for bottom of forum
+36-main website for bottom of forum
+37-post flood control time
+38-registration flood control time
+39-registration confirmation (on/confirm/approve)
+40-board closed reason
+41-display name change (on/off/approve)
+42-dont get forum reply count on the fly (on/off)
+43-amount of nested bbcodes searched
+44-spacing amount (default 5) % of forum itle cell 
+   used for spacing
+45-use names to show user level instead of
+   image icons(on/off)
+46-show all edits instead of only last edit(on/off)
+
+====FORUM CONFIG
+0-groups that dont have view access  (comma separated)
+1-moderators
+2-description
+3-forum name
+4-forum parent
+5-function as 'category' or 'forum'
+6-post increase 'on' or 'off'
+7-groups that dont have new thread access (comma separated)
+8-groups that dont have reply access (comma separated)
+9-groups that dont have edit access (comma separated)
+10-groups that dont have access to see the forum in the 
+forum list(comma separated)
+11-reply count (if recount during posting is on)
+
+====THREAD CONFIG
+0-open/closed
+1-rating
+2-views
+3-topicnum
+
+====FORUM TOPIC TIME LISTS
+topicid#-topictime(foldername)
+
+====FORUM LIST
+forumid#-subforums(separated by commas)
+0-parentforum

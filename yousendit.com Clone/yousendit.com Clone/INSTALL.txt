@@ -1,0 +1,33 @@
+===============================================================================
+PopScript.com - YouSendItClone 5.0 Install
+
+YouSendItClone 5.0 Install
+-------------------------------------------------------------------------------
+
+Extract the zip file
+
+Open the file include/dbinfo.php and edit the settings to reflect your own.
+
+Open the file include/vars.php and edit the settings there to reflect your own.
+
+Upload to server via FTP
+
+Create SQL database and user. (This software will NOT create the database for you)
+
+Run install.php from browser and follow instructions.
+
+Default admin panel login is: admin
+
+===============================================================================
+
+This software is NOT free! This license allows you to use the software on 1 domain
+1 ip address and the footer that links back to us must stay intact. Removal of the
+footer removes your license and entitles you to absolutely NO support.
+
+This software may NOT be distibuted by anyone for any reason by any method whatsoever.
+This software is copyright PopScript.com and is protected under US and international
+laws.
+
+===============================================================================
+If you have any questions or need help please visit us at: http://popscript.com
+admin@popscript.com

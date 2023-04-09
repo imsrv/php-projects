@@ -1,0 +1,79 @@
+# ==================================================================
+# Links SQL - enhanced directory management system
+#
+#   Website  : http://gossamer-threads.com/
+#   Support  : http://gossamer-threads.com/scripts/support/
+#   CVS Info : 087,071,086,089,083 
+#   Revision : $Id: README.mod_perl,v 1.10 2001/11/28 04:46:47 alex Exp $
+# 
+# Copyright (c) 2001 Gossamer Threads Inc.  All Rights Reserved.
+# Redistribution in part or in whole strictly prohibited. Please
+# see LICENSE file for full details.
+# ==================================================================
+
+Links SQL works best under mod_perl. mod_perl is open source software
+that integrates perl inside of Apache. You can find out more details
+about mod_perl at:
+
+	http://perl.apache.org/guide/
+
+Running mod_perl typically requires your own dedicated server. Gossamer
+Threads can provide you with pre-configured Links SQL installations
+running under mod_perl. If you are interested in this, please send us
+an email at hosting@gossamer-threads.com.
+
+To setup Links SQL using mod_perl, you need to:
+
+1. First run the install.cgi from shell to unpack the Links SQL files. 
+
+2. Add the following section to your httpd.conf file:
+
+	<Location /url/to/links/cgi>
+	     SetHandler perl-script     
+	     PerlHandler Apache::Registry
+	     PerlSendHeader On
+	     Options +ExecCGI
+	</Location>
+
+You need to change '/url/to/links/cgi' to the URL where the user
+cgi scripts are located (for example: add.cgi, search.cgi, etc). The
+URL should start with a / and be set from your document root, but does
+not contain your domain name. For example, if your scripts were at:
+
+	http://gossamer-threads.com/perl/links-sql/search.cgi
+
+You would put: '/perl/links-sql' as location.
+
+3. Most mod_perl installations have a startup file for loading perl
+scripts you are using when httpd is started. You need to add the following
+to your startup file:
+
+     use lib '/full/path/to/admin';
+     use Links::mod_perl;
+
+where '/full/path/to/admin' is a system path to your admin directory.
+
+If you don't have a startup file, you should create one by adding to
+your httpd.conf file:
+
+	PerlRequire /path/to/startup.pl
+
+and adding the above lines into startup.pl.
+
+Congratulations, you are now done! When you restart mod_perl you should see:
+
+	Preloading Links SQL scripts into mod_perl:
+		. . . . . . . . . . . . . . . . . . . 
+	All scripts compiled and loaded ok!
+
+that means everything has been pre-loaded and you are ready to go! 
+
+If you have any questions or problems, please visit our support section
+at:
+
+    http://gossamer-threads.com/scripts/support/
+
+Cheers,
+
+Alex Krohn
+Gossamer Threads Inc.

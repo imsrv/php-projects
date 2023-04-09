@@ -1,0 +1,1 @@
+Team email can not equal team name.

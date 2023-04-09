@@ -1,0 +1,10 @@
+Robin Vickery <robinv@ecosse.net>
+For writing the code allowing PHP to be used in the templates.
+
+Richard Archer 
+For taking on the maintenance of the phpLib template class, and adding some nice new features.  Richard also provided some much appreciated help when I couldn't get it to work properly.  Thanks a lot, Richard!
+
+Matt Rosenberger <mattryan@early.com>
+For providing the idea behind the plugin architecture.  Matt is a computer science graduate, and is currently looking for paid work, so if you've got any please contact him!
+
+Also thanks to the members of the PHP_UK e-group for their help, and for putting up with my endless questions :-)

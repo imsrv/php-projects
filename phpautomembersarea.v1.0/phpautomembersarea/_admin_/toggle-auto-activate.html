@@ -1,0 +1,38 @@
+<html>
+
+<head>
+<title></title>
+</head>
+
+<body>
+
+<form method="POST" action="toggle-auto-activate.php" name="AF">
+  <input type="hidden" name="save" value="1"><div align="center"><center><table border="0"
+  width="90%" cellspacing="4" cellpadding="5">
+    <tr>
+      <td width="210" align="right"><font color="#FF0000"><strong>Auto Activate:</strong></font></td>
+      <td width="443"><font color="#FF0000"><small>When a new member joins the account is
+      automatically activated and an email is sent to the new member with login details
+      enclosed.</small></font></td>
+    </tr>
+    <tr>
+      <td width="210" align="right"><font color="#000000"><strong>Manual Activation:</strong></font></td>
+      <td width="443"><font color="#000000"><small>New members are unable to login until you, as
+      administrator, activate the new account.&nbsp; When you activate the account an email is
+      sent to the new member with login details enclosed.</small></font></td>
+    </tr>
+  </table>
+  </center></div><div align="center"><center><p><big><strong>Currently set to:</strong></big><select
+  name="autoactivate" size="1" class="button">
+    <option value="1">Auto Activate</option>
+    <option value="0">Manual Activation</option>
+  </select></p>
+  </center></div><div align="center"><center><p><input type="submit" value="Change"
+  name="B1" class="button">&nbsp;&nbsp;&nbsp; <input type="button" value="Cancel" name="B2"
+  class="button" onclick="javascript:document.location='get_details.php'"></p>
+  </center></div>
+</form>
+
+<p>&nbsp;</p>
+</body>
+</html>

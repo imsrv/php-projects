@@ -1,0 +1,3 @@
+<a href="eklenen.php">Eklenen sözler</a>(<b><?php echo $totalRows_eklenen ?></b>)<br>
+        <a href="istenen.php">Ýstenen sözler</a>(<b><?php echo $totalRows_istenen ?></b>)<br><a href="iletisim.php">Ýletiþim Talepleri</a>(<b><?php echo $totalRows_iletisim ?></b>)<br><a href="yeniekle.php">Söz ekle</a><br><a href="duzenle.php">Söz düzenle</a><br><br><a href="gonderenyonet.php">Ziyaretçi Gönderenler</a><br><a href="adminyonet.php">Admin yönetimi</a><br><a href="moderatoryonet.php">Moderatör Yönetimi</a><br><a href="cssyonet.php">CSS yönetimi</a><br><a href="gidenyonet.php">Destekleyenleri yönet</a><br><a href="copyrightyonet.php">Copyright yönetimi</a><br>
+        <br>

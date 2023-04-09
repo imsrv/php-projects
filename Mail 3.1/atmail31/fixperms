@@ -1,0 +1,5 @@
+#!/bin/sh
+
+chmod 777 mime-tmp
+chmod 777 users
+chmod 755 *.pl

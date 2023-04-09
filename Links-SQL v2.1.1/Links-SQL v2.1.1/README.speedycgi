@@ -1,0 +1,41 @@
+# ==================================================================
+# Links SQL - enhanced directory management system
+#
+#   Website  : http://gossamer-threads.com/
+#   Support  : http://gossamer-threads.com/scripts/support/
+#   CVS Info : 087,071,086,089,083 
+#   Revision : $Id: README.speedycgi,v 1.4 2001/05/24 00:43:40 alex Exp $
+# 
+# Copyright (c) 2001 Gossamer Threads Inc.  All Rights Reserved.
+# Redistribution in part or in whole strictly prohibited. Please
+# see LICENSE file for full details.
+# ==================================================================
+
+Links SQL has been tested and works well under SpeedyCGI. SpeedyCGI is 
+similiar to mod_perl but does not require integration into Apache. If
+you don't have a dedicated server, it's a great alternative to mod_perl
+as it offers a lot of the benefits (persistant database connections, pre
+cached scripts, etc).
+
+To run Links SQL under SpeedyCGI, when asked for the path to perl,
+simply enter the path to your speedy program i.e.:
+
+	/usr/bin/speedy
+
+Also, when asked if using persistent connections, be sure to say Yes.
+
+That's it, your scripts will now work fine under SpeedyCGI.
+
+More information on SpeedyCGI can be found at:
+
+	http://daemoninc.com/speedycgi/
+
+If you have any questions or problems, please visit our support section
+at:
+
+    http://gossamer-threads.com/scripts/support/
+
+Cheers,
+
+Alex Krohn
+Gossamer Threads Inc.

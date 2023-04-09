@@ -1,0 +1,17 @@
+Info:
+  Let your visitors send their crushes secret
+  messages, and let them help promote you site!
+  How it works:                               
+  - Dave likes Jane, but does not know whether
+    Jane likes him too                          
+  - So he sends a secret message to Jane      
+    telling her he likes her                    
+  - Jane receives a secret message but do not 
+    know who sent it                            
+  - She goes to secretMessagex.com and sends  
+    a secret message to her crush too, and it   
+    turns out to be Dave                        
+  - The system sends an email to both of them 
+    and tell them they've GOT A MATCH!          
+
+  http://www.teca-scripts.com/           

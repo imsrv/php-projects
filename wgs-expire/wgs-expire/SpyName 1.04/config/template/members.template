@@ -1,0 +1,91 @@
+<script language="JavaScript">
+function checkAll(theForm) {
+    for (i=0,n=theForm.elements.length;i<n;i++)
+        if (theForm.elements[i].name.indexOf('member_id') !=-1)
+            theForm.elements[i].checked = true;
+}
+</script>
+	<%error(bad_login)%>
+		Bad login
+	<%/error%>
+
+	<%error(bad_password)%>
+		Bad pasword
+	<%/error%>
+
+	<%error(bad_email)%>
+		Bad email
+	<%/error%>
+
+	<%error(bad_plan)%>
+		Bad plan
+	<%/error%>
+
+    <form>
+    <table width="90%">
+    <tr>
+    <td align="left"><b>Active user accounts</b>
+    <tr>
+    <td align="left">
+    	<input type="submit" value="Delete checked" name="del">
+    	<input type="submit" value="Mail checked" name="send_mail">
+    </table>
+    <table class="BlueNoteFormTable">
+    	<tr>
+      	<td class="BlueNoteAltDataTD"><input type="checkbox" onClick="if (this.checked) checkAll(this.form);">
+      	<td class="BlueNoteAltDataTD">Login
+      	<td class="BlueNoteAltDataTD">Active?
+        <td class="BlueNoteAltDataTD">Name
+        <td class="BlueNoteAltDataTD">E-mail
+        <td class="BlueNoteAltDataTD">Plan
+        <td class="BlueNoteAltDataTD">Searched
+        <td class="BlueNoteAltDataTD">Monitors
+      <%table[SELECT 
+							member.id as member_id,
+							member.login as member_login,
+              IF(member.active,'active','inactive') as member_active,
+              member.first as member_first,
+              member.last as member_last,
+              member.email as member_email, 
+              plan.name member_acctype,
+              sstat as member_sstat,
+              count(monitor.id) as member_mstat 
+						FROM member 
+						LEFT JOIN plan ON member.acctype = plan.id 
+						LEFT JOIN monitor ON member.id = monitor.member
+						GROUP BY member.id]%>
+      <tr>
+      <td class="BlueNoteDataTD"><input type="checkbox" name="member_id[<%member_id%>]">
+      <td class="BlueNoteDataTD"><a href="./?page=members&select=<%member_id%>"><%member_login%>
+      <td class="BlueNoteDataTD"><a href="./?page=members&activate=<%member_id%>"><%member_active%></a>
+      <td class="BlueNoteDataTD"><%member_first%>&nbsp;<%member_last%> 
+      <td class="BlueNoteDataTD"><a href="mailto:<%member_email%>"><%member_email%></a>
+      <td class="BlueNoteDataTD"><%member_acctype%>
+      <td class="BlueNoteDataTD"><%member_sstat%>
+      <td class="BlueNoteDataTD"><%member_mstat%>
+    <%/table%>
+    </table>
+    	<table>
+      	<input type="hidden" name="id" value="<%id%>">
+				<tr>
+					<td>Login<td><input type="text" name="login" value="<%login%>">
+		        <tr>
+					<td>Password<td><input type="text" name="password" value="<%passwd%>">
+        		<tr>
+					<td>First name<td><input type="text" name="first" value="<%first%>">
+		        <tr>
+					<td>Last name<td><input type="text" name="last" value="<%last%>">
+        		<tr>
+					<td>E-mail<td><input type="text" name="email" value="<%email%>">
+		        <tr>
+					<td>Plan<td>
+          <select name="plan">
+          	<%table[SELECT id as plan_id,name FROM plan]
+            <option value="<%plan_id%>"><%name%></option>
+            <%/table
+					</select>                  	      	
+      </table>
+			<input type="submit" name="member_add" value="Add">
+			<input type="submit" name="member_modify" value="Modify">
+    </table>
+    

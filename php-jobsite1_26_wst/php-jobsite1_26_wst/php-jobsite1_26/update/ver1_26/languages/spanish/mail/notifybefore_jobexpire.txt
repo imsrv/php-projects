@@ -1,0 +1,13 @@
+Estimado %%employer_company%%,
+
+Su empleo "%%job_jobtitle%%" (id: %%job_jobid%%) caducará el %%job_expiredate%%.
+Quedando: %%job_remaining%% días para ello
+
+Estadísticas:
+     Enviado: %%job_jobdate%%
+     Visto: %%job_viewed%% veces
+     Visto por última vez: %%job_lastdate%%
+
+Hoy: %%today_date%%
+
+Enlace al Empleo: %%job_link%%

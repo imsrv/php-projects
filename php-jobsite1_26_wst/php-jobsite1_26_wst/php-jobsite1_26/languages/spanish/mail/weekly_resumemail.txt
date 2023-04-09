@@ -1,0 +1,2 @@
+Estimado %%employer_company%%,Se han enviado nuevos curriculums que coinciden con la categoría de su empleo.<BEGIN REPEAT>Título del Empleo: %%job_jobtitle%%Localización del Empleo: %%job_location%%Tipo de Empleo: %%job_jobtype%%Curriculum: %%resume_summary%%Categoría del Curriculum: %%resume_jobcategory%%Localización del Curriculum: %%resume_location%%Tipo de Empleo: %%resume_jobtype%%Curriculum del demandante: %%resume_resume%%Detalles: %%resume_link%%
+Download Resume file: %%resume_download%% <END REPEAT>Today: %%today_date%%

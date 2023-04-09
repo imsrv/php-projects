@@ -1,0 +1,1001 @@
+###############################################################
+#                                                             #
+# Any use of this program is entirely at the risk of the      #
+# user. No liability will be accepted by the author.          #
+#                                                             #
+# This code must not be distributed or sold, even in modified #
+# form, without the written permission of the author.         #
+#                                                             #
+###############################################################
+
+###############################################################
+#                                                             #
+# Nothing below needs to be modified. You can apply           #
+# modifications if you know what you are doing. Remember that #
+# all credits must remain intact.                             #
+#                                                             #
+###############################################################
+
+
+# Show RankMaster variables
+sub variables {
+
+	# Check referring URL
+	&urlcheck;
+
+	# Get current time
+	@timery = localtime(time);
+	$curtime = sprintf("%02d:%02d", $timery[2], $timery[1]);
+
+	$timeval1 = $timery[2] + 1;
+	$timeval1 -= 24 if $timeval1 > 23;
+
+	$timeval2 = $timery[2] - 1;
+	$timeval2 += 24 if $timeval2 < 0;
+
+	# Time formats
+	$time1 = sprintf("%02d:%02d", $timeval1, $timery[1]);
+	$time2 = sprintf("%02d:%02d", $timeval2, $timery[1]);
+
+	# Check box substitutions
+	$checker[0] = "";
+	$checker[1] = " checked";
+
+	# Select variables
+	$regadmin_sel = qq(                <input type="radio" name="regadmin" value="1">
+                Send notification<br>
+                <input type="radio" name="regadmin" value="0">);
+
+	$newuseremail_sel = qq(                <input type="radio" name="newuseremail" value="1">
+                Send welcome message<br>
+                <input type="radio" name="newuseremail" value="0">);
+
+	$refercheck_sel = qq(                <input type="radio" name="refercheck" value="1">
+                ON<br>
+                <input type="radio" name="refercheck" value="0">);
+
+	$emailcheck_sel = qq(                <input type="radio" name="emailcheck" value="1">
+                ON<br>
+                <input type="radio" name="emailcheck" value="0">);
+
+	$iptimemult_sel = qq(                  <option value="1">second(s)</option>
+                  <option value="60">minute(s)</option>
+                  <option value="3600">hour(s)</option>
+                  <option value="86400">day(s)</option>
+                  <option value="604800">week(s)</option>
+                  <option value="31536000">year(s)</option>);
+
+	$updtimemult_sel  = $iptimemult_sel;
+	$restimemult_sel  = $iptimemult_sel;
+	$idletimemult_sel = $iptimemult_sel;
+
+	$idleshow_sel = qq(                <input type="radio" name="idleshow" value="1">
+                YES<br>
+                <input type="radio" name="idleshow" value="0">);
+
+	$usecrontab_sel = qq(                <input type="radio" name="usecrontab" value="1">
+                YES<br>
+                <input type="radio" name="usecrontab" value="0">);
+
+	$dateformat_sel = qq(                <input type="radio" name="dateformat" value="1">
+                US Standard (e.g. <font color="#3333CC">07/16/00</font>)<br>
+                <input type="radio" name="dateformat" value="2">
+                US Extended (e.g. <font color="#3333CC">July 16, 2000</font>)<br>
+                <input type="radio" name="dateformat" value="3">
+                European Standard (e.g. <font color="#3333CC">16/07/00</font>)<br>
+                <input type="radio" name="dateformat" value="4">);
+
+	$timeformat_sel = qq(                <input type="radio" name="timeformat" value="1">
+                AM/PM Format (e.g. <font color="#3333CC">10:33 PM</font>)<br>
+                <input type="radio" name="timeformat" value="2">);
+
+	$topsort_sel = qq(                <input type="radio" name="topsort" value="in">
+                Sort by Incoming Hits<br>
+                <input type="radio" name="topsort" value="out">
+                Sort by Outgoing Hits<br>
+                <input type="radio" name="topsort" value="hits">
+                Sort by Total Hits<br>
+                <input type="radio" name="topsort" value="votes">
+                Sort by Votes</b></font><br>
+                <font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b> 
+                <input type="radio" name="topsort" value="rating">
+                Sort by Rating</b></font><br>
+                <font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b> 
+                <input type="radio" name="topsort" value="score">);
+
+	# Select substitutions
+	$regadmin_sel      =~ s/<input type=\"radio\" name=\"regadmin\" value=\"$regadmin\">/<input type=\"radio\" name=\"regadmin\" value=\"$regadmin\" checked>/;
+	$newuseremail_sel  =~ s/<input type=\"radio\" name=\"newuseremail\" value=\"$newuseremail\">/<input type=\"radio\" name=\"newuseremail\" value=\"$newuseremail\" checked>/;
+	$refercheck_sel    =~ s/<input type=\"radio\" name=\"refercheck\" value=\"$refercheck\">/<input type=\"radio\" name=\"refercheck\" value=\"$refercheck\" checked>/;
+	$emailcheck_sel    =~ s/<input type=\"radio\" name=\"emailcheck\" value=\"$emailcheck\">/<input type=\"radio\" name=\"emailcheck\" value=\"$emailcheck\" checked>/;
+	$iptimemult_sel    =~ s/<option value=\"$iptimemult\">/<option value=\"$iptimemult\" selected>/;
+	$updtimemult_sel   =~ s/<option value=\"$updtimemult\">/<option value=\"$updtimemult\" selected>/;
+	$restimemult_sel   =~ s/<option value=\"$restimemult\">/<option value=\"$restimemult\" selected>/;
+	$idletimemult_sel  =~ s/<option value=\"$idletimemult\">/<option value=\"$idletimemult\" selected>/;
+	$idleshow_sel      =~ s/<input type=\"radio\" name=\"idleshow\" value=\"$idleshow\">/<input type=\"radio\" name=\"idleshow\" value=\"$idleshow\" checked>/;
+	$usecrontab_sel    =~ s/<input type=\"radio\" name=\"usecrontab\" value=\"$usecrontab\">/<input type=\"radio\" name=\"usecrontab\" value=\"$usecrontab\" checked>/;
+	$dateformat_sel    =~ s/<input type=\"radio\" name=\"dateformat\" value=\"$dateformat\">/<input type=\"radio\" name=\"dateformat\" value=\"$dateformat\" checked>/;
+	$timeformat_sel    =~ s/<input type=\"radio\" name=\"timeformat\" value=\"$timeformat\">/<input type=\"radio\" name=\"timeformat\" value=\"$timeformat\" checked>/;
+	$topsort_sel       =~ s/<input type=\"radio\" name=\"topsort\" value=\"$topsort\">/<input type=\"radio\" name=\"topsort\" value=\"$topsort\" checked>/;
+
+	# Display variables
+	print "Content-type: text/html\n\n";
+	print <<EOH;
+<html>
+<head>
+<title>RankMaster Variables</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#F4F4FF" text="#000000" link="#000000" vlink="#000000" alink="#000000">
+<div align="center">
+  <h3><font face="Verdana, Arial, Helvetica, sans-serif" size="-1"><b>RankMaster 
+    Variables</b></font></h3>
+  <form method="post" action="admin.cgi">
+    <input type="hidden" name="action" value="savevariables">
+    <table width="750" border="0" cellspacing="0" cellpadding="0">
+      <tr> 
+        <td bgcolor="#000000"> 
+          <table width="100%" border="0" cellspacing="1" cellpadding="5">
+            <tr> 
+              <td colspan="2"> 
+                <div align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1" color="#FFFFFF">System 
+                  Paths</font></b><br>
+                  <font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>The 
+                  system path is a physical Unix path to your files. Contact your 
+                  system administrator if you are not sure about your system paths. 
+                  For most Unix servers, the system path will be similar to &quot;<font color="#FFFFCC">/usr/home/yourdomain/www/cgi-bin</font>&quot;.</b></font></div>
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">The 
+                system path to the RankMaster program files:<br>
+                <font size="-2">Do NOT include the trailing slash "/" at the end:<br>
+                e.g. <font color="#3333CC">/usr/home/yourdomain/www/cgi-bin/rankmaster</font></font></font></b></td>
+              <td width="40%"> 
+                <input type="text" name="path" size="35" value="$path">
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">The 
+                system path to the 'members' directory:<br>
+                <font size="-2">Do NOT include the trailing slash "/" at the end:<br>
+                e.g. <font color="#3333CC">/usr/home/yourdomain/www/cgi-bin/rankmaster/members</font></font></font></b></td>
+              <td width="40%"> 
+                <input type="text" name="membpath" size="35" value="$membpath">
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">The 
+                system path to the 'templates' directory:<br>
+                <font size="-2">Do NOT include the trailing slash "/" at the end:<br>
+                e.g. <font color="#3333CC">/usr/home/yourdomain/www/cgi-bin/rankmaster/templates</font></font></font></b></td>
+              <td width="40%"> 
+                <input type="text" name="tmplpath" size="35" value="$tmplpath">
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="2"> 
+                <div align="center"><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif" size="-1"><b>URLs<br>
+                  <font size="-2">The URL is the Internet location of your files, 
+                  for example &quot;<font color="#FFFFCC">http://www.mywebsite.com/cgi-bin/rankmaster</font>&quot;.</font></b></font></div>
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">The 
+                URL of the RankMaster program files:<br>
+                <font size="-2">Do NOT include the trailing slash "/" at the end:<br>
+                e.g. <font color="#3333CC">http://www.yourdomain.com/cgi-bin/rankmaster</font></font></font></b></td>
+              <td width="40%"> 
+                <input type="text" name="scripturl" size="35" value="$scripturl">
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">The 
+                URL of the 'flags' directory:<br>
+                <font size="-2">Do NOT include the trailing slash "/" at the end:<br>
+                e.g. <font color="#3333CC">http://www.yourdomain.com/cgi-bin/rankmaster/flags</font></font></font></b></td>
+              <td width="40%"> 
+                <input type="text" name="flagsurl" size="35" value="$flagsurl">
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Voting 
+                Link Image URL:<br>
+                <font size="-2">This image is used to generate the Image Link 
+                that a member can add to his or her website. You can either use 
+                the supplied image under 'html' directory or use your own graphic.<br>
+                e.g. <font color="#3333CC">http://www.yourdomain.com/cgi-bin/rankmaster/html/rankpic01.gif</font></font></font></b></td>
+              <td width="40%"> 
+                <input type="text" name="voteimg" size="35" value="$voteimg">
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Gained 
+                Positions Indicator Image URL:<br>
+                <font size="-2">This optional indicator is displayed when the 
+                site gains in the rankings. There are three different arrow styles 
+                supplied in RankMaster's &quot;html&quot; folder. You can select 
+                one of them or use your own graphic.<br>
+                e.g. <font color="#3333CC">http://www.yourdomain.com/cgi-bin/rankmaster/html/green_arrow_1.gif</font></font></font></b></td>
+              <td width="40%"> 
+                <input type="text" name="gainimg" size="35" value="$gainimg">
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Lost 
+                Positions Indicator Image URL:<br>
+                <font size="-2">This optional indicator is displayed when the 
+                site loses in the rankings. There are three different arrow styles 
+                supplied in RankMaster's &quot;html&quot; folder. You can select 
+                one of them or use your own graphic.<br>
+                e.g. <font color="#3333CC">http://www.yourdomain.com/cgi-bin/rankmaster/html/red_arrow_1.gif</font></font></font></b></td>
+              <td width="40%"> 
+                <input type="text" name="lostimg" size="35" value="$lostimg">
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">No 
+                Position Change Indicator Image URL:<br>
+                <font size="-2">This optional indicator is displayed when there 
+                are no changes in site ranking. You can either use the supplied 
+                image under 'html' directory or use your own graphic.<br>
+                e.g. <font color="#3333CC">http://www.yourdomain.com/cgi-bin/rankmaster/html/blue_dot.gif</font></font></font></b></td>
+              <td width="40%"> 
+                <input type="text" name="nochangeimg" size="35" value="$nochangeimg">
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="2"> 
+                <div align="center"><font color="#FFFFFF" face="Verdana, Arial, Helvetica, sans-serif" size="-1"><b>E-mail 
+                  Settings<br>
+                  <font size="-2">Contact your system administrator if you are 
+                  not sure about the path to the sendmail program on your server. 
+                  The default &quot;<font color="#FFFFCC">/usr/sbin/sendmail</font>&quot; 
+                  should work for most servers. </font></b></font></div>
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">The 
+                path to the sendmail program on your server:</font></b></td>
+              <td width="40%"> 
+                <input type="text" name="mailprog" size="35" value="$mailprog">
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Administrator's 
+                e-mail address:</font></b></td>
+              <td width="40%"> 
+                <input type="text" name="adminemail" size="35" value="$adminemail">
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Notify 
+                administrator of new member registrations:</font></b></td>
+              <td width="40%"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b> 
+$regadmin_sel
+                Do not send notification</b></font></td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Welcome 
+                message options:<br>
+                <font size="-2">Welcome message is the e-mail sent to newly registered 
+                members.</font></font></b></td>
+              <td width="40%"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b> 
+$newuseremail_sel
+                Do not send welcome message</b></font></td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Welcome 
+                registration message text:<br>
+                <font size="-2">This message will be sent to new members when 
+                they register. You can use the following variables in the welcome 
+                registration message:<br>
+                <font color="#3333CC">[name]</font> - will be converted to member's 
+                name,<br>
+                <font color="#3333CC">[email]</font> - will be converted to member's 
+                email address,<br>
+                <font color="#3333CC">[url]</font> - will be converted to member's 
+                web site URL,<br>
+                <font color="#3333CC">[title]</font> - will be converted to member's 
+                web site title,<br>
+                <font color="#3333CC">[id]</font> - will be converted to member's 
+                ID,<br>
+                <font color="#3333CC">[pass]</font> - will be converted to member's 
+                password,<br>
+                <font color="#3333CC">[boxcode]</font> - will be converted to 
+                Rating Box HTML code,<br>
+                <font color="#3333CC">[imgcode]</font> - will be converted to 
+                Rating Image Link HTML code,<br>
+                <font color="#3333CC">[textcode]</font> - will be converted to 
+                Rating Text Link HTML code.</font></font></b></td>
+              <td width="40%"><font size="-2" face="Verdana, Arial, Helvetica, sans-serif"><b>Subject:</b></font><br>
+                <input type="text" name="newusersubject" size="30" value="$newusersubject">
+                <br>
+                <b><font face="Verdana, Arial, Helvetica, sans-serif" size="-2">Message:</font></b><br>
+                <textarea name="newusertext" cols="30" rows="4" wrap="VIRTUAL">$newusertext</textarea>
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="2"> 
+                <div align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1" color="#FFFFFF">Security 
+                  Settings</font></b></div>
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Referring 
+                URL check:<br>
+                <font size="-2">Recommended. This will ensure that no one outside 
+                your domain can post to your script.</font></font></b></td>
+              <td width="40%"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b> 
+$refercheck_sel
+                OFF</b></font></td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Duplicate 
+                e-mail check:<br>
+                <font size="-2">If this feature is turned on, the script will 
+                check for duplicate e-mail addresses upon member registration. 
+                The member will not be allowed to register two or more times under 
+                the same e-mail address.</font></font></b></td>
+              <td width="40%"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b> 
+$emailcheck_sel
+                OFF</b></font></td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Bad/Rude 
+                Words Detector:<br>
+                <font size="-2">Enter any words that you wish to ban separated 
+                by comas. Leave no spaces in between. A member will be notified 
+                that the use of these words is not allowed when he attempts to 
+                post them. This filter is not case sensitive. If you enter &quot;<font color="#3333CC">mess</font>&quot;, 
+                for example, &quot;<font color="#3333CC">Mess</font>&quot;, &quot;<font color="#3333CC">MESS</font>&quot;, 
+                etc. will be filtered. Be careful though. If you enter &quot;<font color="#3333CC">mess</font>&quot; 
+                , the words such as &quot;<font color="#3333CC">mess</font>age&quot; 
+                and others containing &quot;<font color="#3333CC">mess</font>&quot; 
+                pattern will be filtered as well. To filter standalone words, 
+                put square brackets &quot;<font color="#3333CC">[...]</font>&quot; 
+                around entered patterns. For example, entering &quot;<font color="#3333CC">[mess]</font>&quot; 
+                (note a square bracket before an &quot;<font color="#3333CC">m</font>&quot; 
+                and after the second &quot;<font color="#3333CC">s</font>&quot;) 
+                will not filter &quot;<font color="#3333CC">mess</font>age&quot;.</font></font></b></td>
+              <td width="40%"> 
+                <textarea name="badwords" cols="30" rows="4" wrap="VIRTUAL">$badwords</textarea>
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="2"> 
+                <div align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1" color="#FFFFFF">Logging/Update 
+                  Options</font></b></div>
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Clean 
+                IP Log every:<br>
+                <font size="-2">IP log stores the votes and IP addresses from 
+                which the votes came from. It prevents voting from the same IP 
+                address for the same site until IP Log is cleaned. Enter 0 (zero) 
+                to never clean IP Log. Check the &quot;<font color="#3333CC">Clean 
+                Now!</font>&quot; box if you want to clean IP Log when the variables 
+                are saved.</font></font></b></td>
+              <td width="40%"> 
+                <input type="text" size="15" name="iptimelbl" value="$iptimelbl">
+                <select name="iptimemult" size="1">
+$iptimemult_sel
+                </select>
+                <br>
+                <font face="Verdana, Arial, Helvetica, sans-serif" size="-2"> 
+                <b> 
+                <input type="checkbox" name="cleanipnow" value="1">
+                Clean Now!</b></font></td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Update 
+                the Top List every:<br>
+                <font size="-2">Enter 0 (zero) to never update Top List. Check 
+                the &quot;<font color="#3333CC">Update Now!</font>&quot; box if 
+                you want to update Top List when the variables are saved.</font></font></b></td>
+              <td width="40%"> 
+                <input type="text" size="15" name="updtimelbl" value="$updtimelbl">
+                <select name="updtimemult" size="1">
+$updtimemult_sel
+                </select>
+                <br>
+                <font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b> 
+                <input type="checkbox" name="updlistnow" value="1">
+                Update Now!</b></font></td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Reset 
+                all votes to 0 (zero) every:<br>
+                <font size="-2">Enter 0 (zero) to never reset Top List. Check 
+                the &quot;<font color="#3333CC">Reset Now!</font>&quot; box if 
+                you want to reset all votes to zero when the variables are saved.</font></font></b></td>
+              <td width="40%"> 
+                <input type="text" size="15" name="restimelbl" value="$restimelbl">
+                <select name="restimemult" size="1">
+$restimemult_sel
+                </select>
+                <br>
+                <font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b> 
+                <input type="checkbox" name="resetnow" value="1">
+                Reset Now!</b></font></td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Flag 
+                member &quot;Inactive&quot; if no votes received for more than:<br>
+                <font size="-2">This feature allows you to &quot;flag&quot; members 
+                if they did not receive any votes for more than the specified 
+                period of time. Enter 0 (zero) to disable inactive member flagging. 
+                You can view, e-mail and delete inactive members by selecting 
+                the &quot;<font color="#3333CC">Manage Members</font>&quot; option 
+                from the Administrative Menu.</font></font></b></td>
+              <td width="40%"> 
+                <input type="text" size="15" name="idletimelbl" value="$idletimelbl">
+                <select name="idletimemult" size="1">
+$idletimemult_sel
+                </select>
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Include 
+                &quot;Inactive&quot; members in Top List:</font></b></td>
+              <td width="40%"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b> 
+$idleshow_sel
+                NO</b></font></td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Use 
+                crontab to handle ip log cleaning, updates and resets:<br>
+                <font size="-2">See <a href="http://scripts.21stcenturyhost.net/rm/faq_5.htm" target="_blank">CronTab 
+                Tutorial</a> for more information. Note 
+                that <font color="#3333CC">ipreset.cgi</font> file is responsible 
+                for ip log cleaning, <font color="#3333CC">update.cgi</font> is 
+                responsible for Top List updates and <font color="#3333CC">reset.cgi</font> 
+                is responsible for resets.</font></font></b></td>
+              <td width="40%"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>
+$usecrontab_sel
+                NO</b></font></td>
+            </tr>
+            <tr valign="top"> 
+              <td colspan="2"> 
+                <div align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1" color="#FFFFFF">Date 
+                  and Time</font></b></div>
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Date 
+                format:</font></b></td>
+              <td width="40%"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b> 
+$dateformat_sel
+                European Extended (e.g. <font color="#3333CC">16 July 2000</font>)</b></font></td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Time 
+                format:</font></b></td>
+              <td width="40%"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b> 
+$timeformat_sel
+                24-Hour Format (e.g. <font color="#3333CC">22:33</font>)</b></font></td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Local 
+                server time offset:<br>
+                <font size="-2">By default, the time shown will be the local server 
+                time. If you want to set it to a different time zone, enter the 
+                offset value in this box. Current local server time is <font color="#3333CC">$curtime</font>. 
+                To offset it, enter a positive or a negative integer that corresponds 
+                to the desired time zone display. Leave as 0 to show the local 
+                server time. Examples:<br>
+                <font color="#3333CC">1</font> - the displayed time will be <font color="#3333CC">$time1</font>,<br>
+                <font color="#3333CC">-1</font> - the displayed time will be <font color="#3333CC">$time2</font>.</font></font></b></td>
+              <td width="40%"> 
+                <input type="text" name="timeoffset" size="3" value="$timeoffset" maxlength="3">
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Time 
+                zone:<br>
+                <font size="-2">Time zone will appear next to the time of last 
+                update. Leave blank if you do not want to show time zone.</font></font></b></td>
+              <td width="40%"> 
+                <input type="text" name="timezone" size="35" value="$timezone">
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="2"> 
+                <div align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1" color="#FFFFFF">Display 
+                  Options</font></b></div>
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Primary 
+                Font:</font></b></td>
+              <td width="40%"> 
+                <table width="100%" border="0" cellspacing="1" cellpadding="0">
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Font 
+                      Name:</b></font></td>
+                    <td> 
+                      <input type="text" name="fontname" size="20" value="$fontname">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Font 
+                      Size:</b></font></td>
+                    <td> 
+                      <input type="text" name="fontsize" size="3" value="$fontsize" maxlength="2">
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Secondary 
+                Font:</font></b></td>
+              <td width="40%"> 
+                <table width="100%" border="0" cellspacing="1" cellpadding="0">
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Font 
+                      Name:</b></font></td>
+                    <td> 
+                      <input type="text" name="sfontname" size="20" value="$sfontname">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Font 
+                      Size:</b></font></td>
+                    <td> 
+                      <input type="text" name="sfontsize" size="3" value="$sfontsize" maxlength="2">
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Form/table 
+                properties:<br>
+                <font size="-2">This controls the properties for all the tables 
+                and forms.</font></font></b></td>
+              <td width="40%"> 
+                <table width="85%" border="0" cellspacing="3" cellpadding="0">
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Table 
+                      width:</b></font></td>
+                    <td> 
+                      <input type="text" name="tablewidth" size="10" value="$tablewidth" maxlength="7">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Heading/footer 
+                      color:</b></font></td>
+                    <td> 
+                      <input type="text" name="headcolor" size="10" value="$headcolor" maxlength="7">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Primary 
+                      background color:</b></font></td>
+                    <td> 
+                      <input type="text" name="primcolor" size="10" value="$primcolor" maxlength="7">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Secondary 
+                      background color:</b></font></td>
+                    <td> 
+                      <input type="text" name="seconcolor" size="10" value="$seconcolor" maxlength="7">
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">HTML 
+                Generator Display setting:<br>
+                <font size="-2">You can select the Rating HTML codes that are 
+                returned by HTML Generator in Member Area. At least one HTML code 
+                must be selected.</font></font></b></td>
+              <td width="40%"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b> 
+                <input type="checkbox" name="showboxlink" value="1"$checker[$showboxlink]>
+                Show Rating Box HTML code<br>
+                <input type="checkbox" name="showimglink" value="1"$checker[$showimglink]>
+                Show Image Link HTML code<br>
+                <input type="checkbox" name="showtxtlink" value="1"$checker[$showtxtlink]>
+                Show Text Link HTML code</b></font></td>
+            </tr>
+            <tr> 
+              <td colspan="2"> 
+                <div align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1" color="#FFFFFF">Top 
+                  List Options</font></b></div>
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Number 
+                of sites to show per page:<br>
+                <font size="-2">This controls the page breakdown of Top List.</font></font></b></td>
+              <td width="40%"> 
+                <input type="text" name="sitesperpage" size="10" value="$sitesperpage" maxlength="10">
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Default 
+                sort setting:<br>
+                <font size="-2">This controls the order in which the members are 
+                shown on Top List.</font></font></b></td>
+              <td width="40%"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b> 
+$topsort_sel
+                Sort by Score</b></font></td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Top 
+                List table properties:</font></b></td>
+              <td width="40%"> 
+                <table width="85%" border="0" cellspacing="3" cellpadding="0">
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Table 
+                      width:</b></font></td>
+                    <td> 
+                      <input type="text" name="topwidth" size="10" value="$topwidth" maxlength="7">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Heading 
+                      color:</b></font></td>
+                    <td> 
+                      <input type="text" name="topheadcolor" size="10" value="$topheadcolor" maxlength="7">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Primary 
+                      background color:</b></font></td>
+                    <td> 
+                      <input type="text" name="topprimcolor" size="10" value="$topprimcolor" maxlength="7">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Secondary 
+                      background color:</b></font></td>
+                    <td> 
+                      <input type="text" name="topseconcolor" size="10" value="$topseconcolor" maxlength="7">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Border 
+                      size:</b></font></td>
+                    <td> 
+                      <input type="text" name="topborder" size="10" value="$topborder" maxlength="5">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Border 
+                      color:</b></font></td>
+                    <td> 
+                      <input type="text" name="topbordercolor" size="10" value="$topbordercolor" maxlength="7">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Cell 
+                      spacing:</b></font></td>
+                    <td> 
+                      <input type="text" name="topspacing" size="10" value="$topspacing" maxlength="5">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Cell 
+                      padding:</b></font></td>
+                    <td> 
+                      <input type="text" name="toppadding" size="10" value="$toppadding" maxlength="5">
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr valign="top" bgcolor="#E8E8FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Top 
+                List fields display setting:<br>
+                <font size="-2">You can select which fields will be shown on your 
+                Top List.</font></font></b></td>
+              <td width="40%"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b> 
+                <input type="checkbox" name="showimgindicator" value="1"$checker[$showimgindicator]>
+                Show the position change image indicator<br>
+                <input type="checkbox" name="showtxtindicator" value="1"$checker[$showtxtindicator]>
+                Show the position change text indicator<br>
+                <input type="checkbox" name="showflag" value="1"$checker[$showflag]>
+                Show Country Flag<br>
+                <input type="checkbox" name="showrateit" value="1"$checker[$showrateit]>
+                Show &quot;<font color="#3333CC">Rate It!</font>&quot; link<br>
+                <input type="checkbox" name="showin" value="1"$checker[$showin]>
+                Show Incoming Hits<br>
+                <input type="checkbox" name="showout" value="1"$checker[$showout]>
+                Show Outgoing Hits<br>
+                <input type="checkbox" name="showhits" value="1"$checker[$showhits]>
+                Show Total Hits<br>
+                <input type="checkbox" name="showvotes" value="1"$checker[$showvotes]>
+                Show the Number of Votes<br>
+                <input type="checkbox" name="showrating" value="1"$checker[$showrating]>
+                Show the Average Rating<br>
+                <input type="checkbox" name="showscore" value="1"$checker[$showscore]>
+                Show the Score</b></font></td>
+            </tr>
+            <tr valign="top" bgcolor="#F4F4FF"> 
+              <td width="60%"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-1">Position 
+                Change Text Indicator colors:<br>
+                <font size="-2">The optional position change text indicator is 
+                displayed when the site loses or gains in the rankings. A hyphen 
+                is displayed if there is no change in the ranking since last update. 
+                This setting allows you to choose the colors for this indicator.</font></font></b></td>
+              <td width="40%"> 
+                <table width="85%" border="0" cellspacing="3" cellpadding="0">
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Gained 
+                      positions color:</b></font></td>
+                    <td> 
+                      <input type="text" name="gaincolor" size="10" value="$gaincolor" maxlength="7">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>Lost 
+                      positions color:</b></font></td>
+                    <td> 
+                      <input type="text" name="lostcolor" size="10" value="$lostcolor" maxlength="7">
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b>No 
+                      change indicator color:</b></font></td>
+                    <td> 
+                      <input type="text" name="nochangecolor" size="10" value="$nochangecolor" maxlength="7">
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <br>
+    <input type="submit" name="submit" value="Save Script Variables">
+    <input type="button" name="close" value="Close This Window" onClick="self.close()">
+    <br>
+    <br>
+  </form>
+  <font face="Arial, Helvetica, sans-serif" size="-2"><a href="http://scripts.21stcenturyhost.net" target="_blank">Powered 
+  by 21stCenturyScripts</a></font></div>
+</body>
+</html>
+EOH
+	exit;
+}
+
+
+# Save variables
+sub savevariables {
+
+	# Check referring URL
+	&urlcheck;
+
+	# Get current working directory
+	$pdir = `pwd`;
+	chomp($pdir);
+
+	# Check system paths
+	unless (-e "$FORM{'path'}/settings.cgi") {
+		push(@badfields, "The system path to the RankMaster program files is incorrect. Could not locate settings.cgi. Try <font color=\"#3333CC\">$pdir</font>.");
+	}
+
+	unless (-e "$FORM{'membpath'}/memblist.cgi") {
+		push(@badfields, "The system path to the 'members' directory is incorrect. Could not locate memblist.cgi.");
+	}
+
+	unless (-e "$FORM{'tmplpath'}/common.txt") {
+		push(@badfields, "The system path to the 'templates' directory is incorrect. Could not locate common.txt.");
+	}
+
+	# Check URLs
+	if ($FORM{'scripturl'} !~ /^(f|ht)tp:\/\/\w+\.\w+/) {
+		push(@badfields, "The URL of the RankMaster program files is invalid. All URLs must start with http://.");
+	}
+
+	if ($FORM{'flagsurl'} !~ /^(f|ht)tp:\/\/\w+\.\w+/) {
+		push(@badfields, "The URL of the 'flags' directory is invalid. All URLs must start with http://.");
+	}
+
+	if ($FORM{'voteimg'} !~ /^(f|ht)tp:\/\/\w+\.\w+/) {
+		push(@badfields, "The Voting Link Image URL is invalid. All URLs must start with http://.");
+	}
+
+	if ($FORM{'gainimg'} !~ /^(f|ht)tp:\/\/\w+\.\w+/) {
+		push(@badfields, "The Gained Positions Indicator Image URL is invalid. All URLs must start with http://.");
+	}
+
+	if ($FORM{'lostimg'} !~ /^(f|ht)tp:\/\/\w+\.\w+/) {
+		push(@badfields, "The Lost Positions Indicator Image URL is invalid. All URLs must start with http://.");
+	}
+
+	if ($FORM{'nochangeimg'} !~ /^(f|ht)tp:\/\/\w+\.\w+/) {
+		push(@badfields, "The No Position Change Indicator Image URL is invalid. All URLs must start with http://.");
+	}
+
+	# Check email settings
+	if ($FORM{'adminemail'} !~ /[\w\-]+\@[\w\-]+\.[\w\-]+/) {
+		push(@badfields, "Administrator's e-mail address is invalid.")
+	}
+
+	if ($FORM{'newuseremail'} and ($FORM{'newusertext'} eq "" or $FORM{'newusertext'} !~ /\S/)) {
+		push(@badfields, "You must enter welcome message text in order to use welcome message feature.");
+	}
+
+	# Check numeric entries
+	if ($FORM{'iptimelbl'} !~ /\d/ || $FORM{'iptimelbl'} < 0) {
+		push(@badfields, "The IP Cleaning Time must either be a zero or a positive integer.");
+	}
+
+	if ($FORM{'updtimelbl'} !~ /\d/ || $FORM{'updtimelbl'} < 0) {
+		push(@badfields, "The Top List Update Time must either be a zero or a positive integer.");
+	}
+
+	if ($FORM{'restimelbl'} !~ /\d/ || $FORM{'restimelbl'} < 0) {
+		push(@badfields, "The Top List Reset Time must either be a zero or a positive integer.");
+	}
+
+	if ($FORM{'idletimelbl'} !~ /\d/ || $FORM{'idletimelbl'} < 0) {
+		push(@badfields, "The Inactive Member Flagging Time must either be a zero or a positive integer.");
+	}
+
+	if ($FORM{'timeoffset'} !~ /\d/ || $FORM{'timeoffset'} > 24 || $FORM{'timeoffset'} < -24) {
+		push(@badfields, "The time offset value must be an integer between -24 and 24.");
+	}
+
+	if ($FORM{'sitesperpage'} !~ /\d/ || $FORM{'sitesperpage'} < 1) {
+		push(@badfields, "Number of sites per page must be a positive integer.");
+	}
+
+	# Display errors, if any
+	&adminerror;
+
+	# Adjust variables
+	foreach $key('regadmin','newuseremail','refercheck','emailcheck','idleshow',
+			'usecrontab','showboxlink','showimglink','showtxtlink',
+			'showimgindicator','showtxtindicator','showflag','showrateit',
+			'showin','showout','showhits','showvotes','showrating','showscore') {
+		     $FORM{$key} = '0' if !$FORM{$key};
+	}
+
+	foreach $field('newusersubject','newusertext','timezone') {
+		$FORM{$field} =~ s/\\/\\\\/g;
+		$FORM{$field} =~ s/'/\\'/g;
+	}
+
+	# Calculate ip cleaning, update, and reset times
+	$iptime   = $FORM{'iptimelbl'} * $FORM{'iptimemult'};
+	$updtime  = $FORM{'updtimelbl'} * $FORM{'updtimemult'};
+	$restime  = $FORM{'restimelbl'} * $FORM{'restimemult'};
+	$idletime = $FORM{'idletimelbl'} * $FORM{'restimemult'};
+
+	# Write new settings to settings file
+	open (SETTINGS,">$FORM{'path'}/settings.cgi") || err("Could not update $FORM{'path'}/settings.cgi: $!");
+	flock(SETTINGS,2);
+	seek(SETTINGS,0,0);
+	print SETTINGS qq(
+# System Paths
+\$path = '$FORM{'path'}';
+\$membpath = '$FORM{'membpath'}';
+\$tmplpath = '$FORM{'tmplpath'}';
+
+# URLs
+\$scripturl = '$FORM{'scripturl'}';
+\$flagsurl = '$FORM{'flagsurl'}';
+\$voteimg = '$FORM{'voteimg'}';
+\$gainimg = '$FORM{'gainimg'}';
+\$lostimg = '$FORM{'lostimg'}';
+\$nochangeimg = '$FORM{'nochangeimg'}';
+
+# E-Mail Options
+\$mailprog = '$FORM{'mailprog'}';
+\$adminemail = '$FORM{'adminemail'}';
+\$regadmin = '$FORM{'regadmin'}';
+\$newuseremail = '$FORM{'newuseremail'}';
+\$newusersubject = '$FORM{'newusersubject'}';
+\$newusertext = '$FORM{'newusertext'}';
+
+# Security Options
+\$refercheck = '$FORM{'refercheck'}';
+\$emailcheck = '$FORM{'emailcheck'}';
+\$badwords = '$FORM{'badwords'}';
+
+# Logging/Update Options
+\$iptimelbl = $FORM{'iptimelbl'};
+\$iptimemult = $FORM{'iptimemult'};
+\$iptime = $iptime;
+\$updtimelbl = $FORM{'updtimelbl'};
+\$updtimemult = $FORM{'updtimemult'};
+\$updtime = $updtime;
+\$restimelbl = $FORM{'restimelbl'};
+\$restimemult = $FORM{'restimemult'};
+\$restime = $restime;
+\$idletimelbl = $FORM{'idletimelbl'};
+\$idletimemult = $FORM{'idletimemult'};
+\$idletime = $idletime;
+\$idleshow = '$FORM{'idleshow'}';
+\$usecrontab = '$FORM{'usecrontab'}';
+
+# Date and Time
+\$dateformat = '$FORM{'dateformat'}';
+\$timeformat = '$FORM{'timeformat'}';
+\$timeoffset = '$FORM{'timeoffset'}';
+\$timezone = '$FORM{'timezone'}';
+
+# Display Options
+\$fontname = '$FORM{'fontname'}';
+\$fontsize = '$FORM{'fontsize'}';
+\$sfontname = '$FORM{'sfontname'}';
+\$sfontsize = '$FORM{'sfontsize'}';
+\$tablewidth = '$FORM{'tablewidth'}';
+\$headcolor = '$FORM{'headcolor'}';
+\$primcolor = '$FORM{'primcolor'}';
+\$seconcolor = '$FORM{'seconcolor'}';
+\$showboxlink = '$FORM{'showboxlink'}';
+\$showimglink = '$FORM{'showimglink'}';
+\$showtxtlink = '$FORM{'showtxtlink'}';
+
+# Top List options
+\$sitesperpage = $FORM{'sitesperpage'};
+\$topsort = '$FORM{'topsort'}';
+\$topwidth = '$FORM{'topwidth'}';
+\$topheadcolor = '$FORM{'topheadcolor'}';
+\$topprimcolor = '$FORM{'topprimcolor'}';
+\$topseconcolor = '$FORM{'topseconcolor'}';
+\$topborder = '$FORM{'topborder'}';
+\$topbordercolor = '$FORM{'topbordercolor'}';
+\$topspacing = '$FORM{'topspacing'}';
+\$toppadding = '$FORM{'toppadding'}';
+\$showimgindicator = '$FORM{'showimgindicator'}';
+\$showtxtindicator = '$FORM{'showtxtindicator'}';
+\$showflag = '$FORM{'showflag'}';
+\$showrateit = '$FORM{'showrateit'}';
+\$showin = '$FORM{'showin'}';
+\$showout = '$FORM{'showout'}';
+\$showhits = '$FORM{'showhits'}';
+\$showvotes = '$FORM{'showvotes'}';
+\$showrating = '$FORM{'showrating'}';
+\$showscore = '$FORM{'showscore'}';
+\$gaincolor = '$FORM{'gaincolor'}';
+\$lostcolor = '$FORM{'lostcolor'}';
+\$nochangecolor = '$FORM{'nochangecolor'}';
+
+1; # Do not remove this line
+);
+	close(SETTINGS);
+
+	# Set internal script reference
+	$fromscript = 1;
+
+	# Clear IP Log
+	require "$FORM{'path'}/ipreset.cgi" if $FORM{'cleanipnow'};
+
+	# Reset Top List
+	require "$FORM{'path'}/reset.cgi" if $FORM{'resetnow'};
+
+	# Update Top List
+	if ($FORM{'updlistnow'}) {
+		open(NEWVARS,"$FORM{'path'}/settings.cgi") || err("Could not open $FORM{'path'}/settings.cgi: $!");
+		@temp = <NEWVARS>;
+		close(NEWVARS);
+		open(TEMP,">$membpath/temp.log") || err("Could not create $membpath/temp.log: $!");
+		flock(TEMP,2);
+		seek(TEMP,0,0);
+		print TEMP @temp;
+		close(TEMP);
+		require "$membpath/temp.log";
+		unlink "$membpath/temp.log" || err("Could not delete $membpath/temp.log: $!");
+		require "$FORM{'path'}/update.cgi";
+	}
+
+	# Show success message
+	&adminconfirm("New script settings have been saved!");
+}
+
+
+1;

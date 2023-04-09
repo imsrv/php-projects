@@ -1,0 +1,129 @@
+###################################################################################
+#                                                                                 #
+#                   PerlDesk - Customer Help Desk Software                        #
+#                                                                                 #
+###################################################################################
+#                                                                                 #
+#     Author: John Bennett	                                                  #
+#      Email: j.bennett@perldesk.com                                              #
+#        Web: http://www.perldesk.com                                             #
+#    Release: 1.8                                                                 #
+#                                                                                 #
+###################################################################################
+# Please direct bug reports,suggestions or feedback to the perldesk forums.       #
+# www.perldesk.com/board                                                          #
+#                                                                                 #
+###################################################################################
+# Please see the README/INSTALL files if you have any problems with this software #                                                            
+###################################################################################
+
+
+Thank you for purchasing PerlDesk. This document should assist with the installation
+process of PerlDesk. Should you have any difficulties, please email support@perldesk.com
+along with your license ID.
+
+
+      - Perl / MySQL
+	- The following Perl modules:
+
+		DBI 
+            DBD::MySQL
+            Digest::MD5
+
+Certain features of PerlDesk will require additional modules:
+
+  [*] Mail::POP3Client  (Perl 5.6.1 or greater may also be required)
+
+         This is only required if you choose to use the incoming pop email 
+         utility in the admin.
+
+  [*] MIME::Tools
+
+         This is required if you wish to pipe email into PerlDesk (as described
+         below) using the email.cgi file.
+
+
+
+INSTALLATION
+-------------------------------------------------------
+
+ [*] Untar the compressed file 'tar zxvf filename.tar.gz'
+     Or use a utility such as WinRAR/WinZip
+
+     By default, there are two directories in the file
+
+     cgi-bin
+     images
+
+     The files inside the 'cgi-bin' can be placed anywhere
+     where you have .cgi files enabled on your server, but
+     if you put them in the actual cgi-bin you will likely
+     need to store the images outside of the cgi-bin due to
+     permissions.
+
+ [*] Upload files in ASCII, and images in BINARY
+
+ [*] Chmod all .cgi files to 755, if you plan to edit 
+     the templates via the admin section, you will also
+     need to make the template files writable. 777.
+     (include/tpl)
+                cd /path/to/perldesk
+                chmod -R 755 *.cgi
+
+ [*] Set the mysql connection settings in the conf.cgi file
+
+ [*] You will then need to run install.cgi to setup
+     the sql structure
+
+ [*] Log in to the /admin.cgi file, 'admin/demo'
+
+
+        HAVING PROBLEMS? VISIT THE PD FORUMS
+               www.perldesk.com/forums
+
+
+ EMAIL INSTALLATION
+------------------------------------------------------
+
+ [*] PerlDesk comes with the added ability to manage 
+     your email communications with customers. Please
+     follow these steps to set this up.
+
+ [*] Install the Perl module MIME::Tools
+
+ [*] Open up the include/email.cgi and edit the path to
+     the config file. And the second path to the lang 
+     folder
+
+ [*] You must setup your mail software (e.g. sendmail) 
+     so that emails sent to the address(es) of your 
+     choice are piped through to email.cgi
+
+ [*] If you are using SENDMAIL you must edit your 
+     /etc/aliases file, and add a line similar to the 
+     following:
+
+        support: "|/path/to/perldesk/email.cgi"
+  
+     Repeat that line for each address you want perl
+     desk to control.
+
+ [*] If you are using EXIM, pico /etc/valiases/domain
+     you will need to add the following line:
+
+      support@domain.com: |/path/to/perldesk/email.cgi
+
+     As with sendmail, repeat that line for each 
+     address you want perldesk to manage. 
+
+ [*] BEFORE starting to use your email addresses, you
+     need to log in to the admin section of perldesk
+     and go to 'Settings > Email Settings' at the 
+     bottom you need to assign each address you would 
+     like to use.
+ 
+ [*] Now perldesk is setup to control your email  
+     address(es) :) 
+
+
+ 

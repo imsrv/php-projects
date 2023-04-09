@@ -1,0 +1,228 @@
+body {
+	margin				: 0px;
+	background			: url('../img/bgbg.gif') fixed;
+}
+#logobg {
+	position			: absolute;
+	top					: 0;
+	left				: 0;
+	background			: url('../img/logobg.gif');
+	width				: 250px;
+	height				: 83px;
+}
+#top {
+	padding				: 10px;
+	font-size			: 13px;
+	font-family			: Arial;
+	text-align			: left;
+	line-height			: 19px;
+	color				: #FFFFFF;
+	border-bottom		: 3px solid #48afb8;
+	background			: #48afb8;
+	height				: 80px;
+}
+#dis {
+	width				: 846px;
+	background			: #FFFFFF;
+}
+#sagcis {
+	border-right		: 1px solid #48afb8;
+}
+#td {
+	padding				: 3px;
+}
+#xas {
+	width				: 586
+}
+#liste {
+	width				: 134px;
+	text-align			: center;
+	padding				: 3px;
+}
+#sayfax {
+	text-align			: center;
+	padding				: 3px;
+	font-size			: 11px;
+	font-family			: Arial;
+	text-align			: left;
+	line-height			: 19px;
+	color				: #1a6a6f;
+	font-weight			: 600;
+	text-decoration		: none;
+}
+#icx {
+	border				: 1px solid #DDDDDD;
+	background			: #ecf7f7;
+	padding				: 5px;
+}
+#ic {
+	border				: 1px solid #DDDDDD;
+	background			: #ecf7f7;
+	padding				: 5px;
+	cursor				: hand;
+}
+#vresim {
+	border				: 1px solid #48afb8;
+	background			: #FFFFFF;
+	padding				: 2px;
+	text-decoration		: none;
+}
+.vbaslik {
+	font-size			: 11px;
+	font-family			: Arial;
+	text-align			: left;
+	line-height			: 19px;
+	color				: #1a6a6f;
+	font-weight			: 600;
+	text-decoration		: none;
+}
+.vhit {
+	font-size			: 11px;
+	font-family			: Arial;
+	text-align			: left;
+	line-height			: 19px;
+	color				: #666666;
+	text-decoration		: none;
+}
+.vkat {
+	font-size			: 10px;
+	font-family			: Tahoma;
+	text-align			: left;
+	line-height			: 19px;
+	color				: #48afb8;
+	text-decoration		: none;
+}
+#blleft {
+	padding				: 5px;
+	padding-right		: 10px;
+	padding-top			: 85px;
+	width				: 259px;
+	background			: #FFFFFF;
+	background			: url('../img/left-bg.gif');
+	background-repeat	: repeat-y;
+	font-size			: 11px;
+	font-family			: Verdana;
+	text-align			: left;
+	line-height			: 19px;
+	color				: #2b9ca3;
+	text-align			: right;
+}
+#blright {
+	padding				: 5px;
+	padding-top			: 85px;
+	width				: 300px;
+	background			: #FFFFFF;
+	background			: url('../img/right-bg.gif');
+	background-repeat	: repeat-y;
+	font-size			: 11px;
+	font-family			: Verdana;
+	text-align			: left;
+	line-height			: 19px;
+	color				: #2b9ca3;
+}
+.vlink {
+	text-decoration		: none;
+}
+.vlink:hover {
+	text-decoration		: none;
+}
+.ktgr {
+	font-size			: 11px;
+	font-family			: Verdana;
+	text-align			: left;
+	line-height			: 19px;
+	color				: #2b9ca3;
+	text-decoration		: none;
+}
+.ktgr:hover {
+	font-size			: 11px;
+	font-family			: Verdana;
+	text-align			: left;
+	line-height			: 19px;
+	color				: #111111;
+	text-decoration		: underline;
+}
+.ktgr1 {
+	font-size			: 11px;
+	font-family			: Verdana;
+	text-align			: left;
+	line-height			: 19px;
+	color				: #FF0000;
+	text-decoration		: none;
+}
+.ktgr1:hover {
+	font-size			: 11px;
+	font-family			: Verdana;
+	text-align			: left;
+	line-height			: 19px;
+	color				: #2b9ca3;
+	text-decoration		: underline;
+}
+.kbas {
+	font-size			: 11px;
+	font-family			: Verdana;
+	text-align			: left;
+	line-height			: 19px;
+	font-weight			: 400;
+	color				: #333333;
+	text-decoration		: underline;
+}
+#player {
+	text-align			: center;
+	border				: 1px solid #DDDDDD;
+	background			: #ecf7f7;
+	padding				: 2px;
+}
+#bilg {
+	border				: 1px solid #48afb8;
+	background			: #ecf7f7;
+	padding				: 3px;
+	font-size			: 11px;
+	font-family			: Arial;
+	text-align			: left;
+	line-height			: 22px;
+	font-weight			: 400;
+	color				: #333333;
+}
+.etiket {
+	font-size			: 11px;
+	font-family			: Arial;
+	color				: #48afb8;
+	text-decoration		: none;
+}
+.etiket:hover {
+	font-size			: 11px;
+	font-family			: Arial;
+	color				: #333333;
+	text-decoration		: underline;
+}
+#sakir {
+  position				: fixed;
+  _position				: absolute;
+  top					: 0;
+  _top					: expression(eval(document.body.scrollTop));
+  left					: 860;
+  margin				: 0;
+  width					: 160;
+  height				: 400;
+}
+#footer {
+	border-top		: 3px solid #48afb8;
+	background			: #FBFBFB;
+	height				: 80px;
+	font-size			: 11px;
+	font-family			: Arial;
+	color				: #666666;
+	text-decoration		: none;
+	padding				: 10px;
+}
+#kaydirr {
+	position		: fixed;
+	_position		: absolute;
+	top				: 0;
+	_top			: expression(eval(document.body.scrollTop));
+	right			: 0;
+	margin			: 0;
+	text-align		: right;
+	width			: 160px;
+}

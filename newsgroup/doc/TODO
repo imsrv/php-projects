@@ -1,0 +1,70 @@
+MyNewsGroups :)
+
+Things to do in future versions:
+
+#Minor changes
+
+- Usability
+.Put a button in tree.php to go to the last unread message.
+.NewsGroups sorted in a tree way like Google (phpguru.org)
+.Show only the threads that contain unread articles.
+.Add the 'kill file' repository. To avoid showing articles
+ off stupid writers.
+ 
+- Miscellaneous
+
+.Show the number of articles downloaded from the server
+ and the time taken to do it after the article fetching.
+.Correct the login system. Allow REAL challenge-response
+ authentication.
+
+- Core System
+
+.Apply the new error.php at all the pages that show any error.
+
+#New Features
+
+- Login System
+
+.Check the data of the form with JavaScript.
+.Finish the registration with more
+ data: Country, Real Name, etc, and
+ put it in the Session variable.
+.Add the possibility to override the login
+ system, with an own method (LDAP, etc...)
+.'Remember Me' Feature.
+
+- Search Engine
+
+.Put search boxes: General search, by date, by user, etc.
+.Add a general Search Class for allow adding other search
+ systems such as httdig or mngosearch, or just disabling the
+ search system.
+
+
+- Stats
+
+.Add user stats
+
+- SPAM Filters
+
+.Start adding the spam filtering solutions.
+
+- Admin interface improvements
+ 
+- Web Services Support
+
+.RSS Feed support.
+
+
+# Documentation
+
+- Developer's Guide
+
+
+
+
+
+
+
+

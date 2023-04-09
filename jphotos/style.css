@@ -1,0 +1,72 @@
+BODY	{
+	 background-color: #eeeeee
+	}
+H1
+	{
+	 font-size: 100%;
+	 font-family: verdana, sans-serif;
+	}
+.note
+	{
+	 font-size: 60%;
+	 font-family: verdana, sans-serif;
+	}
+
+/* FOTKY */
+
+.card {
+	float: left;   
+	width: 250px;
+	height: 210px;
+	margin: 5px;
+	padding: 10px 0;
+	text-align: center; 
+	background: white;
+	font-size: 70%;
+	border-right: 1px solid #666;
+	border-bottom: 1px solid #666;
+	overflow:auto;
+	}
+	
+.card .card-title {
+	margin: 0 0 5px 0;
+	font-size: 130%;
+	color: #003399;
+	}
+.card IMG{
+	margin:0 auto; padding:0;
+	border: none;
+	}
+.card .card-desc {
+	margin: 5px 10px; padding:0;
+	text-align: left;
+	font-size: 100%;
+	}
+
+.detail {
+	float: left;   
+	width: 450px;
+	height: 350px;
+	margin: 5px;
+	padding: 10px 0;
+	background: white;
+	font-size: 70%;
+	border-right: 1px solid #666;
+	border-bottom: 1px solid #666;
+	padding: 20px;
+	}
+	
+.detail .card-title {
+	margin: 0 0 5px 0;
+	font-size: 130%;
+	color: #003399;
+	}
+.detail IMG{
+	margin:0 auto; padding:0;
+	border: none;
+	}
+.detail .card-desc {
+	margin: 5px 10px; padding:0;
+	text-align: left;
+	font-size: 100%;
+	}

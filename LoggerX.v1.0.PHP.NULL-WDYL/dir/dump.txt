@@ -1,0 +1,41 @@
+# MySQL dump 8.14
+#
+# Host: localhost    Database: stats
+#--------------------------------------------------------
+# Server version	3.23.38-nt
+
+CREATE TABLE browser (  id int(11) default NULL,  browser char(31) default NULL,  count int(11) default NULL) TYPE=MyISAM;
+
+CREATE TABLE color (  id int(11) default NULL,  color char(15) default NULL,  count int(11) default NULL) TYPE=MyISAM;
+
+CREATE TABLE country (  id int(11) default NULL,  country char(65) default NULL,  count int(11) default NULL) TYPE=MyISAM;
+
+CREATE TABLE engine (  id int(11) default NULL,  engine char(63) default NULL,  count int(11) default NULL) TYPE=MyISAM;
+
+CREATE TABLE java (  id int(11) default NULL,  java char(31) default NULL,  count int(11) default NULL) TYPE=MyISAM;
+
+CREATE TABLE javascript (  id int(11) default NULL,  javascript char(31) default NULL,  count int(11) default NULL) TYPE=MyISAM;
+
+CREATE TABLE language (  id int(11) default NULL,  language char(31) default NULL,  count int(11) default NULL) TYPE=MyISAM;
+
+CREATE TABLE month (  id int(11) default NULL,  m01 int(11) default NULL,  m02 int(11) default NULL,  m03 int(11) default NULL,  m04 int(11) default NULL,  m05 int(11) default NULL,  m06 int(11) default NULL,  m07 int(11) default NULL,  m08 int(11) default NULL,  m09 int(11) default NULL,  m10 int(11) default NULL,  m11 int(11) default NULL,  m12 int(11) default NULL) TYPE=MyISAM;
+
+CREATE TABLE os (id int(11) default NULL, os char(31) default NULL, count int(11) default NULL) TYPE=MyISAM;
+
+CREATE TABLE query (id int(11) default NULL, query char(255) default NULL, count int(11) default NULL) TYPE=MyISAM;
+
+CREATE TABLE referrer (id int(11) default NULL, referrer char(255) default NULL, count int(11) default NULL) TYPE=MyISAM;
+
+CREATE TABLE resolution (  id int(11) default NULL, resolution char(15) default NULL, count int(11) default NULL) TYPE=MyISAM;
+
+CREATE TABLE users (id int(11) auto_increment, Fname char(31), Mname char(31), Lname char(31), datej char(15), acctype int(11), login char(31), email char(63), site char(63), access_level int(11), gender char(10), year char(4), password char(63), visitors int(11), PRIMARY KEY (id)) TYPE=MyISAM;
+
+INSERT INTO users VALUES (2,'Some Log User','example','user','01:05:2004',1,'admin','someadmin@yourdomain.xxx','yourdomain.com',2,'no matter','1900','admin',0);
+
+CREATE TABLE visitor (id int(11), date char(15), count int(11) ) TYPE=MyISAM;
+
+CREATE TABLE ip (ip char(20), date char(20),id int) TYPE=MyISAM;
+
+CREATE TABLE week (id int(11), Mon int(11), Tue int(11), Wed int(11), Thu int(11), Fri int(11), Sat int(11), Sun int(11) ) TYPE=MyISAM;
+
+

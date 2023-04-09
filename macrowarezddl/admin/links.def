@@ -1,0 +1,102 @@
+# Database Definition: LINKS
+# --------------------------------------------------------
+# Definition of your database file.
+    %db_def = (
+            ID                   => [0,  'numer',     5,     8,  1,  '',          ''],
+            'Program Name'       => [1,  'alpha',     40,   75,  1,  '',          ''],
+	    'Program URL'   	 => [2,  'alpha',     40,   75,  1,  'http://',   '^http|news|mailto|ftp'],
+            'Site Name'       	 => [3,  'alpha',     40,   75,  0,  '',   ''],
+            'Site URL'       	 => [4,  'alpha',     40,   75,  0,  '',   '^http|news|mailto|ftp'],
+            'Sponsor URL'    	 => [5,  'alpha',     40,   75,  0,  'http://www.call-girls.net/cgi-bin/click?id=NikJ',   '^http|news|mailto|ftp'],
+            'Sponsor Text'       => [6,  'alpha',     15,   15,  0,  'Enable Here',   ''],,
+            Category             => [7,  'alpha',      0,  150,  1,  '',          ''],
+            Hits            	 => [8,  'numer',      10,  10,  1,  '0',         '\d+'],        
+            isNew           	 => [9,  'alpha',      0,    5,  0,  'No',        ''],
+            isPopular       	 => [10, 'alpha',      0,    5,  0,  'No',        ''],
+            Rating          	 => [11, 'numer',      10,  10,  1,  0,           '^[\d\.]+$'],
+            Votes           	 => [12, 'numer',      10,  10,  1,  0,           '^\d+$'],
+            Date           	 => [13,  'date',      15,   15,  1,  \&get_date,  ''],
+            Language           	 => [14, 'alpha',      10,  10,  0,  'English',       'English|Deutsch'],
+            'Contact Name'       => [15,  'alpha',     40,   75,  1,  '',          ''],
+            'Contact Email'      => [16,  'alpha',     40,   75,  1,  '',          '.+@.+\..+'],
+            ReceiveMail          => [17, 'alpha',      10,  10,  1,  'Yes',       'No|Yes']
+
+    );
+                           
+# Database file to use -- defined in links.cfg.
+    $db_file_name    = $db_links_name;
+# Counter file to use  -- defined in links.cfg.
+    $db_id_file_name = $db_links_id_file_name;
+# The column name for the database key. 
+    $db_key             = 'ID'; 
+# Database delimeter.   
+    $db_delim           = '|';
+# Title used in admin output.
+    $html_title         = 'Links Database';
+    $html_object        = 'Link';
+
+# Field Number of some important fields. The number is from %db_def above
+# where the first field equals 0.
+        $db_title = 1;			$db_url = 2;			$db_site_name = 3;
+	$db_site_url = 4;		$db_sponsor_1 = 5;		$db_sponsor_1_text = 6;
+	$db_category = 7;		$db_ispop = 10;
+	$db_hits = 8; 			$db_isnew = 9; 		
+    	$db_rating = 11;		$db_votes = 12;			$db_date = 13;	
+    	$db_language = 14;	        $db_contact_name = 15;   	$db_contact_email = 16;
+    	$db_mail = 17;
+
+# Field number to sort links by:
+    $db_sort_links = 1;
+
+# Field names you want to allow visitors to search on:
+    @search_fields = (1,2,5);   
+
+# System defaults. When adding new links or modifying links, these fields
+# can not be overwritten by a user.
+%add_system_fields = ( 
+                         isNew       => 'No',
+                         isPopular   => 'No',
+                         Hits        => '0',
+                         Rating      => 0,
+                         Votes       => 0,
+                         ReceiveMail => 'Yes',
+                         'Sponsor URL' => 'http://www.call-girls.net/cgi-bin/click?id=NikJ',
+                         'Sponsor Text' => 'Enable Here'
+                  );
+
+# Hash of column names to possible options. If you want to use a select form
+# field, you can use &build_select_field in your HTML page. This routine will
+# make a <SELECT> input tag using the following values:
+%db_select_fields   = ( 
+                        isNew     => 'Yes,No',
+                        isPopular => 'Yes,No',
+                        ReceiveMail => 'Yes,No',
+                        Language => 'English,Deutsch'
+                    );
+
+# Hash of column names to radio values. If you use &build_radio_field, it will
+# make a <INPUT TYPE="RADIO"> tag for you using the options specified in the hash.
+    %db_radio_fields    = ( );
+
+# Maximum number of hits returned in a search. Can be overridden in the search
+# options.
+    $db_max_hits        = 10;
+
+# Use the built in key tracker.
+    $db_key_track = 1;
+
+# ===========================================================================
+# Build up some variables from your definitions. Internal use only.
+@db_cols = ();
+foreach (sort { $db_def{$a}[0] <=> $db_def{$b}[0] } keys %db_def) {
+    push (@db_cols, $_);
+    $db_sort{$_}            = $db_def{$_}[1];
+    $db_form_len{$_}        = $db_def{$_}[2];
+    $db_lengths{$_}         = $db_def{$_}[3];
+    $db_not_null{$_}        = $db_def{$_}[4];
+    $db_defaults{$_}        = $db_def{$_}[5];
+    $db_valid_types{$_}     = $db_def{$_}[6];
+    ($_ eq $db_key)       and $db_key_pos = $db_def{$_}[0];
+}
+
+1;

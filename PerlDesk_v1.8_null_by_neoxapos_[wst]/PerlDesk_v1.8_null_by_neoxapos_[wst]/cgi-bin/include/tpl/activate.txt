@@ -1,0 +1,7 @@
+Dear {cname}
+
+Thanks for creating a help desk account, before you are able to use your new help desk account you must activate it by clicking the link below.
+
+{link}
+
+Thank you.

@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>mcNews Read Me</title>
+<style type="text/css">
+<!--
+a:link {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: x-small; font-weight: bold; color: #666666; text-decoration: none}
+a:active {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: x-small; font-weight: bold; color: #666666; text-decoration: none}
+a:visited {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: x-small; font-weight: bold; color: #666666; text-decoration: none}
+a:hover {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: x-small; font-weight: bold; color: #CCCCCC; text-decoration: none}
+-->
+</style>
+</head>
+<body bgcolor="#C0C0C0" text="black">
+
+<p align="right"> <font face="Verdana, Arial, Helvetica, sans-serif" size="4" color="#000000"> 
+  <b><font size="5">mcNews 1.3</font></b> </font> </p>
+<hr>
+<table width="65%" border="0" cellspacing="1" align="center">
+  <tr> 
+    <td bgcolor="#999999"><font face="verdana" size="3"><b>Description</b></font></td>
+  </tr>
+  <tr> 
+    <td><br>
+      <font face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>- Public 
+      section</b><br>
+      <br>
+      <b>The homepage</b> ( index.php ) shows to the guest a navigation bar with 
+      three links:<br>
+      <b>list</b> (list.php)<br>
+      <b>search</b> (search.php) <br>
+      <b>submit</b> (ecrire.php) <br>
+      Below this bar the x last News are shown in detail:<br>
+      Date, title and author, followed by icons / links towards the site and the 
+      email of the author if he indicated them in the ecrire.php form. The site 
+      opens in a new window, and the email sends to a contact form mailto.php, 
+      the address email remaining so invisible. One finds then the text of the 
+      News, then until three links followed by their description. Then the guest 
+      can <b>read</b> comments (lire.php) if there's, or to <b>write</b> one (comment.php).</font><br>
+      <br>
+      <br>
+      <font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a><b>List</b></a> 
+      </font>displays the xx last News, classified by date, with subject and author. 
+      A click on one of them sends to the page <b>read</b>. <br>
+      <br>
+      <b>Search</b> suggests a research in all News with one to three words-keys, 
+      the operator AND or OR, and the possibility looking for in the authors, 
+      the titles or the texts. The result appears as the page <b>list</b>.<br>
+      <br>
+      <font face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>Submit</b> 
+      is the form to submit aNews. No limitation, every guest can propose one 
+      News, but it must be validated by you before being published. The required 
+      fields are: Name, Title and Text. Email is optional, but must be valid if 
+      filled. It's possible to insert until three links and their description 
+      at the end of text, and four smilies are automatically managed: :) &nbsp;:( 
+      &nbsp;:grr: and ?!? are replaced by <img src="images/content.gif" width="15" height="15" alt=":)">&nbsp;<img src="images/cry.gif" width="15" height="15" alt=":(">&nbsp;<img src="images/grr.gif" width="16" height="16" alt=":grr:"> 
+      and <img src="images/crazy2.gif" width="15" height="15" alt="?!?">. HTML 
+      tags aren't recognized, avoiding nasty tricks. You receive an email informing 
+      you about the submission of a News and inviting you to go to validate it.<br>
+      Privilege administrator: by typing admin in the field name and by validating, 
+      you're redirected to the reserved form (see lower).<br>
+      <br>
+      <b>Read</b> one or several comments displays the News concerned and below 
+      all the comments added by the readers. Comments appear as News, the title 
+      less.<br>
+      The same privilege for the administrator as above.<br>
+      <br>
+      <b>Write</b> thus allows to comment a News. As <b>submit</b>, every guest 
+      can post a comment, but you've to validate it so that it's published. The 
+      characteristics of the comment form are the same that those of News, and 
+      you're also warned by mail.<br>
+      <br>
+      <br>
+      <b>- Section administration</b><br>
+      <br>
+      Once crossed the login page, several choices:<br>
+      <br>
+      <b>Design parameters</b> (design.php). You choose here the appearance of 
+      mcNews (only for the public part) according to the files which are in the 
+      <b>skin</b> directory. You'll find there only two for the moment, up to 
+      you to write one matched with your site. And especially, please, think of 
+      sending them to me, I shall give them to all.<br>
+      <br>
+      <b>Technical parameters</b> (tech.php). It's here necessary to choose the 
+      language, in the same way as for skins, files being in the lang directory. 
+      The same demand of my part, please, send your translations! You also have 
+      to fill the other fields. The name is the one you want to see appearing 
+      in &quot;author&quot; on your News, the email is for the warning of post 
+      and the site URL for the link which allows you to leave the admin after 
+      logout. The number of News on homepage corresponds among News &quot;displayed&quot; 
+      that you want to see appearing (generally from 5 to 10, but the choice is 
+      free, attention at the speed because of the number of requests), the number 
+      of News in page list can be much bigger, as far as it also determines the 
+      number of possible answers in <b>search</b>.<br>
+      <br>
+      <b>News waiting for validation</b> shows you the list. To click one sends 
+      you to the page <b>accept modify delete</b> (valid.php )<br>
+      <br>
+      <b>Comments to be validated</b>: here are listed News already validated 
+      but which received a new comment. The links send you to the same page as 
+      above.<br>
+      <br>
+      <b>News validated </b>is the list of all News for which there's nothing 
+      again. Please, use it todelete the oldest News, to avoid the clogging of 
+      the data base. Always the same page.<br>
+      <br>
+      <b>Publish a News</b>, at the top to the right, opens you a form pre-filled 
+      with your name and email address (fixed in the technical parameters). In 
+      this form you can use HTML tags, to write in colours, in fat, even insert 
+      images or links into the text. Everything is possible, even the errors! 
+      Thus, please, be careful. On the other hand Administrator's News are validated 
+      immediately.<br>
+      <br>
+      <b>Accept Modify Delete</b> displays a News and its eventuels comments. 
+      Click accept to validate it, modify opens a form allowing you to modify 
+      everything, and to add HTML tags if you want. One News which you modify 
+      must be then validated, the accepted word is then red. Same procedures for 
+      comments. Delete a News also deletes all its comments, delete a comment 
+      deletes only itself. You can also from this page write a comment, and as 
+      administrator it enjoys privileges already seen higher.<br>
+      </font></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#999999"> <font face="verdana" size="3"><b>Installation</b></font></td>
+  </tr>
+  <tr> 
+    <td> 
+      <p><font face="verdana" size="2"><br>
+        First, edit the <b>config.inc.php</b> file and fill variables. <br>
+        <b>$Admin_login</b> and <b>$admin_pass</b> will be your login and password 
+        to the administration of mcNews. <br>
+        Then, upload the complete directory mcNews on your Web server . <br>
+        Connect and navigate until http: // www.votresite/... / mcNews / admin 
+        / install.php, <br>
+        ... and please, follow simply the instructions.</font></p>
+      
+        
+      <p><font face="verdana" size="3"><b><font size="2">Just a little bit of 
+        modesty &nbsp;;)</font></b></font><br>
+        <a href="http://validator.w3.org/check/referer"><img border="0"
+        src="images/w3c.gif"
+        alt="Valid HTML 4.01!" height="31" width="88"></a></p>
+      </td>
+  </tr>
+  <tr>
+    <td bgcolor="#999999"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"><b>Changelog</b></font></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#C0C0C0"> 
+      <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+        <b>1.3: </b><br>
+        Admin protected with session, and som security hole fixed.<br>
+        Upgrade from 1.2: upload all files in admin folder.<br>
+        <b>1.2: </b><br>
+        The page List is now displayed on several pages.<br>
+        <b>1.1a: </b><br>
+        Bugfix in install.php<br>
+        <b>1.1: </b><br>
+        Option to automatic validation for News and/or Comments.<br>
+        Best display for News, ordered by date AND #id.<br>
+        <b>1.0:</b><br>
+        First release.</font></p>
+    </td>
+  </tr>
+  <tr> 
+    <td bgcolor="#999999"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"><b>Licence</b></font></td>
+  </tr>
+  <tr>
+    <td>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">mcNews is 
+        a free software; you can redistribute it and/or modify<br>
+        it under the terms of the <a href="GNU_GPL.html">GNU General Public License</a> 
+        as published by<br>
+        the Free Software Foundation; either version 2 of the License, or<br>
+        any later version.</font></p>
+      <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> mcNews is 
+        distributed in the hope that it will be useful,<br>
+        but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the<br>
+        GNU General Public License for more details.</font></p>
+      <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> You should 
+        have received a copy of the GNU General Public License<br>
+        along with this program; if not, write to the Free Software<br>
+        Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA</font><br>
+      </p>
+      <p align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"><a href="mailto:marc@phpforums.net">copyright 
+        &copy; 2002 - Marc Cagninacci</a></font> </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

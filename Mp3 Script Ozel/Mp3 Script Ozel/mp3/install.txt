@@ -1,0 +1,14 @@
+installation
+--------------------------------
+1.open you PHPmyadmin
+2.create a database
+3.use news.sql & video.sql & music.sql to make tables
+4.open config.php and put the correct info
+5.open pages-setting.php and put the correct info
+    
+You are DONE!
+
+please send me email for any question or bugs
+(email: nomad_ghotbi@yahoo.com)
+
+thank you!

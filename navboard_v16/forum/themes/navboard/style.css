@@ -1,0 +1,124 @@
+BODY {
+    background-color: #FFFFFF;
+    SCROLLBAR-BASE-COLOR: #A7BACD;
+    SCROLLBAR-ARROW-COLOR: #000000;
+}
+
+
+.formbutton {
+    border: 1px solid #006699;
+    background-color: #DEEEFF;
+    color: #000000;
+    font-family: Tahoma,Verdana,Arial;
+    font-size: 12px;
+}
+
+.forminput {
+    border: 1px solid #006699;
+    background-color: #DEEEFF;
+    color: #000000;
+    font-family: Tahoma,Verdana,Arial;
+    font-size: 12px;
+}
+
+.tablebutton
+{
+    border: 1px solid #006699;
+    background-color: #DEEEFF;
+}
+
+.tablebuttonfont
+{
+    color: #000000;
+    font-family: Tahoma,Verdana,Arial;
+    font-size:12px; 
+}
+
+.table {
+    border-top: 1px #006699 solid;
+    border-right: 1px #006699 solid;
+}
+
+.tableheadercell {
+    border-bottom: 1px #006699 solid;
+    border-left: 1px #006699 solid;
+    background-color: #6792BD;
+}
+
+.categorycell {
+    border-bottom: 1px #006699 solid;
+    border-left: 1px #006699 solid;
+    background-color: #8DA9C6;
+}
+
+.tablecell1 {
+    border-bottom: 1px #006699 solid;
+    border-left: 1px #006699 solid;
+    background-color: #A7BACD;
+}
+
+.tablecell2 {
+    border-bottom: 1px #006699 solid;
+    border-left: 1px #006699 solid;
+    background-color: #B4C4D5;
+}
+
+
+
+
+
+
+.textsmall {
+    font-family: Tahoma,Verdana,Arial;
+    font-size:11px;
+    color: #000000;
+}
+
+.textlarge {
+    font-family: Tahoma,Verdana,Arial;
+    font-size:12px;
+    color: #000000;
+}
+
+a:link,a:visited,a:active {
+    text-decoration: underline;
+    color: #000000;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #000099;
+}
+
+.textheader {
+    font-family: Tahoma,Verdana,Arial;
+    font-size:11px;
+    color: #000000;
+}
+
+.textheader a:link,.textheader a:visited,.textheader a:active {
+    text-decoration: underline;
+    color: #000000;
+}
+
+.textheader a:hover {
+    text-decoration: underline;
+    color: #000099;
+}
+
+.errortext {
+    color: red;
+    font-family: Tahoma,Verdana,Arial;
+}
+
+.highlight {
+    background: yellow;
+    color: black;
+}
+
+.quote
+{    
+    color: #000000;
+    border: 1px solid #006699;
+    background: #B4C4D5; 
+}

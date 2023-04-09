@@ -1,0 +1,24 @@
+LinkAccessLogger
+----------------
+
+Copyright (c) 2003 Jochen Kupperschmidt <jochen@kupperschmidt.de>
+Released under the terms of the GNU General Public License
+   _                               _
+  | |_ ___ _____ ___ _ _ _ ___ ___| |_
+  |   | . |     | ._| | | | . |  _| . /
+  |_|_|___|_|_|_|___|_____|___|_| |_|_\
+    http://homework.nwsnet.de/
+
+
+I wrote this piece of code to check if anyone visited outdated
+links in my project. With this I can track when the placeholder
+site was accessed and (if someone followed a link to it instead
+of typing it manually) from where the visitor came. Knowing the
+source, I can contact the webmaster of that site to update the
+link and everybody will be happy.
+
+Before first successful use of the scripts you have to specify
+a logfile name in both the read and write scripts, create that
+logfile on the server (upload an empty plain text file) and
+grant write permission to user, group and world using your
+favorite ftp client.

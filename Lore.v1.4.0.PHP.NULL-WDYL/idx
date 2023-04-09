@@ -1,0 +1,52 @@
+<?php
+/*
++-------------------------------------------------------------------------
+| Lore
+| (c)2003-2004 Pineapple Technologies
+| http://www.pineappletechnologies.com
+| ------------------------------------------------------------------------
+| This code is the proprietary product of Pineapple Technologies and is
+| protected by international copyright and intellectual property laws.
+| ------------------------------------------------------------------------
+| Your usage of this software is bound by the agreement set forth in the
+| software license that was packaged with this software as LICENSE.txt.
+| A copy of this license agreement can be located at
+| http://www.pineappletechnologies.com/products/lore/license.php
+| By installing and/or using this software you agree to the terms
+| stated in the license.
+| ------------------------------------------------------------------------
+| You may modify the code below at your own risk. However, the software
+| cannot be redistributed, whether altered or not altered, in whole or in
+| part, in any way, shape, or form.
++-------------------------------------------------------------------------
+| Software Version: 1.4.0
++-------------------------------------------------------------------------
+*/
+require_once('global.php');
+
+$fields = explode('/', $_SERVER['REQUEST_URI']);
+
+$id_pos = array_search('idx', $fields);
+if( $id_pos !== false )
+{
+	$category_id = $fields[ $id_pos + 1 ];
+	$article_id = $fields[ $id_pos + 2 ];
+}
+
+if( $article_id )
+{
+	if( strstr( $article_id, ',' ) )
+	{
+		list( $article_id, $page ) = split(',', $article_id);
+	}
+	$_GET['category_id'] = $category_id;
+	$_GET['id'] = $article_id;
+	$_GET['page'] = $page;
+	require_once('article.php');
+}
+else
+{
+	$_GET['id'] = $category_id;
+	require_once('category.php');
+}
+?>

@@ -1,0 +1,789 @@
+************************************************************************
+* Orca Search v2.0b                                                    *
+*  A robust auto-spidering search engine for single/multiple sites     *
+* Copyright (C) 2005 GreyWyvern                                        *
+*                                                                      *
+* This program is free software; you can redistribute it and/or modify *
+* it under the terms of the GNU General Public License as published by *
+* the Free Software Foundation; either version 2 of the License, or    *
+* (at your option) any later version.                                  *
+*                                                                      *
+* This program is distributed in the hope that it will be useful,      *
+* but WITHOUT ANY WARRANTY; without even the implied warranty of       *
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the        *
+* GNU General Public License for more details.                         *
+*                                                                      *
+* You should have received a copy of the GNU General Public License    *
+* along with this program; if not, write to the Free Software          *
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 *
+* USA                                                                  *
+************************************************************************
+
+
+*** Changelog
+  - See changelog.txt for this script's complete change history
+
+
+*** Contents
+ 1. Script Requirements
+ 2. Quick Start
+ 3. Introduction
+ 4. Upgrading
+ 5. Detailed Installation
+ 6. Spider Configuration
+ 7. Crontab Spidering
+ 8. Entry List Panel
+ 9. Search Options
+10. Searching
+11. Sitemap
+12. JWriter
+13. FAQ (see faq.txt)
+
+
+************************************************************************
+1. Script Requirements:
+
+PHP 4.2.0+   (4.3.0+ recommended)
+MySQL 3.23+
+
+
+2. Quick Start
+
+  If you are an advanced user and wish to skip the hand-holding guide
+later on in this readme file, you can use the Quick Start guide below.
+Good Luck!
+
+  i. Extract all the files from the zipped package to a temporary
+     local directory.
+
+  ii. Open the config.php file and edit the seven user variables to your
+      preference.  The fifth variable is the prefix the script will use
+      to create three tables in your database.  The sixth and seventh
+      will be the username and password you'll use to log in to the
+      Control Panel.
+
+  iii. In your www or public HTML folder, create a folder named "os2".
+  
+  iv. Upload the following files into the "os2" directory:
+        body.xhtml.php
+        body.xhtml.css
+        config.php
+        control.css
+        control.php
+        head.php
+        spider.php
+        lang.txt
+
+  v. Upload the following file into "os2"s parent folder:
+       _search.php
+
+  vi. If you plan on using the offline javascript search (JWriter),
+      upload "jwriter.php" and "egg.js" into the "os2" directory.  If
+      you plan on using the Google sitemap generator, upload
+      "sitemap.xml" into "os2"s parent folder.  CHMOD "egg.js" and
+      "sitemap.xml" to 766 or 777.  If you are using a Windows server,
+      set appropriate permissions so PHP can read and write to these
+      files.
+
+  vii. Visit "/os2/control.php" with your web browser.  On your first
+       visit to this page, it will create the tables required for
+       running the script.  If there are no errors, installation was a
+       success.  You can now log into the Control Panel and configure
+       the script as you wish.
+
+
+3. Introduction
+
+  Welcome to the Orca Search script.  This script will index the pages
+at a single domain, or group of specified domains by spidering the
+contents at an interval you specify.  You may even set up the spider to
+be run at a specific time via *NIX cron tab.
+
+  Once the script is up and running, you'll need to teach your spider
+what to eat and what to leave alone.  This will take some tweaking for
+days or weeks to come, but eventually, what you'll end up with is an
+automatic self-updating search system you never have to think about
+again!  Well, maybe not "never", but pretty close :)
+
+  BEFORE YOU BEGIN: Please follow the installation steps as close as
+you are able.  Doing things out of order may require you to start over
+from scratch.  You have been warned.
+
+  IF YOU ARE UPGRADING FROM A BETA VERSION: The script does not have an
+automatic upgrade system from beta versions.  Installing over a previous
+version will NOT work as expected, unless you open phpMyAdmin and
+manually make all the visible MySQL table changes.  It is recommended
+that you instead install the new version into a fresh directory using a
+new MySQL table.  Then manually transfer the settings of the old version
+to the new via each GUI.  After this is done, change the name of the new
+directory to the name of the old one.
+
+************************************************************************
+*         Please report any bugs to:  orcas@greywyvern.com             *
+************************************************************************
+
+
+4. Upgrading
+
+  The Orca Search is designed to make upgrading easy!  Upgrade code is
+included which will silently upgrade any version 2.0 Final or later, to
+the version of the release you have just downloaded.  If, rather, you
+are installing this script fresh, you can skip to the installation
+section #5 later on in this manual.
+
+  To upgrade your Orca Search, just follow these simple steps:
+
+  i. From your *existing* installation, open the "config.php" file in
+     any text editor.
+
+  ii. Copy the seven setup variables, five for MySQL access and two for
+      Control Panel username and password.  I usually copy the entire
+      beginning of this file down to the "Functions" comment lines.
+
+  iii. Extract all the files from this package into a temporary
+       directory and open the *new* "config.php".
+
+  iv. Paste the old config variables (the ones you copied) into the new
+      "config.php", overwriting the ones that are already there.  Save
+      this file.
+
+  v. Overwrite all files in the "os2" directory (or whatever you named
+     this subdirectory) on your webserver, with the corresponding files
+     from the temporary directory (the new version files).
+
+  vi. On the next visit to the Control Panel or search interface with
+      any web browser, the Orca Search will be automatically upgraded!
+
+
+5. Detailed Installation
+
+  i. Ensure you have all files
+
+  The Orca Search v2.0 attempts to be completely modular, unlike the
+other scripts in the Orca series.  Most pieces of the script are 100%
+swappable with newer or modified versions, should they become available.
+Each file has a specific function which can be built upon by future
+modders.  As such, there are three types of files for this script:
+Core, Output and Tools.
+
+So let's run through all the files you got in your Orca Search package:
+
+There are six (6) Core files.  These files MUST be installed in order
+for the search script to work:
+
+config.php  - Global configuration file
+control.css - CSS for Control Panel
+control.php - The Control Panel
+head.php    - Accepts search requests and builds an array of results
+lang.txt    - Language cartridge for spider and control panel
+spider.php  - Crawls your site and indexes pages
+
+The default language file is English.  To use a different language file,
+if available, name the file "lang.txt" and overwrite the existing text
+file.  You may need to adjust the Control Panel Display Charset as per
+instructions in the language file you are now using (explained later).
+The control panel script will always look for a file named "lang.txt" in
+the same directory in which the control.php file resides.
+
+There are three (3) Output files.  Two of them, "body.xhtml.php" and
+"body.xhtml.css" go together, while "body.rss20.php" stands alone.  Only
+one set of these needs to be installed depending on what type of output
+you want your search script to generate:
+
+body.xhtml.php + body.xhtml.css
+                - Generates XHTML output from a result array
+body.rss20.php  - Generates an RSS 2.0 feed of search results
+
+There are four (4) Tools files. The first three files are for a tool
+called the JWriter. This tool will take the data from your search
+database and compress it into a javascript file which can be used to
+search a site which has been mirrored for offline use by a program such
+as HTTrack.  I've designed the JWriter mainly using output from this
+mirroring program so I highly recommend it: <http://www.httrack.com/>
+
+The JWriter tool uses these files:
+
+egg.js                 - Offline Javascript target file
+jwriter.php            - JWriter workhorse
+_search.html           - Sample offline search page
+
+The third file is the target file for Sitemap writing:
+
+sitemap.xml            - Empty Sitemap file
+
+Google is currently beta testing a sitemap service, where you can submit
+an XML or gzipped XML list of pages at the site you want indexed.  The
+script will output this XML data into the sitemap.xml file.  There is
+also the option to gzip this data to save space and bandwidth.  If you
+select this option, you will need to rename this file with an .xml.gz
+extension.
+
+Among all of these files there is a small file named "_search.php".
+This file shows a sample XHTML search result page (using the
+"body.xhtml.php" output file) and where each piece of the search engine
+is included.  Following the same system of PHP includes, you should be
+able to embed the search engine into your already existing webpage
+layout.
+
+The .zip file also includes an .htaccess file which turns off your
+server's zlib output compression within the os2/ directory.  The
+spider's progressive output requires delivery of the page to the browser
+in plain HTML.  You don't need to upload this file if you are having no
+problems viewing the spider output, when triggered from the Control
+Panel.  Servers usually have zlib compression turned off by default.
+
+  ii. Edit config.php
+
+  Before uploading, open the "config.php" file.  There is a short list
+of variables you need to assign manually in order for the script to work
+on your server.
+
+First, there are five variables under the MySQL header.  These variables
+allow the script to access the MySQL database system on your server to
+manage script data and store search indices.  If you don't know these
+variables offhand, ask your host.
+
+The first four variables will be specific to your server and MySQL
+installation.  However, the fifth variable will be used as a prefix for
+creating three tables in your database.  You can give this variable any
+name you want, as long as it is only letters and numbers and does not
+begin with a number.
+
+Next there are two variables under the Admin header.  These are the
+login name and password for the Control Panel.  Change them to something
+hard to guess!
+
+Once everything is the way you like it, you can save and close the
+"config.php" file.
+
+  iii. Upload the files
+
+  Create a directory in your public HTTP area to contain the search
+script files. The default is "os2" but you can specify any directory
+you want, provided you change the include statements in any search page
+you create, and in appropriate places in the Control Panel, to point to
+the new directory.
+
+ **********************************************************************
+ * For the purpose of convenience, the remainder of this manual will  *
+ * assume you are using the default "os2" directory and the XHTML     *
+ * Output files!                                                      *
+ **********************************************************************
+
+Upload the following Core files into the "os2" directory:
+config.php
+control.css
+control.php
+head.php
+lang.txt
+spider.php
+
+Then upload the following Output files into the "os2" directory:
+body.xhtml.php
+body.xhtml.css
+
+Finally, upload the following file into the parent directory of "os2":
+_search.php
+
+After you have uploaded all the files, your directory structure should
+look like this:  (* if desired)
+
+/_search.php
+/os2/body.xhtml.php
+/os2/body.xhtml.css
+/os2/config.php
+/os2/control.css
+/os2/control.php
+/os2/head.php
+/os2/lang.txt
+/os2/spider.php
+
+
+  iv. Activate the Control Panel
+
+  When the above files have been uploaded, visit "os2/control.php" via
+HTTP with your web browser.  If you are prompted with a login screen,
+script setup was a success!  The Control Panel is now installed and
+ready to be configured.
+
+
+6. Spider Configuration
+
+  i. Logging in and setting up
+
+  Log in using the username and password you entered in the "config.php"
+file.  Once you log in, you'll be confronted by the Spider setup area.
+Scroll down and set all your spidering options, they should be well
+explained by the help text included in the form.  Some of the more
+obscure form elements will be explained below.  Make sure you "Submit"
+to save your changes!
+
+If you have trouble entering or viewing special characters in any of the
+fields, the problem may be that the Control Panel is not being served in
+the character set of your input.  If this is the case, click the Tools
+button in the menu and change the Display Charset to your preference.
+
+If you load a different language file than the default (English), make
+sure to check which character set(s) it is compatible with.  The Control
+Panel Display Charset *must* be changed to match the language file or
+else dialogues may not display properly.
+
+
+  ii. Automatic Categorisation
+
+  There is a special textarea in the spider options labelled "Automatic
+Categorisation".  You can use this field to make the spider
+automatically assign certain categories to newly found pages.  The field
+uses this special syntax:
+
+CategoryName:::URIMatch
+
+or
+
+CategoryName;;;TitleMatch
+
+Type the name of the category you want automatically assigned first,
+then choose whether a URI or Title string match will work best.  If URI,
+add three colons, if Title, add three semi-colons.  After the colons/
+semi-colons, type a plain text matching string which will trigger the
+assignment of this category.  These matches will be compared to the
+entire title or entire URI (including the "http://").  Here are some
+examples:
+
+    a) Products:::products/
+
+  This rule will match these example URIs:
+    http://www.example.com/products/
+    http://www.example.com/products/item1.php
+    http://www.example.com/donotindex/products/item1.php
+
+  If any of these URIs are found, they will automatically be assigned to
+  the "Products" category.
+
+    b) My Blog;;;My Blog
+
+  This rule will match these example Titles:
+    My Blog
+    My Blog - A Day At The Farm
+    Add a Comment to My Blog
+
+  If any of these Titles are found, they will automatically be assigned
+  to the "My Blog" category.
+
+Because of the three colons and semi-colons system being used, you
+cannot assign category names which contain these character sequences.
+However, the match string may contain them, if needed.
+
+The results of the spider can also be emailed to you.  The Email Results
+field accepts email addresses in the same format as PHP's mail()
+function.  Read more about it here:
+  http://php.net/manual/en/function.mail.php
+
+
+  iii. Starting the engine
+
+After the spider has been found and you have set all your desired Spider
+options, hit the "Go" button in the form up top to begin the spider.
+Then watch it crawl!  Because crawling a site requires a lot of error
+tolerance, if anything goes wrong with this search script, it will
+probably happen now.  If an error does happen, the spider will stop and
+a message will be displayed.  As I aim to make this script work with as
+many different PHP installations and URI formats as possible, if you
+could email me any error messages I would be very grateful :)  As we
+move on, I will assume the spider completed its crawl sucessfully.
+
+Unless you were really meticulous, you'll probably notice that the
+spider ate a lot more or a lot less than you were expecting it to.  This
+is normal.  Just look through the list of files the spider ate, adjust
+your rules on the Spider page, and try again.  You don't have to get it
+perfect just yet though, since you can make manual edits using the Entry
+List section.
+
+Remember, that if the spider crawled and indexed some pages it wasn't
+supposed to, those pages will not be purged if you add a blocking rule
+and spider again.  They will only be marked as "Blocked" or "Unread".
+You will need to manually delete them from the Entry List panel.
+
+
+7. Crontab Spidering
+
+  This section assumes you are hosting the spider on a *NIX server which
+has a crontab daemon installed.
+
+To trigger a spider by crontab, you'll need to check the "Enable Cron"
+checkbox in the Spider panel.  This only tells the script to expect a
+crontab trigger, you'll have to set up the crontab yourself using the
+server tools you have available.  Usually your host will have provided a
+control panel which allows you to set up a crontab.
+
+Note that enabling the crontab trigger will disable PHP-based automatic
+spidering, spider result emailing and spider HTML output.  The spider
+will depend entirely on you to provide the correct trigger, otherwise it
+will do nothing but ignore requests to spider.
+
+The rest of this guide assumes you know how the basic options of a
+crontab work.  See the Wikipedia entry on the crontab command for more
+information: <http://en.wikipedia.org/wiki/Crontab>
+
+As for the value of the crontab itself, first you will need to know the
+path to the PHP binary on your server.  It is usually "usr/bin/php" but
+depending on who set up the server it may be somewhere else.  If so,
+you'll need to find the correct path by asking your host.
+
+Next, you need to know the full server path to the spider script.  It
+needs to be on the same server as the crontab daemon and the PHP binary.
+You can find this by examining a phpinfo() file on your server.  It
+should list your website's server path several times.
+
+Once you know where the spider file is located, the value of the crontab
+should look like this:
+
+/usr/bin/php /path/to/the/spider.php
+
+... where the first path is your path to the PHP binary and the second
+is the path to your spider script.  This crontab will call the PHP
+binary and tell it to execute your spider.  So set your crontab times
+however you like and save this.
+
+Your spider should now run by crontab, although make sure you receive an
+email notification at first (usually automatic) so you know it is
+running properly.
+
+
+8. Entry List Panel
+
+  Click the "Entry List" button in the menu to go to the Entry List.
+Here you'll find a big list of every page your spider has indexed.  You
+can go through and make any edits you want, like adding custom keywords,
+titles and descriptions to entries, changing their category and even
+manually unlisting and/or deleting them.
+
+It's important to note right away, that even if you have many thousands
+of pages listed, you can use the various filters in the Filters row to
+narrow down your list.  Make it a habit to experiment with the different
+filters and using them together for very powerful matching.
+
+The Entry List has four main columns: Title/URI; Category; Status; and
+Edit/Sitemap.  You can sort the list based on Title, URI and Category;
+just use the links along the top.  Initially, you will see each entry's
+URI, Category and Status listed.
+
+Each entry falls into one of Five status types:
+
+ OK - Page is indexed and ready for searching
+
+ Orphan - Page is indexed, but is one of:
+   - not linked to from any other page
+   - not within your specified Allowed Domains
+
+ Unlisted - Page is indexed but will not be searched
+
+ Unread - Page is not indexed because it was at least one of:
+   - unreadable MIME-type
+   - recently added manually (not yet spidered)
+   - URI was HTTP redirected elsewhere
+
+ Blocked - Page is not indexed because it was at least one of:
+   - blocked via robots.txt
+   - blocked by a user-defined Ignore URI rule
+   - contains a <meta> tag redirect
+
+ Not Found - Page is not indexed
+   - This page used to be indexed but can no longer be found
+
+
+You can filter entries by status type by selecting a status from the
+dropdown menu and pressing the "Set" button to set this filter.  When
+an entry's status is displayed in boldface, it means it has been
+manually set using the Edit button.
+
+If you only ran the spider once before coming to the List page, you
+will notice that all of the entry URI's down the left-hand of the page
+are listed in boldface as well.  After each spider, new pages, or
+existing pages with updated content are marked in bold.  You can filter
+the list to view only pages updated since the last spider by checking
+the "New" checkbox next to the "Filters" title and hitting the "Set"
+button.  If there are no "New" pages in your list, this checkbox will be
+disabled.
+
+By default, the Entry List lists 100 entries per page.  To change this,
+use the text field above the column containing the "Edit" buttons.  Your
+selection will be remembered until you change it, even if you log out.
+
+Get used to using this interface, as it will become your main interface
+for managing the pages crawled by your spider!  If you have any
+suggestions for making it easier to use, or for new features, be sure to
+let me know :)
+
+
+9. Search Options
+
+  After massaging your newly indexed database, you can set some search
+options in the "Search" panel.  These options will affect what results
+ultimately get sent to the user after a query.
+
+You don't need to change anything here for the script to work properly.
+These are mainly "tweak" type settings, so you'll probably want to come
+back to it after you've run the search script for a few days.  If so,
+feel free to skip to the next section for now.
+
+At the top of the page you'll find some simple cache settings.  If you
+are hard up for MySQL database space, you can limit the size of the
+cache and/or enable GZip compression if your server supports it.
+
+Below that are the main search options.  The first large text box is
+probably the element you'll end up editing most.  Entries with URIs
+matching lines in this textarea are prevented from appearing in any
+search results.  This is a useful complement to the "Ignore URIs" in the
+Spider panel since the pages you block here will still be spidered for
+links.  For example, if one of your pages is just a few links to other
+pages on your site, it would be a good idea to list it here, since it
+would be practically useless as a search result, but you still want the
+spider to crawl those links.
+
+The script also allows you to change the weighting applied to any match
+as you see fit.  The first group of values are arithmetic bonuses; they
+will be added for each match found in a specific section of an entry, to
+a maximum of three to prevent spamming.  To disable searching of any
+location within an entry, just set the corresponding Match Weight to
+zero (0).  URI is set to zero, and thus disabled, by default.
+
+The second group are geometric bonuses; the total score for each entry
+will be multiplied by these bonuses for each instance they apply.  For
+example, if someone searched for a query with three terms and on single
+entry had all three, the final score for that entry will be multiplied
+by the Multi-word Bonus twice; once for each additional term found.
+
+A useful option here is Latin Accent Matching.  Latin Accent Matching
+enables search queries such as "starkste" to match "stärkste".  Because
+it allows for many more possible matches, enabling Latin Accent Matching
+will slow down search speeds significantly, especially if you are
+indexing many pages, so think about whether you actually need it before
+enabling it.   This option should only be enabled if the pages you are
+indexing are in either UTF-8 (with UTF-8 Indexing enabled) or ISO-8859-1
+encoding.
+
+The Maximum Returned Results field determines the maximum number of
+search results any single query can return.  If you set this to a value
+other than zero (0), the script will use that value as a hard limit.
+If you set it to zero, the script will try to calculate an appropriate
+number of search results to return.
+
+When an entry is displayed as a search result, some text from the page
+will be displayed along with it with the search term highlighted.  You
+can limit the amount of this text by adjusting the Maximum Matched Text
+Displayed value.
+
+Finally, by default, the script will not display pages which have the
+"Orphan" status in any search results.  You can display them anyway by
+enabling the Show Orphans option.
+
+The other items in the form should be adequately explained in the inline
+help text.
+
+
+10. Searching
+
+  Visit the "_search.php" page with your web browser.  You should find
+a search input form waiting to be used.  If you added more categories
+than just "Main" using the Entry List page, the ability to filter
+results by category will appear via a handy dropdown box.
+
+A feature of the Orca Search is that the body.xhtml.php file, which
+displays the output, can be modified however you wish to fit your own
+website style.  It takes all of the output from the "head.php" file,
+interprets it, and displays it in a logical form.  If you want to make
+your own output file(s), examine "head.php" for a description of the PHP
+variables that file creates.
+
+It is possible to create practically any output format from the
+"head.php" output, even archiving it straight into another database!
+All that's needed is an appropriate body file to crunch the output.
+
+If you want to add a searchbox elsewhere on your site, just use one of
+these sample bits of HTML code:
+
+  i. Search box with submit button:
+
+<form action="_search.php" method="get">
+  <input type="text" name="q">
+  <input type="submit" value="Search">
+</form>
+
+... replace _search.php with the name of your search page.
+
+  ii. Without submit button (press enter to submit):
+
+<form action="_search.php" method="get">
+  <label>Search: <input type="text" name="q"></label>
+</form>
+
+To preselect a category for any search box, just add the following
+<input> element to the form, replacing categoryname with the name of
+your desired category:
+
+<input type="hidden" name="c" value="categoryname">
+
+_OR_ you can add the category drop down menu from the search output
+page.  The category drop-down menu appears there only if you have more
+than one category, and is dynamically generated depending on what
+categories you have.  If you'd like to include this drop down in a
+search box on another page, just copy the <select> element from the HTML
+on the output page and paste it, as-is into your form.  It's that
+simple!  Make sure you recopy the HTML if you ever add more categories.
+
+
+11. Sitemap
+
+  If you're happy with your new search engine, let's look at the other
+tools of the Orca Search script.  First, click on the Tools button in
+the menu to go to the Tools panel.  Initially there won't be much to see
+on this page.  Both the Sitemap and JWriter dialogues will be collapsed,
+so check the "Enable Sitemap" box and hit Submit to make the Sitemap
+options appear.
+
+If you haven't uploaded the "sitemap.xml" file yet, you'll notice that
+the script will be searching for it now and will tell you if it cannot
+be found.  Since sitemaps are only applicable to pages beneath them in
+the directory tree, it is recommended to upload the sitemap file into
+the root HTML directory.
+
+The default location for the sitemap might be incorrect, so make sure
+it's pointing to the correct location.  The rest of the items in this
+dialogue should be relatively self-explanatory.  I recommend enabling
+gzipping and the Automatic Changefreq option.  Make sure to rename the
+sitemap file from an .xml extension to an .xml.gz extension if you
+enable gzipping.  See Google's sitemap FAQ for more information about
+sitemaps and how search engines deal with them:
+  <http://www.google.com/webmasters/sitemaps/docs/en/about.html>
+
+Once the options are set up to your liking (remember to hit "Submit"!),
+return to the Spider panel and initiate another spider.  Just before the
+spider finishes, it will output a fresh sitemap, ready for submission to
+search engines!
+
+Enabling the sitemap will also add editing options to the Entry List
+section which you may want to check out.  The last column will display a
+small bar and a letter, indicating the sitemap priority and change
+frequency respectively.  You can hover over any sitemap element here to
+see more information.  Just hit the Edit button to manually adjust an
+individual page's sitemap settings.
+
+
+12. JWriter
+
+  The Orca Search, in all its glory, only works with a PHP/MySQL backend
+to support it.  However, if you need it to work, in a limited fashion,
+with an offline copy, the script can compress and output a copy of the
+database in javascript.  This is great for having your search engine
+still function if you mirror your site to CD, for example.
+
+As a mirroring program, I recommend HTTrack, especially since the
+JWriter has been designed using this program's output.  Visit their
+website: <http://www.httrack.com/> for more information.  Despite
+favouring HTTrack, the Javascript output should work well enough with
+any decent offline mirroring program, as long as it does not rename
+downloaded HTML-content files (other than their extensions).
+
+
+               ******************************************
+               ****************** NOTE ******************
+
+The JWriter works best with sites that do not use query strings to
+reference content pages.  Many popular Content Management Systems these
+days, such as PostNuke, use a query string system for page access:
+
+- http://www.example.com/modules.php?op=modload&name=gallery
+
+Such a link would be renamed to a static HTML file by HTTrack like so:
+
+- /modules0y5sj.html
+
+However, the URI with the query string would remain in the JWriter
+output with just the extension altered, requiring you to manually change
+the URIs in the egg.js file.
+
+- /modules.html?op=modload&name=gallery
+
+               ******************************************
+               ******************************************
+
+
+First you will need to upload the JWriter tools files.  These are the
+"egg.js" and "jwriter.php" files and the "_search.html" sample page.
+Upload "egg.js" into the "os2" directory and place "_search.html" into
+the parent directory, like so:
+
+/_search.html
+/os2/egg.js
+/os2/jwriter.php
+
+PHP will need permission to write to "egg.js" so apply the appropriate
+properties to this file, like CHMOD'ing to 766 or 777.
+
+Next, head back to the Control Panel and check the Enable JWriter
+checkbox to make the JWriter interface appear.  There are two parts to
+the interface: an options form above, and a "Write to File" button
+below.  Some of these items may not appear initially if the paths to the
+jwriter.php and egg.js files are not correct.  Make sure these are
+pointed to the correct locations.
+
+Although the options are relatively well-explained via the inline help,
+you may find that you'll understand them better if you actually mirror
+your site and examine the output.  File extensions get renamed, full
+URI's become relative, and "/" URIs are given an actual filename,
+usually index.html.  All of these actions can be accounted for using the
+JWriter, just set them up to match.
+
+Since the JWriter wraps up searching and output all in one, you'll need
+to specify how many search results you want per page, and the HTML
+template to use for search results; just like is required in the
+"body.xhtml.php" file.  Like the XHTML output file, the HTML template
+here uses a system of replace-codes to insert result-data in the correct
+HTML tags.  These codes in both systems are identical and are as
+follows:
+
+{R_NUMBER}      - Number of the result in the result list
+{R_RELEVANCE}   - Relevance score to one decimal place
+{R_URI}         - Result URI
+{R_CATEGORY}    - Result Category
+{R_TITLE}       - Result Title
+{R_DESCRIPTION} - Result Description
+  - If there is no page description, the first 200 characters of body
+    text will be used instead
+{R_MATCH}       - A selection of body text with highlighted matches
+  - If there is no match-text, the contents of the description will be
+    used instead
+
+These codes will be globally replaced in the HTML result template, thus
+any single code can be used more than once and all instances will be
+replaced.
+
+When you are ready, hit the "Write to File" button to watch the script
+go to work.  A percentage complete reading will be listed, along with an
+estimate of the script's memory usage.  If the script times out and gets
+stuck at a certain percentage for a few minutes, the problem may be that
+PHP does not have enough memory to complete the compression.  The script
+will try to increase the memory limit before this happens, but presently
+that is all it will try.  The JWriter is not yet robust enough to
+overcome this, but hopefully it will be in the future.
+
+If your "egg laying" was sucessful, you will be taken back to the
+control panel where you can continue on with other modifications.
+Download the egg.js file and include it in a <script> tag where you want
+your search results to appear like so:
+
+<script type="text/javascript" src="egg.js"></script>
+
+The script will capture the same query strings that the online version
+uses and output search results using the exact same format as the
+default body.xhtml.php file.  These search scripts should be very close
+in functionality, but due to the compression process, results won't be
+identical, and there are no phrase matches.
+
+
+************************************************************************
+* Please send all bug reports and questions to orcas@greywyvern.com    *
+*                                                                      *
+* Thanks for choosing the Orca Search script!                          *
+************************************************************************

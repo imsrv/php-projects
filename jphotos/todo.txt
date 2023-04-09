@@ -1,0 +1,2 @@
+- check permissions yet more
+- check exif encoding (UTF-8 ?)

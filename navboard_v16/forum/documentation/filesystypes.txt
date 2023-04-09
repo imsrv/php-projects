@@ -1,0 +1,46 @@
+FILE SYSTEM TYPES
+
+php1
+-secure
+-fastest
+-smallest
+------------------
+<?php die(); ?>
+data0
+data1
+data2
+data3
+
+called by navboard with file();
+
+
+
+
+php2
+-secure
+-slowest
+-largest
+-----------------
+<?php
+$tx[0]='data0';
+$tx[1]='data1';
+$tx[2]='data2';
+?>
+
+called by navboard with include();
+
+
+
+
+php3
+-secure
+-fast
+-larger
+-----------------
+<?php $tx=array(
+'0'=>'data0',
+'1'=>'data1',
+'2'=>'data2',
+); ?>
+
+called by navboard with include();

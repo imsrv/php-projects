@@ -1,0 +1,61 @@
+-------------------------------------------------------------------------
+		Moe Music 0.3.0 Install Instructions
+-------------------------------------------------------------------------
+
+1. Make sure you have php3 installed with support for mySQL compiled in
+
+	- Under RedHat make sure you have all of the mySQL devel rpms
+	  installed or php3 wont compile.
+	- I reccomend compiling php3 from source rather than using the
+	  rpm's for mySQL extensionm becasue i could never get them to 
+	  work.
+
+2. Make sure you have mySQL installed
+	
+	- Create a database for Moe Music to use
+	  Just log in to mySQLK as root and type
+	
+	  mysql> create database moemusic;
+
+	- Then create the following tables
+
+	create table artist(a_name varchar(30) not null,
+	a_id smallint unsigned not null primary key auto_incrememt);
+
+	create table queue(q_number bigint primary key not null auto_increment,
+	s_id int unsigned not null);
+
+	create table song(s_name varchar(30) not null,
+	s_id int unsigned not null primary key auto_increment,
+	a_id smallint unsigned not null,
+	file_name varchar(60) not null);
+
+	- just type each line as written into mySQL to do this
+
+3. Make sure the Moe Music php files are in a section of your web server that
+   be seen by the world. I just created a virtual server and aliased an ip to
+   it. To do this see the apache documentation
+
+4. Move the moe_config file out of the web server tree. Your users home direcotry
+   is a good choice here. Then as root do the follwing
+	
+	- chown [your username here].nobody moe_config 
+	  chmod 640 moe_config
+	  This will make sure the group nobody will be able to read the config file
+	  but nobody else. If apache runs as a user apart from nobody on your machine
+          then make sure to replace nobody with that user.
+        
+        - Edit the moe_conf that is in the web tree to point to the absolute path of
+          the moe_config file. Warning the admin password security wise is
+	  a joke at best
+
+5. At this point you should be able to open your web browser and load moe
+music. 
+   You will need to enter each of the mp3's on the machine into the databse by hand 
+   at this stage.
+
+6. Send an email to jwrennie@bigpond.com telling me that you have it up and running
+   so i can have a warm fuzzy glow. Or send an email abusing me for the shoddy
+   nature of the documentation etc ...
+
+7. Enjoy 

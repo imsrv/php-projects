@@ -1,0 +1,42 @@
+****************************
+****** sCssBoard 1.12 ******
+****************************
+
+Visit the sCssBoard website at http://scssboard.if-hosting.com
+
+***************************
+Installation:
+
+Unzip&upload or untar all the files to a directory on your web server. 
+CHMOD the /system/ directory to 777.
+
+Create a MySQL database for sCssBoard using phpMyAdmin or any other MySQL administration script.
+
+Open install.php in your web browser and follow the instructions.
+
+After the installation has completed, delete install.php and install2.php from your web server.
+
+***************************
+Upgrading from sCssBoard 1.1 / 1.11:
+
+Unzip&upload or untar all of the sCssBoard 1.12 files to your server, overwriting everything from 1.1.
+
+Delete the install.php and install2.php files from your server.
+
+That's it, everything is updated!
+
+***************************
+Upgrading from sCssBoard 1.0:
+
+Unzip&upload or untar all of the sCssBoard 1.12 files to your server, overwriting the ones from 1.0.
+CHMOD the /system/ directory to 777 and delete the config.inc.php file located in it.
+
+Open install.php in your web browser and be sure to check the "Upgrade from 1.0" box.
+
+After the installation has completed, delete install.php and install2.php from your server.
+
+--UPGRADE NOTES:--
+
+The purple.css and ice.css styles included in RC2 and/or 1.0 are no longer being officially updated.
+If you leave them on your server after upgrading to 1.12, they will not work as expected if they are selected
+for use.

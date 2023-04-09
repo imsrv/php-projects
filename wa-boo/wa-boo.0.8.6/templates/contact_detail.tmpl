@@ -1,0 +1,166 @@
+
+<table border="0" cellspacing="0" cellpadding="0" background="images/bg1.gif">
+  		  
+  <tr>         
+    <td background="images/left_top_corner.gif" height="7"></td>
+    <td background="images/h_line_top.gif" height="7" colspan="3"></td>
+    <td background="images/right_top_corner.gif" height="7"></td>
+  </tr>
+  <tr>
+    <td background="images/v_line_left.gif" rowspan="22" width="7"></td>
+    <td colspan="3" class="stdtitle" height="15" align="center" bgcolor="<? echo $s_user_context["color"]["menu"] ?>"><b>Fiche d&eacute;taill&eacute;e</b></td>
+    <td background="images/v_line_right.gif" rowspan="22" width="7"></td>
+  </tr>
+  <tr>
+    <td colspan="3" height="7" align="center" background="images/h_line.gif"></td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[30]; // Prénom ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <? echo $selected_contact->getContactFirstname(); ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[31]; /* Nom */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <? echo $selected_contact->getContactName(); ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[32]; /* Adresse */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <? echo $selected_contact->getContactAddr1(); ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[33]; /* Adresse (2) */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <? echo $selected_contact->getContactAddr2(); ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[34]; /* Code postal */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <? echo $selected_contact->getContactZip(); ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[35]; /* Ville */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <? echo $selected_contact->getContactCity(); ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[36]; /* Pays */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <? echo $selected_contact->getContactCountry(); ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[37]; /* E-mail */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline"><a href="mailto:<? echo $selected_contact->getContactEmail(); ?>">
+      <? echo $selected_contact->getContactEmail(); ?>
+      </a></td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[38]; /* Pseudo messagerie<? echo $lab[38]; */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <? echo $selected_contact->getContactInstantmsg(); ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[39]; /* www */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline"><a href="<? echo $selected_contact->getContactWww(); ?>">
+      <? echo $selected_contact->getContactWww(); ?>
+      </a></td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[40]; /* Téléphone */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <? echo $selected_contact->getContactPhone(); ?>
+       </td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[41]; /* Portable */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <? echo $selected_contact->getContactCell(); ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[42]; /* Tél. professionnel */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <? echo $selected_contact->getContactPhonepro(); ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[43]; /* Fax */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <? echo $selected_contact->getContactFax(); ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[44]; /* Entreprise */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <? echo $selected_contact->getContactFirm(); ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[45]; /* Poste occupé / métier */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <? echo $selected_contact->getContactPosition(); ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[46]; /* Observations */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <? echo $selected_contact->getContactMisc(); ?>
+    </td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><? echo $lab[47]; /* Catégorie */ ?></td>
+    <td width="5">&nbsp;</td>
+    <td class="contactlistfont" align="left" valign="baseline">
+      <?    if ($selected_contact->getContactUserId() == $s_user->getUserID()) {  ?>
+      <?        echo $user_cat[$selected_contact->getContactcategory()]; ?>
+      <?    } else {  ?>
+      &nbsp;
+      <?    }  ?>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3" height="7" align="center" background="images/h_line.gif"></td>
+  </tr>
+  <tr>
+    <td class="stdfont" align="right" valign="baseline"><i><? echo $lab[48]; /* créé par */ ?></i></td>
+    <td width="5">&nbsp;</td>
+    <td class="stdfont">
+      <a href="mailto:<? echo $user_owner->getUserEmail(); ?>"><i>
+      <? echo $user_owner->getUserFirstname() . " " . $user_owner->getUserName(); ?>
+      </i></a>
+    </td>
+  </tr>
+  
+  <tr>         
+    <td height="7" background="images/left_bottom_corner.gif"></td>
+    <td height="7" background="images/h_line_bottom.gif" colspan="3"></td>
+    <td height="7" background="images/right_bottom_corner.gif"></td>
+  </tr>
+        
+</table>

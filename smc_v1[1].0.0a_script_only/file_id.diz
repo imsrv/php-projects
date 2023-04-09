@@ -1,0 +1,13 @@
+
+Solace MUD Client (SMC) v1.0.0a
+
+SMC is a PHP script, that allows your telnet client to connect to
+the MUDs or any other server through a telnet protocol.
+It acts like a proxy-server between telnet client
+and server, parsing all incoming and outgoing data.
+SMC allows you to work will all well-known databases, internet
+(sockets, ftp, http, etc.), extended text parsing and much more...
+
+Author: Ilya Zubov
+   WWW: http://solace.allnetwork.ru/smc.php
+E-Mail: solace@ezmail.ru, zilav@allnetwork.ru

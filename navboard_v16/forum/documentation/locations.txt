@@ -1,0 +1,14 @@
+LOCATIONS
+
+Where some important files are stored at
+(dont ask why on some of these, it just ended up this way)
+
+Config: 		config.php 		$maindatadir (main data dir)
+User groups: 	usergroups.php 	$configarray[1] (users dir)
+User levels: 	userlevels.php 	$configarray[5] (custom dir)
+Profile fields:	profilefields.php	$configarray[5] (custom dir)
+BB Code:		bbcode.php		$configarray[5] (custom dir)
+Smilies:		smilies.php		$configarray[5] (custom dir)
+Accounts:		accounts.php	$configarray[1] (users dir)
+Ban:			ban.php		$configarray[1] (users dir)
+Online:		online.php		$configarray[1] (users dir)

@@ -1,0 +1,133 @@
+Installation Instructions for PHPOpenChat 2.x
+---------------------------------------------
+
+INTODUCTION
+===========
+
+Requirements:
+-------------
+Before you install PHPOpenChat you need to install the following things
+* Linux ;-) or an other UNIX! Win32 is not recommended for a high performance chat.
+* MySQL database (http://www.mysql.com/)
+* Apache (http://www.apache.org/) with the PHP3 (version >=3.0.9) or 
+  PHP4 module (http://www.php.net/)
+  - because of an error into php 4.0.3 code in mysql_close function, 
+    we recommend php version >= 4.0.4 this bug concerns only php4 
+    (but a workaround for 4.0.3 is implemented yet)
+
+System usage:
+-------------
+* CPU: You can calculate this with the number of users times factor four. 
+       This means, for a planned chat of 200 online chatters you need a 
+       CPU clock frequency of 800 MHz
+
+INSTALL
+=============
+$ cd <blafoo> (this is a dummy directory)
+$ gunzip -c phpopenchat-2.x.tar.gz | tar xf -
+Edit apache's httpd.conf file and 
+- set the DocumentRoot to "<blafoo>/phpopenchat-2.x/html" 
+- add "AddType application/x-httpd-php3 .php3" for PHP3 or
+- add "AddType application/x-httpd-php .php" for PHP4
+- add "DirectoryIndex index.html index.php"
+
+Edit php's php.ini (mostly in /usr/local/lib [unix] or in C:\WINDOWS [win32]) 
+and set the include_path to "<blafoo>/phpopenchat-2.x/includes"
+be sure mysql support is enabled and safe_mode is set to Off.
+If you can't change the include_path, move all files from directory 
+/includes to /html.
+IMPORTANT, most ISPs switches this mode to On for safety reasons, 
+so it makes no sense to install phpopenchat there! 
+Explanation: If the safe mode are enabled we can't change php.ini 
+variables during chat's runtime and that is what we need in output.php, 
+a script which never ends.
+
+If you don't have already a MySQL database account:
+Create a database user "phpopenchat" on your mysql database:
+shell> mysql mysql
+mysql> INSERT INTO user VALUES('localhost','phpopenchat',PASSWORD('<your password>'),
+                              'Y','Y','Y','Y','N','N','N','N','N','N','N','N','N','N');
+mysql> FLUSH PRIVILEGES;
+
+
+Create a database "phpopenchat":
+shell> mysqladmin create phpopenchat
+
+Import PHPOpenChat's data:
+Unix:
+shell> mysql phpopenchat < <blafoo>/phpopenchat-2.x/db.schema
+Win32:
+Please use the command line tools of MySQL!
+If you use MySQLManager even so, then delete all semicolon from the db.schema and import every
+SQL-instruction singly.
+
+Edit <blafoo>/phpopenchat-2.x/includes/defaults_inc.php and:
+IMPORTANT! IMPORTANT! IMPORTANT! 
+change the text in the variable $pass_phrase to what ever you want and set:
+
+$DATABASENAME to "phpopenchat";
+$DATABASEUSER to "phpopenchat";
+$DATABASEPASSWD to "<your password>";
+(certainly you can use an exsisting MySQL accout)
+$DATABASEHOST to "localhost";
+$INSTALL_DIR to the WEBSERVER directory where you installed the chat
+$CHATSERVERNAME to the dns name where your chat runs (without trailing slash)
+
+Win32:
+If you enable session support you have to create a directory named 'tmp' on drive c:, because 
+PHP wants to store the session data there.
+In a dos shell type:
+> c: [ENTER]
+> mkdir tmp [ENTER]
+Or you set session.save_path to an existing 
+directory within php.ini.
+
+Under Unix, give the webserver process write access to the directory '<blafoo>/phpopenchat-2.x/html/images'.
+(For the upload of user images)
+
+IMPORTANT! Protect the chat administration directory 'http://<your chat's dns name>/<install dir>/admin/'
+
+Now you find the chat at http://<your chat's dns name>/<install dir>
+
+Administration:
+---------------
+The chat's administration section resides at http://<your chat's dns name>/admin/
+You will find the following buttons:
+* Messages:
+  This messages will be displayed in the chat randomly.
+
+* Channels:
+  Here you can set values like color of nickname, background color of text frame, ... 
+  and you be able to create new channels.
+  NOTE: If you rename the channel 'Channel_1' you have to change the 
+  value of the variable $ENTRYCHANNELNAME in defaults_inc.php as well!
+
+* Godfathers:
+  Has special rights. They can ban users by means of the ignore user dialog.
+
+* Co-Moderators:
+  If the channel is moderated co-moderators can read all the text lines.
+
+* VIPs:
+  - vip: can 'speak' directly to everybody and can read the moderated text lines only.
+  - channel: the concerned channel.
+  - moderator: he can edit and accept or not the 'spoken' text lines. 
+    The moderator can see every text line except the wispered lines.
+
+Edit the html-templates (within the 'includes'-directory. The file names containing '_tpl') 
+to realize your own chat design.
+
+To add an icon by hand which can be used in the chat by an user, you must copy a GIF-image 
+to <blafoo>/phpopenchat-2.x/html/images/chatter/ only.
+The user can call this icon in the chat by typing ':me'. 
+Other chatters have to use ':you' while they speak to him.
+
+Image name conventions:
+All letters in lowercase and ' ' becomes to '_'.
+Examples:
+elwood             = elwood.gif
+JAKE               = jake.gif
+Matt Guitar Murphy = matt_guitar_murphy.gif
+Mr. Fabulous	   = mr._fabulous.gif
+
+That's it

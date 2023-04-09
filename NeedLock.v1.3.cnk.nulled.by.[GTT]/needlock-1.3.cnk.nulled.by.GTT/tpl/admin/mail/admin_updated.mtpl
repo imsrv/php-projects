@@ -1,0 +1,29 @@
+
+Dear [tag]name[/tag]!
+
+Your administrator's account updated successfully.
+
+Your account details:
+
+================================================================
+
+Login              : [tag]name[/tag]
+Access level       : [tag]level[/tag]
+Interface language : [tag]lang[/tag]
+Email address      : [tag]email[/tag]
+
+================================================================
+
+For information:
+
+According to Your access level, You can access these parts of
+adminstrative area:
+
+[tag]access_rights[/tag]
+
+
+---
+With best regards,
+Secure access manager
+www.somesecuresite.com
+info@somesecuresite.com

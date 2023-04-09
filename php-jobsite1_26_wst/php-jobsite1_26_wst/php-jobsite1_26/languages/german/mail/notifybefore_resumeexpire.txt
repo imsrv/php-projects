@@ -1,0 +1,10 @@
+Dear %%jobseeker_name%%,
+
+Your "%%resume_summary%%" resume will expire on  %%resume_expiredate%%.
+Remaining %%resume_remaining%% days.
+
+Resume Posted: %%resume_resumedate%%
+
+
+Today: %%today_date%%
+

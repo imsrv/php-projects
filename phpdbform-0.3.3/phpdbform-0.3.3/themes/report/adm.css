@@ -1,0 +1,49 @@
+body,.text {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	color : Black;
+	font-style : normal;
+	font-weight : normal;
+	text-decoration : none;
+}
+
+.bar {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 9px;
+	color : Yellow;
+	font-style : normal;
+	font-weight : bold;
+}
+
+input,select,textarea {
+	background-color : #FFFFE0;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	color : Blue;
+}
+
+input.bt {
+	background-color : #00008B;
+	color : Yellow;
+	border : 1px solid White;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	text-align : center;
+}
+
+form {
+	display : inline;
+}
+
+A {
+	color : Blue;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	font-weight : bold;
+	text-decoration : none;
+}
+
+A:HOVER {
+	color : Black;
+	text-decoration : underline;
+}

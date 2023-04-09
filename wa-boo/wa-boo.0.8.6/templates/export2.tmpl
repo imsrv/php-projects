@@ -1,0 +1,141 @@
+<html>
+<head>
+       <title>wa-boo</title>
+       <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <style><? include ("includes/css.php"); ?></style>   
+    </head>
+
+
+<body topmargin="0">
+    
+<table cellspacing="5" cellpadding="5" align="center" border="0">
+    
+  <tr>
+      
+          <td class="versionfont"><img src="images/wa-boo_small.gif">
+        <? echo $G_version ;?>
+      </td>
+  </tr>
+  
+    
+  <tr>
+      
+    <td colspan="2">
+      <table border="0" cellpadding="0" bgcolor="#F5F5F9" cellspacing="0">
+		  
+          
+        <tr>
+            
+            
+          <td background="images/left_top_corner.gif" height="7"></td>
+          <td background="images/h_line_top.gif" height="7"></td>
+          <td background="images/right_top_corner.gif" height="7"></td>
+        </tr>
+          
+          
+        <tr> 
+            
+            
+          <td background="images/v_line_left.gif" width="7"> 
+              </td>
+          <td class="boldstdfont" bgcolor="#EEEEFF" >
+              
+            <table border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" background="images/bg1.gif">
+                
+          
+                  
+                
+              <tr align="center" bgcolor="<? echo $s_user_context["color"]["menu"] ?>"> 
+                    
+                  
+                <td colspan="3" class="stdtitle"><? echo $lab[0]; /* Etape 2 : Récupération du fichier */ ?></td>
+              </tr>
+                  
+                
+              <tr>
+                    
+                  
+                <td background="images/h_line.gif" align="center" colspan="7" height="7"></td>
+              </tr>
+                  
+                
+              <tr align="center"> 
+                    
+                  
+                <td width="15" class="stdfont" height="25"></td>
+                <td align="center" class="boldstdfont" valign="middle">
+		  
+		  <br>
+                  <? echo $lab[1]; /* L'export s'est déroulé correctement :) */ ?>
+				  <br>
+                  <br>
+                  <? echo $lab[2]; /* Vous pouvez, au choix : */ ?>
+                  <br>
+                  <br>
+                  <table cellspacing="3" cellpadding="3" align="center">
+                      
+                    <tr>
+                        
+                      <td valign="middle" align="center"><a href="<? echo $s_export_file_name; ?>"><img src="images/file.gif" border="0"></a></td>
+                      <td class="boldstdfont" align="left" valign="middle">
+                      <? echo $lab[3]; /* télécharger le fichier. <br>Merci de cliquer sur Merci de cliquer sur "OK" après le téléchargement */ ?></td>
+                    </tr>
+                      
+                    <tr>
+                        
+                      <td valign="middle" align="center"><a href="export3.php"><img src="images/display.gif" border="0"></a></td>
+                      <td class="boldstdfont" align="left" valign="middle">
+                        <? echo $lab[4]; /* afficher le contenu du fichier<br>dans votre navigateur. */ ?>
+                      </td>
+                    </tr>
+                      
+                      
+                                            
+                    
+                  </table>
+                  <br>
+				  <div class="boldstdfont" align="center"><br>
+                      
+                    <input type="button" name="close" value="<? echo $lab[5]; /* OK */ ?>" onClick="document.location.href='contacts.php'" class="userbutton">
+                      <br>
+					 
+                    <br>
+                  </div>
+                </td>
+                <td width="15" class="stdfont" height="25">&nbsp;</td>
+              </tr>
+                
+              
+            </table>
+          </td>
+          <td valign="top" background="images/v_line_right.gif" width="7"></td>
+        </tr>
+          
+          
+        <tr>
+            
+            
+          <td class="texteg" height="7" background="images/left_bottom_corner.gif"></td>
+          <td height="7" background="images/h_line_bottom.gif"></td>
+          <td height="7" background="images/right_bottom_corner.gif"></td>
+        </tr>
+        
+        
+      </table>
+    </td>
+  </tr>
+    
+  <tr>
+      
+    <td align="center" colspan="2" class="contactlistfont">
+         
+      <p>
+        <?
+   include ("footer.php");
+?>
+        </p>
+    </td>
+  </tr>
+  
+</table>
+  

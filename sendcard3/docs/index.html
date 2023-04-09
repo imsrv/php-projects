@@ -1,0 +1,891 @@
+<html>
+<head>
+<title>sendcard manual</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="style.css" rel="stylesheet" type="text/css" media="screen">
+</head>
+
+<body bgcolor="#FFFFFF">
+<h1 align="center">Sendcard Documentation</h1>
+<h2>Contents:<a name="Contents"></a></h2>
+<ul>
+  <li><a href="#Installation">Installation</a></li>
+  <li><a href="#Security">Security</a> 
+	<ul>
+	  <li><a href="#using_PHP3">If you're using PHP3</a></li>
+	  <li><a href="#protect_tpl_dir">Protecting the template and plugins directory</a></li>
+	</ul>
+  </li>
+  <li><a href="#Templates">Templates</a> 
+	<ul>
+	  <li><a href="#Variables">Variables</a></li>
+	</ul>
+  </li>
+  <li><a href="#Creating_index.php">Creating index.php</a></li>
+  <li><a href="#Customising">Customising sendcard </a> 
+	<ul>
+	  <li><a href="#Editing_form.tpl">Editing form.tpl</a></li>
+	  <li><a href="#java_applets">Adding java applets</a></li>
+	  <li><a href="#delayed_send">Setting up the delayed send feature</a></li>
+	  <li><a href="#Add_emoticons">How do I add emoticons?</a></li>
+	  <li><a href="#select_background">How do I let the sender select a background 
+		image for the card?</a></li>
+	  <li><a href="#no_preview">I don't want to preview the card, I want to send 
+		it immediately?</a></li>
+	  <li><a href="#more_media">How do I make sendcard recognize more media file 
+		types? </a> 
+		<ul>
+		  <li><a href="#more_media_rightcode">The right code is present in image.tpl, 
+			but it won't recognize my files.</a></li>
+		  <li><a href="#more_media_nocode">No suitable code is present in image.tpl</a></li>
+		</ul>
+	  </li>
+	  <li><a href="#date_format">How do I change the date format?</a></li>
+	</ul>
+  </li>
+  <li> <a href="#Administration">Administration interface</a> 
+	<ul>
+	  <li><a href="#Writing_modules">Writing modules</a></li>
+	  <li><a href="#admin_constants">Available defined constants</a></li>
+	</ul>
+  </li>
+  <li><a href="#Plugins">Plugins for sendcard </a> 
+	<ul>
+	  <li><a href="#What_plugin">What is a plugin?</a></li>
+	  <li><a href="#How_plugin_work">How do the plugins work?</a></li>
+	  <li><a href="#How_write_plugin">How do I write a plugin?</a></li>
+	</ul>
+  </li>
+  <li><a href="#FAQ">Miscellaneous Questions</a> 
+	<ul>
+	  <li><a href="#php_in_tpl">Can I use PHP in the templates?</a></li>
+	  <li><a href="#License">What is sendcard's license?</a></li>
+	  <li><a href="#no_recognize_php_ext">My server doesn't recognize the .php 
+		file extension</a></li>
+	  <li><a href="#support_sendcard">I love sendcard. How can I support its development?</a></li>
+	  <li><a href="#bad_documentation">I've found a mistake in the documentation 
+		/ I can't find the answer to my problem</a></li>
+	  <li><a href="#paid_services">Is there anyone who can install sendcard for 
+		me?</a></li>
+	</ul>
+  </li>
+</ul>
+<p> <a href="#Contents" class="toplink">Top</a></p>
+<h2>Installation<a name="Installation"></a></h2>
+<div class="h2indent"> 
+  <p> Unzip the archive and extract the contents to a folder. </p>
+  <p>Read the <a href="#License">license</a> and check that you agree with the 
+	terms and conditions. Read the text on <a href="#Security">security</a>. Upload 
+	the files in directory sendcard/ to your web server. You need to chmod <strong>sendcard.php</strong>, 
+	<strong>sendcard_setup.php</strong>, <strong>admin/config.php</strong> and 
+	the contents of the <strong>admin/plugins/</strong> directory <font color="#FF3300"><strong>666</strong></font>. 
+  </p>
+  <p>Now point your browser at http://yoursite/path/to/sendcard/admin/ You will 
+	need to use the password &quot;password&quot; to get in.</p>
+  <p>When the page loads, you may see broken images and javascript errors. This 
+	is OK, they will go away once you have configured the admin section. </p>
+  <p>At the bottom of the page it will say in bold print: &quot;First time here?&quot;. 
+	Click on the link below it to set up the administration are so that it will 
+	work - if you don't then you will not be able to install sendcard. You will 
+	also have the option to <strong>CHANGE YOUR PASSWORD</strong>! Don't forget 
+	to do so!</p>
+  <p>Next click on the button on the left hand menu labelled &quot;Configure&quot;. 
+	Change the setting to fit your needs - don't forget to enter the database 
+	details! Save the changes.</p>
+  <p>Scroll to the bottom of the configure screen and click on the link which 
+	says &quot;Create Tables&quot;. Create both the tables.</p>
+  <p>The installation is now complete. Try sending yourself a postcard to check 
+	it is set up correctly.</p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+</div>
+<h2>Security<a name="Security"></a></h2>
+<div class="h2indent"> 
+  <p>The administration interface is protected using PHP4 sessions. However, I 
+	still recommend that you protect the directory using an .htaccess and .htpassword 
+	files, as two layers of protection is always better than one. If you don't 
+	know how to do this, please read <a href="http://www.users.f2s.com/faq/htaccess.php3">this 
+	tutorial</a>. There is also an .htpassword generator at this site.</p>
+  <p>For extra security, rename the administration directory, or move it into 
+	a different folder (untested, but should work).</p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+  <h3>But I'm using PHP3!<a name="using_PHP3"></a></h3>
+  <p>You have two options:</p>
+  <p>1. Try it and see if you get errors. I think you will because you'll get 
+	the &quot;Warning: Call to undefined function&quot; message.</p>
+  <p>2. This does require you to edit the code. Open prepend.php, remembering 
+	to make a backup first, and locate the part which looks like</p>
+  <p class="hilightcode"> <code>session_start();<br>
+	if($session[&quot;password&quot;] != ADMIN_PASSWORD || !$session[&quot;password&quot;]) 
+	{<br>
+	header(&quot;Location: login.php?redirect=&quot; . basename($PHP_SELF));<br>
+	}</code></p>
+  <p>Either delete this code, or comment it out.</p>
+  <p>Whichever of the above solutions you take, you MUST protect the directory 
+	using .htaccess/.htpassword files.</p>
+  <p>You may also need to use an .htaccess file to recognize the .php file extension. 
+	For more details <a href="#no_recognize_php_ext">click here</a></p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+  <h3>Protecting the template and plugins directory<a name="protect_tpl_dir"></a></h3>
+  <p>The easiest (and most secure) way is to move the directory outside the web 
+	tree (e.g. above your document root) where it is not visible to anyone. If 
+	you do this you must change the path to the template directory in the configuration 
+	(under &quot;Advanced Options&quot;).</p>
+  <p>If you cannot do this then the best way is to make an .htaccess file containing 
+	the following line and put this in the template directory:</p>
+  <p class="hilightcode"><code>&lt;Directory /&gt;<br>
+	Order Deny, Allow<br>
+	Deny from All<br>
+	&lt;/Directory&gt;</code></p>
+  <p>Please note that this will only work if you are using the Apache web server. 
+	If you use a different server, and know how to protect a directory, please 
+	<a href="mailto:sendcard@f2s.com">get in contact</a>.</p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+  <p>&nbsp;</p>
+</div>
+<h2>Templates<a name="Templates"></a></h2>
+<div class="h2indent"> 
+  <p>The templates use the PHPLib template class, documentation for which can 
+	be found on <a href="http://phplib.netuse.de/">their website</a>. You are 
+	encouraged to customize the supplied templates to make the design fit your 
+	web site.</p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+  <h3>Variables<a name="Variables"></a></h3>
+  <p>Note that where variables have been entered by the user (for instance in 
+	the form) the input name is usually the lower case version of the template 
+	variables. </p>
+  <p><strong>In the des file (usually card.tpl)</strong> </p>
+  <ul>
+	<p>{CONTENT} </p>
+  </ul>
+  <p><strong>In the template file (usually message.tpl)</strong></p>
+  <p>Private variables</p>
+  <ul>
+	<p>{INVALIDTO_EMAIL} - if a recipient's email address is invalid, this will 
+	  show the error message.</p>
+	<p>{INVALIDFROM_EMAIL} - if the sender's email address is invalid, this will 
+	  show the error message.</p>
+	<p>{IMG_PATH} - the path to the directory containing the images.</p>
+  </ul>
+  <p>&nbsp;</p>
+  <p>Public variables</p>
+  <ul>
+	<p>{IMG} - the place you want the picture to show up.</p>
+	<p>{BGCOLOR} - the background colour.</p>
+	<p>{FONTCOLOR}</p>
+	<p>{FONTFACE}</p>
+	<p>{CAPTION} - the caption defined.</p>
+	<p>{IMAGE} - name of the image</p>
+	<p>{IMG_WIDTH} - the width of the image</p>
+	<p>{IMG_HEIGHT} - the height of the image.</p>
+	<p>{TO} - recipient's name</p>
+	<p>{TO_EMAIL} - recipient's email address</p>
+	<p>{FROM} - sender's name</p>
+	<p>{FROM_EMAIL} - sender's email address</p>
+  </ul>
+  <p>&nbsp;</p>
+  <p>The table below shows how the form elements relate to these template placeholders.</p>
+  <table width="85%" border="0" cellspacing="0" cellpadding="0">
+	<thead bgcolor="#9999CC"> 
+	<th width="20%">Form element name</th>
+	<th width="18%">Template variable</th>
+	<th width="62%">Notes</th>
+	</thead> 
+	<tr> 
+	  <td width="20%">to[{I}]</td>
+	  <td width="18%">{TO}</td>
+	  <td width="62%">Name of the recipient(s)</td>
+	</tr>
+	<tr> 
+	  <td width="20%">to_email[{I}]</td>
+	  <td width="18%">{TO_EMAIL}</td>
+	  <td width="62%">Email address(es) of the recipient(s)</td>
+	</tr>
+	<tr> 
+	  <td width="20%">from</td>
+	  <td width="18%">{FROM}</td>
+	  <td width="62%">Sender's name</td>
+	</tr>
+	<tr> 
+	  <td width="20%">from_email</td>
+	  <td width="18%">{FROM_EMAIL}</td>
+	  <td width="62%">Sender's email address</td>
+	</tr>
+	<tr> 
+	  <td width="20%">fontface</td>
+	  <td width="18%">{FONTFACE}</td>
+	  <td width="62%">&nbsp;</td>
+	</tr>
+	<tr> 
+	  <td width="20%">fontcolor</td>
+	  <td width="18%">{FONTCOLOR}</td>
+	  <td width="62%">&nbsp;</td>
+	</tr>
+	<tr> 
+	  <td width="20%">bgcolor</td>
+	  <td width="18%">{BGCOLOR}</td>
+	  <td width="62%">&nbsp;</td>
+	</tr>
+	<tr> 
+	  <td width="20%">template</td>
+	  <td width="18%"> n/a</td>
+	  <td width="62%"> controls the layout of the form (Note: currently interferes 
+		with a template value set in index.php</td>
+	</tr>
+	<tr> 
+	  <td width="20%" height="20">music</td>
+	  <td width="18%" height="20">{MUSIC}</td>
+	  <td width="62%" height="20">The name of the music file</td>
+	</tr>
+	<tr> 
+	  <td width="20%">message</td>
+	  <td width="18%">{MESSAGE}</td>
+	  <td width="62%">The message</td>
+	</tr>
+	<tr> 
+	  <td width="20%">&nbsp;</td>
+	  <td width="18%">&nbsp;</td>
+	  <td width="62%">&nbsp;</td>
+	</tr>
+	<tr> 
+	  <td width="20%">image</td>
+	  <td width="18%">{IMAGE}</td>
+	  <td width="62%">Name of the image</td>
+	</tr>
+	<tr> 
+	  <td width="20%">caption</td>
+	  <td width="18%">{CAPTION}</td>
+	  <td width="62%">&nbsp;</td>
+	</tr>
+	<tr> 
+	  <td width="20%">num_recipients</td>
+	  <td width="18%">{NUM_RECIPIENTS}</td>
+	  <td width="62%">Number of recipients which the card is to be sent to</td>
+	</tr>
+	<tr> 
+	  <td width="20%">des</td>
+	  <td width="18%">n/a</td>
+	  <td width="62%">Name of the outer template to be used. Must not have the 
+		extension &quot;.tpl&quot;. Default value is &quot;card&quot;.</td>
+	</tr>
+	<tr> 
+	  <td width="20%">preview</td>
+	  <td width="18%">n/a</td>
+	  <td width="62%">This is the name of the submit button and MUST be present 
+		in form.tpl.<br>
+		If you don't want to have the preview stage, change it to send</td>
+	</tr>
+	<tr> 
+	  <td width="20%">applet_name</td>
+	  <td width="18%">n/a</td>
+	  <td width="62%">Contains the name of the java applet to be used. Decides 
+		which java block is to be included in the template.</td>
+	</tr>
+	<tr> 
+	  <td width="20%">&nbsp;</td>
+	  <td width="18%">&nbsp;</td>
+	  <td width="62%">&nbsp;</td>
+	</tr>
+  </table>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+</div>
+<h2>Creating index.php<a name="Creating_index.php"></a></h2>
+<div class="h2indent"> 
+  <p>If you've looked at the source code of index.php maybe you're confused as 
+	to how it works. Here, I hope to show you.</p>
+  <p>Each image for the card is set up using the following code:</p>
+  <p class="hilightcode"><code>&lt;form method=&quot;post&quot; action=&quot;sendcard.php&quot;&gt;<br>
+	&lt;input type=&quot;image&quot; border=&quot;0&quot; value=&quot;Submit&quot; 
+	src=&quot;images/tn_starburst.gif&quot; width=&quot;200&quot; height=&quot;120&quot; 
+	name=&quot;image&quot;&gt; <br>
+	&lt;input type=&quot;hidden&quot; name=&quot;image&quot; value=&quot;imgname.gif&quot;&gt;<br>
+	&lt;input type=&quot;hidden&quot; name=&quot;caption&quot; value=&quot;Lots 
+	of stars are visible here&quot;&gt;<br>
+	&lt;input type=&quot;hidden&quot; name=&quot;des&quot; value=&quot;test&quot;&gt;<br>
+	&lt;input type=&quot;hidden&quot; name=&quot;template&quot; value=&quot;templatename&quot;&gt;<br>
+	&lt;input type=&quot;hidden&quot; name=&quot;fixed_layout&quot; value=&quot;1&quot;&gt; 
+	<br>
+	&lt;input type=&quot;hidden&quot; name=&quot;img_width&quot; value=&quot;nnn&quot;&gt;<br>
+	&lt;input type=&quot;hidden&quot; name=&quot;img_height&quot; value=&quot;nnn&quot;&gt; 
+	<br>
+	&lt;input type=&quot;hidden&quot; name=&quot;applet_name&quot; value=&quot;applet_block_name&quot;&gt; 
+	<br>
+	&lt;/form&gt;</code></p>
+  <p>You do not have to use every <code class="hilightcode">&lt;input&gt;</code> 
+	shown above, apart from the top two. Those you don't need, leave out of your 
+	code as this will make it less cluttered. Let us consider the hidden inputs 
+	one at a time.</p>
+  <table width="85%" border="0" cellspacing="0" cellpadding="0">
+	<thead> 
+	<th width="20%">Name</th>
+	<th width="10%">Required</th>
+	<th width="70%">Notes</th>
+	</thead> 
+	<tr> 
+	  <td width="20%">&nbsp;</td>
+	  <td width="10%">&nbsp;</td>
+	  <td width="70%">&nbsp;</td>
+	</tr>
+	<tr> 
+	  <td width="20%">image</td>
+	  <td width="10%">Yes</td>
+	  <td width="70%">The name of the image file to be used in the card.</td>
+	</tr>
+	<tr> 
+	  <td width="20%">caption</td>
+	  <td width="10%">No</td>
+	  <td width="70%">The caption to be displayed under the picture in {CAPTION}</td>
+	</tr>
+	<tr> 
+	  <td width="20%">des</td>
+	  <td width="10%">No</td>
+	  <td width="70%">Allows you to specify an alternative design to use around 
+		the card. The default is &quot;card&quot;</td>
+	</tr>
+	<tr> 
+	  <td width="20%">template</td>
+	  <td width="10%">No</td>
+	  <td width="70%">Allows you to specify an alternative layout for the card. 
+		The default is &quot;template&quot;.</td>
+	</tr>
+	<tr> 
+	  <td width="20%">fixed_layout</td>
+	  <td width="10%">No</td>
+	  <td width="70%"> 
+		<p>If you specify a special template you may not want to allow the sender 
+		  to select different templates in the card. By setting this to &quot;1&quot;, 
+		  the option in form.tpl to do this will be hidden.</p>
+		<p>In practice, it is probably easier to miss this out and just delete 
+		  the code from form.tpl, although this will mean that none of the cards 
+		  can have this option. If you delete the code from form.tpl, you CAN 
+		  NOT use this option.</p>
+	  </td>
+	</tr>
+	<tr> 
+	  <td width="20%">img_width</td>
+	  <td width="10%">No</td>
+	  <td width="70%">Specifies the width of the image. Not needed if the image 
+		is a GIF, JPEG, PNG or SWF file.</td>
+	</tr>
+	<tr> 
+	  <td width="20%">img_height</td>
+	  <td width="10%">No</td>
+	  <td width="70%">Specifies the width of the image. Not needed if the image 
+		is a GIF, JPEG, PNG or SWF file.</td>
+	</tr>
+	<tr> 
+	  <td width="20%">applet_name</td>
+	  <td width="10%">No</td>
+	  <td width="70%">The name of the block containing the code for the java applet. 
+		See <a href="#">here</a> for further details.</td>
+	</tr>
+  </table>
+  <p>so for instance, the most basic image could look like:</p>
+  <p class="hilightcode"><code>&lt;form method=&quot;post&quot; action=&quot;sendcard.php&quot;&gt;<br>
+	&lt;input type=&quot;image&quot; border=&quot;0&quot; value=&quot;Submit&quot; 
+	src=&quot;images/tn_starburst.gif&quot; width=&quot;200&quot; height=&quot;120&quot; 
+	name=&quot;image&quot;&gt; <br>
+	&lt;input type=&quot;hidden&quot; name=&quot;image&quot; value=&quot;imgname.gif&quot;&gt;<br>
+	&lt;/form&gt;</code></p>
+  <p>Of course, usually you'd want to add a caption at the very least.</p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+</div>
+<h2>Customising sendcard<a name="Customising"></a></h2>
+<div class="h2indent"> 
+  <h3>Editing form.tpl<a name="Editing_form.tpl"></a></h3>
+  <p>If you edit form.tpl and are intending to use the multiple recipients feature, 
+	you must be careful that you don't prevent it from working.</p>
+  <p>The form inputs for the recipients name and email address must be surrounded 
+	by &lt;!-- BEGIN recipient_block --&gt; and &lt;!-- END recipient_block --&gt;. 
+	This is so that they can be duplicated when the card is sent to more than 
+	one person.</p>
+  <p>The contents of the form asking whether you want to send the card to more 
+	than one person must not be altered, or you risk the card not working properly. 
+	It should look like:</p>
+  <p class="hilightcode"><code>&lt;form method=&quot;post&quot; action=&quot;&quot;&gt;<br>
+	How many people would you like to send this card to? (if one person,<br>
+	please skip this step)<br>
+	&lt;select name=&quot;num_recipients&quot;&gt;<br>
+	&lt;option value=&quot;1&quot; selected&gt;1&lt;/option&gt;<br>
+	&lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;<br>
+	&lt;option value=&quot;3&quot;&gt;3&lt;/option&gt;<br>
+	&lt;option value=&quot;4&quot;&gt;4&lt;/option&gt;<br>
+	&lt;option value=&quot;5&quot;&gt;5&lt;/option&gt;<br>
+	&lt;option value=&quot;6&quot;&gt;6&lt;/option&gt;<br>
+	&lt;/select&gt; &lt;input type=&quot;hidden&quot; name=&quot;image&quot; value=&quot;{IMAGE}&quot;&gt;<br>
+	&lt;input type=&quot;hidden&quot; name=&quot;caption&quot; value=&quot;{CAPTION}&quot;&gt;<br>
+	&lt;input type=&quot;hidden&quot; name=&quot;des&quot; value=&quot;{DES}&quot;&gt;<br>
+	&lt;input type=&quot;hidden&quot; name=&quot;template&quot; value=&quot;{TEMPLATE}&quot;&gt;<br>
+	&lt;input type=&quot;hidden&quot; name=&quot;applet_name&quot; value=&quot;{APPLET_NAME}&quot;&gt;<br>
+	&lt;input type=&quot;hidden&quot; name=&quot;img_width&quot; value=&quot;{IMG_WIDTH}&quot;&gt;<br>
+	&lt;input type=&quot;hidden&quot; name=&quot;img_height&quot; value=&quot;{IMG_HEIGHT}&quot;&gt;<br>
+	&lt;input type=&quot;hidden&quot; name=&quot;user1&quot; value=&quot;{USER1}&quot;&gt;<br>
+	&lt;input type=&quot;hidden&quot; name=&quot;user2&quot; value=&quot;{USER2}&quot;&gt;<br>
+	&lt;input type=&quot;submit&quot; name=&quot;Submit&quot; value=&quot;Go&quot;&gt;<br>
+	&lt;/form&gt;</code></p>
+  <hr noshade>
+  <p>If you remove any of the fields from form.tpl, you must check to see if they 
+	are listed at the top of the file under /* BEGIN AUTHOR SPECS */ and if so, 
+	you must remove the corresponding line, or risk getting a javascript error</p>
+  <p>You can change the way the colours are selected to one of the following code 
+	snippits. Please note that these are only examples - make your own if you 
+	want!:</p>
+  <p class="hilightcode"> <code>&lt;!-- Table row for setting the background colour. 
+	If you don't want this feature then remove it --&gt; <br>
+	&lt;tr&gt; <br>
+	&lt;td width=&quot;140&quot;&gt;Choose the background Colour:&lt;/td&gt;<br>
+	&lt;td width=&quot;80%&quot;&gt; <br>
+	&lt;select name=&quot;bgcolor&quot;&gt;<br>
+	&lt;option value=&quot;#000000&quot;&gt;Black&lt;/option&gt;<br>
+	&lt;option value=&quot;#ffffff&quot; selected&gt;White&lt;/option&gt;<br>
+	&lt;option value=&quot;#ffcc00&quot;&gt;Orange&lt;/option&gt;<br>
+	&lt;/select&gt;<br>
+	&lt;/td&gt;<br>
+	&lt;/tr&gt;<br>
+	&lt;!-- End table row for setting the background colour --&gt;</code></p>
+  <p>Or</p>
+  <p class="hilightcode"><code>&lt;!-- Table row for setting the background colour. 
+	If you don't want this feature then remove it --&gt; <br>
+	&lt;tr&gt; <br>
+	&lt;td width=&quot;140&quot;&gt;Choose the background Colour:&lt;/td&gt;<br>
+	&lt;td width=&quot;80%&quot;&gt; <br>
+	&lt;table width=&quot;275&quot; border=&quot;0&quot; cellspacing=&quot;3&quot; 
+	cellpadding=&quot;0&quot;&gt;<br>
+	&lt;tr align=&quot;center&quot;&gt; <br>
+	&lt;td&gt;&lt;font size=&quot;-1&quot;&gt;Default&lt;/font&gt;&lt;/td&gt;<br>
+	&lt;td bgcolor=&quot;#FFFFCC&quot;&gt;&amp;nbsp;&lt;/td&gt;<br>
+	&lt;td bgcolor=&quot;#CCFFCC&quot;&gt;&amp;nbsp;&lt;/td&gt;<br>
+	&lt;td bgcolor=&quot;#333399&quot;&gt;&amp;nbsp;&lt;/td&gt;<br>
+	&lt;td bgcolor=&quot;#CC0000&quot;&gt;&amp;nbsp;&lt;/td&gt;<br>
+	&lt;td bgcolor=&quot;#333333&quot;&gt;&amp;nbsp;&lt;/td&gt;<br>
+	&lt;/tr&gt;<br>
+	&lt;tr align=&quot;center&quot;&gt; <br>
+	&lt;td&gt;&lt;input type=&quot;radio&quot; name=&quot;bgcolor&quot; checked&gt;&lt;/td&gt;<br>
+	&lt;td&gt;&lt;input type=&quot;radio&quot; name=&quot;bgcolor&quot; value=&quot;#FFFFCC&quot;&gt;&lt;/td&gt;<br>
+	&lt;td&gt;&lt;input type=&quot;radio&quot; name=&quot;bgcolor&quot; value=&quot;#CCFFCC&quot;&gt;&lt;/td&gt;<br>
+	&lt;td&gt;&lt;input type=&quot;radio&quot; name=&quot;bgcolor&quot; value=&quot;#333399&quot;&gt;&lt;/td&gt;<br>
+	&lt;td&gt;&lt;input type=&quot;radio&quot; name=&quot;bgcolor&quot; value=&quot;#CC0000&quot;&gt;&lt;/td&gt;<br>
+	&lt;td&gt;&lt;input type=&quot;radio&quot; name=&quot;bgcolor&quot; value=&quot;#333333&quot;&gt;&lt;/td&gt;<br>
+	&lt;/tr&gt;<br>
+	&lt;/table&gt;<br>
+	&lt;/td&gt;<br>
+	&lt;/tr&gt;<br>
+	&lt;!-- End table row for setting the background colour --&gt;</code> </p>
+  <p></p>
+  <p></p>
+  <p>&nbsp;</p>
+  <p><strong>And for font colour:</strong></p>
+  <p class="hilightcode"> <code>&lt;select name=&quot;fontcolor&quot;&gt;<br>
+	&lt;option value=&quot;#000000&quot; selected&gt;Black&lt;/option&gt;<br>
+	&lt;option value=&quot;#ffffff&quot;&gt;White&lt;/option&gt;<br>
+	&lt;option value=&quot;#ffcc00&quot;&gt;Orange&lt;/option&gt;<br>
+	&lt;/select&gt;</code></p>
+  <p>OR</p>
+  <p class="hilightcode"><code>&lt;table width=&quot;275&quot; border=&quot;0&quot; 
+	cellspacing=&quot;3&quot; cellpadding=&quot;0&quot;&gt;<br>
+	&lt;tr align=&quot;center&quot;&gt; <br>
+	&lt;td&gt;&lt;font size=&quot;-1&quot;&gt;Default&lt;/font&gt;&lt;/td&gt;<br>
+	&lt;td bgcolor=&quot;#660066&quot;&gt;&amp;nbsp;&lt;/td&gt;<br>
+	&lt;td bgcolor=&quot;#FFCC99&quot;&gt;&amp;nbsp;&lt;/td&gt;<br>
+	&lt;td bgcolor=&quot;#006699&quot;&gt;&amp;nbsp;&lt;/td&gt;<br>
+	&lt;td bgcolor=&quot;#006600&quot;&gt;&amp;nbsp;&lt;/td&gt;<br>
+	&lt;td bgcolor=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&lt;/td&gt;<br>
+	&lt;/tr&gt;<br>
+	&lt;tr align=&quot;center&quot;&gt; <br>
+	&lt;td&gt; <br>
+	&lt;input type=&quot;radio&quot; name=&quot;bgcolor&quot; checked&gt;<br>
+	&lt;/td&gt;<br>
+	&lt;td&gt; <br>
+	&lt;input type=&quot;radio&quot; name=&quot;bgcolor&quot; value=&quot;#660066&quot;&gt;<br>
+	&lt;/td&gt;<br>
+	&lt;td&gt; <br>
+	&lt;input type=&quot;radio&quot; name=&quot;bgcolor&quot; value=&quot;#FFCC99&quot;&gt;<br>
+	&lt;/td&gt;<br>
+	&lt;td&gt; <br>
+	&lt;input type=&quot;radio&quot; name=&quot;bgcolor&quot; value=&quot;#006699&quot;&gt;<br>
+	&lt;/td&gt;<br>
+	&lt;td&gt; <br>
+	&lt;input type=&quot;radio&quot; name=&quot;bgcolor&quot; value=&quot;#006600&quot;&gt;<br>
+	&lt;/td&gt;<br>
+	&lt;td&gt; <br>
+	&lt;input type=&quot;radio&quot; name=&quot;bgcolor&quot; value=&quot;#FFFFFF&quot;&gt;<br>
+	&lt;/td&gt;<br>
+	&lt;/tr&gt;<br>
+	&lt;/table&gt;</code> </p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+  <h3>Adding java applets<a name="java_applets"></a></h3>
+  <p>Applets each have their own block in image.tpl (in the templates directory). 
+	The syntax for the block is as follows:</p>
+  <p class="hilightcode"><code>&lt;!-- BEGIN java_block_<em>Appletname</em> --&gt;<br>
+	&lt;applet code=&quot;<em>classname.class</em>&quot; codebase=&quot;{IMG_PATH}&quot; 
+	width=&quot;{IMG_WIDTH}&quot; height=&quot;{IMG_HEIGHT}&quot;&gt;<br>
+	[params if needed]<br>
+	Sorry, your browser does not support java :-(<br>
+	&lt;/applet&gt; <br>
+	&lt;!-- END java_block_<em>Appletname</em> --&gt;</code></p>
+  <p>where Appletname is the name in the form input applet_name. Using a codebase 
+	of {IMG_PATH} only if you are going to put the applet class files in your 
+	images directory. Any of the settings could of course be hard-coded - however 
+	by using the placeholders {XXX} gives you more flexibility. </p>
+  <p>The above code is for an applet which displays an image, with special effects. 
+	Have a look at the sample blocks in image.tpl, and then see if you can modify 
+	them to suit your needs. By looking at them you'll probably understand it 
+	much better!</p>
+  <p><a href="#Contents" class="toplink">Top</a></p>
+  <h3>Setting up the delayed send feature<a name="delayed_send"></a></h3>
+  <p>If you have crontab available on your web hosting account, then you can use 
+	this to run advancesend.php. You need to use Lynx or wget. I do not have access 
+	to crontab, so have never tried it, but these are what other people have said:</p>
+  <hr  size="1" width="100%" />
+  <p> You must include the next line in your crontab file:<br>
+	0 0,8,16 * * * lynx -dump<br>
+	www.your-domain.com/path-to-sendcard/advancesend.php &gt;/dev/null 2&gt;&amp;1</p>
+  <p> and next type this command:<br>
+	$ crontab cronjobs</p>
+  <p> where cronjobs is the file that contains the line mentioned<br>
+  </p>
+  <hr  size="1" width="100%" />
+  <p> The best way to call sendcard using cron is to set it up with a wget<br>
+	command. See the example below:</p>
+  <p> wget -q http://www.xyz.com/sendcard/advancesend.php</p>
+  <p> This will use the wget utility from the cron to call the advancesend.php<br>
+	file as many times as you like.</p>
+  <hr  size="1" width="100%" />
+  <p>If you don't have access to crontab on your server, sign up for a free account 
+	with <a href="http://www.qwkmon.com/?from=peter">QWKMon</a> or a similar company. 
+	Set up a HTTP monitoring job pointing to advancesend.php, and tell it to check 
+	the page every 6 or 12 hours (I prefer 6, but if you don't want too much extra 
+	traffic to your server, 12 will do).</p>
+  <p><a href="#Contents" class="toplink">Top</a> </p>
+  <h3>How do I add emoticons?<a name="Add_emoticons"></a></h3>
+  <p>Open replace.txt in your favourite test editor. The syntax of each line is:</p>
+  <p><code class="hilightcode">item to replace &nbsp;&nbsp;&nbsp;&nbsp;[tab] &nbsp;&nbsp;&nbsp;&nbsp;item 
+	to replace it with</code></p>
+  <p>Suppose we want to turn :-) into an image each time it appears in the card. 
+	To do so, we would add the following line:</p>
+  <p><code class="hilightcode">:-)&nbsp;&nbsp;&nbsp;&nbsp; &lt;img src=\&quot;images/foobar.gif\&quot;&gt;</code></p>
+  <p>Note that it should be a tab instead of a large space between the two items. 
+	If it isn't, it won't work</p>
+  <p>You can download some emoticons from <br>
+	<a href="http://homepage.eircom.net/~bray/em.htm">http://homepage.eircom.net/~bray/em.htm</a><br>
+	<a href="http://volmeister.tripod.com/emoticons/emoticons.html">http://volmeister.tripod.com/emoticons/emoticons.html</a><br>
+	<a href="http://www.geocities.com/jabot2000/emoticons.html">http://www.geocities.com/jabot2000/emoticons.html</a></p>
+  <p> My favourite ones are at <a href="http://www.anduin.de/emoticons/">http://www.anduin.de/emoticons/</a></p>
+  <p>There is one emoticon included with sendcard by default. To try it, send 
+	yourself a card, and place [rolleyes] in the message. Have a look at replace.txt 
+	to see how this one was set up.</p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+  <h3>How do I let the sender select a background image for the card?<a name="select_background"></a></h3>
+  <p>The simplest way is to not allow them to select a background colour, and 
+	then you can use the <code class="hilightcode">{BGCOLOR}</code> variable to 
+	hold the image. So, in form.tpl you would assign to the radio buttons for 
+	the selection of background image the names of the images. In card.tpl/message.tpl 
+	you would change <code class="hilightcode">bgcolor=&quot;{BGCOLOR}</code> 
+	to <code class="hilightcode">background=&quot;{BGCOLOR}&quot;</code>. </p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+  <h3>I don't want to preview the card, I want to send it immediately?<a name="no_preview"></a></h3>
+  <p>Open form.tpl and find the line <code class="hilightcode">&lt;input type=&quot;submit&quot; 
+	name=&quot;preview&quot; value=&quot;Preview the card&quot;&gt;</code><br>
+	Change it to read <code class="hilightcode">&lt;input type=&quot;submit&quot; 
+	name=&quot;send&quot; value=&quot;Send the card&quot;&gt;</code> where value 
+	can equal anything you wish.</p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+  <h3>How do I make sendcard recognize more media file types?<a name="more_media"></a></h3>
+  <p>To do this you will have to edit the PHP source of sendcard, as well as image.tpl. 
+	Before you start, back up your existing versions of these files, in case you 
+	make a mistake...</p>
+  <p>Open image.tpl and see if one of the blocks has the correct code in it for 
+	your media type -- for instance, the embed_block section will cover most things, 
+	and is actually the default for unknown media types.</p>
+  <h4>The right code is present in image.tpl, but it won't recognize my files.<a name="more_media_rightcode"></a></h4>
+  <p><span class="h2indent"><span class="h2indent">The problem is probably that 
+	you are using a different file extension to the ones which sendcard is set 
+	up to recognize. Let us suppose that your java applets end in .jar, which 
+	would prevent them from using the correct code in image.tpl.</span></span></p>
+  <p><span class="h2indent"><span class="h2indent">Open functions.tpl and find 
+	<code class="hilightcode">function set_img_block($image)</code></span></span></p>
+  <p><span class="h2indent"><span class="h2indent"> Look further through this 
+	function until you find the line which looks like <code class="hilightcode">} 
+	elseif( ereg("\.(class)$", trim($image)) ) {</code></span></span></p>
+  <p><span class="h2indent"><span class="h2indent"> Change it to look like <code class="hilightcode">} 
+	elseif( ereg("\.(class|jar)$", trim($image)) ) {</code>. The vertical line 
+	&quot;|&quot; means OR, so the block of code defined here will be used by 
+	*.class OR *.jar files.</span></span></p>
+  <p><span class="h2indent"><span class="h2indent">If you don't understand that, 
+	then I suggest you read a few tutorials on regular expressions :-)</span></span></p>
+  <h4>No suitable code is present in image.tpl<a name="more_media_nocode"></a></h4>
+  <p class="hilightcode">This is a little harder to correct! Open image.tpl and 
+	add the code you need. The code must be surrounded by two comments in the 
+	format<br>
+	<code>&lt;!-- BEGIN somename_block --&gt;<br>
+	<em>[code goes here]</em><br>
+	&lt;!-- END somename_block --&gt;<br>
+	</code>where <em>somename</em> is a descriptive name for the purpose of the 
+	code in the block.</p>
+  <p>Now, open functions.php, and scroll down until you see <code class="hilightcode">function 
+	set_img_block($image)</code> . </p>
+  <p class="hilightcode">Copy the following section into a new file<br>
+	<code>} elseif( ereg(&quot;\.(class)$&quot;, trim($image)) ) {<br>
+	$tpl-&gt;set_block(&quot;img_tags&quot;, &quot;java_block&quot;);<br>
+	$code = $tpl-&gt;get_var(&quot;java_block&quot;);</code></p>
+  <p>Alter it to look like:</p>
+  <p class="hilightcode"> <code>} elseif( ereg(&quot;\.(<em>ext</em>)$&quot;, 
+	trim($image)) ) {<br>
+	$tpl-&gt;set_block(&quot;img_tags&quot;, &quot;<em>somename</em>_block&quot;);<br>
+	$code = $tpl-&gt;get_var(&quot;<em>somename</em>_block&quot;);</code></p>
+  <p>where ext is the file extension, and somename is the name of the blockin 
+	image.tpl. Remember, if there is more than one file extension to separate 
+	them with &quot;|&quot;.</p>
+  <p>Add the new code in just below the original section that you copied, and 
+	test it.</p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+  <h3>How do I change the date format?<a name="date_format"></a></h3>
+  <p>Open sendcard.php. At the top you will find a line which looks like:</p>
+  <p class="hilightcode"> <code>// This prints the format: "Sunday 8th October 
+	at 09:57 GMT" <br>
+	$date = date("l jS F")." at ".date("H:i T"); </code></p>
+  <p>Edit this line to fit your needs. You can find out about the different options 
+	available by reading the page in the <a href="http://www.php.net/manual/en/function.date.php">PHP 
+	manual</a>.</p>
+  <p><a href="#Contents" class="toplink">Top</a></p>
+</div>
+<h2>Administration interface<a name="Administration"></a></h2>
+<div class="h2indent"> 
+  <p>The administration interface should be self-explanatory, and each module 
+	should hopefully have its own help. The documentation therefore concentrates 
+	on writing modules.</p>
+  <!-- <p><strong>Please note:</strong> You are advised to only install approved modules. 
+	These modules have been tested by myself and found not to contain any hidden 
+	hacking tools. This is necessary because it would be very easy to write a 
+	module or a plugin which would email someone your database username and password.</p>
+  <p><strong><font color="#CC3300">Disclaimer:</font> I will not be held responsible 
+	if an approved plugin or administration module turns out to be a security 
+	hole, or causes any damage whatsoever. All plugins and administration modules 
+	are used at your own risk.</strong></p> -->
+  <h3>Writing administration modules<a name="Writing_modules"></a></h3>
+  <p>Modules comprise of at least two files: modi_xxx.php and mod_xxx.php. Modi_xxx.php 
+	is used to create the entry in the menu of the admin area, and currently should 
+	look something like:</p>
+  <p class="hilightcode"><code>&lt;?php <br>
+	// Name to appear in the menu<br>
+	$mod_name = &quot;Module Name&quot;;<br>
+	// Only used if path to module is not the same directory as menu.php<br>
+	// currently not used.<br>
+	// $mod_path = &quot;&quot;;<br>
+	?&gt;</code></p>
+  <p>mod_xxx.php contains the code to be executed when someone clicks on the link 
+	in the menu. The file must have right at the top the following:</p>
+  <p class="hilightcode"><code>&lt;?php<br>
+	include(&quot;prepend.php&quot;);<br>
+	?&gt;</code></p>
+  <p>There must be no whitespace before the <code>&lt;?php</code> tag, otherwise 
+	it will not work properly.</p>
+  <p>Prepend.php includes all the variable in config.php, allowing you to use 
+	them in your script, and also provides the authentication security layer, 
+	preventing unauthorised people from altering the configuration of sendcard. 
+	This relies on PHP4 sessions at the present time - if enough people are using 
+	PHP3 then I will rewrite it.</p>
+  <p>Once you have included prepend.php, you are free to include other files as 
+	you wish.</p>
+  <p>Modules do not have to be released under the QPL, as they are separate programs 
+	rather than part of Sendcard. (If anyone thinks this is wrong, and I've misunderstood 
+	the license, please <a href="mailto:sendcard@f2s.com">get in touch</a>)</p>
+  <p>More documentation on writing modules will follow.</p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+  <h3>Available defined constants<a name="admin_constants"></a></h3>
+  <p>These are the constants which are made available via prepend.php. They are 
+	available as defined constants, rather than the usual $variables, preventing 
+	them from being modified.</p>
+  <table border="0" cellspacing="0" cellpadding="3" width="85%">
+	<thead> 
+	  <th>Name</th>
+	  <th>Notes</th>
+	
+	</thead> 
+	<tr> 
+	  <td>DOCROOT</td>
+	  <td>The system path to the directory where sendcard is installed (eg /home/user/web/sendcard/ 
+		or C:/apache/htdocs/sendcard/ )</td>
+	</tr>
+	<tr> 
+	  <td>SENDCARD_HOST</td>
+	  <td>The url to the directory where sendcard is installed (eg http://somehost.com/sendcard/ 
+		) </td>
+	</tr>
+	<tr> 
+	  <td>SENDCARD_DIR</td>
+	  <td>The path from the web root (eg sendcard/ )</td>
+	</tr>
+  </table>
+  <p><a href="#Contents" class="toplink">Top</a></p>
+</div>
+<h2>Plugins for sendcard<a name="Plugins"></a></h2>
+<div class="h2indent"> 
+<!--  <p><strong>Please note:</strong> You are advised to only install approved plugins. 
+	These modules have been tested by myself and found not to contain any hidden 
+	hacking tools. This is necessary because it would be very easy to write a 
+	module or a plugin which would email someone your database username and password. 
+	If you know PHP - fine, go ahead and check the code yourself (or volunteer 
+	to join the approval team). </p>
+  <p><strong><font color="#CC3300">Disclaimer:</font> I will not be held responsible 
+	if an approved plugin or administration module turns out to be a security 
+	hole, or causes any damage whatsoever. All plugins and administration modules 
+	are used at your own risk.</strong></p> -->
+  <h3> What is a plugin?<a name="What_plugin"></a></h3>
+  <p>In sendcard, a plugin is a separate piece of code to be inserted in sendcard.php 
+	in a certain place. This allows other people to develop extras to work with 
+	sendcard, and for you to install them without having to edit sendcard.php 
+	(though at the moment you'll have to edit any other files necessary.</p>
+  <p>In sendcard.php at certain points, there are comments which look like <code class="hilightcode">/*** 
+	plugin before_view ***/</code>. These are placeholders, marking where plugin 
+	code can be inserted. I have not listed the placeholders here, because before 
+	you can use them you need to look in sendcard.php to see which is in the best 
+	position. </p>
+  <p>The position of the plugin sites is not set in stone: if you believe one 
+	would be better somewhere else, or that another one would be useful, please 
+	<a href="mailto:sendcard@f2s.com">email me</a>, and I'll change it in a future 
+	release of sendcard. </p>
+  <p>I am unsure of the license issues for plugins, and whether they have to be 
+	released under the QPL.</p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+  <h3>How do the plugins work?<a name="How_plugin_work"></a></h3>
+  <p>Under your administration folder you should have a folder called &quot;plugins&quot;. 
+	Into this folder you need to put any plugins that you download. Once you have 
+	done this, go to the administration interface and click on the link labelled 
+	&quot;Plugins&quot;. This will bring up a list of all plugins in that folder, 
+	with a description about each and whether or not they are installed.</p>
+  <p>Click on the link that says &quot;Install&quot;. You may be prompted to enter 
+	some information, or the plugin may install immediately. when you next go 
+	to the plugin page, the link should have changed from &quot;Install&quot; 
+	to &quot;Uninstall&quot;. To remove the plugin, click on this link. You will 
+	be asked if you are sure you want to remove it, and if you say yes, the plugin 
+	will be uninstalled. You will still have to manually delete the file from 
+	the plugins directory.</p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+  <h3>How do I write a plugin?<a name="How_write_plugin"></a></h3>
+  <p>The easiest way is to look at the plugins in the admin/plugins/ directory 
+	to get an idea of how they are written. Play around with these plugins, and 
+	try and build your own from them. Look in sendcard.php for the comments in 
+	the form /*** plugin some_name ***/. Change the line which looks like this 
+	in one of the plugins, and see what happens in sendcard.php.</p>
+  The variabled which go in the plugin files are described in more detail below. 
+  <table border="0" cellspacing="0" cellpadding="0" width="85%">
+	<thead> 
+	<th>Variable</th>
+	<th>Notes</th>
+	</thead> 
+	<tr> 
+	  <td>$plugin_name</td>
+	  <td>Name of the plugin. This must be the same as the name in comments around 
+		the code you are inserting, and it's a good idea to give the file this 
+		name as well.</td>
+	</tr>
+	<tr> 
+	  <td>$plugin_description</td>
+	  <td>Tells people what your plugin does</td>
+	</tr>
+	<tr> 
+	  <td>$plugin_installed</td>
+	  <td>Must equal 0. It is changed to 1 when the function is installed.</td>
+	</tr>
+	<tr> 
+	  <td>$plugin_installed_msg</td>
+	  <td>Message shown when the plugin is installed</td>
+	</tr>
+	<tr> 
+	  <td>$plugin_uninstalled_msg</td>
+	  <td>Message shown when the plugin is uninstalled.</td>
+	</tr>
+	<tr> 
+	  <td>$plugin_edit</td>
+	  <td>Not yet implemented.</td>
+	</tr>
+	<tr> 
+	  <td>$plugin_set_variables</td>
+	  <td>1 if you have a function called set_variables(), 0 if you don't.</td>
+	</tr>
+	<tr> 
+	  <td>$plugin_original_code</td>
+	  <td>An array of the placeholder names in sendcard.php which you want to 
+		insert your code just below </td>
+	</tr>
+	<tr> 
+	  <td>$plugin_replacement_code</td>
+	  <td>An array of the code to be added.</td>
+	</tr>
+  </table>
+  <p>The plugin above as actually a more complicated example than most, because 
+	it asks the user for some information (in this case the table name) before 
+	inserting the code, using the function plugin_set_variables() to collect it. 
+	If $plugin_set_variables = 1 then a form will automatically be generated to 
+	collect the information, and plugin_set_variable() executed. In the function 
+	you do not need to generate the form tags or the submit button: these are 
+	done automatically.</p>
+  <p>More documentation on writing plugins will follow.</p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+</div>
+<h2>Miscellaneous Questions<a name="FAQ"></a></h2>
+<div class="h2indent"> 
+  <h3>Can I use PHP in the templates?<a name="php_in_tpl"></a></h3>
+  <p>Yes, as of version 3.03 you can provided you are using PHP 4. If you are 
+	using sendcard 3.02 or earlier, then you need PHP 4.0.5 or greater and PCRE 
+	support enabled. PHP in templates is disabled by default. To enable it, log 
+	into the administration interface and click on &quot;Configure&quot;. Look 
+	under advanced options for the setting.</p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+  <h3>What is sendcard's license?<a name="License"></a></h3>
+  <p>Sendcard is released under the <a href="http://www.trolltech.com/products/download/freelicense/license.html">Trolltech 
+	QPL</a>. By using sendcard you are agreeing to the terms of this license.</p>
+  <p><strong>Please note:</strong> sendcard includes a &quot;Powered by sendcard&quot; 
+	button which is installed by default. While it is not a license violation 
+	to remove this button, it is requested that the attribution remain. A significant 
+	investment has been put into sndcard, and this effort will continue if the 
+	sendcard community continues to grow. This is one way to assure that growth. 
+  </p>
+  <p>Don't understand the QPL? Read the <a href="http://www.trolltech.com/products/download/freelicense/annotated.html">annotated 
+	version</a></p>
+  <p> <a href="#Contents" class="toplink">Top</a></p>
+  <h3>My server doesn't recognize the .php file extension<a name="no_recognize_php_ext"></a></h3>
+  <p>There are two reasons why this may not work:</p>
+  <ol>
+	<li> You don't have PHP installed, in which case I can't help you. </li>
+	<li>The server is configured to interpret PHP files only if they end in .php3 
+	  or .phtml</li>
+  </ol>
+  <p>If the problem is the second, and you are using the Apache web server, place 
+	an .htaccess file in your sendcard directory with he following lines:</p>
+  <p>If you are using PHP3:</p>
+  <p class="hilightcode"><code>AddType application/x-httpd-php3 .php3 .php .phtml<br>
+	DirectoryIndex index.php index.php3 index.phtml</code></p>
+  <p>If you are using PHP4:</p>
+  <p class="hilightcode"><code>AddType application/x-httpd-php .php3 .php .phtml<br>
+	DirectoryIndex index.php index.php3 index.phtml</code></p>
+  <p><a href="#Contents" class="toplink">Top</a></p>
+  <h3>I love sendcard. How can I support its development?<a name="support_sendcard"></a></h3>
+  <p>OK, you don't have to love it, but your support would still be very welcome 
+	:-)<br>
+	Please see <a href="http://www.sendcard.f2s.com/support.php">http://www.sendcard.f2s.com/support.php</a> 
+	for more details.</p>
+  <p><a href="#Contents" class="toplink">Top</a></p>
+  <h3>I've found a mistake in the documentation / I can't find the answer to my 
+	problem <a name="bad_documentation"></a></h3>
+  <p>If you can't find the answer to your problem, ask your question <a href="http://www.sendcard.f2s.com/forum/">in 
+	the forum</a>. This is the preferred method because it means that the answer 
+	will be available for everyone to read.</p>
+  <p>If you've found a mistake in the documentation please <a href="mailto:sendcard@f2s.com">contact 
+	me</a>. I've tried my best with this documentation, but as I have written 
+	sendcard as well I forget what may cause problems to other people. If you 
+	think I've missed something, or you can't understand what I'm talking about, 
+	<a href="mailto:sendcard@f2s.com">get in touch</a> and I'll see what I can 
+	do!</p>
+  <p><a href="#Contents" class="toplink">Top</a></p>
+  <h3>Is there anyone who can install sendcard for me?<a name="paid_services"></a></h3>
+  <p>Well, I don't wish to push my <a href="http://www.sendcard.f2s.com/services.php">services</a> 
+	too hard, but I can install it for you. Please see my <a href="http://www.sendcard.f2s.com/services.php">services</a> 
+	page for more details.</p>
+  <p><a href="#Contents" class="toplink">Top</a></p>
+  <p>&nbsp;</p>
+  <hr  size="1" width="100%" />
+  <p>Version 0.14 Last revised <!-- #BeginDate format:Sw1 -->22 October, 2001<!-- #EndDate --></p>
+</div>
+</body>
+</html>

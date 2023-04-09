@@ -1,0 +1,3 @@
+includes/
+
+all files are included by index.php depending on which page is being showed now

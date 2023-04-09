@@ -1,0 +1,166 @@
+#########################################################
+#                   MassSites 1.0b                      #
+#########################################################
+#                                                       #
+# These scripts are copywrite by Adult Designz PTY.     #
+# any attempt to modify or use this code without proper #
+# authorization as well as distributing it in any way   #
+# will be considered an infringement of our copywrite   #
+# and legal action will be pursued to the fullest       #
+# extent possible.                                      #
+#                                                       #
+# This script was created by:                           #
+#                                                       #
+# Adult Designz Web Specialties PTY.                    #
+# http://www.adultdesignz.com                           #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the author at        #
+# apex@zyx.net or lisaryan@logicworld.com.au            #
+#                                                       #
+# Please Read the install.txt that came with this       #
+# package for proper installation instructions.         #
+#                                                       #
+#                                                       #
+# This script set utilizes cgi-lib.pl written by        #
+# Steven E. Brenner and several perl modules created    #
+# by one of our coders Bernhard van Staveren.           #
+#########################################################
+
+
+Setup instructions:
+
+First things first:
+
+Open sitegen.pl in a TEXT editor. Edit these lines towards the top of the script.
+
+Change the very first line in the script to point to the perl interpreter on
+your server. Use the following command to find perl 5 on your server:
+
+whereis perl5
+
+Next edit the below lines:
+
+# add your email here. do not forget the \ in front of the @.
+$email = "nuclei\@eisa.net.au";
+
+# URL to the directory this script is running from.
+$urltodir = "http://adultstorage.com/test";
+
+# Auto submit to Search Engines? (1 for yes - 2 for no)
+$submit= "1";
+
+# Path to your sendmail program.
+$mailprogram = "/usr/sbin/sendmail -t";
+ 
+to get the path to sendmail use the following command:
+
+whereis sendmail
+
+
+Okay thats the important script stuff. Now on to the rest.
+
+#1.  edit banners.txt, format is 
+
+banner1.jpg#http://sponsor.url.com/
+banner2.jpg#http://sponsor.url.com/
+
+for each banner and url put a line.  then copy all banner images to banners/
+
+
+#2.  edit grfx.txt,  this file conains color scheme groups.. like
+
+blk
+wht
+
+Then, for all your logo's and background images, rename them with the color group
+as the first part of the filename, like if you have a black background and a logo
+for black backgrounds name them blackbg123.jpg and blacklogo.jpg and stick them
+in the backgrounds/ and logo/ directories.  example:
+
+contents of grfx.txt:
+
+blk
+wht
+
+contents of directory backgrounds/:
+
+blkimg1.jpg
+blkbg.jpg
+blkblah.jpg
+whtblaj.jpg
+whtimg23.jpg
+whtbg.jpg
+
+contents of directory logos/:
+
+blklogo213.jpg
+blklogo23.jpg
+blkimg.jpg
+whtre3d.jpg
+wht33.jpg
+
+then it will use a random matching image from each directory, so you can use a black
+background with a logo built for a black bg. make sense? The other alternative is to set
+up matched groups of images like gr1 gr2 gr3 gr4 etc. then make the first 3 characters 
+gr1 gr2 gr3 etc. to keep groups together. easy enough?
+
+
+#3.  Page templates. there is an example template in the templates/ dir.  just follow
+the format of this file, each time you put %banner% in the template it will put a random
+banner. Anytime you put a %sitename% in the templates it will add the sitename. Make all 
+the templates you want and stick them in the templates dir, the script will do the rest.
+
+If you want a seperate content page, make the page and put it in the content/ directory
+it is suggested you call content for ALL pages you create from one location to save disk
+space and assuming this much we dont have this script set to copy content images, only 
+content pages. This script does NOT pass the banner and sitename variables to content 
+pages in this release. It will do so soon as well as allow more pages all hyperlinked 
+to each other.
+
+
+#4. Upload all files and directories exactly as they were in the zip file. Make sure 
+that the .txt and .pl, .cgi, .pm files are uploaded in ASCII mode. Upload graphics in 
+binary mode.
+
+
+#5. Chmod all file correctly.
+
+Make sure the directory where the script resides is chmod 777 so the script
+can create directories for each site in it.
+
+all script specific stuff is as follows:
+Go into the directory this script resides and make the following chmod's:
+
+chmod 777 backgrounds
+chmod 777 banners
+chmod 777 content
+chmod 777 logos
+chmod 777 templates
+chmod 777 banners.txt
+chmod 777 grfx.txt
+chmod 775 sitegen.pl
+
+
+#6.  Run the script.  After you have set all that up, all you have to do is run the 
+script for each page you want to create.  
+
+Type in telnet:
+
+perl sitegen.pl <directoryname>  "site name"
+
+with the quotes if the name is more than 1 word. 
+
+Example:
+
+perl sitegen.pl sexsite1 "Sex Site 1"
+
+Hit enter key.
+
+
+The script will then create the page in sites/<directoryname>/ 
+and copy all the files and images it needs there.
+Be patient, the script can take several minutes to work.
+
+
+

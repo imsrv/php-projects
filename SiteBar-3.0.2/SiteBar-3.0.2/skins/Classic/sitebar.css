@@ -1,0 +1,463 @@
+body
+{
+    font-family: Verdana, Tahoma, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+    margin-top: 0;
+    background: white;
+}
+
+img
+{
+    border: 0;
+}
+
+span.red
+{
+    color: red;
+    font-weight: bold;
+}
+
+#logo
+{
+    width: 179px;
+    margin-bottom: 10px;
+}
+
+#userCtxMenu
+{
+    margin-top: 20px;
+    border: 2px solid #8899aa;
+    width: 179px;
+    color: #333;
+    z-index: 0;
+}
+
+#linkCtxMenu, #nodeCtxMenu
+{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #8899aa;
+    border: 0;
+    color: white;
+    z-index: 1;
+}
+
+#toolbar
+{
+    border: 2px solid #8899aa;
+    width: 179px;
+    padding: 1px 3px;
+    margin-bottom: 10px;
+    height: 20px;
+    background: #fffff5;
+}
+
+#toolbar .search
+{
+    text-align: left;
+    float: left;
+    width: 70%;
+}
+
+#toolbar .buttons
+{
+    text-align: right;
+    margin-left: 70%;
+    margin-top: 2px;
+}
+
+#toolbar input
+{
+    vertical-align: middle;
+}
+
+#fldSearch
+{
+    font-size: 7pt;
+    width: 7em;
+}
+
+#powered
+{
+    text-align: center;
+    width: 179px;
+    padding: 1px 3px;
+    margin-top: 20px;
+    height: 50px;
+    border: 2px solid #8899aa;
+    background: #fffff5;
+}
+
+#powered #by
+{
+    margin-bottom: 3px;
+    font-size: 0.81em;
+}
+
+#powered #design
+{
+    margin-top: 10px;
+    font-size: 0.81em;
+}
+
+div.sponsor a
+{
+    text-decoration: none;
+}
+
+div.sponsor img
+{
+    width: 88px;
+    height: 31px;
+    border: 0;
+}
+
+table.sponsor
+{
+    width: 100%;
+}
+
+table.sponsor td
+{
+    text-align: right;
+}
+
+div.menu
+{
+    cursor: default;
+    overflow: hidden;
+    width: 130px;
+
+    border: 2px outset #202020;
+    background: #fffff5;
+    padding: 3px;
+    color: #333;
+}
+
+div.menu .off
+{
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+}
+
+div.menu .on
+{
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    color: #333;
+    background: #c0d2ec;
+}
+
+div.menu .disabled
+{
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    color: #333;
+}
+
+div.menu .separator
+{
+    margin-top: 3px;
+    border-top: gray solid 1px;
+    border-bottom: silver solid 1px;
+}
+
+div.tree
+{
+    margin: 0;
+    color: #333;
+}
+
+div.root
+{
+    margin-bottom: 2px;
+}
+
+div.tree div
+{
+    white-space: nowrap;
+}
+
+div.tree div.node
+{
+    display: block;
+}
+
+div.tree div.node div.childrenCollapsed
+{
+    display: none;
+}
+
+div.tree div.node div.childrenExpanded
+{
+    display: block;
+}
+
+div.tree div.link
+{
+    height: 18px;
+}
+
+div.tree img
+{
+    height: 18px;
+    vertical-align: text-bottom;
+    border: 0;
+}
+
+div.tree a
+{
+    text-decoration: none;
+    color: #333;
+}
+
+div.tree a.private
+{
+    font-style: italic;
+}
+
+div.tree a.acl
+{
+    text-decoration: underline;
+}
+
+div.tree a:hover
+{
+    background: #DDDFFF;
+}
+
+div.tree a:hover .selected
+{
+    color: white;
+    background: #8899aa;
+}
+
+div.tree a.highlight
+{
+    background-color: #c0d2ec;
+}
+
+div.hidden
+{
+    display: none;
+}
+
+/*** Command Window ***/
+
+.cmdWin
+{
+    margin: 0;
+}
+
+#commandHead
+{
+    background: #8899aa;
+    color: #333;
+    font-size: 14pt;
+    text-align: center;
+    font-weight: bold;
+}
+
+#errorHead
+{
+    background: red;
+    color: yellow;
+    font-size: 14pt;
+    text-align: center;
+    font-weight: bold;
+}
+
+#warnHead
+{
+    background: #8899aa;
+    color: yellow;
+    font-size: 14pt;
+    text-align: center;
+    font-weight: bold;
+}
+
+#commandBody, #errorBody, #warnBody
+{
+    margin: 5px;
+    width: 179px;
+}
+
+body.cmdWin .label
+{
+    font-weight: bold;
+}
+
+body.cmdWin .data
+{
+    font-size: x-small;
+    text-align: left;
+}
+
+body.cmdWin .data input,
+body.cmdWin .data textarea
+{
+    width: 97%;
+}
+
+body.cmdWin .buttons
+{
+    margin-top: 5px;
+    text-align: right;
+}
+
+body.cmdWin input.button
+{
+    font-size: x-small;
+    margin-top: 2px;
+}
+
+body.cmdWin input.customButton,
+body.cmdWin select.language,
+body.cmdWin select.help
+{
+    font-size: x-small;
+    width: 100%;
+}
+
+body.cmdWin table.security
+{
+    margin-top: 5px;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: x-small;
+}
+
+body.cmdWin table.security tr.group td
+{
+    border-top: gray solid 1px;
+}
+
+body.cmdWin table.security th
+{
+    background: #8899aa;
+    color: #333;
+    font-size: x-small;
+}
+
+body.cmdWin table.security .group
+{
+    width: 100%;
+    text-align: left;
+}
+
+body.cmdWin table.security .right
+{
+    text-align: center;
+}
+
+body.cmdWin div.legend
+{
+    text-align: center;
+    color: gray;
+}
+
+body.cmdWin select option.noinsert
+{
+    background: gray;
+}
+
+#foot
+{
+    text-align: right;
+    width: 179px;
+}
+
+/*** Launcher window ***/
+
+#home
+{
+    margin-bottom: 10px;
+    width: 190px;
+    text-align: center;
+    float: left;
+}
+
+#tip
+{
+    margin-left: 200px;
+    height: 7em;
+}
+
+#launcher
+{
+    margin-top: 1em;
+    border: 2px solid #8899aa;
+    width: 55em;
+    padding: 2px;
+    background: #fffff5;
+}
+
+#launcher h2
+{
+    font-size: larger;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    color: #333;
+    border: 2px solid #8899aa;
+    background: #fffff5;
+}
+
+#launcher p
+{
+    margin-top: 1px;
+    margin-bottom: 0;
+    font-size: x-small;
+}
+
+#launcher table
+{
+    text-align: left;
+    background: #fffff5;
+}
+
+#launcher table th
+{
+    background: #8899aa;
+    color: white;
+    vertical-align: top;
+    font-size: x-small;
+}
+
+#launcher table td
+{
+    font-size: x-small;
+    vertical-align: top;
+    background: #fffff5;
+}
+
+#launcher td p.comment
+{
+    margin-top: 1px;
+    margin-bottom: 0;
+    margin-left: 1px;
+    font-style: italic;
+}
+
+#trailer
+{
+    position: absolute;
+    bottom: 0;
+    margin-left: 4px;
+    font-style: italic;
+    font-size: 8pt;
+}
+
+span.compatibleNo
+{
+    color: #dddddd;
+}
+
+span.compatibleYes
+{
+    color: white;
+}

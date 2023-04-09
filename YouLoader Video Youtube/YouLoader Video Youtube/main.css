@@ -1,0 +1,65 @@
+/* Scroll Bars IE5.5 - 6.0 */
+
+body {
+    scrollbar-arrow-color: #FFFFFF;
+	scrollbar-3dlight-color: #000000;
+	scrollbar-shadow-color: #000000;
+	scrollbar-highlight-color: #CCCCCC;
+	scrollbar-face-color: #CCCCCC;
+	scrollbar-darkshadow-color: #CCCCCC;
+	scrollbar-track-color: #909090;
+	
+	background-color: #FFFFFF;
+}
+
+/* Main Body */
+
+.M1 {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	color: #CCCCCC;
+}
+
+a.M1:link {
+    text-decoration: none;
+	color: #999999;
+}
+
+a.M1:visited {
+    text-decoration: none;
+    color: #999999;
+}
+
+a.M1:hover {
+	text-decoration: underline;
+	color: #F87216;
+}
+
+a.M1:active {
+    text-decoration: none;
+	color: #000000;
+}
+
+.t1 {
+border: solid 1px #808080;
+background-color: #000000;
+}
+
+.t2 {
+border: solid 1px #CCCCCC;
+}
+
+.drop {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 11px;
+font-style: normal;
+width: 255px;
+color: #FF9900;
+background-color: #000000;
+scrolling: no;
+}
+
+.drophl {
+background-color: #535353;
+}

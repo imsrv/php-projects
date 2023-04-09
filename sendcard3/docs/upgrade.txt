@@ -1,0 +1,60 @@
+@@ 3.X -> 3.0.4
+Uninstall any plugins which you have installed.
+
+Extract the zip file to a folder.  Download your existing sendcard/templates/image.tpl, and open it in your favourite text editor.  Add the following lines, overwriting the contents of anything between existing quicktime_block tags (although these tags should not exist in the file):
+
+<!-- BEGIN quicktime_block -->
+<OBJECT CLASSID="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" WIDTH="{IMG_WIDTH}"HEIGHT="{IMG_HEIGHT}" CODEBASE="http://www.apple.com/qtactivex/qtplugin.cab">
+<PARAM name="SRC" VALUE="{IMG_PATH}{IMAGE}">
+<PARAM name="AUTOPLAY" VALUE="true">
+<PARAM name="CONTROLLER" VALUE="true">
+<EMBED SRC="sample.mov" width="{IMG_WIDTH}" height="{IMG_HEIGHT}" AUTOPLAY="true" CONTROLLER="true" PLUGINSPAGE="http://www.apple.com/quicktime/download/">
+</EMBED>
+</OBJECT>
+<!-- END quicktime_block -->
+
+
+Create a backup copy of your current sendcard installation (just in case something goes wrong), and then upload the new files.  Test sending a card to check that it works.
+
+Reinstall the plugins.
+
+@@ 3.02 -> 3.03
+Uninstall any plugins which you have installed.
+
+Replace docs/index.html, sendcard.php, functions.php, templates/fancy.tpl and admin/mod_plugins.php.
+
+Log in to the administration interface.  Click on "Configure", scroll down to "Advanced Options" and change the version of sendcard to 3.03.
+
+Reinstall your plugins.
+
+@@ 3.01 -> 3.02
+Uninstall any plugins which you have installed.
+
+Replace sendcard.php and admin/mod_properties.php
+
+Log in to the administration interface.  Click on "Configure", scroll down to "Advanced Options" and change the version of sendcard to 3.02.
+
+Reinstall your plugins.
+
+
+@@ 3.00 -> 3.01
+Uninstall any plugins you have installed.
+
+Replace docs/index.html, sendcard.php, functions.php, advancesend.php, admin/index2.php, admin/mod_plugins.php and admin/mod_tables.php.
+Add docs/style.css
+
+You need to alter your database so that the field   "id varchar(10) NOT NULL," in table sendcard becomes   "id varchar(14) NOT NULL," - if you have a tool such as PHPMyAdmin then this is easy to do (Display the table properties, click on the Edit button for the id column and change the length) and you don't need to know SQL.  
+
+Should you need teh SQL, then for MySQL, it is: "ALTER TABLE sendcard CHANGE id id varchar(14) NOT NULL" where sendcard is the name of the table storing your cards.  If you use a different database: sorry, you'll have to find it out for yourself :-)
+
+Open sendcard_setup.php in a text editor, and find the line which reads: "$sc_version = "3.00";".  Change the number to 3.01 (unfortunately I haven't worked out how to do this automatically yet :-))
+
+Reinstall your plugins.
+
+
+@@ 2 -> 3
+There is currently no upgrade script to get you from version 2 to version 3.  If enough people ask, I will write one - contact me at sendcard@f2s.com
+
+Of course if someone else will write it: go for it!
+
+My best suggestion is that you create the db table with a different name, dump the data from your old table and try inserting it into the new one.  If it goes - great, and then you can delete the old table and rename the new one.  If not, then you could add the new database fields manually - something which phpMyAdmin makes much easier.

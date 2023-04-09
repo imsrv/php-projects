@@ -1,0 +1,25 @@
+==================
+UPGRADING MWCHAT
+==================
+
+This document contains instructions for upgrading the MWChat
+software on your system.
+
+For information on the capabilities and features of MWChat, see
+the file README in the docs/ directory of the MWChat
+distribution.
+
+
+UPGRADING MWChat
+----------------
+
+To upgrade MWChat, please download the latest release and follow the
+instructions in the INSTALL file. Application Index can only upgrade
+your serial number. Once you've installed the new release, go to the
+license page (http://yourhost.com/mwchat/license.php) and there will
+a link provided if you want to upgrade. Appindex will provide you with
+your newly upgraded serial number. Enter that new serial number into the
+the license page and your good to go.
+
+
+Please see the INSTALL file if you need further support.

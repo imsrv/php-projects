@@ -1,0 +1,16 @@
+          <tr>
+          	<td colspan="2" class="BlueNoteColumnTD">Controlling cron job
+        	<tr>
+          	<td>Status<td><%status%>
+          <tr>
+          	<td colspan="2"><input type="submit" name="cron_start" value="Start">
+          			<input type="submit" name="cron_stop" value="Stop">
+					<tr><td colspan="2"><hr>
+					<tr>
+						<td>Job interval<td><input type="text" name="cron_interval" value="<%cron_interval%>">seconds
+					<tr>
+						<td>Job path<td><input style="width: 100%" type="text" name="cron_path" value="<%cron_path%>">
+        	<tr>
+          	<td colspan="2">
+            		<input type="submit" name="save" value="Ok">
+          			<input type="reset" name="save" value="Reset">

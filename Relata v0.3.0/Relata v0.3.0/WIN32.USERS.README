@@ -1,0 +1,57 @@
+Relata Win32 Readme
+===================
+
+Last Updated By: Avinesh Bangar
+Date: 	     03/06/2002
+
+This document indicates how to install Relata to work with Windows 95/98/ME/NT/2000/XP.
+
+This document assumes the following:
+1. Apache 1.3.12+ for Win32 has been downloaded and configured.  You can download Apache from 
+http://www.apache.org/
+2. The document root is c:\apache\htdocs
+3. PHP 4.1.x has been installed and httpd.conf has been edited to allow the PHP executable to 
+be called to parse .php files. Download it from http://www.php.net/
+4. MySQL for Win32 has been installed. Download it from http://www.mysql.com/
+
+Win32 Installation:
+1. Download Relata 0.2.6 from http://www.relata.org/downloads.php (ZIP archive)
+2. Unzip the archive to c:\relata.
+3. You will now have a directory called 'relata-0.2.6' inside of c:\relata
+4. Rename the 'relata-0.2.6' directory to 'relata'.
+5. Select the 'relata' folder with your mouse and go Edit|Copy.
+6. Now go into the c:\apache\htdocs folder on your system.
+7. Go Edit|Paste to copy the 'relata' folder to c:\apache\htdocs.
+8. Change into the c:\apache\htdocs\relata\scripts directory.
+9. Execute the following queries for MySQL:
+
+INSERT INTO db VALUES ( 'localhost', 'relata', 'relata', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 'Y', 'Y', 'Y');
+INSERT INTO user VALUES ( 'localhost', 'relata', 'password', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 
+Create a database called 'relata' and then execute the contents of mysql.relata.sql.
+* Remember to edit 'relata' and 'password' to whatever you choose.
+
+10. Edit c:\apache\htdocs\relata\wwwroot\config.inc.php;
+
+$_PHPLIB["basedir"] = "c://apache//htdocs//relata//wwwroot/";
+$_PHPLIB["webdir"] = "http://localhost/relata/wwwroot/";
+
+$php_path="c://php//bin//php.exe"; // assuming PHP is installed to c:\php
+
+$redirect_url="http://localhost/relata/wwwroot/group_email/response/r.php";
+
+* Replace localhost with your hostname/domain.
+
+11. Edit lib/phplib/template.inc.php:
+
+Search for the following line:
+$filename = $this->filename($this->file[$handle]);
+
+Replace it with:
+$filename = $this->file[$handle];
+
+12. Make sure MySQL is running, then start up Apache.
+
+13. Goto http://localhost/relata/admin
+14. Define the sales stages and also create a username/password for yourself.
+15. Goto http://localhost/relata/ and login.
+16. Enjoy Relata!

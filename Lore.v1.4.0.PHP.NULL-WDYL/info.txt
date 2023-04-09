@@ -1,0 +1,10 @@
+Info:
+  Lore is a professional knowledge base management system  
+  powered by PHP and MySQL.                                
+  Lore allows you to quickly and easily organize frequently
+  asked questions, articles, and documentation into a                 
+  categorized and searchable knowledge base.                          
+  With Lore, you can provide your customers with instant              
+  answers to their inquiries and support questions.                   
+
+  http://www.pineappletechnologies.com

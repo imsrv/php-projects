@@ -1,0 +1,227 @@
+Version 0.6 - March 2003
+-------------------
+
+# Major Changes
+- Overall Script and Database Optimization.
+- KwIndex Discharged. 
+- New Search Engine API
+  (MySQL FULLTEXT SEARCH Added By Default)
+- New DHTML Article Tree.
+
+
+# Minor Changes
+- URL links shortening (article_id shortened).
+- Calendar Forward and Backward Navigation Added. 
+- Charset Problems while posting fixed.
+- Hour of article posting added
+- New Languages: Dutch and Japanese.
+- Unread messages at tree.php shown.
+- Pagination system at newsgroups.php page.
+
+
+Version 0.5.3 - February 2003
+-------------------
+
+# Major Changes
+- Automatic article expiration system.
+
+# Minor Changes
+- 'images' folder now is related to each Theme! 
+- Quite a lot of BUGS fixed.
+- Admin section gets out of theme system.
+- Emergency installation supported.
+
+
+Version 0.5.2 - January 2003
+-------------------
+
+# Minor Changes
+- Subject width limited to a number of characters.
+- Protect Email Security feature added as option to the
+  System administration.
+- Changes to the System configuration are automatically
+  seen at the application. No need to restart the session.
+- Lot of BUGS fixed.
+
+
+Version 0.5.1 - December 2002
+-------------------
+
+# Minor Changes
+- article.php improved: Remember which page you were visiting,
+  Mark the article being read.
+- Stats page improved. Modules added and functions added.
+- Stats Algorithm improved. Real sorting. Real fixed bar width.
+- 'Mark all as read' feature added.
+- 'Mark thread as read' feature added.
+- tree.php improved: News groups stats.
+
+
+Version 0.5 - November 2002
+------------------------
+
+# Major Changes
+
+- Bugs 25,26,27 Fixed.
+- Master-Detail Administration Interface.
+- register_globals = OFF compatibility.
+- Cron job Support.
+- Installation Wizard.
+- New standard skin.
+- New Article Downloading System.
+- Database Queries optimization.
+
+# Minor Changes
+- tree.php improved: Search Box added. Calendar added.
+- i18n. Charset and Date display fields added to global.php. 
+- Stats improved. Links to each element added.
+
+Version 0.4.1 - July 2002
+-------------------------
+
+# Minor Security Fixes
+
+Version 0.4 - March 2002
+------------------------
+
+# Minor Changes
+
+- Bug 22 Fixed.
+- Project Modularization and standarization.
+
+# Major Changes
+
+- Multi-language system (i18n) added.
+- Themeable system added.
+
+Version 0.3 - February 2002
+---------------------------
+
+#Minor Changes
+
+- Bug 18,19,20,21 Fixed.
+- Log out feature added.
+- Each group has a 'Post permission'.
+- 'Print this article' feature added.
+- 'Send to friend' feature added.
+- Session variables 'Server' and 'Group' added.
+
+
+#Major Changes
+
+- Article browsing system has changed.
+- Subscription system added with 'mygroups.php'.
+- Favourite articles feature added with 'myarticles.php'.
+- Highlighting of read and unread articles while browsing the newsgroups.
+- Highlighting of new articles while browsing the newsgroups.
+
+Version 0.2.1 - January 2002
+----------------------------
+
+#Minor Changes
+
+- Bug 11,12,13,14,15,16,17 Fixed.
+- Prefixes added to all the db tables. (Requested by Jagan Mohan)
+- Some Windows 2000 incompatibilities gone.
+- Thread ordering has changed. Now It's ordered by date.
+- Call time pass by reference warning fixed.
+- Added a 'TODO' error page.
+- NewsGroups with '-','&', or '+' in its name can be added.
+  (Actually, I think that now MyNewsGroups :) supports any
+  newsgroups name)
+
+Version 0.2 - November 2001
+---------------------------
+
+#Minor Changes
+- Bug 8 fixed. Database tables updated.
+- When you add a new group, now you can
+  choose how many new articles fetch from
+  the server, and you have to choose the
+  server the group belongs to.
+
+#Major Changes
+- Several News Server can be set up now.
+  But there's one condition. Each group must
+  belong to an unique server. Two different
+  servers can NOT have the same group.
+
+# Login System
+- All the login system can be desactivated now!
+  You can setup MyNewsGroups :) wherever you want
+  without the need to use our login system.
+
+# Search Engine
+- New search engine added. Each group has his
+  own search engine tables. It's based on
+  KwIndex.
+- Search by group added.
+- Search in all the groups added.
+
+# Article Compression
+- Now you can compress articles in the database.
+  You have a switch to this feature in config.php
+
+  
+Version 0.1.2 - September 26 2001
+---------------------------------
+
+#Minor Changes
+- Completed the 'System info' box and error system
+- Made a new template, 'error.htm' for nearly
+  all the big errors. (Can't connect to server,
+  no such group, invalid login, etc.)
+- Added the 'about.php'
+- Designed a new 'post_ok.htm'
+- Debugged the downloading of the new articles from
+  the server. Added the possibility of browsing the
+  newsgroups Offline.
+- Added the SPAM BOTS protection when posting.
+- 'admin.php' hidden from the user interface
+
+# Login System
+- Data of the registration form checked at server side.
+- Finished the validate_email function with
+  the one in phpbuilder.com
+- People only can enter in the 'admin.php'
+  if they are System administrators.
+- When logged, the necessary data in
+  post.php is filled, and the user can't change it.
+- Posting allowed only if registered.
+
+
+Version 0.1.1 - September ?? 2001
+---------------------------------
+
+- User Interface (Web Pages and Design) improved.
+- CSS improved.
+- Login System task initiated. (Not available Yet)
+- Stats task initiated.
+- Security Check Pass 1 done. (Html parsing).
+- Number of readings of each article added.
+- Bug.1 Fixed. Posting Replies works OK.
+- Bug.2 Fixed. Author's name appears in all the articles.
+- Bug.3 Fixed. The Date appears correctly.
+
+Version 0.1 - August 30 2001
+----------------------------
+- News Groups Adding and deleting.
+- Articles Browsing. (Parents, complete threads...)
+- Posting (New Articles. Replies...)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

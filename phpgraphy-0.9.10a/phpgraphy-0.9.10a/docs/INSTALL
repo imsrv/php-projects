@@ -1,0 +1,41 @@
+phpGraphy - Quick Install Instructions
+--------------------------------------
+
+This file does just contain the minimum of instructions to install phpGraphy
+For full instructions please read the manual, either by using the version
+included in this archive "phpgraphy-manual.html" or by going on the official
+website: http://phpgraphy.sourceforge.net.
+
+Requirements:
+
+ - A WebServer with PHP 4.1.0 or greater (PHP 4.3.0 recommended)
+
+
+Quick Installation:
+
+This procedure is an easy way of installing phpGraphy with all defaults choices,
+it should be enough in most cases, however please note that there is a more complete
+documentation available online (See header of this file for details).
+
+  - Get the archive, unpack it and upload the content on your webserver
+
+  - Load the page corresponding to your phpgraphy installation in your favorite
+    browser, if your provider isn't too restricted everything should run quiet
+    smoothly, however you may see some errors message, in a such case to resolve
+    them you'll probably have to edit config.inc.php to change some parameters
+    or change directories permissions (chmod is your friend).
+
+  - In the best case, you'll only have to edit the $admin_ip variable located
+    in config.inc.php in order to be able to access the administrator account
+    creation page.
+
+  - Once it's working, lower the $debug_mode variable located in config.inc.php
+    to either 0 or 1 and enjoy !
+    
+    If you've unresovable problems, then go to http://phpgraphy.sourceforge.net
+    and follow the link to get help !
+
+-------------------------------------------------------
+(c) 2004-2005	JiM / aEGIS (jim@aegis-corp.org)
+(c) 2000-2001	Christophe Thibault (christophe@nullsoft.com)
+All rights reserved.

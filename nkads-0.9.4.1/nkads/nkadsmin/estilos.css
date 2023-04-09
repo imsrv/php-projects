@@ -1,0 +1,13 @@
+a.negro {  text-decoration: none; color: #000000}
+a.negro:hover {  color: #917400; text-decoration: none}
+
+a.naranja {  text-decoration: none; color: #0000FF}
+a.naranja:hover {  color: #FF6600; text-decoration: none}
+
+a.nada {  text-decoration: none; color: #000000}
+
+.manito {  cursor: hand; color: #FF6600}
+input {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px}
+.botones {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; text-decoration: none; background-color: #FFD735; border: 1px #D7AC00 solid}
+.select { border: 1px #D7AC00 solid; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; text-decoration: none ; background-color: #FFD735 }
+.campos { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; text-decoration: none; background-color: #FFD735 ; border: 1px #D7AC00 solid}

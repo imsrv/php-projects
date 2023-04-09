@@ -1,0 +1,2 @@
+print time,"\n";
+print localtime,"\n";

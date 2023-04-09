@@ -1,0 +1,13 @@
+<?
+	/* 
+	** DELETE_ITEM
+	** if we have necessary fields, del item
+	*/
+	if(($inputItem != "") AND ($Browser_Admin=="YES"))
+	{
+		$Query = "DELETE FROM item WHERE ID=$inputItem ";
+		$DatabaseResult = mysql_query($Query, $DatabaseLink);
+
+		$ActionResults = "Item Destroyed!";
+	}
+?>

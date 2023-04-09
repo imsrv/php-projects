@@ -1,0 +1,102 @@
+# This script handles the output of an email as determined by the
+# configuration data.
+#
+# ScareCrow (C)opyright 2001 Jonathan Bravata.
+#
+# This file is part of ScareCrow.
+#
+# ScareCrow is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free
+# Software Foundation; either version 2 of the License, or (at your option),
+# any later version.
+#
+# ScareCrow is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+# more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with ScareCrow; if not, write to the Free Software Foundation, Inc.,
+# 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
+#
+# The latest version of this software can be found by pointing one's web
+# browser to http://scarecrowmsgbrd.cjb.net
+#
+# Author: Jonathan Bravata
+# Revision: April 2001
+
+
+
+# This function determines which way to send an email, SMTP or sendmail, and
+# then sends the email accordingly
+#
+# Arguments: recipients email, subject, message
+sub send_mail {
+  if($config{'email_options'} ne 'on') { return; }
+  if($config{'mail_type'} eq 'smtp') {
+    mail_connect();
+    smtp_send(@_);
+  }
+  else {
+    if(!$paths{'sendmail_path'} || $config{'mail_type'} ne 'sendmail') {
+      scarecrow_die("mail: could not send mail.  Invalid mail type or sendmail type with no path.");
+    }
+    open(sendmail,"|$paths{'sendmail_path'} -t");
+    print sendmail "Content-type: text/html\n";
+    print sendmail "To: $_[0]\n";
+    print sendmail "From: $config{'from_email_name'} <$config{'from_email_addr'}>\n";
+    print sendmail "Subject: $_[1]\n\n";
+    print sendmail "<html>\n";
+    print sendmail "<body bgcolor=\"#FFFFFF\" text=\"#000000\">\n";
+    print sendmail "$_[2]\n\n";
+    print sendmail "</body>\n";
+    print sendmail "</html>\n";
+    close(sendmail);
+  }
+}
+
+# This function literally sends an email through an SMTP server.  Its
+# arguments are exactly the same as send_mail(); 
+sub smtp_send {
+  print SOCK "helo $config{'smtp_host'}\r\n";
+  print SOCK "mail from: <$config{'from_email_addr'}>\r\n";
+  print SOCK "rcpt to: <$_[0]>\r\n";
+  print SOCK "data\r\n";
+  print SOCK "Content-type: text/html\r\n";
+  print SOCK "To: $_[0]\r\n";
+  print SOCK "From: $config{'from_email_name'} <$config{'from_email_addr'}>\r\n";
+  print SOCK "Subject: $_[1]\r\n";
+  print SOCK "<html><BODY BGCOLOR=\"#FFFFFF\" text=\"#000000\">\n";
+  print SOCK "$_[2]";
+  print SOCK "</html></BODY>\n";
+  print SOCK "\n.\n";
+  print SOCK "quit\r\n";
+}
+
+# This sub will connect to an SMTP server.  This function should be followed
+# IMMEDIATELY with a smtp_send(), either as called or through send_mail()
+sub mail_connect
+{
+    # Require the proper library
+    use Socket;
+
+    # Variable setup
+    local($iaddr,$paddr,$proto);
+    local($port) = $config{'smtp_port'};
+    local($host) = $config{'smtp_host'};
+
+    # Set up and connect the socket
+    if ($port =~ /\D/) { $port = getservbyname($port, 'tcp') }
+    $iaddr = inet_aton($host);
+    $paddr = sockaddr_in($port, $iaddr);
+    $proto = getprotobyname('tcp');
+    socket(SOCK, PF_INET, SOCK_STREAM, $proto) || scarecorw_die("socket: $!");
+    connect(SOCK, $paddr) || scarecrow_die("connect: $!");
+    select(SOCK);
+    $| = 1;   # Do not buffer anything
+    select(STDOUT);  # Back to the standard output
+}
+
+
+
+1;

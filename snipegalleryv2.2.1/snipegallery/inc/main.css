@@ -1,0 +1,93 @@
+p {
+	font-family : Arial, helvetica, verdana;	
+	font-size : 10pt;
+	color : black;
+
+}
+input {
+	font-family : Arial, helvetica, verdana;	
+	font-size : 8pt;
+	color : black;
+	background-color: #C0C0C0;
+}
+textarea {
+	font-family : Arial, helvetica, verdana;	
+	font-size : 8pt;
+	color : black;
+	background-color: #C0C0C0;
+
+}
+select {
+	font-family : Arial, helvetica, verdana;	
+	font-size : 8pt;
+	color : black;
+	background-color: #C0C0C0;
+
+}
+span.imgtitle {
+	font-family : Arial, helvetica, verdana;	
+	font-size : 8pt;
+	color : black;
+
+}
+span.smallnote {
+	font-family : Arial, helvetica, verdana;	
+	font-size : 8pt;
+	font-style : italic;
+	color : #990033;
+	text-align: center;
+
+}
+p.pagenums {
+	font-family : Arial, helvetica, verdana;	
+	font-size : 8pt;
+	text-align: right;
+	font-weight : bold;
+}
+p.error {
+	font-family : Arial, helvetica, verdana;	
+	font-size : 12pt;
+	color : #990000;
+	font-weight : bold;
+
+}
+h3 {
+	font-family : Arial, helvetica, verdana;	
+	font-size : 14pt;
+	color : black;
+	font-weight : bold;
+
+}
+h4 {
+	font-family : Arial, helvetica, verdana;	
+	font-size : 12pt;
+	color : black;
+	font-weight : bold;
+
+}
+
+
+P.presentation:first-line {
+	font-size: 12pt;
+	font-weight : bold;
+	color : #660000;
+}
+
+td {
+	
+	vertical-align : top;
+	font-family : Arial, helvetica, verdana;	
+	font-size : 10pt;
+}
+
+table.subadmin {
+	
+	vertical-align : top;
+	font-family : Arial, helvetica, verdana;	
+	font-size : 10pt;
+	background-color : #C0C0C0;
+}
+img.photos {
+background-color: #CC0000;
+}
+

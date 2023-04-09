@@ -1,0 +1,6 @@
+Dear %%email%%,
+
+Your subscription was successfull to our %%newsletter_type%% newsletter on %%newsletter_language%% language.
+
+
+Thank you.

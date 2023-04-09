@@ -1,0 +1,25 @@
+<?
+	/* 
+	** ADD_WING
+	** if we have necessary fields, add wing
+	*/
+	if(($inputTitle!="") AND ($Browser_Admin == "YES"))
+	{
+		$inputTitle = ereg_replace("'", "''", $inputTitle);
+		$inputDescription = ereg_replace("'", "''", $inputDescription);
+
+		$Query = "INSERT INTO wing (Title, Parent, Private, Description) VALUES ";
+		$Query .= "('$inputTitle', $wing, '$inputPrivacy', '$inputDescription')";
+		$DatabaseResult = mysql_query($Query, $DatabaseLink);
+		if(!$DatabaseResult)
+		{
+			$ActionResults = "Add failed: " . mysql_error();
+		}
+		else
+		{
+			$ActionResults = "Wing Added!";
+		}
+
+		
+	}
+?>

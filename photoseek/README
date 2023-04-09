@@ -1,0 +1,89 @@
+===============================================================================
+PhotoSeek README
+version 0.3
+===============================================================================
+
+#########################################################
+#                                                       #
+# This script was provided by:                          #
+#                                                       #
+# PHPSelect Web Development Division.                   #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are © 2004                      #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated in the script.                       #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# Any copying, distribution, modification with          #
+# intent to distribute as new code will result          #
+# in immediate loss of your rights to use this          #
+# program as well as possible legal action.             #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the authors at       #
+# admin@phpselect.com or info@phpselect.com             #
+#                                                       #
+#########################################################
+
+PhotoSeek is meant to be a web-based (and perhaps eventually a GTK+
+based client as well) replacement for media management software like Canto
+Software's (www.canto.com) Cumulus software, to allow the cataloguing and
+searching of images in a database.
+
+File List:
+  API.inc                         :  the PhotoSeek API
+  AUTHORS                         :  list of the authors
+  CHANGELOG                       :  Changelog
+  INSTALL                         :  installation instructions
+  LICENSE                         :  GNU Public License, v2
+  MAGIC_FIX                       :  fix for pre-3.30 magic files
+  PhotoSeek.db.mysql              :  database definitions for MySQL tables
+  PhotoSeek.db.pgsql              :  database definitions for PostgreSQL tables
+  README                          :  this README file
+  README-EPS                      :  specialized EPS instructions
+  admin.php                       :  administrative functions (restricted)
+  authenticate.php                :  basic authentication module
+  catalog.sh                      :  bash script to rediscover repositories
+  catalog-all.pl                  :  rediscovers all repositories
+  class.Eps.php                   :  PHP class for Encapulated Postscript images
+  class.Image.php                 :  PHP super-class for images
+  class.data_object.inc           :  data object
+  class.repository_data_object.inc:  repository object
+  class.tree.js                   :  javascript code for tree class
+  class.tree.php                  :  tree class code
+  class.user_data_object.inc      :  user object
+  config.inc                      :  global configuration file
+  discoverRepository.php          :  PHP code to "discover" images
+  download.gif                    :  image for download link
+  footer.php                      :  HTML for the bottom of generated pages
+  generate_thumbnail.php          :  pulling of thumbnails from the database
+  get_image.php                   :  image handler function
+  get_thumbnail.php               :  thumbnail handler function
+  header.php                      :  HTML for the top of generated pages
+  icon_binhex.gif                 :  binhex archive icon
+  icon_image.gif                  :  generic image icon
+  icon_zip.gif                    :  zip archive icon
+  image_information.php           :  image information/download page
+  img-tree/*.gif                  :  images used by tree class
+  index.php                       :  "switchboard" for tasks
+  information.gif                 :  image for informational link
+  iptc_edit.php                   :  IPTC editing module
+  photoseek3.gif                  :  Photoseek logo (donated by J Bailey)
+  photoseek.spec                  :  RPM spec file for Photoseek
+  prepress.php                    :  prepress processing module
+  repository.gif                  :  repository icon
+  repositorydetail.php            :  add/mod/del repositories
+  repositorylist.php              :  repositories management
+  search.php                      :  guts of the search engine
+  searchform.php                  :  the search form for images
+  tree_view.php                   :  tree browsing module
+  user.gif                        :  user icon
+  userdetail.php                  :  add/mod/del users
+  userlist.php                    :  users management
+  webtools.php [symbolic link]    :  symlink to main phpwebtools module
+

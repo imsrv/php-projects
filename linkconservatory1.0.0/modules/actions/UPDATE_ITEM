@@ -1,0 +1,26 @@
+<?
+	/* 
+	** UPDATE_ITEM
+	** if we have necessary fields, update item
+	*/
+	if(($inputTitle!="") AND (intval($inputItem)>0) AND ($Browser_Admin=="YES"))
+	{
+
+		$inputTitle = ereg_replace("'", "''", $inputTitle);
+		$inputDesc = ereg_replace("'", "''", $inputDesc);
+		$inputTitle = ereg_replace("\"", "''", $inputTitle);
+		$inputDesc = ereg_replace("\"", "''", $inputDesc);
+
+
+		$Query = "UPDATE item ";
+		$Query = $Query . "SET Wing=$wing, ";
+		$Query = $Query . "Title='$inputTitle', ";
+		$Query = $Query . "URL='$inputURL', ";
+		$Query = $Query . "Description='$inputDesc' ";
+		$Query = $Query . "WHERE ID = $inputItem ";
+		$DatabaseResult = mysql_query($Query, $DatabaseLink);
+
+
+		$ActionResults = "Item Updated!<BR>\n";
+	}
+?>

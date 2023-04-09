@@ -1,0 +1,49 @@
+create table fileinfo(
+id int not null auto_increment,
+idkey varchar(30) not null unique,
+dir varchar(30) not null unique,
+mime_type varchar(50),
+file_name varchar(200) not null,
+size bigint not null default '0',
+upload_time int default '0',
+no_of_dwnld int  default '0',
+expire_time int default '0',
+max_dwnld int default '0',
+link_status tinyint default '1',
+recipient varchar(50) not null,
+sender varchar(50), 
+primary key(id)
+);
+
+
+create table configuration (
+conf_id int not null auto_increment,
+conf_name varchar(20) not null,
+conf_value text,
+conf_optional varchar(250),
+primary key(conf_id)
+);
+
+
+create table admin(
+uid int not null auto_increment,
+uname varchar(15) not null unique,
+pwd varchar(15) not null,
+email varchar(50) not null,
+primary key(uid)
+);
+
+create table adminlog(
+uid int(11) not null,
+timein int(11) not null,
+timeout int(11) default null,
+ip varchar(16) default null);
+
+insert into configuration(conf_id,conf_name,conf_value,conf_optional) values(1,"MAX_SIZE","1024","1 MB")
+,(2,"MIME_TYPES","image/jpeg,image/pjpeg,application/x-gzip-compressed","")
+,(3,"MAX_COUNT","5","a limited number of")
+,(4,"MAX_TIME","7","7 Days")
+,(5,"AUTO_FILE_DELETE","Yes","")
+,(6,"DAILY_TRANSFER","0","29-04-2005");
+
+insert into admin(uid,uname,pwd,email) values(1,"admin","admin","admin@sendmail.com");

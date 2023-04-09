@@ -1,0 +1,10 @@
+Dear %%employer_company%%,
+
+Your "%%job_jobtitle%%" (id: %%job_jobid%%) job has expired, and was deleted from the system.
+
+Statistics:
+     Posted: %%job_jobdate%%
+     Viewed: %%job_viewed%%
+     Last viewed date: %%job_lastdate%%
+
+Today: %%today_date%%

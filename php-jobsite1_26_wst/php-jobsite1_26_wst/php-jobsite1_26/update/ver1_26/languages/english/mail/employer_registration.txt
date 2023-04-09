@@ -1,0 +1,9 @@
+Dear %%employer_company%%,
+
+Your registration was successfull.
+
+Please make a note about your username and password, as you will need them in the future every time you login.
+Username: %%employer_email%%
+Password: %%employer_password%%
+
+Thank you.

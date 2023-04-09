@@ -1,0 +1,25 @@
+<b>You are logged in as an admin</b> - <a href="links.php?action=logout">Click here to log out</a> %delcat%
+<hr>
+<table width=100% border=0><td valign=top class="standard" width=50%><b>Add a Category</b><form action=links.php method=post>
+<input type=hidden name=action value=addcat>
+<input type=hidden name=lcat_cat value="%catid%">
+Category Name: <input type=text name=lcat_name size=30 maxlength=100><p>
+Category Header:<br>
+<textarea name=lcat_header cols=40 rows=4></textarea><p>
+Category Ranking (optional): <input type=text name=lcat_ranking size=5 maxlength=11> *<p>
+<div align=center><input type=submit name=submit value="Add Category"></div><p>
+<div class=small>* Rankings can be used to force certain categories to be listed first - categories of the same rank will be displayed in alphabetical order.</div></td></form><td valign=top class="standard">
+<b>Add a Link</b><p>
+<form action=links.php method=post>
+<input type=hidden name=action value=addlink>
+<input type=hidden name=link_cat value="%catid%">
+Link Name: <input type=text name=link_name size=30 maxlength=100><p>
+Link URL: <input type=text name=link_url size=30 maxlength=255 value="http://"><p>
+Link Description:<br>
+<textarea name=link_desc cols=40 rows=4></textarea><p>
+Recommended? <select name=link_recommended size=1>
+<option selected>no
+<option>yes
+</select><p>
+<div align=center><input type=submit name=submit value="Add Link"></div>
+</td></form><tr></table><hr>

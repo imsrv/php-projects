@@ -1,0 +1,27 @@
+<?
+
+	print("<FORM ACTION=\"$IndexScripta\">\n");
+	print("<INPUT TYPE=\"hidden\" NAME=\"SCREEN\" VALUE=\"mail\">");
+	print("<INPUT TYPE=\"hidden\" NAME=\"ACTION\" VALUE=\"SUBSCRIBE\">");
+
+	print("<TABLE>\n");
+
+	print("<TR><TD>" . doTitleDressing("Your Email Address") . "</TD></TR>\n");
+	print("<TR><TD><INPUT TYPE=\"text\" NAME=\"inputEmail\" SIZE=\"32\"></TD></TR>\n");
+	print("<TR><TD><BR></TD></TR>\n");
+
+	print("<TR><TD>" . doTitleDressing("How Many Messages A Day") . "</TD></TR>\n");
+	print("<TR><TD>");
+	print("<INPUT TYPE=\"radio\" NAME=\"inputSubscription\" VALUE=\"single\" CHECKED> One Message per New Link<BR>\n");
+	print("<INPUT TYPE=\"radio\" NAME=\"inputSubscription\" VALUE=\"digest\"> One Message a Day<BR>\n");
+	print("</TD></TR>\n");
+	print("<TR><TD><BR></TD></TR>\n");
+
+	print("</TABLE>\n");
+
+	print("<INPUT TYPE=\"submit\">\n");
+	print("</FORM>\n");
+
+	print("<A HREF=\"index.htma?SCREEN=stroll&wing=$wing\">Back to $wing_Title wing</A><BR>\n");
+
+?>

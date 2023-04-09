@@ -1,0 +1,236 @@
+<?
+	if($SCREEN != "about")
+	{
+		echo "<A HREF=\"$IndexScript?SCREEN=about\">";
+	}
+	else
+	{
+		print("<B>");
+	}
+	echo "<FONT SIZE=2 FACE=\"helvetica\">About</FONT>";
+	if($SCREEN != "about")
+	{
+		echo "</A>";
+	}
+	else
+	{
+		print("</B>");
+	}
+	echo "<BR>\n";
+
+	if($SCREEN != "bookmark")
+	{
+		echo "<A HREF=\"$IndexScript?SCREEN=bookmark&amp;wing=$wing\">";
+	}
+	else
+	{
+		print("<B>");
+	}
+	echo "<FONT SIZE=2 FACE=\"helvetica\">Expand</FONT>";
+	if($SCREEN != "bookmark")
+	{
+		echo "</A>";
+	}
+	else
+	{
+		print("</B>");
+	}
+	echo "<BR>\n";
+
+	if($SCREEN != "mail")
+	{
+		echo "<A HREF=\"$IndexScript?SCREEN=mail\">";
+	}
+	else
+	{
+		print("<B>");
+	}
+	echo "<FONT SIZE=2 FACE=\"helvetica\">Subscribe</FONT>";
+	if($SCREEN != "mail")
+	{
+		echo "</A>";
+	}
+	else
+	{
+		print("</B>");
+	}
+
+	echo " <BR>\n";
+
+
+	if($SCREEN != "suggest")
+	{
+		echo "<A HREF=\"$IndexScript?SCREEN=suggest\">";
+	}
+	else
+	{
+		print("<B>");
+	}
+	echo "<FONT SIZE=2 FACE=\"helvetica\">Suggest</FONT>";
+	if($SCREEN != "suggest")
+	{
+		echo "</A>";
+	}
+	else
+	{
+		print("</B>");
+	}
+
+	echo "<BR>\n";
+
+	if($SCREEN != "top10")
+	{
+		echo "<A HREF=\"$IndexScript?SCREEN=top10\">";
+	}
+	else
+	{
+		print("<B>");
+	}
+	echo "<FONT SIZE=2 FACE=\"helvetica\">Top 10</FONT>";
+	if($SCREEN != "top10")
+	{
+		echo "</A>";
+	}
+	else
+	{
+		print("</B>");
+	}
+
+	echo "<BR>\n";
+
+	if($SCREEN != "last10")
+	{
+		echo "<A HREF=\"$IndexScript?SCREEN=last10\">";
+	}
+	else
+	{
+		print("<B>");
+	}
+	echo "<FONT SIZE=2 FACE=\"helvetica\">Last 10</FONT>";
+	if($SCREEN != "last10")
+	{
+		echo "</A>";
+	}
+	else
+	{
+		print("</B>");
+	}
+
+	echo "<BR>\n";
+
+	echo "<A HREF=\"$IndexScript?SCREEN=random\">";
+	echo "<FONT SIZE=2 FACE=\"helvetica\">Random</FONT>";
+	echo "</A>";
+	echo "<BR>\n";
+
+	
+	echo "<FORM ACTION=\"$IndexScript\" METHOD=\"get\">\n";
+	echo "<INPUT TYPE=HIDDEN NAME=\"SCREEN\" VALUE=\"search\">\n";
+	echo "<INPUT TYPE=SUBMIT VALUE=\"Find\">\n";
+	echo "<INPUT TYPE=TEXT NAME=\"searchString\" VALUE=\"$searchString\" SIZE=\"9\">\n";
+	echo "</FORM>\n";
+
+	if($Browser_Admin == "YES")
+	{
+		if($SCREEN != "tidy")
+		{
+			echo "<A HREF=\"$IndexScript?SCREEN=tidy&amp;wing=$wing\">";
+		}
+		else
+		{
+			print("<B>");
+		}
+		echo "<FONT SIZE=2 FACE=\"helvetica\">Tidy Up</FONT>";
+		if($SCREEN != "tidy")
+		{
+			echo "</A>";
+		}
+		else
+		{
+			print("</B>");
+		}
+		echo "<BR>\n";
+
+		if($SCREEN != "add_wing")
+		{
+			echo "<A HREF=\"$IndexScript?SCREEN=add_wing&amp;wing=$wing\">";
+		}
+		else
+		{
+			print("<B>");
+		}
+		echo "<FONT SIZE=2 FACE=\"helvetica\">Add Wing</FONT>";
+		if($SCREEN != "add_wing")
+		{
+			echo "</A>";
+		}
+		else
+		{
+			print("</B>");
+		}
+		echo "<BR>\n";
+		
+		if($wing > 0)
+		{
+			if($SCREEN != "add_item")
+			{
+				echo "<A HREF=\"$IndexScript?SCREEN=add_item&amp;wing=$wing\">";
+			}
+			else
+			{
+				print("<B>");
+			}
+			echo "<FONT SIZE=2 FACE=\"helvetica\">Add Item</FONT>";
+			if($SCREEN != "add_item")
+			{
+				echo "</A>";
+			}
+			else
+			{
+				print("</B>");
+			}
+			echo "<BR>\n";
+		}
+
+		if($SCREEN != "dump")
+		{
+			echo "<A HREF=\"$IndexScript?SCREEN=dump\">";
+		}
+		else
+		{
+			print("<B>");
+		}
+		echo "<FONT SIZE=2 FACE=\"helvetica\">Dump</FONT>";
+		if($SCREEN != "dump")
+		{
+			echo "</A>";
+		}
+		else
+		{
+			print("</B>");
+		}
+		echo "<BR>\n";
+
+
+	}
+
+	print("<BR>\n");
+	
+	$Query = "SELECT COUNT(*) ";
+	$Query .= "FROM item ";
+	$DatabaseResult = mysql_query($Query, $DatabaseLink);
+	$DatabaseRow = mysql_fetch_row($DatabaseResult);	
+	$totalItems = $DatabaseRow[0];
+
+	print("<FONT SIZE=\"2\" FACE=\"helvetica\">");
+	print("The Link Conservatory contains <B>$totalItems</B> items.");
+	print("</FONT>\n");
+	
+	print("<BR>\n");
+	print("<BR>\n");
+	
+	print("<FONT SIZE=2 COLOR=\"#000000\" FACE=\"helvetica\">The Link Conservatory<BR>\n");
+	print("<A HREF=\"http://www.clearink.com/\">Open Source by Clear Ink Corporation</A>\n");
+	print("</FONT>\n");
+
+?>

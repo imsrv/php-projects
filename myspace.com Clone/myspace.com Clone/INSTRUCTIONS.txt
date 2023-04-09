@@ -1,0 +1,76 @@
+PHPMySpace Clone
+
+CopyRight PopScript.com
+http://popscript.com
+
+-----------------------------------------------------------------------------------------------------------
+
+NOTICE: REMOVING THE COPYRIGHT FOOTER TO POPSCRIPT.COM VIOLATES THE LICENSE AGREEMENT AND ENTITLES YOU TO ABSOLUTELY NO SUPPORT. WE WILL GO AFTER ANYONE THAT REMOVES OUR COPYRIGHT FROM THE FOOTER OF THIS SOFTWARE.
+
+=================================
+Server requirements for PHPMySpace Clone
+=================================
+1.) MySQL (version 4 or higher)
+2.) MYSQL database
+3.) PHP (version 4.2.3 or higher)
+4.) GD library for PHP
+
+
+====================================
+Installation And Setup Instructions: 
+====================================
+1) Extract the zip file containing the software.
+
+2) Create a new folder and name it as something like friends, efriends, myspace, or similiar
+
+3) upload all files to the selected directory.
+
+4) Chmod 777 for the following folders/files: groups, photos, blog, events, banners, chat and chat/rooms.php
+
+5) create a new MySQL user and DB for PHPMySpace Clone.
+
+5) Open data.php file and edit the variables as well as the MySQL parameters. Open /calendar/includes/config.php and 
+/chat/config.php and edit the MySQL parameters similar to data.php. Upload and replace these 3 files in your server.
+
+6) Rename folder “groups” to whatever you choose for groups to be placed in
+(short group url feature: user creates group and wants the url to be http://www.yourdomain.com/friends/groups/groupname - 
+where groups is the name of the folder you select)
+
+7) Run the included mysql dump file through any of your mysql clients (i.e phpmyadmin)
+
+
+
+9) To edit the header and footer of the site, go to /templates and edit the HTML codes of the following files:
+-footer.php
+-header.php
+-chat_header.php
+
+10) To customize the text for the subpages (Terms, Privacy Policy, Help and Index page), edit the HTML codes of the following
+files:
+-terms.php
+-privacy.php
+-help.php
+-main.php
+-tour.php
+
+11) Set the paypal account in the admin area (see below for login info)
+
+
+=====================
+Running The Software:
+=====================
+Admin: http://yoursite.com/somefolder/admin (Default Username: admin, Password: admin)
+Main Page: http://yourdomain.com/somefolder
+
+---------------------------------------------------------------------------------------------------------------
+
+PHPMySpace Clone
+
+CopyRight PopScript.com
+http://popscript.com
+
+---------------------------------------------------------------------------------------------------------------
+
+NOTICE: REMOVING THE COPYRIGHT FOOTER TO POPSCRIPT.COM VIOLATES THE LICENSE AGREEMENT AND ENTITLES YOU TO ABSOLUTELY NO SUPPORT. WE WILL GO AFTER ANYONE THAT REMOVES OUR COPYRIGHT FROM THE FOOTER OF THIS SOFTWARE.
+
+

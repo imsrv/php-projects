@@ -1,0 +1,2 @@
+<table width=100% align="center"><tr><td class="subheader" align="center">Team {TEAM_NAME} - Control Panel - TEAM INVITE SENT</td></tr></table>
+<center>{USERI_NAME} has been invited to join {TEAM_NAME}</center>

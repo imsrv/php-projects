@@ -1,0 +1,27 @@
+<?
+	/*
+	** SUBSCRIBE
+	** send mail to listserver starting the subscription process
+	**
+	** this action needs to be customized to your list server
+	*/
+	if($inputEmail != "")
+	{
+		if($inputSubscription == "single")
+		{
+			$MailSubject = "subscribe $MailingList_Name";
+		}
+		else
+		{
+			$MailSubject = "subscribe digest $MailingList_Name";
+		}
+
+		$MailFrom = $inputEmail;
+		$MailTo = $MailingList_Requests;
+		$MailBody = $REMOTE_ADDR;
+
+		mail($MailTo, $MailSubject, $MailBody, "from: $MailFrom\nreply-to: $MailFrom");
+
+		$ActionResults = "$inputEmail will soon get a message from the list server confirming the subscription.";
+	}
+?>

@@ -1,0 +1,21 @@
+				<tr>
+					<td colspan="2" align="center"><b>PayPal integration options</b>
+				<tr>
+					<td>
+							Your Paypal email
+					<td>
+							<input style="width:250px" type="text" name="paypal_email" value="<%paypal_email%>">
+				<tr>
+					<td>
+							IPN url
+					<td>
+							<input style="width:250px" type="text" name="paypal_notify" value="<%paypal_notify%>">
+				<tr>
+					<td>
+							Return URL
+					<td>
+							<input style="width:250px" type="text" name="paypal_return" value="<%paypal_return%>">
+       	<tr>
+         	<td>
+           		<input type="submit" name="save" value="Ok">
+         			<input type="reset" name="save" value="Reset">

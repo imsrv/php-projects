@@ -1,0 +1,63 @@
+<script language="JavaScript">
+function checkAll(theForm) {
+    for (i=0,n=theForm.elements.length;i<n;i++)
+        if (theForm.elements[i].name.indexOf('id[') !=-1)
+            theForm.elements[i].checked = true;
+}
+
+function ensureChecked() {
+    var elements = select_domains.elements.length;
+    var total_checked = 0;
+    for (i=0; i<elements; i++) {
+	if (select_domains.elements[i].checked == true) {
+	    total_checked++;
+	}
+    }
+    if (total_checked == 0) {
+    	alert("Please select at least one domain.");
+	return false;
+    } else {
+	return true;
+    }
+}
+</script>
+
+<table border="1">
+	<table cellspacing="0" cellpadding="0">
+  	<tr>
+			<td align="right" colspan="2"><%next_page%>
+  </table>
+  
+	<form action="./" method="get" name=select_domains onSubmit="return ensureChecked()">
+  <input type="submit" value="Monitor" name="monitor">
+  <table class="BlueNoteFormTable">
+	<tr>
+  		<td class="BlueNoteAltDataTD"><input type="checkbox" onClick="if (this.checked) checkAll(this.form);">
+  		<td class="BlueNoteAltDataTD">Domain name
+			<td class="BlueNoteAltDataTD">State
+			<td class="BlueNoteAltDataTD">Date
+<!--			<td class="BlueNoteAltDataTD"><a target="_new" href="http://secureserver.net">Register now</a>-->
+			<td class="BlueNoteAltDataTD">Whois
+			<td class="BlueNoteAltDataTD">Link popularity
+			<td class="BlueNoteAltDataTD"><a target="_new" href="http://www.archive.org/about/faqs.php#3">Wayback</a>
+			<td class="BlueNoteAltDataTD"><a target="_new" href="http://pages.alexa.com/exec/faqsidos/help/index.html?index=12">Alexa Ranking</a>
+<%search()
+	<tr>
+  		<td class="BlueNoteDataTD" align="center"><input type="checkbox" name="id[<%id%>]">
+  		<td class="BlueNoteDataTD"><%1%>
+		<td class="BlueNoteDataTD"><%2%>
+		<td class="BlueNoteDataTD"><%3%>
+<!--		<td class="BlueNoteDataTD"><a target="_new" href="http://www.secureserver.net/firststep.asp?prog_id=ldozois"><img src="register.gif" border="0"></a>-->
+		<td class="BlueNoteDataTD"><a target="_new" href="http://www.whoisd.com/search.php?domain=<%1%>&GO=GO&btnG=Search+Whois">Whois</a>
+      	<td class="BlueNoteDataTD"><a href="#" onClick="MyWindow=window.open('../member/popularity.php?one_off=www.<%1%>','MyWindow','toolbar=no,location=no,directories=yes,status=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=500'); return false;">Check Now</a>
+      	<td class="BlueNoteDataTD"><a target="_new" href="http://web.archive.org/web/*/http:/www.<%1%>">Check</a>
+      	<td class="BlueNoteDataTD"><a target="_new" href="http://www.alexa.com/data/details?url=<%1%>">Traffic</a>
+<%/search
+</table>
+	</form>
+  	<table>
+  	<tr>
+			<td align="right" colspan="2"><%next_page%>
+  </table>
+  
+

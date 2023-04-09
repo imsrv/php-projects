@@ -1,0 +1,13 @@
+<center>
+<table bgcolor="#DBEEEE" width="100%" border="0" cellspacing="0" cellpadding="0" style="border: 1px solid #000000"><!-- kactus_man2003[WST] -->
+  <tr>
+    <td align="center" valign="middle" colspan="2"><font face="Arial" size="5" color="#0073AA"><b><i>Php Jobsite</i></b></font>&nbsp;&nbsp;<font style="color: #FF0000; font-family: Arial; font-size: 14px; font-weight: bold">Admin Area</font></td>
+  </tr>
+  <tr><td>&nbsp;<font style="color: #121212; font-family: Arial; font-size: 13px;"><?php if($HTTP_SESSION_VARS['adm_ip']){echo "Last login from: <b>".$HTTP_SESSION_VARS['adm_ip']."<b>";}?></font></td><td align="right"><font style="color: #FF0000; font-family: Arial; font-size: 11px; font-weight: bold">version <?php echo PHP_JOBSITE_VERSION;?></font></td></tr>
+</table></center>
+<?php
+if (SHOW_STATISTICS_ADMIN_BAR == "yes")
+ {
+    include(DIR_FORMS."site_stat_form.php");
+}
+?>

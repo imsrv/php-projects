@@ -1,0 +1,36 @@
+<html>
+	<head>
+  	<link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+	<body>
+	 		<center>
+      <table class="BlueNoteFormTABLE" width="40%">
+      <tr>
+      	<td colspan="2" class="BlueNoteColumnTD">
+        <pre>
+You have selected the "<%name%>" membership plan. 
+You have to confirm you subscription at <a href="http://paypal.com">PayPal</a> now.
+Please press the button bellow.
+        </pre>
+     <tr>
+     	<td align="center">
+
+<form action="http://www.paypal.com/cgi-bin/webscr" method="post">
+<!--<form action="http://www.eliteweaver.co.uk/testing/ipntest.php" method="post">-->
+<!-- <input type="hidden" name="bn" value="AMPPFPWZ.200"> -->
+<input type="hidden" name="cmd" value="_xclick-subscriptions">
+<input type="hidden" name="business" value="<%paypal_email%>" >
+<input type="hidden" name="item_name" value="<%name%>">
+<input type="hidden" name="item_number" value="7702544">
+<input type="hidden" name="custom" value="<%login%>">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="a3" value="<%cost%>">
+<input type="hidden" name="p3" value="1">
+<input type="hidden" name="t3" value="M">
+<input type="hidden" name="src" value="1">
+<input type="hidden" name="sra" value="1">
+<input type="image" src="https://www.paypal.com/images/x-click-but29.gif" border="0" name="submit">
+<input type="hidden" name="notify_url" value="<%paypal_notify%>">
+<input type="hidden" name="return" value="<%paypal_return%>">
+</form>
+</table>

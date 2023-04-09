@@ -1,0 +1,10 @@
+Upgrade instructions from 1.22 to 1.26
+
+First make a backup of your running script (All files, directories you have) and a backup of the database!
+Copy the update directory from this location to the old (1.22) running script!
+CHMOD 777 all the files directories from the "update" directory
+Point your browser to the "update/update_to_1_26.php" file (something like: http://www.yourjobsite.com/update/update_to_1_26.php)
+Take the "Steps" for the update and follow the instructions! Note...the update will try to make a copy of the modifications, settings, language text..etc and try to build the new files...
+Also makes the database update!
+If you have errors you will need to contact us (support@bitmixsoft.com) to make the update!
+

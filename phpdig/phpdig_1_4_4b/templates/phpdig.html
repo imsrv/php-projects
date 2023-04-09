@@ -1,0 +1,82 @@
+<html>
+</head>
+<title><phpdig:title_message/></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+body {  font-family: Verdana, Arial, Helvetica, sans-serif; color: #000000; font-size: 10pt}
+table {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+td {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+tr {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+a {  font-family: Verdana, Arial, Helvetica, sans-serif; color: #003366; text-decoration: none; font-size: 10pt}
+a:hover {  font-family: Verdana, Arial, Helvetica, sans-serif; color: #FFFFFF; background-color: #003366; font-size: 10pt}
+a.high {  font-family: Verdana, Arial, Helvetica, sans-serif; color: #000000; background-color: #FFCC55; text-decoration: none; font-size: 10pt; font-weight: bold;}
+a.high:hover {  font-family: Verdana, Arial, Helvetica, sans-serif; color: #FFFFDD; background-color: #003060; font-size: 10pt;}
+div {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt}
+p {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt}
+i {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt}
+input {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+textarea {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+select {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+h1 {  font-family: Verdana, Arial, Helvetica, sans-serif; color: #006699; font-size: 18pt; font-weight: normal}
+h2 {  font-family: Verdana, Arial, Helvetica, sans-serif; color: #006699; font-size: 14pt; font-weight: normal}
+h3 {  font-family: Verdana, Arial, Helvetica, sans-serif; color: #006699; font-size: 10pt}
+-->
+</style>
+</head>
+<body bgcolor="white">
+<div align="center">
+<p><phpdig:templates_links/></p>
+<img src="phpdiglogo.gif" width="246" height="77" alt="phpdig <phpdig:phpdig_version/>" border="0">
+<BR>
+<phpdig:form_head/>
+<table border="0" cellspacing='1' cellpadding='2' bgcolor="#000000">
+ <tr>
+  <td align="center" bgcolor='#AACCFF'>
+  <B style="font-size:12;" ><phpdig:form_title/></B>
+  </td>
+ </tr>
+ <tr>
+  <td align="left" bgcolor='#CCCCCC'>
+  <phpdig:form_field/>
+  <phpdig:form_button/>
+  <phpdig:form_select/>
+  </td>
+ </tr>
+ <tr>
+ <td align="center" bgcolor='#CCCCCC'>
+ <phpdig:form_radio/>
+ </td>
+ </tr>
+</table>
+</form>
+<h3><b style='background-color:#000066;color:white'><phpdig:result_message/></b>
+<br><phpdig:ignore_message/>
+<br><phpdig:ignore_common_message/>
+</h3>
+</div>
+<phpdig:results>
+             <P style='background-color:#CCDDFF;'>
+             <B><phpdig:n/>. <FONT style='font-size:10;'>[<phpdig:weight/> %]</font>&nbsp;&nbsp;<phpdig:page_link/></B><br>
+             <FONT style='font-size:10;background-color:#BBCCEE;'><phpdig:limit_links/></font><br>
+             </P>
+             <BLOCKQUOTE style='background-color:#EEEEEE;font-size:10;'>
+             <phpdig:text/>
+             </BLOCKQUOTE>
+</phpdig:results>
+<P style='text-align:center;background-color:#CCDDFF;font-weight:bold'>
+<phpdig:nav_bar/>
+</P>
+<hr>
+<div align="center">
+
+<!-- here repeat_form -->
+
+</div>
+<div align='center'>
+<A href='http://phpdig.toiletoine.net/' target='_blank'>
+<img src='phpdigpowered.gif' width='88' height='28' border='0' alt='PhpDig powered'>
+</a>
+</div>
+</body>
+</html>

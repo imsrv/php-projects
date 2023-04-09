@@ -1,0 +1,63 @@
+<script language="JavaScript">
+function checkAll(theForm) {
+    for (i=0,n=theForm.elements.length;i<n;i++)
+        if (theForm.elements[i].name.indexOf('del_') !=-1)
+            theForm.elements[i].checked = true;
+}
+</script>
+
+	<%error(invalid_domain)%>
+  	<font color='red'><b>
+    Please enter valid second level domain name in dot notation<br>
+		For example <i>microsoft.com</i>    
+    </b></font><p>
+  <%/error%>
+
+	<%error(too_many_domains)%>
+  	<font color='red'><b>
+			Your current membership allows you to track <%d_max%> domain name(s) only    
+    </b></font><p>
+  <%/error%>
+  
+	<%error(already_exists)%>
+  	<font color='red'><b>
+    	This domain name is already exists in your monitoring list<br>
+      Please select another one
+    </b></font><p>
+  <%/error%>
+	<form>
+  <input type="submit" value="Delete checked" name="delete">
+  <table class="BlueNoteFormTable" border="1">
+  <tr>
+    <td class="BlueNoteAltDataTD"><input type="checkbox" onClick="if (this.checked) checkAll(this.form);">
+    <td class="BlueNoteAltDataTD">Domain name
+    <td class="BlueNoteAltDataTD">State
+    <td class="BlueNoteAltDataTD">Monitor since
+		<td class="BlueNoteAltDataTD">Whois
+		<td class="BlueNoteAltDataTD">Link popularity
+		<td class="BlueNoteAltDataTD"><a target="_new" href="http://www.archive.org/about/faqs.php#3">Wayback</a>
+		<td class="BlueNoteAltDataTD"><a target="_new" href="http://pages.alexa.com/exec/faqsidos/help/index.html?index=12">Alexa Ranking</a>
+<%table[SELECT monitor.id,domain_name.name,domain_name.state,EXTRACT(day FROM since) as day,EXTRACT(month FROM since) as month,EXTRACT(YEAR FROM since) as year FROM monitor,member,domain_name WHERE monitor.member=member.id AND monitor.domain_name = domain_name.id AND member.login='<%login%>']
+  <tr>
+    <td class="BlueNoteDataTD"><input type="checkbox" name="del_<%id%>">
+    <td class="BlueNoteDataTD"><%name%>
+    <td class="BlueNoteDataTD"><%state%>
+    <td class="BlueNoteDataTD"><%month%>/<%day%>/<%year%>
+		<td class="BlueNoteDataTD"><a target="_new" href="http://www.whoisd.com/search.php?domain=<%name%>&GO=GO&btnG=Search+Whois">Whois</a>
+		<td class="BlueNoteDataTD"><a href="#" onClick="MyWindow=window.open('../member/popularity.php?one_off=www.<%name%>','MyWindow','toolbar=no,location=no,directories=yes,status=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=500'); return false;">Check Now</a>
+    		<td class="BlueNoteDataTD"><a target="_new" href="http://web.archive.org/web/*/http:/www.<%name%>">Check</a>
+		<td class="BlueNoteDataTD"><a target="_new" href="http://www.alexa.com/data/details?url=<%name%>">Traffic</a>
+<%/table
+  </table>
+</form>
+  <p>
+  <form action="add_monitor.php" name="add_frm">
+  	<table>
+  	<tr>
+  		<td><input type="text" name="domain" class="input">
+    <tr>
+    	<td><input type="submit" name="add" value="Add custom domain">
+    </table>
+  </form>
+
+

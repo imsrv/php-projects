@@ -1,0 +1,125 @@
+*************************************************
+*		PHP Mini Auth			*
+*************************************************
+
+
+#########################################################
+#                                                       #
+# PHPSelect Web Development Division                    #
+#                                                       #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are distributed through         #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated.                                     #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the distriuters      #
+# at admin@phpselect.com                                #
+#                                                       #
+#########################################################
+
+
+
+
+
+**License:
+This software is freely distributable under the GNU public license, a
+copy of which you should have received with this software (in a file
+called COPYING).
+
+
+**General Information:
+	PHP Mini Auth is designed to be a "quick and easy" alternative to 
+something like PHPLIB. PHPLIB was too large for my needs, so I wrote this
+instead. There is, however, no script to add/edit users (yet, anyway), so
+you'll have to do this through the MySQL client for now.
+
+	It uses the MySQL 'encrypt()' function to encrypt and match passwords. 
+It uses the user's username as a salt. Once a match is confirmed, an MD5 
+checksum is generated and all three identifiers are set in a cookie on the 
+user's machine. Expiration time on the cookie is configurable.
+
+	This is a beatable authentication system. But it wouldn't be easy. 
+You'd basically have to either have access to the database or to the computer
+with the cookie on it to be able to forge an authentication. 
+
+	I run this on a multi-user system, but I run it on an SSL webserver.
+If you're really worried about security, USE SSL! 
+
+**Required Software:
+	1.  PHP 3.0.8 or greater, with a 3.22.x or newer version of MySQL.
+	    PHP needs to be compiled with the --with-mysql option for 
+	    database connectivity to work. See the PHP documentation for more
+	    information.
+		(see http://www.mysql.com and http://www.php.net)
+	1.  Apache with PHP compiled in as a module.
+		(see http://www.apache.org and http://www.php.net for more info)
+
+**Installation Instructions:
+	1.  Copy auth.inc and htmldoc.inc to a directory *outside* of your html
+	    document tree.
+	2.  If you have a MySQL database already created that you wish to have 
+	    the ACL (access list) table created in, start the mysql client and 
+	    connect to the database.
+
+	    Otherwise, you must create a database. See the MySQL documentation 
+	    for information on doing this.
+
+	    Once you have the mysql client open and connected to the database 
+	    you want to use, issue the following command:
+
+CREATE TABLE acl (
+  id int(16) DEFAULT '0' NOT NULL auto_increment,
+  username varchar(16) DEFAULT '' NOT NULL,
+  password varchar(16) DEFAULT '' NOT NULL,
+  staffname varchar(32) DEFAULT '' NOT NULL,
+  string varchar(100),
+  PRIMARY KEY (id)
+);
+
+	    Next, you must add a user. The command for this is:
+
+INSERT INTO acl ( username, password ) VALUES ( 'the_username', encrypt('the_password','the_username') );
+	
+alternatively, if you want to use the 'staffname' field, or some other field that you add on your own:
+INSERT INTO acl ( username, password, staffname ) VALUES ( 'the_username', encrypt('the_password','the_username'), 'John Soandso' );
+
+	3.  Here's where you need to make a decision. You have two ways of making
+	    this script "work" with your website. 
+
+	    "Every single page on this server or virtual host is private and 
+	     must be password protected!!"
+
+		If this is your case, add a line inside your <VirtualHost> directive
+		like this, and then restart Apache:
+
+			php3_auto_prepend_file /path/to/auth.inc
+
+		This is very useful. It will automatically prepend the auth script 
+		to every php document requested through this virtual host. Everything 
+		is protected. This is the way I *reccomend* doing it.
+
+
+	    "But I only need some pages to be private!"
+
+		Ok.. then you have to put the following line inside of every php 
+		document you want protected.
+
+			<? require('/path/to/auth.inc'); ?>
+
+	4.  Next, edit the auth.inc file and change the variables near the top of
+	    the script. Then do:
+
+		chmod 755 auth.inc htmldoc.inc
+
+	    And you should be ready to rip!
+
+
+
+Good luck!

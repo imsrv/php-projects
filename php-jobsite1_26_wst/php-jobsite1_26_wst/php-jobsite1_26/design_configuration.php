@@ -1,0 +1,35 @@
+<?php
+define('HTML_WIDTH','750');
+define('LEFT_NAV_WIDTH','20%');
+define('RIGHT_NAV_WIDTH','20%');
+define('MAIN_NAV_WIDTH','60%');
+define('MAIN_LNAV_WIDTH','80%');
+define('HEADING_FONT_FACE','Verdana, Arial');
+define('HEADING_FONT_SIZE','2');
+define('HEADING_FONT_COLOR','#FFFFFF');
+define('TEXT_FONT_FACE','Arial,Helvetica');
+define('TEXT_FONT_SIZE','2');
+define('TEXT_FONT_COLOR','#336699');
+define('TEXT_COMPANY_FONT_COLOR','#0066FF');
+define('TEXT_JOB_FONT_COLOR','#000000');
+define('REQUIRED_TEXT_FONT_FACE','MS Sans Serif');
+define('REQUIRED_TEXT_FONT_SIZE','2');
+define('REQUIRED_TEXT_FONT_COLOR','#FF9224');
+define('ERROR_TEXT_FONT_FACE','arial');
+define('ERROR_TEXT_FONT_SIZE','2');
+define('ERROR_TEXT_FONT_COLOR','#FF0000');
+define('STAT_FONT_COLOR','#008000');
+define('DISPLAY_TEXT_FONT_FACE','MS Sans Serif');
+define('DISPLAY_TEXT_FONT_SIZE','1');
+define('DISPLAY_TEXT_FONT_COLOR','#000000');
+define('DISPLAY_LINE_BGCOLOR_FIRST','#FFF5E6');
+define('DISPLAY_LINE_BGCOLOR_SECOND','#FFFFFF');
+define('REQUIRED_STAR','<font color="red" size="2">*</font>');
+define('TABLE_BGCOLOR','#FFFFFF');
+define('TABLE_FEATURED_BGCOLOR','#FFFFCC');
+define('TABLE_JOBSEEKER','#70CCFF');
+define('TABLE_EMPLOYER','#FF0000');
+define('LEFT_NAV_BG_COLOR','#FFFFFF');
+define('LIST_BORDER_COLOR','#BBBBBB');
+define('LIST_HEADER_COLOR','#FFFFCC');
+?>

@@ -1,0 +1,24 @@
+body {  color: #000000; text-decoration: none; margin-right: 5%}
+.hilightcode {
+	background-color: #fda;
+	border: 1px solid black;
+	padding: .05em;
+}
+h2 {  background-color: #99CC33; color: #333333; margin-right: 0px; margin-left: 0px; padding-right: 0px; padding-left: 0px}
+h3 {  color: #333333; background-color: #CCCCFF}
+thead {  background-color: #9999CC}
+h4 {  background-color: #FFCCCC}
+th {  background-color: #9999CC}
+.toplink {  font-size: 0.7em; font-variant: small-caps; color: #666666}
+table {
+	border: 1px solid #CCCCCC;
+	border-right : 0px;
+	border-bottom-width : 0px;
+}
+td {
+	border: 1px solid #CCCCCC;
+	border-left-width : 0px;
+	border-top-width : 0px;
+	padding : 3px;
+}
+.h2indent {  margin-left: 50px}

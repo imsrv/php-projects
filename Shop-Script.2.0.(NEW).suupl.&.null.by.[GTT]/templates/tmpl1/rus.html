@@ -1,0 +1,346 @@
+<html>
+
+<head>
+
+<link rel=STYLESHEET href="style.css" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+		<title>{TITLE}</title>
+		<meta name="Title" content="{TITLE}">
+		<meta name="Description" content="{META}">
+		<meta name="KeyWords" content="{META}">
+</head>
+
+<script> //java-скрипт, открывающий новое окно со спсиком товаров в корзине
+	function open_window(link,w,h) {
+		var win = "width="+w+",height="+h+",menubar=no,location=no,resizable=yes,scrollbars=yes";
+		newWin = window.open(link,'newWin',win);
+		newWin.focus();
+	}
+	function confirmDelete() { //подтверждение удаления пользователя
+		temp = window.confirm('Вы действительно хотите отменить Вашу регистрацию в нашем магазине?');
+		if (temp) { //удалить
+			window.location="index.php?killuser=yes";
+		};
+	}
+	function validate() { // новости
+		if (document.form1.email.value.length<1) {
+			alert("Пожалуйста введите Ваш e-mail");
+			return false;
+		};
+		if (document.form1.email.value == 'Email') {
+			alert("Пожалуйста введите Ваш e-mail");
+			return false;
+		};
+		return true;
+	}
+	function validate_disc() { // форма ввода сообщения
+		if (document.formD.nick.value.length<1) {
+			alert("Пожалуйста введите имя или псевдоним");
+			return false;
+		};
+
+		if (document.formD.topic.value.length<1) {
+			alert("Пожалуйста введите тему сообщения");
+			return false;
+		};
+
+		return true;
+	}
+	function validate_search() {
+
+		if (document.Sform.price1.value!="" && ((document.Sform.price1.value < 0) || isNaN(document.Sform.price1.value))) {
+			alert("В качестве цены1 должно быть положительное число");
+			return false;
+		};
+		if (document.Sform.price2.value!="" && ((document.Sform.price2.value < 0) || isNaN(document.Sform.price2.value))) {
+			alert("В качестве цены2 должно быть положительное число");
+			return false;
+		};
+
+		return true;
+	}
+
+
+</script>
+
+<body marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+
+
+
+
+<!-- таблица с логотипом и некоторыми ссылками -->
+<table border=0 width=100% cellspacing=0 cellpadding=0 bgcolor=#660F0F>
+
+<tr>
+<td width=1% valign=bottom>
+
+<table cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td valign=bottom><img border=0 src="images/cart1.gif"></td>
+<td valign=bottom><img border=0 src="images/text.gif"></td>
+</tr>
+</table>
+
+</td>
+<td align=center colspan=3>
+
+<table width=90%>
+<tr>
+<td align=left>
+<table>
+<tr><td><img src="images/home.gif" border=0></td>
+<td><a class=light href="index.php">Витрина</a></td></tr>
+</table>
+</td>
+
+<td>
+<table>
+<tr><td><img src="images/price.gif" border=0></td>
+<td><a class=light href="index.php?show_price=yes">Прайс-лист</a></td></tr>
+</table>
+</td>
+
+<td>
+<table>
+<tr><td><img src="images/help.gif" border=0></td>
+<td><a class=light href="index.php?aux_page=aux1"><nobr>О магазине</nobr></a></td></tr>
+</table>
+</td>
+
+</tr>
+<tr>
+
+<td>
+<table>
+<tr><td><img src="images/register.gif" border=0></td>
+<td>{REGISTER/HOME}</td></tr>
+</table>
+</td>
+
+<td>
+<table>
+<tr><td>&nbsp;</td>
+<td>{CURRENCY}</td></tr>
+</table>
+</td>
+
+<td>
+<table>
+<tr><td><img src="images/order.gif" border=0></td>
+<td><a class=light href="index.php?aux_page=aux2">Доставка и оплата</a></td></tr>
+</table>
+</td>
+
+</tr>
+</table>
+
+</td>
+
+<td align=center>
+
+{AUTHORIZATION}
+
+</tr>
+
+</table>
+
+
+
+
+
+
+
+
+<!-- ОСНОВНАЯ ТАБЛИЦА, В КОТОРОЙ ПОКАЗЫВАЮТСЯ ТОВАРЫ, РЕГИСТРАЦИЯ, ЗАКАЗЫ И Т.Д. -->
+
+<table border=0 width=100% cellspacing=0 cellpadding=0>
+
+<tr>
+<td bgcolor=#660F0F background="images/search_back.jpg" align=center valign=top>
+
+{SEARCH}
+
+</td>
+
+<td valign=top><img src="images/tr1.gif"></td>
+
+<TD WIDTH=100% VALIGN=TOP ROWSPAN=2>
+
+<br>
+<p>
+{MAIN_CONTENT}
+
+</TD>
+
+<td valign=top bgcolor=#660F0F> 
+
+<Table cellspacing=0 cellpadding=2 width=100% border=0>
+ <Tr>
+	<Td bgcolor=black>
+		<table>
+		<tr>
+		 <td><img src="images/c.gif"></td>
+		 <td>&nbsp;&nbsp;<a class=light href="javascript:open_window('cart.php',400,300);">
+		     <font color=white>Корзина</font></a>
+		 </td>
+		</tr>
+		</table>
+	</Td>
+ </Tr>
+ <Tr>
+	<Td bgcolor=#8A3D3D>
+		<p>
+
+{SHOPPING_CART}
+
+
+	</Td>
+ </Tr>
+</Table>
+
+</tr>
+
+
+
+<tr>
+<td width=1% valign=top bgcolor=white>
+
+
+<table border=0 cellspacing=0 cellpadding=0 width=100% bgcolor=#8A3D3D>
+<tr>
+<td bgcolor=black>
+<table><tr><td><img src="images/pointer.gif"></td><td><b><font color=white>Каталог</font></b></td></tr></table>
+</td>
+</tr>
+<tr><td>
+
+{CATEGORIES}
+
+<tr>
+<td align=right><img src="images/tr3.gif"></td>
+</tr>
+</table>
+
+<br><br>
+
+<!-- маленькую рекламу хорошо размещать здесь. Всякие счетчики и т.д. -->
+
+<!-- хватит рекламы -->
+
+<br><br><br><br><br><br><br>
+
+</td>
+<td>&nbsp;</td>
+
+
+
+<td width=1% valign=top bgcolor=#660F0F><br> <!-- правый столбец с новостями, голосованиями и т.д. Показывать их только на витрине -->
+
+<Table cellspacing=0 cellpadding=0 width=100%>
+<Tr>
+<Td bgcolor=black><table><tr><td><img src="images/pointer.gif"></td><td><b><font color=white>Новости</font></b></td></tr></table></Td>
+</Tr>
+<Tr>
+<Td bgcolor=#8A3D3D>
+<TABLE CELLPADDING=4>
+<TR><TD>
+
+<table cellspacing=1>
+<tr>
+
+{NEWS}
+
+</tr>
+</table>
+
+
+<br><br>
+
+</TD></TR></TABLE>
+
+</Td></Tr>
+
+<Tr><Td bgcolor=black>
+
+<table>
+<tr>
+<td><img src="images/pointer.gif"></td>
+<td><b><font color=white>Голосование</font></b></td>
+</tr>
+</table>
+
+</Td></Tr>
+
+<Tr><Td bgcolor=#660F0F>
+
+
+{VOTING}
+
+
+</Td></Tr>
+
+<Tr><Td bgcolor=black>
+<table>
+<tr>
+<td><img src="images/pointer.gif"></td>
+<td><b><font color=white>Язык</font></b></td>
+</tr>
+</table>
+</Td></Tr>
+<Tr><Td bgcolor=#660F0F align=center>
+
+
+{LANGUAGE}
+
+
+</Td></Tr>
+
+</Table></td></tr>
+
+<tr bgcolor=white>
+<td colspan=3 align=right valign=bottom><img src="images/tr2.gif"></td>
+<td align=center bgcolor=#660F0F>&nbsp;</td>
+</tr>
+
+
+<tr bgcolor=#660F0F>
+<td colspan=4 align=center>
+
+<table cellpadding=5 border=0 width=100%><tr><td align=center>
+<font color=white>
+[ <a class=light href="index.php">Витрина</a> |
+<a class=light href="javascript:open_window('cart.php',400,300);">Корзина</a> |
+{CURRENCY} |
+<a class=light href="index.php?aux_page=aux1"><nobr>О магазине</nobr></a> |
+<a class=light href="index.php?aux_page=aux2">Доставка и оплата</a> |
+<a class=light href="index.php?show_price=yes">Прайс-лист</a> |
+{REGISTER/HOME} ]</font>
+</td>
+
+
+
+<td>
+
+					<table cellpadding=0 cellspacing=0 width=100% border=0>
+					<tr>
+						<td valign=center align=center><a class=light href="http://www.shop-script.ru"><img src="images/ss12.gif" border=0 alt="PHP скрипт интернет-магазина Shop-Script"></a></font></td>
+					</tr>
+					</table>
+
+</td>
+
+</tr></table>
+
+
+<font class=middle color=#CC9090><i>Copyright © 2001-02, <a class=light href="mailto:info@shop-script.ru"><u>Shop-Script 2.0</u></a>. All rights reserved.</i></font>
+
+
+
+
+</td></tr>
+</table>
+
+
+
+</body>
+</html>

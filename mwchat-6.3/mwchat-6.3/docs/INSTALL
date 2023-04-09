@@ -1,0 +1,290 @@
+==================
+INSTALLING MWCHAT
+==================
+
+This document contains instructions for installing the MWChat
+software on your system.
+
+For information on the capabilities and features of MWChat, see
+the file README in the docs/ directory of the MWChat
+distribution.
+
+
+OBTAINING MWChat
+----------------
+
+The MWChat software can be obtained from the Appindex.Net website at
+
+   http://www.appindex.net/
+
+
+LICENSING MWChat
+----------------
+
+In order to use MWChat, you must get a serial number for the software.
+You can get a serial number for MWChat and other products at
+
+   http://www.appindex.net/products/
+
+To get a serial number, you will need your webserver's IP address, which
+can be obtained from a phpinfo() call on a PHP page 
+(http://www.php.net/manual/en/function.phpinfo.php). We have provided a phpinfo
+page located in the mwchat/docs directory. You can access that page at
+
+    http://yourhost/mwchat/docs/php-info.php
+
+See the install directions below for information on where you installed MWChat.
+
+Once you have that you'll need to decided what type of license you would like.
+
+The "basic" license for MWChat is completely free. This will allow you to run 
+MWChat on your site, and with most functionality included. With the basic license
+you will also receive unlimited free email support. Upgrading at any time is also
+no cost to you. The basic version doesn't contain buddy lists, or registered users.
+There are also some features that require users to be registered to use, things like
+file sharing, and preferences are also unavailable if you choose the basic license.
+
+
+The "pro" license for MWChat allows you and your users to take full advantage of
+MWChat abilities. If you purchase the pro license you will also receive unlimited 
+email support, but you will get a higher priority level of service because you've
+purchased the software. You can find out about the pricing for the pro license at 
+our website
+
+   http://www.appindex.net/products/detail/?product=mwchat
+
+
+Now that you've decided on a license your ready to go. Read on for a list of system
+prerequisites and installtion instructions.
+
+
+PREREQUISITES
+-------------
+
+The following prerequisites are REQUIRED for MWChat to function
+properly.
+
+  1. A webserver that supports PHP.
+                                   
+     MWChat is developed under the Apache webserver, which we recommend. 
+     Apache is available from  
+
+        http://www.apache.org/
+                              
+  2. PHP 4.2.1 or above.
+                        
+     PHP is the interpreted language in which MWChat is written.
+     You can obtain PHP at                                     
+
+        http://www.php.net/
+                           
+     Follow the instructions in the PHP package to build PHP
+     for your system. If you use Apache, be sure to build PHP
+     as a library with the                                   
+
+         --with-apache
+     or               
+         --with-apxs
+                    
+     options to ./configure, and not as a stand alone executable.
+                                                                
+     NOTE: MWChat makes use of some of PHP's latest functions.
+     Because of this we require a a later version of PHP as 
+     described above. You MUST have register_globals enabled
+     in your php.ini file to function correctly. Later versions
+     of MWChat will correct this.
+
+The following PHP prerequisites are RECOMMENDED, or are REQUIRED
+if you use a specific MWChat feature (as noted in [brackets]):
+
+  1. Mcrypt support (--with-mcrypt)
+
+     Mcrypt is a general-purpose cryptography library which is
+     broader and more efficient than PHP's own cryptographic
+     code. You can obtain mcrypt from
+
+         http://mcrypt.hellug.gr/
+
+     Building PHP without mcrypt support will not stop MWChat
+     from working, but you will not be able to use [Database Encryption]
+
+     This feature, for added security is recommended, but again it is not
+     required.
+
+
+INSTALLING MWChat
+----------------
+
+MWChat is written in PHP, and must be installed in a web-accessible
+directory. The precise location of this directory will differ from
+system to system. If you have no idea where you should be installing
+MWChat, install it directly under the root of your webserver's document
+tree.
+
+Since MWChat is written in PHP, there is no compilation necessary;
+simply expand the distribution where you want it to reside and rename
+the root directory of the distribution to whatever you wish to appear
+in the URL. For example, with the Apache webserver's default document
+root of '/usr/local/apache/htdocs', you would type:
+
+   cd /usr/local/apache/htdocs
+   tar zxvf /path/to/mwchat-x.x.tar.gz
+   mv mwchat-x.x mwchat
+
+   (note that x.x will be the latest version number.)
+
+and would then find MWChat at the URL
+
+   http://your-server/mwchat/
+
+
+
+CONFIGURING MWChat
+-----------------
+
+1. Configuring the web server
+
+   MWChat requires the following webserver settings. Examples shown are
+   for Apache; other webservers' configurations will differ.
+
+   a. PHP interpretation for files matching "*.php"
+
+         AddType application/x-httpd-php .php
+
+   b. "index.php" as an index file (brought up when a user requests
+      a URL for a directory)                                       
+
+         DirectoryIndex index.php
+
+2. Creating databases
+
+   The specific steps to create a preferences storage container depend
+   on which database you've chosen to use. At the time of this writing
+   MWChat only supports MySQL.
+
+   First, you will need to create a user and password for MWChat to use.
+   Once you created these, you will need to create a database for MWChat's
+   data. You may use any names you like for this information, but we recommend
+   keeping it all MWChat related to keep things clear and simple.
+   You can find information for adding users and databases at
+
+        http://www.mysql.com/documentation/
+        http://www.oracle.com/
+        http://www.postgres.com/
+        http://www.sybase.com/home
+
+3. Configuring MWChat
+
+   To configure MWChat, change to the mwchat/config/ directory of the
+   installed distribution.
+
+   Documentation on the format of those files can be found in each
+   file. You must at least complete the configuration of system.php
+   and database.php and provide db information and paths to MWChat.
+
+   You must also edit license.php and enter your license information.
+
+   Each configuration file has information on each feature and how 
+   it works with MWChat.
+
+   NOTE: The system by default is not live untill you enable it in the
+   system.php config file.
+
+   The other files in that directory need only be modified if you wish
+   to customize MWChat's appearance or behavior -- the defaults will
+   work at most sites.
+
+   
+   All of the default file permissions on MWChat are 644. This should
+   be ok for most systems. MWChat has the ability to do file sharing 
+   for registered users. If you wish to take advantage of this feature,
+   the mwchat/files directory *must* be writable by the webserver.
+
+   We do not recommend you put 0777 permissions on it. Instead chown
+   that directory to the owner of the webserver and use 0755 permissions
+   or something similar. Because webserver configurations differ, you 
+   should contact your system administrator for more help on writable
+   directory permissions.
+
+
+4. Securing MWChat
+
+   a. Passwords
+               
+      Some of MWChat's configuration files contain passwords which local
+      users could use to access your database. It is recommended to ensure
+      that at least the MWChat configuration files (in config/) are not    
+      readable to system users. There are .htaccess files restricting 
+      access to directories that do not need to be accessed directly;
+      before relying on those, ensure that your webserver supports   
+      .htaccess and is configured to use them, and that the files in
+      those directories are in fact inaccessible via the browser.   
+                                                                 
+      An additional approach is to make MWChat's configuration files
+      owned by the user 'root' and by a group which only the webserver
+      user belongs to, and then making them readable only to owner and
+      group. For example, if your webserver runs as www.www, do as    
+      follows:                                                    
+              
+         chown root.www config/*
+         chmod 0440 config/*
+
+
+5. Testing MWChat
+       
+   Once you have configured your webserver, PHP, and MWChat, bring up the
+   included license page in your Web browser to ensure that all necessary
+   prerequisites have been met. If you installed MWChat as described
+   above, the URL to the test page would be
+
+      http://your-server/mwchat/license.php
+
+   Check to ensure that you see no errors on this page (this includes PHP
+   errors). If you do see errors, consult the FAQ at 
+
+       http://www.appindex.net/products/faq/?product=mwchat
+
+   If all looks well, enter the serial number you received in the text field
+   on this page. If you have not yet received your serial number, go ahead 
+   and get one.
+
+   NOTE: You will need a serial number for both the basic and pro installations.
+
+   Serial numbers for a basic license are free and can be obtained from
+
+     
+       http://www.appindex.net/products/
+
+
+   Go ahead and click "Retrieve Licenses" and MWChat will automatically download
+   and install it's licenses.
+
+   From here on out, you should have a working version. Be sure to put your serial
+   number into the mwchat/config/license.php file as your licenses will NOT work
+   until you do.
+
+   This file, license.php is perfectly safe and no one will be able to retrieve 
+   or update your licenses without your serial number, so keep it safe!
+
+   (Your serial number is also available online at http://www.appindex.net/my)
+
+
+OBTAINING SUPPORT
+-----------------
+
+If you encounter problems with MWChat, help is available!
+
+The MWChat Frequently Asked Questions List (FAQ), available on the Web
+at
+  
+  http://www.appindex.net/products/faq/?product=mwchat
+
+You can also receive free unlimited email support at
+
+  http://www.appindex.net/support/
+
+
+Thanks for using MWChat!
+
+Appindex.Net
+

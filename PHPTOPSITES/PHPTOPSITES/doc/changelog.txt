@@ -1,0 +1,15 @@
+----------#--- PHP TopSites FREE CHANGELOG ---#----------
+1.022 beta :
+	$shown variable was added in config.php. Now only sites with more than $shown incoming hits will be listed in the toplist.
+
+1.021 beta :
+	JavaScript was added.
+	Link back column was added.
+
+1.02  beta :
+        validation.php & clean.php was rebuiled.
+        Variables checking (check.php) was added.
+	MySQL tables installation file (install.php) was added to admin area.
+	MySQL review table was fixed.
+	New random.php
+	Recommend-it feature was added.

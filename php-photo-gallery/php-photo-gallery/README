@@ -1,0 +1,141 @@
+(1) You have just downloaded the following files:
+	
+	/php-photo-gallery
+		/README (this file
+		/photos
+			/index.php
+			/images
+
+(2) Upload the 'photos' directory, and all files within it to your
+	web server.
+
+(3) Test it out: http://www.your-site.com/photos/index.php
+
+(4) Edit the 'USER SETTINGS' in /photos/index.php
+	Read the comments above each setting, as they're pretty self
+	explainitory
+
+(5) To upload new images, just add them to the '/photos/images' directory.
+	Normally, you should upload 2 files for each image:
+		(1) a thumbnail GIF
+		(2) a larger JPG
+	
+	Each file should be named identically, except for the extension:
+		for example: image_1.gif, image_1.jpg, image_2.gif, image_2.jpg
+
+(6) OPTIONALLY, Add the base file name of each image pair to the the $image array, 
+	defined under the 'USER SETTINGS' of /photos/index.php
+		$image = array('image_1', 'image_2');
+
+
+
+
+The following user settings are in /photos/index.php
+	
+	
+/* --------------------------------------------------------------- *
+ * USER SETTINGS
+ * --------------------------------------------------------------- */
+
+	/* 
+	** PAGE TITLE (text string)
+	** 
+	** will appear at the top of the page
+	**
+	**/
+	//$page_title    = "My Photos";
+	
+	
+	/*
+	** LEFT CONTENT (text string)
+	**
+	** Link, description, graphic, etc - will appear in upper left
+	**
+	**/
+	//$left_content  = "<a href=\"http://dave.imarc.net/php/\">My Home Page</a>";
+	
+	
+	/*
+	** RIGHT CONTENT (text string)
+	**
+	** Link, description, graphic, etc - will appear in upper right
+	**
+	**/
+	//$right_content = "";
+	
+		
+	/*
+	** IMAGE SOURCE (text string)
+	**
+	** VIRTUAL PATH to the photo gallery images - NO trailing slash
+	** Images in this directory must be GIF and JPG files with lowercase '.gif' or '.jpg' extensions
+	**
+	*/
+	$image_dir     = "images";
+	
+	
+	/*
+	** NEXT/PREV PHOTO (text string)
+	**
+	** Defines what will be used as the "Next Photo". Can be image or text
+	** $next_photo = "Next"; will suffice, or get fancy with a custom graphic (and img tag)
+	**
+	*/
+	$next_photo    = "Next Photo &gt;";
+	$prev_photo    = "&lt; Previous Photo";
+	
+	
+	/* USE_GIFS (bool)
+	**
+	** If 'use_gifs' is set to 'TRUE', thumnail images will be displayed
+	** below the large JPEG image
+	**
+	** NOTE: Except for their extension, gif files must be named IDENTICAL to JPGs.
+	*/
+	$use_gifs      = true;
+	
+	
+	/*
+	** COLUMNS (integer)
+	**
+	** below the large photo, is a grid of all other images in the photo
+	** gallery - $columns defines how many columns this grid will have
+	**
+	*/
+	$columns       = 5;
+	
+	
+	/* 
+	** IMAGES (array)   [OPTIONAL]
+	**
+	** Array of all image names in the photo gallery. For each
+	** item in this array, there should be a jpg and - if $use_gifs is true
+	** above - a gif.
+	** 
+	** There are a couple ways to do this...
+	** 
+	** [1] Manually create an array (without extensions)
+	**     This is the least amount of work for PHP, and a little more work for you:
+	** 			$image = array( "image_1", "image_2", "image_3");
+	**
+	** [2] Manually create an array by copying contents of the directory
+	**     A little more work for PHP, easier for you:
+	** 			$image = array(	"image_1.gif", "image_1.jpg", 
+	** 							"image_2.gif", "image_2.jpg", 
+	** 							"image_3.gif", "image_3.jpg");
+	**
+	** [3] Automatically read your image directory
+	** 	   Most work for PHP - easiest for you:
+	**			LEAVE $image undefined (comment it out or delete it)
+	**
+	** Gif and jpg files must be named with ".gif" and ".jpg" extenstion (with lower case extenstion names)
+	**
+	**/
+	//$image = array( "image_1", "image_2", "image_3");
+
+
+	/* STYLE SHEETS
+	**
+	** Edit these to control display (see inline comments)
+	**
+	*/	

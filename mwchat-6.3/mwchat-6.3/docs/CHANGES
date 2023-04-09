@@ -1,0 +1,127 @@
+MWChat 6.3
+====================
+o Added check for minium required php version.
+o Added license.php config file that now holds license info.
+o The licensing engine should now support dynamic IP's.
+o /motd no longer works if motd is disabled in the config.
+o You can now specify default room topics.
+o A manual translation of German was added. See the translation credits file.
+o Fixed bug with german translation.
+
+
+MWChat 6.2
+====================
+o Changed the way the help menu is generated, no longer requires SYSTEM_ROOT
+o Buddy list now shows ignored users with strike throughs. Whois info does also.
+o Removed System_Root configuration directive. It's no longer needed.
+o Needs testing but we think mwhchat pro will now work under windows.
+o Removed the resolution slect box from login screen. And all references.
+
+
+MWChat 6.1
+====================
+o Fixed bug that caused a headers already sent error.
+o Changed login screen to handle errors first.
+o Changed error function to output header first, then JS
+
+
+MWChat 6.0
+====================
+o Changed software name to My Web based Chat
+o Fixed bug in help.php for windows platforms.
+o Started fixes for Win32 platform. (Pro version wont work on windows)
+o Fixed bug causing headers sent errors on login.
+
+
+MWChat 5.4
+====================
+o Fixed a frame bug in IE
+o Removed old reference to info frame that was causing javascript errors.
+o Added /about command.
+o Added MWChat users online utility for easy interfacing into website.
+o Russian translation added. See the docs/translation.credits file.
+o Fixed duplicate key in default themes.
+o Users online utility.
+
+MWChat 5.3
+====================
+o Fixed bug that would logout a user if they didn't specify a username on the upload screen.
+o Added missing translation on help page for the unignore command.
+o Changed the default user timeout from 15 minutes to 10 minutes.
+o Updated translation typo
+o Added UPGRADE document.
+o Changed timeout model. If a user is in the room, they won't be ejected for being idle.
+o Added private user list refresh link.
+o Changed window layout and moved the room information.
+o Removed info window and all references.
+o Added theme support
+o Added user icons
+o Modified reloading functions.
+o Added two fields to registered SQL table
+o Modifed preferences to allow for multiple config changes.
+o Added default themes.
+
+
+MWChat 5.2
+====================
+o Modified messaging engine to no longer perform a refresh each time a user says something.
+o Trimmed out messaging code and placed into shared library.
+o Removed the /! repeat command.
+o Refined and updated translations.
+o Added javascript text send refresh option to configuration. (database encryption)
+o Minor changes made to documentation.
+o Fixed bug that would display the users text message when the  user only entered spaces.
+
+
+MWChat 5.1
+====================
+o Discarded pro and standard versions of the software. The license key now defines the license type, basic and pro.
+o Added default error messages.
+o Changed licensing method and scheme.
+o Changed profanity function to replace profanity with frustrated smiley face.
+o Fixed bug in lobby users (#5283).
+o Fixed problem flush on php 4.2.x and up. Thanks to output buffering.
+o Added logging sql table and functions.
+o Cleaned up locales, removed dups, and changed wording. Renamed all locale definitions.
+o Added /showbuddy command.
+o Clean up all commands, added security checks, and reformatted.
+o Added minor HTML pretties to the chat
+o Fixed bug in /addbuddy that would allow you to add yourself to your buddy list in certain conditions.
+o Increased security on most modules. Many had small holes what could allow javascript/html attacks on other users.
+o Rewrote codebase to make use of a new variable notation, rg=array sz=string, etc..
+o Added mouseovers info to buddy lists.
+o Modified the private user drop down list to only show people in the same room and NOT people you ignore on their list.
+o Modified the look of the various command windows.
+o Clean up the file sharing module, including making it safer. We now clean up dead files, and the error reporting is improved.
+o Added /block and /unblock to completely allow/disallow private messages.
+o File sharing now shows you who sent you which files.
+o Fixed bug that prevented a user from logging in twice from the same computer. (window conflicts)
+o Completed logging features. Logging also use locales now.
+o Added calls to check for valid mycrypt, if not, disable encryption. Saves us from dieing on critical php errors (undefined functions)
+o Fixed bug that would cause error pages to always be in english.
+o Added license page to locales.
+o Optimized SQL queries... trimmed out a few here and there.
+o Added auto translator - which is not included in the final distro, it's for developers only, saves lots of times when updating translations.
+o Fixed bug that caused a message repeat when idle.
+o Modifed file sharing module to limit the amount of storage each user is allowed.
+o Changed the help module to no longer link to appindex's main website. Help is now served locally from the mwchat installation.
+o Modified the help module to work with locales.
+o Fixed a bug in some functions that wouldn't perform the chat maintenance.
+o Added print page locales
+o Added JS popup via locales to inform of print ability.
+o Changed sequence method to do IP security checks.
+o Added file sharing download manager.
+o Secured file sharing download method... now much harder to guess files and download them.
+o Spell checked all documents.
+o Added administration interface so admins can view logs and unregister any users.
+o Fixed problem with /? command not working.
+o Added quick patch or fix for register_globals. MWChat now works with either.
+o Created password protected private rooms.
+o Allowed admins to enter any private room, including password protected ones.
+o Added a favicon.ico file for browsers greater than 4 in version number.
+o Removed /list command. /help and /? now provide help.
+o Added /repeat, /! to repeat commands.
+o Changed appearance of default rooms.
+o Fixed bug with help engine not translating command help requirements.
+o Fixed bug that password protected public rooms.
+o Removed old calls to strlen and made use of empty() function.

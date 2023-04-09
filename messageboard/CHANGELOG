@@ -1,0 +1,13 @@
+----------------
+ ScareCrow 2.00
+----------------
++ The basic system is coded and released.
+
+----------------
+ ScareCrow 2.01
+----------------
+* Fixed an error where the template could not be saved in config.cgi
+* Fixed an error where variables were expanded rather than display as the
+variable name in config.cgi
+* Miscellanious appearance changes in the way admincenter.cgi displays the
+navigation frame.

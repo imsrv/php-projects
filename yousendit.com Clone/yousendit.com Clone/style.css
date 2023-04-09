@@ -1,0 +1,69 @@
+.nav {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+	font-weight: bold;
+	color: #205AC1;
+	text-decoration: none;	
+}
+.nav:hover {
+	text-decoration: underline;	
+}
+.foot {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: xx-small;
+	font-weight: normal;
+	color: #205AC1;
+	text-decoration: none;	
+}
+.foot:hover {
+	text-decoration: underline;	
+}
+a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #205AC1;
+	text-decoration: underline;
+	font-size: x-small;
+}
+a:hover {
+	text-decoration: none;
+}
+.stxt {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: xx-small;
+	color: Black;
+}
+.ltxt {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+	color: Black;
+}
+.txtbox {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+	font-weight: bold;
+	border: 1px solid Black;
+	width: 100%;
+	color: Gray;
+}
+.txtarea {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+	font-weight: bold;
+	border: 1px solid Black;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	color: Black;
+}.button {
+
+}.chkbox {
+	border: 1px solid Gray;
+	height: 15px;
+	width: 15px;
+}.lstbox {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+	font-weight: bold;
+	border: 1px solid Black;
+	color: Black;
+}

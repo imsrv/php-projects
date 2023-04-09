@@ -1,0 +1,252 @@
+/* alexisRed CSS File Created by Andrew :: http://andrewcharron.tk */
+   993433
+
+html {
+        width: 100%;
+        /* height: 100%;*/
+        }
+body {
+        background-color: #EFEFEF; /* OLD: #FFFFFF; */
+        color: #333333;
+        font-family: Verdana, Arial, sans-serif;
+        margin: 0px 0px 0px 0px;
+        width: 100%;
+        /* height: 100%; */
+        text-align: center;
+        }
+.gen {
+        font-size : 12px;
+        }
+.gen2 {
+        font-size: 11px;
+        font-family: sans-serif, Arial;
+        }
+.genmed {
+        font-size : 12px;
+        }
+.gensmall {
+        font-size : 11px;
+        }
+.gen,.genmed,.gensmall {
+        color : #000000;
+        }
+a.gen,a.genmed,a.gensmall {
+        color: #006699; text-decoration: none;
+        }
+a.gen:hover,a.genmed:hover,a.gensmall:hover {
+         color: #DD6900; text-decoration: underline;
+         }
+a:link,a:active,a:visited {
+        color: #555555;
+        }
+a:hover {
+        color: #660000;
+        }
+span.info {
+        font-size: 11px;
+        color: #000000;
+        }
+span.small {
+        font-size: 11px;
+        }
+span.postinfo {
+        font-size: 12px;
+        color: #333333;
+        }
+a.nav {
+        color: #333333;
+        font-size: 12px;
+        }
+.cattitle {
+        color: #333333;
+        }
+a.white {
+        color: #FFFFFF;
+        }
+a.grey {
+        color: #333333;
+        }
+a.white:visited {
+        color: #FFFFFF;
+        }
+a.green {
+        color: #993433;
+        font-weight: bold;
+        font-size: 14px;
+        }
+a.green:visited {
+        color: #993433;
+        font-weight: bold;
+        font-size: 14px;
+        }
+a.green:hover {
+        color: #996600;
+        font-weight: bold;
+        font-size: 14px;
+        }
+div.small {
+        font-size: 11px;
+        }
+div.pm {
+        border: solid;
+        border-width: 1px;
+        width: 300px;
+        border-color: #555555;
+        background-color: #EFEFEF;
+        font-size: 11px;
+        position: center;
+        text-align: center;
+        font-family: Verdana, sans-serif;
+        padding: 2px;
+        }
+table.forumborder {
+        border: solid;
+        border-width: 1px;
+        border-color: #555555;
+        }
+td.small {
+        font-size: 11px;
+        }
+td.info {
+        font-size: 10px;
+        color: #000000;
+        }
+td.title {
+        background-color: #993433;
+        width: 100%;
+        height: 100px;
+        }
+td.menu {
+        background-color: #CFCFCF;
+        width: 100%;
+        height: 25px;
+        color: #555555;
+        font-size: 12px;
+        font-family: sans-serif;
+        }
+td.subtitle {
+        background-color: #CFCFCF;
+        width: 100%;
+        height: 25px;
+        color: #555555;
+        font-size: 12px;
+        font-family: sans-serif;
+        }
+td.mnu {
+        background-color: #BFBFBF;
+        height: 2px;
+        }
+td.forumtitle {
+        background-color: #993433;
+        color: #FFFFFF;
+        font-size: 10px;
+        font-family: sans-serif;
+        }
+td.row1 {
+        background-color: #EFEFEF; /*was EEEEEE */
+        font-family: sans-serif;
+        font-size: 12px;
+        }
+td.row2 {
+        background-color: #DEDEDE;  /* Was DDDDDDD */
+        font-family: sans-serif;
+        font-size: 12px;
+        }
+td.row3 {
+        background-color: #CDCDCD; /* was CCCCCC */
+        font-family: sans-serif;
+        font-size: 12px;.
+        }
+td.icon {
+        background-color: #EFEFEF;
+        font-family: sans-serif;
+        }
+td.rowtitles {
+        background-color: #CFCFCF;
+        color: #555555;
+        font-size: 11px;
+        font-family: sans-serif;
+        }
+th.forumtitle {
+        background-color: #993433;
+        color: #FFFFFF;
+        font-size: 10px;
+        font-family: sans-serif;
+        }
+th.menu {
+        background-color: #BFBFBF;
+        height: 25px;
+        color: #555555;
+        font-size: 12px;
+        font-family: sans-serif;
+        }
+span.postbody {
+         font-size: 13px;
+         }
+.liteoption {
+        border: 1px solid #000000;
+        height: 20px;
+        background-color: #FFFFFF;
+        }
+.mainoption, .button {
+        border: 1px solid #000000;
+        height: 20px;
+        background-color: #FFFFFF;
+        }
+.code {
+        font-family: "courier new";
+        font-size: 12px;
+        color: #993433;
+        background-color: #FFFFFF;
+        border: #993433;
+        border-style: solid;
+        border-left-width: 1px;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        background-image: url("images/background.gif");
+        background-repeat: no-repeat;
+        background-position: top right;
+}
+
+.quote {
+        font-family: Arial;
+        font-size: 11px;
+        color: #333333;
+        /* line-height: 125%; */
+        background-color: #FFFFFF;
+        border: #333333;
+        border-style: solid;
+        border-left-width: 1px;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        background-image: url("images/background.gif");
+        background-repeat: no-repeat;
+        background-position: top right;
+        }
+/* Not used yet, but will be used in v1.2, v1.5 and v2.0*/
+div.box1 {
+        width: 200px;
+        text-align: center;
+        font-size: 14px;
+        background-color: #EFEFEF;
+        border: 1px solid #BFBFBF;
+        }
+table.mainwindow {
+        margin-left: auto;
+        margin-right: auto;
+        border-left: 1px solid #333333;
+        border-right: 1px solid #333333;
+        background-color: #FFFFFF;
+        width: 775px;
+        background-image: url("images/background.gif");
+        background-repeat: no-repeat;
+        background-position: top right;
+        }
+.topictitle1 {
+        font-size: 14px;
+        font-weight: bold;
+        }
+/* End CSS */
+        

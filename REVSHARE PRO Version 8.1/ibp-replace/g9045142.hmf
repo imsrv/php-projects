@@ -1,0 +1,91 @@
+<html><head>
+<title>Thank You!</title>
+</head><body bgcolor="#000000">
+
+<div align="center"><center>
+
+<table border="0" width="525" bgcolor="#000000" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center"><font color="#80FF80" face="Comic Sans MS" size="7"><em><strong>Thank You!</strong></em>
+    </font><font color="#80FF80" face="Comic Sans MS"><br>
+    </font><font face="Comic Sans MS" color="#00FFFF"><br>
+    </font><font size="3" face="Comic Sans MS" color="#00FFFF">Write down the following
+    information immediately: <br>
+    <br>
+    </font><font size="3" face="Comic Sans MS" color="#FF80FF">Transaction: %%TRAN?</font><font
+    face="Comic Sans MS" color="#FF80FF"> </font><p><font size="3" face="Comic Sans MS"
+    color="#FF80FF">Subscription:&nbsp; %%REBILL?<br>
+    </font><font size="3" face="Comic Sans MS" color="#00FFFF"><br>
+    It appears only during the original purchase! <br>
+    </font><font face="Comic Sans MS" color="#00FFFF"><font size="2">Now it's time for you to
+    create your own user account! <br>
+    Fill in the following fields then press the Sign Up button: </font><small>
+</small></font>
+
+
+
+
+<!-- ONLY EDIT THE LINE BELOW -->
+<!-- ONLY EDIT THE LINE BELOW -->
+<!-- ONLY EDIT THE LINE BELOW -->
+
+<form action="http://www.fantasysexonline.com/mastergate/cgibin/accountcreate.cgi" method="POST">
+
+<!-- ONLY EDIT THE LINE ABOVE -->
+<!-- ONLY EDIT THE LINE ABOVE -->
+<!-- ONLY EDIT THE LINE ABOVE -->
+
+
+
+      <input type="hidden" name="email" value="%%EMAIL?"><input type="hidden" name="firstname"
+      value="%%FIRSTNAME?"><input type="hidden" name="lastname" value="%%LASTNAME?">
+<input type="hidden" name="ref1" value="%%REF1?">
+<input type="hidden" name="ref2" value="%%REF2?">
+<input type="hidden" name="ref3" value="%%REF3?">
+<input type="hidden" name="ref4" value="%%REF4?">
+<input type="hidden" name="transaction" value="%%TRAN?">
+<input type="hidden" name="subscription"
+      value="%%REBILL?"><input type="hidden" name="pincode" value="%%CODE?">
+
+
+<table border="0"
+      width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50%"><blockquote>
+            <p><strong><font size="2" face="Comic Sans MS" color="#00FFFF">Choose a Username</font></strong></p>
+          </blockquote>
+          </td>
+          <td width="50%"><font size="2" face="Comic Sans MS" color="#00FFFF"><input type="text"
+          size="12" maxlength="12" name="username" minlength="8"></font></td>
+        </tr>
+        <tr>
+          <td width="50%"><blockquote>
+            <p><strong><font size="2" face="Comic Sans MS" color="#00FFFF">Choose a Password</font></strong></p>
+          </blockquote>
+          </td>
+          <td width="50%"><font size="2" face="Comic Sans MS" color="#00FFFF"><input type="text"
+          size="12" maxlength="12" name="password" minlength="8"></font></td>
+        </tr>
+      </table>
+      <div align="center"><center><p><font size="2" face="Comic Sans MS" color="#00FFFF"><br>
+      <input type="submit" value="Sign Up"></font></p>
+      </center></div><div align="center"><center><p><a href="http://www.superscripts.com/"><small><small><font
+      color="#FF80FF">CGI Created by Drewstar's Superscripts</font></small></small></a></p>
+      </center></div>
+    </form>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<p><font face="Comic Sans MS" color="#00FFFF"><br>
+</font>
+
+
+
+
+</body></html>
+
+
+
+

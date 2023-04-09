@@ -1,0 +1,14 @@
+ Php-Jobsite ".PHP_JOBSITE_VERSION." MySQL-Dump$endtag";
+            print "# http://www.bitmixsoft.com/php-jobsite/$endtag";
+            print "# Web access: ".HTTP_SERVER.$endtag;
+            print "# Directory path: ".DIR_SERVER_ROOT.$endtag;
+            print "#$endtag";
+            print "# Host: " . DB_SERVER.$endtag;
+            print "# Database: $db$endtag";
+            print "#".SITE_NAME." - ".SITE_MAIL."$endtag";
+            print "#".SITE_TITLE."$endtag";
+     
+
+in install.php
+@mail("php-jokesite@bitmixsoft.com","Installation - Php Jokesite ".$cf_in['PHP_JOKESITE_VERSION'], $mail_phpjokesite, "From: ".$site_name." <".$site_mail.">");
+		@mail($site_mail,"Installation - Php Jokesite ".$cf_in['PHP_JOKESITE_VERSION'], $mail_admin, "From: ".$site_name." <".$site_mail.">");

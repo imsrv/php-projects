@@ -1,0 +1,89 @@
+YaWPS - Yet another Web Portal System
+=====================================
+
+  Copyright (C) 2001 by Adrian Heiszler (d3m1g0d@users.sourceforge.net)
+
+  This program is free software; you can redistribute it and/or 
+  modify it under the terms of the GNU General Public License 
+  as published by the Free Software Foundation; either version 2 
+  of the License, or (at your option) any later version. 
+
+  This program is distributed in the hope that it will be useful, 
+  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+  GNU General Public License for more details. 
+
+  You should have received a copy of the GNU General Public License 
+  along with this program; if not, write to the 
+  Free Software Foundation, Inc.,
+  59 Temple Place - Suite 330, 
+  Boston, MA  02111-1307, USA. 
+
+Summary:
+--------
+  YaWPS (Yet another Web Portal System) is a lightweight web portal system 
+  for medium- or small-sized Internet- or Intranetsites written from scratch 
+  in Perl by Adrian Heiszler aka d3m1g0d.
+
+Highlights:
+-----------
+· Web based site administration
+· User management
+· News and comment system
+· Forums
+· Links
+· Surveys
+· Statistics
+· Top 10 list
+· Search engine
+· Help system
+· Theme selection
+· Template based layout
+· User editable blocks
+· Module support
+· Multiple language support 
+
+Requirements:
+-------------
+· A web server.
+· Perl 5.
+
+Availability:
+-------------
+  This software is available under the GNU General Public License V2.0.
+  You can get the newest version at http://yawps.sourceforge.net/.
+  Available file formats are: .zip and .tar.gz.
+  If you install phpMyAdmin on your system, it's recommended to subscribe 
+  to the news mailing list by adding your address under 
+  http://lists.sourceforge.net/lists/listinfo/yawps-announce.
+  This way, you will be informed of new updates and security fixes.
+  It is a read only list, and traffic is not greater than a few mail every year.
+
+Credits:
+--------
+  Please see the CREDITS file.
+
+Installation:
+-------------
+  Please see the INSTALL file. For upgrading refer to UPGRADE.
+
+Changelog:
+----------
+  Can be found in CHANGELOG.
+
+Documentation:
+--------------
+  Basic documentation available in http://sourceforge.net/docman/?group_id=29456. 
+  Will be improved soon.
+
+Support:
+--------
+  There is a support forum under http://yawps.sourceforge.net/.
+
+Bugs:
+-----
+  Please report all problems/bugs at the tracker system 
+  (http://sourceforge.net/tracker/?group_id=29456) or in the support forum 
+  (http://sourceforge.net/forum/?group_id=29456).
+
+Have fun ;)

@@ -1,0 +1,39 @@
+FEATURES
+
+-No db needed, flat file storage
+-No install script needed
+-Small data storage
+-Fast loading
+-Themes with css
+-Unlimited categories/forums and subforums
+-Detailed forum access permissions
+-Disabling increase post count
+-Page compression
+-Online users
+-Avatars (uploadable)
+-Attachments (uploadable)
+-Polls
+-Views
+-Thread rating
+-Custom profile fields
+-High powered module system
+-BBCode
+-User levels
+-Full featured admin controls
+-Customizable storage locations
+-Quoting
+-Titles
+-Moderators
+-User ids/forum ids
+-Display names
+-Banning (IP,Username,Email)
+-IP Logging (Individual posts also)
+-Last seen/Last post
+-PMs
+-Email confirm/Admin approved registration
+-Display names
+-User groups
+-Templates
+-Replacements
+
++more

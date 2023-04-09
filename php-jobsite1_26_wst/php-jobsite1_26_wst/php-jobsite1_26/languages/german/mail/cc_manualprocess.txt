@@ -1,0 +1,18 @@
+Dear %%employer_company%%,
+
+Invoice details (NO: %%invoice_id%%)
+
+CardHolder Name: %%cc_name%%
+Credit Card Type: %%cc_type%%
+Credit Card Number: %%cc_num%%
+Expiration Date: %%cc_exp%%
+Comment:
+%%cc_comment%%
+
+List Price: %%invoice_listprice%%
+Discount: %%invoice_discount%%
+Total Payment Value: %%invoice_totalprice%%
+Payment date: %%invoice_paymentdate%%
+
+
+Thank you.

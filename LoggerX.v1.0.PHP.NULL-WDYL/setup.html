@@ -1,0 +1,118 @@
+<html>
+	<head>
+  		<title> Setup </title>
+  		<link rel="stylesheet" type="text/css" href="css/styles.css">
+	</head>
+<body>
+<form method="POST" action="setup.php">
+<table border=1 bordercolor="#000000" align="center" cellpadding="3">
+	<tr>
+		<td  colspan="2" class="Header">Setup</td>
+	</tr>
+	<tr>
+		<td class="subheader">General Options</td>
+		<td class="Table">
+			Image URL:<br>
+			<input type="text" name="image_path" value="<?echo $image_path;?>" size="60"><br>
+			<font face="Verdana" size="1">
+				The URL for images to be used.<br>
+				Example: /images/ or http://yourdomain.com/images/
+			</font>
+			<BR><BR>
+			Default User Image:<br>
+			<input type="text" name="valid_image" value="<?echo $valid_image;?>" size="60"><br>
+			<font face="Verdana" size="1">
+				Image to use when a valid username is given.<br>
+				Example: stats.gif
+			</font>
+			<BR><BR>
+			Scripts URL :<br>
+			<input type="text" name="cgi_path" value="<?echo $cgi_path;?>" size="60"><br>
+			<font face="Verdana" size="1">
+				The URL for scripts to be used.<br>
+				Example: http://yourdomain.com/scripts/
+			</font>
+			<BR><BR>
+			Location of Sendmail:<br>
+			<input type="text" name="sendmail" value="<?echo $sendmail;?>" size="60"><br>
+			<font face="Verdana" size="1">
+				The location of the sendmail program.<br>
+				Example: /usr/sbin/sendmail
+			</font>
+			<BR><BR>
+			Server Operating System<br>
+			<font face="Verdana" size="1">
+			<input type="radio" name="os" value="unix" <?if ($os == "unix") {echo " checked";}?> >Unix/Linux 
+			<input type="radio" name="os" value="windows" <?if ($os == "windows") {echo " checked";}?> >Windows NT/2000
+			<BR>Select the OS your server uses.<br>
+			</font>
+			<BR>
+		</td>
+	</tr>
+	<tr>
+		<td class="subheader">
+			Database info
+		</td>
+		<td class="Table">
+			Database name:<br>
+			<input type="text" name="db" value="<?echo $db;?>" size="60"><br>
+			<font face="Verdana" size="1">
+				The name of database contains data.<br>
+				Example: my_database
+			</font>
+			<br><br>
+			Database host:<br>
+			<input type="text" name="dbhost" value="<?echo $dbhost;?>" size="60"><br>
+			<font face="Verdana" size="1">
+				MySQL database host.<br>
+				Example: mysqlhost
+			</font>
+			<BR><BR>
+			Database user:<br>
+			<input type="text" name="dbuser" value="<?echo $dbuser;?>" size="60"><br>
+			<font face="Verdana" size="1">
+				The name of database user .<br>
+				Example: mysql_user
+			</font>
+			<BR><BR>
+			Database password:<br>
+			<input type="password" name="dbpasswd" value="<?echo $dbpasswd;?>" size="60"><br>
+			<font face="Verdana" size="1">
+				The database password.<br>
+				Example: password
+			</font>
+			<BR><BR>
+		</td>
+	</tr>
+	<tr>
+		<td class="subheader">
+			Admin Info
+		</td>
+		<td class="Table">
+			Name:<br>
+			<input type="text" name="admin" value="<?echo $admin;?>" size="60"><br>
+			<font face="Verdana" size="1">
+				Name of admin.<br>
+				Example: John Doe
+			</font>
+			<BR><BR>
+			Email:<br>
+			<input type="text" name="adminmail" value="<?echo $adminmail;?>" size="60"><br>
+			<font face="Verdana" size="1">
+				Admins email address.<br>
+				Example: john.doe@domain.com
+			</font>
+			<br> <br>
+		</td>
+	</tr>	
+	<tr>
+		<td class="subheader" colspan="2">
+			<input type="hidden" name="step" value="2">
+			Password: <input type="password" name="password" size="12">
+			<input type="submit" name="button" value="Save Settings">
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

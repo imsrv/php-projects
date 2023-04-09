@@ -1,0 +1,7 @@
+Add:
+	Test before showing menu if this user may update database
+	Create some functions to create some nice reports.
+	Master/Child forms or some type of selection to filter the table
+	Write a better MANUAL
+
+	

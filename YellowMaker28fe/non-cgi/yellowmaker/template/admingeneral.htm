@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>!TITLE! - !SLOGAN!</title>
+</head>
+
+<body bgcolor="#FFFFCC" text="#000000" background="!BACKGROUND!">
+
+<form method="POST" action="!HOMECGI!/admingeneral2.pl">
+  <div align="center"><center><table border="0" cellpadding="5" width="90%">
+    <tr>
+      <td width="100%" colspan="2" valign="top" align="center"><div align="center"><center><p><font
+      face="!FONT!" size="!SIZE!"><small><img src="!HOME!/pics/general.gif"
+      alt="General Configuration" border="0"></small></font></p>
+      </center></div><div align="center"><center><p><font face="!FONT!" size="!SIZE!">To change
+      any configurations shown below, just replace it with your new value.</font></td>
+    </tr>
+    <tr>
+      <td width="100%" colspan="2"><hr noshade color="#FF9933" size="1">
+      </td>
+    </tr>
+    <tr>
+      <td width="15%" bgcolor="#FFE699" valign="top" align="right"><font face="!FONT!"
+      size="!SIZE!"><strong>1.</strong></font></td>
+      <td width="85%" bgcolor="#FFE699" valign="top" align="left"><font face="!FONT!"
+      size="!SIZE!"><strong>Yellow Page Font Type:<br>
+      <input type="text" name="font" size="20" value="!FONT!" size="!SIZE!"></strong></font></td>
+    </tr>
+    <tr>
+      <td width="15%" bgcolor="#FFE699" valign="top" align="right"><font face="!FONT!"
+      size="!SIZE!"><strong>2.</strong></font></td>
+      <td width="85%" bgcolor="#FFE699" valign="top" align="left"><font face="!FONT!"
+      size="!SIZE!"><strong>Yellow Page Font Size:<br>
+      </strong><select name="size" size="1">
+        <option selected value="!SIZE!">!SIZE!</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select></font></td>
+    </tr>
+    <tr>
+      <td width="15%" bgcolor="#FFE699" valign="top" align="right"><font face="!FONT!"
+      size="!SIZE!"><strong>3.</strong></font></td>
+      <td width="85%" bgcolor="#FFE699" valign="top" align="left"><font face="!FONT!"
+      size="!SIZE!"><strong>Yellow Page Background Image:<br>
+      </strong>0=Do not use background image.<br>
+      1=Use default background image.<br>
+      <strong><select name="background" size="1">
+        <option selected value="!BACKGROUND!">!BACKGROUND!</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+      </select></strong></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>4.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!"><strong>How long does a new company profile shown as
+      &quot;NEW&quot;?<br>
+      </strong><select name="expired" size="1">
+        <option selected value="!EXPIRED!">!EXPIRED!</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+      </select>day(s)</font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>5.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!"><font color="#000000"><b>Maximum number of&nbsp;company
+      profiles listed in a page</b><br>
+      How many records should be displayed in each page.</font><strong><br>
+      </strong><select name="display" size="1">
+        <option selected value="!DISPLAY!">!DISPLAY!</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option value="40">40</option>
+        <option value="50">50</option>
+        <option value="60">60</option>
+        <option value="70">70</option>
+        <option value="80">80</option>
+        <option value="90">90</option>
+        <option value="100">100</option>
+      </select></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>6.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!" color="#000000"><b>Limit upload image size to avoid using too
+      much memory (1000=1k)</b><br>
+      </font><font face="!FONT!" size="!SIZE!"><select name="imgmax" size="1">
+        <option selected value="!IMGMAX!">!IMGMAX!</option>
+        <option value="2000">2000</option>
+        <option value="2500">2500</option>
+        <option value="3000">3000</option>
+        <option value="3500">3500</option>
+        <option value="4000">4000</option>
+        <option value="4500">4500</option>
+        <option value="5000">5000</option>
+        <option value="5500">5500</option>
+        <option value="6000">6000</option>
+        <option value="6500">6500</option>
+        <option value="7000">7000</option>
+        <option value="7500">7500</option>
+        <option value="8000">8000</option>
+        <option value="8500">8500</option>
+        <option value="9000">9000</option>
+        <option value="9500">9500</option>
+        <option value="10000">10000</option>
+        <option value="11000">11000</option>
+        <option value="12000">12000</option>
+        <option value="13000">13000</option>
+        <option value="14000">14000</option>
+        <option value="15000">15000</option>
+        <option value="16000">16000</option>
+        <option value="17000">17000</option>
+        <option value="18000">18000</option>
+        <option value="19000">19000</option>
+        <option value="20000">20000</option>
+        <option value="22000">22000</option>
+        <option value="24000">24000</option>
+        <option value="26000">26000</option>
+        <option value="28000">28000</option>
+        <option value="30000">30000</option>
+        <option value="35000">35000</option>
+        <option value="40000">40000</option>
+        <option value="45000">45000</option>
+        <option value="50000">50000</option>
+        <option value="100000">100000</option>
+        <option value="150000">150000</option>
+        <option value="200000">200000</option>
+        <option value="250000">250000</option>
+        <option value="300000">300000</option>
+        <option value="350000">350000</option>
+        <option value="400000">400000</option>
+        <option value="450000">450000</option>
+        <option value="500000">500000</option>
+      </select></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>7.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!" color="#000000"><b>How do you want to activate members'
+      account?<br>
+      </b>(0=E-mail Validation, 1=Automatically, 2=Manually).<b><br>
+      </b></font><font face="!FONT!" size="!SIZE!"><select name="register" size="1">
+        <option selected value="!REGISTER!">!REGISTER!</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>8.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!" color="#000000"><b>Allow visitors send e-mail message to
+      registered members.<br>
+      </b>If you allowed non-members to send e-mail message to registered members. (0=No,
+      1=Yes).<b><br>
+      </b></font><font face="!FONT!" size="!SIZE!"><select name="contact" size="1">
+        <option selected value="!CONTACT!">!CONTACT!</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+      </select></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>9.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!" color="#000000"><b>Notify you after registration (required
+      mail function)</b><br>
+      If you want to notified after someone registers an account. (0=No,1=Yes).</font><font
+      face="!FONT!" size="!SIZE!"><strong><br>
+      </strong><select name="msgsignup" size="1">
+        <option selected value="!MSGSIGNUP!">!MSGSIGNUP!</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+      </select></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>10.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!" color="#000000"><b>Notify you after activation (required mail
+      function)</b><br>
+      If you want to notified after someone activates an account. (0=No, 1=Yes).</font><font
+      face="!FONT!" size="!SIZE!"><strong><br>
+      </strong><select name="msgactivate" size="1">
+        <option selected value="!MSGACTIVATE!">!MSGACTIVATE!</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+      </select></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>11.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!" color="#000000"><b>Notify you after someone add a organization
+      profile (required mail function)</b><br>
+      If you want to notified after someone add a company profile. (0=No, 1=Yes).</font><font
+      face="!FONT!" size="!SIZE!"><strong><br>
+      </strong><select name="msgadd" size="1">
+        <option selected value="!MSGADD!">!MSGADD!</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+      </select></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>12.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!" color="#000000"><b>Notify you after someone delete a
+      organization profile (required mail function)</b><br>
+      If you want to notified after someone delete a company profile. (0=No, 1=Yes).</font><font
+      face="!FONT!" size="!SIZE!"><strong><br>
+      </strong><select name="msgremove" size="1">
+        <option selected value="!MSGREMOVE!">!MSGREMOVE!</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+      </select></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>13.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!" color="#000000"><b>Allow members to tell their friends to
+      visit this web site (required mail function)</b><br>
+      If you want to let members invite their friends. (0=No, 1=Yes).</font><font face="!FONT!"
+      size="!SIZE!"><strong><br>
+      </strong><select name="tell" size="1">
+        <option selected value="!TELL!">!TELL!</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+      </select></font></td>
+    </tr>
+    <tr>
+      <td width="15%" height="15" bgcolor="#FFE699" valign="top" align="right"><font
+      face="!FONT!" size="!SIZE!"><strong>14.</strong></font></td>
+      <td width="85%" height="15" bgcolor="#FFE699" valign="top" align="left"><font
+      face="!FONT!" size="!SIZE!" color="#000000"><b>Maximum time of&nbsp;confirmation page
+      return to Member/Admin Center .</b><br>
+      </font><font face="!FONT!" size="!SIZE!"><select name="redirect" size="1">
+        <option selected value="!REDIRECT!">!REDIRECT!</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>second(s)<br>
+      <br>
+      </font></td>
+    </tr>
+    <tr>
+      <td width="100%" colspan="2"><hr noshade color="#FF9933" size="1">
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" colspan="2"><div align="center"><center><p><font face="!FONT!"
+      size="!SIZE!"><input src="!HOME!/pics/enter.gif" name="I1" alt="Enter" type="image"
+      border="0"></font></td>
+    </tr>
+  </table>
+  </center></div>
+</form>
+</body>
+</html>

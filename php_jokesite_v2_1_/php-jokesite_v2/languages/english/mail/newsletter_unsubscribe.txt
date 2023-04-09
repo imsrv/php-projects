@@ -1,0 +1,8 @@
+Dear %%email%%,
+
+Now you unsubscribed successfull from our %%newsletter_type%% newsletter on %%newsletter_language%% language.
+
+This can be a mistake.
+You can subscribe again whenever you want.
+
+Thank you.

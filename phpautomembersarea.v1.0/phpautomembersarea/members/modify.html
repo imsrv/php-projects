@@ -1,0 +1,80 @@
+<script LANGUAGE="JavaScript"><!--
+function validateForm() 
+{
+ var okSoFar=true
+ with (document.OF)
+ {
+  if (address.value=="" && okSoFar)
+  {
+    okSoFar=false
+    alert("Please fill in your address.")
+    address.focus()
+  }
+  if (tel.value=="" && okSoFar)
+  {
+    okSoFar=false
+    alert("Please fill in your telephone number")
+    tel.focus()
+  }
+  if (okSoFar==true)  submit();
+ }
+}
+// --></script>
+
+<html>
+
+<head>
+<title></title>
+</head>
+
+<body>
+
+<form ACTION="modify.php" METHOD="POST" NAME="OF">
+  <input type="hidden" name="save" value="1"><div align="center"><center><table border="0"
+  cellpadding="3" width="550" cellspacing="0">
+    <tr>
+      <td width="532" align="left" colspan="2" height="1"><small><div align="center"><center><p></small><strong><br>
+      Modify personal details</strong><small> <?php include("modify_extra.php"); ?></small></td>
+    </tr>
+    <tr align="center">
+      <td width="532" bgcolor="#FFFFFF" align="left" colspan="2" height="2"></td>
+    </tr>
+    <tr align="center">
+      <td valign="top" width="298" align="left" colspan="2"><font size="2"><strong>Name</strong><br>
+      </font><? echo $name_input; ?></td>
+    </tr>
+    <tr align="center">
+      <td valign="top" width="298" align="left" colspan="2"><font size="2"><strong>Company name</strong><br>
+      </font><? echo $company_input; ?></td>
+    </tr>
+    <tr align="center">
+      <td valign="top" width="174" align="left"><font size="2"><strong>Address</strong><br>
+      </font><? echo $address_input; ?></td>
+      <td valign="top" width="124" align="left"><font size="2"><strong>Postcode/Zip Code</strong><br>
+      </font><? echo $postcode_input; ?></td>
+    </tr>
+    <tr align="center">
+      <td width="532" align="left" colspan="2"><font size="2"><strong>Telephone number</strong><br>
+      </font><? echo $tel_input; ?></td>
+    </tr>
+    <tr align="center">
+      <td width="532" align="left" colspan="2"><font size="2"><strong>Email </strong><br>
+      </font><? echo $email_input; ?></td>
+    </tr>
+    <tr align="center">
+      <td width="532" align="left" colspan="2"><input type="button" value="Save" name="b1"
+      class="button" onclick="javascript:validateForm();">&nbsp; <input type="button"
+      value="Cancel" name="B2" class="button"
+      onclick="javascript:document.location='get_details.php';"> &nbsp; <font size="2"><br>
+      </font></td>
+    </tr>
+    <font size="1"></TBODY>
+</font>
+  </table>
+  </center></div>
+</form>
+
+<p align="center"><br>
+</p>
+</body>
+</html>

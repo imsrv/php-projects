@@ -1,0 +1,22 @@
+README
+
+===============================================
+
+NavBoard - created by bryan986
+http://navarone.f2o.org
+
+===============================================
+
+INSTALLATION
+
+1. Upload all contents of the zip to one folder on website
+2. Chmod that folder with full 777 permissions
+   (optional, but recommended, wont work without this sometimes)
+3. Register yourself a account in forum, first account
+   will be admin account
+
+===============================================
+
+UPGRADES
+
+Read upgrades.txt

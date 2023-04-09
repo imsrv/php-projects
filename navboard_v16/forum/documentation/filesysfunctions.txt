@@ -1,0 +1,22 @@
+FILE SYSTEM
+
+proper ways to interface with the txt file system
+
+getdata(file);			returns array of lines of a file*
+listfiles(directory);		returns array of files in a directory without extensions*
+listfilesext(directory);	returns array of files in a directory with extensions*
+listdirs(directory):		returns array of sub directories inside a directory*
+writedata(file,data,line);	will write data into a line of a file*
+deletedata(file,line);		will remove data from a line of a file*
+rename(old,new);			will rename a file/directory to a new name, also used for moving
+copy(old,new);			will copy a file to a new location
+createdir(dir);			will crate a directory using mkdir and chmod both with full permissions*
+mkdir(dir,octdec(777));		will create a directory with full permissions, use chmod on directory also
+chmod(dir/file,octdec(777));	will set full permissions on a directory or file
+filesize(file);			returns the file size in bytes of specified file
+unlink(file);			will delete a file
+rmdir(dir);				will remove a directory, only if empty
+copydir(dir,newdir);		will copy all files, subdirectories, files in those subdirectories in a folder to a new folder*
+deletedir(dir);			will delete all files, subdirectories, files in those subdirectories in a folder*
+
+*function created by navboard

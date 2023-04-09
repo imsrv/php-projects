@@ -1,0 +1,93 @@
+			##############################################################################
+			# PROGRAM : ePay                                                             #
+			# VERSION : 1.55                                                             #
+			#                                                                            #
+			##############################################################################
+			# All source code, images, programs, files included in this distribution     #
+			# Copyright (c) 2002-2003                                                    #
+			#		 				     #      										  #
+			#           All Rights Reserved.                                             #
+			##############################################################################
+			#                                                                            #
+			#    While we distribute the source code for our scripts and you are         #
+			#    allowed to edit them to better suit your needs, we do not               #
+			#    support modified code.  Please see the license prior to changing        #
+			#    anything. You must agree to the license terms before using this         #
+			#    software package or any code contained herein.                          #
+			#                                                                            #
+			#                                           #
+			#                                                                            #
+			##############################################################################
+
+
+System Requirements:
+-------------------- 	
+	PHP 4.0.0 or better. 
+	MySQL 3.23 or better.
+
+
+ePay INSTALLATION:
+---------------------------
+	1) 	Set up a MySQL database on your server and call it "epay". If your not familiar with 
+		phpMyAdmin or do not have permission to set up a database have your hosting service do itn for you. If you already have a database and which to make use of it, no problem, all 
+		epay table identifications start with "epay". 
+
+	2) 	Unzip the distribution and upload all the files into your root directory using ASCII mode.
+	   	You should now have a directory and file structure similar to this in your root directory:
+				/epay (directory)
+				/index.php (file)
+				/faq.php (file)
+				/handle.php (file)
+				/popup.php (file)
+				/INSTALL.txt
+				/LICENSE.txt
+
+	3) 	Click on the epay directory and you should have a file structure similar to this:
+				/admin (directory)
+				/backup (directory) (requires write permissions (CHMOD 777) before running installation program.)
+				/files (directory) (requires write permissions (CHMOD 777) before running installation program.)
+				/help (directory and files contained therin require write permissions (CHMOD 777) before running installation program.)
+				/img (directory)
+				/src (directory)
+				/config.php (file) (requires write permissions (CHMOD 777) before running installation program.)
+				/config2.php (file) (requires write permissions (CHMOD 777) before running installation program.)
+				/connect.php (requires write permissions (CHMOD 777) before running installation program.
+				/footer.htm
+				/header.htm
+				/style.css
+
+	4) 	Now your ready to run the installation program:
+			a) 	Open a browsr and enter in the following URL... 
+					http://www.yoursitename.biz/epay/admin/install.php
+			b) 	Follow the instructions as viewed in your browser.	
+				******************************************************************************************
+				* 	DELETE install.php IN YOUR ADMIN DIRECTORY.                                        *
+				*	FOR SECURITY PURPOSES'S epay WILL NOT FUNCTION WITH THIS FILE ON YOUR SERVER.  *
+				******************************************************************************************
+
+	5) 	Once installed, go to your admin panel which should be located here: 
+			http://www.yoursitename.biz/epay/admin/
+
+	6) 	Enter your username and password to gain access to your admin panel.
+
+	7) 	Go to "Site Config" in your navigation panel (left hand side) and select "Script Config" 
+		in the drop down box.
+
+	8) 	Please read it all and fill in the blanks as required.
+
+That's it
+Enjoy the script.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

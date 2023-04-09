@@ -1,0 +1,23 @@
+select {
+	font-family: verdana;
+	font-size: 11;
+}
+
+input {
+	font-family: verdana;
+	font-size: 11;
+}
+
+A:link {
+	color: #0088aa;
+}
+
+A:active {
+	color: #8CB5D6;
+}
+A:visited {
+	color: #0088aa;
+}
+A:hover {
+	color: #8cb5d6;
+}

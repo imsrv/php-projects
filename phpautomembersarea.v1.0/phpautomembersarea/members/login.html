@@ -1,0 +1,80 @@
+<html>
+
+<head>
+<title></title>
+</head>
+
+<body>
+
+<form method="POST" name="FL" align="center">
+  <input type="hidden" name="login" value="1"><p>&nbsp;</p>
+  <div align="center"><center><table border="0" cellpadding="3" cellspacing="0"
+  class="table-bg" width="250">
+    <tr>
+      <td align="center" colspan="3"><small><? if (isset($loginerror)) echo $loginerror; ?></small></td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#FFFFFF" height="2" colspan="3"></td>
+    </tr>
+    <tr align="center">
+      <td align="center" colspan="3"><b>LOGIN</b></td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#FFFFFF" height="2" colspan="3"></td>
+    </tr>
+    <tr>
+      <td align="center"></td>
+      <td align="center"><font size="2"><strong>Username</strong><br>
+      <input TYPE="text" SIZE="15" NAME="username" maxlength="128" tabindex="1"><br>
+      <strong>Password</strong><br>
+      <input TYPE="password" SIZE="15" NAME="password" maxlength="32" tabindex="2"></font><br>
+      <small><input type="checkbox" name="confirm" value="Agrees with terms"><font face="Arial">Please
+      confirm that you have read and agree to our: <a href="../../terms.html" target="_blank">terms
+      &amp; conditions</a></font><br>
+      <br>
+      <input type="button" onclick="Javascript:send_details()" value="Login" name="login"
+      class="button"></small></td>
+      <td align="center"></td>
+    </tr>
+    <tr align="center">
+      <td align="center" bgcolor="#FFFFFF" height="2" colspan="3"></td>
+    </tr>
+    <tr>
+      <td align="center" colspan="3"><small><? if (isset($loginerror)) echo $loginerror; ?></small></td>
+    </tr>
+  </table>
+  </center></div>
+</form>
+<script language="JavaScript" src="../md5.js"></script>
+<script LANGUAGE="JavaScript"><!--
+
+document.FL.username.focus();
+document.onkeydown = post_form;
+
+function post_form()
+{
+ if (event.keyCode == 13) send_details();
+}
+
+function send_details()
+{
+ if (!document.FL.confirm.checked)
+  {
+    alert("You must confirm you agree with our terms and conditions before you login.\n\nIf you have read and agree with them check the checkbox.");
+    document.FL.confirm.focus();
+  }
+ else
+ {
+   document.FL.password.value = hex_md5(document.FL.password.value);
+   document.FL.action="login.php";
+   document.FL.submit();
+ }
+
+}
+
+// --></script>
+
+
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,20 @@
+#Lets turn on Rewrite engine :) // Включаем РеврайтИнгайн :)
+RewriteEngine on
+
+#Only for downloads // Только на скачку
+RewriteRule file-([1-9][0-9]*).* download.php?id=$1
+
+#Search // Поиск
+RewriteRule search search.php
+
+#Top // Топ
+RewriteRule top index.php?category=top
+
+#All files // Все файлы
+RewriteRule all index.php?category=all
+
+#Details // Доп. инфа на файлы
+RewriteRule info-([1-9][0-9]*).* details.php?id=$1
+
+#Category // Категории
+RewriteRule cat-([1-9][0-9]*).* index.php?category=$1

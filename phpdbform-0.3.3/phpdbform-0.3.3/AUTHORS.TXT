@@ -1,0 +1,3 @@
+Paulo Assis <paulo@phpdbform.com>
+Roberto Rosario <skeletor@iname.com>
+Ricardo Shiro <php@ricardo.shiro.nom.br>

@@ -1,0 +1,196 @@
+[01] English
+[02] Español
+[03] Les français
+[04] Deutscher
+[05] Hungarian
+[06] Indonesian
+[07] Italiano
+[08] Portugues (BR)
+[09] Portugues (PT)
+
+------------------------------------------------------------------------------------------
+[01] English
+------------------------------------------------------------------------------------------
+NKAds Install instructions
+
+1 - Uncompress the nkads-xx.xx.xx.tar.gz / nkads-xx.xx.xx.zip file.
+2- Change modes of the following files to 777:
+				- nkads.conf.php
+				- muestra.php
+				- muestrajs.php
+
+3- Open your browser and go to http://server_name/install_dir/instalar.php
+	(Make sure that you have a DB available where put the tables that the install
+	script will generate. Also you need an user and password with permissions to
+	create tables on the same DB)
+
+4- Follow the steps of the install program.
+
+5 - Change modes of the img_banners folder to 777
+
+6 - Change modes of the following files to 666
+				- nkads.conf.php
+				- muestra.php
+				- muestrajs.php
+
+7 - Delele the file instalar.php
+
+------------------------------------------------------------------------------------------
+[02] Español
+------------------------------------------------------------------------------------------
+NKAds instrucciones de instalacion:
+
+1- Descomprima el archivo nkads-xx.xx.xx.tar.gz / nkads-xx.xx.xx.zip
+2- Cambie a 777 los permisos de:
+				- nkads.conf.php
+				- muestra.php
+				- muestrajs.php
+
+3- Abra su navegador y apuntelo a http://direccion_servidor/directorio_instalacion/instalar.php.
+	(Asegurese de tener una DB disponible en donde ubicar las tablas que
+	el instalador va a generar. Tambien necesita un usuario y contraseña con
+	permisos para crear tablas sobre esa misma DB)
+
+4- Siga los pasos del programa de instalacion
+5- Cambie los permisos de la capeta img_banners a 777
+6- Cambie a 666 los permisos de:
+				- nkads.conf.php
+				- muestra.php
+				- muestrajs.php
+
+7- Elimine el archivo instalar.php
+
+------------------------------------------------------------------------------------------
+[03] Les français
+------------------------------------------------------------------------------------------
+Installation de NKAds :
+
+1- Décompressez le fichier nkads-xx.xx.xx.tar.gz / nkads-xx.xx.xx.zip
+2- Attribuez une autorisation en écriture de 777 aux fichiers suivants :
+				- nkads.conf.php
+				- muestra.php
+				- muestrajs.php
+
+3- Lancez votre navigateur et tapez l'adresse suivante : http://adresse-du-serveur/nkads/instalar.php
+	(Assurez-vous de bien avoir une base de données disponible où enregistrer les tables
+	créées lors de l'installation. Vous aurez aussi besoin d'un login et d'un mot de passe pour
+	pouvoir créer les tables de cette base de données)
+
+4- Suivez l'installation étape par étape
+5- Attribuez une autorisation en écriture de 777 au dossier img_banners
+6- Attribuez une autorisation en écriture de 666 aux fichiers suivants :
+				- nkads.conf.php
+				- muestra.php
+				- muestrajs.php
+
+7- Éliminez le fichier instalar.php.
+------------------------------------------------------------------------------------------
+[04] Deutscher
+------------------------------------------------------------------------------------------
+NKAds Installationsanleitung
+
+1 -Entpacke die Datei nkads-xx.xx.xx.tar.gz / nkads-xx.xx.xx.zip,
+    beachte hierbei dass auch die Verzeichnisse mituebernommen
+    werden
+
+2 -Folgende Dateien muessen auf CHMOD 777 gesetzt werden:
+				- nkads.conf.php
+				- muestra.php
+				- muestrajs.php
+
+3 -Folgendes Verzeichnis muss auf CHMOD 777 gesetzt werden:
+				- img_banners
+
+4 -Starte Deinen Browser und gehe auf die http://www.domainname.xyz/installations_dir/instalar.php
+	(Anmerkung: Natuerlich muss hierzu vorher sichergestellt sein,
+	dass Du eine MySQL-Datenbank faehrst, damit das Installations-
+	script die entsprechenden TABLES in der MySQL erstellen kann.
+	Bei der Installation wirst Du nach dem Username und Passwort
+	zum Zugriff auf die MySQL-Datenbank gefragt.)
+
+5 -Folge einfach den Schritten im Installationsprogramm.
+
+6 -Setze nach der Installation die Rechte per CHMOD 666 auf
+     folgenden Dateien wieder zurueck:
+
+				- nkads.conf.php
+				- muestra.php
+				- muestrajs.php
+
+7 - Loeschen Sie die Installationsdatei "instalar.php"
+------------------------------------------------------------------------------------------
+[05] Hungarian
+------------------------------------------------------------------------------------------
+NKAds telepítési útmutató:
+1 - Csomagold ki az nkads-xx.xx.xx.tar.gz vagy nkads-xx.xx.xx.zip fájlt.
+2- Állítsd át az alábbi fájlok hozzáférési jogait 777-re:
+                                - nkads.conf.php
+                                - muestra.php
+                                - muestrajs.php
+3 - A böngészõdben hívd meg a következõ oldalt:
+http://szerver_név/install_dir/instalar.php
+        (Elõtte még bizonyosodj meg arról, hogy van mûködõ mysql adatbázisod!
+Legyen kéznél az adatbázisod neve és jelszava.)
+4 - Kövesd a telepítõ útmutatásait.
+5 - Állítsd át az img_banners mappa hozzáférési jogait 777-re.
+6 - Állítsd vissza az alábbi fájlok hozzáfárási jogait 775-re:
+                                - nkads.conf.php
+                                - muestra.php
+                                - muestrajs.php
+
+7 - A telepítés végeztével töröld az instalar.php fájlt a szerverrõl."
+------------------------------------------------------------------------------------------
+[06] Indonesian
+------------------------------------------------------------------------------------------
+1- Uncompress file nkads-xx.xx.xx.tar.gz / nkads-xx.xx.xx.zip.
+2- Ganti Mode file-file berikut menjadi 777:
+                                - nkads.conf.php
+                                - muestra.php
+                                - muestrajs.php
+
+3- Buka browser kamu dan masuk ke http://nama_servermu/install_dir/instalar.php
+(Kamu musti punya DataBase (DB) tempat kamu naroh tabel script instalasi yang
+ ntar bakalan dipake. Kamu butuh juga login user sama passwordnya dengan
+ permission access tentunya untuk membuat tabel di DB)
+
+4- Ikuti aja langkah-langkah program instalasinya.
+
+5- Ganti mode folder img_banners menjadi 777
+
+6- Ganti mode file-file berikut menjadi 666
+                                - nkads.conf.php
+                                - muestra.php
+                                - muestrajs.php
+
+7- Delele file instalar.php
+------------------------------------------------------------------------------------------
+[07] Italiano
+------------------------------------------------------------------------------------------
+NKAds instruzioni per l'installazione
+
+1- Decomprimi il file nkads-xx.xx.xx.tar.gz / nkads.xx.xx.xx.zip.
+2- Cambia i permessi dei seguenti file in 777:
+                                        - nkads.conf.php
+                                        - muestra.php
+                                        - muestrajs.php
+3- Apri il tuo browser e vai alla pagina http://server_name/install_dir/instalar.php
+(Assicurati di avere un database disponibile dove mettere le tabelle che lo script
+ genererà.Avrai bisogno anche di un nome user e una password con permessi per
+ poter creare tabelle sullo stesso database).
+4- Segui i passi del programma d'installazione.
+5- Cambia i permessi della directory img_banners in 777.
+6- Cambia i permessi dei seguenti file in 775:
+                                        - nkads.conf.php
+                                        - muestra.php
+                                        - muestrajs.php
+7- Cancella il file instalar.php
+------------------------------------------------------------------------------------------
+[08] Portugues (BR)
+------------------------------------------------------------------------------------------
+Add your native language here and send me a email! < nkads@nkstudios.net >
+Agrega tu idioma nativo aqui y enviame un email! < nkads@nkstudios.net >
+------------------------------------------------------------------------------------------
+[09] Portugues (PT)
+------------------------------------------------------------------------------------------
+Add your native language here and send me a email! < nkads@nkstudios.net >
+Agrega tu idioma nativo aqui y enviame un email! < nkads@nkstudios.net >

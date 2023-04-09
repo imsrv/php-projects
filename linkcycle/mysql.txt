@@ -1,0 +1,26 @@
+CREATE TABLE LinkCycle (
+  LKey      int(11)       NOT NULL auto_increment,
+  Text      varchar(255)  default '',
+  Link      varchar(255)  default '',
+  LGroup    varchar(10)   default '001',
+  Imps      int(11)       default '0',
+  Hits      int(11)       default '0',
+  ITab      int(11)       default '0',
+  HTab      int(11)       default '0',
+  ITimeTab  time          default '12:00:00',
+  HTimeTab  time          default '12:00:00',
+  PRIMARY KEY (LKey)
+) TYPE=MyISAM;
+
+CREATE TABLE LinkHits (
+  TKey    int(11)       default '0',
+  IP      varchar(15)   default '',
+  TStamp  timestamp(14) NOT NULL
+) TYPE=MyISAM;
+          
+CREATE TABLE LinkUsers (
+  UKey      int(11)     NOT NULL auto_increment,
+  LGroup    varchar(10) DEFAULT '',
+  Password  varchar(10) DEFAULT '',
+  PRIMARY KEY (UKey)
+) TYPE=MyISAM;

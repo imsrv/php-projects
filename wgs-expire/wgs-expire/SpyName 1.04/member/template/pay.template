@@ -1,0 +1,4 @@
+<%table[SELECT login as member_login,passwd,first,last,email FROM member WHERE login='<%login%>']%>
+      <a HREF="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=<%email%>">
+<img SRC="http://www.paypal.com/images/cancel_subscribe_gen_2.gif" BORDER="0">
+<%/table%>

@@ -1,0 +1,91 @@
+<?php
+/*+---------------------------------------------------------------------------+
+*|	SnippetMaster 
+*|	by Electric Toad Internet Solutions, Inc.
+*|	Copyright (c) 2002 Electric Toad Internet Solutions, Inc.
+*|	All rights reserved.
+*|	http://www.snippetmaster.com
+*|
+*|+----------------------------------------------------------------------------+
+*|  Evaluation copy may be used without charge on an evaluation basis for 30 
+*|  days from the day that you install SnippetMaster.  You must pay the license 
+*|  fee and register your copy to continue to use SnippetMaster after the 
+*|  thirty (30) days.
+*|
+*|  Please read the SnippetMaster License Agreement (LICENSE.TXT) before 
+*|  installing or using this product. By installing or using SnippetMaster you 
+*|  agree to the SnippetMaster License Agreement.
+*|
+*|  This program is NOT freeware and may NOT be redistributed in ANY form
+*|  without the express permission of the author. It may be modified for YOUR
+*|  OWN USE ONLY so long as the original copyright is maintained. 
+*|
+*|  All copyright notices relating to SnippetMaster and Electric Toad Internet 
+*|  Solutions, including the "powered by" wording must remain intact on the 
+*|  scripts and in the HTML produced by the scripts.  These copyright notices 
+*|  MUST remain visible when the pages are viewed on the Internet.
+*|+----------------------------------------------------------------------------+
+*|
+*|  For questions, help, comments, discussion, etc., please join the
+*|  SnippetMaster support forums:
+*|
+*|       http://www.snippetmaster.com/forums/
+*|
+*|  You may contact the author of SnippetMaster by e-mail at:
+*|	
+*|       info@snippetmaster.com
+*|
+*|  The latest version of SnippetMaster can be obtained from:
+*|
+*|       http://www.snippetmaster.com/
+*|
+*|	
+*| Are you interested in helping out with the development of SnippetMaster?
+*| I am looking for php coders with expertise in javascript and DHTML/MSHTML.
+*| Send me an email if you'd like to contribute!
+*|
+*|
+*|+--------------------------------------------------------------------------+
+
+#+-----------------------------------------------------------------------------+
+#| 		DO NOT MODIFY BELOW THIS LINE!
+#+-----------------------------------------------------------------------------*/
+?>
+<html>
+<head>
+<title><?php echo $text['login_title']; ?></title>
+<META NAME="robots" CONTENT="noindex, nofollow">
+<style type="text/css">
+<!-- 
+td {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #FFFFFF}
+
+.title { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; color: #FFFFFF }
+
+.text_small_white {  font-size: 9px; color: #FFFFFF}
+.text_regular_white {  font-size: 12px; color: #FFFFFF}
+
+.copyright {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; color: #999999}
+a.copyright:hover { color: #666666}
+a.copyright:active { color: #666666}
+a.copyright:visited { color: #666666}
+
+-->
+</style> 
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<br> <br> <form action="index.php" method="post"> <P>&nbsp;</P><TABLE WIDTH="400" BORDER="0" CELLSPACING="0" CELLPADDING="1" ALIGN="CENTER" BGCOLOR="#000000"><TR><TD><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=5 WIDTH=100%> 
+<TR> <TD BGCOLOR="#0000CC" CLASS="title"><?php echo $text['login_title']; ?></TD></TR> 
+</TABLE></TD></TR><TR><TD><TABLE BORDER=0 CELLSPACING=5 CELLPADDING=0 WIDTH=100% BGCOLOR="#9999FF"> 
+<?php if($error == 1){ ?> <TR> <TD COLSPAN="2"><BR>&nbsp; &nbsp;<FONT COLOR="yellow"><B><?php echo $text['error_login']; ?></B></FONT> 
+<BR> &nbsp; </TD></TR> <?php } ?> <TR> <TD WIDTH="24%" nowrap ALIGN="RIGHT"><?php echo $text['username']; ?>:&nbsp;&nbsp;</TD><TD WIDTH="76%" nowrap> 
+<INPUT TYPE="text" NAME="user" SIZE=20 VALUE="demo"> </TD></TR> <TR> <TD WIDTH="24%" nowrap ALIGN="RIGHT"><?php echo $text['password']; ?>:&nbsp;&nbsp;</TD><TD WIDTH="76%" nowrap> 
+<INPUT TYPE="password" NAME="pass" SIZE=20 VALUE="demo"> </TD></TR><TR><TD WIDTH="24%" NOWRAP ALIGN="RIGHT"><?php echo $text['language']; ?>:&nbsp;&nbsp;</TD><TD WIDTH="76%"><SELECT NAME="language" onchange="window.location='index.php' + '?language=' + this.options[this.selectedIndex].value;"><?php echo $language_options_HTML; ?></SELECT></TD></TR> 
+<TR> <TD WIDTH="24%">&nbsp;</TD><TD WIDTH="76%" NOWRAP CLASS="text_small_white"> <INPUT TYPE="checkbox" NAME="remember" VALUE="Y" <?php if($remember == "Y") print "checked"; ?>> 
+<?php echo $text['auto_login']; ?></TD></TR> </TABLE></TD></TR></TABLE><p align="center"> 
+<input type="submit" value="<?php echo $text['login_button']; ?>" name="submit"> 
+<input type="hidden" name="action" value="view"> </p></form><p ALIGN="CENTER" CLASS="copyright">Powered 
+by <A HREF="http://www.snippetmaster.com/" TARGET="_blank" CLASS="copyright">SnippetMaster 
+PRO</A> v<?php print $snippetmaster->VERSION; ?><BR> Copyright &copy; 2002 - Electric 
+Toad Internet Solutions, Inc.</p><br> 
+</body>
+</html>

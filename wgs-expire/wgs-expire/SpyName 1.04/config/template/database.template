@@ -1,0 +1,21 @@
+        	<tr>
+          	<td colspan="2" class="BlueNoteColumnTD">MySQL connection parameters
+        	<tr>
+          	<td>Database host
+						<td><input type="text" class="text" name="dbhost" value="<%dbhost%>">            
+          <tr>
+            <td>Database name
+						<td><input type="text" class="text" name="dbname" value="<%dbname%>">
+          <tr>            
+            <td>MySQL username
+						<td><input type="text" class="text" name="dbuser" value="<%dbuser%>">
+          <tr>
+            <td>MySQL password
+						<td><input type="password" class="text" name="dbpassword" value="<%dbpassword%>">
+          <tr>
+          	<td>
+            	<a href="install.php">Reinstall database</a>
+        	<tr>
+          	<td>
+            		<input type="submit" name="save" value="Ok">
+          			<input type="reset" name="save" value="Reset">

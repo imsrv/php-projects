@@ -1,0 +1,10 @@
+Estimado %%jobseeker_name%%,
+
+Su curriculum "%%resume_summary%%" ha caducado y eliminado de nuestro sistema.
+
+Estadíticas:
+    Curriculum enviado el: %%resume_resumedate%%
+     
+Hoy: %%today_date%%
+
+Gracias.

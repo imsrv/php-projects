@@ -1,0 +1,7 @@
+<? // phpMyNewsletter config file
+$f_host="";			//sql hostname
+$f_user="";			//sql username
+$f_passwd="";			//sql password
+$f_db="";			//database
+$f_tableconfig="pmnl_config";	// config table
+?>

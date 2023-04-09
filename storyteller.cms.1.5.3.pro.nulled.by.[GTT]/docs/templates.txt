@@ -1,0 +1,53 @@
+The Esselbach Storyteller CMS uses templates to from your interface templates are highly adaptable because of custom fields and can easily change the layout of your website. You can even add PHP snippets to your templates for maximum customization. You can use all fields from the respective table.
+
+For example: In News you can use the following fields from table esselbach_st_stories to create the output you desire:
+
+$insert[story_id] = Storynumber
+$insert[story_website] = Storywebsite
+$insert[story_category] = Category number
+$insert[story_author] = Author
+$insert[story_title] = Title
+$insert[story_text] = Story text
+$insert[story_extendedtext] = Story extended text
+$insert[story_main] = Show story on main page 0/No, 1/Yes
+$insert[story_time] = Story date
+$insert[story_comments] = Comments
+$insert[story_source] = Source
+$insert[story_teaser] = Teaser image URL
+$insert[story_extra1] - $insert[story_extra20] = Extra fields, can be enabled in "Edit Fields"
+$insert[story_html] = HTML enabled 0/No, 1/Yes
+$insert[story_icon] = Icon/Smilies enabled 0/No, 1/Yes
+$insert[story_code] = Block code enabled 0/No, 1/Yes
+$insert[story_postip] = Post IP address
+$insert[story_editip] = Edit IP address
+$insert[story_editreason] = Edit reason
+$insert[story_hook] = Not in use
+$insert[story_comm] = Comments enabled 0/No, 1/Yes
+
+The Story Template is a good example of Fields, Templates and HTML in action. In the Main Admin Menu, go to TEMPLATES, scroll down to STORY and to the line item te the line of code that says:
+
+<?php
+global $insert;
+
+// Teaser image?
+if ($insert[story_teaser]) $teaserline = "<img src="images/teaser/$insert[story_teaser]" border="0" align="right"hspace="10" vspace="10">";
+
+$EST_TEMPLATE = <<<TEMPLATE
+
+The first part, (//Teaser image?) is checking whether the field story_teaser contains an image. That is if you uploaded or selected a teaser image when you posted your story. In this case, the script would then write:
+
+"<img src="images/teaser/$insert[story_teaser]" border="0" align="right"hspace="10" vspace="10">"
+
+in the variable $teaserline to store for later use. (NOTE: This is also where you may want to customize the output of your teaser images by adding a border or changing the alignment and spacing. )
+
+The variable $teaserline can then be used in the HTML code below. Here again is an example snipped from the same story.tmp.php template.
+
+<td bgcolor="#ffffff">
+$teaserline
+<font face="Arial" size="2">
+$insert[story_text]
+$insert[story_extendedtext]
+</font>
+<td>
+
+The HTML would then display the proper teaser image followed by the story_text and story_extendedtext that would appear on you main page and news story.

@@ -1,0 +1,11 @@
+Change Log - Pearl Forrums 2.4
+April 06, 2005
+
+The following are changes/updates from Pearl Forums 2.3:
+
+1) Locked topics bug fix
+2) New line hint on WYSIWYG editor (Shift + Enter)
+   
+Ben N.   
+Pearlinger.com   
+

@@ -1,0 +1,25 @@
+===============================================================================
+PhotoSeek Authors List
+version 0.3
+written by jeff b (jeff@univrel.pr.uconn.edu)
+===============================================================================
+
+* jeff b <jeff@univrel.pr.uconn.edu>
+  - Head Project Coder
+
+* Peter Morenus <pmorenus@univrel.pr.uconn.edu>
+  - Design and Strategic Planning
+
+* John Bailey <jbailey@univrel.pr.uconn.edu>
+  - Photoseek Logo
+
+* Tom Duffey <trout@uwm.edu>
+  - EPS Module, README-EPS
+
+* Robert Wahler <robert@GearHeadForHire.com>
+  - UNIX/ImageMagick switching
+
+* Todd Kirby <kirbyt@yahoo.com>
+  - Database Layer, Major UI Overhaul
+
+And all those who have reported bugs -- we really do appreciate it.

@@ -1,0 +1,12 @@
+
+
+
+
+
+1º Correção de alguns erros.
+2º Agora voce pode enviar e-mails para um quantidade ilimitada de e-mails sem dar time_our (limite de execusao);
+
+
+
+
+Duvidas no site www.web-tools.kit.net

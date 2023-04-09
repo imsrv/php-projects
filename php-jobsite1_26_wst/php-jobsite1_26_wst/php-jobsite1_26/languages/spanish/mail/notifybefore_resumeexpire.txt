@@ -1,0 +1,10 @@
+Estimado %%jobseeker_name%%,
+
+Su curriculum "%%resume_summary%%" caducará el  %%resume_expiredate%%.
+Quedando actualmente %%resume_remaining%% días.
+
+Envío del curriculum el: %%resume_resumedate%%
+
+
+Hoy %%today_date%%
+

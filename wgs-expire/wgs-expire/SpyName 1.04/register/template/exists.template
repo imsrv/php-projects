@@ -1,0 +1,7 @@
+<html>
+	<body>
+  	Login <%login%> already exists in our database.<br>
+    Please select another login.
+    at <a href="./">registration page</a>
+  </body>
+<html>

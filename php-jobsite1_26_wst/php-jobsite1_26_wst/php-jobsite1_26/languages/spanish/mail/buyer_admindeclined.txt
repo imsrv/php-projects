@@ -1,0 +1,19 @@
+Estimado %%employer_company%%,
+
+Su compra adicional ha sido declinada por la administración.
+Detalles de Factura declinada (NO: %%invoice_id%%)
+
+Precio de Tarifa: %%invoice_listprice%%
+Descuento: %%invoice_discount%%
+Importe del pago: %%invoice_totalprice%%
+Fecha de pago: %%invoice_paymentdate%%
+
+Información de la Empresa:
+%%company_information%%
+Información del pago:
+%%payment_information%%
+
+Descipción de la declinación:
+%%decline_message%%
+
+Gracias.

@@ -1,0 +1,4 @@
+Hi %%to_name%% a virtual postcard is sent by %%from_name%% &lt;%%from_email%%&gt;
+Click to this link to see the postcard:
+
+%%postcard_link%%

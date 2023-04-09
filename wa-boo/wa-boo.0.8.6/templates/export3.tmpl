@@ -1,0 +1,120 @@
+<html>
+<head>
+       <title>wa-boo</title>
+       <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <style><? include ("includes/css.php"); ?></style>   
+    </head>
+
+
+<body>
+    
+<table cellspacing="5" cellpadding="5" align="center">
+    
+  <tr>
+      
+              <td class="versionfont"><img src="images/wa-boo_small.gif">
+        <? echo $G_version ;?>
+      </td>
+  </tr>
+  
+    
+  <tr>
+      
+    <td colspan="2">
+      <table border="0" cellpadding="0" bgcolor="#F5F5F9" cellspacing="0">
+		  
+          
+        <tr>
+            
+            
+          <td background="images/left_top_corner.gif" height="7"></td>
+          <td background="images/h_line_top.gif" height="7"></td>
+          <td background="images/right_top_corner.gif" height="7"></td>
+        </tr>
+          
+          
+        <tr> 
+            
+            
+          <td background="images/v_line_left.gif" width="7"> 
+              </td>
+          <td class="boldstdfont" bgcolor="#EEEEFF" >
+              
+            <table border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" background="images/bg1.gif">
+                
+          
+                  
+                
+              <tr align="center" bgcolor="<? echo $s_user_context["color"]["menu"] ?>"> 
+                    
+                  
+                <td colspan="3" class="stdtitle"><? echo $lab[0]; /* Etape finale : affichage du fichier exporté */ ?></td>
+              </tr>
+                  
+                
+              <tr>
+                    
+                  
+                <td background="images/h_line.gif" align="center" colspan="7" height="7"></td>
+              </tr>
+                  
+                
+              <tr> 
+                    
+                  
+                <td width="15" class="stdfont" height="25"></td>
+                <td align="left" class="exportdisplay" >
+		  
+		  		<br>
+                   
+                  
+		  	      <?  for ($i = 0 ; $i < count($line) ; $i++ ) { 
+					echo $line[$i];
+				}   
+			?>
+                  <br>
+				  <div class="boldstdfont" align="center"><br>
+                      
+                    <input type="button" name="OK" value="<? echo $lab[1]; /* OK */ ?>" onClick="document.location.href='contacts.php'" class="userbutton">
+                      <br>
+					 
+                    <br>
+                  </div>
+                </td>
+                <td width="15" class="stdfont" height="25">&nbsp;</td>
+              </tr>
+                
+              
+            </table>
+          </td>
+          <td valign="top" background="images/v_line_right.gif" width="7"></td>
+        </tr>
+          
+          
+        <tr>
+            
+            
+          <td class="texteg" height="7" background="images/left_bottom_corner.gif"></td>
+          <td height="7" background="images/h_line_bottom.gif"></td>
+          <td height="7" background="images/right_bottom_corner.gif"></td>
+        </tr>
+        
+        
+      </table>
+    </td>
+  </tr>
+    
+  <tr>
+      
+    <td align="center" colspan="2" class="contactlistfont">
+         
+      <p>
+        <?
+   include ("footer.php");
+?>
+        </p>
+    </td>
+  </tr>
+  
+</table>
+  

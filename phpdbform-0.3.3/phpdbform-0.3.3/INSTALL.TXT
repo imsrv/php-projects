@@ -1,0 +1,15 @@
+phpDBform Installation Instructions
+===================================
+
+Installing this should be fairly straightforward. First, unpack the file in any directory inside your http server document root. Edit siteconfig.inc to meet your needs (database name, mysql parameters, language (there are 6, English, Portuguese(Brazil), French, German, Italian and Polish). In this packages there are a ready application, to test, create a phpdbform database and execute the database.sql on this database (I use phpMyAdmin - http://phpwizard.net/phpMyAdmin).
+
+For using phpdbimage you will need to create a user to get the image from the db, see phpdbimage.php for more informations.
+
+Create the forms using the contact.php and type.php as a start, see MANUAL to learn the basic functions. Then edit menu.php to link yours forms.
+
+If you experience any trouble installing or using this software, e-mail me at paulo@coral.srv.br. This is alpha software, and does contain bugs.
+
+============================
+paulo@coral.srv.br
+http://www.phpdbform.com (english)
+http://phpdbform.surlewoueb.com (french)

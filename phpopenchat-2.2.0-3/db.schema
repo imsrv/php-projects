@@ -1,0 +1,198 @@
+# MySQL dump 6.0
+#
+# Host: localhost    Database: chat
+#--------------------------------------------------------
+# Server version	3.22.25
+
+#
+# Table structure for table 'channels'
+#
+DROP TABLE IF EXISTS channels;
+CREATE TABLE channels (
+  Id int(11) DEFAULT '0' NOT NULL auto_increment,
+  Name varchar(20) DEFAULT 'ENTER_CHANNELNAME' NOT NULL,
+  PASSWORD varchar(30) DEFAULT '' NOT NULL,
+  User_Channel char(1) DEFAULT '0' NOT NULL,
+  These text NOT NULL,
+  Teilnehmerzahl int(11) DEFAULT '0' NOT NULL,
+  BG_Color varchar(7) DEFAULT '#284628' NOT NULL,
+  NICK_COLOR varchar(7) DEFAULT '#88DEDE' NOT NULL,
+  Logo varchar(255) DEFAULT 'images/exit_logo.gif' NOT NULL,
+  ExitURL varchar(255) DEFAULT '/' NOT NULL,
+  Allow varchar(254) DEFAULT '' NOT NULL,
+  moderiert tinyint(4) DEFAULT '0' NOT NULL,
+  starts_at datetime DEFAULT '1999-01-01 00:00:00' NOT NULL,
+  stops_at datetime DEFAULT '9999-12-31 23:59:59' NOT NULL,
+  zeile int(11) DEFAULT '0' NOT NULL,
+  zeile_0 text NOT NULL DEFAULT '',
+  zeile_1 text,
+  zeile_2 text,
+  zeile_3 text,
+  zeile_4 text,
+  zeile_5 text,
+  zeile_6 text,
+  zeile_7 text,
+  zeile_8 text,
+  zeile_9 text,
+  zeile_10 text,
+  zeile_11 text,
+  zeile_12 text,
+  zeile_13 text,
+  zeile_14 text,
+  zeile_15 text,
+  zeile_16 text,
+  zeile_17 text,
+  zeile_18 text,
+  zeile_19 text,
+  zeile_20 text,
+  zeile_21 text,
+  zeile_22 text,
+  zeile_23 text,
+  zeile_24 text,
+  zeile_25 text,
+  zeile_26 text,
+  zeile_27 text,
+  zeile_28 text,
+  zeile_29 text,
+  zeile_30 text,
+  zeile_31 text,
+  zeile_32 text,
+  zeile_33 text,
+  zeile_34 text,
+  zeile_35 text,
+  zeile_36 text,
+  zeile_37 text,
+  zeile_38 text,
+  zeile_39 text,
+  PRIMARY KEY (Id),
+  KEY Name (Name)
+);
+INSERT INTO channels (Name,PASSWORD,These,Allow,zeile_0) VALUES ('Channel_1','','','','Remember, you have to define the variable $ENTRYCHANNELNAME in defaults_inc.php! The value must be one of an existing channel!<BR>');
+
+#
+# Table structure for table 'chat'
+#
+DROP TABLE IF EXISTS chat;
+CREATE TABLE chat (
+  Nick varchar(15) DEFAULT '' NOT NULL,
+  Zeit int(11),
+  Raum varchar(30),
+  Ignor text,
+  Quassel int(11),
+  GRANT_ACCESS_FOR varchar(255) DEFAULT '' NOT NULL,
+  User_busy int(11) DEFAULT '0',
+  color varchar(7),
+  Host varchar(15),
+  Gruentext tinyint(4) DEFAULT '1' NOT NULL,
+  PRIMARY KEY (Nick)
+);
+
+#
+# Table structure for table 'chat_data'
+#
+DROP TABLE IF EXISTS chat_data;
+CREATE TABLE chat_data (
+  Nick varchar(30) DEFAULT '' NOT NULL,
+  Zeit int(11),
+  Raum varchar(30),
+  Passwort varchar(10),
+  PictureURL varchar(130),
+  Email varchar(130),
+  Online int(11),
+  Host varchar(15),
+  kicked tinyint(4) DEFAULT '0' NOT NULL,
+  color varchar(7),
+  PRIMARY KEY (Nick)
+);
+
+#
+# Table structure for table 'chat_mail'
+#
+DROP TABLE IF EXISTS chat_mail;
+CREATE TABLE chat_mail (
+  ID int auto_increment DEFAULT '0' NOT NULL,
+  TIME datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+  NICK varchar(15) DEFAULT '' NOT NULL,
+  SENDER varchar(15) DEFAULT '' NOT NULL,
+  SUBJECT varchar(50) DEFAULT '' NOT NULL,
+  BODY text DEFAULT '' NOT NULL,
+  UNREAD tinyint DEFAULT '1' NOT NULL,
+  PRIMARY KEY (ID)
+);
+
+#
+# Table structure for table 'chat_forum'
+#
+DROP TABLE IF EXISTS chat_forum;
+CREATE TABLE chat_forum (
+  NUMMER int(5) DEFAULT '0' NOT NULL auto_increment,
+  DATE datetime,
+  NAME varchar(255),
+  VORNAME varchar(255),
+  EMAIL varchar(255),
+  HOMEPAGE varchar(255),
+  EIGENE_URL varchar(255),
+  KOMMENTAR blob,
+  HOST varchar(255),
+  THEMA varchar(255),
+  PRIMARY KEY (NUMMER)
+);
+INSERT INTO chat_forum VALUES (1,CURDATE(),'Forum Admin',NULL,NULL,NULL,NULL,'Welcome to the topic "Help"',NULL,'Help');
+
+#
+# Table structure for table 'chat_messages'
+#
+DROP TABLE IF EXISTS chat_messages;
+CREATE TABLE chat_messages (
+  Message_0 text,
+  Message_1 text,
+  Message_2 text,
+  Message_3 text,
+  Message_4 text,
+  Message_5 text,
+  Message_6 text,
+  Message_7 text,
+  Message_8 text,
+  Message_9 text
+);
+INSERT INTO chat_messages VALUES('','','','','','','','','','');
+
+#
+# Table structure for table 'comoderators'
+#
+DROP TABLE IF EXISTS comoderators;
+CREATE TABLE comoderators (
+  Nick varchar(20) DEFAULT '' NOT NULL,
+  PRIMARY KEY (Nick)
+);
+
+#
+# Table structure for table 'paten'
+#
+DROP TABLE IF EXISTS paten;
+CREATE TABLE paten (
+  Nick char(15) DEFAULT '' NOT NULL,
+  PRIMARY KEY (Nick)
+);
+
+#
+# Table structure for table 'vip'
+#
+DROP TABLE IF EXISTS vip;
+CREATE TABLE vip (
+  Nick varchar(15) DEFAULT '' NOT NULL,
+  Moderator varchar(20),
+  Channel varchar(20),
+  PRIMARY KEY (Nick)
+);
+
+#
+# Table structure for table 'chat_notify'
+#
+DROP TABLE IF EXISTS chat_notify;
+CREATE TABLE chat_notify (
+  Nick varchar(15) NOT NULL,
+  Friend varchar(15) NOT NULL,
+  PRIMARY KEY (Nick,Friend)
+);
+

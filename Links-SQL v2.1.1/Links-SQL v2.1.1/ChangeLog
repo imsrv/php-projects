@@ -1,0 +1,1341 @@
+2002-06-11 16:45  alex
+
+	* lsqldev/: Manual.doc, Manual.pdf: updated docs
+
+2002-05-30 18:17  alex
+
+	* lsqldev/cgi/admin/Links/Tools.pm: demo code was missing dies for
+	globals/language
+
+2002-05-30 18:16  alex
+
+	* lsqldev/cgi/admin/Links/Plugins.pm: make sure
+	edit_installed/edit_uninstalled are not available
+
+2002-05-27 02:32  brewt
+
+	* lsqldev/cgi/admin/Links/PHP/SQL.inc.php: added check_values
+	function.  cleaned up some of the code
+
+2002-05-27 02:28  brewt
+
+	* lsqldev/cgi/admin/Links/PHP/Modify.inc.php: check the input
+	before modifying
+
+2002-05-27 02:27  brewt
+
+	* lsqldev/cgi/admin/Links/PHP/Utils.inc.php: fixed indent
+
+2002-05-27 00:47  brewt
+
+	* lsqldev/cgi/admin/templates/: default_php/add.html,
+	default_php/add_success.html, default_php/admin-email-mod.txt,
+	default_php/admin-email-val.txt,
+	default_php/admin-review-email-val.txt, default_php/category.html,
+	default_php/cool.html, default_php/detailed.html,
+	default_php/email-add.txt, default_php/email-del.txt,
+	default_php/email-mod.txt, default_php/email-password.txt,
+	default_php/email-validate.txt, default_php/email.html,
+	default_php/error.html, default_php/home.html,
+	default_php/include_footer.html, default_php/include_form.html,
+	default_php/include_header.html, default_php/include_menu.html,
+	default_php/include_search_bar.html, default_php/link.html,
+	default_php/login.html, default_php/login_email.html,
+	default_php/login_success.html, default_php/modify.html,
+	default_php/modify_select.html, default_php/modify_success.html,
+	default_php/new.html, default_php/rate.html,
+	default_php/rate_success.html, default_php/rate_top.html,
+	default_php/review-email-add.txt, default_php/review-email-del.txt,
+	default_php/review_add.html, default_php/review_add_success.html,
+	default_php/review_edit.html, default_php/review_edit_success.html,
+	default_php/review_search_results.html,
+	default_php/review_stats.html, default_php/search.html,
+	default_php/search_results.html, default_php/signup_form.html,
+	default_php/signup_success.html, default_php/subcategory.html,
+	default_php/validate_form.html, default_php/validate_success.html,
+	lang_de.default_php/add.html, lang_de.default_php/add_success.html,
+	lang_de.default_php/admin-email-mod.txt,
+	lang_de.default_php/admin-email-val.txt,
+	lang_de.default_php/admin-review-email-val.txt,
+	lang_de.default_php/category.html, lang_de.default_php/cool.html,
+	lang_de.default_php/detailed.html,
+	lang_de.default_php/email-add.txt,
+	lang_de.default_php/email-del.txt,
+	lang_de.default_php/email-mod.txt,
+	lang_de.default_php/email-password.txt,
+	lang_de.default_php/email-validate.txt,
+	lang_de.default_php/email.html, lang_de.default_php/error.html,
+	lang_de.default_php/home.html,
+	lang_de.default_php/include_footer.html,
+	lang_de.default_php/include_form.html,
+	lang_de.default_php/include_header.html,
+	lang_de.default_php/include_menu.html,
+	lang_de.default_php/include_search_bar.html,
+	lang_de.default_php/link.html, lang_de.default_php/login.html,
+	lang_de.default_php/login_email.html,
+	lang_de.default_php/login_success.html,
+	lang_de.default_php/modify.html,
+	lang_de.default_php/modify_select.html,
+	lang_de.default_php/modify_success.html,
+	lang_de.default_php/new.html, lang_de.default_php/rate.html,
+	lang_de.default_php/rate_success.html,
+	lang_de.default_php/rate_top.html,
+	lang_de.default_php/review-email-add.txt,
+	lang_de.default_php/review-email-del.txt,
+	lang_de.default_php/review_add.html,
+	lang_de.default_php/review_add_success.html,
+	lang_de.default_php/review_edit.html,
+	lang_de.default_php/review_edit_success.html,
+	lang_de.default_php/review_search_results.html,
+	lang_de.default_php/review_stats.html,
+	lang_de.default_php/search.html,
+	lang_de.default_php/search_results.html,
+	lang_de.default_php/signup_form.html,
+	lang_de.default_php/signup_success.html,
+	lang_de.default_php/subcategory.html,
+	lang_de.default_php/validate_form.html,
+	lang_de.default_php/validate_success.html: changed print to echo as
+	it's a little more efficient
+
+2002-05-27 00:44  brewt
+
+	* lsqldev/cgi/admin/Links/PHP/convert.pl: echo's are a little more
+	efficient than prints, so we'll use those instead
+
+2002-05-26 23:29  brewt
+
+	* lsqldev/cgi/admin/Links/PHP/adodb/adodb.inc.php: don't lower case
+	column names!
+
+2002-05-25 00:34  brewt
+
+	* lsqldev/cgi/admin/Links/PHP/Search.inc.php: fixed paging when cat
+	count is > link count.
+
+2002-05-21 09:43  alex
+
+	* lsqldev/cgi/admin/Links/Browser.pm: make the category browser
+	sort by category name on large db's
+
+2002-05-17 00:09  brewt
+
+	* lsqldev/cgi/admin/Links/PHP/Add.inc.php: variable confusion :)
+
+2002-05-17 00:08  brewt
+
+	* lsqldev/cgi/admin/Links/PHP/User.inc.php: wasn't adding adding
+	url_hidden to url passed in so sessions weren't kept
+
+2002-05-17 00:08  brewt
+
+	* lsqldev/cgi/admin/Links/PHP/: Jump.inc.php, Links.inc.php,
+	Page.inc.php, Review.inc.php: changed url_hidden and form_hidden
+	variable names, and made url_hidden begin with a & instead of end
+	with one (looks nicer :)
+
+2002-05-16 22:44  brewt
+
+	* lsqldev/cgi/admin/Links/PHP/adodb/: adodb-cryptsession.php,
+	adodb-csvlib.inc.php, adodb-errorhandler.inc.php,
+	adodb-errorpear.inc.php, adodb-lib.inc.php, adodb-pear.inc.php,
+	adodb-session.php, crypt.inc.php, readme.htm, readme.txt,
+	server.php, tips_portable_sql.htm, tohtml.inc.php, tute.htm,
+	cute_icons_for_site/adodb.gif, cute_icons_for_site/adodb.png,
+	cute_icons_for_site/adodb2.gif, cute_icons_for_site/adodb2.png,
+	drivers/adodb-access.inc.php, drivers/adodb-ado.inc.php,
+	drivers/adodb-ado_access.inc.php, drivers/adodb-ado_mssql.inc.php,
+	drivers/adodb-borland_ibase.inc.php, drivers/adodb-csv.inc.php,
+	drivers/adodb-db2.inc.php, drivers/adodb-fbsql.inc.php,
+	drivers/adodb-firebird.inc.php, drivers/adodb-ibase.inc.php,
+	drivers/adodb-informix.inc.php, drivers/adodb-informix72.inc.php,
+	drivers/adodb-mssql.inc.php, drivers/adodb-mysql.inc.php,
+	drivers/adodb-mysqlt.inc.php, drivers/adodb-oci8.inc.php,
+	drivers/adodb-oci805.inc.php, drivers/adodb-oci8po.inc.php,
+	drivers/adodb-odbc.inc.php, drivers/adodb-odbc_mssql.inc.php,
+	drivers/adodb-odbc_oracle.inc.php, drivers/adodb-oracle.inc.php,
+	drivers/adodb-postgres.inc.php, drivers/adodb-postgres64.inc.php,
+	drivers/adodb-postgres7.inc.php, drivers/adodb-proxy.inc.php,
+	drivers/adodb-sqlanywhere.inc.php, drivers/adodb-sybase.inc.php,
+	drivers/adodb-vfp.inc.php, tests/benchmark.php, tests/client.php,
+	tests/test.php, tests/test2.php, tests/test3.php, tests/test4.php,
+	tests/test5.php, tests/testcache.php, tests/testdatabases.inc.php,
+	tests/testgenid.php, tests/testoci8.php, tests/testpaging.php,
+	tests/testpear.php, tests/testsessions.php: ADOdb v2.0 (Support for
+	PHP 4.2.0 ODBC api changes. New oci805, informix72 and postgres64
+	drivers. Misc bug fixes.)
+
+2002-05-14 14:06  tien
+
+	* lsqldev/cgi/admin/nph-import.cgi: fixed typo
+
+2002-05-14 13:14  alex
+
+	* lsqldev/install.cgi: added 2.1.1 upgrade code
+
+2002-05-14 12:43  alex
+
+	* lsqldev/cgi/admin/Links/Import/: L1S2.pm, L2S2.pm, RDFS2.pm,
+	S1S2.pm: fixed missing standard fields in importing, also fixed
+	odbc finish problem
+
+2002-05-13 09:59  alex
+
+	* lsqldev/cgi/admin/Links/User/Search.pm: fix naming convention
+
+2002-05-13 09:59  alex
+
+	* lsqldev/cgi/admin/Links/User/Review.pm: make sure ww is passed in
+
+2002-05-13 09:58  alex
+
+	* lsqldev/cgi/admin/Links/Import/: BKS2.pm, S2BK.pm: fixed backup
+	to backup all tables
+
+2002-05-13 09:58  alex
+
+	* lsqldev/cgi/admin/Links/Browser/Controler.pm: fixed typo in
+	permissions, would allow someone to see the move link form if they
+	had add cat privs
+
+2002-05-13 09:57  alex
+
+	* lsqldev/cgi/admin/Links/Build.pm: fixed shifting of root category
+
+2002-05-13 09:56  alex
+
+	* lsqldev/cgi/admin/Links/Admin.pm: changed {db} attribute to
+	{table} to make compat with GT::SQL::Admin
+
+2002-05-13 09:56  alex
+
+	* lsqldev/cgi/admin/nph-build.cgi: redid the repair categories to
+	not use in clause
+
+2002-04-13 23:02  brewt
+
+	* lsqldev/README.php: fixed typo.
+
+2002-04-13 03:29  brewt
+
+	* lsqldev/: lang_fr.README.php, lang_sp.README.php: the php
+	frontend now supports url sessions.
+
+2002-04-13 03:11  brewt
+
+	* lsqldev/cgi/admin/Links/PHP/Authenticate.inc.php: added a
+	hidden_query() function which returns t, s, etc fields as a url or
+	as a hidden form.  so now the php frontend supports the usage of
+	t=template (it did before, though it didn't keep the setting), and
+	url sessions.
+
+2002-04-10 18:55  alex
+
+	* lsqldev/package.pl: make sure packager includes AutoLoader and
+	Files
+
+2002-04-08 13:56  aki
+
+	* lsqldev/cgi/admin/Links/User/Page.pm: fixed links page spanning
+	bug when using non-".html" file extensions for build
+
+2002-04-04 17:30  alex
+
+	* lsqldev/cgi/admin/Links.pm: oops, broke parsing by missing
+	question mark
+
+2002-04-04 12:40  alex
+
+	* lsqldev/cgi/admin/Links/User/Modify.pm: RT-Ticket: 24
+	
+	Need to parse query string of dynamic preserve fields to avoid
+	duplication/replacing values.
+
+2002-04-02 12:27  alex
+
+	* lsqldev/README: RT-Ticket: 1
+	
+	another test..
+
+2002-03-30 10:27  alex
+
+	* lsqldev/cgi/admin/Plugins/plugin.cfg: oops, should default to an
+	empty plugin config file
+
+2002-03-30 10:26  alex
+
+	* lsqldev/cgi/admin/Links/SiteHTML.pm: fixed the regex used for
+	Category_Template to allow - in filenames
+
+2002-03-30 10:24  alex
+
+	* lsqldev/cgi/admin/Links/mod_perl.pm: removed sets from mod_perl
+	loading
+
+2002-03-13 12:37  alex
+
+	* lsqldev/cgi/admin/Links/Category.pm: parent cache was returning a
+	reference
+
+2002-03-05 14:07  alex
+
+	* lsqldev/cgi/admin/admin.cgi: default to have no space
+	restrictions with fileman
+
+2002-02-19 14:22  alex
+
+	* lsqldev/lang_sp.README.php: spanish readmes
+
+2002-02-13 16:09  alex
+
+	* lsqldev/: lang_fr.README.php, cgi/admin/Links/ConfigData.pm:
+	added french language to links sql
+
+2002-02-13 16:09  alex
+
+	* lsqldev/cgi/admin/Links/Import/Interface/CGI.pm: fixed loading of
+	config on windows
+
+2002-02-11 09:10  tien
+
+	* lsqldev/cgi/admin/templates/default/review_stats.html: fixed
+	broken background graph
+
+2002-02-08 17:36  tien
+
+	* lsqldev/html/images/default/stars-0.gif: added non_star image
+
+2002-02-01 10:56  alex
+
+	* lsqldev/cgi/admin/Links/User/Search.pm: update search index to
+	always ignore unvalidated links
+
+2002-02-01 10:55  alex
+
+	* lsqldev/README.php: updated php readme
+
+2002-01-25 18:40  alex
+
+	* lsqldev/cgi/admin/Links/Tools.pm: Fixed demo code with editing
+	templates
+
+2002-01-25 17:58  alex
+
+	* lsqldev/cgi/admin/Links/PHP/Search.inc.php: search string must be
+	at least 2 chars
+
+2002-01-25 17:56  alex
+
+	* lsqldev/cgi/admin/admin.cgi: fix printing of images from
+	admin.cgi
+
+2002-01-25 17:55  alex
+
+	* lsqldev/: Manual.doc, Manual.pdf: php updates to the manual
+
+2002-01-25 16:56  adrian
+
+	* lsqldev/cgi/admin/Links/PHP/Page.inc.php: changed custom page
+	(p=...) behaviour.
+
+2002-01-25 16:36  adrian
+
+	* lsqldev/cgi/admin/Links/PHP/Links.inc.php: ack, forgot to close
+	die();
+
+2002-01-22 14:35  alex
+
+	* lsqldev/cgi/admin/nph-build.cgi: fixed typo
+
+2002-01-22 14:01  alex
+
+	* lsqldev/cgi/admin/Links/Import/RDFS2.pm: fixed fatal if not using
+	internal search mode
+
+2002-01-22 11:14  alex
+
+	* lsqldev/cgi/admin/Links/Import/S2BK.pm: fixed backup dir problem
+
+2002-01-20 21:44  adrian
+
+	* lsqldev/cgi/admin/Links/PHP/adodb/: adodb-access.inc.php,
+	adodb-ado.inc.php, adodb-ado_access.inc.php,
+	adodb-ado_mssql.inc.php, adodb-borland_ibase.inc.php,
+	adodb-cryptsession.php, adodb-csv.inc.php, adodb-csvlib.inc.php,
+	adodb-db2.inc.php, adodb-errorhandler.inc.php,
+	adodb-errorpear.inc.php, adodb-fbsql.inc.php,
+	adodb-firebird.inc.php, adodb-ibase.inc.php, adodb-lib.inc.php,
+	adodb-mssql.inc.php, adodb-mysql.inc.php, adodb-mysqlt.inc.php,
+	adodb-oci8.inc.php, adodb-oci8po.inc.php, adodb-odbc.inc.php,
+	adodb-odbc_mssql.inc.php, adodb-odbc_oracle.inc.php,
+	adodb-oracle.inc.php, adodb-pear.inc.php, adodb-postgres.inc.php,
+	adodb-postgres7.inc.php, adodb-proxy.inc.php, adodb-session.php,
+	adodb-sybase.inc.php, adodb-vfp.inc.php, adodb.inc.php,
+	benchmark.php, readme.htm, test.php, test2.php, test3.php,
+	test4.php, test5.php, testcache.php, testdatabases.inc.php,
+	testoci8.php, testpaging.php, testpear.php, testsessions.php,
+	tohtml.inc.php: ADOdb v1.71
+
+2002-01-14 18:38  adrian
+
+	* lsqldev/cgi/admin/Links/PHP/Review.inc.php: make number of
+	reviews link show up in review pages.
+
+2002-01-11 22:46  adrian
+
+	* lsqldev/cgi/admin/Links/PHP/User.inc.php: insert instead of add
+	so registering works :)
+
+2002-01-11 17:14  adrian
+
+	* lsqldev/cgi/admin/templates/default_php/: add.html,
+	add_success.html, home.html, login_email.html, modify_success.html,
+	review_add_success.html: synchronized with regular default
+	templates.
+
+2002-01-11 16:53  adrian
+
+	* lsqldev/cgi/admin/Links/PHP/Utils.inc.php: make sure there are
+	id's before doing an IN ( )
+
+2002-01-09 19:57  adrian
+
+	* lsqldev/cgi/admin/templates/lang_de.default_php/:
+	include_menu.html, review_search_results.html: updated.
+
+2002-01-09 19:13  adrian
+
+	* lsqldev/cgi/admin/Links/PHP/SQL.inc.php: update error messages.
+
+2002-01-09 18:31  adrian
+
+	* lsqldev/cgi/admin/Links/PHP/Add.inc.php: changed to use add(),
+	and modify() and fixed error messages.
+
+2002-01-09 16:08  adrian
+
+	* lsqldev/cgi/admin/Links/PHP/convert.pl: fixed conversion of New,
+	Cool, etc links when they had a / at the end.
+
+2002-01-09 16:08  adrian
+
+	* lsqldev/cgi/admin/templates/default_php/include_menu.html: fixed
+	links.
+
+2002-01-09 15:55  alex
+
+	* lsqldev/install.cgi: add auto install of init functions
+
+2002-01-09 15:49  alex
+
+	* lsqldev/cgi/admin/Links/Import/L2S2.pm: another mssql fix
+
+2002-01-08 03:49  adrian
+
+	* lsqldev/cgi/admin/templates/default_php/review_edit.html: fixed
+	html.
+
+2002-01-08 03:28  adrian
+
+	*
+	lsqldev/cgi/admin/templates/default_php/review_search_results.html:
+	fixed review helpful by adding required hidden fields.
+
+2002-01-07 20:35  adrian
+
+	* lsqldev/cgi/admin/templates/default_php/: link.html,
+	modify_select.html, review_add.html, review_stats.html: sychronized
+	with regular default templates.
+
+2002-01-07 19:44  adrian
+
+	* lsqldev/cgi/admin/Links/PHP/Modify.inc.php: fix modify select
+	code.
+
+2002-01-06 23:17  adrian
+
+	* lsqldev/cgi/admin/Links/PHP/Jump.inc.php: flush output buffer
+	before outputting so that debug output doesn't get included with
+	file.
+
+2002-01-06 16:42  alex
+
+	* lsqldev/cgi/admin/Links/User/Review.pm: updated language
+
+2002-01-06 16:32  alex
+
+	* lsqldev/cgi/admin/Links/SiteHTML.pm: make sure reviews get loaded
+
+2002-01-06 16:32  alex
+
+	* lsqldev/cgi/admin/templates/default/review_stats.html: updated
+	look of reviews
+
+2002-01-06 04:25  adrian
+
+	* lsqldev/cgi/admin/templates/lang_de.default_php/:
+	include_search_bar.html, review_stats.html: updated with revised
+	convert.pl
+
+2002-01-06 04:22  adrian
+
+	* lsqldev/cgi/admin/templates/default_php/: email-add.txt,
+	email-del.txt, email-mod.txt, email-password.txt,
+	email-validate.txt, include_search_bar.html, review-email-add.txt,
+	review-email-del.txt: fix email templates with revised convert.pl
+
+2002-01-04 14:55  adrian
+
+	* lsqldev/cgi/admin/templates/default_php/review_edit_success.html:
+	synchronized with regular default template.
+
+2002-01-03 10:46  bao
+
+	* lsqldev/package.pl: added GT::Text into package
+
+2002-01-02 10:01  alex
+
+	* lsqldev/cgi/admin/Links/User/Page.pm: remove /o option as it
+	breaks under dual mod_perl config
+
+2001-12-31 17:51  adrian
+
+	* lsqldev/cgi/admin/templates/lang_de.default_php/: category.html,
+	detailed.html, home.html, include_header.html, subcategory.html:
+	synchronized with regular lang_de.default templates
+
+2001-12-31 17:47  adrian
+
+	* lsqldev/cgi/admin/templates/default_php/: category.html,
+	cool.html, detailed.html, email.html, error.html,
+	include_header.html, login.html, login_success.html, modify.html,
+	new.html, rate.html, rate_success.html, rate_top.html, search.html,
+	search_results.html, signup_form.html, signup_success.html,
+	subcategory.html, validate_form.html, validate_success.html:
+	synchronized with regular default template.
+
+2001-12-31 03:45  adrian
+
+	* lsqldev/cgi/admin/templates/lang_de.default_php/: email-add.txt,
+	email-del.txt, email-mod.txt, email-password.txt,
+	email-validate.txt, review-email-add.txt, review-email-del.txt:
+	reconverted with new convert.pl
+
+2001-12-30 20:20  alex
+
+	* lsqldev/cgi/admin/Links/mod_perl.pm: fixed mod_perl loader
+
+2001-12-30 20:20  alex
+
+	* lsqldev/cgi/admin/Links/User/Modify.pm: removed windows line
+	feeds
+
+2001-12-30 19:12  alex
+
+	* lsqldev/cgi/admin/Links/Category.pm: copy parent cache, so
+	changes don't mess things up
+
+2001-12-30 19:10  alex
+
+	* lsqldev/cgi/admin/Links/Browser/Controler.pm: fixed bug in
+	overlapping permissions with editors
+
+2001-12-30 18:42  alex
+
+	* lsqldev/cgi/admin/Links.pm: fixed bug with user_page not loading
+	from local
+
+2001-12-30 15:17  alex
+
+	* lsqldev/cgi/admin/Links/ConfigData.pm: fixed verify not loading
+	gt sql
+
+2001-12-30 14:05  alex
+
+	* lsqldev/cgi/admin/Links/Build.pm: fixed typo in always loading
+	build code
+
+2001-12-30 14:05  alex
+
+	* lsqldev/cgi/admin/Links/Admin.pm: fixed bug in importing of data
+
+2001-12-30 11:33  alex
+
+	* lsqldev/cgi/admin/nph-import.cgi: updated program initilization
+	routines
+
+2001-12-27 12:52  alex
+
+	* lsqldev/cgi/admin/templates/lang_de.default_php/: add.html,
+	add_success.html, admin-email-mod.txt, admin-email-val.txt,
+	admin-review-email-val.txt, cool.html, email.html, error.html,
+	include_footer.html, include_form.html, link.html, login.html,
+	login_email.html, login_success.html, modify.html,
+	modify_select.html, modify_success.html, new.html, rate.html,
+	rate_success.html, rate_top.html, review_add.html,
+	review_add_success.html, review_edit.html,
+	review_edit_success.html, search.html, search_results.html,
+	signup_form.html, signup_success.html, validate_form.html,
+	validate_success.html: Added german php templates
+
+2001-12-21 17:54  adrian
+
+	* lsqldev/cgi/admin/Links/PHP/Authenticate.inc.php: updated to use
+	fetchrow_one() and update()
+
+2001-12-11 14:53  adrian
+
+	* lsqldev/cgi/admin/Links/PHP/adodb/: adodb.gif, adodb.png,
+	adodb2.gif, adodb2.png, server.php, tute.htm: ADOdb v1.62
+
+2001-12-10 23:10  adrian
+
+	*
+	lsqldev/cgi/admin/templates/default_php/admin-review-email-val.txt:
+	synchronized with regular default template set.
+
+2001-12-07 13:37  tien
+
+	* lsqldev/html/images/default/stars-2-0.gif: add images
+
+2001-12-04 15:19  jagerman
+
+	* lsqldev/cgi/admin/Links/Import/L1S2.pm: it was sorting by
+	category id. Oops
+
+2001-11-07 18:36  adrian
+
+	* lsqldev/cgi/admin/templates/default_php/: admin-email-mod.txt,
+	admin-email-val.txt: updated templates.
+
+2001-11-05 20:56  adrian
+
+	* lsqldev/cgi/admin/templates/default_php/: include_footer.html,
+	include_form.html: default php templates.
+
+2001-10-31 11:19  adrian
+
+	* lsqldev/cgi/admin/Links/PHP/adodb/: client.php, crypt.inc.php,
+	readme.txt: ADODB v1.50 library.
+
+2001-10-27 14:23  alex
+
+	* lsqldev/cgi/admin/Links/Browser.pm: displayed alt cats when
+	modifying a link, and linked the titles
+
+2001-07-02 15:30  alex
+
+	* lsqldev/cgi/admin/Links/Plugins.pm: make sure plugins module
+	includes cfg by default
+
+2001-06-11 18:19  alex
+
+	* lsqldev/README: fixed upgrade wording changes
+
+2001-06-11 16:39  alex
+
+	* lsqldev/cgi/admin/Plugins/plugin.cfg: empty plugin file
+
+2001-05-01 14:27  jagerman
+
+	* lsqldev/cgi/admin/Links/Import/S1S2.pm: Updates for upcoming
+	Links SQL 2.1.0
+
+2001-02-07 18:57  alex
+
+	* lsqldev/cgi/admin/Links/Import/BKS2.pm: odbc fixes on import
+
+2001-01-19 14:23  alex
+
+	* lsqldev/cgi/admin/Links/Import/Interface/CGI.pm: made nph-import
+	work under SpeedyCGI, had to start using some Links modules
+
+# -------------------------------------- #
+# Library Changes.
+# -------------------------------------- #
+
+2002-06-11 15:58  alex
+
+	* library/GT/Packager.pm: updated packager to reflect ipc::run
+	change of behaviour
+
+2002-06-10 01:53  sbeck
+
+	* library/GT/IPC/Run.pm: Changed run to return exit status
+
+2002-06-05 16:10  alex
+
+	* library/GT/SQL/Search/INTERNAL/Search.pm: improved debugging
+
+2002-06-05 16:09  alex
+
+	* library/GT/SQL/Search/Base/Search.pm: fixed regex in determining
+	if things are or'd or and'd
+
+2002-06-05 16:09  alex
+
+	* library/GT/SQL/Search/NONINDEXED/Search.pm: fixed bug in
+	nonindexed mode with ORDER BY getting added twice
+
+2002-06-04 16:03  brewt
+
+	* library/GT/Mail/Send.pm: fix so that it doesn't die on email
+	addresses like: "1@foo.bar" <1@foo.bar> it does use the address in
+	the quotes though
+
+2002-06-04 15:39  jagerman
+
+	* library/GT/CGI.pm: escape(), unescape(), html_escape(), and
+	html_unescape() now pop the value - fixing a bug when passing in an
+	undefined variable
+
+2002-06-03 16:10  bao
+
+	* library/GT/FileMan/Commands.pm: oops.. syntax error
+
+2002-05-31 15:33  alex
+
+	* library/GT/Installer.pm: fixed installer breaking html in upgrade
+	exit message
+
+2002-05-31 12:15  jagerman
+
+	* library/GT/Base.pm: Updated in_eval to account for recent
+	mod_perls having an initial '(eval) called at /dev/null' line
+
+2002-05-31 11:37  jagerman
+
+	* library/GT/Image/Size.pm: Yanked Image::Size from cpan, and made
+	GT::Image::Size
+
+2002-05-29 11:08  jagerman
+
+	* library/GT/AutoLoader.pm: FileMan needs the keys to be left in
+	%COMPILE
+
+2002-05-28 22:19  jagerman
+
+	* library/GT/FileMan/lang_fr.Commands.pm: The french
+	GT::FileMan::Commands wasn't use()ing GT::AutoLoader
+
+2002-05-26 03:31  brewt
+
+	* library/GT/Mail/Parse.pm: don't output debug unless debug turned
+	on
+
+2002-05-26 03:26  brewt
+
+	* library/GT/Mail/Parts.pm: don't output debug info unless turned
+	on
+
+2002-05-24 23:49  jagerman
+
+	* library/: GT/Template/Parser.pm, tests/test_template.pl: Created
+	a work-around for nested commends not working. This new solution is
+	better - it supports unlimited levels of nested comments :)
+
+2002-05-24 23:47  jagerman
+
+	* library/GT/Template.pm: do "file" sets $! in Perl 5.00404 even
+	when it was successful
+
+2002-05-24 22:43  jagerman
+
+	* library/tests/compiled/.cvsignore: Added .cvsignore to the
+	compiled tests directory
+
+2002-05-24 11:31  alex
+
+	* library/GT/File/Tools.pm: removed fixme's from pod
+
+2002-05-21 17:58  jagerman
+
+	* library/GT/CGI/: Cookie.pm, Fh.pm, MultiPart.pm: Rewrote most of
+	GT::CGI, moving things like multipart handling into a new module
+
+2002-05-21 17:24  jagerman
+
+	* library/GT/Config.pm: get_file_line no longer an underscore
+	function
+
+2002-05-15 11:58  aki
+
+	* library/GT/SQL/Admin.pm: - file type allowed for varchars and
+	texts now (though text shouldn't be used) - warning added when file
+	columns are being altered
+
+2002-05-14 19:44  jagerman
+
+	* library/GT/SQL/Creator.pm: ->create didn't try to connect first
+
+2002-05-14 19:27  alex
+
+	* library/GT/SQL/Search/MSSQL/Indexer.pm: updated ms sql to not
+	fatal, but only warn on full text errors
+
+2002-05-14 17:21  jagerman
+
+	* library/GT/SQL/Driver/ORACLE.pm: Added fix for Oracle which uses
+	SUBSTR instead of SUBSTRING, like all the other DB's
+
+2002-05-11 13:03  alex
+
+	* library/GT/URI/: HTTP.pm, HTTPS.pm: debug now prints regardless
+	of debug_level, make sure to check _debug first
+
+2002-05-08 11:10  bao
+
+	* library/GT/SQL/File.pm: bugfix to allow file mods
+
+2002-05-07 10:32  sbeck
+
+	* library/GT/IPC/Run/Select.pm: Silence warnings
+
+2002-05-03 15:17  sbeck
+
+	* library/tests/File-Tools.pl: Added test for rmkdir
+
+2002-04-30 23:34  jagerman
+
+	* library/GT/IPC/Filter/: Block.pm, Line.pm, Stream.pm: Changes use
+	bases to use base
+
+2002-04-28 16:16  alex
+
+	* library/GT/SQL/Search/Base/STH.pm: centralized sortby/sortorder
+	and fixed bug with keeping score column in there
+
+2002-04-28 16:16  alex
+
+	* library/GT/SQL/Search/MYSQL/Indexer.pm: fixed mysql version check
+	(broke on 4.0.1)
+
+2002-04-28 16:15  alex
+
+	* library/GT/SQL/Editor.pm: silenced warning, and renamed things to
+	ease confusion
+
+2002-04-28 16:00  jagerman
+
+	* library/GT/SQL/Tree.pm: The depth is updated later - setting it
+	to 0 here screws things up (the detached thread will have a
+	negative depth)
+
+2002-04-25 15:33  sbeck
+
+	* library/GT/IPC/Run/Unix.pm: Switch to oneway for semaphore
+
+2002-04-25 15:32  sbeck
+
+	* library/GT/IPC/Run/Win32.pm: Now checks sysread() return and
+	goners to see if something is gone
+
+2002-04-25 15:31  sbeck
+
+	* library/tests/IPC-Run.pl: Added blocking tests
+
+2002-04-24 12:11  alex
+
+	* library/GT/SQL/Display/HTML.pm: fixed toolbar url parsing
+
+2002-04-23 21:07  alex
+
+	* library/GT/IPC/Run/Child.pm: redid child to not use gt base
+
+2002-04-23 19:53  alex
+
+	* library/GT/SQL/Driver/PG.pm: added note about how to do
+	timestamps properly in postgres
+
+2002-04-23 19:08  jagerman
+
+	* library/GT/Installer/: language.cn, language.de, language.en,
+	language.fr, language.sp: Typo - the GForum upgreade message wasn't
+	being display
+
+2002-04-20 20:46  sbeck
+
+	* library/GT/IPC/Filter.pm: Applied jasons patch which fixed some
+	line lengths in pod
+
+2002-04-20 17:09  alex
+
+	* library/GT/SQL/Driver/ODBC.pm: fixed regex that wasn't matching
+	on some perl
+
+2002-04-19 10:29  aki
+
+	* library/GT/HTML.pm: updated tokenizer regexs to recognize and
+	handle broken html
+
+2002-04-18 16:35  alex
+
+	* library/GT/Mail.pm: fixed mailer using localized date strings
+	when setting date header
+
+2002-04-18 16:33  alex
+
+	* library/: GT/Date.pm, tests/Date.pl: added Date test script, move
+	public subroutines out of private comment block, and made it so you
+	can local language globals without affecting the cache.
+
+2002-04-16 17:43  alex
+
+	* library/GT/SQL/Base.pm: fixed chaining problem that is causing
+	headaches with dbi 1.21
+
+2002-04-12 15:38  alex
+
+	* library/GT/Mail/POP3.pm: some mail servers do not accept 'LIST '
+	(even though they should).
+
+2002-04-12 15:15  jagerman
+
+	* library/GT/Template/Inheritance.pm: GT::Template::Inheritance
+	needs GT::Template sometimes
+
+2002-04-12 14:43  sbeck
+
+	* library/GT/HTML/ToText.pm: Avoid warnings
+
+2002-04-12 14:43  sbeck
+
+	* library/GT/HTML/LinkExtractor.pm: Added start_base event
+
+2002-04-12 14:14  sbeck
+
+	* library/GT/CGI/EventLoop.pm: User MIMETypes to get the header
+	type
+
+2002-04-10 18:12  jagerman
+
+	* library/GT/SQL/Table.pm: Fixed a tree problem (not all records
+	were always properly deleted), and moved a couple GT::Template
+	functions into %COMPILE
+
+2002-04-08 15:08  tien
+
+	* library/GT/FileMan.pm: added base_env to FileMan
+
+2002-04-08 11:00  jagerman
+
+	* library/bases.pm: Only require GT::Dumper when needed
+
+2002-04-07 15:33  jagerman
+
+	* library/tests/: .cvsignore, i1/.cvsignore,
+	i1/compiled/.cvsignore, i3/.cvsignore, i3/compiled/.cvsignore:
+	Added .cvsignore files to template test directories
+
+2002-04-06 19:35  jagerman
+
+	* library/: constants.pm, GT/Cache.pm, GT/Lock.pm, GT/MD5.pm,
+	GT/MIMETypes.pm, GT/Menu.pm, GT/Robot.pm, GT/Socket.pm,
+	GT/SpellCheck.pm, GT/Tar.pm, GT/TempFile.pm, GT/URI.pm,
+	GT/HTML/Parser.pm, GT/MD5/Crypt.pm, GT/Mail/BulkMail.pm,
+	GT/Mail/Editor.pm, GT/Mail/Encoder.pm, GT/Mail/Message.pm,
+	GT/Plugins/Installer.pm, GT/Plugins/Manager.pm,
+	GT/Plugins/Profiler.pm, GT/Robot/Rules.pm, GT/SQL/Driver.pm,
+	GT/SQL/Display/HTML/Relation.pm, GT/SQL/Display/HTML/Table.pm,
+	GT/SQL/Search/Base/Common.pm, GT/SQL/Search/INTERNAL/Indexer.pm,
+	GT/SQL/Search/MSSQL/Search.pm, GT/SQL/Search/MYSQL/Search.pm,
+	GT/SQL/Search/NONINDEXED/Indexer.pm, GT/Session/File.pm,
+	GT/Session/SQL.pm, GT/Session/TempTable.pm, GT/Text/Tools.pm:
+	Code/style cleanup, __END__ blocks, GT::AutoLoader additions, and
+	added __LINE__ for all %COMPILE subs
+
+2002-04-06 17:05  jagerman
+
+	* library/docs/style_comments_examples.htm: Cleaned up HTML, moved
+	code inside <pre>
+
+2002-04-06 17:05  jagerman
+
+	* library/docs/style_curlies_examples.htm: Added example of the BAD
+	semicolons after code blocks
+
+2002-04-06 17:04  jagerman
+
+	* library/docs/style_pod_example.htm: HTML-escaped $ around $Id$
+
+2002-04-06 17:04  jagerman
+
+	* library/docs/style.htm: Added note about no trailing semicolon:
+	if (...) { ... };, and note about no variables named "$tmp",
+	"$hash", "$aref", etc.
+
+2002-04-05 20:08  jagerman
+
+	* library/GT/Plugins.pm: Removed tabs
+
+2002-04-04 18:45  jagerman
+
+	* library/GT/: Dumper.pm, SQL.pm, SQL/Condition.pm,
+	SQL/Relation.pm, SQL/Search.pm, SQL/Driver/DB2.pm,
+	SQL/Tree/Rebuild.pm: GT::AutoLoader - moved many things into
+	%COMPILE hashes, added many __END__ tokens, cleaned up some code
+
+2002-04-04 18:41  jagerman
+
+	* library/GT/SQL/Search/Base/Indexer.pm: Code cleanup
+
+2002-03-28 15:57  jagerman
+
+	* library/tests/: i3/.tplinfo, template_tests/6: Added alias tests,
+	fixed some tests that required my home directory ;-)
+
+2002-03-25 14:06  alex
+
+	* library/docs/style_space_examples.htm: first revision of gt style
+	docs
+
+2002-03-12 18:30  aki
+
+	* library/GT/Parser/Lexer/NDFA.pm: default actions weren't going
+	were they were supposed to be
+
+2002-03-12 17:42  aki
+
+	* library/GT/Parser/Lexer/skel/perl.lex.skel.pm: defaulted when it
+	was 0 to wrong value, oops
+
+2002-03-12 17:42  aki
+
+	* library/GT/Parser/Lexer/Generator.pm: fixed default response
+	offset bug
+
+2002-02-26 12:26  tien
+
+	* library/GT/FileMan.pm: fixed relative path issue in HTML editor
+
+2002-02-21 09:42  aki
+
+	* library/tools/plex: simple implmentation of plexer
+
+2002-02-19 14:20  alex
+
+	* library/GT/Installer/language.sp: missing welcome
+
+2002-02-19 11:19  aki
+
+	* library/GT/Parser/Lexer/: DFA.pm, Parser.pm: yuckified the code a
+	fair bit
+
+2002-02-14 19:11  jagerman
+
+	* library/GT/SQL/Driver/MYSQL.pm: Added debugging showing the
+	execute time of the query if debugging is on and Time::HiRes has
+	been loaded (Time::HiRes won't be loaded)
+
+2002-02-14 16:31  bao
+
+	* library/GT/FileMan/Commands.pm: fixed cmd_preference
+
+2002-02-14 13:05  alex
+
+	* library/GT/Installer/language.fr: french language install file
+
+2002-02-14 10:33  tien
+
+	* library/GT/FileMan/lang_fr.Commands.pm: added French language to
+	Fileman
+
+2002-02-01 11:27  alex
+
+	* library/GT/SQL/Search/Base/Search.pm: updated debug output to
+	return current filter
+
+2002-02-01 11:27  alex
+
+	* library/GT/SQL/Base.pm: fixed bug with filter getting duplicated
+
+2002-01-25 18:09  alex
+
+	* library/GT/SQL/Display/HTML/Table.pm: fixed blank names (didn't
+	fix why they are blank, only fixed the display)
+
+2002-01-24 16:55  sbeck
+
+	* library/GT/CGI/EventLoop.pm: Major changes
+
+2002-01-23 16:20  jagerman
+
+	* library/GT/SQL/Search/MSSQL/Search.pm: Why should't you be
+	allowed to search with _any_ mh value?
+
+2002-01-23 14:22  alex
+
+	* library/GT/SQL/Search/NONINDEXED/Search.pm: silence warning
+
+2002-01-23 12:05  alex
+
+	* library/GT/SQL/Search/Base/Common.pm: lc opt
+
+2002-01-22 21:28  alex
+
+	* library/GT/: Template.pm, Template/Parser.pm: move template
+	compiled mkdir into dont_save code
+
+2002-01-17 15:35  jagerman
+
+	* library/GT/SQL/Admin.pm: IE6 won't submit a GET form larger than
+	about 2KB
+
+2002-01-16 16:43  jagerman
+
+	* library/GT/SQL.pm: Moved ->creator() to GT::SQL::Base
+
+2002-01-14 11:42  jagerman
+
+	* library/GT/Base.pm: "initial" has an "a" in it.
+
+2002-01-14 11:41  jagerman
+
+	* library/GT/MIMETypes.pm: Lower-case the file extensions
+
+2002-01-09 16:03  alex
+
+	* library/GT/Installer.pm: typo
+
+2002-01-09 10:22  bao
+
+	* library/GT/Packager.pm: removed rm command
+
+2002-01-07 17:01  aki
+
+	* library/GT/SQL/File.pm: little typo
+
+2002-01-06 17:40  alex
+
+	* library/GT/SQL/: Creator.pm, Driver.pm, Editor.pm, Relation.pm,
+	Table.pm, Display/HTML.pm, Driver/DB2.pm, Driver/ODBC.pm,
+	Driver/ORACLE.pm, Driver/PG.pm: depreciated gt::sql->prefix
+	$GT::SQL::PREFIX
+
+2002-01-04 17:11  jagerman
+
+	* library/GT/Config.pm: Fix to GT::Config. It wasn't inheriting
+	from non-local, and it was loading local if they exist whether ot
+	not "local" option specified.
+
+2002-01-02 11:40  aki
+
+	* library/GT/SQL/Search/INTERNAL/Search.pm: fixes to the phrase
+	search
+
+2001-12-31 11:36  sbeck
+
+	* library/GT/Mail/Parts.pm: Missing encode routine
+
+2001-12-30 20:20  alex
+
+	* library/GT/SQL/Sets.pm: silenced warning
+
+2001-12-17 11:40  jagerman
+
+	* library/GT/Mail/Editor.pm: Oops, wasn't quite done
+
+2001-12-15 10:58  jagerman
+
+	* library/GT/HTML/Parser.pm: Needed for setting skip_comment
+
+2001-12-14 14:14  bao
+
+	* library/GT/Mail/Parse.pm: fixed in_handle subroutine
+
+2001-12-13 17:08  alex
+
+	* library/GT/Socket.pm: include system error in error message
+
+2001-12-12 16:11  alex
+
+	* library/GT/Installer/language.en: added perl version check into
+	installer
+
+2001-12-12 13:08  alex
+
+	* library/GT/: Plugins.pm, Plugins/Profiler.pm: fixed auto hook
+	generation
+
+2001-12-10 13:15  alex
+
+	* library/GT/: Mail.pm, Mail/BulkMail.pm, Mail/Encoder.pm,
+	Mail/Message.pm, Mail/POP3.pm, Mail/Send.pm: rolling back new mail
+	changes, they have now been branched in GT_Mail_New tag
+
+2001-12-09 18:09  jagerman
+
+	* library/tests/test_template.pl: Added test for tags (did this a
+	long time ago, but it wasn't comitted)
+
+2001-12-04 14:27  sbeck
+
+	* library/GT/HTML/LinkExtractor.pm: Made the example nicer, and
+	changed for new parser data structure
+
+2001-11-30 12:00  sbeck
+
+	* library/GT/HTML/ToText.pm: Better spacing
+
+2001-11-27 21:07  alex
+
+	* library/GT/Text/Tools.pm: 5.00404 fixes
+
+2001-11-27 19:16  jagerman
+
+	* library/GT/CGI.pm: IIS redirection would have problems when
+	redirecting to a URL with ";"'s in it
+
+2001-11-27 17:36  jagerman
+
+	* library/GT/Session/SQL.pm: date_get and GT::Date aren't used
+
+2001-11-23 20:22  sbeck
+
+	* library/GT/Date.pm: am pm bug
+
+2001-11-23 15:56  bao
+
+	* library/GT/Session/File.pm: fixed it that runs properly with -T
+
+2001-11-22 15:55  sbeck
+
+	* library/GT/SQL/Condition.pm: Oops
+
+2001-11-16 16:12  jagerman
+
+	* library/tests/i3/.tplinfo: Added inheritance support to
+	GT::Template, using .tplinfo. Also added tests.
+
+2001-11-14 15:56  alex
+
+	* library/GT/SQL/Search.pm: don't include base in list of drivers
+
+2001-11-14 13:37  alex
+
+	* library/GT/SQL/Search/MSSQL/Indexer.pm: working MSSQL full text
+	search
+
+2001-11-13 13:24  alex
+
+	* library/GT/SQL/Driver/MYSQL.pm: modified debug so prepare is
+	printed with debug level 2, execute with debug level 1, and so that
+	placeholders are replaced in debug output
+
+2001-11-09 17:29  alex
+
+	* library/GT/SQL/Search/INTERNAL/Indexer.pm: updated search index,
+	improves results considerably on some queries
+
+2001-11-07 18:02  alex
+
+	* library/GT/SQL/Search/Base/STH.pm: added missing fetchrow methods
+
+2001-11-06 18:57  alex
+
+	* library/GT/MD5.pm: removed goto from md5, was causing problems on
+	perl 5.00404
+
+2001-10-31 10:28  alex
+
+	* library/GT/Installer/: language.cn, language.de: updated
+	installer with new copyright/forum url
+
+2001-10-30 14:44  sbeck
+
+	* library/GT/TempFile.pm: find needed to return the path
+
+2001-10-30 14:05  sbeck
+
+	* library/GT/Lock.pm: Added additional argument to lock that allows
+	a type of lock.
+
+2001-10-29 20:40  alex
+
+	* library/bases.pm: added strict compat
+
+2001-10-29 20:36  alex
+
+	* library/constants.pm: moved version to below use vars
+
+2001-10-27 16:19  sbeck
+
+	* library/GT/Dumper.pm: Added EOL variable.
+
+2001-10-26 15:53  aki
+
+	* library/GT/URI/HTTP.pm: so that queries are passed in the proper
+	order
+
+2001-10-16 13:55  aki
+
+	* library/GT/Plugins/Manager.pm: Will always return an array ref
+	for checkbox option now
+
+2001-10-10 18:08  aki
+
+	* library/GT/Plugins/Installer.pm: added support for more than one
+	form element type: text/html/checkbox... etc
+
+2001-10-02 12:11  aki
+
+	* library/GT/SQL/Search/MYSQL/Indexer.pm: removed unrequired ATTRIB
+	settings
+
+2001-10-01 15:04  alex
+
+	* library/GT/: HTML.pm, Robot.pm, Robot/Rules.pm: removed cvs info
+	tag
+
+2001-09-27 17:47  aki
+
+	* library/GT/SQL/Search/MYSQL/Search.pm: handle phrases properly
+
+2001-09-25 23:08  jagerman
+
+	* library/GT/Cache.pm: require GT::Dumper; since it isn't use()d
+
+2001-09-17 16:41  aki
+
+	* library/GT/SQL/Search/Base/Indexer.pm: Bugfixes to NONINDEXED and
+	a few requests
+
+2001-09-17 13:29  aki
+
+	* library/GT/SQL/Search/NONINDEXED/Indexer.pm: Broke each Search
+	Driver into two parts, index/search and added nonindexed search
+	driver
+
+2001-09-12 19:19  alex
+
+	* library/GT/Tar.pm: pod update
+
+2001-08-21 13:06  aki
+
+	* library/GT/SQL/Display/HTML/Relation.pm: better support for
+	relations object in conjunction with the file handler
+
+2001-08-10 11:27  jagerman
+
+	* library/GT/SpellCheck.pm: Oops, was my()ing it twice
+
+2001-04-24 14:05  jagerman
+
+	* library/tests/template_tests/6: Added template test files, added
+	several new tests to test_template.pl, including testing of x, +,
+	*, /, etc. operators.
+
+2001-04-01 16:43  aki
+
+	* library/GT/URI.pm: Makes sure that the attributes are passed
+	properly even in the event of an error
+
+2001-02-19 19:04  jagerman
+
+	* library/GT/MD5/Crypt.pm: Added gt_md5_crypt which uses "$GT" as
+	it's magic
+
+2001-02-10 17:11  aki
+
+	* library/GT/: Session/TempTable.pm, URI/HTTPS.pm: Updated stuff
+	from the Spider.
+

@@ -1,0 +1,35 @@
+<?php
+define('TEXT_NAME','Nom');
+define('TEXT_ADDRESS','Adresse');
+define('TEXT_CITY','Ville');
+define('TEXT_SELECT_ONE','- veuillez choisir -');
+define('TEXT_PROVINCE','Département');
+define('TEXT_POSTAL_CODE','Code Postal');
+define('TEXT_COUNTRY','Pays');
+define('TEXT_PHONE','Téléphone');
+define('TEXT_GENDER','Civilité');
+define('TEXT_EMAIL','Email');
+define('TEXT_URL','Site Internet');
+define('TEXT_BIRTH_YEAR','Année de naissance');
+define('TEXT_PASSWORD','Mot de passe');
+define('TEXT_CONFIRM_PASSWORD','Confirmez mot de passe');
+define('TEXT_MODIFICATION_SUCCESS','Modification effectuée');
+define('TEXT_PERSONAL_INFORMATION','Informations personnelles');
+define('TEXT_NEW_ACCOUNT_CREATION_SUCCESS','Nouveau compte créé avec succès.');
+define('JS_ERROR','Des erreurs sont survenues.\nVeuillez apporter les corrections suivantes :\n\n');
+define('ERRORS_OCCURED','Des erreurs sont survenues durant le traitement de vos données...');
+define('NAME_ERROR','*Le champ '.TEXT_NAME.' field must contain only caractères doit contenir aumoins '.ENTRY_NAME_MIN_LENGTH.' caractères.');
+define('ADDRESS_ERROR','*Le champ '.TEXT_ADDRESS.' doit contenir aumoins '.ENTRY_ADDRESS_MIN_LENGTH.' caractères.');
+define('CITY_ERROR','*Le champ '.TEXT_CITY.' doit contenir aumoins '.ENTRY_CITY_MIN_LENGTH.' caractères.');
+define('POSTALCODE_ERROR','*Le champ '.TEXT_POSTAL_CODE.' doit contenir aumoins '.ENTRY_POSTALCODE_MIN_LENGTH.' caractères.');
+define('PHONE_ERROR','*Le champ '.TEXT_PHONE.' doit contenir aumoins '.ENTRY_PHONE_MIN_LENGTH.' caractères et doit contenir que des chiffres.');
+define('BIRTH_YEAR_ERROR','*Le champ '.TEXT_BIRTH_YEAR.' doit contenir exactement '.ENTRY_BIRTHYEAR_LENGTH.' caractères et doit contenir que des chiffres.');
+define('EMAIL_ERROR','*Le champ '.TEXT_EMAIL.' doit contenir aumoins '.ENTRY_EMAIL_MIN_LENGTH.' caractères et doit être une adresse email valide.');
+define('LOGIN_ERROR','*Le champ '.TEXT_LOGIN.' doit contenir aumoins '.ENTRY_LOGIN_MIN_LENGTH.' caractères.');
+define('PASSWORD_ERROR','*Le champ '.TEXT_PASSWORD.' doit contenir aumoins '.ENTRY_PASSWORD_MIN_LENGTH.' caractères.');
+define('CONFPASSWORD_ERROR','*Le champ '.TEXT_CONFIRM_PASSWORD.' doit contenir aumoins '.ENTRY_PASSWORD_MIN_LENGTH.' characters and must be identical with .TEXT_PASSWORD. field.');
+define('ALLREADY_EMAIL_ERROR','Cette adresse email existe déjà.');
+define('TERMS_ERROR','Vos informations seront validées uniquement si vous acceptez les termes & conditions d\'utilisation du site.');
+define('TEXT_HIDDEN_INFORMATION','<font color="red"><b>* Confidential - UNDISCLOSED</b></font>');
+define('TEXT_EMAIL_JOBSEEKER','[ Send Private Message ]');
+?>

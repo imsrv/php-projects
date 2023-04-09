@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>PerlCoders MaskUrl -- Admin Interface</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<center>
+<form action="%url%" method="post">
+<input type="hidden" name="action" value="configsave">
+<table border="0" width="90%">
+<tr>
+	<td align="center" colspan="2" bgcolor="blue">
+	<font color="#FFFFFF">Edit Configuration</font>
+	</td>
+</tr>
+<tr>
+	<td align="center" colspan="2">
+	Edit your configuration here.
+	</td>
+</tr>
+<tr>
+	<td align="center" colspan="2" bgcolor="blue">
+	<font color="#FFFFFF">Database Configuration</font>
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Database Server</td>
+	<td align="left">
+		<input type="text" name="dbserver" value="%dbserver%">
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Database Name</td>
+	<td align="left">
+		<input type="text" name="dbname" value="%dbname%">
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Database User</td>
+	<td align="left">
+		<input type="text" name="dbuser" value="%dbuser%">
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Database Password</td>
+	<td align="left">
+		<input type="text" name="dbpass" value="%dbpass%">
+	</td>
+</tr>
+<tr>
+	<td align="center" colspan="2" bgcolor="blue">
+	<font color="#FFFFFF">Masker Configuration</font>
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">URL to Scripts</td>
+	<td align="left">
+		<input type="text" name="scripturl" value="%scripturl%">
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Non-Existing user Redirect</td>
+	<td align="left">
+		<input type="text" name="non_exist_redir" value="%non_exist_redir%">
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">URL to file to use in the mask frame</td>
+	<td align="left">
+		<input type="text" name="mask_frame_url" value="%mask_frame_url%">
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Size (in pixels) to use for the mask frame</td>
+	<td align="left">
+		<input type="text" name="mask_frame_size" value="%mask_frame_size%">
+	</td>
+</tr>
+<tr>
+	<td align="center" colspan="2" bgcolor="blue">
+	<font color="#FFFFFF">E-Mail Configuration</font>
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">E-Mail Address to use for sending e-mail</td>
+	<td align="left">
+		<input type="text" name="from_addr" value="%from_addr%">
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">E-Mail Address to send e-mail to</td>
+	<td align="left">
+		<input type="text" name="to_addr" value="%to_addr%">
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Location of your sendmail binary</td>
+	<td align="left">
+		<input type="text" name="mailprog" value="%mailprog%">
+	</td>
+</tr>
+<tr>
+	<td align="right" colspan="2">
+		<input type="submit" value="Save">
+		</form>
+	</td>
+</tr>
+<tr>
+	<td align="right" colspan="2">
+		<form action="%url%" method="post">
+		<input type="hidden" name="action" value="main">
+		<input type="submit" value="Main Menu">
+		</form>
+	</td>
+</tr>
+</table>
+</center>
+</body>
+</html>

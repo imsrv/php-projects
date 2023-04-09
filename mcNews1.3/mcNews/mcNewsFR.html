@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>mcNews Lisez moi</title>
+<style type="text/css">
+<!--
+a:link {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: x-small; font-weight: bold; color: #666666; text-decoration: none}
+a:active {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: x-small; font-weight: bold; color: #666666; text-decoration: none}
+a:visited {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: x-small; font-weight: bold; color: #666666; text-decoration: none}
+a:hover {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: x-small; font-weight: bold; color: #CCCCCC; text-decoration: none}
+-->
+</style>
+</head>
+<body bgcolor="#C0C0C0" text="black">
+
+<p align="right"> <font face="Verdana, Arial, Helvetica, sans-serif" size="4" color="#000000"> 
+  <b><font size="5">mcNews 1.3</font></b> </font> </p>
+<hr>
+<table width="65%" border="0" cellspacing="1" align="center">
+  <tr> 
+    <td bgcolor="#999999"><font face="verdana" size="3"><b>Description</b></font></td>
+  </tr>
+  <tr> 
+    <td><br>
+      <font face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>- Section 
+      publique</b><br>
+      <br>
+      <b>La page d'accueil</b> (index.php) montre au visiteur une barre de navigation 
+      avec trois liens:<br>
+      <b>liste</b> (list.php)<br>
+      <b>chercher</b> (search.php) <br>
+      <b>proposer</b> (ecrire.php) <<br>
+      En dessous de cette barre les x derni&egrave;res News sont affich&eacute;es 
+      en d&eacute;tail:<br>
+      Date, titre et auteur, suivi des ic&ocirc;nes/liens vers le site et l'email 
+      de l'auteur si il les a indiqu&eacute;s dans le formulaire ecrire.php. Le 
+      site s'ouvre dans une nouvelle fen&ecirc;tre, et l'email renvoie vers un 
+      formulaire de contact mailto.php, l'adresse email restant ainsi invisible. 
+      On trouve ensuite le texte de la News, puis jusqu'&agrave; trois liens suivis 
+      de leur description. Ensuite le visiteur a la possibilit&eacute; de <b>lire</b> 
+      les commentaires (lire.php) s'il y en a, ou d'en <b>&eacute;crire</b> un 
+      (comment.php).</font><br>
+      <br>
+      <br>
+      <font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a><b>Liste</b></a> 
+      affiche donc les xx derni&egrave;res News, class&eacute;es par date, avec 
+      leur sujet et leur auteur. Un clic sur l'une d'elles envoie &agrave; la 
+      page <b>lire</b>.</font> <br>
+      <br>
+      <font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a><b>Chercher</b></a> 
+      propose une recherche dans toutes les News avec de un &agrave; trois mots-clefs, 
+      l'op&eacute;rateur ET ou OU, et la possibilit&eacute; de rechercher dans 
+      les auteurs, les titres ou les textes. L'affichage se pr&eacute;sente comme 
+      la page liste.</font><br>
+      <br>
+      <font face="Verdana, Arial, Helvetica, sans-serif" size="2"><a><b>Proposer</b></a> 
+      est le formulaire de proposition de News. Pas de restriction, tout visiteur 
+      peut proposer une News, mais elle devra &ecirc;tre valid&eacute;e par vous 
+      avant d'&ecirc;tre publi&eacute;e. Les champs obligatoires sont: Nom, Titre 
+      et Texte. Email est facultatif, mais doit &ecirc;tre valide si renseign&eacute;. 
+      Il est possible d'ins&eacute;rer jusqu'&agrave; trois liens et leur description 
+      en fin de texte, et quatre smilies sont automatiquement g&eacute;r&eacute;s: 
+      :) &nbsp;&nbsp;:( &nbsp;&nbsp;:grr: et &nbsp;?!? sont remplac&eacute;s par 
+      <img src="images/content.gif" width="15" height="15" alt=":)">&nbsp;<img src="images/cry.gif" width="15" height="15" alt=":(">&nbsp;<img src="images/grr.gif" width="16" height="16" alt=":grr:"> 
+      et <img src="images/crazy2.gif" width="15" height="15" alt="?!?">. Les balise 
+      HTML ne sont pas reconnues, &eacute;vitant les mauvaises plaisanteries. 
+      Vous recevez un email vous informant de la proposition d'une News et vous 
+      invitant &agrave; aller la valider.<br>
+      Privil&egrave;ge administrateur: en tapant admin dans le champ nom et en 
+      validant, vous &ecirc;tes redirig&eacute; sur le formulaire r&eacute;serv&eacute;(voir 
+      plus bas).<br>
+      <br>
+      <b>Lire</b> le ou les commentaires affiche la News concern&eacute;e et en 
+      dessous tous les commentaires ajout&eacute;s par les lecteurs. Les commentaires 
+      se pr&eacute;sentent comme la News, le titre en moins.<br>
+      M&ecirc;me privil&egrave;ge pour l'administrateur que ci-dessus.<br>
+      <br>
+      <b>Ecrire</b> permet donc de commenter une News. Comme pour proposer, tout 
+      visiteur peut poster un commentaire, mais vous devez le valider pour qu'il 
+      soit publi&eacute;. Les caract&eacute;ristiques du formulaire de commentaire 
+      sont les m&ecirc;mes que celles des News, et vous &ecirc;tes &eacute;galement 
+      pr&eacute;venu par mail.<br>
+      <br>
+      <br>
+      <b>- Section administration</b><br>
+      <br>
+      Une fois pass&eacute;e la page de login, plusieurs choix:<br>
+      <br>
+      <b>Param&egrave;tres de pr&eacute;sentation</b> (design.php). Vous choisissez 
+      ici l'apparence de mc News (seulement pour la partie publique) en fonction 
+      des fichiers qui sont dans le dossier <b>skin</b>. Vous n'en trouverez que 
+      deux pour le moment, &agrave; vous d'en faire un assorti &agrave; votre 
+      site. Et surtout pensez &agrave; me les envoyer, je les mettrai &agrave; 
+      disposition de tous.<br>
+      <br>
+      <b>Param&egrave;tres techniques</b> (tech.php). Il faut ici choisir la langue, 
+      de la m&ecirc;me mani&egrave;re que pour les couleurs, les fichiers &eacute;tant 
+      dans le dossier <b>lang</b>. M&ecirc;me demande de ma part, faites passer! 
+      Vous devez &eacute;galement renseigner les autres champs. Le nom c'est celui 
+      que vous voulez voir appara&icirc;tre dans &quot;auteur&quot; sur vos News, 
+      l'email c'est pour les avis de post et l'URL du site pour le lien qui vous 
+      permet de quitter l'admin apr&egrave;s d&eacute;connexion. Le nombre de 
+      News sur page d'accueil correspond au nombre de News &quot;d&eacute;ploy&eacute;es&quot; 
+      que vous voulez voir appara&icirc;tre (g&eacute;n&eacute;ralement de 5 &agrave; 
+      10, mais le choix est libre, attention &agrave; la vitesse d'affichage &agrave; 
+      cause du nombre de requ&ecirc;tes), le nombre de News en page liste peut 
+      &ecirc;tre beaucoup plus grand, d'autant qu'il d&eacute;termine aussi le 
+      nombre de r&eacute;ponses possibles en recherche.<br>
+      <br>
+      <b>News &agrave; valider</b> vous en montre la liste. Cliquer sur une vous 
+      envoie vers la page valider modifier supprimer (valid.php)<br>
+      <br>
+      <b>Commentaires &agrave; valider pour</b>: ici sont list&eacute;es les News 
+      d&eacute;j&agrave; valid&eacute;es mais qui ont re&ccedil;u un nouveau commentaire. 
+      Les liens vous envoient &agrave; la m&ecirc;me page que ci-dessus.<br>
+      <br>
+      <b>News valid&eacute;es</b> est la liste de toutes les News pour lesquelles 
+      il n'y a rien de nouveau. Utilisez-la pour supprimer les plus anciennes, 
+      de fa&ccedil;on &agrave; &eacute;viter l'engorgement de la base de donn&eacute;es. 
+      Toujours la m&ecirc;me page.<br>
+      <br>
+      <b>Publier</b> une News, en haut &agrave; droite, vous ouvre un formulaire 
+      pr&eacute;-rempli avec votre nom et vote email (fix&eacute;s dans les param&egrave;tres 
+      techniques). Dans ce formulaire vous pouvez utiliser le HTML, pour &eacute;crire 
+      en couleurs, en gras, voire ins&eacute;rer des images ou des liens dans 
+      le texte. Tout est possible, m&ecirc;me les erreurs! Donc soyez prudent. 
+      D'autre part les News Administrateur sont valid&eacute;es d'office.<br>
+      <br>
+      <b>Valider Modifier Supprimer</b> affiche une News et ses eventuels commentaires. 
+      Cliquer sur valider la valide, sur modifier ouvre un formulaire vous permettant 
+      de tout modifier, et d'ajouter du HTML &eacute;ventuellement. Une News que 
+      vous modifiez doit ensuite &ecirc;tre valid&eacute;e, le mot valid&eacute; 
+      est alors rouge. M&ecirc;me proc&eacute;dures pour les commentaires. Supprimer 
+      une News supprime &eacute;galement tous ses commentaires, supprimer un commentaire 
+      ne supprime que lui. Vous pouvez aussi &agrave; partir de cette page &eacute;crire 
+      un commentaire, et en tant qu'administrateur il jouit des privil&egrave;ges 
+      d&eacute;j&agrave; vus plus haut.<br>
+      <br>
+      &nbsp; </font></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#999999"> <font face="verdana" size="3"><b>Installation</b></font></td>
+  </tr>
+  <tr> 
+    <td> 
+      <p><font face="verdana" size="2"><br>
+        Editez le fichier <b>config.inc.php</b> et renseignez les variables. <br>
+        <b>$admin_login</b> et <b>$admin_pass</b> seront vos login et mot de passe 
+        d'accès &agrave; l'administration de mcNews. <br>
+        Envoyez ensuite le r&eacute;pertoire<b>mcNews</b> complet sur votre serveur 
+        Web. <br>
+        Connectez-vous et naviguez jusqu'&agrave; <b>http://www.votresite/.../mcNews/admin/install.php</b>, 
+        <br>
+        ... et suivez simplement les instructions. Renseignez bien le formulaire 
+        <b>Param&egrave;tres techniques</b>. </font></p>
+      <p><font face="verdana" size="3"><b><font size="2">Un peu de modestie ;)</font></b></font><br>
+        <a href="http://validator.w3.org/check/referer"><img border="0"
+        src="images/w3c.gif"
+        alt="Valid HTML 4.01!" height="31" width="88"></a><font face="verdana" size="1">(oui, 
+        je sais, pour beaucoup c'est la moindre des choses)</font> </p>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#999999"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"><b>Changelog</b></font></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#C0C0C0"> 
+      <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+       <b>1.": </b><br>
+       Protection de l'Admin par sessios, et quelques trous de s&eacute;curit&eacute; &eacute;limin&eacute;s.<br>
+       Update depuis version 1.2: envoyer tous les fichiers du dossier admin sur votre serveur.<br>
+       <b>1.2: </b><br>
+       Affichage de la page Liste sur plusieurs pages.<br>
+        <b>1.1a: </b><br>
+        Correction d'un bug dans install.php<br>
+       <b>1.1: </b><br>
+        Option de validation automatique des News et/ou des commentaires. Am&eacute;lioration 
+        de l'affichage (tri sur la date ET le num&eacute;ro de la News).<br>
+        <b>1.0:</b><br>
+        Premi&egrave;re version.</font></p>
+    </td>
+  </tr>
+  <tr> 
+    <td bgcolor="#999999"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"><b>Licence</b></font></td>
+  </tr>
+  <tr> 
+    <td><font face="Verdana, Arial, Helvetica, sans-serif" size="2">mcNews est 
+      un logiciel gratuit; vous pouvez le modifier et ou le distribuer selon les 
+      termes de la <a href="GNU_GPL.html">GNU General Public License</a> publi&eacute;e 
+      par the Free Software Foundation, version 2 ou ult&eacute;rieure.</font> 
+      <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> mcNews est 
+        distribu&eacute; dans l'espoir qu'il sera utile, mais SANS AUCUNE GARANTIE 
+        de quelque sorte que ce soit. Se reporter &agrave; la GNU General Public 
+        License pour plus de d&eacute;tails.</font></p>
+      <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> Vous devez 
+        avoir re&ccedil;u une copie de la GNU General Public License<br>
+        jointe &agrave; ce programme, sinon vous pouvez &eacute;crire &agrave; 
+        la Free Software<br>
+        Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA</font>. 
+      </p>
+      <p align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1"><a href="mailto:marc@phpforums.net">copyright 
+        &copy; 2002 - Marc Cagninacci</a></font> </p>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+Estimado %%employer_company%%,
+
+Ha sido registrado adecuadamente.
+
+Por favor, anote su nombre de usuario y contraseña, que necesitará para futuras operaciones.
+Usuario: %%employer_email%%
+Contraseña: %%employer_password%%
+
+Gracias

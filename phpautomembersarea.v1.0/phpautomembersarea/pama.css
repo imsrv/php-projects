@@ -1,0 +1,14 @@
+BODY{
+   SCROLLBAR-ARROW-COLOR: #FFFFFF;
+    SCROLLBAR-TRACK-COLOR: #DBE4ED;
+    SCROLLBAR-FACE-COLOR: 004080;
+    background-color:#FBFFFF;
+    color:#004080; font-size: 8pt; font-family: Verdana}
+
+.button {background-color: #004080; color:#ffffff; font-size: 8pt; ;font-weight: bold}
+.dropdownc {background-color: #004080; color: #ffffff; font-size: 8pt;font-weight: normal);}
+
+.table-bg {background-color:#E9E9E9; background-image: url('table-bg.jpg')}
+.table-bg-header {height=22; background-color:#E9E9E9; background-image: url('table-bg-header.jpg')}
+.table-bg-menu {background-color:#E9E9E9; background-image: url('table-bg-menu.jpg')}
+.table-bg-footer {background-color:#E9E9E9; background-image: url('table-bg-footer.jpg')}

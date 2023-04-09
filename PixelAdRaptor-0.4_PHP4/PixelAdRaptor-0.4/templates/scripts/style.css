@@ -1,0 +1,276 @@
+/**
+ * The default template style sheet.
+ */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS',Georgia, Times, Times New Roman, sans-serif;
+    font-size: 12px;
+    text-align: center;
+    color: #29303b;
+    line-height: 1.3em;
+    background: #f9f9f9;
+}
+
+.container {
+    position: relative;
+    height: 30em;
+    width: 100%;
+}
+
+.header {
+    position: relative;
+    height: 50px;
+    background-color: #91c8f6;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+}
+
+.header_stats {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    height: 50px;
+    width: 150px;
+    background-image: url(../images/stats_small.jpg);
+    background-repeat: no-repeat;
+    text-align: right;
+}
+
+.header_nav {
+    position: relative;
+    background-image: url(../images/top.jpg);
+    background-repeat: repeat-x;
+    background-position: top;
+    margin-bottom: 10px;
+    height: 20px;
+    text-align: left;
+}
+
+.header_div {
+    position: absolute;
+    left: 120px;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.header_link {
+    text-decoration: none;
+    color: #ebeff4;    
+}
+
+.header_link:hover {
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
+
+.grid {
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    border: 0px;
+    background-image: url(../images/grid.gif);
+    background-repeat: repeat;
+    border-bottom: 1px solid #d1e0ed;
+}
+
+.adsense {
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    width: 80%;
+}
+
+.text {
+    padding: 0.5em;
+}
+
+.faq_answer {
+    border: 1px solid;
+    border-style: dashed;
+    background-color: #d5d5d5;
+    width: 50%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding: 5px;
+}
+
+.blog_wrapper /* I hate IE */ {
+	text-align: center;
+}
+
+.blog {
+    margin: 0 auto;
+	text-align: left;
+    width: 80%;
+    border: 1px solid;
+    border-style: dashed;
+    padding: 0.5em;
+}
+
+.blog_title {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 15px;
+}
+
+.blog_text {
+    font-style: italic;
+    padding-left: 0.5em;
+}
+
+.blog_date {
+    color: #616161;
+    font-weight: bold;
+    padding: 0.5em;
+}
+
+blockquote.quote {
+    background: transparent url(../images/quote.jpg) left top no-repeat;
+}
+
+blockquote.quote div {
+    padding: 0 30px; 
+    background:transparent url(../images/quote.jpg) right bottom no-repeat;
+}
+
+.link {
+    text-decoration: none;
+    color: #9cbfef;
+    font-weight: bold; 
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: #9cbfef;
+    font-weight: bold; 
+}
+
+.topic_link {
+    text-decoration: none;
+    color: #6b8dba;
+    font-weight: bold; 
+}
+
+.topic_link:hover {
+    text-decoration: underline;
+    color: #6b8dba;
+    font-weight: bold; 
+}
+
+.medium_font {
+    color: #9cbfef;
+    font-weight: bold; 
+    font-size: 15px;
+}
+
+.topic_line {
+ text-align: left; 
+ padding-left: 10px; 
+ font-weight: bold; 
+ color: #435e82;
+ background-color: #e4ebf6;
+ border: 1px solid;
+}
+
+/**
+ *
+ * The center block
+ *
+ */
+.center {
+    margin: 0 auto;
+    width: auto;
+    text-align: left;
+}
+
+.bottom {
+    position: relative;
+    margin: 0 auto;
+    padding-bottom: 0.5em;
+    width: 80%;
+    clear: both;
+}
+
+.title {
+    margin-top: 0 auto;
+    margin-bottom: 0 auto;
+    float: left;
+    font-size: 2em;
+    font-style: oblique
+}
+
+.error {
+	text-align: left;
+    color: #ff0000;
+    font-style: italic;
+    background-color: #ffffe1;
+    border: 1px solid #b5b5b1;
+    border-style: dashed;
+    padding: 0.5em;
+}
+
+.Vspace {
+    height: 20px;
+}
+
+.Hspace {
+
+}
+
+img {
+    border: 0px;
+}
+
+.hr {
+    margin: 0 auto;
+    width: 95%;
+    border-top: 1px solid #d5d5d5;
+}
+
+/**
+ *
+ * Form style
+ */
+textarea, .form-item {
+
+    border: 1px solid #d7d7d7;
+    width: 300px;
+
+}
+
+textarea {
+
+    height: 200px;
+
+}
+
+div.row {
+
+    clear: both;
+    padding-top: 5px;
+
+}
+
+div.row span.label {
+
+    float: left;
+    width: 100px;
+    text-align: right;
+    font-weight: bold;
+}
+
+div.row span.formw {   
+    float: right;
+    width: 300px;
+    text-align: left;
+}
+
+.button {
+    color: #4d73a7;
+    background-color: #ffffff;
+    border: 1px solid;
+}

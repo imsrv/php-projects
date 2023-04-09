@@ -1,0 +1,35 @@
+PhpDig is a light indexing robot / search engine written in Php
+It provides full text indexing.
+Version : 1.4
+Update : 2001-11-10
+
+AUTHOR
+
+Antoine Bajolet - fr - bajolet@toiletoine.net
+
+CONTRIBUTIONS
+
+- Cache and Templates system concepts :
+Florian Perrichot - fr
+
+- Suggests, some developpements in progress :
+Loic Anterroches
+
+- English locales & first documentation translation :
+Brien Louque - us
+
+- Others languages locales :
+Sofoklis Magoulas - gr
+Gregor Mucha - de
+Robert Moteka - pl
+Geffrey Velásquez - pe
+Carlos Serrão - pt
+
+FOREIGN CODE
+
+- Authentification script :
+Nicolat Biot - fr
+
+-------------------
+Someone forgotten ?
+Remember me at phpdig@toiletoine.net

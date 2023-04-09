@@ -1,0 +1,41 @@
+THEMES
+
+Each theme has its own directory in /themes
+
+Images for the theme go in /themes/(imagesetname)/images
+and must include the following images:
+
+logo.gif - duh, the title image on the top of the forum
+goto.gif - goto last post icon on main forum view
+locked.gif - no access icon in forum view or 
+  locked for thread view
+new.gif - new posts indicator
+nonew.gif - no new posts indicator
+
+Color settings are set in cascading style sheets in 
+the style.css file
+
+CONFIG.PHP
+
+Specifies which template set and replacement set
+to use in the theme
+
+FUNCTIONS.PHP
+
+These functions are similar to replacements but
+they are in functions because they are used
+throughout the navboard code and not in
+templates
+
+TEMPLATES
+
+Sections of dataless code that changes the
+appearance or format of a certain part of navboard,
+the data sections are loaded first into $content,
+and used to display it inside the template
+
+REPLACEMENTS
+
+Pieces of code that can be used again and again
+in templates, {replacementname} is replaced
+in the template with the code specified

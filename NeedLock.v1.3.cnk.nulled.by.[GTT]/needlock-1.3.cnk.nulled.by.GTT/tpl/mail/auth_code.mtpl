@@ -1,0 +1,28 @@
+
+Dear [tag]realname[/tag]!
+
+Your registration on somesecuresite.com completed succesfully.
+To activate Your account, please visit our site, using link
+below.
+
+-------------------------------------
+
+[tag]auth_code_link[/tag]
+
+--------------------------------------
+
+If Your email client wraps links, please fill the form using 
+information below.
+
+--------------------------------------
+
+Email: [tag]email[/tag]
+Code : [tag]authcode[/tag]
+
+--------------------------------------
+
+---
+With best regards,
+Secure access manager
+www.somesecuresite.com
+info@somesecuresite.com

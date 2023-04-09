@@ -1,0 +1,33 @@
+phpMyNewsletter v0.6.6 installation instruction
+
+
+#########################################################
+#                                                       #
+# PHPSelect Web Development Division                    #
+#                                                       #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are distributed through         #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated.                                     #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the distriuters      #
+# at admin@phpselect.com                                #
+#                                                       #
+#########################################################
+
+
+1 Write permission: Give the permission to write the "include" directory to the web server.
+2 Installation process- Go to http://www.yourdomain.com/path/admin.php
+
+3- Setup the newsletter
+
+Newsletter Admin Area
+- Go to http://www.yourdomain.com/path/admin.php
+- Fill the field with your password (set in during the installation process)

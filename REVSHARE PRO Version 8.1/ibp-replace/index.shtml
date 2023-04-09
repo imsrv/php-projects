@@ -1,0 +1,106 @@
+<html>
+
+<head>
+<title>How To Join!</title>
+</head>
+
+<body bgcolor="#ffffff">
+<div align="center"><center>
+
+<table border="0" width="525" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center"><p align="center"><font size="6" face="Arial" color="#FF0000">It's easy
+    to join!</font></p>
+    <h3 align="center"><font face="Arial" color="#000000">Pay by Credit Card&nbsp; </font></h3>
+    <p><font face="Arial" color="#000000"></font></p>
+
+FANTASYSEXONLINE
+<!-- COPY CODE BETWEEN THESE COMMENT LINES FOR EACH CREDIT CARD SUB ACCOUNT -->
+	<form method="POST" action="https://secure.ibill.com/cgi-win/ccard/ccard.exe">
+	<INPUT type="hidden" name="hellopage" value="ibillblack">
+	<input type="hidden" name="reqtype" value="secure">
+	<input type="hidden" name="ref1" value="/9045142">
+	<input type="hidden" name="ref2" value="99999">
+	<!--#EXEC CGI="/revshare/cgibin/revshare.cgi" --> 
+	<input type="hidden" name="account" value="9045142">
+	<input type="submit" value="$4.95 for 7 day by credit card"></form>
+<!-- COPY CODE BETWEEN THESE COMMENT LINES FOR EACH CREDIT CARD SUB ACCOUNT -->
+
+<!-- COPY CODE BETWEEN THESE COMMENT LINES FOR EACH CHECK SUB ACCOUNT -->
+	<form method="POST" action="https://secure.ibill.com/cgi-win/checks/ccheck.exe">
+	<input type="hidden" name="reqtype" value="secure">
+	<INPUT TYPE="hidden" NAME="account" VALUE="9045143"> 	
+	<INPUT TYPE="hidden" SIZE="7" MAXLENGTH="7" NAME="ref1" VALUE="/web1/fantasysexonline/9045143"> 
+	<INPUT TYPE="hidden" SIZE="7" MAXLENGTH="7" NAME="ref2" VALUE="30">
+	<!--#EXEC CGI="/revshare/cgibin/revshare.cgi" -->  
+	<input type="submit" name="submit" value="$24.95 for 30 days by Online Check"></form>
+<!-- COPY CODE BETWEEN THESE COMMENT LINES FOR EACH CHECK SUB ACCOUNT -->
+
+
+PLEASUREONLINE
+<!-- COPY CODE BETWEEN THESE COMMENT LINES FOR EACH CREDIT CARD SUB ACCOUNT -->
+	<form method="POST" action="https://secure.ibill.com/cgi-win/ccard/ccard.exe">
+	<INPUT type="hidden" name="hellopage" value="ibillblack">
+	<input type="hidden" name="reqtype" value="secure">
+	<input type="hidden" name="ref1" value="/9045148">
+	<input type="hidden" name="ref2" value="99999">
+	<!--#EXEC CGI="/revshare/cgibin/revshare.cgi" --> 
+	<input type="hidden" name="account" value="9045148">
+	<input type="submit" value="$4.95 for 7 day by credit card"></form>
+<!-- COPY CODE BETWEEN THESE COMMENT LINES FOR EACH CREDIT CARD SUB ACCOUNT -->
+
+<!-- COPY CODE BETWEEN THESE COMMENT LINES FOR EACH CHECK SUB ACCOUNT -->
+	<form method="POST" action="https://secure.ibill.com/cgi-win/checks/ccheck.exe">
+	<input type="hidden" name="reqtype" value="secure">
+	<INPUT TYPE="hidden" NAME="account" VALUE="9045149"> 	
+	<INPUT TYPE="hidden" SIZE="7" MAXLENGTH="7" NAME="ref1" VALUE="/web1/fantasysexonline/9045149"> 
+	<INPUT TYPE="hidden" SIZE="7" MAXLENGTH="7" NAME="ref2" VALUE="30">
+	<!--#EXEC CGI="/revshare/cgibin/revshare.cgi" -->  
+	<input type="submit" name="submit" value="$24.95 for 30 days by Online Check"></form>
+<!-- COPY CODE BETWEEN THESE COMMENT LINES FOR EACH CHECK SUB ACCOUNT -->
+
+XXXHOUSECAM
+<!-- COPY CODE BETWEEN THESE COMMENT LINES FOR EACH CREDIT CARD SUB ACCOUNT -->
+	<form method="POST" action="https://secure.ibill.com/cgi-win/ccard/ccard.exe">
+	<INPUT type="hidden" name="hellopage" value="ibillblack">
+	<input type="hidden" name="reqtype" value="secure">
+	<input type="hidden" name="ref1" value="/9045145">
+	<input type="hidden" name="ref2" value="99999">
+	<!--#EXEC CGI="/revshare/cgibin/revshare.cgi" --> 
+	<input type="hidden" name="account" value="9045145">
+	<input type="submit" value="$4.95 for 7 day by credit card"></form>
+<!-- COPY CODE BETWEEN THESE COMMENT LINES FOR EACH CREDIT CARD SUB ACCOUNT -->
+
+<!-- COPY CODE BETWEEN THESE COMMENT LINES FOR EACH CHECK SUB ACCOUNT -->
+	<form method="POST" action="https://secure.ibill.com/cgi-win/checks/ccheck.exe">
+	<input type="hidden" name="reqtype" value="secure">
+	<INPUT TYPE="hidden" NAME="account" VALUE="9045146"> 	
+	<INPUT TYPE="hidden" SIZE="7" MAXLENGTH="7" NAME="ref1" VALUE="/web1/fantasysexonline/9045146"> 
+	<INPUT TYPE="hidden" SIZE="7" MAXLENGTH="7" NAME="ref2" VALUE="30">
+	<!--#EXEC CGI="/revshare/cgibin/revshare.cgi" -->  
+	<input type="submit" name="submit" value="$24.95 for 30 days by Online Check"></form>
+<!-- COPY CODE BETWEEN THESE COMMENT LINES FOR EACH CHECK SUB ACCOUNT -->
+
+
+    <p align="center"><font face="Arial" color="#000000"><br>
+    </font><font color="#000000"><font face="Arial"><font size="1">
+
+<!-- LEAVE BELOW SUBTEXT INTACT FOR TECH SUPPORT --> 
+<!-- LEAVE BELOW SUBTEXT INTACT FOR TECH SUPPORT --> 
+<!-- LEAVE BELOW SUBTEXT INTACT FOR TECH SUPPORT --> 
+
+Secure Credit Card Transaction Services provided by <a href="http://www.ibill.com" target="_top">Internet&nbsp;Billing&nbsp;Co.,&nbsp;Ltd.</a>
+    <br>
+    Programming &amp; CGI Interface by <a href="http://www.superscripts.com">Drewstar's
+    Superscripts</a> </font></font></font></td>
+  </tr>
+</table>
+</center></div>
+
+
+</body>
+</html>
+
+
+
+

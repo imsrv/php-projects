@@ -1,0 +1,46 @@
+body	{font-family: helvetica, arial, geneva, sans-serif; font-size: x-small}
+
+td		{font-family: helvetica, arial, geneva, sans-serif; font-size: 13px}
+
+form	{font-family: helvetica, arial, geneva, sans-serif; font-size: x-small, margin-top: 0px; margin-bottom: 0px; }
+
+
+A.category			
+	{color: #BE590E; font-family: Verdana; font-size: 12px; font-weight: bold; text-decoration:none}
+A.active.category		
+	{color: #BE590E; font-family: Verdana; font-size: 12px; font-weight: bold; text-decoration:none}
+A:link.category		
+	{color: #BE590E; font-family: Verdana; font-size: 12px; font-weight: bold; text-decoration:none}
+A:visited.category	
+	{color: #BE590E; font-family: Verdana; font-size: 12px; font-weight: bold; text-decoration:none}
+A:hover.category		
+	{color: #FF6600; font-family: Verdana; font-size: 12px; font-weight: bold; text-decoration: none}
+
+form{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.button
+{
+	BACKGROUND-COLOR: #E17A09; 
+	COLOR: #FFFFcc; 
+	CURSOR: hand; 
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; 
+	FONT-SIZE: 8pt; 
+	FONT-WEIGHT: bold;
+	border: 1 solid #000000
+}
+
+input	{BACKGROUND-COLOR: #FFFFDD;	COLOR: #993366;		FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;	FONT-SIZE: 8pt;	FONT-WEIGHT: bold;	border: 1 solid #000000}
+
+.radio {
+ font-family: Verdana; font-size: 9pt; 
+ font-weight: Bold; 
+ border: 0px none #000000;
+ background: transparent;
+}
+
+textarea	{BACKGROUND-COLOR: #FFFFDD;	COLOR: #993366;		FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;	FONT-SIZE: 8pt;	FONT-WEIGHT: bold;	border: 1 solid #000000}
+
+select	{BACKGROUND-COLOR: #FFFFDD;	COLOR: #993366;		FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;	FONT-SIZE: 8pt;	FONT-WEIGHT: bold;	border: 1 solid #000000}

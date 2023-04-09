@@ -1,0 +1,12 @@
+=============================================
+
+For new install v4.0.1, please read
+SendStudioSetupGuidePHP.pdf
+
+=============================================
+
+
+Thanks,
+WDYL
+
+

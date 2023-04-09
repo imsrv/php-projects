@@ -1,0 +1,86 @@
+#########################################################
+# PerlDesk (c)2003 www.perldesk.com         RELEASE 1.8 #
+#                                                       #
+#                                                       #
+#########################################################
+#                                                       #
+#                  PERLDESK UPGRADE                     #	
+#                                                       #
+#########################################################
+_____________________________________________________________
+
+ 
+ [*] Upgrading from:
+
+          1.7
+          1.6.x
+          1.6
+          1.5.5
+
+Step 1
+----------
+
+Upload all new files, replacing the old ones. You will also need 
+to open up the conf.cgi file and re-set the database settings.
+
+Step 2
+----------
+
+Load the `upgrade.cgi` from the web, and choose the version you 
+are upgrading from.
+
+You must also enter your license ID. Please ensure that it is 
+correct.
+
+Step 3
+----------
+
+Delete install.cgi and upgrade.cgi from the PerlDesk folder, and 
+continue using PerlDesk!
+
+Enjoy the upgrade!
+
+
+
+
+_____________________________________________________________
+
+** UPGRADING FROM 1.02.7
+
+PerlDesk has a very different file structure from previous
+releases. PerlDesk will now operate from three main files
+
+  pdesk.cgi 
+  staff.cgi
+  admin.cgi
+
+There is an upgrade script included in the tar file to 
+alter the mysql setup and make any additions needed.
+
+You must follow these steps to upgrade:
+
+ [*] Untar the compressed file, all files in this tar are
+     needed by this release - you will need to overwrite 
+     existing files. 
+
+     By default, there are two directories in the file
+     cgi-bin
+     images
+
+     The file inside the 'cgi-bin' can be placed anywhere
+     where you have .cgi files enabled on your server, but
+     if you put them in the actual cgi-bin you will likely
+     need to store the images outside of the cgi-bin due to
+     permissions.
+
+ [*] Chmod the .cgi/.pl files to 755
+
+ [*] Open up the new conf.pl file and put your database 
+     info in. 
+
+ [*] Put 'upgrade.cgi' your main folder along with the 
+     other .cgi file (pdesk.cgi) chmod, and run it from
+     your browser entering the settings.
+
+
+ All done

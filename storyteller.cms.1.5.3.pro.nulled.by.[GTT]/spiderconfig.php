@@ -1,0 +1,8 @@
+<?php
+
+$spiders = array(
+
+
+);
+
+?>

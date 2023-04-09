@@ -1,0 +1,36 @@
+<html>
+	<head>
+  	<link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+	<body>
+  	<center>
+    	<%error(invalid_login)%>
+    	<h3><font color="red">Login invalid. Please try again</font></h3>
+      <%/error%>
+      
+    	<%error(inactive)%>
+    	<h3><font color="red">Your account is inactive. Please contact <a href="mailto:contact@webguystudios.com">Technical support</a></font></h3>
+      <%/error%>
+    	<form method="post">
+      	<table class="BlueNoteFormTABLE">
+        	<tr>
+          	<td colspan="2" class="BlueNoteColumnTD">Please authorize yourself
+        	<tr>
+          	<td>Login
+						<td><input type="text" class="text" name="login">            
+          <tr>
+            <td>Password
+						<td><input type="password" class="text" name="pass">
+        	<tr>
+          	<td><input type="submit" name="save" value="Login">
+          <tr>
+          	<td colspan="2">
+            <table>
+            	<tr>
+            		<td>Don't have login?<td><a href="../register">Register NOW!</a>
+          		<tr>
+          			<td>Forgot password<td><a href="../restore">Restore it</a>
+        </table>
+    	</form>
+  </body>
+</html>

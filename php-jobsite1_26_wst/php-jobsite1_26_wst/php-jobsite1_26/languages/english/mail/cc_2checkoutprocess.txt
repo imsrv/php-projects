@@ -1,0 +1,24 @@
+Dear %%employer_company%%,
+
+Invoice details (NO: %%invoice_id%%)
+
+2checkout Order Number: %%2checkout_order_number%%
+2checkout Order Status: %%2checkout_order_status%%
+
+Buyer Information:
+Buyer Address: %%cc_address%%
+Buyer City: %%cc_city%%
+Buyer State: %%cc_state%%
+Buyer Zipcode: %%cc_zip%%
+Buyer Country: %%cc_country%%
+Buyer phone: %%cc_phone%%
+Buyer email: %%cc_email%%
+
+
+List Price: %%invoice_listprice%%
+Discount: %%invoice_discount%%
+Total Payment Value: %%invoice_totalprice%%
+Payment date: %%invoice_paymentdate%%
+IP Address: %%ip_address%%
+
+Thank you for your order.

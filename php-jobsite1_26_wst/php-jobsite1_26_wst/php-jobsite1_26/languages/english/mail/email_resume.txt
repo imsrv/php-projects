@@ -1,0 +1,52 @@
+Dear %%employer_company%%,
+
+Here is your requested resume details of "%%jobseeker_name%%"
+Comments:
+%%employer_comment%%
+
+Contact information:
+Name: %%jobseeker_name%%
+Address: %%jobseeker_address%%
+City: %%jobseeker_city%%
+State: %%jobseeker_province%%
+Zip Code: %%jobseeker_zipcode%%
+County: %%jobseeker_location%%
+Telephone: %%jobseeker_phone%%
+Email: %%jobseeker_email%%
+Website: %%jobseeker_url%%
+
+*******Resume Information************
+
+Summary: %%resume_summary%%
+
+Resume Categories: %%resume_jobcategories%%
+
+Resume:
+%%resume_resume%%
+
+Skills:
+%%resume_skills%%
+
+Employment type: %%resume_jobtypes%%
+
+Preferred Salary: %%resume_salary%%
+
+Education:
+%%resume_education%%
+
+Years of Experience: %%resume_experience%%
+
+Work Experience:
+%%resume_workexperience%%
+
+Degree: %%resume_degree%%
+
+Preferred Location: %%resume_location%%
+
+********End Resume Information*******
+
+Resume Link: %%resume_link%%
+
+
+
+Thanks,

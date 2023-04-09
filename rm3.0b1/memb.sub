@@ -1,0 +1,232 @@
+###############################################################
+#                                                             #
+# Any use of this program is entirely at the risk of the      #
+# user. No liability will be accepted by the author.          #
+#                                                             #
+# This code must not be distributed or sold, even in modified #
+# form, without the written permission of the author.         #
+#                                                             #
+###############################################################
+
+###############################################################
+#                                                             #
+# Nothing below needs to be modified. You can apply           #
+# modifications if you know what you are doing. Remember that #
+# all credits must remain intact.                             #
+#                                                             #
+###############################################################
+
+
+# Display the Manage Member screen, show all members by default
+sub members {
+
+	# Check referring URL
+	&urlcheck;
+
+	# Get a list of all members
+	&readmembers;
+
+	# Initialize current display mode
+	$curdisplay = "all registered members";
+
+	# Get inactive members list
+	if ($FORM{'show'} eq "idle") {
+		&getidle;
+		$curdisplay = "inactive members";
+	}
+
+	# Sort members list
+	@members = sort byabc @members;
+
+	# Get a total number of members
+	$totmembers = scalar(@members);
+
+	# Initialize member record rows
+	$tmpmembrows = "";
+
+	# Initialize row background color
+	$tmprowbg = "#F4F4FF";
+
+	# Loop through a list of members
+	for ($i = 0; $i < scalar(@members); $i++) {
+
+		# Get the date of last incoming hit
+		if ($idledate[$i]) {
+		$lastindate = &getdate($idledate[$i], 1);
+		$lasindatelbl = qq( [</font> Last Incoming Hit: $lastindate <font color="#3333CC">]);
+		}
+
+		# Build member record rows
+		@membinfo = split(/\t/, $members[$i]);
+		$tmpmembrows .= qq(            <tr bgcolor="$tmprowbg"> 
+              <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><b><a href="$membinfo[3]" target="_blank">$membinfo[4]</a></b> 
+                <font color="#3333CC"> [<a href="mailto:$membinfo[2]">E-Mail</a>]$lasindatelbl<br>
+                </font>$membinfo[5]</font></td>
+              <td> 
+                <div align="center"><input type="checkbox" name="list" value="$membinfo[0]"></div>
+              </td>
+            </tr>\n);
+
+		# Switch row background color
+		if ($tmprowbg eq "#F4F4FF") {
+			$tmprowbg = "#E8E8FF";
+		} else {
+			$tmprowbg = "#F4F4FF";
+		}
+	}
+
+	# Display a list of members
+	print "Content-type: text/html\n\n";
+	print <<EOH;
+<html>
+<head>
+<title>RankMaster: Manage Members</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#F4F4FF" text="#000000" link="#000000" vlink="#000000" alink="#000000">
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function checkAll(field) 
+{
+for (i = 0; i < field.length; i++)
+	field[i].checked = true;
+}
+
+function uncheckAll(field) 
+{
+for (i = 0; i < field.length; i++)
+	field[i].checked = false;
+}
+//  End -->
+</script>
+<div align="center">
+  <h3><font face="Verdana, Arial, Helvetica, sans-serif" size="-1"><b>RankMaster: 
+    Manage Members</b></font></h3>
+  <form name="myform" method="post" action="admin.cgi">
+    <input type="hidden" name="action" value="membmanage">
+    <br>
+    <table width="750" border="0" cellspacing="0" cellpadding="0" align="center">
+      <tr> 
+        <td bgcolor="#000000"> 
+          <table width="100%" border="0" cellspacing="1" cellpadding="5">
+            <tr> 
+              <td bgcolor="#F4E8EF"> 
+                <div align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><a href="admin.cgi?action=members&show=all">SHOW 
+                  ALL MEMBERS</a></font></b></div>
+              </td>
+              <td bgcolor="#F4E8EF"> 
+                <div align="center"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><a href="admin.cgi?action=members&show=idle">SHOW 
+                  INACTIVE MEMBERS</a></font></b></div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <table width="750" border="0" cellspacing="0" cellpadding="0" align="center">
+      <tr> 
+        <td bgcolor="#000000"> 
+          <table width="100%" border="0" cellspacing="1" cellpadding="5">
+            <tr> 
+              <td bgcolor="#F4E8EF" colspan="2"><font size="-2" face="Verdana, Arial, Helvetica, sans-serif">Below 
+                is a list of $curdisplay:</font></td>
+            </tr>
+$tmpmembrows
+            <tr> 
+              <td colspan="2" bgcolor="#F4E8EF"><font face="Verdana, Arial, Helvetica, sans-serif" size="-2">Found 
+                $totmembers matching records.</font> <font face="Verdana, Arial, Helvetica, sans-serif" size="-2">----</font> 
+                <input type="button" name="SelectAll" value="Select All" onClick="checkAll(document.myform.list)">
+                <font face="Verdana, Arial, Helvetica, sans-serif" size="-2">----</font> 
+                <input type="button" name="DeselectAll" value="Deselect All" onClick="uncheckAll(document.myform.list)"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <input type="submit" name="delete" value="Delete Selected">
+    <input type="button" name="close" value="Close This Window" onclick="self.close()">
+  </form>
+  <font face="Arial, Helvetica, sans-serif" size="-2"><a href="http://scripts.21stcenturyhost.net" target="_blank">Powered 
+  by 21st Century Scripts</a></font></div>
+</body>
+</html>
+EOH
+	exit;
+}
+
+
+# Delete selected members
+sub membmanage {
+
+	# Check referring URL
+	&urlcheck;
+
+	if ($FORM{'delete'}) {
+
+		# Loop through a list of members
+		foreach $membid(@list) {
+
+			# Delete record from the member list
+			open(MLIST,"+<$membpath/memblist.cgi") || err("Could not update $membpath/memblist.cgi: $!");
+			flock(MLIST,2);
+			@members = <MLIST>;
+			seek(MLIST,0,0);
+			truncate(MLIST,0);
+			foreach $line(@members) {
+				print MLIST $line unless $line =~ /^$membid\t/;
+			}
+			close(MLIST);
+
+			# Delete member file
+			unlink "$membpath/$membid.cgi" || err("Could not delete $membpath/$membid.cgi: $!");
+		}
+
+		# Display success screen
+		&adminconfirm("Selected members have been deleted successfully!",
+				"Return to Member Management Area", "admin.cgi?action=members&show=$FORM{'show'}");
+	}
+}
+
+
+# Get a list of inactive members
+sub getidle {
+
+	# Check if inactive member flagging is enabled
+	unless ($idletime) {
+		push(@badfields, "Inactive Members flagging is disabled. Nothing to display.");
+		&adminerror;
+	}
+
+	# Initialize idle members arrays
+	@idlelist = ();
+	@idledate = ();
+
+	# Loop through a list of all members
+	foreach $member(@members) {
+		@membrec = split(/\t/, $member);
+		open(FILE,"$membpath/$membrec[0].cgi") || err("Could not open $membpath/$membrec[0].cgi: $!");
+		@membinfo = <FILE>;
+		close(FILE);
+		chomp(@membinfo);
+		if (time() - $membinfo[13] >= $idletime) {
+			push(@idlelist, $member);
+			push(@idledate, $membinfo[13]);
+		}
+	}
+
+	# Return inactive members list
+	@members = @idlelist;
+}
+
+
+# Sort member list alphabetically
+sub byabc {
+	@a = split(/\t/,$a);
+	@b = split(/\t/,$b);
+	$a[4] cmp $b[4];
+}
+
+
+1;

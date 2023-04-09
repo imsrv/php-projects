@@ -1,0 +1,52 @@
+PopUp! Gallery 2.0 by Matthew Blake (http://www.darkhighway.net)
+
+
+FILES and FOLDERS (abridged)
+
+index.php -------- calls the script. customizable page.
+popgal.php ------- creates thumbnails and indexes files. (do not edit)
+popscript.js ----- creates popup windows. (do not edit)
+popstyle.css ----- CSS styles that control the look of the thumbs and table.
+popwin.php ------- larger images are passed to this document. (do not edit)
+imgs/ ------------ images folder. (do not rename)
+imgs/thumbs ------ thumbnails folder. (do not rename)
+
+
+INSTRUCTIONS:
+
+1. Open _vars.php and modify (optional).
+2. Modify index.php to fit your web design. Leave link to javascript.php intact.
+   Also do not remove "<?php require("album.php"); ?>" from body.
+3. Create images and save them in corresponding locations. Note: full-size images and thumbnail images
+   have the same name! Do not store any other files in "imgs" folder or "thumbs" subfolder.
+4. Upload files to your web server using FTP program. It is best to create a new folder for contents.
+   Leave the directory structure the same as it was extracted from winzip.
+5. Point your browser to http://www.mydomain.com/gallerydirectory/index.php
+
+
+CHANGELOG:
+
+v2.0	- Corrected XHTML 1.0 transitional compliance/ tested in W3C's validator. 
+	- Added better support for non-IE browsers (e.g. Netscape, Mozilla, Firefox...)
+	- Rewrote window centering javascript.
+	- Removed right-click oppression. You may install a no-right click script on "popwin.php"
+v1.2	- Added "no right-click" option. Cleaned up code.
+v1.1	- Separated script into four main files(_vars.php, album.php, index.php and javascript,php)
+
+
+CUSTOMIZATION:
+
+Change "index.php" to fit your website! I took the liberty of including a meta tag that removes the
+annoying IE6 toolbar that appears over the images. You may omit this if you wish.
+<meta http-equiv="imagetoolbar" content="no" />
+
+Change number of columns in "index.php" in the php markup. There is a variable called "$cols" that
+handles the table columns.
+<?php $cols = "5"; require("popgal.php"); ?>
+
+Change "popsytle.css" in order to modify the table background/image borders etc.
+
+
+
+
+

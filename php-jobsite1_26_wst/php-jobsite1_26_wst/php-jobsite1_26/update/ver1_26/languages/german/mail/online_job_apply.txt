@@ -1,0 +1,31 @@
+Dear %%employer_company%%,
+
+A jobseeker, "%%jobseeker_name%%" would like to apply for your "%%job_jobtitle%%" job vacancy (ID: %%job_jobid%%)
+
+Cover Letter: 
+%%cover_letter%%
+
+*******Resume Information************
+
+Summary: %%resume_summary%%
+Resume Categories: %%resume_jobcategories%%
+Resume: 
+%%resume_resume%%
+Skills:
+%%resume_skills%%
+Employment type: %%resume_jobtypes%%
+Preferred Salary: %%resume_salary%%
+Education:
+%%resume_education%%
+Years of Experience: %%resume_experience%%
+Work Experience:
+%%resume_workexperience%%
+Degree: %%resume_degree%%
+Preferred Location: %%resume_location%%
+
+********End Resume Information************
+
+Resume Link: %%resume_link%%
+
+Resume File Download: %%resume_download%%
+

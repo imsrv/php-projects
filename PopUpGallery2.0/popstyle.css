@@ -1,0 +1,25 @@
+	/*  PopUp Gallery! - by Matthew Blake */
+
+body {
+	background-color: #000;
+	padding: 0px;
+	margin: 0px;
+}
+
+table.poptable {
+	background-color: #333;
+	border: 3px solid #999;
+	margin-top: 0px;
+}
+
+table.poptable td {
+	padding: 10px;
+}
+
+img.popthumb {
+	border: 1px solid #000;
+}
+
+img.popimage {
+	border: 0px
+}

@@ -1,0 +1,214 @@
+<HTML>
+<body
+        topmargin="0" leftmargin="0"
+        marginheight="0" marginwidth="0"
+        bgcolor="#ffffff"
+        text="#000000"
+>
+<TABLE ALIGN=RIGHT CELLSPACING=0 CELLPADDING=3 WIDTH="100%">
+<TR VALIGN="CENTER"><TD BGCOLOR="#D8B77A"><B><IMG SRC="images/tbi_logo.gif" WIDTH="7" HEIGHT="6" BORDER="0" ALT="" ALIGN="ABSMIDDLE"> Регулярные выражения.</B></TD></TR>
+<TR><TD>
+<TABLE WIDTH=100% CELLPADDING=0 CELLSPACING=0 BORDER=0 ALIGN=CENTER>
+<TR><TD BGCOLOR=black>
+<TABLE WIDTH=100% CELLPADDING=5 CELLSPACING=1 BORDER=0>
+<TR VALIGN=TOP>
+   <TH BGCOLOR=#DCDCDC>Модификатор</TH>
+   <TH BGCOLOR=#DCDCDC>Описание</TH>
+   <TH BGCOLOR=#DCDCDC>Пример</TH>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>\</TD>
+   <TD BGCOLOR=#DCDCDC>Следующий символ является специальным.</TD>
+   <TD BGCOLOR=#DCDCDC>
+   \n - соответствует новой строке или символу перевода строки.
+   </TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>^</TD>
+   <TD BGCOLOR=#DCDCDC>Маркер начала строки.</TD>
+   <TD BGCOLOR=#DCDCDC>^abc - строка, начинающаяся с "abc"</TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>$</TD>
+   <TD BGCOLOR=#DCDCDC>Маркер конца строки.</TD>
+   <TD BGCOLOR=#DCDCDC>abc$ - строка, заканчивающаяся на "abc"</TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>*</TD>
+   <TD BGCOLOR=#DCDCDC>Предыдущий символ встречается 0 или больше раз.</TD>
+   <TD BGCOLOR=#DCDCDC>
+   a* - данному шаблону соответствуют строки:<BR>
+   cool<BR>
+   <B>a</B>re<BR>
+   <B>aa</B>ron
+   </TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>+</TD>
+   <TD BGCOLOR=#DCDCDC>Предыдущий символ встречается 1 или больше раз.</TD>
+   <TD BGCOLOR=#DCDCDC>
+   a* - этому шаблону соответствуют строки<BR>
+   <B>a</B>re<BR>
+   <B>aa</B>ron<BR>
+   не соответствуют:<BR>
+   cool<BR>
+   bee
+   </TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>?</TD>
+   <TD BGCOLOR=#DCDCDC>Предыдущий символ встречается 0 или 1 раз.</TD>
+   <TD BGCOLOR=#DCDCDC>
+   a?ve? - этому шаблону соответствует подстрока "ve" из строки "ne<B>ve</B>r"
+   </TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>.</TD>
+   <TD BGCOLOR=#DCDCDC>Соответствует любому символу, отличному от "\n"</TD>
+   <TD BGCOLOR=#DCDCDC>&nbsp;</TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>(pattern)</TD>
+   <TD BGCOLOR=#DCDCDC>Соответствие pattern запомимнается в специальной
+   переменной. Для указания символов ( и ) используйте \( и \).</TD>
+   <TD BGCOLOR=#DCDCDC>&nbsp;</TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>x|y</TD>
+   <TD BGCOLOR=#DCDCDC>Соответствует символу x или y.</TD>
+   <TD BGCOLOR=#DCDCDC>f|zoo - этому шаблону соответствуют строки:<BR>
+   <B>zoo</B><Br>
+   <B>foo</B>d
+   </TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>{n}</TD>
+   <TD BGCOLOR=#DCDCDC>Предыдущий символ повторяется строго n раз. n -
+   положительное число.</TD>
+   <TD BGCOLOR=#DCDCDC>o{2} - этому шаблону соответсвуют строки:<BR>
+   z<B>oo</B><BR>
+   f<B>oo</B>d<BR>
+   не соответствуют:<BR>
+   bob<BR>
+   booob<BR>
+   </TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>{n,}</TD>
+   <TD BGCOLOR=#DCDCDC>Предыдущий символ повторяется минимум n раз. n -
+   положительное число.</TD>
+   <TD BGCOLOR=#DCDCDC>o{2,} - этому шаблону соответствуют строки:<BR>
+   z<B>oo</B><BR>
+   f<B>oo</B>d<BR>
+   fooooood<BR>
+   не соответствуют<BR>
+   bob
+   </TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>{n,m}</TD>
+   <TD BGCOLOR=#DCDCDC>Предыдущий символ повторяется минимум n и максимум
+   m раз. n и m - положительные числа.</TD>
+   <TD BGCOLOR=#DCDCDC>o{2,3} - этому шаблону соответствуют три первых
+   буквы o в строке f<B>ooo</B>oood.
+   </TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>[xyz]</TD>
+   <TD BGCOLOR=#DCDCDC>Набор символов. Соответствует любому из перечисленных
+   символов. Можно указывать диапазон, например [0-9]</TD>
+   <TD BGCOLOR=#DCDCDC>[abc] - соответствует символу a в строке <B>a</B>ndrew.
+   </TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>[^xyz]</TD>
+   <TD BGCOLOR=#DCDCDC>Набор символов, которые не должны встречаться
+   в строке. Можно указывать диапазон, например [0-9]</TD>
+   <TD BGCOLOR=#DCDCDC>[^abc] - этому шаблону соответствует буква n в строке
+   a<B>n</B>drew.
+   </TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>\b</TD>
+   <TD BGCOLOR=#DCDCDC>Разделитель слов. Например пробел</TD>
+   <TD BGCOLOR=#DCDCDC>ea*r\b - этому шаблону соответствует подстрока "er"
+   в строке "nev<B>er</B> early".
+   </TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>\B</TD>
+   <TD BGCOLOR=#DCDCDC>Символ, не равный разделителю слов.</TD>
+   <TD BGCOLOR=#DCDCDC>ea*r\B - этому шаблону соответствует подстрока "ear"
+   в строке "never <B>ear</B>ly".
+   </TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>\d</TD>
+   <TD BGCOLOR=#DCDCDC>Цифровой символ. Соответствует выражению [0-9]</TD>
+   <TD BGCOLOR=#DCDCDC>&nbsp;</TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>\D</TD>
+   <TD BGCOLOR=#DCDCDC>Не цифровой символ. Соответствует выражению [^0-9]</TD>
+   <TD BGCOLOR=#DCDCDC>&nbsp;</TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>\f</TD>
+   <TD BGCOLOR=#DCDCDC>Символ form-feed.</TD>
+   <TD BGCOLOR=#DCDCDC>&nbsp;</TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>\n</TD>
+   <TD BGCOLOR=#DCDCDC>Символ line-feed</TD>
+   <TD BGCOLOR=#DCDCDC>&nbsp;</TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>\r</TD>
+   <TD BGCOLOR=#DCDCDC>Символ "перевод каретки" (carriage return).</TD>
+   <TD BGCOLOR=#DCDCDC>&nbsp;</TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>\s</TD>
+   <TD BGCOLOR=#DCDCDC>Любой символ, обозначающий промежуток (whitespace).
+   Соответствует набору [\f\n\r\t\v]</TD>
+   <TD BGCOLOR=#DCDCDC>&nbsp;</TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>\S</TD>
+   <TD BGCOLOR=#DCDCDC>Любой символ, не равный символу, обозначающему 
+   промежуток (whitespace). Соответствует набору [^\f\n\r\t\v]</TD>
+   <TD BGCOLOR=#DCDCDC>&nbsp;</TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>\t</TD>
+   <TD BGCOLOR=#DCDCDC>Символ табуляции</TD>
+   <TD BGCOLOR=#DCDCDC>&nbsp;</TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>\v</TD>
+   <TD BGCOLOR=#DCDCDC>Символ вертикальной табуляции.</TD>
+   <TD BGCOLOR=#DCDCDC>&nbsp;</TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>\w</TD>
+   <TD BGCOLOR=#DCDCDC>Любой алавитно-цифровой символ, включая подчеркивание.
+   Соответствует набору [A-Za-z0-9_].</TD>
+   <TD BGCOLOR=#DCDCDC>&nbsp;</TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>\W</TD>
+   <TD BGCOLOR=#DCDCDC>Любой не алавитно-цифровой символ и не подчеркивание.
+   Соответствует набору [^A-Za-z0-9_].</TD>
+   <TD BGCOLOR=#DCDCDC>&nbsp;</TD>
+</TR>
+<TR VALIGN=TOP>
+   <TD BGCOLOR=#EAEAEA>/n/</TD>
+   <TD BGCOLOR=#DCDCDC>n - цировой код символа (восьмеричный, шестнадцатиричный
+   или десятичный).</TD>
+   <TD BGCOLOR=#DCDCDC>&nbsp;</TD>
+</TR>
+</TABLE>
+</TD></TR>
+</TABLE>
+</body>
+</html>

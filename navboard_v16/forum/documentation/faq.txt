@@ -1,0 +1,34 @@
+FAQ
+
+Q: I cant do anything after I first install!
+A: Make sure forum directory has 777 or 775
+chmod permissions, also check the file system
+help in the admin cp
+
+Q: Someone registered the first account before me!
+A: Delete your data directory and start over
+
+Q: How do I give someone admin access?
+A: Go into admin control panel users section
+
+Q: How do I ban a user?
+A: In admin control panel under users section
+
+Q: Why do I get error '----'?
+A: Write a message on the official forums describing
+error and how you got it
+
+Q: How do I make a module?
+A: See modules.txt and inlcuded modules
+
+Q: Can I modify NavBoard?
+A: Sure go right ahead, although no support is provided
+for boards with modifications
+
+Q: How do I change colors and themes?
+A: See themes.txt and other themes for examples
+
+Q. Members only viewing of forums?
+A. In the forum admin put guest as the group to
+be denied viewing access for each forum
+

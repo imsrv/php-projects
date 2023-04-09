@@ -1,0 +1,117 @@
+<script src="include/b4submit.js" language="JavaScript" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">
+function AllFieldsFilled(submittedForm) {
+  var fieldsNotRequired = new Array()
+  var fieldCaption = new Array()
+  /* BEGIN AUTHOR SPECS */
+// If you remove any form fields from below you must remove the corresponding
+// entry from here.
+  fieldsNotRequired['fontface'] = true
+  fieldsNotRequired['music'] = true
+  fieldsNotRequired['notify'] = true
+
+  fieldCaption['to[0]'] = "Recipient\'s name"
+  fieldCaption['to_email[0]'] = "Recipient\'s email address"
+  fieldCaption['from'] = "Your name"
+  fieldCaption['from_email'] = "Your email address"
+  fieldCaption['message'] = "The message"
+
+  /* END AUTHOR SPECS */
+
+  return RequiredFieldsFilled(submittedForm,fieldsNotRequired,fieldCaption)
+}
+</script>
+
+  <table width="90%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="100%" colspan="2">
+        <div align="center">
+{IMG}
+<br>
+          {CAPTION}<br>
+          <br>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+
+<form method="post" action="sendcard.php" name="sc_form" onSubmit="return AllFieldsFilled(this)">
+  <table width="90%" border="0" cellspacing="0" cellpadding="0">
+     <!-- BEGIN recipient_block -->
+     <tr>
+       <td width="140">To:</td>
+       <td width="80%">
+          <input type="text" name="to[{I}]" value="{TO}">
+       </td>
+     </tr>
+     <!-- Leave the following line in place!!! --> {INVALIDTO_EMAIL}
+     <tr>
+       <td width="140">Email address</td>
+       <td width="80%">
+          <input type="text" name="to_email[{I}]" value="{TO_EMAIL}">
+       </td>
+     </tr>
+     <!-- END recipient_block --> <!-- BEGIN from_block -->
+     <tr>
+       <td width="140">From:</td>
+       <td width="80%">
+          <input type="text" name="from" value="{FROM}">
+       </td>
+     </tr>
+     <!-- Leave the following line in place!!! --> {INVALIDFROM_EMAIL}
+     <tr>
+       <td width="140">Your email address:</td>
+       <td width="80%">
+          <input type="text" name="from_email" value="{FROM_EMAIL}">
+       </td>
+     </tr>
+     <!-- END from_block --> <!-- If you do not want this option, DO NOT remove this row!  Edit sendcard_setup.php instead -->
+<!-- BEGIN layout_block -->
+     <tr>
+       <td width="140">Arrangement of the card:</td>
+       <td width="80%">
+          <table width="160" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+               <td>
+                 <div align="center"><img src="images/layout-top.gif" width="67" height="36"></div>
+               </td>
+               <td>
+                 <div align="center"><img src="images/layout-left.gif" width="67" height="36"></div>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                 <div align="center">
+                    <input type="radio" name="template" value="message" checked>
+                 </div>
+               </td>
+               <td>
+                 <div align="center">
+                    <input type="radio" name="template" value="message-left">
+                 </div>
+               </td>
+            </tr>
+          </table>
+
+       </td>
+     </tr>
+<!-- END layout_block -->
+     <tr>
+       <td width="140">Message:</td>
+       <td width="80%"> If you want to include a hyperlink, please insert &lt;&gt;
+          around it. If<font face="Verdana, Arial, Helvetica, sans-serif"> you don't
+          </font>then it will be treated as text.<br>
+          <textarea name="message" cols="50" rows="8" wrap="VIRTUAL">{MESSAGE}</textarea>
+       </td>
+     </tr>
+  </table>
+  Receive notification when the card is viewed (you will only be notified once,
+  no matter how many times the card is viewed)
+  <input type="checkbox" name="notify" checked>
+  <br>
+{FOOTER}
+  <input type="submit" name="preview" value="Preview the card">
+  <br>
+</form>
+<p align="center"><i>Powered by</i> <a href="http://www.sendcard.f2s.com/" target="_blank">sendcard</a>.</p>

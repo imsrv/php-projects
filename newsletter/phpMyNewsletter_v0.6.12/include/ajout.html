@@ -1,0 +1,31 @@
+<br>
+<? echo "
+	<script language=\"javascript\">
+		function Submitform()
+			{
+		
+
+			if  (document.sub.addr.value=='') alert(\"".translate("Adresse Email non valide")."\");
+			else 
+				{
+				if ( ((document.sub.addr.value.indexOf('@',1))==-1)||(document.sub.addr.value.indexOf('.',1))==-1 )
+				      alert(\"".translate("Adresse Email non valide")."\");
+      				 
+				else 	document.sub.submit();
+			 	}
+			
+			 }
+		</script>"; ?>
+<center><img src="img/add.gif" border="0" align="middle">&nbsp;<b><?echo translate("Ajout d'un abonné"); ?></b> <img src="img/add.gif" border="0" align="middle"></center>
+<div align="center"><table border="0" cellpadding="0" cellspacing="0" width="79%">
+    <tr>
+        <td width="868" height="25" align="left" valign="top" ><form method="post" name="sub">
+<input type=hidden name="go" value="1">  <p><? echo translate("Adresse e-mail"); ?> <input type="text"
+             name="addr" value="" maxlength="250" size="30"> 
+            <input type="button"  value="Go !" onclick=Submitform()> </p>
+            <p><? echo translate("Avertir de l'inscription par mail"); ?> <input type="checkbox" name="confirmer"
+             value="oui"> </form><br> &nbsp;&nbsp; </td>
+    </tr>
+</table>
+</div>
+

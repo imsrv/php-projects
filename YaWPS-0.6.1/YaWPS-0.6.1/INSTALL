@@ -1,0 +1,256 @@
+Welcome to the YaWPS installation guide!
+If you are upgrading from an older version of YaWPS, please read the UPGRADE 
+file! 
+
+...Step 1: CHECKING REQUIREMENTS
+You'll need some webspace that has Perl5 or higher enabled. 
+If you are unsure, please contact your web host. 
+You'll need a web browser (IE4.5+ or NN4.5+) and a FTP client to upload the 
+files.
+You'll also need your path to perl, it's usually "/usr/bin/perl". 
+If you are unsure ask your administrator.
+
+...Step 2: GETTING STARTED
+Fire up your FTP client and look for a cgi-bin directory on your server. 
+Here are a few examples of what you might see. 
+Please find the one closest to your directory structure:
++---------------------+---------------------+---------------------+
+|                     |                     |                     |
+|       cgi-bin       |       cgi-bin       |     cgi-bin         |
+|       www           |       httpdocs      |     public_html     |
+|                     |                     |                     |
++---------------------+---------------------+---------------------+
+|                     |                     |                     |
+| public_html/cgi-bin |     www/cgi-bin     |       cgi-bin       |
+|                     |                     |                     |
+|                     |                     |                     |
++---------------------+---------------------+---------------------+
+If you do not see a cgi-bin, or a folder named cgi or something similar, 
+then you will need to make one, as long as you know your host supports cgi. 
+Create the folder and chmod it to 755.
+Please Note : Windows servers do not accept chmod values. 
+The steps discussing chmod may be skipped if your site is hosted on a Windows 
+server.
+
+...Step 3: SETTING UP THE CGI DIRECTORIES
+In your server's cgi-bin directory create a directory called 'yawps'. 
+Upload the entire local YaWPS cgi-bin directory.
+You should now have the following directory structure:
+cgi-bin/yawps/db
+cgi-bin/yawps/db/blocks
+cgi-bin/yawps/db/blocks/1.txt
+cgi-bin/yawps/db/blocks/blocks.dat
+cgi-bin/yawps/db/forum
+cgi-bin/yawps/db/forum/messages
+cgi-bin/yawps/db/links
+cgi-bin/yawps/db/members
+cgi-bin/yawps/db/members/admin.dat
+cgi-bin/yawps/db/members/membergroups.dat 
+cgi-bin/yawps/db/members/memberlist.dat
+cgi-bin/yawps/db/modules
+cgi-bin/yawps/db/pages
+cgi-bin/yawps/db/polls
+cgi-bin/yawps/db/stats
+cgi-bin/yawps/db/topics
+cgi-bin/yawps/db/topics/articles
+cgi-bin/yawps/db/topics/cats.dat
+cgi-bin/yawps/db/.htaccess
+cgi-bin/yawps/db/welcomemsg.txt
+cgi-bin/yawps/lang
+cgi-bin/yawps/lang/english.pl
+cgi-bin/yawps/lang/german.pl
+cgi-bin/yawps/modules
+cgi-bin/yawps/admin.cgi
+cgi-bin/yawps/forum.cgi
+cgi-bin/yawps/help.cgi
+cgi-bin/yawps/index.cgi
+cgi-bin/yawps/installer.cgi
+cgi-bin/yawps/instant_messenger.cgi
+cgi-bin/yawps/links.cgi
+cgi-bin/yawps/login.cgi
+cgi-bin/yawps/memberlist.cgi
+cgi-bin/yawps/pages.cgi
+cgi-bin/yawps/polls.cgi
+cgi-bin/yawps/recommend.cgi
+cgi-bin/yawps/register.cgi
+cgi-bin/yawps/search.cgi
+cgi-bin/yawps/smilies.cgi
+cgi-bin/yawps/stats.cgi
+cgi-bin/yawps/top10.cgi
+cgi-bin/yawps/topics.cgi
+cgi-bin/yawps/user.cgi
+cgi-bin/yawps/yawps.pm
+cgi-bin/yawps/yawpsrc.pl
+Chmod all cgi-files to 755.
+Check the perl path at the first line of them.
+Leave yawpsrc.pl chmoded to 644.
+Chmod all files and directories inside the db-folder to 777.
+Leave .htaccess chmoded to 644.
+Remove all dummy files inside the db directory.
+
+...Step 4: SETTING UP THE NON-CGI DIRECTORY
+In the 'public' part of your web space - usually the directory is called 
+'public', 'public_html', 'www' - create another directory called 'yawps' 
+and in that new directory, upload the local non-cgi folder.
+You should now have the following directory structure:
+public-html/yawps/yawpsnews.xml
+public-html/yawps/images
+public-html/yawps/images/avatars
+public-html/yawps/images/avatars/_nopic.gif
+public-html/yawps/images/avatars/index.html
+public-html/yawps/images/forum
+public-html/yawps/images/forum/bold.gif
+public-html/yawps/images/forum/center.gif
+public-html/yawps/images/forum/code.gif
+public-html/yawps/images/forum/delete.gif
+public-html/yawps/images/forum/email.gif
+public-html/yawps/images/forum/email2.gif
+public-html/yawps/images/forum/exclamation.gif
+public-html/yawps/images/forum/hotthread.gif
+public-html/yawps/images/forum/index.html
+public-html/yawps/images/forum/ip.gif
+public-html/yawps/images/forum/italicize.gif
+public-html/yawps/images/forum/lamp.gif
+public-html/yawps/images/forum/list.gif
+public-html/yawps/images/forum/lock.gif
+public-html/yawps/images/forum/locked.gif
+public-html/yawps/images/forum/message.gif
+public-html/yawps/images/forum/modify.gif
+public-html/yawps/images/forum/move.gif
+public-html/yawps/images/forum/multipage.gif
+public-html/yawps/images/forum/new.gif
+public-html/yawps/images/forum/new_thread.gif
+public-html/yawps/images/forum/notify.gif
+public-html/yawps/images/forum/off.gif
+public-html/yawps/images/forum/on.gif
+public-html/yawps/images/forum/open.gif
+public-html/yawps/images/forum/pmon.gif
+public-html/yawps/images/forum/print.gif
+public-html/yawps/images/forum/profile.gif
+public-html/yawps/images/forum/question.gif
+public-html/yawps/images/forum/quote.gif
+public-html/yawps/images/forum/quote2.gif
+public-html/yawps/images/forum/remove.gif
+public-html/yawps/images/forum/reply.gif
+public-html/yawps/images/forum/smilie.gif
+public-html/yawps/images/forum/star.gif
+public-html/yawps/images/forum/thread.gif
+public-html/yawps/images/forum/thumbdown.gif
+public-html/yawps/images/forum/thumbup.gif
+public-html/yawps/images/forum/tline.gif
+public-html/yawps/images/forum/tline2.gif
+public-html/yawps/images/forum/underline.gif
+public-html/yawps/images/forum/url.gif
+public-html/yawps/images/forum/veryhotthread.gif
+public-html/yawps/images/forum/www.gif
+public-html/yawps/images/forum/xx.gif
+public-html/yawps/images/smilies
+public-html/yawps/images/smilies/bones.gif
+public-html/yawps/images/smilies/bounce.gif
+public-html/yawps/images/smilies/confused.gif
+public-html/yawps/images/smilies/cool.gif
+public-html/yawps/images/smilies/cry.gif
+public-html/yawps/images/smilies/eek.gif
+public-html/yawps/images/smilies/evil.gif
+public-html/yawps/images/smilies/frown.gif
+public-html/yawps/images/smilies/grin.gif
+public-html/yawps/images/smilies/index.html
+public-html/yawps/images/smilies/lol.gif
+public-html/yawps/images/smilies/mad.gif
+public-html/yawps/images/smilies/ninja.gif
+public-html/yawps/images/smilies/nonsense.gif
+public-html/yawps/images/smilies/oops.gif
+public-html/yawps/images/smilies/razz.gif
+public-html/yawps/images/smilies/rolleyes.gif
+public-html/yawps/images/smilies/smile.gif
+public-html/yawps/images/smilies/tongue.gif
+public-html/yawps/images/smilies/wink.gif
+public-html/yawps/images/stats
+public-html/yawps/images/stats/aix.gif
+public-html/yawps/images/stats/altavista.gif
+public-html/yawps/images/stats/articles.gif
+public-html/yawps/images/stats/beos.gif
+public-html/yawps/images/stats/bsd.gif
+public-html/yawps/images/stats/comments.gif
+public-html/yawps/images/stats/forummessages.gif
+public-html/yawps/images/stats/hp-ux.gif
+public-html/yawps/images/stats/index.html
+public-html/yawps/images/stats/irix.gif
+public-html/yawps/images/stats/konqueror.gif
+public-html/yawps/images/stats/linkcats.gif
+public-html/yawps/images/stats/links.gif
+public-html/yawps/images/stats/linux.gif
+public-html/yawps/images/stats/lynx.gif
+public-html/yawps/images/stats/mac.gif
+public-html/yawps/images/stats/msie.gif
+public-html/yawps/images/stats/netscape.gif
+public-html/yawps/images/stats/opera.gif
+public-html/yawps/images/stats/os2.gif
+public-html/yawps/images/stats/scriptver.gif
+public-html/yawps/images/stats/searchengines.gif
+public-html/yawps/images/stats/sunos.gif
+public-html/yawps/images/stats/topics.gif
+public-html/yawps/images/stats/unknown.gif
+public-html/yawps/images/stats/users.gif
+public-html/yawps/images/stats/waiting.gif
+public-html/yawps/images/stats/webtv.gif
+public-html/yawps/images/stats/windows.gif
+public-html/yawps/images/topics
+public-html/yawps/images/topics/announcements.gif
+public-html/yawps/images/topics/bugs.gif
+public-html/yawps/images/topics/faq.gif
+public-html/yawps/images/topics/games.gif
+public-html/yawps/images/topics/gnu.gif
+public-html/yawps/images/topics/graphics.gif
+public-html/yawps/images/topics/hardware.gif
+public-html/yawps/images/topics/humour.gif
+public-html/yawps/images/topics/index.html
+public-html/yawps/images/topics/internet.gif
+public-html/yawps/images/topics/linux.gif
+public-html/yawps/images/topics/microsoft.gif
+public-html/yawps/images/topics/movies.gif
+public-html/yawps/images/topics/music.gif
+public-html/yawps/images/topics/perl.gif
+public-html/yawps/images/topics/programming.gif
+public-html/yawps/images/topics/science.gif
+public-html/yawps/images/topics/security.gif
+public-html/yawps/images/topics/sports.gif
+public-html/yawps/images/index.html
+public-html/yawps/images/leftbar.gif
+public-html/yawps/images/mainbar.gif
+public-html/yawps/images/rightbar.gif
+public-html/yawps/images/urlgo.gif
+public-html/yawps/themes
+public-html/yawps/themes/standard
+public-html/yawps/themes/standard/images
+public-html/yawps/themes/standard/images/index.html
+public-html/yawps/themes/standard/images/logo.gif
+public-html/yawps/themes/standard/index.html
+public-html/yawps/themes/standard/style.css
+public-html/yawps/themes/standard/theme.pl
+public-html/yawps/themes/index.html
+Make sure that these files are accessible from everywhere! 
+Chmod yawpsnews.xml to 666.
+
+...Step 5: SET UP YAWPSRC.PL
+Open yawpsrc.pl (in the YaWPS cgi-bin folder) and edit the global variables:
+$cfg{pagename} 
+$cfg{pagetitle}
+Enter the absolute path for the following variables:
+$cfg{cgi_bin_dir}
+$cfg{non_cgi_dir}
+You can run the test.cgi script from the TOOLS directory to determine your
+path to YaWPS (copy test.cgi into the directory where your YaWPS cgi files 
+reside).
+Enter the correct URL for the following variables:
+$cfg{cgi_bin_url}
+$cfg{non_cgi_url}
+Enter your email address for $cfg{webmaster_email}.
+
+...Step 6: LOGIN TO YaWPS
+You should then be able to log in as site administrator. 
+Login using "admin" as username and "yawps" as password. 
+Edit the admin profile (i.e. change the admin password!).
+
+If you have any problems, please check out the manuals at 
+http://yawps.sourceforge.net/ for further instructions.

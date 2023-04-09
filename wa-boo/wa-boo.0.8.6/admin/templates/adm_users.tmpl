@@ -1,0 +1,338 @@
+
+<head>
+      <script language="javascript">
+        <!--
+            function abwindowpopup(page,wwidth,wheight,options) {
+                var top=(screen.height-wheight)/2;
+                var left=(screen.width-wwidth)/2;
+                window.open(page,"","top="+top+",left="+left+",width="+wwidth+",height="+wheight+","+options);
+            } //-->
+        </script>
+</head>
+<body topmargin="0">
+                    <form name="users" action="adm_users_action.php" method="post">
+                      <input type="hidden" name="uID" value="<? echo $i_usr_id; ?>">
+                      <input type="hidden" name="usr_action" value="SAVE">
+                      <input type="hidden" name="current_position" value="<? echo $current_position; ?>">
+                      
+
+<table cellspacing="0" cellpadding="0" align="center" border="0">
+  <tr>
+    <td align="left" class="versionfont"><img src="../images/wa-boo_small.gif"> 
+      <? echo $G_version; ?>
+    </td>
+  </tr>
+    
+  <tr>
+    <td><table border="0" cellpadding="0" cellspacing="0" align="center">
+        
+  <tr>
+          
+    <td background="../images/left_top_corner.gif" height="7"></td>
+    <td background="../images/h_line_top.gif" height="7"></td>
+    <td background="../images/right_top_corner.gif" height="7"></td>
+  </tr>
+        
+  <tr> 
+          
+    <td background="../images/v_line_left.gif" width="7"></td>
+    <td class="boldstdfont">
+            
+      <table border="0" cellspacing="0" cellpadding="0" units="pixels" align="center">
+              
+        <tr> 
+                
+          <td align="center">
+                  
+                    <table border="0" cellspacing="0" cellpadding="0" units="pixels" background="../images/bg2.gif">
+			        
+              
+                    
+
+                      <tr align="center" bgcolor="#C14F02"> 
+                  
+                        
+                        <td class="stdtitle" bgcolor="<? echo $G_admin_menu_color ?>" align="left">
+                    <a title="Retour Menu" href="adm_index.php"><img src="../images/prev.gif" border="0"></a></td>
+                        <td class="stdtitle" bgcolor="<? echo $G_admin_menu_color ?>" colspan="2">
+                          <? echo $s_user->getUserFirstname() . " " . $s_user->getUserName() . " - Groupe : " . $s_admin_domain->getDomainName() . " - " . $s_user_type . " mode"; ?>
+                        </td>
+                        <td class="stdtitle" bgcolor="<? echo $G_admin_menu_color ?>" align="right"><a title="Se délogguer !" href="../index.php"><img src="../images/escape.gif" border="0"></a></td>
+                      </tr>
+                   
+                      
+                      <tr>
+                        
+                        <td align="center" colspan="4" height="7" background="../images/h_line.gif"></td>
+                      </tr>
+                      
+                      <tr>
+                        
+                        <td align="right" colspan="4" height="10"></td>
+                      </tr>
+                        
+                
+                      
+                      <tr>
+                  
+                        
+                        <td align="center" width="50"></td>
+                        <td align="right" class="boldstdfont" height="30">User firstname&nbsp;</td>
+                        <td>
+                    
+                          
+                          <input type="text" name="i_usr_firstname"  size="25" maxlength="50" value="<?echo $i_usr_firstname;?>">
+                  </td>
+                        <td align="center" width="30">
+                  <a title="Aide" href='javascript:abwindowpopup("../lang/admin_help_frameset.php",500,600,"menubar=no,scrollbars=yes,statusbar=no")'><img src="../images/icon_help.gif" width="25" height="25" border="0"></a>
+                  </td>
+                      </tr>
+                
+                      
+                      <tr>
+                  
+                        
+                        <td align="center" width="50"></td>
+                        <td align="right" class="boldstdfont" height="30">User name&nbsp;</td>
+                        <td>
+                    
+                          
+                          <input type="text" name="i_usr_name"  size="25" maxlength="50" value="<?echo $i_usr_name;?>">
+                  </td>
+                        <td align="center" valign="middle">&nbsp;</td>
+                      </tr>
+                
+                      
+                      <tr>
+                  
+                        
+                        <td align="right">&nbsp;</td>
+                        <td align="right" class="boldstdfont" height="30">User Login&nbsp;</td>
+                        <td>
+                    
+                          
+                          <input type="text" name="i_usr_login"  size="25" maxlength="50" value="<?echo $i_usr_login;?>">
+                  </td>
+                        <td align="center">&nbsp;</td>
+                      </tr>
+                
+                      
+                      <tr>
+                  
+                        
+                        <td align="right">&nbsp;</td>
+                        <td align="right" class="boldstdfont" height="30">User password&nbsp;</td>
+                        <td>
+                    
+                          
+                          <input type="password" name="i_usr_passwd"  size="25" maxlength="50" value="<?echo $i_usr_passwd;?>">
+                  </td>
+                        <td align="center"></td>
+                      </tr>
+                
+                      
+                      <tr>
+                  
+                        
+                        <td align="right">&nbsp;</td>
+                        <td align="right" class="boldstdfont" height="30">Confirm password&nbsp;</td>
+                        <td>
+                    
+                          
+                          <input type="password" name="i_usr_confirm_passwd"  size="25" maxlength="50" value="<?echo $i_usr_passwd; ?>">
+                  </td>
+                        <td>&nbsp;</td>
+                      </tr>
+                
+                      
+                      <tr>
+                  
+                        
+                        <td align="right">&nbsp;</td>
+                        <td align="right" class="boldstdfont" height="30">User email&nbsp;</td>
+                        <td>
+                    
+                          
+                          <input type="input" name="i_usr_email"  size="25" maxlength="50" value="<?echo $i_usr_email;?>">
+                  </td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      
+                      <tr>
+                        
+                        <td align="right">&nbsp;</td>
+                        <td align="right" class="boldstdfont" height="30">
+                          
+                          <? echo $s_admin_domain->getDomainName(); ?>
+                    &nbsp;</td>
+                        <td>
+                          <input type="checkbox" name="i_usr_domain" value="1"<? echo (isset($i_usr_domain) ? " checked" : ""); ?>>
+                  </td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td align="right">&nbsp;</td>
+                        <td align="right" height="30">&nbsp;</td>
+                        <td align="center">
+                          <input type="submit" name="OK" value="OK" class="adminbuttons">
+                          <input type="submit" name="Cancel" value="Annuler" class="adminbuttons">
+                </td>
+                        <td align="right">&nbsp;</td>
+                      </tr>
+                      
+                      <tr>
+                        
+                        <td align="right">
+                          
+                        </td>
+                        <td align="right">&nbsp;</td>
+                        <td align="right">&nbsp;</td>
+                        <td align="right">&nbsp;</td>
+                      </tr>
+                      
+                      <tr>
+                        
+                        <td align="right"></td>
+                        <td align="right" colspan="2" background="../images/h_line.gif" height="7"></td>
+                        <td align="right"></td>
+                      </tr>
+                
+                      
+                      <tr>
+                        
+                        <td align="right">&nbsp;</td>
+                        <td align="center" colspan="2" class="boldstdfont" bgcolor="<? echo $G_list_bg_color; ?>">
+						
+											users
+                          <?    echo $array_paging["lower"]; ?>
+                    to
+                          <? echo $array_paging["upper"]; ?>
+                     on
+                          <? echo $array_paging["total"]; ?>
+                    &nbsp;&nbsp;
+                          <? echo $array_paging["previous_link"]. "<<</a>&nbsp"; 
+                    for( $p = 0 ; $p < sizeof($array_row_paging) ; $p++ ){
+                        echo $array_row_paging[$p]; ?>
+                        
+                          <?    }  ?>
+                    
+                          <?    echo $array_paging["next_link"]. ">></a>&nbsp;"; ?>
+						
+						</td>
+                        <td align="right">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        
+                        <td align="right"></td>
+                        <td align="right" colspan="2" background="../images/h_line.gif" height="7"></td>
+                        <td align="right"></td>
+                      </tr>
+                      <tr>
+                        <td align="right"></td>
+                        <td align="right" colspan="2" height="7"></td>
+                        <td align="right"></td>
+                      </tr>
+                      
+                      
+                      <tr>
+                        
+                        <td align="right">&nbsp;</td>
+                        <td align="center" colspan="2">
+                          
+                          <table border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#EEEEEE">
+                            <?  //echo "position : " . $current_position . " size : ". $page_size . " et i jusquà : " . ($current_position + $page_size); ?>
+                            <?  
+                            // $i must be < $current_position + $page_size && $i  must be < $array_paging["total"] for last page
+                            for ($i = $current_position ; $i < $current_position + $page_size && $i < $array_paging["total"] ; $i++) { // using the $paging system to display
+                            //echo "hunter : " . $s_user->getUserId() . "lapin : " . $whole_users[$i]["id"] ."<br>";
+                            $updatable = isUpdatableUser($conn, $conn2, $s_user->getUserId() , $whole_users[$i]["id"]);
+                            tuneDisplay();// to avoid windows server display problems 
+                            ?>
+                            
+                             
+                            <tr>
+                              
+                              
+                              <td class="boldstdfont" align="right">
+                                
+                                <?    if ($updatable) { ?>
+                                    <a href="adm_users.php?uID=<? echo $whole_users[$i]["id"]; ?>&usr_action=EDIT&current_position=<? echo $current_position; ?>">
+                                
+                                <?    }  
+                                echo $whole_users[$i]["name"] . " " . $whole_users[$i]["firstname"]; 
+                                if ($updatable) { ?>
+                                    </a>
+                                
+                                <?    }  ?>
+                              </td>
+                              <td width="20" align="center">
+                                <?    if ($whole_users[$i]["member"] == "YES") { //  ?>
+                                    <a href="adm_users_action.php?uID=<? echo $whole_users[$i]["id"]; ?>&usr_action=UNCHECK&current_position=<? echo $current_position; ?>"><img src="../images/checked.gif" border="0"></a>
+                                
+                                <?    } else  { ?>
+                                    <a href="adm_users_action.php?uID=<? echo $whole_users[$i]["id"]; ?>&usr_action=CHECK&current_position=<? echo $current_position; ?>"><img src="../images/not_checked.gif" border="0"></a>
+                                
+                                <?    }  ?>
+                              </td>
+                              <td class="stdfont" align="center">
+                                <? echo $whole_users[$i]["nbcontacts"]; ?>
+                              </td>
+                              <td class="boldstdfont" align="right">
+                                
+                                <?    if ($updatable) { ?>
+                                    <a href="adm_users_action.php?uID=<? echo $whole_users[$i]["id"]; ?>&usr_action=DEL"><img src="../images/delete.gif" border="0"></a>
+                                
+                                <?    } else  { ?>
+                                    &nbsp;
+                                
+                                <?    }  ?>
+                              </td>
+                            </tr>
+                            
+                            <?  }  ?>
+                          
+                          </table>
+                        </td>
+                        <td align="right">&nbsp;</td>
+                      </tr>
+                
+                      
+                      <tr>
+                  
+                        
+                        <td align="right">&nbsp;</td>
+                        <td align="right" colspan="2">
+						
+	
+						
+						</td>
+                        <td align="right">&nbsp;</td>
+                      </tr>
+			        
+              
+                    
+                    
+                    </table>
+          </td>
+        </tr>
+            
+      </table>
+    </td>
+    <td valign="top" background="../images/v_line_right.gif" width="7"></td>
+  </tr>
+        
+  <tr>
+          
+    <td height="7" background="../images/left_bottom_corner.gif"></td>
+    <td height="7" background="../images/h_line_bottom.gif"></td>
+    <td height="7" background="../images/right_bottom_corner.gif"></td>
+  </tr>
+      
+</table>
+	  </td>
+  </tr>
+   
+</table>
+</form>
+</body>
+</html>

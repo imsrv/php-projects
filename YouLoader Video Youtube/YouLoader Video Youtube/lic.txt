@@ -1,0 +1,37 @@
+
+========================================================
+Software License Agreement
+========================================================
+
+THIS AGREEMENT CONSTITUTES A LEGAL BINDING AGREEMENT BETWEEN YOU "THE END USER" AND ClickCraft Web Design.
+
+PLEASE READ THIS LICENSE AGREEMENT CAREFULLY:
+
+IF YOU DO NOT AGREE TO THE TERMS AND CONDITIONS OF THIS LICENSE THEN YOU MUST DESTROY ALL COPIES OF THIS SOFTWARE IMMEDIATELY AND YOUR LICENSE AND ENTITLEMENT TO USE THIS SOFTWARE WILL SUBSEQUENTIALLY BE REVOKED.
+
+
+1) Grant of License; ClickCraft Web Design grants you the non-exclusive right to use this software and all associated electronic documentation in accordance with your license type, as defined in this EULA.
+
+2) Copyright; This software is owned and licensed exclusively by ClickCraft Web Design and is protected under copyright laws of the United States of America, United Kingdom and other international treaty provisions.
+
+3) Restrictions; Ownership of software. You may own the media on which the software is stored/recorded but ClickCraft Web Design retains exclusive ownership of the actual software itself including ALL copies, regardless of media and/or storage device. You are permitted to make unlimited copies of this software for backup and retrieval purposes only. The software will run only on a single server domain thus the URL you have entered durung the purchase process is the domain you are licensed to use the software on. You may not lease, rent, share (including peer to peer and e-mail), sublicense, merge, reverse engineer, decompile, patch, crack or disassemble this software in any way shape or form which includes but is not limited to defeating license control mechanisms. You cannot sell or transfer derivative works based upon the software to any third-party unless they themselves have a valid ClickCraft Web Design license. In addition, you acknowledge that the software and accompanying materials are the valuable proprietary and trade secret information of ClickCraft Web Design. You shall not use or disclose the software and accompanying materials except as specifically permitted under this agreement and you shall take all reasonable precautions to maintain the confidentiality of the software and all such accompanying materials.
+
+4) Termination; This license is effective until terminated (trial licenses terminate within 28 days). The license will terminate without notice from ClickCraft Web Design if you fail to comply with any provisions within this license. You may voluntarily terminate it at any time. Upon termination, you agree to destroy or purge all copies of this software and all related materials. Terminated licenses are non-refundable.
+
+5) LIMITED WARRANTY; As it's only warrant under this agreement, ClickCraft Web Design warrants this software will work as represented on our website in any descriptive text or documentation which specifically defines the functions and features of this software at the time of purchase, providing your server meets our minimum specification and/or requirements. In the unlikely event of a bug ClickCraft Web Design will release a fix as soon as possible providing of course that a fix is technologically achievable. Upgrades and bug fixes will occur no additional charges to your original license fee.
+
+EXCEPT AS EXPRESSLY WARRANTED IN THIS AGREEMENT, THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS WITH YOU. ClickCraft Web Design DOES NOT WARRANT THAT THE FUNCTIONS CONTAINED IN THE SOFTWARE WILL MEET YOUR REQUIREMENTS OR THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR FREE OR THAT SOFTWARE DEFECTS WILL BE CORRECTED. SOME STATES DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES SO THE ABOVE EXCLUSION MAY NOT APPLY TO YOU. THIS WARRANTY GIVES YOU SPECIFIC, LIMITED RIGHTS, YOU MAY HAVE OTHER RIGHTS WHICH WILL VARY DEPENDING ON YOUR COUNTRY OF RESIDENCE.
+
+6. LIMITATION OF LIABILITY; ClickCraft Web Design entire liability and your sole remedy under this license is, at ClickCraft Web Design discretional option, either a) return of full/partial license fee or b) replacement/repair (patch) of software under limited warranty.
+
+IN NO EVENT WILL ClickCraft Web Design OR ITS VENDORS, AGENTS OR AFFILIATES BE LIABLE FOR ANY DIRECT, CONSEQUENTIAL OR INCIDENTAL DAMAGES (INCLUDING DAMAGES FOR LOSS OF BUSINESS PROFITS, INFORMATION, OR USE) EVEN IF ClickCraft Web Design HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. SOME COUNTRIES DO NOT ALLOW THE EXCLUSION OR LIMITATION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES, SO THE ABOVE LIMITATION OR EXCLUSION MAY ALSO NOT APPLY TO YOU.
+
+Under no circumstances shall ClickCraft Web Design be liable for any damages that result from the use or inability to use the software or related documentation, even if ClickCraft Web Design has been advised of the possibility of such damages. In no event shall the liability of ClickCraft Web Design exceed the total fee paid for the software license, if applicable.
+
+7. Governing Law; This Agreement is governed by the laws of the United States of America and the United Kingdom. If the laws of your county, state, locality or sovereign country do not allow you to be bound under this agreement then your are hereby notified that you are not licensed to use this software and must immediately destroy all copies of the software.
+
+8. Export Law Assurances; You may not use or otherwise export or re-export the software except as authorized by United States law, United Kingdom law and the laws of the jurisdiction in which the software was obtained. In particular, but without limitation, the software may not be exported or re-exported a) into (or to a national or resident of) any U.S. embargoed country or b) to anyone on the U.S. Treasury Department's list of Specially Designated Nationals or the U.S. Department of Commerce's Table of Denial Orders. By using the software, you represent and warrant that you are not located in, under control of, or a national or resident of any such country or on any such list.
+
+Please read the above terms and conditions very carefully. If you are agreeing to this EULA on behalf of a company you represent you must be authorized to bind that company to this agreement. If you do not match this criterion or you do not agree to all of the terms and provisions set out in this EULA, please do not install the ClickCraft Web Design software. These terms may be subject to change at any time.
+
+Copyright ©2007 ClickCraft Web Design. All rights reserved.

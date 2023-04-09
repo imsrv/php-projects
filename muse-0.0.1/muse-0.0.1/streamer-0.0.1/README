@@ -1,0 +1,34 @@
+streamer v0.0.1 : Copyright (C) 2000 Toby Jaffey
+Fri Jan 21 03:12:46 GMT 2000
+
+LICENSE:
+This program is free software; you can distribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+Thanks to Jack Moffitt, Barath Raghavan, and Alexander Haväng for writing
+icecast and providing me with bits of code from shout.
+http://www.icecast.org
+devel@icecast.org
+
+DESCRIPTION:
+Icecast is an mp3 streamer for broadcasting network radio. It comes with a
+simple streamer called shout. However, the timing code in shout is delicate and
+icecast doesn't react well to really latent streams.
+
+So, here is streamer, an mp3 streamer for icecast which doesn't suffer from
+timing problems. The program forks into a streamer and a file handling child.
+The parent uses cunning non-blocking things to communicate with the file
+handling child so it never stops streaming. Meanwhile, the child deals with my
+stunningly slow cd changer which takes about five seconds to unmount the cds,
+swap the current slot, remount and map a file into memory.
+
+It works for me <g>.
+
+USAGE:
+Edit the hardcoded hostname, file paths and port numbers.
+Make
+Enjoy.
+You'll need a program called playlist.pl which will write on stdout the name of
+an mp3 when called as "playlist.pl next".

@@ -1,0 +1,9 @@
+Estimado %%employer_company%%,
+
+Su empleo "%%job_jobtitle%%" fue enviado adecuadamente.
+Su empleo caducará el %%job_expiredate%%.
+Quedando %%job_remaining%% días.
+Puede ver con lo verán los demandantes de empleo en el siguiente enlace
+%%job_link%%
+
+Hoy: %%today_date%%

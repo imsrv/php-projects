@@ -1,0 +1,92 @@
+# This script will handle all ban routines available on the message board,
+# including a ban by email, username, and IP (block).
+#
+# ScareCrow (C)opyright 2001 Jonathan Bravata.
+#
+# This file is part of ScareCrow.
+#
+# ScareCrow is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free
+# Software Foundation; either version 2 of the License, or (at your option),
+# any later version.
+#
+# ScareCrow is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+# more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with ScareCrow; if not, write to the Free Software Foundation, Inc.,
+# 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
+#
+# The latest version of this software can be found by pointing one's web
+# browser to http://scarecrowmsgbrd.cjb.net
+#
+# Author: Jonathan Bravata
+# Revision: June 2001
+
+# Checks whether a supplied IP matches one of the ban entries in the ban
+# data file.
+sub check_ip_ban {
+  lock_open(BANS,"$cgi_path/data/ip.ban","r");
+  my @bans = <BANS>;
+  close(BANS);
+  
+  foreach my $ban (@bans) {
+    my $addr = strip($ban);
+    $ban =~ s/\*/\(\.\+\?\)/ig;
+    if($_[0] =~ /$ban/)  { ban_die(); }
+  }
+}
+
+sub check_email_ban {
+  lock_open(banfile,"$cgi_path/data/email.ban","r");
+  my @bans = <banfile>;
+  close(banfile);
+
+  $_[0] =~ tr/A-Z/a-z/;
+  foreach my $ban (@bans) {
+    $ban = strip($ban);    $ban =~ tr/A-Z/a-z/;
+    if($_[0] eq $ban) { ban_die(); }
+  }
+}
+
+sub check_username_restriction {
+  lock_open(banfile,"$cgi_path/data/usernames.ban","r");
+  my @bans = <banfile>;
+  close(banfile);
+
+  $test = $_[0];  $test =~ tr/A-Z/a-z/;
+  foreach my $ban (@bans) {
+    $ban = strip($ban);    $ban =~ tr/A-Z/a-z/;
+    if($test eq $ban) { restricted(); }
+  }
+}
+
+sub restricted {
+  $subject = qq~That Username Is Restricted~;
+  $message = qq~
+    We're sorry, but the username you have selected has been flagged by the
+    administration as reserved or restricted.  Please choose a new username
+    and try your registration again.  We apologize for any inconveinience.
+  ~;
+  
+  notice_box($subject,$message);
+  exit;
+}
+
+sub ban_die {
+  $subject = qq~You Have Been Banned~;
+  $message = qq~
+    We're sorry, but you have been banned.  If you believe this ban was not set for you, you
+    may <a href="mailto:$config{'email_in_addr'}">contact the administrator</a>.  Until such
+    time as the ban is removed, however, you will not be able to access this portion of the
+    message board.
+      ~;
+
+  notice_box($subject,$message);
+  exit;
+}
+
+
+1;

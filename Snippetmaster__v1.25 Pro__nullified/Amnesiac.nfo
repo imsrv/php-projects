@@ -1,0 +1,10 @@
+Snippetmaster
+
+-INSTALATION-
+* unrar the package
+* edit the config.php (in the includes folder)
+* upload
+* USE!!!
+
+-NOTE-
+You must not edit the licence key variable in the config.php.

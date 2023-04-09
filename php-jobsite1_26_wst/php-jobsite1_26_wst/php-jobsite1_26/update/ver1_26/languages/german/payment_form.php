@@ -1,0 +1,30 @@
+<?php
+define('TEXT_PAY_NOW','Pay Now By Credit Card (secure)');
+define('TEXT_BACK_TO_MY_SITE','Back to '.SITE_NAME.' and Update Payment Info');
+define('TEXT_UPGRADE','Upgrade');
+define('TEXT_FOLLOWING_INFORMATION','If you pay by invoice this are the information that will be saved');
+define('TEXT_INVOICE_PAYMENT','Invoice Payment');
+define('TEXT_PAY_NOW_INVOICE','Pay Now');
+define('TEXT_PAYMENT_LIST_PRICE','List price');
+define('TEXT_PAYMENT_DISCOUNT_PRICE','Discount');
+define('TEXT_PAYMENT_TOTAL_PRICE','Total price');
+define('TEXT_PAYMENT_DESCRIPTION','Payment Description');
+define('TEXT_PAYMENT_DATE','Date');
+define('TEXT_NUMBER_OF_JOBS','Number of jobs');
+define('TEXT_PRICE_OF_JOBS','Price of jobs');
+define('TEXT_TOTAL_OF_JOBS','Total of jobs');
+define('TEXT_NUMBER_OF_FJOBS','Number of featured jobs');
+define('TEXT_PRICE_OF_FJOBS','Price of featured jobs');
+define('TEXT_TOTAL_OF_FJOBS','Total of featured jobs');
+define('TEXT_NUMBER_OF_CONTACTS','Number of contacts');
+define('TEXT_PRICE_OF_CONTACTS','Price of contacts');
+define('TEXT_TOTAL_OF_CONTACTS','Total of contacts');
+define('TEXT_DESCRIPTION','Description');
+define('TEXT_PAYMENT_DESCRIPTION_HINT','Hint: Here you can briefly explain the payment condition, modalities, other explications...');
+define('TEXT_INVALID_CC_PAYMENT','Invalid Credit Card Operation:');
+define('TEXT_INVALID_CC_PAYMENT_ERRORS','Errors Occured while processing your Credit Card:');
+define('TEXT_DETAILED_ERROR','Read Detailed Error below:');
+define('TEXT_PAYMENT_VAT','VAT Value');
+define('TEXT_DISCOUNTED_PRICE','Price with discount');
+define('TEXT_PEDING_CC_PAYMENT','Peding Credit Card Payment.<br> Waiting for admin for validation!');
+?>

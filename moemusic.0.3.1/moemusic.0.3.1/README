@@ -1,0 +1,23 @@
+-------------------------------------------------------------------------
+			Moe Music Ver 0.1.2
+-------------------------------------------------------------------------
+
+Moe Music Ver 0.1.2 is a web front end to mpg123 along with a mySQL database
+for the backend book keeping. I wrote the program to assist with LAN
+Parties, and to end 7 different people all playing mp3's on there
+computers at once. It was intended to provide a central place for music to
+be played from and includes support for queueing songs etc,
+
+As of this release of Moe Music, it is possible to add artists to the
+catalog and index songs on the server by the artists. It is also possible
+to play the songs. 
+
+It is quite functional currently and everything you can see works except
+for the indexing from an uploaded directory that i hoipe to have running
+by the next release.
+
+email me jwrennie@bigpond.com if you have any queries or suggestions about
+the program or would like to help with its development.
+
+Jason
+

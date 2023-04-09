@@ -1,0 +1,35 @@
+Best Top List
+
+#########################################################
+#                                                       #
+# PHPSelect Web Development Division                    #
+#                                                       #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are distributed through         #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated.                                     #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the distriuters      #
+# at admin@phpselect.com                                #
+#                                                       #
+#########################################################
+
+				
+
+INSTALL INSTRUCTIONS
+1. Unpack toplist<ver>.tar.gz file
+2. Change variables in config.php
+3. Upload files onto server
+4. Change 'banners', 'style', 'backup' directory & 'cheat.log' file permission to 777
+5. Change 'images/logo.jpg' & 'images/button.jpg' with your graphics
+6. Point your browser to http://yourdomain.com/toplist_directory/install.php
+7. And that's all. :)
+
+Administration panel: http://www.yourdomain.com/toplist_directory/admin.php

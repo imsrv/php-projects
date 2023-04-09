@@ -1,0 +1,63 @@
+<?
+
+	$Query = "SELECT i.ID, i.Title, i.URL, i.Description, w.ID ";
+	$Query .= "FROM item i, wing w ";
+	$Query .= "WHERE i.Wing = w.ID ";
+	$Query .= "AND (i.Title like '%$searchString%' ";
+	$Query .= "OR i.URL like '%$searchString%' ";
+	$Query .= "OR i.Description like '%$searchString%') ";
+	if($Browser_Admin != "YES")
+	{
+		$Query .= "AND w.Private='N' ";
+	}
+	$Query .= "ORDER BY w.Title, i.LinkCount, i.Title ";
+
+	$DatabaseResult = mysql_query($Query, $DatabaseLink);
+
+	$lastWing = "";
+
+	while($DatabaseRow = mysql_fetch_row($DatabaseResult))
+	{
+		$item_ID = $DatabaseRow[0];
+		$item_Title = $DatabaseRow[1];
+		$item_URL = $DatabaseRow[2];
+		$item_Description = $DatabaseRow[3];
+		$wing_ID = $DatabaseRow[4];
+
+		if($lastWing != $wing_ID)
+		{
+			if($lastWing != "")
+			{
+				print("</DL>\n");
+			}
+
+			GetWingInfo($wing_ID);
+
+			print("<A HREF=\"$IndexScript?SCREEN=stroll&wing=$wing_ID\">");
+			print(doTitleDressing($wing_FullTitle));
+			print("</A><BR>\n");
+			print("<DL>\n");
+
+			$lastWing = $wing_ID;
+		}
+
+		print("<DT><A HREF=\"$LocationScript?inputItem=$item_ID\">$item_Title</A>");
+		print("<DD>\n");
+		print("<FONT SIZE=2>$item_Description</FONT><BR>\n");
+
+	}
+
+	if($lastWing != "")
+	{
+		print("</DL>\n");
+	}
+	else
+	{
+		print(doTitleDressing("Sorry, nothing matches '$searchString'."));
+		print("<BR>\n");
+		print("<BR>\n");
+		print("<BR>\n");
+		print("<BR>\n");
+	}
+
+?>

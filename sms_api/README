@@ -1,0 +1,10 @@
+CLICKATELL SMS API
+
+by Aleksandar Markovic <miki@horde.org>
+
+This class is meant to send SMS messages via the Clickatell gateway
+and provides support to authenticate to this service and also query
+for the current account balance. This class use the fopen or CURL module
+to communicate with the gateway via HTTP/S.
+
+For more information about CLICKATELL service visit http://www.clickatell.com

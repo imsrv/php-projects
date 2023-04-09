@@ -1,0 +1,1 @@
+<table width="465" class="{TB_CLASS_TABLE}" border="0">{ROWS}</table>

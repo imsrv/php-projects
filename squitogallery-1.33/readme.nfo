@@ -1,0 +1,173 @@
+Squito Gallery 1.33
+______________________
+
+New Features 
+______________________
+
+Ability to create private folders has been added.
+
+Ability to create user accounts has been added.
+
+Search capabilities. Searches comments and fileinfo
+
+Using the user accounts you can see what files have been uploaded since last
+login
+
+See who is on the gallery. Inactive users are automatically removed after
+five minutes.
+
+Improved code compatibility.
+
+Removed the mouseover td change. It looked cool for about a month.
+
+Added more support for CSS
+
+___________________
+
+bug fixes.
+___________________
+corrected problem with not connecting to a non-localhost.
+
+corrected many uninitialized variables for those that have notice reporting on.
+
+updated code for file uploads with versions of GD lib
+
+there are many more little fixes that I can't think of right now
+______________________
+
+Web Installation  (for a manual install see below. NOTE: advanced users only)
+______________________
+
+Since Squito Gallery requires a database to run you will need to create
+one prior to installing the script. Depending on your webserver this is
+done through Cpanel or anyother web management system. Contact your
+System Administrator if you unsure about this. Because every host is
+different I can not give support on this precedure.
+
+
+Uncompress the files into a directory onto your webserver. Change the
+permissions on the directory to be world writeable. On a unix machine
+you would use the chmod command with this syntax.
+
+chmod 777 <directory>
+
+This is done so that the script can generate the config.inc.php file.
+
+This file cantains the necessary information to connect to your database and
+some essential information about your server.
+
+Your next step is to open your browser and run the setup.php file.
+
+This will make directories and build your database.
+
+Box 1 is where you define the title of your website.
+
+Box 2 this is the main address of your website. You will not need to change this
+      it is preset by the script.
+
+Box 3 main filename. Do not change this unless you are using advanced configuration
+
+Box 4 Database Hostname. This is the address of the MySQL database server.
+      Most servers use localhost. Contact your administrator to get this name.
+
+Box 5 Database Username. Contact your administrator for this information if you
+      do not know what it is.
+
+Box 6 Database Password. Contact your administrator for this information if you
+      do not know what it is.
+
+Box 7 Name of database. This is the name of the database you created before
+      running this script. If you do not know what this is please contact your
+      system administrator.
+
+Box 8 Operating System. This is the Operating System of your server. This
+      script has been tested on Windows XP Pro running Apache 1.3, PHP 4.2,
+      and MySQL 3.23 it has been tested on Red Hat Linux 7.2 
+
+Box 9 Graphics application for thumbnail creation. This script requires a 3rd
+      Party graphics application for image management. There is support for
+      Imagemagick 5.4+, GD 1.8.3, and GD 2.0.
+      NOTE: Licensing restrictions do not allow default installations of GD to
+      support the Compuserve .GIF file format.
+
+Box 10 Imagemagick path. Because PHP does not natively support Imagemagick you
+       must supply the full path to work correctly. On a Windows machine you must
+       use c:\\imagemagick\\ notice the double backslashes use them accordingly.
+
+Box 11 Thumbnail Dimensions. Size that the script creates the thumbnails at.
+
+Box 12 Administrator Username.  Username that you choose to access the Admin
+       portion of the script.
+
+Box 13 Administrator Password.  Password that you choose to access the Admin
+       portion of the script.
+
+Click on the Submit button.
+
+
+
+If your database settings and file permissions are correct your script will
+be installed. You will now need to change the permissions on the
+directory you created back to a secure state. On a unix machine you would
+issue the chmod command with this syntax.
+
+chmod 711 <directory>
+
+
+__________________________________________________________________
+
+Upgrading Options
+
+__________________________________________________________________
+
+
+If you are not upgrading from version 1.31 or 1.32 you will need to use a
+full install.
+
+Upgrading from verion 1.31 - uncompress the files and run the file 131to133.php
+from the browser.
+
+Upgrading from version 1.32 - uncompress the files and run the file 132to133.php
+from the browser.
+
+
+________________________________________________________________
+
+Manual Install
+
+_______________________________________________________________
+
+There are some of those who prefer like to do things the hard way
+
+Included in the zip file is the .sql file that you can import into phpMyAdmin
+You will then need to modify the sampleconfig.inc.php and rename it to
+config.inc.php
+
+directories that need to be created and permissions set to 777
+
+profiles
+images
+thumbnails
+icons
+
+you will then need to copy all the dir*.gif files into the icons directory
+
+in order for the admin portion of the script you will need to insert a record
+into the authorization folder.
+
+The only fields that you will need are name, password, and access_level.  Make sure you use
+the password() function with the password otherwise it will not work. Be
+sure to set the access_level to 200
+
+
+
+
+This software is released under the General Public License. Please view gpl.txt
+for license information.
+
+
+If you have any questions please visit the support forum at
+http://squitosoft.angrymosquito.com
+
+
+  

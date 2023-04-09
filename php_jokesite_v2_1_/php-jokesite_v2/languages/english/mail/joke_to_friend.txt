@@ -1,0 +1,7 @@
+Dear %%to_name%% <%%to_email%%>
+
+Your friend %%from_name%% <%%from_email%%> was sent you this joke:
+
+%%joke_title%%
+--------------
+%%joke_text%%

@@ -1,0 +1,61 @@
+# ---------------------------------------------------------------
+# phpop
+# A WWW based POP email management tool 
+# Copyright (C) 1998  Padraic Renaghan
+# Licensed under terms of GNU General Public License
+# (see http://renaghan.com/phpop/LICENSE)
+# ---------------------------------------------------------------
+
+07/06/2000   Version 1.2.2
+ - Changed from FastTemplates to faster PHPLIB template class.
+ - removed reliance on .htaccess file for settings.
+   trying to make installation and use easier for the
+   not technie user. added checks to index page to test
+   for proper php settings.
+
+
+04/14/2000   Version 1.2.1
+ - Fixed bug on logout page calling non-existent debug function.
+ 
+04/12/2000   Version 1.2.0
+ - Changes to make PHP4 compatible
+ - Upgraded to PHPLIB 7.2b
+ - Implemented suggestions from dan@kuykendall.org to allow more
+   options for servers and port fields on login.
+ - Implemented support for outgoing mail attachments as suggested
+   by dan@kuykendall.org
+ - Implemented Vmailmgr support as specified by dan@kuykendall.org
+ - removed use of auth since nobody seems to use it, and it allows
+   me to remove reliance on PHPLIB auth table
+
+03/24/2000   Version 1.1.0
+ - added check_auth_user to phpop.inc to optinally turn on/off
+   the validation of the username against the auth_user table.
+ - added allow_any_server to phpop.inc to optionally allow
+   user to enter in mail server and port on login page.
+ - fixed bug causing header to repeat from prior msg in list page
+
+02/18/2000   Version 1.0.0
+ - added delete capability from msg list page.
+ - added needed PHPLIB files to distribution.
+
+10/31/1999   Version 0.3.0
+ - added To and cc header display on msg read page
+ - created two mailing lists. phpop for discussion, and
+   phpop-announce for announcements only.
+ - made compatible with PHPLIB 7.x
+ - added maint links to top of message display
+ - reorg directory structure
+ - updated INSTALL to match to directory structure
+
+
+07/08/1999   Version 0.2
+ - msg.php3 will now replace URLs with HTML achnor tags
+ - msg.php3 will now replace email addresses with HTML anchor
+   tags to send.php3
+ - pop login verified at time of PHPLIB login
+ - security fix: must have valid pop login before you can send msg
+
+05/28/1999   Version 0.1
+ - initial release
+---------------------------------------------------------------------------

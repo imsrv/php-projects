@@ -1,0 +1,9 @@
+Dear %%employer_company%%,
+
+Your job "%%job_jobtitle%%" was posted successfully.
+Your job will expire on %%job_expiredate%%.
+Remaining %%job_remaining%%.
+You can see how is your job showed to jobseekers by clicking on the link below
+%%job_link%%
+
+Today: %%today_date%%

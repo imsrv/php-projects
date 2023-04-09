@@ -1,0 +1,225 @@
+<?php
+//Copyright (c) 2003-2004 Okphp Group
+// http://www.okphp.com
+
+
+///////////////////////////////////////////////////////////////////////////
+// basic
+// 
+//
+
+$dbhost              = "{dbhost}";       
+$dbuser              = "{dbuser}";       
+$dbpswd              = "{dbpswd}";       
+$dbname              = "{dbname}";      
+$prefix              = "{prefix}";        
+
+///////////////////////////////////////////////////////////////////////////
+// Bind other OKPHP works
+$okphp_cms = "{okphp_cms}"; // works with Okphp BBS?
+$cms_pre = "{cms_pre}"; // Okphp BBS table prefix
+
+$okphp_blog = "{okphp_blog}"; // works with Okphp BBS?
+$blog_pre = "{blog_pre}"; // Okphp BBS table prefix
+
+$bind_users = "{bind_users}";
+
+///////////////////////////////////////////////////////////////////////////
+// Others
+$max_badlogins = 5;
+$lock_badlogin = 5; // minites
+//##########################################################################
+// !!! DO NOT CHANGE SETTINGS BELLOW, UNLESS YOU KNOW WHAT YOU ARE DOING !!!
+///////////////////////////////////////////////////////////////////////////
+// database
+//
+if ($okphp_cms == "on" || $okphp_blog == "on") {
+	$bbs_cookie_name = "okphp_name";
+	$bbs_cookie_pass = "okphp_pass";
+	$bbs_cookie_id = "okphp_id";
+
+	$bbs_session_name = "okphp_name";
+	$bbs_session_id = "okphp_id";
+	$bbs_session_gid = "okphp_gid";
+	$bbs_session_email = "okphp_email";
+	$bbs_session_bid = "okphp_bid";
+}
+else {
+	$bbs_cookie_name = "bbs_name";
+	$bbs_cookie_pass = "bbs_pass";
+	$bbs_cookie_id = "bbs_id";
+
+	$bbs_session_name = "bbs_name";
+	$bbs_session_id = "bbs_id";
+	$bbs_session_gid = "bbs_gid";
+	$bbs_session_email = "bbs_email";
+	$bbs_session_bid = "bbs_bid";
+}
+
+switch ($bind_users) {
+	case "okphp_cms":
+		$user_table = $cms_pre."users";
+		$group_table = $cms_pre."group";
+		$pm_table = $cms_pre."pm";
+		$badlogin_table = $cms_pre."badlogin";
+		$online_table  = $cmbs_pre."online";
+		break;
+	case "okphp_bbs":
+		$user_table = $prefix."users";
+		$group_table = $prefix."group";
+		$pm_table = $prefix."pm";
+		$badlogin_table = $prefix."badlogin";
+		$online_table  = $prefix."online";
+		break;
+	case "okphp_blog":
+		$user_table = $blog_pre."users";
+		$group_table = $blog_pre."group";
+		$pm_table = $blog_pre."pm";
+		$badlogin_table = $blog_pre."badlogin";
+		$online_table  = $blog_pre."online";
+		break;
+}
+
+
+$file_table  = $prefix."threads";			
+$file_table_f  = $prefix."threads_f";		
+$file_table_c  = $prefix."threads_c";		
+$file_table_r  = $prefix."threads_r";		
+$post_table  = $prefix."posts";            
+$post_table_f  = $prefix."posts_f";       
+$post_table_c  = $prefix."posts_c";       
+$post_table_r  = $prefix."posts_r";       
+
+$type_table  = $prefix."forums";		
+$basic_table   = $prefix."basic";			
+$log_table = $prefix."log";                
+$online_table  = $prefix."online";          
+$fix_table = $prefix."fix";
+$poll_table = $prefix."poll";
+$attach_table = $prefix."attach";
+$announce_table = $prefix."announcements";
+
+// new 2.0
+$emote_table = $prefix."emote";
+$theme_table = $prefix."themes";
+
+$time_type = "m-d-Y"; 
+$admin_lang_file = "{admin_lang_file}";
+
+$dbtype              = "MySQL";  
+
+///////////////////////////////////////////////////////////////////////////
+// forum
+//
+// search word limit length
+$keylen = 2; 
+
+// poll
+$poll_option_num = 12;
+
+// hot folder reply num
+$hf_reply_num = 10; 
+
+///////////////////////////////////////////////////////////////////////////
+// admin
+//
+$admin_tpl_folder   = "{admin_tpl_folder}"; 
+$num_per_page = 15; 
+
+///////////////////////////////////////////////////////////////////////////
+// 
+
+$only_az09 = "off"; // limit username within a-z,0-9
+$forbid_s = "\.\,\!\#\$\%\^\&\*\'\"\^<>"; // forbid charators of username
+$uname_max_len = 16; // max length of username
+$max_headp_size = 50*1024; // max size of Avatar image
+$lang_code = "{lang_code}";
+
+///////////////////////////////////////////////////////////////////////////
+// forum folder
+// opration access
+$forum['topic']['new_post'] = 1;
+$forum['topic']['edit_post'] = 1;
+$forum['topic']['view'] = 1;
+
+$forum['faq']['new_post'] = 1;
+$forum['faq']['edit_post'] = 1;
+$forum['faq']['view'] = 1;
+
+$forum['cream']['new_post'] = 1;
+$forum['cream']['edit_post'] = 1;
+$forum['cream']['view'] = 1;
+
+$forum['recovery']['new_post'] = 0;
+$forum['recovery']['edit_post'] = 0;
+$forum['recovery']['view'] = 0;
+
+// move access
+// Allow thread author move his/her thread to..
+// 1:topic, 2:faq, 3:cream, 4:recovery
+// example: $move_access_type = "1,2,3,4";
+$move_access_type = "2,4";
+
+// 
+$new_thread_time = 12; // hours
+//##########################################################################
+// !!! DO NOT CHANGE SETTINGS BELLOW !!!
+           
+
+$settings_arr = array(
+		"refresh",
+		"limit_post_size",
+		"topic_num",
+		"reply_num",
+		"allow_postbb",
+		"max_post_size",
+		"headpic_size",
+		"sig_size",
+		"sig_bb",
+		"sc_per_topic",
+		"sc_per_post",
+		"poll_on", 
+		"attach_on", 
+		"sc_star",
+		"lang_code",
+		"lang_folder",
+		"tpl_folder",
+		"tpl_pic_folder",
+		"css_folder",
+		"date_format",
+		"confirm_code",
+		"date_offset",
+
+		"limit_title_size",
+		"input_itvl",
+		"input_crigger",
+		"view_itvl",
+		"view_crigger",
+		"pm_max_content",
+		"pm_max_num",
+		"halting",
+		"h_reason",
+		"show_online",
+		"headpic_max",
+		"attach_max_size",
+		"attach_max_num",
+		"attach_max_days",
+
+		"allow_emote",
+		"fast_reply",
+		"badword",
+		"badword_rep"
+);
+
+$attach_type['gif'] = "image/GIF";
+$attach_type['jpeg'] = "image/JPEG";
+$attach_type['jpe'] = "image/JPEG";
+$attach_type['jpg'] = "image/JPEG";
+$attach_type['png'] = "image/png";
+$attach_type['txt'] = "plain/text";
+$attach_type['pdf'] = "application/pdf";
+$attach_type['bmp'] = "image/bitmap";
+$attach_type['psd'] = "unknown/unknown";
+$attach_type['zip'] = "application/zip";
+$attach_type['doc'] = "application/msword";
+?>

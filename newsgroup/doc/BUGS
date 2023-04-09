@@ -1,0 +1,79 @@
+BUGS
+
+For more information, visit the Bug Tracker
+at the project home page in Sourceforge:
+
+http://mynewsgroups.sourceforge.net
+
+Version 0.1 - August 30 2001
+----------------------------
+- Bug.1 Fixed. Posting Replies works OK.
+- Bug.2 Fixed. Author's name appears in all the articles.
+- Bug.3 Fixed. The Date appears correctly.
+
+Version 0.1.1 - September 5 2001
+--------------------------------
+- Bug.4 Fixed. An user can register with password = "".
+- Bug.5 Fixed. Wrong Date order in groups with lot of articles.
+
+Version 0.1.2 - September 29 2001
+---------------------------------
+
+- Bug.6 Fixed. SQL installation error.
+- Bug.7 Fixed. class_usuario.php Warning.
+- Bug.8 Fixed. Entries duplicated in 'ref_*' tables.
+- Bug 9 Fixed. Error in 'stats.php' when there are no groups registered.
+- Bug 10 Fixed. Error in 'newsgroups.php' when there are no groups registered.
+
+Version 0.2 - December 2001
+---------------------------
+- Bug 11 Fixed. Must Add slashes in the From field.(Submitted and fixed by Jordan Russell)
+- Bug 12 Fixed. Reply and compressed messages in db (Submitted by Endelwar)
+- Bug 13 Fixed. Only can Post from newsgroups.php
+- Bug 14 Fixed. Broken link in 'post_ok.htm'.
+- Bug 15 Fixed. Call Time Pass by Reference deprecated.
+- Bug 16 Fixed. Bug in stats.php when there're less than 5 groups registered.
+- Bug 17 Fixed. Search engine index words compressed
+
+Version 0.2.1 - February 2002
+-----------------------------
+
+- Bug 18 Fixed. Email address like 'usr@sub.domain.com' can not be added.
+- Bug 19 Fixed. Can not reply to articles in 'article.php'.
+- Bug 20 Fixed. Thread building in 'article.php'. 'fetch_parent' function corrected.
+- Bug 21 Fixed. Server variable lost in some pages.
+
+Version 0.3 - February 2002
+---------------------------
+- Bug 22. Fixed. Problems again with groups with '+'.
+- Bug 23. Fixed. Error when adding an empty group.
+- Bug 24. Fixed. First two messages missing from the list. Reported by Laurent. 
+
+Version 0.4 - April 2002
+----------------------------
+- Bug 25. Fixed. Whitespaces at the Description of the NewsGroup trimmed.
+- Bug 26. Fixed. Email not shown when email has been sent.
+- Bug 27. Fixed. MultiSearch not showing results.
+- Bug 28. Subjects with $ sign on it.
+
+Version 0.5 - December 2002
+----------------------------
+- Bug 29. MySQL Errors when downloading system acts.
+- Bug 30. Last day of calendar error.
+- Bug 31. Remember page error fixed.
+
+Version 0.5.2 - December 2002
+----------------------------
+- Bug 32. Downloading system not downloading new articles.
+- Bug 33. Password shown when submitting login form pressing Intro.
+- Bug 34. User name for news server access witdh increased.
+
+Version 0.5.3 - March 2003
+----------------------------
+- Bug 35. Large newsgroup names Bug fixed.
+- Bug 36. Division by zero at tree.php when no articles.
+- Bug 37. Template not found after incorrect login at admin.
+
+
+
+

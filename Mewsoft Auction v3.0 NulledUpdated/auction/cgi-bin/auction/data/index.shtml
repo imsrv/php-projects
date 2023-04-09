@@ -1,0 +1,11 @@
+<HTML>
+<HEAD>
+<TITLE>Mewsoft Auction Software www.mewsoft.com</TITLE>
+</HEAD>
+<BODY>
+
+<!--#exec cgi="/cgi-bin/auction/auction.cgi"-->
+
+</BODY>
+</HTML>
+

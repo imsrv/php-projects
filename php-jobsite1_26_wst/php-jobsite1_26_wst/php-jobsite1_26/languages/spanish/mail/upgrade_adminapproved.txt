@@ -1,0 +1,26 @@
+Estimado %%employer_company%%,
+
+Ha sido validada su actualización por nuestra administración.
+Información de factura (NO: %%invoice_id%%)
+
+Precio de tarifa: %%invoice_listprice%%
+Descuento: %%invoice_discount%%
+Importe del pago: %%invoice_totalprice%%
+Fecha de pago: %%invoice_paymentdate%%
+
+Información de la Empresa:
+%%company_information%%
+Información de pago:
+%%payment_information%%
+
+Nobre del prietario de tarjeta: %%cc_name%%
+Tipo de tarjeta de crédito: %%cc_type%%
+Número de la tarjeta de crédito: %%cc_num%%
+Fecha de caducidad: %%cc_exp%%
+Comentarios:
+%%cc_comment%%
+
+Descripción del pago:
+%%invoice_description%%
+
+Gracias.

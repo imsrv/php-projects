@@ -1,0 +1,81 @@
+<form action="admin.php" method="POST">
+
+<table border=1 bordercolor="#000000" align="center" cellpadding="3">
+	<tr>
+		<td colspan=2 align="center"  class="Header">Administration</td>
+	</tr>
+	<tr>
+  		<td align="center">
+		   <input type=hidden name="action" value="inside">
+ 		   <input type="radio" name="action" value="displayall" checked>
+  		</td>
+		<td class="Table">
+		    Display All Members
+		</td>
+	</tr>
+	<tr>
+  		<td align="center" >
+    		<input type="radio" name="action" value="action">
+		</td>
+  		<td class="Table">
+      		<select name="subaction">
+      	 		<option value="display">Display</option>
+ 		   	    <option value="edit">Edit</option>
+		      	<option value="email">Email</option>
+			    <option value="delete">Delete</option>
+				<option value="suspend">Suspend</option>
+				<option value="resume">Resume</option>
+		    </select> Member With ID
+		    <input type="text" name="id" size="12">
+			<input type=hidden name="main" value="main">
+  		</td>
+	</tr>
+
+	<tr>
+  		<td align="center">
+    		<input type="radio" name="action" value="create">
+  		</td>
+  		<td class="Table">
+    		Create New Account
+		</td>
+	</tr>
+	<tr>
+  		<td align="center">
+    		<input type="radio" name="action" value="email">
+  		</td>
+  		<td class="Table">
+			Email Members
+		</td>
+	</tr>
+	<tr>
+  		<td align="center">
+    		<input type="radio" name="action" value="message">
+  		</td>
+  		<td class="Table">
+    		Change Thanks Message
+		</td>
+	</tr>
+	<tr>
+  		<td align="center">
+    		<input type="radio" name="action" value="change">
+  		</td>
+  		<td class="Table">
+    		Change Adminstration Password
+		</td>
+	</tr>
+	<tr>
+  		<td>
+  		</td>
+  		<td class="Table">
+    		<a href="setup.php" class="reg">Edit Options and Settings</a>
+  		</td>
+	</tr>
+	<tr>
+		<td align="center" colspan="2" class="Header">
+			<input type="submit" name="submit" value="Execute">
+		</td>
+	</tr>
+</table>
+</form>
+
+

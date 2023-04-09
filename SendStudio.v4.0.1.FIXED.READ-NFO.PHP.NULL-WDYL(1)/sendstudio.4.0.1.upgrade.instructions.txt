@@ -1,0 +1,12 @@
+It is recommended that all SendStudio users install
+the patch to fix issues related to sending emails to large lists. This patch will
+upgrade your version of SendStudio from v4.0.0 to v4.0.1. Details on how to
+install the patch are shown below.
+
+*** Installing the v4.0.1 Patch ***
+
+ 1. Backup the /sendstudio/includes/config.inc.php file to your hard drive
+ 2. Unzip the files onto your hard drive and re-upload them to your sendstudio
+folder
+ 3. Re-upload the config.inc.php file that you backed up in step 1 to the
+/sendstudio/includes folder

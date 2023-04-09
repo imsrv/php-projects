@@ -1,0 +1,10 @@
+Dear %%name%%
+
+%%site_name%% confirm that we accepted your joke, 
+and we added to our database.
+
+%%joke_title%% 
+---
+%%joke_text%% 
+
+Thank you.

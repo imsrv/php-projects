@@ -1,0 +1,5 @@
+Estimado %%employer_company%%,
+
+Se ha eliminado su cuenta.
+
+Gracias.

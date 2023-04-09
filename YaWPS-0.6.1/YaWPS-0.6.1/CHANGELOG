@@ -1,0 +1,296 @@
+...January 17 2003
+- Fixed bug in yawps.pm sub authenticate, which occurs when taint checking 
+  produces an error.
+- In yawps.pm, sub latest_forum_posts: added possibility to jump to latest 
+  post directly.
+- In register.cgi: Added notifiation if a new user registers.
+- Added news category subscription feature.
+
+...January 9 2003
+- Fixed bug in show_blocks routine in yawps.pm (all blocks are shown now).
+
+...January 7 2003
+- Fixed typos in login.cgi, line 230.
+
+...December 19 2002
+- Fixed bug in top10.cgi: link to top votes now works.
+- Added browser session support.
+
+...December 11 2002
+- Added IM notification to yawps.pm and theme.pl files.
+
+...December 9 2002
+- Added install check in yawps.pm.
+- Tar routines implemeted in installer.cgi.
+
+...December 8 2002
+- Added installer.cgi. Reorderd directory structure for release packages. 
+  Added variables to yawpsrc.pl.
+
+...December 6 2002
+- New HTTP-header routine implemented.
+- Added feature to define site metatags (keywords, description).
+
+...December 4 2002
+- Bugfix in user.cgi: forum posts now recognized properly in sub edit_profile.
+
+...November 30 2002
+- Implemented mod_perl compatibility, wrote startup.pl.
+- Added "rate link" and "report link" functionality to links.cgi.
+- Added quotes functionality.
+
+...November 27 2002
+- Small security and usability improvements in links.cgi (thanks to zsteva!).
+- English.lng: Removed double $msg{142} = "Keep".
+- Index.cgi: removed hardcoded news maximum (thanks to Theun Kohlbeck).
+- Forum.cgi: bugfixes again (thanks to Theun Kohlbeck).
+- Removed hardcoded box width in theme.pl and yawps.pm.
+
+...November 25 2002
+- Bugfixes in user.cgi, removed insecure dependecies
+- Fixed sub print_ubbc_image_selector in yawps.pm.
+
+...November 23 2002
+- Relase of YaWPS 0.6.
+- Made a simply Chat plugin.
+
+...November 22 2002
+- Small bugfixes in user.cgi, forum.cgi, memberlist.cgi, yawps.pm.
+
+...November 20 2002
+- Included gallery module.
+- Bugfix in forum.cgi: private forums are now secured. Posting secured.
+
+...November 17 2002
+- Now using sysopen for file opening.
+- Fixed 'new'-feature in forum.cgi.
+
+...November 16 2002
+- Total rewrite of searchengine.
+- Bugfixes in admin.cgi.
+
+...November 10 2002
+- Enabled perl taint mode for all scripts.
+- Code cleaning. Fixed open perl warnings.
+
+...November 4 2002
+- Added blocks support.
+- Implemented plugin handling.
+
+...November 1 2002
+- Added page administration.
+
+...October 2002
+- After a having break from YaWPS: complete rewrite of YaWPS. We now use 
+  strict pragma (yeah baby!).
+
+...May 1 2002
+-Removed some hardcoded tags.
+
+...April 21 2002
+- Updated spanish.lng. Thanks to Daniel Moreno for the translation.
+
+...April 20 2002
+- Added chinese.lng (thanks to Chenwei).
+- Added $codepage variable to config.pl. Charsets are now definable.
+
+...April 14 2002
+- Implemented RDF/RSS export feature for YaWPS news.
+
+...April 7 2002
+- Added polish.lng (thanks to Zbigniew Kossowski).
+
+...April 4 2002
+- Added norwegian.lng (thanks to Lars Ãge Kamfjord).
+
+...April 3 2002
+- Corrected "typo" in links.pl, sub addlink2 (new added links now get stored 
+  in db).
+- Fixed bug in poll, sub pollit2: old polls now get correct title.
+
+...April 2 2002
+- Added russian.lng (thanks to Mihhail).
+
+...April 1 2002
+- Release of ver 0.3.
+
+...March 29 2002
+- Implemented print article function in topics.pl.
+- UBBC is now required in all posting types. Disabled on/off switch in 
+  forum.pl, instantmessage.pl adn topics.pl
+
+...March 22 2002
+- Added view counter for articles in topics.pl.
+- Included sub top10_articles in top10.pl.
+
+...March 21 2002
+- Implemented help system.
+- Fixed bug in forum.pl sub display: Inserted hidden input field at 
+  selecthtml call (Thx to anonymous).
+- Fixed bug in admin.pl sub polladmin. Renamed array @data to @pldata (now it 
+  gets data).
+
+...March 20 2002
+- Added Top 10 section.
+- Changed folder structure for the whole package.
+- Fixed file-locking routines.
+
+...March 19 2002
+- Fixed bug in admin.pl (sub movelink), which assigned wrong id to moved link.
+- Reduced code in stats.pl (improved searchengine check).
+
+...March 14 2002
+- Added italian.lng (thanks to Dario Di Ludovico).
+- Minor codefixes in stats.pl sub parse_log.
+
+...March 13 2002
+- Fixed counter of latest forumposts in themes footer.pl. Now displayed 
+  correctly, if available postcount is smaller than $myflcounter.
+- Some cosmetic code changes.
+
+...March 12 2002
+- Release of ver 0.2.
+
+...March 11 2002
+- Redesigned search function. It now works without searchdatabase 
+  (quite bugfree ;)).
+- Fixed HTML-bug in topics.pl sub viewnews, which prevents UBB-Tags from being
+  added to message-box.
+
+...March 9 2002
+- Fixed some none W3C conform HTML tags in forum.pl.
+- Fixed bug in search.pl, which diplayed wrong posttitle in search results.
+- Articles now displayed by category first in admin.pl sub modifynews.
+
+...February 27 2002
+- Fixed bug in links.pl sub links, which prevents from showing the right link
+  information (Thx to James Wagner).
+
+...February 17 2002
+- Added sub latestforumposts in subs.pl. 
+  Modified theme header/footer-files as well.
+
+...February 13 2002
+- Implemented basic search engine (still buggy).
+
+...February 11 2002
+- Link administration added.
+
+...February 10 2002
+- Konqueror Browsers now recognized in stats.pl (Thx to Brook Humphrey).
+
+...February 8 2002
+- Added "view online users"-feature to admin panel.
+
+...January 29 2002
+- Fixed bug in topics.pl, which doesn't display all articles, if they've 
+  been published at exactly the same time (Thx to Susana).
+
+...January 21 2002
+- Added "Edit Userranks"-functionality in admin.pl.
+
+...January 20 2002
+- Fixed javascript code for postboxes in topics.pl and instantmessage.pl..
+- Fixed usergroups/userranks problem.
+
+...January 8 2002
+- Fixed bug in subs.pl, sub doubbc. [email][/email] now recognized correctly.
+
+...January 6 2002
+- Added portuguese language support (Thanks to Jango).
+
+...December 21 2001
+- Fixed bug in forum.pl: admin functions now don't mess up the message index.
+
+...December 12 2001
+- Fixed bug in topics.pl, sub topics: articles in each category are now shown 
+  correctly.
+
+...November 23 2001
+- admin.pl, sub setcensor2: Saving changes on censor now works.
+- Declared some forgotten variables in instantmessage.pl. Email button fixed.
+
+...November 11 2001
+- Implemented doubbc() in every posting-function.
+- Removed bug in editprofile2, which changes userprofile in wrong way.
+- Removed hardcoded colors from forum.pl and instantmessage.pl..
+
+...October 31 2001
+- Fixed bug in memberlist.pl, which shows amount of online members instead of 
+  their names.
+
+...October 5 2001
+- Added bosnian/croatian/serbian language support (thanks to Emir Sakic)
+
+...October 3 2001
+- Added spanish language support (thanks to TomÃ¡s Arribas)
+
+...October 1 2001
+- Added turkish language support (thanks to Ilker Guller)
+
+...September 26 2001
+- Release of ver 0.1.2.
+
+...September 25 2001
+- Inserted $enable_userarticles: users may post articles or not (depending on 
+  action of admin).
+- Complete rewrite of memberlist.pl. Now all columns are sortable.
+- Fixed bug in user.pl (sub viewprofile) to prevent users to see "edit profile"
+  link on other profiles.
+
+...September 24 2001
+- Logout now works properly (theme is reset to standard immediately).
+- Fixed bug in admin.pl at movetopic (posts now are moved correctly).
+
+...September 23 2001
+- Implemented new routine, which handles emailing via SMTP.
+
+...September 22 2001
+- Improved Avatar-selection in sub editprofile(2) in user.pl.
+- Wrote personal userpage (sub welcome in user.pl).
+- Added french.pl (thx to Sylvain Breton).
+
+...September 21 2001
+- New sub showhtml in subs.pl, which displays HTML in user submitted articles 
+  (if wanted).
+- Added support for IIS.
+
+...September 20 2001
+- Fixed bug in admin.pl, sub verifynews2, which deletes posts in 
+  articleindex-db. 
+
+...September 19 2001
+- Fixed bug in forum.pl, sub mofifymessage2, which deletes posts in 
+  messageindex-db.
+
+...September 15 2001
+- Release of ver 0.1.1.
+
+...September 14 2001
+- Fixed several bugs in forum.pl.
+- Fixed bug in admin.pl, sub editpoll (modification of pollnames now works).
+
+...September 13 2001
+- Fixed problems with paths/urls locations of images (new variable $themesurl 
+  inserted). 
+- Renamed $imagesdir to $imagesurl. Renamed $imagesdir to $imagesurl.
+- Wrote new subs htmltotext/htmlescape to correct some display errors, when 
+  showing data as HTML and vice versa.
+- Added forumposts notification feature.
+- Wrote sub printpage to show a printerfriendly version of each forumthread.
+
+...September 12 2001
+- Rewrote some HTML-Tags in all libraries.
+
+...September 11 2001
+- Fixed bug in admin.pl: modification of polls name now implemented.
+- Removed some hardcoded messages in user.pl.
+- Removed some hardcoded texts in standard theme.
+
+...September 10 2001
+- Release of ver 0.1. Kinda stable ;) 
+Most features are working, Admin panel almost finished.
+
+...June - September 2001
+- Planning of YaWPS. Early testversion online at Sourceforge. 
+Alot of features are still unimplemented or buggy.

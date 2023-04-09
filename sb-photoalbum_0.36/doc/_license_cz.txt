@@ -1,0 +1,22 @@
+SB|photoAlbum
+
+Copyright (C)2005 Ladislav Soukup
+
+Tento program je svobodný software; mùžete jej šíøit a modifikovat podle
+ustanovení GNU General Public License, vydávané Free Software
+Foundation; a to buï verze 2 této licence anebo (podle vašeho uvážení)
+kterékoli pozdìjší verze.
+
+Tento program je rozšiøován v nadìji, že bude užiteèný, avšak BEZ
+JAKÉKOLI ZÁRUKY; neposkytují se ani odvozené záruky PRODEJNOSTI anebo
+VHODNOSTI PRO URÈITÝ ÚÈEL. Další podrobnosti hledejte ve GNU General Public License.
+
+Kopii GNU General Public License jste mìl obdržet spolu s tímto
+programem; pokud se tak nestalo, napište o ni Free Software Foundation,
+Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+
+Autor:  Ladislav Soukup
+e-mail: root@soundboss.cz
+URL: http://php.soundboss.cz
+URL: http://www.soundboss.cz

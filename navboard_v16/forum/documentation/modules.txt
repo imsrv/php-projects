@@ -1,0 +1,71 @@
+MODULES
+
+========
+
+all modules have their own folder like /modules/members
+which hold all php files and images
+
+========
+
+each module must have a config.php file for navboard to load
+which must contain the following variables anything else in the 
+config.php file is optional
+
+$moduleconfig['mainpage']="whatever.php";
+//relative to module folder
+//what navboard loads
+
+$moduleconfig['active']="yes"; //OPTIONAL
+//module active? default is yes
+//when no the module wont show up to end user
+
+$moduleconfig['adminpage']="whatever.php";  //OPTIONAL
+//relative to module folder
+//admin page for if your module needs a admin page
+
+see included modules for examples
+
+========
+
+all module data should be stored in the 
+'$configarray[20]/modulename' folder (no exceptions)
+using the write/delete/get functions from navboard
+this folder will have to be made by the module itself
+with permissions octdec(777) for compatibility,
+navboard createdir function may be used
+
+========
+
+style of the module must conform with the css style sets
+setup by navboard themes
+
+========
+
+admin modules do not include header and footer in the script
+while regular modules need to include the header and footer
+so that they can make their own link bar and page title
+
+========
+
+if you need to use multiple pages in your module, you can
+set up your config.php file to change the mainfile location
+based on variables rather than one static page
+
+========
+
+INCLUDE WARNING: When you want to include a file into
+a module, by default it will take try to get the file from
+the main forum directory (this is because the module is not
+run from its own directory, it is run from modules.php), if 
+you want to include a file from a module directory you will 
+have to use the path to modules 'modules/(modulename)/(file)'
+
+========
+
+CONFIG REMINDER: the config.php file is included when showing the
+module buttons, so to ensure highest speed, ONLY include
+the variables required as instructed by the beginning of
+this file, put other things like creating directories and 
+getting file information in another global file for the
+module
+

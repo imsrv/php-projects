@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Lookup_State" value="name:StateID;datatype:3,name:StateName;datatype:202,name:StateShortName;datatype:202" />
+	<infoitem key="UD_Lookup_Country" value="name:CountryID;datatype:3,name:CountryName;datatype:202" />
+	<infoitem key="UD_Category" value="name:CategoryID;datatype:3,name:CategoryValue;datatype:202,name:ParentCategoryID;datatype:3,name:CategoryDesc;datatype:203,name:CategoryLabel;datatype:202" />
+	<infoitem key="UD_MemberLookuptxt1" value="name:MemberLookuptxt1ItemID;datatype:3,name:MemberLookuptxt1ItemName;datatype:202,name:MemberLookuptxt1ItemDesc;datatype:203,name:MemberLookuptxt1ItemValue;datatype:202" />
+	<infoitem key="UD_MemberLookuptxt2" value="name:MemberLookuptxt2ItemID;datatype:3,name:MemberLookuptxt2ItemName;datatype:202,name:MemberLookuptxt2ItemDesc;datatype:203,name:MemberLookuptxt2ItemValue;datatype:202" />
+	<infoitem key="UD_MemberLookuptxt3" value="name:MemberLookuptxt3ItemID;datatype:3,name:MemberLookuptxt3ItemName;datatype:202,name:MemberLookuptxt3ItemDesc;datatype:203,name:MemberLookuptxt3ItemValue;datatype:202" />
+	<infoitem key="UD_MemberLookuptxt4" value="name:MemberLookuptxt4ItemID;datatype:3,name:MemberLookuptxt4ItemName;datatype:202,name:MemberLookuptxt4ItemDesc;datatype:203,name:MemberLookuptxt4ItemValue;datatype:202" />
+	<infoitem key="UD_MemberLookuptxt5" value="name:MemberLookuptxt5ItemID;datatype:3,name:MemberLookuptxt5ItemName;datatype:202,name:MemberLookuptxt5ItemDesc;datatype:203,name:MemberLookuptxt5ItemValue;datatype:202" />
+	<infoitem key="UD_message_preferences" value="name:id;datatype:3,name:MessageSubjectAdmin;datatype:203,name:MessageHeaderAdmin;datatype:203,name:MessageFooterAdmin;datatype:203,name:MessageCCAdmin;datatype:202,name:MessageBCAdmin;datatype:202,name:MessageSubjectVisitor;datatype:203,name:MessageHeaderVisitor;datatype:203,name:MessageBodyVisitor;datatype:203,name:MessageFooterVisitorLine1;datatype:203,name:MessageFooterVisitorLine2;datatype:203,name:MessageFooterVisitorLine3;datatype:203,name:AdminEmailAddress;datatype:202" />
+</info>

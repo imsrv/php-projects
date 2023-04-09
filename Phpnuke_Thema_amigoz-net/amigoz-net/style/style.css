@@ -1,0 +1,133 @@
+FONT, BODY, P, DIV, INPUT, TEXTAREA, FORM {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+TD, TR, TH {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size : 10pt;
+}
+
+.top-left {
+	background-image : url(/themes/amigoz-net/images/table/top-left.gif);
+	background-repeat : repeat;
+}
+
+.top-center {
+	background-image : url(/themes/amigoz-net/images/table/top-center.gif);
+	background-repeat : repeat;
+}
+
+.top-right {
+	background-image : url(/themes/amigoz-net/images/table/top-right.gif);
+	background-repeat : repeat;
+}
+
+.bottom-left {
+	background-image : url(/themes/amigoz-net/images/table/bottom-left.gif);
+	background-repeat : repeat;
+}
+
+.bottom-center {
+	background-image : url(/themes/amigoz-net/images/table/bottom-center.gif);
+	background-repeat : repeat;
+}
+
+.bottom-right {
+	background-image : url(/themes/amigoz-net/images/table/bottom-right.gif);
+	background-repeat : repeat;
+}
+
+.middle-left {
+	background-image : url(/themes/amigoz-net/images/table/middle-left.gif);
+	background-repeat : repeat;
+}
+
+.middle-center {
+	background-image : url(/themes/amigoz-net/images/table/middle-center.gif);
+	background-repeat : repeat;
+	font-size : 9pt;
+}
+
+.middle-center2 {
+	background-image : url(/themes/amigoz-net/images/table/middle-center2.gif);
+	background-repeat : repeat;
+	font-size : 9pt;
+}
+
+.middle-center3 {
+	background-image : url(/themes/amigoz-net/images/table/middle-center2.gif);
+	background-repeat : repeat;
+	font-size : 9pt;
+}
+
+.middle-right {
+	background-image : url(/themes/amigoz-net/images/table/middle-right.gif);
+	background-repeat : repeat;
+}
+
+.tab-left {
+	background-image : url(/themes/amigoz-net/images/table/tab-left.gif);
+	background-repeat : repeat;
+}
+
+.tab-center {
+	background-image : url(/themes/amigoz-net/images/table/tab-center.gif);
+	background-repeat : repeat;
+}
+
+.tab-center-posted {
+	background-image : url(/themes/amigoz-net/images/table/tab-center.gif);
+	background-repeat : repeat;
+	font-size : 11px;
+	font-weight : bold;
+}
+
+.tab-right {
+	background-image : url(/themes/amigoz-net/images/table/tab-right.gif);
+	background-repeat : repeat;
+}
+
+.title {
+		font-size : 9pt;
+}
+
+.posted {
+	font-size : 11px;
+	font-weight : bold;
+}
+
+.topbar {
+	font-size : 11px;
+}
+
+BODY {
+	font-family: Arial, Helvetica, sans-serif;
+	color : Black;
+	background : #92A0AE url(/themes/amigoz-net/images/background.gif) repeat-x;
+	margin-bottom : 0px;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	padding-top : 0; 
+	padding-right : 0; 
+	padding-bottom : 0; 
+	padding-left : 0; 
+}
+
+A:link {
+	text-decoration: none;
+	color: Gray;
+	background-color : transparent;
+}
+ 
+A:visited {
+	color: Gray;
+	text-decoration : none;
+	background-color : transparent;
+}
+ 
+A:hover {
+	text-decoration: underline overline;
+	color: #F65E12;
+	background-color : transparent;
+}

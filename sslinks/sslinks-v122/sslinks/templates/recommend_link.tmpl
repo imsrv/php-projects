@@ -1,0 +1,12 @@
+<b><a href="links.php">Links Home</a> : Recommend a Link : %catname%</b><p>
+Please use the following form to give us details of the link you think should be added to our listings.  Once submitted your link will be validated by a member of site staff before going on display.<p>
+<form action=links.php method=post><input type=hidden name=action value=reclink><input type=hidden name=cat value=%catid%>
+Link Name: <input type=text name=link_name size=30 maxlength=100><p>
+Link Category: <b>%catname%</b><p>
+Link URL: <input type=text name=link_url size=30 maxlength=255 value="http://"><p>
+Link Description:<br>
+<textarea name=link_desc cols=40 rows=4></textarea><p>
+Your Name: <input type=text name=link_addname size=30 maxlength=100> *<p>
+Your E-Mail: <input type=text name=link_addemail size=30 maxlength=100> *<p>
+<span class=small>* - You do not have to enter these details but if you do you will recieve an e-mail informing you whether or not your link has been accepted for inclusion in these listings.  Your e-mail address will not be used for any other purpose.</span><p>
+<input type=submit name=submit value="Recommend Link"></form><p>

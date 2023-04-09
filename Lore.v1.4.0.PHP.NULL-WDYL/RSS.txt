@@ -1,0 +1,59 @@
++------------------------------------------------------------------------+
+| Lore RSS.txt                                                           |
+| (c)2003-2004 Pineapple Technologies                                    |
+| http://www.pineappletechnologies.com                                   |
++------------------------------------------------------------------------+
+
+As of version 1.3.0, Lore supports RSS syndication of articles. This means that you 
+can use any RSS feed reader to get a listing of latest articles, highest rated articles, 
+most popular articles, or a list of articles in any category of your knowledge base.
+
+Lore supports the following versions of RSS:
+
+* 0.91 
+* 0.92 
+* 1.0 
+* 2.0
+
+Using the included RSS script:
+
+In the base directory of your Lore installation, you will find a script named rss.php. 
+When this script is called via HTTP, it will return RSS based on your input. The script 
+takes three parameters in the query:
+
+* action - defines what content should be sent: Options are: 
+    -  articles - retrieve articles from a given category 
+    -  latest_articles - retrieve a list of the latest articles 
+    -  highest_rated_articles - retrieve a list of the highest rated articles 
+    -  most_viewed_articles - retrieve a list of the most viewed articles
+* category_id - the id of the category to retrieve articles from (only used 
+                when action = articles) 
+* version - the RSS version to return results in. Options are: 
+    - 0.91 
+    - 0.92 
+    - 1.0 
+    - 2.0
+
+
+The rss.php script can be accessed like any other URL:
+http://example.com/kb/rss.phpaction=articles&category_id=1&version=0.91
+
+The above example will return a list of the articles in category number 1 
+(usually the root category), in RSS version 0.91 format.
+
+Examples:
+
+Return list of latest articles in RSS version 2.0
+http://example.com/kb/rss.php?action=latest_articles&version=2.0
+
+Return list of highest rated articles in RSS version 1.0
+http://example.com/kb/rss.php?action=highest_rated_articles&version=1.0
+
+Return list of articles in category 10 in RSS version 0.91
+http://example.com/kb/rss.php?action=articles&category_id=10version=0.91
+
+
+When an RSS feed reader asks for the location of the RSS feed, you would enter 
+a URL similar to the examples above (but with your real domain name and path). 
+Many popular open source portal systems (such as PHP-Nuke, PostNuke, etc.) support 
+RSS feeds.

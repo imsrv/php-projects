@@ -1,0 +1,49 @@
+<?
+ $debug_mode = "";
+ $multilanguage_support = "";
+ $enable_anonymous_posting = "yes";
+ $use_dirty_words = "yes";
+ $use_censor = "yes";
+ $dirty_words = "fuck, ass";
+ $dirty_words_replacement = "******";
+ $show_newsletter_form = "yes";
+ $show_quick_search_form = "yes";
+ $show_statistic_form = "yes";
+ $show_newsletter_form = "yes";
+ $show_the_joke_and_picture_of_the_day = "yes";
+ $use_extra_header = "yes";
+ $use_extra_footer = "yes";
+ $need_joke_validation = "1";
+ $need_picture_validation = "1";
+ $newperiod_for_jokes = "7";
+ $newperiod_for_pictures = "7";
+ $showCountedJokes = "on";
+ $showCountedPictures = "on";
+ $joke_listing_show_characters = "70";
+ $mini_jokes_length = "300";
+ $comment_max_length = "1000";
+ $short_jokes_length = "150";
+ $long_jokes_length = "1000";
+ $cookie_limit = "86400";
+ $display_nr_top_joke = "10";
+ $display_nr_joke_category = "10";
+ $display_nr_top_emailed_joke = "10";
+ $display_nr_top_random_joke = "20";
+ $medium_jokes_length = "500";
+ $show_images_at_home = "on";
+ $little_photo_width = "120";
+ $little_photo_height = "120";
+ $little_photo_size = "10000";
+ $big_photo_width = "300";
+ $big_photo_height = "300";
+ $big_photo_size = "300000";
+ $site_mail = "vi@bitmixsoft.com";
+ $newsletter_mail = "newsletter@jokesite.com";
+ $site_name = "Jokesite";
+ $site_title = "Jokesite";
+ $imagemagic = "yes";
+ $imagemagic_path = "/usr/bin/";
+ $site_signature = "_______________________________________________________
+A funny site. You can find more at this location: http://www.yoursite.com ,
+or you can email to admin: office@yoursite.com";
+?>

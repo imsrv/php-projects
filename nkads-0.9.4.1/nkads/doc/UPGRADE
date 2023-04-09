@@ -1,0 +1,39 @@
+[01] English
+[02] Español
+
+------------------------------------------------------------------------------------------
+[01] English
+------------------------------------------------------------------------------------------
+0.9.2 -- 0.9.3
+---------------
+In order to update older versions of NKAds to the new version follows these steps:
+
+Copy NKAds 0.9.3 files into the previous installation directory and replace
+all existing files.
+Execute these SQL commands, where DB_NAME is the name where reside NKAds.
+
+ALTER TABLE `DB_NAME`.`ads_zonas` ADD `id_cliente` INT(6) NOT NULL;
+ALTER TABLE `DB_NAME`.`ads_clientes` ADD `acceso` INT(1) NOT NULL;
+
+This is everything =)
+
+The existing data has no risk of losing, but for obvious reasons is better to make a backup before the update.
+------------------------------------------------------------------------------------------
+[02] Español
+------------------------------------------------------------------------------------------
+0.9.2 -- 0.9.3
+---------------
+
+Para actualizar su version antigua de NKAds a la nueva version siga estos pasos:
+
+-Reemplace todos los archivos de NKAds existentes por los nuevos.
+-Ejecute las siguientes sentencias SQL, donde DB_NAME es el nombre de la DB donde funciona NKAds.
+
+ALTER TABLE `DB_NAME`.`ads_zonas` ADD `id_cliente` INT(6) NOT NULL;
+ALTER TABLE `DB_NAME`.`ads_clientes` ADD `acceso` INT(1) NOT NULL;
+
+Eso es todo =)
+
+No hay riesgo de perder ningun dato existente en la DB, pero por cuestiones obvias es mejor
+hacer un backup de los datos antes de empezar.
+------------------------------------------------------------------------------------------

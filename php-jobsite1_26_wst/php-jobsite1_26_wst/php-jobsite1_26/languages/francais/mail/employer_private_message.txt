@@ -1,0 +1,40 @@
+Dear %%employer_company%%,
+
+A  message was posted from "%%jobseeker_name%%" in reply to your job %%job_jobtitle%%.
+The message:
+
+%%private_message%%
+
+*******Jobseeker Information*********
+
+Email address: %%jobseeker_email%%
+Address: %%jobseeker_address%%
+City: %%jobseeker_city%%
+Province: %%jobseeker_province%%
+PostalCode: %%jobseeker_postalcode%%
+Phone: %%jobseeker_phone%%
+Location: %%jobseeker_country%%
+
+********End Jobseeker Information************
+
+*******Resume Information************
+
+Summary: %%resume_summary%%
+Resume Categories: %%resume_jobcategories%%
+Resume:
+%%resume_resume%%
+Skills:
+%%resume_skills%%
+Employment type: %%resume_jobtypes%%
+Preferred Salary: %%resume_salary%%
+Education:
+%%resume_education%%
+Years of Experience: %%resume_experience%%
+Work Experience:
+%%resume_workexperience%%
+Degree: %%resume_degree%%
+Preferred Location: %%resume_location%%
+
+********End Resume Information************
+
+Resume Link: %%resume_link%%

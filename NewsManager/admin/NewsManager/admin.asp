@@ -1,0 +1,4 @@
+<%
+Response.Redirect("list.asp")
+%>
+

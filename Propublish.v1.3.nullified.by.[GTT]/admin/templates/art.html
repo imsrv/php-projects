@@ -1,0 +1,55 @@
+<table class='articlebody'><tr><td>
+<A href='cat.php'>{LA_NEWS}</a> / <A href='cat.php?catid={ID}&catname={CATNAME}'>{CATNAME}</a><p>
+
+<b>{TITLE}</b><br>
+
+
+
+{LA_BY} <i><a href="mailto:{EMAIL}">{FNAME} {LNAME}</a>
+
+
+{TID1}, {LA_CHANGED} {TID2}</i>
+
+<p>
+
+<table border="0" cellspacing="2" cellpadding="0">
+  <tr>
+    <td width="100" align=center background="images/button.gif">
+    <small><b>
+    <a href="javascript:openWin('feedback.php?artid={ARTID}&title={TITLE}')">
+    <font color=black>{LA_RATE_THIS}</font></a>
+    </b></small>
+    </td>
+    <td width="100" align=center background="images/button.gif">
+    <small><b>
+  <a 
+href="javascript:openWin('tellafriend.php?artid={ARTID}&title={TITLE}')">
+    <font color=black>{LA_TELLAFRIEND}</font></a>
+    </b></small>
+    </td>
+    <td width="100" align=center background="images/button.gif">
+    <small><b>
+    <a href="javascript:openWin('art.php?artid={ARTID}&title={TITLE}&print=1')">
+    <font color=black>{LA_PRINT}</font></a>
+    </b></small>
+    </td>
+  </tr>
+</table>
+<!--
+<a href="javascript:openWin('feedback.php?artid={ARTID}&title={TITLE}')">
+<img src='images/feedback.gif' border=0 alt="{LA_RATE_THIS}"></a>
+
+<a 
+href="javascript:openWin('tellafriend.php?artid={ARTID}&title={TITLE}')">
+<img src='images/tip.gif' border=0 alt="{LA_TELLAFRIEND}"></a>
+
+<input type="image" src="images/print.gif" border=0 alt="{LA_PRINT}" name="submit" onclick="window.print()"><p>	
+-->
+</p>
+{INTRO}
+<p>
+
+{BODY}
+<p>
+
+</td></tr></table>

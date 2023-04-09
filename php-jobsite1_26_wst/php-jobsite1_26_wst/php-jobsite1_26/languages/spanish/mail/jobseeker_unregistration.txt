@@ -1,0 +1,5 @@
+Estimado %%jobseeker_name%%,
+
+Se ha eliminado su cuenta.
+
+Gracias

@@ -1,0 +1,31 @@
+CHANGELOG
+NavBoard 2.6.0 beta1 to 2.6.0 beta2
+Released 6/9/2003
+
+IMPROVEMENTS:
+-new topic/new reply buttons now on top also
+-less tables in some places (reformated)
+-can delete and edit attachments
+-edits shown on posts, can show just last edit
+also with change in config
+
+FIXES:
+-close/open/move topic auto redirects back to
+topic after performing the action
+-user levels dont delete correctly
+-a bogus id number displayed when adding a new
+forum
+-max chars in body couldnt be changed in admin
+config options
+-changing more instances of 'thread' to 'topic'
+
+FILES CHANGED FROM BETA 1:
+(always best to just upload all the php files )
+index.php
+functions.php
+footer.php
+admin_topicoptions.php
+admin_userlevels.php
+admin_forums.php
+post.php
+

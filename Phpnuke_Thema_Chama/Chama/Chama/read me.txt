@@ -1,0 +1,19 @@
+
+######################################################################
+#* Information							     #	
+#pour les sections acceuil | Journal | Annuaire vous pouvez ajoutter #
+#les votre; les images corespondantes aux sections téléchargement |  #
+#annonce | chat sont dans le repertoire #images existant dans ce     #
+#repertoire nommer Chama.
+######################################################################
+
+######################################################################
+#* Crédit							     #
+#Copyright (c) 2002 by NAOUFAL Chama -- Maroc			     #
+#http://www.chama.fr.fm						     #
+######################################################################
+
+######################################################################
+#* Based							     #  
+#Based on MT theme						     #
+######################################################################

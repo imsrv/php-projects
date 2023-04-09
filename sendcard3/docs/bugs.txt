@@ -1,0 +1,6 @@
+advancesend.php has not been fully tested yet :-(
+
+
+I need someone to supply me with better code for embedding the music in the card - a generic object/embed tag is what I need.
+
+So if you are an expert with music, get in touch!

@@ -1,0 +1,85 @@
+<style>
+	.link {
+		width: 20px;
+	}
+	a:visited {
+		color: #F26522;
+	}
+	.template_source {
+		width: 100%;
+		border: 1px solid gray;
+	}
+
+</style>
+<table border="0" width="100%">
+<td valign="top">
+<table cellSpacing="0" cellPadding="1" width="170" border="0">
+	<tr>
+		<td width="172" bgColor="#CEE3FD" height="25px"><b>Members' area</b>
+	<tr>
+		<td width="172" bgColor="#CEE3FD">
+		<table cellSpacing="0" cellPadding="2" width="170" bgColor="#f1f0f0" border="0">
+			<tr>	
+				<td rowspan="6" class="link">&nbsp;
+				<td><a href="./?page=template&part=member&path=login">Login page</a>
+			<tr>
+				<td><a href="./?page=template&part=member&path=index">Index</a>
+			<tr>
+				<td><a href="./?page=template&part=member&path=search">Domain search</a>
+			<tr>
+				<td><a href="./?page=template&part=member&path=monitor">Monitor
+			<tr>
+				<td><a href="./?page=template&part=member&path=info">Account information</a>
+<!--				<tr>
+				<td><a href="./?page=template&part=member&path=stat">Domain statistic</a>-->
+
+		</table>
+</table>
+
+<td valign="top" height="100%">
+<table cellSpacing="0" cellPadding="1" border="0" height="100%">
+	<tr>
+		<td bgColor="#CEE3FD" height="25px"><b>User registration</b>
+	<tr>
+		<td bgColor="#CEE3FD" valign="top">
+		<table cellSpacing="0" cellPadding="2" bgColor="#f1f0f0" border="0">
+			<tr>	
+				<td rowspan="4" class="link">&nbsp;
+				<td valign="top"><a href="./?page=template&part=register&path=index">User info</a>
+			<tr>
+				<td valign="top"><a href="./?page=template&part=register&path=pay">Payed account</a>
+			<tr>
+				<td valign="top"><a href="./?page=template&part=register&path=free">Free account</a>
+			<tr>
+				<td valign="top" height="100%">&nbsp;
+			<tr>
+				<td valign="top" height="100%">&nbsp;
+		</table>
+</table>
+
+<td valign="top" height="100%">
+<table cellSpacing="0" cellPadding="1" border="0" height="100%">
+	<tr>
+		<td bgColor="#CEE3FD" height="25px"><b>Password reminder</b>
+	<tr>
+		<td bgColor="#CEE3FD" width="100%" valign="top">
+		<table cellSpacing="0" cellPadding="2" height="100%" width="100%" bgColor="#f1f0f0" border="0">
+			<tr>	
+				<td rowspan="4" class="link">&nbsp;
+				<td valign="top"><a href="./?page=template&part=restore&path=index">Index page
+		</table>
+</table>
+
+<tr>
+<td colspan="3" width="100%" align="center">
+	<%template_caption%>
+<tr>
+<td colspan="3" width="100%">
+<form method="POST" width="100%">
+	<input type="hidden" name="part" value="<%part%>">
+	<input type="hidden" name="path" value="<%path%>">
+	<textarea name="template_source" rows="15" class="template_source"><%template_source%></textarea>
+	<br>
+	<input type="submit" name="template_save" value="Save template">
+</form>
+</table>

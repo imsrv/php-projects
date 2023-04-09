@@ -1,0 +1,2 @@
+about_us_title~==~About Us
+about_us_body~==~Mewsoft Auction is a real time Multilanguage, unlimited languages, fully customizable from the web based administration center.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Best regards<br>Ahmed elsheshtawy<br>Mewsoft President<br><br>

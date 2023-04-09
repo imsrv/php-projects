@@ -1,0 +1,41 @@
+Version 2.0b   - Nov 16, 2005
+  - Spider:
+    - Spider now detects and "times-out" of connections which stop responding
+    - Spider no longer dies prematurely if the first URI is unreachable
+    - Fixed bug where it was possible for spider to skip all orphaned entries
+    - Fixed bug where meta refresh tags were mishandled
+    - Added some additional email headers to Results email
+
+  - Search Interface:
+    - Altered search algorithm to limit term "spamming"
+    - Added search matching against entry URIs (off by default)
+
+  - General:
+    - Additions to lang.txt
+    - Modifications to body.xhtml.php
+
+
+Version 2.0a   - Oct 30, 2005
+  - Spider:
+    - Fixed bug where spider execution would halt at a non-existant domain
+    - Improved aborted-spider detection
+    - Added support for spidering URIs with a port suffix
+    - Added support for multiple Starting URIs
+
+  - Control Panel:
+    - Script can now discern between "not found" and "malfunctioning" when detecting "spider.php"
+    - Added "Require URI Matches" in Spider panel
+
+  - Search Interface:
+    - Fixed bug where submitting a blank query with a category selected would display the "No results found" dialogue
+    - Fixed bug where a PHP error would appear if client did not send a User-Agent header
+    - Modified default $resultTemplate in body.xhtml.php/css
+    - body.xhtml.php now outputs version info in an HTML comment tag
+
+  - General:
+    - Some fixes and additions to lang.txt
+    - Added faq.txt to package
+
+
+Version 2.0    - Oct 19, 2005
+  - Initial release

@@ -1,0 +1,19 @@
+{tech} %erespons1%. 
+
+-----------------------------------------------
+%response% ({tech})
+-----------------------------------------------
+{response}
+
+%erespon2%
+
+_______________________________________________
+
+Was this response helpful? We would be grateful if you would submit a short rating for this response as part of our satisfaction monitoring.
+
+{baseurl}/pdesk.cgi?do=rate_response&nid={nid}&key={key}
+_______________________________________________
+
+%thankyou%,
+
+Help Desk 

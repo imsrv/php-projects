@@ -1,0 +1,162 @@
+Thanks for ordering @Mail! For the latest news see webbasedemail.com
+--------------------------------------------------------------------
+
+Version: 3.0
+Release Date: Tue Apr  6 18:01:41 GMT 1999
+
+--> INSTALLATION
+
+@Mail requires the following to operate corectly:
+
+1) Unix OS (Linux, FreeBSD preferred)
+2) Catchall Email Address via sendmail
+3) Apache version 1.0+ Web Server (preferred)
+
+To begin installation type:
+
+root:/# cd /www (First, "cd" to your web-server's directory)
+root:/www# tar xfv atmail.tar (Untar atmail distribution)
+root:/www# cd atmail (cd into atmail directory)
+root:/www/atmail# ./fixperms (run the fixperms utility to correct permissions)
+
+root:/www/atmail# chown -R username /www/atmail (IMPORTANT! Be sure to change
+the owner of the atmail directory to the user your web-server runs as!)
+
+The directory structure should look similar to below:
+
+root:/www/atmail# ls -l
+total 212
+-rw-r--r--  1 nobody  wheel   4734 Feb 27 04:56 README.FIRST
+-rwxr-xr-x  1 nobody  wheel   3449 Feb 27 03:01 activeusers.pl
+-rwxr-xr-x  1 nobody  wheel   7171 Feb 25 14:40 addressbook.pl
+-rw-rw-rw-  1 nobody  wheel    648 Feb 27 04:13 atmail.conf
+-rwxr-xr-x  1 nobody  wheel   5027 Feb 27 02:20 atmail.pl
+-rwxr-xr-x  1 nobody  wheel   3529 Feb 26 22:16 compose.pl
+-rwxr-xr-x  1 nobody  wheel    999 Feb 25 17:35 deletemsg.pl
+-rwxr-xr-x  1 nobody  wheel     61 Feb 27 04:15 fixperms
+drwxrwxrwx  2 nobody  wheel    512 Feb 27 04:02 html
+drwxr-xr-x  2 nobody  wheel    512 Feb 24 17:55 imgs
+-rw-r--r--  1 nobody  wheel   3264 Feb 27 01:01 index.html
+drwxr-xr-x  6 nobody  wheel    512 Feb 27 03:26 libs
+drwxrwxrwx  2 nobody  wheel   1024 Feb 27 04:14 mime-tmp
+-rwxr-xr-x  1 nobody  wheel   1316 Feb 27 01:49 movemsg.pl
+-rwxr-xr-x  1 nobody  wheel   4218 Feb 27 01:12 newmbox.pl
+-rw-r--r--  1 nobody  wheel  22504 Feb 26 21:57 newuser.html
+-rwxr-xr-x  1 nobody  wheel   8839 Feb 27 03:59 reademail.pl
+-rwxr-xr-x  1 nobody  wheel    559 Feb 25 16:06 readmbox.pl
+-rwxr-xr-x  1 nobody  wheel    410 Feb 26 23:11 saveemail.pl
+-rwxr-xr-x  1 nobody  wheel   1514 Feb 27 00:18 sendmail.pl
+-rwxr-xr-x  1 nobody  wheel   5817 Feb 25 03:08 settings.pl
+-rwxr-xr-x  1 nobody  wheel   4115 Feb 27 00:43 showmail.pl
+drwxrwxrwx  2 nobody  wheel    512 Feb 27 04:42 users
+-rwxr-xr-x  1 nobody  wheel  14339 Feb 27 04:11 webinterface.pl
+
+Where 'nobody' is the user of your web-server.
+
+Now using your favourite text editor edit the atmail.conf file
+root:/www/atmail# pico atmail.conf (use pico, ee, joe, vi, or FTP)
+
+Locate your sendmail virtmaps file and add a line similar to the following
+root:/www/atmail# pico /etc/virtmaps
+"yourdomain.com         webemail1"
+
+Where yourdomain.com is the domain-name you would like @Mail to handle
+email for. @Mail supports unlimited users at any number of domain-names.
+
+Now, edit your sendmail aliases file with a line similar to this
+root:/www/atmail# pico /etc/aliases
+"webmail1               "|/www/atmail/saveemail.pl"
+
+This will divert all email to *@yourdomain.com to the saveemail.pl script. This
+is used by @Mail to deliver email to local accounts created. This is the
+best solution rather then creating real POP3 accounts and adding users in
+the systems password file. This allows @Mail to run under *ANY* system that
+includes a catchall email address! (95% of all Internet providers, also
+supported by WinNT/95 & all common UNIX systems)
+
+Once you have added the domain-names you wish @Mail to handle email for,
+rebuild the virtmaps database and the sendmail aliases database.
+
+root:/www/atmail# sendmail -bi (rebuild aliases)
+/etc/aliases: 20 aliases, longest 70 bytes, 307 bytes total
+Feb 27 04:50:49 192 sendmail[9398]: alias database /etc/aliases rebuilt by root
+
+If you do not have access to your own Dedicated or Virtual Server ask your
+provider to enable your catchall email address to divert to the saveemail.pl
+script in the @Mail distribution directory.
+
+Once the above is complete visit the http://yourdomain.com/atmail/webinterface.pl
+to complete configuraiton!
+
+--> PROBLEMS?
+
+If @Mail won't work correctly on your system email install@webbasedemail.com
+and one of our technical staff will configure @Mail on your server remotely.
+Remember to email server login details!
+
+Common Problems:
+
+1) On some systems the MIME libs may not load correctly. To resolve this problem
+either disable MIME support via the webinterface.pl script or visit
+http://perl.com/CPAN-local/ and download the latest MIME modules from CPAN.
+Remember to "make install" on your system.
+
+2) If the imgs are broken in your browser add the following to your webserver's
+access.conf
+
+<Directory /usr/local/etc/httpd/htdocs/atmail> (replace with your atmail dir)
+# Allow execution of CGI scripts
+Options Indexes FollowSymLinks Includes ExecCGI
+AllowOverride All
+# Controls who can get stuff from this server.
+<Limit GET>
+order allow,deny
+allow from all
+</Limit>
+</Directory>
+
+If you still need help see http://webbasedemail.com/help.html
+
+--> LATEST NEWS
+
+Final beta testing of @Mail 2.3 is now complete! We are very proud to bring
+you the latest version of @Mail, we hope you enjoy the latest release :)
+
+@Mail 3.0 is currently in Alpha and we hope to release the next version within
+1-2 months. The next version includes *many* new features! If you have any
+suggestions on how we can improve @Mail email info@webbasedemail.com
+
+New features include:
+
+* Support for local mailboxes
+* Users email saved via catchall email address
+* New and improved user address book
+* Folder management utility
+* MIME support toggle
+* Uses 40% less memory & >25% faster then previous versions!
+* Email's can be moved to any folder
+* Administrator Web Interface updated
+* Active user statistics
+
+@Mail has been successfuly installed on Linux, Solaris, FreeBSD 3.0, NetBSD
+and Irix. We have had the most success using FreeBSD as host Operating
+System. webbasedemail.com hosts over 22,000 unique email accounts at over
+30 different domain-names. We run the Apache webserver (version 1.2.6) with
+FreeBSD 3.0 as the OS.
+
+@Mail can be *easily* modified to place banner ads in users mailboxes, all
+HTML layout can be modified to suite your sites design.
+
+If you need custom CGI programming see CGIsupport.com, we can do any CGI
+job at very affordable rates!
+
+--> THANKS
+
+Our thanks go out to the following people who continue to make @Mail one of
+the best webbased email systems. Alex Plesman (alex@isolve.net), Jim Carter
+(jim@webbasedemail.net), Ben Duncan (ben@isecure.net), Jed Arnold
+(jed@om.com.au), Brett Tayor (brett@ukraine.net) and all the friendly folks
+at cgisupport.com!
+
+- @Mail Support Staff
+

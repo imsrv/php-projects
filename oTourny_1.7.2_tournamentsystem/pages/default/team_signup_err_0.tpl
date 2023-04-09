@@ -1,0 +1,1 @@
+Team name can not equal tag.

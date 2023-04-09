@@ -1,0 +1,173 @@
+<html>
+<head>
+<title>Tutorial (for Solace MUD)</title>
+</head>
+<body>
+
+<h1>Tutorial (for Solace MUD)</h1>
+
+
+<h1>Writing a roller</h1>
+
+Almost every MUD starts with stats rolling. Lets write such roller, but in addition it will
+not only compare the sum of all stats, but every coefficient with it's defined minimum value.
+Solace MUD has the following format when rolling:
+<pre>
+	Str: 13 Int: 20 Wis: 17 Dex: 17 Con: 15 Accept these? (Y/N)
+</pre>
+We can write trigger, but in this case numbers are separated from text, and will be easily
+parsed with action.
+Our action will look like this:<br>
+<pre>
+	!action {Str: $r_str Int: $r_int Wis: $r_wis Dex: $r_dex Con: $r_con Accept these} {!null}
+</pre>
+You can ask - where is end of line "? (Y/N)"? But do we need it? Symbol '?' and brackets '()' are
+meta-chars in regular expressions, and we must add slashes \\ before them, but our
+action will be successfully triggered even without this substring. We use !null because
+we don't want our action to do anything right now. As you noticed, all variables
+start with "r_", so you can view them all with command:
+<pre>
+	!vars r_
+</pre>
+Suppose our minimal values for all stats are stored in vars $r_minstr, $r_minint, etc., and required
+sum in $r_minsum. Lets write substitution to see all values:
+<pre>
+	!sub {Str.+Accept these.+} {Str:$r_str($r_minstr) Int:$r_int($r_minint) Wis:$r_wis($r_minwis) Dex:$r_dex($r_mindex) SUM:$r_sum($r_minsum)} later
+We'll get:
+	Str:16() Int:18() Wis:16() Dex:12() Con:18() SUM:()
+</pre>
+Question - why {Str.+Accept these.+}? Answer - substitution replaces only matched string, not entire, so
+we added "Accept these" and ".+" ('.' means any char, '+' one or more times) to both sides.
+Then why do we need "Str" at the beginning? Just to ensure that it is our line. Parameter 'later' specified
+to force sub to work after our action, since we use variables initialized in action.<br>
+All is simple for now, we continue.<br>
+First lets calculate the sum of all stats. Write command !actions and check the number of our action.
+Suppose it is 1. Now add some real commands for action:
+<pre>
+	!action 1 {!@var r_sum $r_str+$r_int+$r_wis+$r_dex+$r_con}
+</pre>
+Now $r_sum has sum. We need to compare it with our minimum. In C/C++ language (and in PHP)
+we can meet a wonderful operator like var = condition?value_if_true:value_if_false.
+After all calculations we must send to MUD y or n. Lets create for it variable $y. So:
+<pre>
+	!@var y $r_sum>=$r_minsum?y:n	
+</pre>
+Simple, isn't it? Assign $y=y if sum is greater or equal to the required minimum, or $y=n otherwise.
+Now do the same with all other coefficients, except one condition: make futher comparisions only
+if $y=y from previous ones (I hope it is clear). Use combined operator:
+<pre>
+	!@var y $y==n?n:($r_str>=$r_minstr?y:n)
+</pre>
+If $y already contains n, then leave n, else compare next condition. I hope you know basics
+of C language at least. The only advantage of php that we use here is symbols y and n.
+Why they are without quotes? Answer - php assumes any single word or char as a string. Very handy.
+Now continue to compare rest of stats, and then simply send content of $y to MUD. So:
+<pre>
+	!action {Str: $r_str Int: $r_int Wis: $r_wis Dex: $r_dex Con: $r_con Accept these?} {!@var r_sum $r_str+$r_int+$r_wis+$r_dex+$r_con#!@var y $r_sum>=$r_minsum?y:n#!@var y $y==n?n:($r_str>=$r_minstr?y:n)#!@var y $y==n?n:($r_int>=$r_minint?y:n)#!@var y $y==n?n:($r_wis>=$r_minwis?y:n)#!@var y $y==n?n:($r_dex>=$r_mindex?y:n)#!@var y $y==n?n:($r_con>=$r_mincon?y:n)#$y}
+</pre>
+That's all! Looks huge and complex, but it is just repeating of the same. Now when all
+conditions are true, MUD will recieve y. What we wanted :)
+If you don't want to send y, but just to stop roller, then replace last command $y with:
+<pre>
+	!php if ($GLOBALS[vars][y]==n) mud_writeln(n)
+</pre>
+I won't explain, just learn php.<br>
+So how to use our roller? Set minimal sum and stats (if some minimums are absent, they
+won't be checked because when comparing >= any number will be greater then empty value):
+<pre>
+	!var r_minsum 95
+	!var r_minwis 18
+	!var r_minint 20
+	!var r_mindex 18
+	!var r_mincon 19
+</pre>
+
+P.S. To turn off working roller, use command !ignore.
+
+
+<h1>Setting prompt</h1>
+
+So you successfully rolled a hero, now we need to set prompt. Want to see percentage of
+your hp or mana (handy since some skills like strangle and blackjack work only when health
+of victim is greater then some value in percents, for blackjack it is 90% as far as i know), we'll
+make it. First set prompt format in MUD, let it be:
+<pre>
+prompt &lt;%h/%Hhp %m/%Mmn %vmv Tnl:%X Exits:%e&gt;
+</pre>
+Since max values of hp and mana are not separated from strings 'hp' and 'mn', action won't work.
+We need a trigger, enclose every subexpression with brackets '()':
+<pre>
+	!trigger {&lt;([0-9]+)/([0-9]+)hp ([0-9]+)/([0-9]+)mn ([0-9]+)mv Tnl:([0-9]+) Exits:(.+)&gt;} {!@var hp $reg[1]#!@var maxhp $re
+g[2]#!@var mana $reg[3]#!@var maxmana $reg[4]#!@var mv $reg[5]#!@var tnl $reg[6]#!@var exits $reg[7]#!@var hpp $hp/$maxhp*100
+</pre>
+Trigger places all matched substrings into array $reg with index from 1 to 9 starting from left. So
+we assign variables and do some calculations to get percentages of hp and mana.<br>
+Now we need to replace old status line with new containing percentages (parameter 'later' to force
+sub to work after trigger):
+<pre>
+    !sub {&lt;.+Exits:.+&gt;} {&lt;$hp/$hpp% $mana/$manap% $mv Tnl:$tnl Exits:$exits&gt;} later
+</pre>
+Now tell SMC that our trigger is prompt. Look the number of our trigger with command !triggers (let it be 1)
+and write:
+<pre>
+	!prompt trigger 1
+</pre>
+P.S. Even if you dont want to do anything with your prompt, anyway create an empty action or trigger on
+it since many features of SMC require defined prompt:
+<pre>
+	!trigger {&lt;.+Exits:.+&gt;} {!null}
+	!prompt trigger 1
+</pre>
+
+
+<h1>Removing spam</h1>
+
+All real fights on hero level produce a large amount of spam with blocked or missed strikes, especially
+when you are an assassin and your enemy is a necromancer with the army of minions. It greatly distractes
+attention and makes it harder to notice a really valuable information. Lets remove it:
+<pre>
+	!gag {^You (parry|dodge|hand block|shield block).+} hidden
+	!gag {^[A-Z].+ (parries|dodges|hand blocks|shield blocks) your .+} hidden
+</pre>
+You can also add here blink, deftly evade, etc. for your taste :)<br>
+One more example - hide miserable useless resistances:
+<pre>
+	!gag {^You are slightly toughened} hidden
+</pre>
+
+<br><br>
+Now lets talk a little about bards. What for to read every time 12 lines of song's text? Lets fix it.
+Suppose you are singing:
+<pre>
+You sing the deep words of Tomb of the Damned. 
+'Betrayal of Cause - he rebranded his mark. 
+ Look at the shrine of one heroes of Dark. 
+ He rushed to comrades but he perished in fight. 
+ Look at the tomb of one damned by Light.' 
+</pre>
+What we can notice? Any song starts with "bla-bla-bla the deep words of bla-bla-bla". Write a trigger which
+will get bard's name and song's name:
+<pre>
+	!trigger {([A-Z][a-z]+) sing(s)? the deep words of (.+)\\.} {!@var singer $reg[1]#!@var songname highlight($reg[3], yellow)}
+</pre>
+Learn regular expressions :) In addition highlight song's name with yellow. Now make
+substitution (to work after trigger - parameter 'later'):
+<pre>
+	!sub {.+ the deep words of .+} {$singer sing(s) the deep words of $songname.} later
+</pre>
+And the main feature - hide song's text. Lets use a mutiline gag for it. At the end of string
+"... the deep words of ..." we'll turn gag mode on, and turn it off at the end of song (string
+starts with space, then capital letter, quote at the end of string, sometime space after it
+(bug of Solace MUD)):
+<pre>
+	!gag {the deep words of} vis hidden
+	!gag {^ [A-Z].+'( )?$} hidden vis
+</pre>
+We didn't add .+ to both sides here because gags already work with entire strings only.
+
+<br><br>
+That's all for now! Good luck!<br>
+<a href=mailto:solace@ezmail.ru>Zilav</a>
+
+</body>
+</html>

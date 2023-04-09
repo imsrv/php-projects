@@ -1,0 +1,142 @@
+<form action="rdv_action.php" method="post">
+  <input type="hidden" name="rdv_whichaction" value="SAVE">
+  <input type="hidden" name="rdvID" value="<? echo $rdvID; ?>">
+  <table border="0" cellspacing="4" cellpadding="0">
+    <tr>
+      <td><font face=" Arial, Helvetica, sans-serif" size="1">
+        
+        <select name="i_rdv_day">
+          <?
+                        
+                for($j = 1; $j <= 31 ; $j++ ){ 
+                        print ("<option ");
+                        if ($j == $rdv_day) {
+                            print("selected");
+                        }
+                        print(">");
+                        print($j);
+                        print ("</option>");
+                }
+                ?>
+
+
+              
+        </select>
+              </font></td>
+      <td><font face="Verdana, Arial, Helvetica, sans-serif" size="1">
+              
+        <select name="i_rdv_month">
+
+
+                
+          <?
+
+                for($m = 1; $m <= 12 ; $m++ )
+                {
+                        print ("<option");
+                        if ($m == $rdv_month)
+                        {
+                                print(" selected");
+                        }
+                        print(" >");
+                        print($m);
+                        print ("</option>");
+                }
+                ?>
+
+              
+        </select>
+              </font></td>
+      <td><font face="Verdana, Arial, Helvetica, sans-serif" size="1">
+              
+        <select name="i_rdv_year">
+
+                
+          <?
+                for($a = $rdv_year-1 ; $a <= $rdv_year +2 ; $a++ )
+                {
+                        print ("<option");
+                        if ($a == $rdv_year)
+                        {
+                                print(" selected");
+                        }
+                        print(" >");
+                        print($a);
+                        print ("</option>");
+                }
+                ?>
+
+              
+        </select>
+              </font></td>
+      <td>--</td>
+      <td><font face="Verdana, Arial, Helvetica, sans-serif" size="1">
+              
+        <select name="i_rdv_h">
+                
+          <?
+                 
+                for($h = 0; $h <= 23 ; $h++ )
+                {
+                        print ("<option ");
+                        if ($h == $rdv_hour)
+                        {
+                                print("selected");
+                        }
+                        print(">");
+                        print($h);
+                        print ("</option>");
+                }
+                
+                ?>
+
+              
+        </select>
+              </font></td>
+      <td><font face="Verdana, Arial, Helvetica, sans-serif" size="1">
+              
+        <select name="i_rdv_min">
+
+                
+          <?
+
+                for($mn = 0; $mn <= 59 ; $mn++ )
+                {
+                        print ("<option ");
+                        if ($mn == $rdv_min)
+                        {
+                                print("selected");
+                        }
+                        print(">");
+                        print($mn);
+                        print ("</option>");
+                }
+                ?>
+
+                      
+        </select>
+                      </font></td>
+    </tr>
+                  
+    <tr>
+                    
+      <td><font face="Verdana, Arial, Helvetica, sans-serif" size="1">jour</font></td>
+      <td><font face="Verdana, Arial, Helvetica, sans-serif" size="1">mois</font></td>
+      <td><font face="Verdana, Arial, Helvetica, sans-serif" size="1">année</font></td>
+      <td>&nbsp;</td>
+      <td><font face="Verdana, Arial, Helvetica, sans-serif" size="1">heure</font></td>
+      <td><font face="Verdana, Arial, Helvetica, sans-serif" size="1">min</font></td>
+    </tr>
+    <tr align="center">
+      <td colspan="6">
+        <textarea name="i_rdv_info" cols="30" rows="5"><? echo $i_rdv_info; ?></textarea>
+      </td>
+    </tr>
+    <tr align="center">
+      <td colspan="6">
+        <input type="submit" value="OK" class="userbutton">
+    </td>
+    </tr>
+                
+  </table>
+</form>

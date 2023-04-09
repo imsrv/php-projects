@@ -1,0 +1,46 @@
+****************************************
+* sCssBoard 1.12 Changelog (4-05-2005) *
+****************************************
+
+-Updated a few things in the breadcrumb navigation.
+-Improved Admin CP security.
+-Fixed an exploit on the Profile page.
+-Previewing a new post now strips slashes properly.
+-The [url] tag can now only be used with http:// links. This is to prevent abuse of Javascript in links.
+-Board should now work with register_globals off.
+-Major changes to cookie formats for increased security.
+-sCssBoard is now licensed under the Creative Commons.
+-Various other bugs fixed (see wiki for details)
+
+****************************************
+* sCssBoard 1.11 Changelog (3-15-2005) *
+****************************************
+
+-The [Quote] and [Edit] buttons are now displayed only if you have the correct permissions.
+-Registration works again. (thanks to tuoermin)
+-Setting for "Default Stylesheet" now works on new registrations. (thanks to tuoermin)
+-In Forum View, "Latest Reply" changed to "Latest Post" and original post is now shown if there are no replies.
+-In Forum View, topics are now ordered correctly.
+-Signature and the signature divider can now be styled. (classes 'signature' and 'signature_divider')
+-Whitespace removed from forum stats and replaced by padding in the styles.
+
+***************************************
+* sCssBoard 1.1 Changelog (2-17-2005) *
+***************************************
+
+-All forum output is now valid XHTML 1.0 Transitional.
+-Major layout changes:
+--Header, member bar, and breadcrumbs are now housed in divs and 100% width.
+--Main, Category, Forum, Topic, Member sections all are now 100% width.
+--Profile editing is now in divs instead of tables.
+--Posting tables are now in just two divs.
+--Registration form condensed.
+-Forum descriptions added.
+-Edited error messages to cope with dark styles much better.
+-Email addresses are now validated on signup and profile changes.
+-Members page changed to show location and verbose level.
+-Search now utilizes the extremely powerful fulltext features of MySQL.
+-Login/logout functions condensed into one file.
+-Continue buttons added to all redirection pages just in case something doesn't work.
+-Purple and Ice styles removed.
+-New "Midnight" style included.

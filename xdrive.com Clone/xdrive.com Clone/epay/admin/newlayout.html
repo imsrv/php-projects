@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>DreamAccount Admin Area for <? echo setup("company") ?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+	<!--
+	a:hover {  font-weight: bold; text-decoration: none; text-transform: capitalize}
+	a:link {  font-weight: bold; text-decoration: none; text-transform: capitalize}
+	a:visited {  font-weight: bold; text-decoration: none; text-transform: capitalize}
+	a:active {  font-weight: bold; text-decoration: none; text-transform: capitalize}
+	.menu {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; font-weight: bold; color: #FFFFFF; background-color: #000099; text-decoration: none}
+	.label {  font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; text-decoration: none}
+	.fields {  font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; color: #000099; text-decoration: none; background-color: #F3F3F3; border-color: #666666 #333333 #333333 #999999; font-style: normal; padding-top: 0px; padding-right: 2px; padding-bottom: 0px; padding-left: 2px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px}
+	.fields_text {  font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: normal; color: #000000; background-color: #E5E5E5; border-color: #000099 #000099 #000099 #000033 border-top-width: thin; border-right-width: thin}
+	.fields_text2 {  font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: normal; color: #000000; background-color: #DBDBDB; border-color: #000099 #000099 #000099 #000033 border-top-width: thin; border-right-width: thin}
+	.fields_back {  background-color: #000099; font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; color: #FFFFFF}
+	.main {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #000099; background-color: #F9F9F9}
+	-->
+</style>
+</head>
+<body rightmargin="0" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="fields_text">
+<tr>
+	<td>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
+		<tr>
+			<td width="8%"><img src="images/dreamaccount_logo.gif" width="200" vspace="5" hspace="10"></td>
+			<td width="92%" valign="middle">
+				<table width="95%" border="0" cellspacing="0" cellpadding="2" class="label">
+				<tr>
+					<td width="450" class="label">
+						<center>
+						</center>
+					</td>
+					<td width="50" class="label"> <a href="?page=main"><font color="#999999">MAIN</font></a></td>
+					<td width="50">
+						<div align="right"><a href="?action=logout"><font color="#999999">LOGOUT</font></a></div>
+					</td>
+				</tr>
+				<tr>
+					<td width="450" class="label">
+						<center>
+						( <a href="http://www.dreamcost.com"><font color="#000099">Dreamcost.com</font></a>
+						&copy; 2002-2003 )
+						</center>
+					</td>
+					<td width="50" class="label"> <a href="http://dreamcost.com/?page=docs" target="_blank"><font color="#999999">DOCS</font></a>
+					</td>
+					<td width="50">
+						<div align="right"><a href="http://dreamcost.com/?page=service&next_page=service" target="_blank"><font color="#999999">SUPPORT</font></a>
+						</div>
+					</td>
+				</tr>
+				</table>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr> </tr>
+<tr> </tr>
+<tr>
+	<td bgcolor="#CCCCCC">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" height="21" class="fields_back" background="images/menu_back.gif">
+		<tr>
+			<td>
+				<? include("menu.php"); ?>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td bgcolor="#CCCCCC">
+		<table width="100%" border="0" cellspacing="10" cellpadding="10" align="center">
+		<tr>
+			<td>
+<?
+	if (isset($message)) {
+		echo " $message <BR>";
+	}
+	if (isset($error)) {
+		echo "ERROR:   <BR> $error  <BR>";
+	}
+	include("$page$page_ext");  ?>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td class="fields_back"><img src="images/invisible.gif" width="1" height="1"></td>
+</tr>
+</table>
+</body>
+</html>

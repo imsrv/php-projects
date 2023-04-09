@@ -1,0 +1,46 @@
+Thank you helping us with translations.!!
+
+
+To create your translation change directory in the locales directory.
+
+> cd mwchat/locales
+
+In this directory you will see a directory called "en". This abbreviation 
+stands for "English" and is the MASTER copy of our current language set.
+
+IMPORTANT NOTE: 
+
+ Do NOT translate a language from any other existing directory other than "en".
+ If you do, you may be translating out of date text.
+
+
+Copy the "en" directory to the abbreviation of your new language, ex "es" - Spanish.
+
+> cp -a en es
+
+Change into the new "es" directory and begin editing each file. While we appreciate your
+help in translating MWChat, please do not send us partial translations. You may however send
+us corrections for bad translations.
+
+In each file, you will see entries like the one below:
+
+$LOCALE[Name] = "Choose a preferred name";
+
+To translate this line, you would do:
+
+$LOCALE[Name] = "Elija un nombre preferido";
+
+Make sure you translate ONLY the text in quotes. After you have completed all files in this directory, 
+your translations are complete. You can now add them to MWChat.
+
+In your MWChat config directory, edit the file locales.php. Read down that file for instructions on adding 
+your translation so that it will appear into MWChat.
+
+
+You can send use your translations via email at: support@appindex.net, be sure to include your name and email
+so we can give you due credit.
+
+
+Thanks for help!
+
+

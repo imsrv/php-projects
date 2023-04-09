@@ -1,0 +1,1 @@
+<?php $template='<table width="95%" height=1 cellspacing=0 cellpadding=2 class="quote"><tr><td><span class="textlarge">$content</span></td></tr></table>'; ?>

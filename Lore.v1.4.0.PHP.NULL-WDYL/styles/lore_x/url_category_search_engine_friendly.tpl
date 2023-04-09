@@ -1,0 +1,1 @@
+idx/{$category_id}/0/{if $lore_system.settings.enable_category_name_urls}{$category_name|alphanumeric}.html{/if}

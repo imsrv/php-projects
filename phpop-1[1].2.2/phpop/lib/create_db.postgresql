@@ -1,0 +1,23 @@
+// ---------------------------------------------------------------
+// bookmarker
+// A WWW based bookmark management, retrieval, and search tool.
+// Copyright (C) 1998  Padraic Renaghan
+// Licensed under terms of GNU General Public License
+// (see http://www.renaghan.com/bookmarker/source/LICENSE)
+// ---------------------------------------------------------------
+// Database create script for postgresql databases.
+// $Id: create_db.postgresql,v 1.1 2000/04/12 23:23:19 prenagha Exp $
+// ---------------------------------------------------------------
+//
+// Table structure for table 'active_sessions'
+//
+CREATE TABLE active_sessions (
+  sid varchar(32) DEFAULT '',
+  name varchar(32) DEFAULT '',
+  val text,
+  changed varchar(14) DEFAULT '' NOT NULL,
+  PRIMARY KEY (sid,name)
+);
+CREATE INDEX k_changed ON active_sessions USING btree(changed);
+
+// -- END

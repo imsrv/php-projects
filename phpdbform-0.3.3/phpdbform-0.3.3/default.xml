@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+ standalone="yes" ?>
+<!DOCTYPE phpdbform
+[
+	<!ENTITY menu_page SYSTEM "menu.xml">
+]>
+-->
+<project language="enus" logo="true" tailmsg="Look at example.xml for configuration" authtype="session" start="menu" debug="true" title="Test Site" theme="templ01" version="0.1" dbengine="mysql" dbhost="localhost" dbname="phpdbform">
+   <page name="menu" caption="Main menu">
+      <form name="menu" caption="Main menu" datasource="" fields="" sortby="" keyfield="" columns="1">
+         <control type="link" caption="Contacts types" target="render_xml.php?filename=default.xml&amp;pagename=contact_types" size="40" span="1"/>
+         <control type="link" caption="Contacts" target="render_xml.php?filename=default.xml&amp;pagename=contacts" size="42" span="1"/>
+         <control type="link" caption="Contacts with filters" target="render_xml.php?filename=default.xml&amp;pagename=contacts_filtered" size="40" span="1"/>
+         <control type="link" caption="Contacts with radio boxes" target="render_xml.php?filename=default.xml&amp;pagename=contacts_w_radioboxes" size="36" span="1"/>
+         <control type="link" caption="Photo Album" target="render_xml.php?filename=default.xml&amp;pagename=photo_album" size="40" span="1"/>
+      </form>
+   </page>
+   <page name="contacts" caption="Contacts">
+      <form name="contacts" caption="Contacts" datasource="contact" fields="cod,name" sortby="name" keyfield="cod" columns="2">
+         <control type="textbox" field="name" caption="Name" size="auto" span="2"/>
+         <control type="textbox" field="email" caption="E-mail" size="auto" span="2"/>
+         <control type="fixed_combobox" field="sex" caption="Sex" options="male,female" span="1"/>
+         <control type="listbox" field="type" fieldselection="cod,type" keyfield="cod" rowsource="type" sortby="type" caption="Contact type" size="auto" span="1"/>
+         <control type="textarea" field="obs" caption="Notes" columns="40" rows="10" span="2"/>
+      </form>
+   </page>
+   <page name="contact_types" caption="Contact types">
+      <form name="contact_types" caption="Contact types" datasource="type" fields="type" sortby="type" keyfield="cod" columns="1">
+         <control type="textbox" field="type" caption="Type" size="auto" span="1"/>
+         <control type="checkbox" field="business" caption="Business Related?" span="1"/>
+      </form>
+   </page>
+   <page name="login" caption="Login">
+      <code>setcookie("AuthName","",time()+3600);setcookie("AuthPasswd","",time()+3600);print_header("login");print_logos(false,"");print_tail();</code>
+   </page>
+</project>

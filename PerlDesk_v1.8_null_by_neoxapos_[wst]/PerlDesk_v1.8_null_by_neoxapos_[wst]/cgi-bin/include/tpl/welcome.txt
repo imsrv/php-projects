@@ -1,0 +1,16 @@
+
+Dear {cname}
+
+%ereg1% 
+
+%ulogin% %details%
+--------------------------------
+%username% : {user}
+%password% : {password}
+
+{baseurl}/{mainfile}
+
+%thankyou%,
+
+PerlDesk
+ 

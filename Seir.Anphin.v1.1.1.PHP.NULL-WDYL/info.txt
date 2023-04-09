@@ -1,0 +1,13 @@
+Info:
+  Seir Anphin is a cost-effective, easily updated
+  infinitely extendible solution to reaching a       
+  massive online audience. It is a community-oriented
+  content management system designed to support and  
+  encourage discussion on websites. It comes with a  
+  fully featured message board to accomodate         
+  information exchange between members as well as    
+  the abilitity for members to respond to other      
+  areas of a site, such as the content of normal     
+  pages and even one anothers profiles.              
+
+  http://www.anphin.com/products.php?id=1

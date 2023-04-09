@@ -1,0 +1,67 @@
+phpGraphy - Full featured photo collection script - Light, fast and easy to install
+-----------------------------------------------------------------------------------
+
+phpGraphy is a free PHP script released under GPL license that let you share your 
+pictures on your personal website in a very convenient way. It has been written 
+with the goal to be very customizable so it can integrate itself easily within 
+your existing website (it's also works perfectly well by itself).
+
+Please read the LICENSE online at http://www.gnu.org/licenses/gpl.txt
+to get the license this program is subject to.
+
+
+Installation:
+-------------
+
+* Standard and recommended procedure:
+See manual available online at http://phpgraphy.sourceforge.net.
+
+* Quick-Installation (Power Users only!):
+Follow instructions found in the separate INSTALL file or in the online manual.
+
+
+Use:
+----
+
+See manual available online at http://phpgraphy.sourceforge.net
+
+For your convenience, previous instructions are still available below:
+
+Well, all should be fairly simple to guess what it does :).
+
+Anyway, here is some hints:
+
+- edit the header.inc.php and footer.inc.php files to change the layout.
+- you can put .welcome files in your pictures directories and they will be shown
+  just before the thumbnails.
+- make a link with <a href="?lastcomments=/"> in your home .welcome to direct 
+  the users into the latest added comments page.
+- make a link with <a href="?topratings=1"> in your home .welcome to direct 
+  the users into the latest added comments page.
+- if the thumbnails are not generated, verify that the directory has the right
+  attributes/owner.
+- You can use your personal language file, just copy the original one to some name
+  of your choice like 'lang_cust.inc.php' and change the language file reference in
+  the config file.
+- when creating new users, enter random (and large) numbers in cookieval.
+- 2nd image comment as show here :
+  http://ronography.com/?display=Stuff%2FBBS%20ads%2Fdeadline.jpg
+  is done by creating a file with the "_comment" extension. 
+  So let's say you have an image called DTC0224.JPG, just create a 
+  DTC0224.JPG_comment file with the comment inside.
+- image sorting can be reversed by putting a dummy ".desc" file into the directory you want to
+  be sorted backwards.
+- if you choose to make the thumbnails and low res pictures yourself (by putting "manual" in
+  the $thumb_generator variable), then here is the guideline:
+      - you need to create a ".thumbs" directory inside all of your images directories
+      - you need to put there a "thumb_<IMAGE_FILENAME>" and a "lr_<IMAGE_FILENAME>" file.
+        So, if you have an image called "DTC0224.jpg", you need to create "thumb_DTC0224.jpg"
+	and "lr_DTC0224.jpg" in the ".thumbs" directory.
+- to manage users, use either phpMyAdmin in MySQL database and modify the 'users' table or
+  edit the 'users.dat' file if using the fast text database.
+- if you want to add new features, go ahead and send me the patches :)
+
+-------------------------------------------------------
+(c) 2004-2005	JiM / aEGIS (jim@aegis-corp.org)
+(c) 2000-2001	Christophe Thibault (christophe@nullsoft.com)
+All rights reserved.

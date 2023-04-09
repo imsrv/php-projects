@@ -1,0 +1,10 @@
+Dear %%jobseeker_name%%,
+
+Your "%%resume_summary%%" has expired, and was deleted from the system.
+
+Statistics:
+    Resume Posted: %%resume_resumedate%%
+     
+Today: %%today_date%%
+
+Thank you.

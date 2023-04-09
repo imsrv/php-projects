@@ -1,0 +1,396 @@
+###############################################################
+#                                                             #
+# Any use of this program is entirely at the risk of the      #
+# user. No liability will be accepted by the author.          #
+#                                                             #
+# This code must not be distributed or sold, even in modified #
+# form, without the written permission of the author.         #
+#                                                             #
+###############################################################
+
+###############################################################
+#                                                             #
+# Nothing below needs to be modified. You can apply           #
+# modifications if you know what you are doing. Remember that #
+# all credits must remain intact.                             #
+#                                                             #
+###############################################################
+
+
+# Initialize variables
+@badfields = ();
+
+
+# Process submission form
+sub readform {
+
+	# Initialize multiple select
+	@list = ();
+	
+	# Read the form
+	if ($ENV{'REQUEST_METHOD'} eq 'GET') {
+		$buffer = $ENV{'QUERY_STRING'};
+	} else {
+		read(STDIN, $buffer, $ENV{'CONTENT_LENGTH'});
+	}
+	@pairs = split(/&/, $buffer);
+	foreach $pair (@pairs) {
+		($name, $value) = split(/=/, $pair);
+		$value =~ tr/+/ /;
+		$value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
+		$value =~ s/\r//g;
+		$value =~ s/\t//g;
+		if ($name eq "list") {
+			push(@list, $value);
+		} else {
+			$FORM{$name} = $value;
+		}
+	}
+}
+
+
+# Fatal error
+sub err {
+	print "Content-type:text/html\n\n";
+	my($msg) = @_;
+	print "<h2>Fatal Error</h2>\n";
+	print $msg;
+	exit;
+}
+
+
+# Submission error checker
+sub formerror {
+
+	# Show submission errors
+	if (scalar(@badfields) > 0) {
+
+		# Load common vocabulary
+		require "$tmplpath/common.txt";
+
+		# Load Submission Errors Display template
+		require "$tmplpath/errors.tmpl";
+
+		# Build error list
+		foreach $errorcode(@badfields) {
+			$formerrors .= "          <li><font face=\"$fontname\" size=\"$fontsize\"><b>$tempvoc[$errorcode]</b></font></li>\n";
+		}
+
+		# Errors display
+		$ERRORS_SUB = qq(<div align="center"><h3><font face="$fontname" size="$fontsize"><b>$tempvoc[0]</b></font></h3>
+<form name="adform">
+    <table width="$tablewidth" border="0" cellspacing="1" cellpadding="3">
+      <tr> 
+<td bgcolor="$headcolor"><font face="$sfontname" size="$sfontsize">$tempvoc[1]</font></td>
+</tr>
+<tr bgcolor="$primcolor"> 
+<td>
+<br>
+<ul>
+$formerrors
+</ul>
+<br>
+</td>
+</tr>
+<tr> 
+<td bgcolor="$headcolor"><font face="$sfontname" size="$sfontsize">$commonvoc[23]</font></td>
+</tr>
+</table>
+<br>
+<input type="button" name="back" value="$commonvoc[27]" onClick="history.back()">
+</form>
+  <font face="Arial, Helvetica, sans-serif" size="-2"><a href="http://scripts.21stcenturyhost.net" target="_blank">Powered 
+  by 21stCenturyScripts</a></font></div>);
+
+		# Perform template substitutions
+		$temphtml =~ s/\{ERRORS\}/$ERRORS_SUB/g;
+		
+		# Display the screen
+		&showscreen;
+	}
+}
+
+
+# Submission Success Display
+sub confirm {
+
+	# Localize incoming variables
+	my($msg1, $msg2, $url) = @_;
+
+	# Load Submission Success Display template
+	require "$tmplpath/success.tmpl";
+
+	# Submission Success form
+	$FORM_SUB = qq(<div align="center"><h3><font face="$fontname" size="$fontsize"><b>$tempvoc[0]</b></font></h3>
+  <form name="adform">
+    <table width="$tablewidth" border="0" cellspacing="1" cellpadding="3">
+      <tr> 
+        <td bgcolor="$headcolor"><font face="$sfontname" size="$sfontsize">$tempvoc[1]</font></td>
+      </tr>
+      <tr bgcolor="$primcolor"> 
+        <td> 
+          <div align="center"><font face="$fontname" size="$fontsize"><br>
+            $tempvoc[$msg1]</font><br><br>
+            <input type="button" name="button" value="$tempvoc[$msg2]" onClick="window.location='$url';return true"><br><br>
+          </div>
+        </td>
+      </tr>
+      <tr> 
+        <td bgcolor="$headcolor"><font face="$sfontname" size="$sfontsize">$tempvoc[2]</font></td>
+      </tr>
+    </table>
+    </form>
+  <font face="Arial, Helvetica, sans-serif" size="-2"><a href="http://scripts.21stcenturyhost.net" target="_blank">Powered 
+  by 21stCenturyScripts</a></font>
+</div>);
+
+	# Perform template substitutions
+	$temphtml =~ s/\{FORM\}/$FORM_SUB/g;
+
+	# Display the screen
+	&showscreen;
+
+	exit;
+}
+
+
+# Display screen using templates
+sub showscreen {
+	if ($commonhead) {
+		require "$tmplpath/head.txt";
+	} else {
+		print "Content-type: text/html\n\n";
+	}
+	print $temphtml;
+	require "$tmplpath/foot.txt" if $commonfoot;
+	exit;
+}
+
+
+# Send e-mail
+sub sendmail {
+	my($from, $to, $subject, $msg) = @_;
+	open(MAIL,"|$mailprog -t") || err("Could not send e-mail message to $to: $!");
+	print MAIL "From: $from\n";
+	print MAIL "To: $to\n";
+	print MAIL "Subject: $subject\n\n";
+	print MAIL "$msg";
+	close(MAIL);
+}
+
+
+# Get current date
+sub getdate {
+
+	# Localize incoming variables
+	my($tmpdate,$tmrswitch) = @_;
+
+	# Initialize return date
+	my($date) = "";
+
+	# Load common vocabulary
+	require "$tmplpath/common.txt";
+
+	# Read local time
+	@timery = localtime($tmpdate);
+
+	# Format Date
+	if ($dateformat eq '1') {
+		$year = substr($timery[5],2,2);
+		$datestring = sprintf("%02d/%02d/%02d", $timery[4] + 1, $timery[3], $year);
+	} elsif ($dateformat eq '2') {
+		$year = $timery[5] + 1900;
+		$datestring = sprintf("$commonvoc[$timery[4]] $timery[3], $year");
+	} elsif ($dateformat eq '3') {
+		$year = substr($timery[5],2,2);
+		$datestring = sprintf("%02d/%02d/%02d", $timery[3], $timery[4] + 1, $year);
+	} else {
+		$year = $timery[5] + 1900;
+		$datestring = sprintf("$timery[3] $commonvoc[$timery[4]] $year");
+	}
+
+	# Format Time
+	if ($tmrswitch) {
+		unless ($timeoffset == 0) {
+			$timery[2] += $timeoffset;
+			if ($timery[2] < 0) {
+				$timery[2] += 24;
+			} elsif ($timery[2] > 23) {
+				$timery[2] -= 24;
+			}
+		}
+		if ($timeformat eq '1') {
+			if ($timery[2] > 11 && $timery[2] < 24) {
+				$ampm = "PM";
+			} else {
+				$ampm = "AM";
+			}
+			if ($timery[2] > 12) {
+				$timery[2] -= 12;
+			} elsif ($timery[2] == 0) {
+				$timery[2] += 12
+			}
+			$date = sprintf("$datestring  %02d:%02d:%02d $ampm", $timery[2], $timery[1], $timery[0]);
+		} elsif ($timeformat eq '2') {
+			$date = sprintf("$datestring  %02d:%02d:%02d", $timery[2], $timery[1], $timery[0]);
+		}
+		$date .= " $timezone" if ($timezone);
+	} else {
+		$date = $datestring;
+	}
+
+	# Return formatted date
+	return $date;
+}
+
+
+# Read in set cookies
+sub checkcookie {
+	$cdata = $ENV{'HTTP_COOKIE'};
+	@cookies = split(/; /,$cdata);
+	foreach $i (@cookies) {
+		($name,$cid) = split(/=/,$i);
+		$cookie{$name} = $cid;
+	}
+}
+
+
+# Set cookie
+sub setcookie {
+	my($addtime, $cookiename, $cookievalue) = @_;
+	@months = ("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug", "Sep","Oct","Nov","Dec");
+	@days = ("Sun","Mon","Tue","Wed","Thu","Fri","Sat");
+	($sec,$min,$hr,$mday,$mon,$yr,$wday,$yday,$isdst) = gmtime(time + $addtime);
+	$timestr = sprintf("%3s, %02d-%3s-%4d %02d:%02d:%02d GMT", $days[$wday],$mday,$months[$mon],$yr+1900,$hr,$min,$sec);
+	print "Set-Cookie: $cookiename=$cookievalue; expires=$timestr\n";
+}
+
+
+# Check referring URL
+sub urlcheck {
+	if ($refercheck && $ENV{'HTTP_REFERER'}) {
+		$checkurl = $scripturl;
+		$checkurl =~ s/http:\/\/www\.//g;
+		$checkurl =~ s/http:\/\///g;
+
+		unless ($ENV{'HTTP_REFERER'} =~ /$checkurl/i) {
+			push(@badfields, 16);
+			&formerror;
+		}
+	}
+}
+
+
+# Bad/Rude Words Detector
+sub smut_detect {
+	if ($badwords) {
+		my(@tempfields) = @_;
+		$badwords =~ s/\[/\\b/g;
+		$badwords =~ s/\]/\\b/g;
+		@badwords = split(/\,/,$badwords);
+		foreach $tempfield(@tempfields) {
+			foreach $word (@badwords) {
+				if ($tempfield =~ /$word/i) {
+					$word =~ s/\\b//g;
+					push(@badfields, 13);
+					&formerror;
+				}
+			}
+		}
+	}
+}
+
+
+# Read in the members list
+sub readmembers {
+	open(MLIST,"$membpath/memblist.cgi") || err("Could not open $membpath/memblist.cgi: $!");
+	@members = <MLIST>;
+	close(MLIST);
+	chomp(@members);
+}
+
+
+# Strip html/special characters
+sub htmlstrip {
+	foreach $field(@_) {
+		$field =~ s/\n//g;
+		$field =~ s/</&lt;/g;
+		$field =~ s/>/&gt;/g;
+		$field =~ s/\"/&quot;/g;
+	}
+}
+
+
+# Member Logon Status Indicator
+sub logstatus {
+
+	# Initialize status indicator
+	$LOG_STATUS_SUB = "";
+
+	# Read member cookies
+	&checkcookie;
+
+	# Build status indicator
+	if ($cookie{'rmid'} and $cookie{'rmpass'}) {
+		$LOG_STATUS_SUB = "<font face=\"$sfontname\" size=\"$sfontsize\">$commonvoc[31]<a href=\"$scripturl/members.cgi?action=logout\">$commonvoc[33]</a></font>";
+	} else {
+		$LOG_STATUS_SUB = "<font face=\"$sfontname\" size=\"$sfontsize\">$commonvoc[32]<a href=\"$scripturl/members.cgi\">$commonvoc[34]</a></font>";
+	}
+
+	# Perform template substitution
+	$temphtml =~ s/\{LOG_STATUS\}/$LOG_STATUS_SUB/g;
+}
+
+
+# Generate Voting HTML Code
+sub getlink {
+
+	# Localize incoming variables
+	my($id, $linktype) = @_;
+
+	# Voting Box code
+	if ($linktype eq "box") {
+		$linkcode = qq(<form name="box" action="$scripturl/rate.cgi" method="post" target="_blank">
+  <input type="hidden" name="id" value="$id">
+  <table width="140" border="1" cellspacing="0" cellpadding="1">
+    <tr> 
+      <td> 
+        <div align="center"><font color="#000000"><i><b>$commonvoc[28]</b></i></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <div align="center"> 
+          <select name="rating" size="1">
+            <option value="1">1 - $commonvoc[43]</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10" selected>10 - $commonvoc[42]</option>
+          </select>
+          <input type="submit" name="submit" value="$commonvoc[55]">
+        </div>
+      </td>
+    </tr>
+  </table>
+</form>);
+
+	# Image Link code
+	} elsif ($linktype eq "image") {
+		$linkcode = qq(<a href="$scripturl/rate.cgi?id=$id" target="_blank"><img src="$voteimg" border="0" alt="$commonvoc[28]"></a>);
+
+	# Text Link code
+	} elsif ($linktype eq "text") {
+		$linkcode = qq(<a href="$scripturl/rate.cgi?id=$id" target="_blank">$commonvoc[28]</a>);
+	}
+
+	return $linkcode;
+}
+
+
+1;

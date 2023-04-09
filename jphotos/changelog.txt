@@ -1,0 +1,34 @@
+/* Changelog jPhotos Script */
+
+27-12-2005 1.08 Jozef Mlich
+- chmod pri vytvareni adresare thumb
+- lastest phemplate class
+
+02-08-2005 1.07 Jozef Mlich
+- validity check according to tidy
+
+12-05-2005 1.06 Jozef Mlich
+- read description bugfix
+
+19-04-2005 1.05 Jozef Mlich
++ sorting according to directory title, directory modification time
+# better functionality of 'back' button
+
+22-12-2004 1.04 Jozef Mlich
++ experimental support of EXIF (info about ExposureTime, etc.)
++ added destination page for each image with next a previous buttons..
+
+20-11-2004 1.03 Jozef Mlich
+# improved deploymentability
+# removed minor bugs
+
+11-11-2004 1.02
+# new layout (only icons)
++ improved error reporting
+
+04-11-2004 1.01
+# Resizing changed to resampling (better quality of thumbs)
++ new resize.class.php
+
+17-10-2004 1.00 
+# first public version

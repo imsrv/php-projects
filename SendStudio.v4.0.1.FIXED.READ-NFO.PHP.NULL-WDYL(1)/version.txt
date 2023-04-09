@@ -1,0 +1,4 @@
+SendStudio Version 4.0.1
+Released on 18 December 2003
+Copyright Interspire Pty Ltd
+www.interspire.com

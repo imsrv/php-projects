@@ -1,0 +1,7 @@
+Estimado %%jobseeker_name%%,
+
+Su curriculum "%%resume_summary%%" ha sido enviado adecuadamente.
+Caducará el %%resume_expiredate%%.
+
+Gracias por usar nuestros servicios.
+Hoy: %%today_date%%

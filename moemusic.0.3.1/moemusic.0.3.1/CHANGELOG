@@ -1,0 +1,29 @@
+-----------------------------------------------------------------------------
+			Moe Music
+-----------------------------------------------------------------------------
+
+- 0.3.0 
+	- Finally added some grpahics and set a bg colour
+	- When songs are selected they are put in the queue in order
+	  of selection rather than in order in the list
+	- The backend is still fully backwardly compatiable
+	- removed the bits and peices that dont work properly
+	- added basic passwords to the admin menu. Warning the security on
+	  this is very poor, but will stop simple attempts at access.
+	- now song lists are printed in alphabetical orders
+	- cleaned up the directory structure a bit
+
+- 0.1.2
+	- Added facility to delete artists
+	- Can now clear the song queue
+	- Added a view of songs waiting
+	- moemusic mailing lists created
+	- moved to sourceforge.net
+
+- 0.1.1 
+	- Cleaned up menus a bit. The admin menu and index are now in tables
+	  and much easier to read
+	- Re-wrote the documentation, hope fully its better
+	- redid the webpage (could it have been worse ?)
+	- Added the CHANGELOG
+

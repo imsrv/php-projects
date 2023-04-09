@@ -1,0 +1,4 @@
+-image call in install.cgi
+-life link in install.cgi
+-"powered by" links
+-License ID: 13412444231313142423

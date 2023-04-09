@@ -1,0 +1,465 @@
+2001-07-17  ottani
+	* THANKS.TXT:
+	* phpdbform/phpdbform_db.php:
+		insert_id at phpdbform_db
+
+2001-07-16  ottani
+	* phpdbform/phpdbform_core.php:
+		class text at field titles
+
+	* database.pg.sql:
+	* database.sql:
+		date_field example
+
+	* AUTHORS.TXT:
+		new author
+
+2001-07-12  ottani
+	* database.pg.sql:
+		postgresql database's creation
+
+	* MANUAL.TXT:
+	* contact5.php:
+	* database.pg.sql:
+	* database.sql:
+	* menu.php:
+	* phpdbform/phpdbform_core.php:
+		add_date_field: format date
+
+	* themes/templ01/adm.css:
+		another class for disable and readonly
+
+2001-06-23  ottani
+	* ChangeLog.txt:
+		little bug with link_button inside form
+
+	* phpdbform/phpdbform_core.php:
+		little bug with link button inside form
+
+2001-06-04  rosarior
+	* ChangeLog.txt:
+	* phpdbimage.php:
+		Added detection and activation of the gd extension at runtime
+
+2001-05-26  rosarior
+	* phpdbform/msg_common.inc.php:
+	* phpdbform/msg_sp.inc.php:
+	* phpdbform/phpdbform_core.php:
+	* siteconfig.inc.php:
+		Added spanish error messages
+		Added new file msg_common containing macros to enumerate error numbers more easily
+
+	* ChangeLog.txt:
+		ChangeLog updated
+
+2001-05-25  rosarior
+	* phpdbform/phpdbform_core.php:
+		Forms can now be data less, no table attached
+
+	* MANUAL.TXT:
+		Updated the MANUAL to include combobox value substitution
+
+	* phpdbform/phpdbform_core.php:
+		Removed all the \n and replaced one with <br>
+		This is a workaround for a visual bug in mozilla and netscape
+		MS IE is unaffected, Opera was not tested.
+
+	* ChangeLog.txt:
+		Updated
+
+2001-05-24  rosarior
+	* phpdbform/phpdbform_core.php:
+		Code cleaned up a bit
+
+2001-05-23  rosarior
+	* phpdbimage.php:
+		A separate "image" user account is no longer needed.
+		A new place holder picture will appear when no data is available.
+
+2001-05-15  rosarior
+	* phpdbform/phpdbform_db.php:
+		Added function to check whether or not a field allow null values
+
+	* ChangeLog.txt:
+		Update Changelog.txt
+
+	* phpdbform/phpdbform_core.php:
+		* When a field allows null values a new blank option is added at the beginning
+		of the list turning the field into an optional field. In other words selection
+		of a value is not forced.
+		
+		* Added substitution support to fixed combo box.
+		ie: Good=3,Ok=2,Bad=1
+		if user selects Ok a 2 is saved in the database and not the string 'Ok'
+		This feature is optional and doesn't break the API.
+
+2001-05-07  rosarior
+	* phpdbform/phpdbform_core.php:
+		Fetch empty result set to keep textbox auto sizing from breaking
+		even when no record is selected.
+		This fixes form appearance in netscape & mozilla.
+
+	* phpdbform/phpdbform_core.php:
+		Added missing </select> tag to fixed combo box
+		Fixes appearance problem in netscape 4.7x
+
+2001-05-02  rosarior
+	* render_xml.php:
+		Added new form renderer that read xml schema.
+
+	* default.xml:
+		Added sample xml file for the test site forms
+
+2001-04-22  ottani
+	* MANUAL.TXT:
+	* contact.php:
+	* phpdbform/phpdbform_core.php:
+		Shows fields from other tables in the select box
+
+	* themes/templ01/header.php:
+		Bug fix for konqueror
+
+	* THANKS.TXT:
+		more people helping
+
+	* ChangeLog.txt:
+		new release
+
+2001-03-31  ottani
+	* ChangeLog.txt:
+		release 029b
+
+2001-03-17  ottani
+	* phpdbform/msg_de.inc.php:
+	* phpdbform/msg_enus.inc.php:
+	* phpdbform/msg_fr.inc.php:
+	* phpdbform/msg_it.inc.php:
+	* phpdbform/msg_pl.inc.php:
+	* phpdbform/msg_pt.inc.php:
+	* phpdbform/msg_ptbr.inc.php:
+	* phpdbform/phpdbform_core.php:
+		Or insert or update button  (Mark Gooderum)
+
+	* logout.php:
+		There was an 's' at the very end of logout page...
+
+	* phpdbform/phpdbform_core.php:
+	* siteconfig.inc.php:
+	* themes/simple/adm.css:
+	* themes/simple/header.php:
+	* themes/templ01/adm.css:
+	* themes/templ01/adm_ne.css:
+	* themes/templ01/header.php:
+		Using css instead of global vars (Carlos Viana)
+
+	* phpdbform/phpdbform_core.php:
+		Fixed a bug with values containing (')
+
+	* phpdbform/msg_pt.inc.php:
+	* siteconfig.inc.php:
+		Mensagens em Português de Portugal
+
+	* THANKS.TXT:
+		More help from the world!
+
+2001-03-17  rosarior
+	* phpdbform/phpdbform_db.php:
+	* render_page.php:
+		Added render_page.php a module for render forms by retrieving the form structure form a table in the database.
+		Added num_rows to return the number of fields returned in a query, this is needed by render_page.php
+
+	* render_page-schema.txt:
+		The schema for the tables needed by render_page.php
+
+2001-03-11  ottani
+	* menu.php:
+		added contact4.php
+
+	* ChangeLog.txt:
+	* MANUAL.TXT:
+		added new functions from the 0.2.9
+
+2001-03-09  rosarior
+	* phpdbform/phpdbform_db.php:
+	* phpdbform/phpdbreport_core.php:
+		Addition of report support.
+
+	* themes/report/adm.css:
+	* themes/report/adm_ne.css:
+	* themes/report/footer.php:
+	* themes/report/header.php:
+	* themes/report/index.html:
+	* themes/report/readme.txt:
+	* themes/report/shim.gif:
+	* themes/report/templ01_hbar_bg.gif:
+	* themes/report/templ01_hbar_left.gif:
+	* themes/report/templ01_hbar_right.gif:
+		Supporting files for the report appearance
+
+	* reportconfig.inc.php:
+		Added to allow separate modifications to the report looks
+
+	* report.php:
+		Added this file as an example for reports
+
+2001-02-28  rosarior
+	* phpdbform/phpdbform_core.php:
+		Added readonly support to listbox,combobox,radiobutton and checkbox using javascript
+		Works ok on IE5.0 and Mozilla 0.8, other browsers-untested
+
+2001-02-25  rosarior
+	* phpdbform/phpdbform_core.php:
+		Added a new control: link button
+
+	* contact4.php:
+		Added contact4 as an example for the new features
+
+	* phpdbform/phpdbform_core.php:
+		Added a new control: fixed values radio boxes
+		Added 2 new functions to set the controls as read only or as disabled
+		NOTE: read only does not work on listboxes(and fixed comboboxes) and radiobox,
+		this is a limitation of html and not of php.
+
+	* menu2.php:
+		This file was added to show the new link button control
+
+2001-02-13  rosarior
+	* AUTHORS.TXT:
+	* ChangeLog.txt:
+		Added Roberto Rosario info to the AUTHORS.TXT
+		Updated the ChangeLog, conserning the bug fix to 0.2.8.0
+
+2001-02-12  rosarior
+	* phpdbform/phpdbform_core.php:
+		IMPORTANT! Bug fix to 2.8.0 found inside the new autosizing
+		features.
+
+2001-02-11  ottani
+	* phpdbform/phpdbform_db_psql.php:
+		added functions to support new features
+
+	* logout.php:
+	* menu.php:
+		removed some debug tests
+
+	* ChangeLog.txt:
+		new features
+
+	* contact.php:
+		listbox new features example
+
+	* MANUAL.TXT:
+		updated manual for automatic field len and listbox
+
+	* phpdbform/phpdbform_db.php:
+		removed num_field_name, added field_name
+
+	* TODO.TXT:
+		removed field len from todo
+
+2001-02-08  rosarior
+	* contact.php:
+	* contact2.php:
+	* contact3.php:
+	* photos.php:
+	* phpdbform/phpdbform_core.php:
+	* phpdbform/phpdbform_db.php:
+	* type.php:
+		Finished the adding the new textbox auto size features.
+		Max lenght is no longer required, textbox autosets this value now.
+		If auto is entered in the place of the textbox size parameter, the textbox
+		is set of the same size as the field in the database.
+		Because of these changes the API has changed a bit and the support for postgress is broken
+		until 3 new functions are added to the phpdbform_psql. (field count from a result set, field names from a result set and field sizes form a result set).
+		The examples have been updated to reflect these changes.
+
+	* phpdbform/phpdbform_core.php:
+		Added support for auto sizable textboxes, just type auto in
+		place of the numeric size.
+
+	* phpdbform/phpdbform_db.php:
+		I've upgraded to php4 and can no longer work on supporting php3.
+
+2001-02-07  rosarior
+	* phpdbform/phpdbform_core.php:
+		Fixed bugs introduced by the last change.
+		Listboxes now support multiple fields just like the select control.
+
+	* phpdbform/phpdbform_core.php:
+		Listboxes now support multiple fields just the select listbox
+
+2001-02-06  rosarior
+	* phpdbform/phpdbform_db.php:
+		If debian is detected the mysql.so libraries are loaded
+		automatically.
+
+2001-02-06  ottani
+	* logout.php:
+	* menu.php:
+	* phpdbform/phpdbform_core.php:
+	* siteconfig.inc.php:
+		session support
+
+2001-02-02  rosarior
+	* photos.php:
+	* phpdbimage.php:
+	* themes/simple/header.php:
+		finished changing "<?" to "<?php"
+
+	* phpdbform/msg_de.inc.php:
+	* phpdbform/msg_fr.inc.php:
+	* phpdbform/msg_it.inc.php:
+	* phpdbform/msg_pl.inc.php:
+	* phpdbform/msg_ptbr.inc.php:
+		Finished changing "<?" to "<?php"
+
+2001-02-01  rosarior
+	* contact.php:
+	* contact2.php:
+	* contact3.php:
+	* index.php:
+	* logout.php:
+	* menu.php:
+	* phpdbform/msg_enus.inc.php:
+	* phpdbform/phpdbform_core.php:
+	* phpdbform/phpdbform_db.php:
+	* phpdbform/phpdbform_db_psql.php:
+	* themes/templ01/header.php:
+		Testing of cvs by replacing most ocurrences of <? to <?php
+
+2001-01-20  ottani
+	* AUTHORS.TXT:
+	* COPYING.TXT:
+	* ChangeLog.txt:
+	* INSTALL.TXT:
+	* MANUAL.TXT:
+	* THANKS.TXT:
+	* TODO.TXT:
+	* back.jpg:
+	* contact.php:
+	* contact2.php:
+	* contact3.php:
+	* database.sql:
+	* index.php:
+	* logo.jpg:
+	* logout.php:
+	* menu.php:
+	* photos.php:
+	* phpdbform/index.html:
+	* phpdbform/msg_de.inc.php:
+	* phpdbform/msg_enus.inc.php:
+	* phpdbform/msg_fr.inc.php:
+	* phpdbform/msg_it.inc.php:
+	* phpdbform/msg_pl.inc.php:
+	* phpdbform/msg_ptbr.inc.php:
+	* phpdbform/phpdbform_core.php:
+	* phpdbform/phpdbform_db.php:
+	* phpdbform/phpdbform_db_psql.php:
+	* phpdbimage.php:
+	* siteconfig.inc.php:
+	* themes/index.html:
+	* themes/simple/adm.css:
+	* themes/simple/footer.php:
+	* themes/simple/header.php:
+	* themes/simple/index.html:
+	* themes/templ01/adm.css:
+	* themes/templ01/adm_ne.css:
+	* themes/templ01/footer.php:
+	* themes/templ01/header.php:
+	* themes/templ01/index.html:
+	* themes/templ01/readme.txt:
+	* themes/templ01/shim.gif:
+	* themes/templ01/templ01_hbar_bg.gif:
+	* themes/templ01/templ01_hbar_left.gif:
+	* themes/templ01/templ01_hbar_right.gif:
+	* type.php:
+		second start
+
+2000-09-30  ottani
+	* phpdbform/phpdbform_db.php3:
+		
+		Database functions created in phpdbform_db class to use inside phpdbform class
+
+	* phpdbform/main_db.php3:
+		
+		functions moved to phpdbform_core/phpdbform_db
+
+	* contact.php3:
+		changed to fit new phpdbform class
+
+	* phpdbform/msg_enus.inc:
+		
+		new msg defined
+
+	* INSTALL:
+	* MANUAL:
+		
+		new features
+
+	* phpdbform/main_adm.php3:
+		
+		moved functions to phpdbform_core
+
+	* phpdbform/msg_ptbr.inc:
+		
+		new msg added
+
+	* logo.jpg:
+		
+		new logo
+
+	* phpdbform/phpdbform_core.php3:
+		
+		new features added, phpdbform class works in a single html file
+
+	* siteconfig.inc:
+		
+		bluefish added to TAIL_MSG
+
+	* logout.php3:
+		
+		correct way to delete cookie
+
+	* contact2.php3:
+		
+		Added to show phpdbform inside a normal page
+
+	* type.php3:
+		changed to fit new version of phpdbform class
+
+	* menu.php3:
+		
+		Using connect function from phpdbform_db now
+
+2000-09-25  ottani
+	* index.php3:
+		Just for testing new print_logos() - see phpdbform
+		phpdbform_core.php3
+
+	* phpdbform/phpdbform_core.php3:
+		Added option to customize index link on bottom left of table
+
+2000-09-24  ottani
+	* AUTHORS:
+	* COPYING:
+	* INSTALL:
+	* MANUAL:
+	* TODO:
+	* adm.css:
+	* back.jpg:
+	* contact.php3:
+	* database.sql:
+	* index.php3:
+	* logo.jpg:
+	* logout.php3:
+	* menu.php3:
+	* phpdbform/main_adm.php3:
+	* phpdbform/main_db.php3:
+	* phpdbform/msg_enus.inc:
+	* phpdbform/msg_ptbr.inc:
+	* phpdbform/phpdbform_core.php3:
+	* siteconfig.inc:
+	* type.php3:
+		
+		first release.
+

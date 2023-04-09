@@ -1,0 +1,11 @@
+<Files *.txt>
+order allow,deny
+deny from all
+</Files>
+RewriteEngine On 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]+)/?$ download.php?file=$1 [L]
+
+php_value upload_max_filesize 250M
+php_value post_max_size 250M

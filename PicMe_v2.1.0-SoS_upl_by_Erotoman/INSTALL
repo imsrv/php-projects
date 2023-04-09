@@ -1,0 +1,29 @@
+
+#
+#	$Id: INSTALL
+#	Version 2.0
+#
+
+PicMe INSTALL
+
+
+Simple installation instructions.  
+If you run into problems, send me an email.
+
+
+Simple installation instructions:
+
+1. Rename settings.php.dev in the root directory to settings.php.  Edit as needed.
+2. Upload all files to your server.
+3. Make the picuploads directory writable.  example: chmod 777 members
+4. Execute install.php, located in the admin folder.
+5. Delete all install.php file in the admin directory.
+6. Go to admin: http://www.YOURSITE.COM/admin/ to login.
+
+
+Good Luck,
+Have fun,
+and Behave!
+
+Rob
+rob@directfreelance.com

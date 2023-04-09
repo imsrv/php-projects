@@ -1,0 +1,370 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0039)http://biceleron/sablot/doc-fr-html.php -->
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<STYLE xmlns:fo="http://www.w3.org/1999/XSL/Format">H1 {
+	FONT-WEIGHT: normal; FONT-SIZE: 18pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+H2 {
+	FONT-WEIGHT: normal; FONT-SIZE: 14pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+BODY {
+	FONT-SIZE: 10pt; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffff
+}
+.grey {
+	BACKGROUND-COLOR: #eeeeee
+}
+.blue {
+	BACKGROUND-COLOR: #ccddff
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY>
+<H1 xmlns:fo="http://www.w3.org/1999/XSL/Format">Documentation de PhpDig 1.4 
+</H1>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P><I>Dernière mise à jour : 2001-12-02</I></P></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Où trouver la 
+dernière version de PhpDig ? </H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P>A l'url : <B>http://phpdig.toiletoine.net</B></P></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Fonctionnalités 
+</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P><B>Exploration HTTP</B></P>
+  <P>PhpDig suit les liens contenus dans les documents fournis par un serveur 
+  web, comme n'importe quel navigateur, afin de constituer sa liste de pages à 
+  indexer. </P>
+  <P>Les liens peuvent être contenus dans des AreaMap, résulter d'une 
+  redirection, ou être contenus dans des frames. Toute écriture, même 
+  approximative, des liens HREF est supportée. Les liens en javascript simple 
+  comme window.open() et window.location() sont détectés. </P>
+  <P>PhpDig ne suit pas les liens externes au site défini comme racine lors de 
+  la recherche. La profondeur de recherche dans le site peut être paramétrée. 
+  </P>
+  <P>Tout le contenu html servi par le site distant est parcouru, que ce soit du 
+  html simple, ou des pages créées dynamiquement. PhpDig se base sur le 
+  Mime-Type ou la présence d'une balise &lt;HTML&gt; au début du document. </P>
+  <P><B>Indexation Full Text</B></P>
+  <P>PhpDig indexe exhaustivement les mots contenus dans un document, exceptés 
+  ceux de moins de 3 lettres (par défaut), et ceux contenus dans une liste de 
+  mots considérés comme courants. </P>
+  <P>Les nombres seuls ne sont pas indexés. En revanche, les mots contenant des 
+  chiffres le sont. Les underscores dans les mots sont considérés faisant partie 
+  des mots, comme des noms de fonctions dans une documentation technique. </P>
+  <P>Le nombre d'occurences d'un mot dans une page est conservé dans l'index 
+  pour une meilleure pertinence des résultats. Les mots du titre des pages 
+  peuvent être pondérés. </P>
+  <P><B>Autres fonctions</B></P>
+  <P>PhpDig prend en compte un éventuel fichier robots.txt contenant les chemins 
+  des répertoires à exclure de l'indexation. Les balises meta robots sont aussi 
+  examinées. </P>
+  <P>PhpDig peut indexer des sites situés sur un port différent du port 80 par 
+  défaut. <BR>On peut spécifier un nom et un mot de passe au robot pour indexer 
+  les sites protégés par mot de passe.<BR><B>Attention !</B> Cette dernière 
+  fonction peut permettre à des personnes non autorisées de lire des 
+  informations protégées. Il est recommandé de créer une instance spécifique de 
+  PhpDig, protégée par les mêmes droits d'accès que le site restreint, ainsi que 
+  de créer un compte pour le robot lui-même. </P>
+  <P>Si le serveur renvoie un header Last-Modified, la valeur est mémorisée afin 
+  de ne pas effectuer de réindexation inutile.<BR>La balise &lt;META&gt; 
+  revisit-after est également prise en compte pour la mise à jour de l'index. 
+  </P>
+  <P>Si le moteur est configuré pour le faire, les résultats affichent un 
+  extrait des pages trouvées, contenant les termes de recherche surlignés ou mis 
+  en gras. </P>
+  <P><B>Modèles de présentation</B></P>
+  <P>Un système simple de modèles permet de personnaliser facilement la page de 
+  recherche et de résultats. Il suffit d'insérer quelques balises spécifiques 
+  dans une page statique servant de modèle. </P>
+  <P><B>Limitations</B></P>
+  <P>PhpDig ne gère pas la recherche par expression exacte. Cela impliquerait un 
+  index au moins de la taille des documents indexés (ce qui n'est pas le but), 
+  sans compter le ralentissement de la recherche. </P>
+  <P>Les instances de Php qui réalisent l'indexation ne peuvent être configurés 
+  en safe_mode, sans quoi la limite de temps des scripts empêcherait le moteur 
+  de fonctionner. <BR>Cette limite est toutefois contournable de deux manières : 
+  Soit en utilisant la possibilité d'indexation distante (par les connexions TCP 
+  mysql et FTP), soit en lançant l'indexation en ligne de commande sur le 
+  serveur, éventuellement par une tâche <I>cron</I>. </P>
+  <P>L'indexation est relativement lente. En revanche, la recherche, même sur un 
+  contenu assez étendu, reste suffisament rapide pour ne pas gêner 
+  l'utilisateur. </P></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Installation</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P><B>Pré - Requis</B></P>
+  <P>PhpDig nécessite un serveur web (Apache a ma préférence) doté de Php, et 
+  d'un serveur de bases de données MySql. </P>
+  <P>Les configurations suivantes ont été testées :<BR>PHP 4.0.3pl1 cgi, Apache 
+  1.3.14, MySql 3.23.28, Windows 2000 ;<BR>PHP 4.0.5rc1 module, Apache 1.3.20, 
+  MySql 3.23.28, Windows 2000 ;<BR>PHP 4.0.5 module, Apache 1.3.20, MySql 
+  3.23.39, Linux noyau 2.4.<BR></P>
+  <P><B>Installation des scripts</B></P>
+  <P>Il suffit de déplier le fichier d'archive dans un répertoire de votre 
+  choix. (qui sera désigné ultérieurement par <I>[PHPDIG_DIR]</I> Il n'est pas 
+  nécessaire de créer un VirtualHost Apache pour le moteur.<BR>Vérifiez par la 
+  même occasion, si vous êtes sous un système Unix, que L'utilisateur sous 
+  lequel est lancé le serveur Apache ait le droit d'écrire dans les répertoires 
+  : </P><PRE>[PHPDIG_DIR]/text_content
+[PHPDIG_DIR]/include
+[PHPDIG_DIR]/admin/temp
+</PRE>
+  <P><B>Installation de la base MySql</B></P>
+  <P>Deux méthodes sont possibles pour installer la base. </P>
+  <P><I>- Script php d'installation</I> :<BR>Dans votre navigateur, appelez le 
+  script </P><PRE>[PHPDIG_DIR]/include/install.php
+</PRE>
+  <P>Et suivez les instructions.<BR><I>Le script utilise les informations pour 
+  renseigner les champs du fichier "[PHPDIG_DIR]/include/_connect.php" et pour 
+  en faire une copie sous le nom "[PHPDIG_DIR]/include/connect.php".</I> </P>
+  <P><I>- Installation manuelle</I> :<BR>Il vous faut créer la base mysql (il 
+  n'est pas obligatoire de la nommer "phpdig") : </P><PRE>#mysql mysql
+mysql&gt; CREATE DATABASE phpdig;
+mysql&gt; quit
+
+#mysql phpdig &lt; [PHPDIG_DIR]/sql/init_db.sql
+</PRE>
+  <P>Vérifiez l'existence de toutes les tables :</P><PRE>#mysql phpdig
+mysql&gt; SHOW TABLES;
+</PRE>
+  <P>La base de donnée doit vous répondre :</P><PRE>+------------------+
+| Tables_in_phpdig |
++------------------+
+| engine           |
+| keywords         |
+| sites            |
+| spider           |
+| tempspider       |
++------------------+
+5 rows in set (0.00 sec)
+
+mysql&gt;
+</PRE>
+  <P>Une fois la base créée, copiez le fichier 
+  "[PHPDIG_DIR]/include/_connect.php" vers le fichier 
+  "[PHPDIG_DIR]/include/connect.php" et éditez ce dernier.<BR>Remplacez les 
+  valeurs "&lt;host&gt;", "&lt;user&gt;", "&lt;pass&gt;", et "&lt;database&gt;" 
+  respectivement par l'URL de votre serveur MySql, le nom d'utilisateur, son mot 
+  de passe, et le nom que vous avez donné à la base de données.<BR><I>Sur une 
+  installation locale, généralement les valeurs "localhost", "root", et "" sont 
+  suffisantes pour la connexion.</I> </P>
+  <P>Vous pouvez vérifier que l'installation s'est bien déroulée en ouvrant la 
+  page principale [PHPDIG_DIR]/index.php.<BR>Le formulaire de recherche doit 
+  s'afficher. </P></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Configuration</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P>Dès l'étape d'installation franchie, le moteur est opérationnel. L'étape de 
+  configuration est optionnelle et dépend de vos besoins. N'oubliez pas de 
+  <B>modifier le login et le mot de passe d'administration </B>si vous utilisez 
+  Php compilé en module d'apache ou en module statique.<BR><I>Note : 
+  l'authentification ne fonctionne pas avec php utilisé en CGI. Dans ce cas, 
+  utilisez un fichier .htaccess pour protéger le répertoire [PHPDIG_DIR]/admin 
+  </I></P>
+  <P>Tous les paramètres de configuration se trouvent dans le fichier 
+  [PHPDIG_DIR]/include/config.php. Chaque paramètre fait l'objet d'un 
+  commentaire explicitant son utilisation. </P>
+  <P>Dans les parties suivantes consacrées à la configuration, les lignes de 
+  code se rapportent toutes au fichier config.php. <BR><I>Les valeurs indiquées 
+  sont les valeurs définies par défaut.</I> </P>
+  <P><B>Configuration de l'accès à l'administration</B></P>
+  <P>Modifiez les constantes suivantes. <I>Si vous ne voulez pas que le mot de 
+  passe apparaîsse en clair quelque part, utilisez les fonctions 
+  d'authentification d'apache.</I></P><PRE>define('PHPDIG_ADM_AUTH','1');     //active ou non l'authentification
+define('PHPDIG_ADM_USER','admin'); //Nom d'utilisateur (login)
+define('PHPDIG_ADM_PASS','admin'); //Mot de passe pour l'accès
+</PRE>
+  <P><B>Configuration du robot et du moteur</B></P>
+  <P>Modifiez les variables et constantes suivantes.</P><PRE>$spider_max_limit      = 12; //Profondeur maximale sélectionnable pour l'indexation
+$spider_default_limit  = 1;  //Valeur séléctionnée par défaut dans le formulaire
+$respider_limit        = 5;  //Profondeur pour les mises à jour
+
+$limit_days            = 7;  //Nombre de jours par défaut avant de revisiter une page
+$small_words_size      = 2;  //Taille des mots à ne pas indexer
+$max_words_size        = 30; //Taille maximale possible d'un mot
+
+$title_weight          = 3;     //Poids des mots du titre par rapport aux autres mots
+$chunk_size            = 8000;  //Taille du découpage pour le traitement des pages
+                                  (ce paramètre ne nécessite pas d'être modifié)
+
+$summary_length        = 500;   //Longueur de texte pour le résumé des pages
+
+define('TEXT_CONTENT_PATH','text_content/'); //répertoire des fichiers de contenu textuel
+define('CONTENT_TEXT',1); //Active ou non le stockage des fichiers de contenu.
+</PRE>
+  <P><B>Configuration du modèle pour les résultats</B></P>
+  <P>Modifiez les variables et constantes suivantes.</P><PRE>$phpdig_language = "en";                       //langue de l'interface
+
+$template = './templates/phpdig.html';         //chemin du fichier de modèle
+define('HIGHLIGHT_BACKGROUND','yellow');         //Couleur de fond du surlignage
+define('WEIGHT_IMGSRC','./tpl_img/weight.gif');  //chemin de l'image servant de baragraph
+define('WEIGHT_HEIGHT','5');                     //hauteur du baragraph
+define('WEIGHT_WIDTH','50');                     //largeur maximale du baragraph (pour 100%)
+define('SEARCH_PAGE','index.php');             //Nom de la page de recherche
+
+$search_default_limit  = 10; //nombre de résultats par défaut dans la recherche
+</PRE>
+  <P><B>Configuration FTP (si nécessaire)</B></P>
+  <P>A quoi diable peut-donc servir une connexion ftp dans PhpDig si il n'indexe 
+  pas les sites FTP ?</P>
+  <P>Beaucoup d'utilisateurs de installent PhpDig sur des serveurs mutualisés, 
+  et sur ces dernier, Php est toujours configuré en safe_mode. PhpDig ne peut 
+  effectuer d'indexation en safe_mode, et dans le cas des hébergements 
+  mutualisés, l'accès aux tâches cron est bien entendue exclue. </P>
+  <P>La solution est d'avoir une instance Php sur une autre machine. Dans mon 
+  cas, c'est une machine Linux à mon domicile, branchée sur une connexion à haut 
+  débit qui effectue ce travail.<BR>Votre hébergement doit toutefois vous 
+  autoriser à vous connecter en TCP/IP à votre serveur de bases de données 
+  MySql. </P>
+  <P>Et le FTP dans tout ça ? Il sert à envoyer au serveur les fichiers de 
+  contenu textuel qui permettent d'afficher des extraits pertinents des 
+  documents trouvés dans les pages de résultat.<BR>Si vous désactivez la 
+  fonction FTP lors d'une indexation distante, les résultats afficheront 
+  l'ancienne version de l'extrait ou les premiers mots du documents stockés dans 
+  la base MySql, selon que le fichier de contenu existe ou non sur le serveur. 
+  </P>
+  <P>Les paramètres concernés sont les suivants.</P><PRE>define('FTP_ENABLE',0);              //Activation ou non de la connexion FTP
+define('FTP_HOST','&lt;ftp host dir&gt;'); //nom du serveur FTP
+define('FTP_PORT',21);               //port ftp
+define('FTP_PASV',1);                //utiliser le mode passif (conseillé)
+define('FTP_PATH','&lt;phpdig root dir&gt;'); //chemin du répertoire de phpdig sur le serveur ftp
+define('FTP_TEXT_PATH','text_content'); //répertoire des fichiers de contenu (default)
+define('FTP_USER','&lt;ftp username&gt;');  //utilisateur du compte FTP
+define('FTP_PASS','&lt;ftp password&gt;');  //mot de passe pour le compte FTP
+</PRE></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Mise à jour</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P><B>Mise à jour de la base de données</B></P>
+  <P>Le script sql [PHPDIG_DIR]/sql/update_db_to[version].sql contient les 
+  instructions SQL nécessaires pour mettre à jour votre installation existante, 
+  version par version. </P>
+  <P><B>Mise à jour des scripts</B></P>
+  <P>Remplacez les anciens scripts par les nouveaux, en ayant préalablement 
+  effectué une sauvegarde de votre configuration. </P></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Indexation 
+manuelle</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P><B>Indexer un nouveau site</B></P>
+  <P>A partir de l'interface d'administration [PHPDIG_DIR]/admin/index.php, un 
+  champ de formulaire vous permet de renseigner un site à indexer. Vous pouvez 
+  également indiquer un chemin et/ou un fichier à partir duquel le robot va 
+  commencer son indexation. </P>
+  <P>Spécifiez une profondeur de recherche (combien de niveaux de liens va 
+  suivre le robot avant d'arrêter son indexation, et cliquez sur le bouton [dig 
+  this!]. </P>
+  <P>Une page s'ouvre montrant le processus de recherche de liens et 
+  d'indexation. Une page correctement indexée est marquée d'un coche vert. Les 
+  '+' indiquent les nouveaux liens trouvés à partir de cette 
+  page.<BR>L'indication "doublon avec une page existante" indique que malgré une 
+  URL différente, la page que PhpDig vient de trouver est identique à une autre 
+  page déjà indexée.<BR>A la fin de l'indexation, une liste récapitule tous les 
+  liens trouvés par PhpDig. </P>
+  <P>Il est également possible de lancer une indexation en ligne de commande : 
+  </P><PRE>#php -f [PHPDIG_DIR]/admin/spider.php http://mondomaine.com
+</PRE>
+  <P><B>Mettre à jour un site</B></P>
+  <P>Dans l'interface d'administration, une liste des sites déjà indexés permet 
+  de les mettre à jour : Sélectionnez l'un des sites et cliquez sur le bouton 
+  [update form].<BR>Une interface à deux volets s'affiche. A gauche se trouve 
+  une liste des branches du site indexé, à droite s'affiche la liste des 
+  fichiers d'une branche si on clique sur la flèche bleue située à droite de 
+  chacune des branches. </P>
+  <P>Pour les deux volets, la croix rouge supprime la branche ou le fichier 
+  sélectionné, le coche vert force la réindexation de la branche ou de la page 
+  ainsi que la recherche de nouveaux liens sur une profondeur définie par le 
+  paramètre $respider_limit. </P>
+  <P><B>Maintenance du moteur</B></P>
+  <P>Trois liens situés en bas de l'interface d'administration permettent de 
+  nettoyer la base de donnée des enregistrements inutiles ou corrompus. </P>
+  <P>Le lien <I>Nettoyer l'index</I> supprime les entrées d'index qui sont ne 
+  sont plus liées à aucun mot-clef. </P>
+  <P>Le lien <I>Nettoyer les mots-clefs</I> supprime les entrées de mots-clefs 
+  qui ne sont plus liées à aucune entrée d'index. Ce lien permet de minimiser la 
+  taille de la table des mots-clefs après de nombreuses indexations et mises à 
+  jour. </P>
+  <P>Le lien <I>Nettoyer les mots courants</I> supprime les entrées d'index et 
+  de mots-clefs devenues inutiles suite au rajout de mots dans le fichier des 
+  mots courants [PHPDIG_DIR]/includes/common_words.txt. </P></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Mise à jour 
+automatique</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P>Le script [PHPDIG_DIR]/admin/spider.php peut être programmé en tâche cron 
+  afin de procéder automatiquement à la mise à jour du moteur. La périodicité 
+  conseillée est de 7 jours, quitte à forcer la réindexation par l'interface des 
+  pages devant figurer dans le moteur immédiatement.<BR>Ces dernières peuvent 
+  également comporter un Metatag "revisit-after" spécifique. </P>
+  <P>Le script se lance de deux manières : </P><PRE>#php -f [PHPDIG_DIR]/admin/spider.php all
+</PRE>
+  <P>Lance une réindexation normale. </P>
+  <P>La syntaxe suivante : </P><PRE>#php -f [PHPDIG_DIR]/admin/spider.php http://mondomaine.net
+</PRE>
+  <P>N'indexera ou ne mettra à jour que le site mondomaine.net.<BR>Cette option 
+  peut être utile si on désire spécifier une fréquence de mise à jour différente 
+  par site ou pour un site en particulier. </P>
+  <P>Comme pour n'importe quelle commande, la sortie peut être redirigée vers un 
+  fichier (pour tenir des logs par exemple.) </P><PRE>#php -f [PHPDIG_DIR]/admin/spider.php all &gt;&gt; /var/log/phpdig.log
+
+</PRE></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Liste des balises 
+des templates</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P>Les templates consistent en fichiers html dans lesquels quelques balises de 
+  style xml permettent de placer le contenu dynamique. <BR>Les modèles fournis 
+  permettent de donner une petite idée de la façon dont les pages de résultat 
+  peuvent être personnalisées. </P>
+  <P>Elles sont toutes du style &lt;phpdig:parametre/&gt;. <BR>A part la balise 
+  &lt;phpdig:results&gt;&lt;/phpdig:results&gt;, ce sont toutes des balises 
+  unitaires. </P>
+  <P><B>Balises en dehors de la table des résultats</B></P><PRE>phpdig:title_message   Titre de la page
+
+phpdig:form_head       Début du formulaire
+phpdig:form_title      Titre du formulaire
+phpdig:form_field      Champ texte du formulaire
+phpdig:form_button     Bouton de soumission du formulaire
+phpdig:form_select     Liste déroulante du nombre de résultats par page
+phpdig:form_radio      Boutons radio sur l'interprétation des mots
+phpdig:form_foot       Fin du formulaire
+
+phpdig:result_message         Message sur le nombre de résulats
+phpdig:ignore_message         Message sur les mots trop courts
+phpdig:ignore_common_message  Message sur les mots trop courants
+
+phpdig:nav_bar         Barre de navigation dans les pages de résultats
+phpdig:pages_bar       Barre de navigation sans les liens suivants/précédents
+phpdig:previous_link src=[img src]  Lien vers l'icône "précédents"
+phpdig:next_link src=[img src]  Lien vers l'icône "suivants"
+</PRE>
+  <P><B>Balises pour la table des résultats</B></P><PRE>phpdig:results       Encadre les lignes de résultat
+
+phpdig:img_tag       Baragraph de pertinence
+phpdig:weight        Pertinence de la page (sur 100)
+phpdig:page_link     Titre du résultat et lien vers la page
+phpdig:limit_links   Liens limitant la recherche à un site/un chemin
+phpdig:text          Texte du résultat
+phpdig:n             Classement du résultat
+phpdig:complete_path URL complète du document
+phpdig:update_date   Dernière mise à jour du document
+phpdig:filesize      Taille du document (Kilo Octets)
+
+</PRE></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Précisions sur la 
+recherche</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P>Même si le formulaire de recherche parle de lui-même, il n'est pas inutile 
+  de rappeler que : </P>
+  <P>- Un opérateur AND est appliqué inconditionnellement à tous les termes de 
+  recherche ; <BR>- Un mot précédé d'un '-' (signe moins) est exclu de la 
+  recherche. Aucune page contenant ce mot ne sera retournée en résultat ; <BR>- 
+  La recherche est insensible à la casse et aux accents. En revanche, le 
+  surlignage des résultats est sensible aux accents. </P></BLOCKQUOTE>
+<H2 class=blue xmlns:fo="http://www.w3.org/1999/XSL/Format">Obtenir de l'aide 
+sur PhpDig</H2>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P>Un mini-forum consacré à PhpDig est disponible à l'adresse 
+  <B>http://phpdig.toiletoine.net/messageboard/</B> <BR>Vous pouvez y poser 
+  toutes les questions relatives au programme. </P>
+  <P>Vous pouvez demander de l'aide directement à l'auteur en écrivant à 
+  <B>phpdig@toiletoine.net</B> </P></BLOCKQUOTE>
+<BLOCKQUOTE class=grey xmlns:fo="http://www.w3.org/1999/XSL/Format">
+  <P><I>Fichier créé par le parser XSLT Php 4.0.5- Sablotron 
+0.60</I></P></BLOCKQUOTE></BODY></HTML>

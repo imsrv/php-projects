@@ -1,0 +1,25 @@
+==================
+MWCHAT UTILITIES
+==================
+
+This document contains instructions for using the MWChat utilities.
+
+For information on the capabilities and features of MWChat, see
+the file README in the docs/ directory of the MWChat
+distribution.
+
+
+UTILITY: Users online
+---------------------
+
+MWChat provides a utility that you can easily configure and add to your site.
+This utility will display how many users are online chatting in your MWChat system.
+
+Edit the file mwchat/utilities/users.php and modify the $CONFIG[MWChat_Root] variable to
+reflect where the root of your mwchat installation is. Once you've done this, you can 
+simply include this file in your website PHP pages.
+
+EX: <?PHP include("/path/to/mwchat/utilities/users.php"); ?>
+
+
+This will then display the number of current users in MWChat.

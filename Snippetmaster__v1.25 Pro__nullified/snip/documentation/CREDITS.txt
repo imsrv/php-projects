@@ -1,0 +1,15 @@
+Portions of original Empower2001 code used with permission (digisoft77)
+Portions of original IEditor code used with permission (Satheesh Babu)
+
+Thanks to Scott Campbell for creating most of the code to add links to images!
+
+
+--------------------------
+
+If you are interested in contributing to the development of SnippetMaster,
+please send me an email at info@snippetmaster.com.
+
+If your contribution is used in any way, you will earn yourself a spot
+in this file, including a link to your email/website.
+
+Thanks!

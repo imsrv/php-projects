@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>PerlCoders MaskUrl -- Admin Interface</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<center>
+<table border="0" width="90%">
+<tr>
+	<td align="center" colspan="2" bgcolor="blue">
+	<font color="#FFFFFF">Edit User</font>
+	</td>
+</tr>
+<tr>
+	<td align="center" colspan="2">
+	Select a user to edit and click the "Load" button. That users' information will
+	then appear in the form below for editing. Click "Save" to save the users' new info
+	or click "Main Menu" to return to the main menu.
+	</td>
+</tr>
+<tr>
+	<td align="center" colspan="2" bgcolor="blue">
+	<font color="#FFFFFF">Select User</font>
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">User to Edit</td>
+	<td align="left">
+		<form action="%url%" method="post">
+		<input type="hidden" name="action" value="edituser_exec">
+		%userlist%
+		<input type="submit" value="Load">
+		</form>
+	</td>
+</tr>
+</table>
+<form action="%url%" method="post">
+<input type="hidden" name="action" value="editsave">
+<table border="0" width="90%">
+<tr>
+	<td align="center" colspan="2" bgcolor="blue">
+	<font color="#FFFFFF">User Information</font>
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">User Name</td>
+	<td align="left">
+		<b>%username%</b>
+		<input type="hidden" name="username" value="%username%">
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Password</td>
+	<td align="left">
+		<input type="text" name="password" value="%password%" maxlength="20">
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">User E-Mail</td>
+	<td align="left">
+		<input type="text" name="email" value="%email%" maxlength="255">
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Site Name</td>
+	<td align="left">
+		<input type="text" name="sitetitle" value="%sitetitle%" maxlength="255">
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Site Description</td>
+	<td align="left">
+		<input type="text" name="sitedescription" value="%sitedescription%" maxlength="255">
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Site Keywords</td>
+	<td align="left">
+		<input type="text" name="sitekeywords" value="%sitekeywords%" maxlength="255">
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">Site URL</td>
+	<td align="left">
+		<input type="text" name="siteurl" value="%siteurl%" maxlength="255">
+	</td>
+</tr>
+<tr>
+	<td align="right" colspan="2">
+		<input type="submit" value="Save">
+		</form>
+	</td>
+</tr>
+<tr>
+	<td align="right" colspan="2">
+		<form action="%url%" method="post">
+		<input type="hidden" name="action" value="main">
+		<input type="submit" value="Main Menu">
+		</form>
+	</td>
+</tr>
+</table>
+</center>
+</body>
+</html>

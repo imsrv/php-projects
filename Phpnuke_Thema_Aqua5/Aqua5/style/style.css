@@ -1,0 +1,21 @@
+font		{font-family: tahoma, helvetica, sans serif; font-size: 10px}
+td		{font-family: tahoma, helvetica, sans serif; font-size: 10px}
+body		{font-family: tahoma, helvetica, sans serif; font-size: 10px}
+p		{font-family: tahoma, helvetica, sans serif; font-size: 10px}
+div		{font-family: tahoma, helvetica, sans serif; font-size: 10px}
+input		{font-family: tahoma, helvetica, sans serif; font-size: 10px}
+textarea	{font-family: tahoma, helvetica, sans serif; font-size: 10px}
+form 		{font-family: tahoma, helvetica, sans serif; font-size: 10px}
+select		{font-family: tahoma, helvetica, sans serif; font-size: 10px}
+a:link          {background: none; color: #000000; font-size: 10px; font-family: tahoma, helvetica, sans serif; text-decoration: underline}
+a:active        {background: none; color: #000000; font-size: 10px; font-family: tahoma, helvetica, sans serif; text-decoration: underline}
+a:visited       {background: none; color: #000000; font-size: 10px; font-family: tahoma, helvetica, sans serif; text-decoration: underline}
+a:hover         {background: none; color: #000000; font-size: 10px; font-family: tahoma, helvetica, sans serif; text-decoration: underline}
+.title 		{background: none; color: #000000; font-size: 14px; font-weight: bold; font-family: tahoma, helvetica, sans serif; text-decoration: none}
+.content 	{background: none; color: #000000; font-size: 10px; font-family: tahoma, helvetica, sans serif}
+.storytitle 	{background: none; color: #363636; font-size: 12px; font-weight: bold; font-family: tahoma, helvetica, sans serif; text-decoration: none}
+.storycat	{background: none; color: #000000; font-size: 12px; font-weight: bold; font-family: tahoma, helvetica, sans serif; text-decoration: underline}
+.boxtitle 	{background: none; color: #363636; font-size: 10px; font-weight: bold; font-family: tahoma, helvetica, sans serif; text-decoration: none}
+.boxcontent 	{background: none; color: #000000; font-size: 10px; font-family: tahoma, helvetica, sans serif}
+.option 	{background: none; color: #000000; font-size: 12px; font-weight: bold; font-family: tahoma, helvetica, sans serif; text-decoration: none}
+.tiny		{background: none; color: #000000; font-size: 8px; font-weight: normal; font-family: tahoma, helvetica, sans serif; text-decoration: none}

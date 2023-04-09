@@ -1,0 +1,35 @@
+<FilesMatch "^browse$">
+    ForceType application/x-httpd-php
+</FilesMatch>
+
+<FilesMatch "^series$">
+    ForceType application/x-httpd-php
+</FilesMatch>
+
+<FilesMatch "^about$">
+    ForceType application/x-httpd-php
+</FilesMatch>
+
+<FilesMatch "^search$">
+    ForceType application/x-httpd-php
+</FilesMatch>
+
+<FilesMatch "^login$">
+    ForceType application/x-httpd-php
+</FilesMatch>
+
+<FilesMatch "^tools$">
+    ForceType application/x-httpd-php
+</FilesMatch>
+
+<FilesMatch "^comic$">
+    ForceType application/x-httpd-php
+</FilesMatch>
+
+<FilesMatch "^list$">
+    ForceType application/x-httpd-php
+</FilesMatch>
+
+<FilesMatch "^serieslist$">
+    ForceType application/x-httpd-php
+</FilesMatch>

@@ -1,0 +1,48 @@
+Welcome to the fantastic world of phpGraphy !
+
+This file is just a quick introduction  to the directory layout and files
+organization used whith this release.
+
+NOTE: For full installation instructions, please read the manual that you'll find
+      either in docs/phpgraphy-manual.html or online in the documentation section
+      of the official site: http://phpgraphy.sourceforge.net
+
+--------------------------------------------------------------------------------
+
+/
+    Main directory, contain the core of phpgraphy (php files)
+
+pictures/
+    This is the directory where you should put yours pictures
+
+data/	
+    Contain files  used by phpgraphy in db_file mode (without MySQL) and when
+    using the EXIF function.
+
+graphics/
+    Contains icons used to display specific files type like sound or video,
+    also the logo and favicon.
+
+docs/
+    Contain all the documentation that you could need in order to:
+       - Learn more about phpGraphy (README)
+       - Quickly Install phpGraphy (INSTALL)
+       - Upgrade from a previous version (UPGRADE)
+       - Have a look to all changes made to phpGraphy (Changelog)
+
+include/
+    Contain php include files (needed by the core)
+
+lang/
+    Contain languages files
+
+misc/
+Contain  miscellaneous things  like scripts  that you may need:
+   - To create the MySQL database
+   - To migrate your actual MySQL database the fast text database mode
+
+
+-------------------------------------------------------
+(c) 2004-2005	JiM / aEGIS (jim@aegis-corp.org)
+(c) 2000-2001	Christophe Thibault (christophe@nullsoft.com)
+All rights reserved.

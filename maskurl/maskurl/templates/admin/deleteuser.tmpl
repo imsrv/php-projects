@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>PerlCoders MaskUrl -- Admin Interface</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<center>
+<form method="post" action="%url%">
+<input type="hidden" name="action" value="delete_exec">
+<table border="0" width="90%">
+<tr>
+	<td align="center" colspan="2" bgcolor="blue">
+	<font color="#FFFFFF">Delete User</font>
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="top">User to Delete</td>
+	<td align="left">
+		%userlist%	
+	</td>
+</tr>
+<tr>
+	<td align="right" colspan="2">
+		<input type="submit" value="Delete">
+		</form>
+	</td>
+</tr>
+<tr>
+	<td align="right" colspan="2">
+		<form action="%url%" method="post">
+		<input type="hidden" value="main" name="action">
+		<input type="submit" value="Main Menu">
+		</form>
+	</td>
+</tr>
+</table>
+</center>
+</body>
+</html>

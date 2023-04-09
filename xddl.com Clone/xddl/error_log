@@ -1,0 +1,80 @@
+[18-Jan-2005 20:28:46] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:28:46] PHP Warning:  fsockopen(): unable to connect to www.ddlgalaxy.com:80 in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:33:32] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:33:32] PHP Warning:  fsockopen(): unable to connect to www.ddl.best-appz.com:80 in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:34:32] PHP Warning:  fsockopen(): unable to connect to 66.90.118.83:80 in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:38:21] PHP Warning:  fsockopen(): unable to connect to 66.90.118.83:80 in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:40:37] PHP Warning:  fsockopen(): unable to connect to amddl.kicks-ass.org:80 in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:40:47] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:40:47] PHP Warning:  fsockopen(): unable to connect to www.ddlz.info:80 in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:42:19] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:42:19] PHP Warning:  fsockopen(): unable to connect to www.ddldestination.com:80 in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:42:47] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:42:47] PHP Warning:  fsockopen(): unable to connect to www.sexywarez.net:80 in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:42:47] PHP Warning:  fsockopen(): unable to connect to 216.180.247.111:80 in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:43:24] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:43:24] PHP Warning:  fsockopen(): unable to connect to ddl.phrozex.com:80 in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:43:30] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:43:30] PHP Warning:  fsockopen(): unable to connect to www.gwarez.net:80 in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:44:03] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:44:03] PHP Warning:  fsockopen(): unable to connect to www.silverddl.com:80 in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:47:31] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:47:31] PHP Warning:  fsockopen(): unable to connect to www.ddls.ws:80 in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:49:05] PHP Warning:  fsockopen(): unable to connect to 66.90.118.83:80 in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:49:17] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[18-Jan-2005 20:49:17] PHP Warning:  fsockopen(): unable to connect to www.rus-ddl.com:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:18:24] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:18:24] PHP Warning:  fsockopen(): unable to connect to www.ddlgalaxy.com:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:18:56] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:18:56] PHP Warning:  fsockopen(): unable to connect to www.ddloutpost.com:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:19:59] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:19:59] PHP Warning:  fsockopen(): unable to connect to www.ddl.best-appz.com:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:20:59] PHP Warning:  fsockopen(): unable to connect to 66.90.118.83:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:24:04] PHP Warning:  fsockopen(): unable to connect to 66.90.118.83:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:29:25] PHP Warning:  fsockopen(): unable to connect to amddl.kicks-ass.org:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:29:26] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:29:26] PHP Warning:  fsockopen(): unable to connect to www.ddlz.info:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:30:50] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:30:50] PHP Warning:  fsockopen(): unable to connect to www.ddldestination.com:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:31:18] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:31:18] PHP Warning:  fsockopen(): unable to connect to www.sexywarez.net:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:31:18] PHP Warning:  fsockopen(): unable to connect to 216.180.247.111:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:31:56] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:31:56] PHP Warning:  fsockopen(): unable to connect to ddl.phrozex.com:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:32:06] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:32:06] PHP Warning:  fsockopen(): unable to connect to www.gwarez.net:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:32:34] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:32:34] PHP Warning:  fsockopen(): unable to connect to www.silverddl.com:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:34:31] PHP Parse error:  parse error, unexpected T_VARIABLE in /home/xddl/public_html/test.php on line 75
+[25-Jan-2005 17:37:24] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:37:24] PHP Warning:  fsockopen(): unable to connect to www.ddls.ws:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:38:55] PHP Warning:  fsockopen(): unable to connect to 66.90.118.83:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:39:07] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 17:39:07] PHP Warning:  fsockopen(): unable to connect to www.rus-ddl.com:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:04:26] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:04:26] PHP Warning:  fsockopen(): unable to connect to www.ddlgalaxy.com:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:05:07] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:05:07] PHP Warning:  fsockopen(): unable to connect to www.ddloutpost.com:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:05:25] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:05:25] PHP Warning:  fsockopen(): unable to connect to www.ddl.best-appz.com:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:06:25] PHP Warning:  fsockopen(): unable to connect to 66.90.118.83:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:10:30] PHP Warning:  fsockopen(): unable to connect to 66.90.118.83:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:12:13] PHP Warning:  fsockopen(): unable to connect to amddl.kicks-ass.org:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:12:14] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:12:14] PHP Warning:  fsockopen(): unable to connect to www.ddlz.info:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:14:59] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:14:59] PHP Warning:  fsockopen(): unable to connect to www.ddldestination.com:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:15:27] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:15:27] PHP Warning:  fsockopen(): unable to connect to www.sexywarez.net:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:15:27] PHP Warning:  fsockopen(): unable to connect to 216.180.247.111:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:16:09] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:16:09] PHP Warning:  fsockopen(): unable to connect to ddl.phrozex.com:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:16:10] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:16:10] PHP Warning:  fsockopen(): unable to connect to www.gwarez.net:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:16:38] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:16:38] PHP Warning:  fsockopen(): unable to connect to www.silverddl.com:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:29:46] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:29:46] PHP Warning:  fsockopen(): unable to connect to www.ddls.ws:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:31:22] PHP Warning:  fsockopen(): unable to connect to 66.90.118.83:80 in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:31:33] PHP Warning:  fsockopen(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/xddl/public_html/test.php on line 18
+[25-Jan-2005 18:31:33] PHP Warning:  fsockopen(): unable to connect to www.rus-ddl.com:80 in /home/xddl/public_html/test.php on line 18

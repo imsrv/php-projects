@@ -1,0 +1,33 @@
+<?
+	/* place left part of logo/design */
+	print("<DIV ID=\"LEFTPART\">");
+	print("<IMG SRC=\"images/left.gif\" WIDTH=\"100\" HEIGHT=\"417\" ALT=\"$link_definition\">");
+	print("</DIV>\n");
+
+	/* place top part of logo/design */
+	print("<DIV ID=\"TOPPART\">");
+	print("<IMG SRC=\"images/top.gif\" WIDTH=\"441\" HEIGHT=\"89\"  ALT=\"$conservatory_definition\">");
+	print("</DIV>\n");
+
+	print("<DIV ID=\"TOPNAV\">\n");
+	print("<FONT SIZE=3 FACE=HELVETICA><B>$wing_FullTitle</B></FONT>");
+	print("</DIV>\n");
+
+	print("<DIV ID=\"LEFTNAV\">\n");
+	include("$Application_Root/modules/navigation/side_nav");
+	print("</DIV>\n");
+	
+	print("<DIV ID=\"CONTENT\">\n");
+	if($ActionResults != "")
+	{
+		print("<FONT COLOR=\"RED\">$ActionResults</FONT><BR>\n<BR>\n");
+	}
+	include("$Application_Root/modules/screens/$SCREEN");
+	
+	print("<BR>\n");
+	
+	include("$Application_Root/modules/navigation/page_bottom");
+	print("</DIV>\n");
+	
+	
+?>

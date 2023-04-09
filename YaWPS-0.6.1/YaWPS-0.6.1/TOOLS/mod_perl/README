@@ -1,0 +1,22 @@
+If you want to run YaWPS under mod_perl you will need to follow these 
+instructions. 
+Note that these instructions are for the Apache webserver ONLY!
+
+...Step 1:
+Edit the startup.pl file. You will need to change line 13 that says 
+use lib qw(/var/www/perl/yawps);
+/var/www/perl/yawps needs to be changed to the path of your YaWPS installation.
+
+...Step 2:
+Depending on your Apache configuration edit perl.conf (or srm.conf or even 
+httpd.conf) and add the following line to the section that enables the perl 
+module:
+PerlRequire /var/www/perl/yawps/mod_perl/startup.pl
+You may need to change the above line depending on the path of your YaWPS 
+installation.
+
+...Step 3:
+Make sure all your scripts are in the directory that runs under mod_perl.
+
+...Step 4:
+Restart httpd and you should be ready to rumble.

@@ -1,0 +1,217 @@
+/* Scroll Bars IE5.5 - 6.0 */
+
+body {
+    scrollbar-arrow-color: #FFFFFF;
+	scrollbar-3dlight-color: #000000;
+	scrollbar-shadow-color: #000000;
+	scrollbar-highlight-color: #CCCCCC;
+	scrollbar-face-color: #CCCCCC;
+	scrollbar-darkshadow-color: #CCCCCC;
+	scrollbar-track-color: #909090;
+	
+	background-color: #666666;
+}
+
+/* Main Body */
+
+.S1 {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	color: #000000;
+}
+
+.S2 {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	color: #000000;
+	width: 100%;
+}
+
+.S3 {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	color: #000000;
+}
+
+a.S3:link {
+    text-decoration: none;
+	color: #000000;
+}
+
+a.S3:visited {
+    text-decoration: none;
+    color: #000000;
+}
+
+a.S3:hover {
+	text-decoration: none;
+	color: #FF9900;
+}
+
+a.S3:active {
+    text-decoration: none;
+	color: #000000;
+}
+
+.VC {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	color: #000000;
+}
+
+a.VC:link {
+    text-decoration: none;
+	color: #000000;
+}
+
+a.VC:visited {
+    text-decoration: none;
+    color: #000000;
+}
+
+a.VC:hover {
+	text-decoration: none;
+	color: #569500;
+}
+
+a.VC:active {
+    text-decoration: none;
+	color: #000000;
+}
+
+.sel {
+color: #FF9900;
+border: solid 1px #FF9900;
+}
+
+.SD1 {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+    width: 36px;
+	color: #000000;
+}
+
+.SF1 {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+    text-align: center;
+    width: 42px;
+	color: #000000;
+}
+
+.M1 {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	color: #CCCCCC;
+}
+
+a.M1:link {
+    text-decoration: none;
+	color: #999999;
+}
+
+a.M1:visited {
+    text-decoration: none;
+    color: #999999;
+}
+
+a.M1:hover {
+	text-decoration: underline;
+	color: #000000;
+}
+
+a.M1:active {
+    text-decoration: none;
+	color: #000000;
+}
+
+.t1 {
+border: solid 1px #535353;
+}
+
+.t2 {
+border: solid 1px #CCCCCC;
+}
+
+.td1 {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 12px;
+font-style: normal;
+color: #808080;
+}
+
+.dis {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	color: #CC0000;
+}
+
+.ena {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	color: #569500;
+}
+
+.err {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	color: #000000;
+}
+
+.button_std {
+
+height:24px;
+width:90px;
+
+padding:0px;
+background-color: #DDDDDD;
+
+border-right: solid 1px #909090;
+border-bottom: solid 1px #909090;
+border-top: 1px solid white;
+border-left: 1px solid white;
+cursor: pointer;
+cursor: hand;
+}
+
+.button_dis {
+
+height:24px;
+width:90px;
+
+padding:0px;
+background-color: #DDDDDD;
+color: #808080;
+
+border-right: solid 1px #909090;
+border-bottom: solid 1px #909090;
+border-top: 1px solid white;
+border-left: 1px solid white;
+}
+
+.button_spc {
+
+height:24px;
+width:100%;
+
+padding:0px;
+background-color: #DDDDDD;
+color: #000000;
+
+border-right: solid 1px #909090;
+border-bottom: solid 1px #909090;
+border-top: 1px solid white;
+border-left: 1px solid white;
+cursor: pointer;
+cursor: hand;
+}

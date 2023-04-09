@@ -1,0 +1,1 @@
+<?php//which template sets and replacement sets that this theme uses$theme_templates="navboard";$theme_replacements="navboard";$theme_images="navboard";?>

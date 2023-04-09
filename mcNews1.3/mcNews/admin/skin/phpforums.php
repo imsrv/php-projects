@@ -1,0 +1,19 @@
+<?
+// mcNews 1.1 Marc Cagninacci marc@phpforums.net
+$BodyBgcolor="#333333";
+$FontFace="verdana";
+$FontLien="verdana";
+$LienWeight="bold";
+$LienColor="#FFFFFF";
+$LienSurvolColor="#FFFF00";
+$TableBgcolor="#FFFF00";
+$TDBgcolorTitre="#FFFF00";
+$FontColorTitre="#000000";
+$FontSizeTitre="2";
+$TDBgcolorAuteur="#666699";
+$FontColorAuteur="#FFFFFF";
+$FontSizeAuteur="2";
+$TDBgcolorTexte="#666699";
+$FontColorTexte="#FFFFFF";
+$FontSizeTexte="2";
+?>

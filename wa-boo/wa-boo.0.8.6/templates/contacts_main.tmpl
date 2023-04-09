@@ -1,0 +1,273 @@
+<html>
+    <head>
+       <title>wa-boo</title>
+       <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <style><? include ("includes/css.php"); ?></style>  
+       <script language="javascript">
+        <!--
+            function abwindowpopup(page,wwidth,wheight,options) {
+                var top=(screen.height-wheight)/2;
+                var left=(screen.width-wwidth)/2;
+                window.open(page,"","top="+top+",left="+left+",width="+wwidth+",height="+wheight+","+options);
+            } //-->
+        </script>
+        
+    </head>
+
+<div align="center">
+  <table cellpadding="0" cellspacing="0">
+    <tr> 
+      <td class="versionfont"><img src="images/wa-boo_small.gif">
+        <? echo $G_version; ?>
+         - &nbsp;<? echo $lab[0]; /* GESTION DES CONTACTS de */ ?>
+        <? echo $s_user->getUserFirstname() . " " . $s_user->getUserName(); ?>
+        <br>
+        </td>
+    </tr>
+    
+    <tr> 
+      <td height="20" class="stdtitle">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#E5E5E5">
+		  <tr>
+            <td background="images/left_top_corner.gif" height="7" width="7"></td>
+            <td background="images/h_line_top.gif" height="7" colspan="2"></td>
+            <td background="images/right_top_corner.gif" height="7" width="7"></td>
+          </tr>
+          <tr> 
+            <td background="images/v_line_left.gif" width="7" height="7"> 
+              </td>
+            <td class="stdfont">
+              <a href="user.php"><? echo $lab[1]; /* Compte / Groupes */ ?></a> 
+			   <img src="images/blue_point1.gif"> <a href="user_properties.php"><? echo $lab[2]; /* Préférences */ ?></a> 
+			   <img src="images/blue_point1.gif"> <a href="contact_action.php?ct_whichaction=NEW"><? echo $lab[3]; /* Nouveau contact */ ?></a>
+			   <img src="images/blue_point1.gif"> <a href="import1.php"><? echo $lab[4]; /* Import */ ?></a>
+			   <img src="images/blue_point1.gif"> <a href="export1.php"><? echo $lab[5]; /* Export */ ?></a>
+			   <img src="images/blue_point1.gif"> <a href="cleaning.php"><? echo $lab[6]; /* Entretien */ ?></a></td>
+            <td class="stdfont" align="right"><a title="<? echo $lab[7]; /* Déconnecter*/  ?>" href="index.php"><img src="images/btn_quit.gif" border="0"></a></td>
+            <td valign="top" background="images/v_line_right.gif" width="7" height="7"></td>
+          </tr>
+          <tr>
+            <td class="texteg" height="7" background="images/left_bottom_corner.gif" width="7"></td>
+            <td height="7" background="images/h_line_bottom.gif" colspan="2"></td>
+            <td height="7" background="images/right_bottom_corner.gif" width="7"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr> 
+      <td valign="top"> 
+	    <form name="mainform" method="post" action="contacts.php">
+        <input type=hidden name="i_using_chk" value="YES">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#F5F5F9" background="images/bg1.gif">
+		  <tr>
+            <td background="images/left_top_corner.gif" height="7"></td>
+            <td background="images/h_line_top.gif" height="7"colspan="7"></td>
+            <td background="images/right_top_corner.gif" height="7"></td>
+          </tr>
+          <tr> 
+            <td rowspan="4" background="images/v_line_left.gif" width="7"></td>
+              <td colspan="2" class="boldstdfont" valign="top"><? echo $lab[8]; /* Rechercher les contacts : */ ?></td>
+            <td rowspan="3" class="stdfont" valign="top"> 
+              <?  for ($k = 0; $k < count($s_user->getUserDomains()); $k++) { ?>
+              <?  /*  the value of the domains checks is from the first each/list system that gives always a result
+    			            But the checked state is given by the second mecanism, which attribute their value to all $i_chkDomains[] elements the first time  */ ?>
+              <input type="checkbox" name="i_chkDomains[<? echo $k;?>]" value="<? echo $chkDomains[$k]; ?>"<? echo (isset($i_chkDomains[$k]) ? " checked" : ""); ?>>
+              <? echo $label_chkDomains[$k] ."<br>"; ?>
+              
+              <?  }   ?>
+            </td>
+            <td rowspan="3" width="9" background="images/v_line.gif"></td>
+            <td rowspan="2" class="stdfont" valign="top"> 
+              <input type="text" name="i_search_string" value="<? echo $i_search_string; ?>" size="15" maxlength="50">&nbsp;
+            </td> 
+            <td rowspan="2" class="stdfont" valign="top">
+              <input type="submit" name="SEARCH" value="<? echo $lab[11]; /* Rechercher */ ?>" class="userbutton">
+            </td>
+            <td rowspan="2" class="stdfont" valign="bottom">
+            &nbsp;<a title="<? echo $lab[12]; /* Aide */ ?>" href='javascript:abwindowpopup("lang/user_help_frameset.php",500,600,"menubar=no,scrollbars=yes,statusbar=no")'><img src="images/icon_help.gif" width="25" height="25" border="0"></a></td>
+            <td rowspan="4" valign="top" background="images/v_line_right.gif" width="7"></td>
+          </tr>
+          <tr valign="top">
+            <td class="stdfont" rowspan="2" align="right" valign="top"><? echo $lab[9]; /* privés */ ?><input type="checkbox" name="i_chkPriCt" value="priCtOn" <? echo ($i_chkPriCt == "priCtOn" ? " checked" : ""); ?>>&nbsp;
+              <br>
+              <? echo $lab[10]; /* publics */ ?><input type="checkbox" name="i_chkPubCt" value="pubCtOn" <? echo ($i_chkPubCt == "pubCtOn" ? " checked" : ""); ?>>&nbsp;
+            </td>
+            <td class="stdfont" rowspan="2" align="left">
+              <select name="i_search_category">
+                <option value=-1
+			        <?  if ($i_search_category == -1) {
+			                echo " selected";
+			            }?>>Tous 
+                    <?  
+			        for ($i = 0 ; $i <= count($user_cat); $i++) {
+				        if ($user_cat[$i] != "") {
+						    echo "<option value=\"".$i."\"".($i_search_category == $i? "selected" : "" ).">".$user_cat[$i]."\n";
+						}
+					}?>
+              </select>
+            </td>
+          </tr>
+          <tr valign="top">
+            <td class="stdfont" valign="top" align="right">
+              <? echo $lab[13]; /* Commençant par  */?>
+              <input type="radio" name="i_search_position" value="POSITION_START" <? echo ($i_search_position == "POSITION_START" ? "checked" : ""); ?>>
+              <br>
+              <? echo $lab[15]; /* dans le champ 'Nom'  */?>
+              <input type="radio" name="i_search_field" value="FIELD_NAME" <? echo ($i_search_field == "FIELD_NAME" ? "checked" : ""); ?>>
+              </td>
+            <td class="stdfont" valign="top" align="left" colspan="2">
+              <input type="radio" name="i_search_position" value="POSITION_ANYWHERE" <? echo ($i_search_position == "POSITION_ANYWHERE" ? "checked" : ""); ?>>
+              <? echo $lab[14]; /* Contenant */ ?>
+              <br>
+              <input type="radio" name="i_search_field" value="FIELD_ALL" <? echo ($i_search_field == "FIELD_ALL" ? "checked" : ""); ?>>
+              <? echo $lab[16]; /* dans tous les champs */ ?>
+              
+              </td>
+          </tr>
+          <tr> 
+            <td colspan="7" class="stdfont" align="center" bgcolor="#DDDDDD">
+              <!-- letters -->
+              <?    for ($i = 0 ; $i < count($letters_array["ascii_val"]) ; $i++) {
+                        if ($letters_array["display"][$i] == 1) {  ?>
+                            <a href="contacts.php?i_search_letter=<? echo $letters_array["ascii_val"][$i]; ?>"> 
+                            <b><? echo $letters_array["ascii_val"][$i]; ?></b>
+                            </a> 
+              <?        } else {
+                            echo $letters_array["ascii_val"][$i] . "\n";
+                        } 
+                    }  ?>
+              <a href="contacts.php?i_search_letter="ALL"><b><? echo $lab[17]; /* Tous */ ?></b></a> 
+			</td>
+          </tr>
+          <tr>
+            <td class="texteg" height="7" background="images/left_bottom_corner.gif"></td>
+            <td colspan="7" height="7" background="images/h_line_bottom.gif"></td>
+            <td height="7" background="images/right_bottom_corner.gif"></td>
+          </tr>
+        </table>
+		
+        </form>
+      </td>
+    </tr>
+  </table>
+  
+  <!-- table of contact list -->
+  <table cellspacing="2" cellpadding="2">
+    <tr>
+      <td valign="top">
+        <table border="0" cellspacing="0" cellpadding="0" background="images/bg1.gif">
+          <tr>
+            <td background="images/left_top_corner.gif" height="7"></td>
+            <td background="images/h_line_top.gif" height="7"></td>
+            <td background="images/right_top_corner.gif" height="7"></td>
+          </tr>
+          <tr> 
+            <td background="images/v_line_left.gif" width="7"></td>
+            <td class="stdfont">
+              <table border="0" cellspacing="0" cellpadding="0">
+                <tr bgcolor="<? echo $s_user_context["color"]["menu"] ?>"> 
+                  <td class="stdtitle" align="center" colspan="8">
+                  <? echo $lab[18]; /* Liste des */ ?> <? echo $array_paging["total"]; ?><? echo $lab[21]; /* contacts */ ?> [<? echo $i_search_letter; ?>]
+        				  </td>
+                </tr>
+                <tr>
+                  <td background="images/h_line.gif" align="center" colspan="8" height="7"></td>
+                </tr>
+                <?  for ($k = 0; $k < count($contact); $k++) { 
+	                    $BgColor = ($k % 2 == "0" ? "" : "#FFFFFF"); 
+	                    tuneDisplay(); /* to avoid windows server display problems */ ?>
+                <tr> 
+                    
+                  <?  for ($i = 2 ; $i < $num_of_list_fields + 2 ; $i++) {  ?>
+                            
+                  <td align="<? echo ($i % 2 == "0" ? "right" : "left"); ?>" CLASS="<? echo ($i % 2 == "0" ? "contactlistfont" : "altcontactlistfont"); ?>"" bgcolor="<? echo $BgColor;?>"> 
+                    <?      echo ($contact[$k][$i] != "" ? "&nbsp;" . $contact[$k][$i] . "&nbsp;" : "&nbsp;"); ?>
+                    </td>
+                  <?  } ?>
+                        
+                  <td bgcolor="<? echo $BgColor;?>"><a title="<?
+                            for ($i = 2 + $num_of_list_fields; $i < $num_of_alt_fields + $num_of_list_fields + 2 ; $i++) {
+                                if ($contact[$k][$i] != "") {
+                                    echo (":: " . $contact[$k][$i]);
+                                    if ($i < $num_of_alt_fields + $num_of_list_fields + 1) {    // do not print CR after last line
+                                        echo "&nbsp&#10;";
+                                    }
+                                }
+                            }    
+                            ?>" href="contacts.php?cID=<? echo $contact[$k][0]; ?>&ct_whichaction=SHOWDETAILS&i_search_letter=<? echo $i_search_letter; ?>"><img src="images/view_contact.gif" border="0"></a>
+                        </td>
+                  <td align="center" bgcolor="<? echo $BgColor;?>"> 
+                            
+                    <?  if (strcmp($s_user->getUserId(), $contact[$k][1])== 0){?>
+                                    <a title="<? echo $lab[19]; /* Modifier */ ?>" href="contact_action.php?cID=<? echo $contact[$k][0]; ?>&ct_whichaction=EDIT"><img src="images/modify_contact.gif" border="0"></a> 
+                            
+                    <?  } else { ?>
+                                    &nbsp; 
+                            
+                    <?  }      ?>
+                        </td>
+                  <td align="center" bgcolor="<? echo $BgColor;?>"> 
+                    <?  if (strcmp($s_user->getUserId(), $contact[$k][1])==0) { ?>
+                            <a title="<? echo $lab[20]; /* Supprimer */ ?>" href="contact_action.php?cID=<? echo $contact[$k][0]; ?>&ct_whichaction=DEL"><img src="images/delete.gif" border="0"></a> 
+                    <?  } else { ?>
+                    &nbsp; 
+                    <?  }  ?>
+                  </td>
+                </tr>
+                <? } ?>
+				        <tr align="center">
+				          <td colspan="7" bgcolor="#DDDDDD" class="boldstdfont">
+                    <?  echo $lab[22]; /* contacts */ ?>
+                    <?  echo $array_paging["lower"]; ?>
+                    <?  echo $lab[23]; /* à */ ?>
+                    <?  echo $array_paging["upper"]; ?>
+                    <?  echo $lab[24]; /*  sur */ ?>
+                    <?  echo $array_paging["total"]; ?>
+                    &nbsp;&nbsp;
+                    <?  echo $array_paging["previous_link"]. "<<"; 
+                        for( $p = 0 ; $p < sizeof($array_row_paging) ; $p++ ){
+                          echo "&nbsp;" . $array_row_paging[$p] . "&nbsp;";
+                        }
+                        echo $array_paging["next_link"]. ">>"; 
+                    ?>
+                    
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td valign="top" background="images/v_line_right.gif" width="7"></td>
+          </tr>
+                 
+
+          <tr>
+            
+            <td class="texteg" height="7" background="images/left_bottom_corner.gif"></td>
+            <td height="7" background="images/h_line_bottom.gif"></td>			
+
+            <td height="7" background="images/right_bottom_corner.gif"></td>
+          </tr>
+        </table>
+      </td>
+      <td valign="top">
+        <? 	
+            if ($ct_whichaction == "SHOWDETAILS") {
+                if (isVisibleContact($s_user->getUserID(), $selected_contact->getContactID())) { 
+                    include ("templates/contact_detail.tmpl");
+                } else {
+                    echo "&nbsp;";
+                }
+			} else {
+				echo "&nbsp;";
+			} 
+	    ?>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<?
+   include ("footer.php");
+?>
+</body>
+</html>

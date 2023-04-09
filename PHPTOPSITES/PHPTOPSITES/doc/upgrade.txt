@@ -1,0 +1,13 @@
+--#--- PHP TopSites FREE UPGRADE NOTES ---#--
+1.021b -> 1.022b
+Replace and edit config.php
+replace index.php
+
+1.02 beta -> 1.021b 
+MySQL query:
+	Alter table top_user add column linkback varchar(255);
+Replace all files.
+
+1.019 beta -> 1.02 beta
+	
+---------------------------------------------

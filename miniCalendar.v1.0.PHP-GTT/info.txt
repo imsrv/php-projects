@@ -1,0 +1,10 @@
+Info:
+  A simple calendar that acts as an accessory. Useful to notify visitor's of current date.
+
+  Features:
+
+      * Customisable color.
+      * Easy to install
+      * And many more...try it now! 
+
+  http://88scripts.com/products.php

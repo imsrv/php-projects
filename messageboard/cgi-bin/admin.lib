@@ -1,0 +1,184 @@
+# This script will handle the behind-the-scenes functionality of the
+# administrative commands.
+#
+# ScareCrow (C)opyright 2001 Jonathan Bravata.
+#
+# This file is part of ScareCrow.
+#
+# ScareCrow is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free
+# Software Foundation; either version 2 of the License, or (at your option),
+# any later version.
+#
+# ScareCrow is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+# more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with ScareCrow; if not, write to the Free Software Foundation, Inc.,
+# 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
+
+if($Pairs{'admincookie'} eq 'yes') { admin_cookie(); }
+
+# Changes the status of a topic
+sub changestatus {
+  my($forum,$topic,$newstatus) = @_;
+
+  # Check that everything is good to go
+  if(!-e "$cgi_path/forum$forum/$topic.idx") { return $FALSE; }
+
+  # Make the changes to the .idx file
+  lock_open(IDX,"$cgi_path/forum$forum/$topic.idx","rw") || return $FALSE;
+  seek(IDX,0,0);
+  $line = <IDX>;
+  my @parts = split(/\|/,$line);
+  if($parts[3] eq 'sticky' && $newstatus eq 'locked') { $newstatus = "stickylocked"; }
+  if($parts[3] eq 'locked' && $newstatus eq 'sticky') { $newstatus = "stickylocked"; }
+  if($parts[3] eq 'stickylocked' && $newstatus eq 'open') { $newstatus = "sticky"; }
+  $parts[3] = $newstatus;
+  $line = join('|',@parts);
+  truncate(IDX,0);
+  seek(IDX,0,0);
+  print IDX $line;
+  close(IDX);
+
+  # Make the changes to the forum.lst file
+  my $final = "";
+  lock_open(FORUMLIST,"$cgi_path/forum$forum/forum.lst","rw") || return $FALSE;
+  seek(FORUMLIST,0,0);
+  while(my $in = <FORUMLIST>) {
+    my @parts = split(/\|/,$in);
+    if($parts[0] == $topic) {
+      $parts[3] = $newstatus;
+    }
+    $in = join('|',@parts);
+    $final .= $in;
+  }
+  truncate(FORUMLIST,0);
+  seek(FORUMLIST,0,0);
+  print FORUMLIST $final;
+  close(FORUMLIST);
+
+  return $TRUE;
+}
+
+# Prunes a forum
+sub pruneforum {
+  my($forum,$days) = @_;
+  my $count = 0;
+
+  # Check that the forum exists
+  if(!-d "$cgi_path/forum$forum") { return $FALSE; }
+
+  # Convert the number of days into a number of seconds
+  $timecheck = time - ($days * 24 * 60 * 60);
+
+  # Get the forum file
+  lock_open(FORUMLIST,"$cgi_path/forum$forum/forum.lst","r");
+  my @threads = <FORUMLIST>;
+  close(FORUMLIST);
+  foreach my $thread (@threads) {
+    my @parts = split(/\|/,$thread);
+    if($parts[9] < $timecheck) {
+      $done = 1;
+      delete_thread($forum,$parts[0]);
+      $count++;
+    }
+  }
+
+  if($done == 1) {
+    # Rebuild the forum
+    rebuildlist($forum);
+    return $count;
+  }
+
+  return $FALSE;
+}
+
+# The Administrator Control Panel is handeled in frames.  Set them up.
+sub admin_header {
+  print <<end;
+    <FRAMESET cols="28%,72%" frameborder="no">
+      <FRAME src="$paths{'board_url'}admincenter.cgi?action=nav" name="nav">
+      <FRAME src="$paths{'board_url'}admincenter.cgi?action=home" name="main">
+    </FRAMESET>
+end
+}
+
+# Finish the admincenter table -- THIS FUNCTION SHOULD NOT BE NEEDED ANYMORE
+sub admin_footer {
+  #print <<end;
+  #    </td></tr>
+  #  </table>
+#end
+}
+
+# Provide the admin login boxes
+sub admin_login {
+  my $goto = $_[0];
+  print <<end;
+    <form action="$path{'board_url'}admincenter.cgi" method="post">
+    <table width="97%" cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="$color_config{'border_color'}"><tr><td>
+      <table width="100%" cellspacing="1" cellpadding="5" border="0">
+        <tr bgcolor="$color_config{'nav_top'}"><td colspan="2" align="center"><font face="Verdana" size="2"><b>Please Log In</b></font></td></tr>
+        <tr bgcolor="$color_config{'body_bgcolor'}"><td><font face="Verdana" size="1"><b>Username</b></font></td><td><input type="text" name="user" value="$user"></td></tr>
+        <tr bgcolor="$color_config{'body_bgcolor'}"><td><font face="Verdana" size="1"><b>Password</b></font></td><td><input type="password" name="pass" value="$pass"></td></tr>
+        <tr bgcolor="$color_config{'nav_top'}"><td colspan="2" align="center"><input type="submit" name="submit" value="Log In"></td></tr>
+      </table>
+    </td></tr></table>
+    <input type="hidden" name="action" value="mainpage">
+    <input type="hidden" name="admincookie" value="yes">
+    <input type="hidden" name="goto" value="$goto">
+    </form>
+end
+}
+
+# Send the admin cookie
+sub admin_cookie {
+  my $user = $Pairs{'user'};
+  my $pass = $Pairs{'pass'};
+  if(check_account($user,$pass) == $FALSE) { content(); print "<b>You did not log on successfully.</b>"; exit; }
+  #$cookiepath =~ s/admincenter\.cgi//ig;
+  #$cookiepath =~ s/admin\.lib//ig;
+  #$cookiepath =~ s/admin\.cgi//ig;
+  #$cookiepath =~ s/usereditor\.lib//ig;
+  #$cookiepath = $paths{'board_url'};
+  $cookiepath = "/";
+
+  my $admincookie = $query->cookie(-name   =>   "mb-admin",
+                         -value   =>   "$user|$pass",
+                         -path    =>   $cookiepath,
+                         -domain  =>   $paths{'cookie_domain'});
+
+  print $query->header(-cookie=>$admincookie);
+  $content_sent = 1;
+  $goto = $Pairs{'goto'} || "$paths{'board_url'}admincenter.cgi";
+  
+  redirect_die("You have successfully logged in.",$goto,"3","black","Login Successful");
+}
+
+# Physically remove a user
+sub remove_user {
+  my $todelete = $_[0];
+  # Remove the member account
+  unlink "members/$todelete.dat";
+
+  # Update the membercount
+  lock_open(BOOKS,"$cgi_path/data/books.inf","rw") || return $FALSE;
+  seek(BOOKS,0,0);
+  my @parts = <BOOKS>;
+  truncate(BOOKS,0);
+  seek(BOOKS,0,0);
+  $parts[0] =~ s/\n//ig;  $parts[0] =~ s/\r//ig;
+  $parts[0]--;
+  foreach my $part (@parts) {
+  if($part !~ /\n/) { $part = "$part\n"; }
+    print BOOKS $part;
+  }
+  close(BOOKS);
+
+  return $TRUE;
+}
+
+1;

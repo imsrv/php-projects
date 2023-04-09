@@ -1,0 +1,81 @@
+
+	a
+		{
+
+			font-family: Verdana;
+
+			font-size: 8pt;
+
+			color: #000000;
+
+		}
+
+	.MenuText
+
+		{
+
+			font-family: Verdana;
+
+			font-size: 8pt;
+
+		}
+
+	.MainHeading
+
+		{
+
+		    FONT-SIZE: 12pt;
+		    COLOR: black;
+		    FONT-FAMILY: 'Arial Black'
+
+		}
+
+	.Info
+
+		{
+
+			font-family: Verdana;
+
+			font-size: 8pt;
+
+		}
+
+	.BodyText
+
+		{
+
+			font-family: Verdana;
+
+			font-size: 8pt;
+
+		}
+
+	.MenuHeading
+
+		{
+
+			font-family: Verdana;
+
+			font-size: 8pt;
+
+			padding-left: 5pt;
+
+			color: #ffffff;
+
+			font-weight: bold;
+
+		}
+
+	.TableCell
+
+		{
+
+			font-family: Verdana;
+
+			font-size: 8pt;
+
+			padding-left: 5pt;
+
+			color: #000000;
+
+		}

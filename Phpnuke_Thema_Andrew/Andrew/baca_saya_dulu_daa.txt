@@ -1,0 +1,25 @@
+/*************************************************************************/
+/* theme roticanai untuk phpnuke 5.4b oleh Ayeh a.k.a Gori||az a.k.a tah */
+/* banyak lagi nick aku , #myphp -dalnet. Ahli pada phpnuke m'sia        */
+/* http://www.phpnuke.org.kg.                                            */
+/*************************************************************************/
+
+
+Pendahuluan: 
+============
+Nama Theme - roticanai 
+
+Contoh penggunaan theme ini boleh dilihat pada http://www.roti-canai.com
+
+kalau ada soalan gi kat ruangan forum (www.phpnuke.org.kg) or kat dalnet #myphp nuke .
+
+tima kasih :
+============
+
+budokdegil = penghulu myphp
+dfreak = masta php
+ahli phpnuke.org.kg
+
+
+ayeh -  http://ayeh.roti-canai.com ,
+	ayeh@roti-canai.com

@@ -1,0 +1,43 @@
+piFAQ v0.0.2-1 (11 March 2002)
+
+#########################################################
+#                                                       #
+# PHPSelect Web Development Division                    #
+#                                                       #
+# http://www.phpselect.com/                             #
+#                                                       #
+# This script and all included modules, lists or        #
+# images, documentation are distributed through         #
+# PHPSelect (http://www.phpselect.com/) unless          #
+# otherwise stated.                                     #
+#                                                       #
+# Purchasers are granted rights to use this script      #
+# on any site they own. There is no individual site     #
+# license needed per site.                              #
+#                                                       #
+# This and many other fine scripts are available at     #
+# the above website or by emailing the distriuters      #
+# at admin@phpselect.com                                #
+#                                                       #
+#########################################################
+
+
+
+
+
+WELCOME
+-------
+piFAQ is a simple script that will help you to create (and manage) FAQ page on your site. It is based on PHP, MySQL and FastTemplate so it's fast and easy in configuration.
+
+INSTALL
+YOU NEED
+	       - PHP (I use PHP Version 4.0.6)
+	       - MySQL (I use MySQL 3.23.41)
+	       - FastTemplate (class.fasttemplate.php)
+
+HOW TO INSTALL
+	       - Copy all files into your piFAQ directory (it doesn't meter how will you call it)
+	       - Create MySQL database and tables (take tables from tables.sql)
+	       - Config piFAQ - edit config.inc.php file
+	       - You can edit design of pages by editing of templates (directory  "tpl/").
+

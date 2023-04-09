@@ -1,0 +1,40 @@
+body {
+	background-image: url(../../back.jpg);
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	color : Black;
+	font-style : normal;
+	font-weight : normal;
+	text-decoration : none;
+}
+
+.text {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	color : Black;
+	font-style : normal;
+	font-weight : normal;
+	text-decoration : none;
+}
+
+form {
+	display : inline;
+}
+A {
+	color : Blue;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	font-weight : bold;
+	text-decoration : none;
+}
+A:HOVER {
+	color : Black;
+	text-decoration : underline;
+}
+.title {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 18px;
+	color : Green;
+	font-style : italic;
+	font-weight : bolder;
+}

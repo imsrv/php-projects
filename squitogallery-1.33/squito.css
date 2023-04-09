@@ -1,0 +1,38 @@
+.bgtable {  border: #000000 solid; border-width: 1px 3px 3px 1px}
+body {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #66666}
+.smalltext {  font-family: Verdana, Arial, Helvetica, sans-serif; color: #009900; text-decoration: none; font-size: 6px }
+.smalltext:hover {  text-decoration: underline }
+a {  font-family: Verdana, Arial, Helvetica, sans-serif; color: #009900; text-decoration: none; font-size: 11px }
+
+a:hover {  text-decoration: underline }
+.newmessage {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #FFFFFF}
+td {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #66666}
+.sidebox {  border: 1px #000000 solid}
+.imagebox {  border: 1px #000000 solid 1}
+
+.sportsbg {  background-image: url(images/sports.jpg); background-repeat: no-repeat; background-position: left top}
+
+.vertical_line {  background-image: url(/images/spacer_white.gif); background-repeat: repeat-y}
+.vote_bg { background-color: #EEEEEE; }
+.vote_center { background-color: #CCCCCC; }
+.file_uploads_box { background-color: #CCCCCC; }
+.signup { background-color: #CCCCCC; }
+.editprofile { background-color: #CCCCCC; }
+INPUT, SELECT, TEXTAREA         {
+        BACKGROUND-COLOR: #CCCCCC;
+        BORDER-LEFT: #234D76 solid 1;
+        BORDER-RIGHT: #234D76 solid 1;
+        BORDER-TOP: #234D76 solid 1;
+        BORDER-BOTTOM: #234D76 solid 1;
+        COLOR: #000000;
+        FONT-FAMILY: Verdana,Geneva,Arial,Helvetica,sans-serif;
+        FONT-SIZE: 10px;
+                 }
+.radio {
+BORDER-LEFT: #CCCCCC solid 1;
+ BORDER-RIGHT: #CCCCCC solid 1;
+ BORDER-TOP: #CCCCCC solid 1;
+ BORDER-BOTTOM: #CCCCCC solid 1;
+}.box {
+	background-color: #F0F0F0;
+}

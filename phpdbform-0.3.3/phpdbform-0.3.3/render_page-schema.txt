@@ -1,0 +1,284 @@
+# phpMyAdmin MySQL-Dump
+# http://phpwizard.net/phpMyAdmin/
+#
+# Host: localhost Database : phpdbform
+
+# --------------------------------------------------------
+#
+# Table structure for table '__controls'
+#
+
+DROP TABLE IF EXISTS __controls;
+CREATE TABLE __controls (
+   id int(10) unsigned NOT NULL auto_increment,
+   formid int(11) NOT NULL,
+   ctrlid int(11) NOT NULL,
+   controltype enum('textbox','listbox','fixed_combo','textarea','link_button') DEFAULT 'textbox' NOT NULL,
+   visible enum('y','n') DEFAULT 'y' NOT NULL,
+   vertorder int(11) NOT NULL,
+   readonly enum('y','n') DEFAULT 'n' NOT NULL,
+   disabled enum('y','n') DEFAULT 'n' NOT NULL,
+   PRIMARY KEY (id),
+   KEY id (id),
+   UNIQUE id_2 (id)
+);
+
+#
+# Dumping data for table '__controls'
+#
+
+INSERT INTO __controls VALUES( '7', '2', '1', 'textbox', 'y', '1', 'n', 'n');
+INSERT INTO __controls VALUES( '3', '2', '2', 'textbox', 'y', '2', 'n', 'n');
+INSERT INTO __controls VALUES( '4', '2', '1', 'fixed_combo', 'y', '3', 'n', 'n');
+INSERT INTO __controls VALUES( '5', '2', '1', 'listbox', 'y', '4', 'n', 'n');
+INSERT INTO __controls VALUES( '6', '2', '1', 'textarea', 'y', '5', 'n', 'n');
+INSERT INTO __controls VALUES( '2', '1', '1', 'link_button', 'y', '1', 'n', 'n');
+INSERT INTO __controls VALUES( '8', '1', '2', 'link_button', 'y', '2', 'n', 'n');
+INSERT INTO __controls VALUES( '9', '1', '3', 'link_button', 'y', '3', 'n', 'n');
+
+# --------------------------------------------------------
+#
+# Table structure for table '__controls_fixed_combo'
+#
+
+DROP TABLE IF EXISTS __controls_fixed_combo;
+CREATE TABLE __controls_fixed_combo (
+   id int(10) unsigned NOT NULL auto_increment,
+   fieldname varchar(32) NOT NULL,
+   caption varchar(32) NOT NULL,
+   options varchar(64) NOT NULL,
+   colspan int(11) NOT NULL,
+   PRIMARY KEY (id),
+   KEY id (id),
+   UNIQUE id_2 (id)
+);
+
+#
+# Dumping data for table '__controls_fixed_combo'
+#
+
+INSERT INTO __controls_fixed_combo VALUES( '1', 'sex', 'Sex', 'male,female', '1');
+
+# --------------------------------------------------------
+#
+# Table structure for table '__controls_link_button'
+#
+
+DROP TABLE IF EXISTS __controls_link_button;
+CREATE TABLE __controls_link_button (
+   id int(10) unsigned NOT NULL auto_increment,
+   caption varchar(32) NOT NULL,
+   target varchar(64) NOT NULL,
+   description varchar(64) NOT NULL,
+   size int(11) NOT NULL,
+   colspan int(11) NOT NULL,
+   PRIMARY KEY (id),
+   KEY id (id),
+   UNIQUE id_2 (id)
+);
+
+#
+# Dumping data for table '__controls_link_button'
+#
+
+INSERT INTO __controls_link_button VALUES( '1', 'Contacts', 'render_page.php?pagename=contacts', 'View or edit the contacts list', '18', '1');
+INSERT INTO __controls_link_button VALUES( '2', 'Control type', 'render_page.php?pagename=contacttype', 'View or edit the contacts types', '18', '1');
+INSERT INTO __controls_link_button VALUES( '3', 'Contacts with filters', 'render_page.php?pagename=contactwfilters', 'View or edit the a filtered list of contacts', '18', '1');
+
+# --------------------------------------------------------
+#
+# Table structure for table '__controls_listbox'
+#
+
+DROP TABLE IF EXISTS __controls_listbox;
+CREATE TABLE __controls_listbox (
+   id int(10) unsigned NOT NULL auto_increment,
+   fieldname varchar(32) NOT NULL,
+   caption varchar(32) NOT NULL,
+   colspan int(11) NOT NULL,
+   rowsource varchar(32) NOT NULL,
+   fieldselection varchar(64) NOT NULL,
+   keyfield varchar(32) NOT NULL,
+   orderedby varchar(16) NOT NULL,
+   PRIMARY KEY (id),
+   KEY id (id),
+   UNIQUE id_2 (id)
+);
+
+#
+# Dumping data for table '__controls_listbox'
+#
+
+INSERT INTO __controls_listbox VALUES( '1', 'type', 'Contact type', '1', 'type', 'type', 'cod', 'type');
+
+# --------------------------------------------------------
+#
+# Table structure for table '__controls_textarea'
+#
+
+DROP TABLE IF EXISTS __controls_textarea;
+CREATE TABLE __controls_textarea (
+   id int(10) unsigned NOT NULL auto_increment,
+   fieldname varchar(32) NOT NULL,
+   caption varchar(64) NOT NULL,
+   cols int(11) NOT NULL,
+   rows int(11) NOT NULL,
+   colspan int(11) NOT NULL,
+   PRIMARY KEY (id),
+   KEY id (id),
+   UNIQUE id_2 (id)
+);
+
+#
+# Dumping data for table '__controls_textarea'
+#
+
+INSERT INTO __controls_textarea VALUES( '1', 'obs', 'Notes', '40', '10', '2');
+
+# --------------------------------------------------------
+#
+# Table structure for table '__controls_textbox'
+#
+
+DROP TABLE IF EXISTS __controls_textbox;
+CREATE TABLE __controls_textbox (
+   id int(10) unsigned NOT NULL auto_increment,
+   fieldname varchar(64) NOT NULL,
+   caption varchar(64) NOT NULL,
+   size varchar(10) NOT NULL,
+   colspan int(11) NOT NULL,
+   PRIMARY KEY (id),
+   KEY id (id),
+   UNIQUE id_2 (id)
+);
+
+#
+# Dumping data for table '__controls_textbox'
+#
+
+INSERT INTO __controls_textbox VALUES( '1', 'name', 'Name', 'auto', '2');
+INSERT INTO __controls_textbox VALUES( '2', 'email', 'E-mail', 'auto', '2');
+
+# --------------------------------------------------------
+#
+# Table structure for table '__forms'
+#
+
+DROP TABLE IF EXISTS __forms;
+CREATE TABLE __forms (
+   id int(10) unsigned NOT NULL auto_increment,
+   caption varchar(64) NOT NULL,
+   datasource text NOT NULL,
+   fieldselection text NOT NULL,
+   sortby varchar(64) NOT NULL,
+   formcolumns int(11) NOT NULL,
+   name varchar(64) NOT NULL,
+   keyfield varchar(64) NOT NULL,
+   PRIMARY KEY (id),
+   KEY id (id),
+   UNIQUE id_2 (id)
+);
+
+#
+# Dumping data for table '__forms'
+#
+
+INSERT INTO __forms VALUES( '1', 'Main menu', '', '', '', '2', '', '');
+INSERT INTO __forms VALUES( '2', 'Contacts', 'contact', 'cod,name', 'name', '2', 'contacts', 'cod');
+
+# --------------------------------------------------------
+#
+# Table structure for table '__page_forms'
+#
+
+DROP TABLE IF EXISTS __page_forms;
+CREATE TABLE __page_forms (
+   id int(10) unsigned NOT NULL auto_increment,
+   pageid int(11) NOT NULL,
+   formid int(11) NOT NULL,
+   enabled enum('y','n') DEFAULT 'y' NOT NULL,
+   PRIMARY KEY (id),
+   KEY id (id),
+   UNIQUE id_2 (id)
+);
+
+#
+# Dumping data for table '__page_forms'
+#
+
+INSERT INTO __page_forms VALUES( '1', '1', '1', 'y');
+INSERT INTO __page_forms VALUES( '2', '2', '2', 'y');
+
+# --------------------------------------------------------
+#
+# Table structure for table '__pages'
+#
+
+DROP TABLE IF EXISTS __pages;
+CREATE TABLE __pages (
+   id int(10) unsigned NOT NULL auto_increment,
+   name varchar(32) NOT NULL,
+   caption varchar(64) NOT NULL,
+   PRIMARY KEY (id),
+   KEY id (id),
+   UNIQUE id_2 (id)
+);
+
+#
+# Dumping data for table '__pages'
+#
+
+INSERT INTO __pages VALUES( '1', 'menu', 'Main menu');
+INSERT INTO __pages VALUES( '2', 'contacts', 'Contacts');
+
+# --------------------------------------------------------
+#
+# Table structure for table '__project_pages'
+#
+
+DROP TABLE IF EXISTS __project_pages;
+CREATE TABLE __project_pages (
+   id int(10) unsigned NOT NULL auto_increment,
+   projectid int(11) NOT NULL,
+   pageid int(11) NOT NULL,
+   PRIMARY KEY (id),
+   KEY id (id),
+   UNIQUE id_2 (id)
+);
+
+#
+# Dumping data for table '__project_pages'
+#
+
+
+# --------------------------------------------------------
+#
+# Table structure for table '__projects'
+#
+
+DROP TABLE IF EXISTS __projects;
+CREATE TABLE __projects (
+   id int(10) unsigned NOT NULL auto_increment,
+   caption varchar(64) NOT NULL,
+   startpage int(11) NOT NULL,
+   language varchar(8) NOT NULL,
+   dbengine enum('mysql','psql') DEFAULT 'mysql' NOT NULL,
+   host varchar(32) NOT NULL,
+   dbname varchar(32) NOT NULL,
+   show_logo enum('y','n') DEFAULT 'y' NOT NULL,
+   tail_msg varchar(64) NOT NULL,
+   img_header varchar(16) NOT NULL,
+   theme varchar(32) NOT NULL,
+   body_color varchar(7) NOT NULL,
+   body_background varchar(32) NOT NULL,
+   PRIMARY KEY (id),
+   KEY id (id),
+   UNIQUE id_2 (id)
+);
+
+#
+# Dumping data for table '__projects'
+#
+
+INSERT INTO __projects VALUES( '1', 'Contacts', '0', 'enus', 'mysql', 'localhost', 'phpdbform', 'y', 'Look at the database for config.', 'logo.jpg', 'templ01', '#FFFFFF', 'back.jpg');
+

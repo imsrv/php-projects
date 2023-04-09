@@ -1,0 +1,25 @@
+SiteBar 3 Install & Upgrade Guide
+=================================
+
+1) Move the content of the installation package to a place  accessible  to  your
+HTTP server (let's assume it will be accessible as http://localhost/sitebar).
+
+2) Open page http://localhost/sitebar/sitebar.php and  let  yourself  be  guided
+through the rest of the installation/upgrade. The  installation  ends  with  the
+message that you are welcome to SiteBar. Upgrade ends on your login screen or if
+you were logged in before installation then you might still be logged (if  there
+was no change in login mechanism).
+
+Notes:
+======
+
+Installation assumes you either already have the database or have the  right  to
+create it from a PHP script.
+
+If you are upgrading from some older SiteBar 3 version (and not from the  latest
+one), the installation procedure will  execute  repeatedly  upgrade  until  your
+database is up-to-date.
+
+If you had some interim development version with some database  conversion  than
+it is most likely that you will receive some error messages during update. Those
+messages can usually be ignored.

@@ -1,0 +1,74 @@
+<html>
+
+<head>
+<title></title>
+</head>
+
+<body>
+
+<p align="center"><big><strong>Main Menu</strong></big></p>
+<div align="center"><center>
+
+<table border="1" width="85%" bgcolor="#808080" cellspacing="0">
+  <tr>
+    <td width="33%" align="center" bgcolor="#FFFFFF"><small><strong>System config</strong></small></td>
+    <td width="33%" align="center" bgcolor="#FFFFFF"><small><strong>Members</strong></small></td>
+    <td width="34%" align="center" bgcolor="#FFFFFF"><small><strong>System watch</strong></small></td>
+  </tr>
+  <tr>
+    <td width="33%" align="center" bgcolor="#FFFFFF"><ul>
+      <li><p align="left"><a href="javascript:send_details('toggle-auto-activate.php')"><small>Toggle
+        auto activation</small></a></p>
+      </li>
+      <li><p align="left"><small>Ban IP addresses</small><font color="#8000ff"><strong>*</strong></font></p>
+      </li>
+      <li><p align="left"><small>Ban Whole ranges of IP addresses</small><font color="#8000ff"><strong>*</strong></font></p>
+      </li>
+    </ul>
+    </td>
+    <td width="33%" align="center" bgcolor="#FFFFFF"><ul>
+      <li><p align="left"><a href="javascript:send_details('activate.php')"><small>ACTIVATE a new
+        member</small></a></p>
+      </li>
+      <li><p align="left"><a href="javascript:send_details('view.php')"><small>VIEW, MODIFY or
+        DELETE a member</small></a></p>
+      </li>
+    </ul>
+    </td>
+    <td width="34%" align="center" bgcolor="#FFFFFF"><ul>
+      <li><p align="left"><small>Who has logged in recently?</small><font color="#8000ff"><strong>*</strong></font></p>
+      </li>
+    </ul>
+    </td>
+  </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="0" width="70%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="50%"><small><strong>Help:</strong><br>
+    Please read the <a href="../readme.html" target="_blank">readme.html</a><br>
+    or try:&nbsp; <small><a href="http://www.thedemosite.co.uk/phpautomembersarea/"
+    target="_blank">http://www.thedemosite.co.uk/phpautomembersarea/</a></small></small></td>
+    <td width="50%"><font color="#8000ff"><strong><p align="center"></strong><small><small>*will
+    be available in Version 1.1, please check the web site for release dates. </small></small></font></td>
+  </tr>
+</table>
+</center></div>
+
+<form name="menu" method="post">
+  <input type="hidden" name="the_page" value>
+</form>
+<script LANGUAGE="JavaScript"><!--
+
+function send_details(page)
+{
+ document.menu.the_page.value=page;
+ document.menu.action="get_details.php";
+ document.menu.submit();
+}
+
+// --></script>
+
+</body>
+</html>

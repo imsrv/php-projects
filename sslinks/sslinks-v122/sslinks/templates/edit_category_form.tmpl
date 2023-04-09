@@ -1,0 +1,8 @@
+<b>Edit Category: %catname%</b><p>
+<form action=links.php method=post><input type=hidden name=action value=editcat><input type=hidden name=id value=%catid%>
+Category Name: <input type=text name=lcat_name size=30 value="%catname%" maxlength=100><p>
+Category Ranking: <input type=text name=lcat_rank size=5 maxlength=11 value="%ranking%"> - Used for controlling the order categories are displayed.<p>
+Category Header:<br>
+<textarea name=lcat_header cols=40 rows=4>%header%</textarea><p>
+Nested Category ID: <input type=text name=lcat_cat size=5 value="%nestid%"> - 0 is the front page, any other number is one of the sub category pages.<p>
+<input type=submit name=submit value="Edit Category"><p>

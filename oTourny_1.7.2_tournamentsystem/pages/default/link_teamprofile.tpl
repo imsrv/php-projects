@@ -1,0 +1,1 @@
+<a href="{A_LINK_TEAM_HREF}">{A_LINK_TEAM_NAME}</a>

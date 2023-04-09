@@ -1,0 +1,135 @@
+##############################################################################
+# TextClock                     Version 1.0.2                                #
+# Copyright 1996 Matt Wright    mattw@worldwidemart.com                      #
+# Created 7/15/96               Last Modified 7/15/96                        #
+# Scripts Archive at:           http://www.worldwidemart.com/scripts/        #
+##############################################################################
+# If you run into any problems while trying to configure this scripts, help  #
+# is available.  The steps you should take to get the fastest results, are:  #
+#	1) Read this file thoroughly					     #
+#	2) Consult the Matt's Script Archive Frequently Asked Questions:     #
+#		http://www.worldwidemart.com/scripts/faq/		     #
+#	3) If you are still having difficulty installing this script, send   #
+#	   e-mail to: scripts-help@tahoenet.com				     #
+#	   Include any error messages you are receiving and as much detail   # 
+#	   as you can so we can spot your problem.  Also include the variable#
+#	   configuration block that is located at the top of the script.     #
+#									     #
+# Hopefully we will be able to help you solve your problems.  Thank you.     #
+##############################################################################
+# COPYRIGHT NOTICE                                                           #
+# Copyright 1996 Matthew M. Wright  All Rights Reserved.                     #
+#                                                                            #
+# TextClock may be used and modified free of charge by anyone so long as     #
+# this copyright notice and the comments above remain intact.  By using this #
+# code you agree to indemnify Matthew M. Wright from any liability that      #  
+# might arise from it's use.                                                 #  
+#                                                                            #
+# Selling the code for this program without prior written consent is         #
+# expressly forbidden.  In other words, please ask first before you try and  #
+# make money off of my program.                                              #
+#                                                                            #
+# Obtain permission before redistributing this software over the Internet or #
+# in any other medium.	In all cases copyright and header must remain intact #
+##############################################################################
+
+TextClock is a Perl CGI script which is meant to be run from Server Side 
+Includes.  For more information on Server Side Includes, check out the 
+FAQ at the URL mentioned above.  When this script is implemented, it can 
+be used to show browsers several variations of the current time and/or 
+date.
+
+There are two files included with this script:
+        1) README 	- This file; includes detailed installation 
+			  instructions.
+        2) textclock.pl - The Perl script which generates the headers 
+			  and sends the current time and/or date to 
+			  your user.
+
+Should you encounter any problems running this script, such as Method Not
+Implemented, try changing the name of the program to nph-textclock.cgi, 
+as some servers require the use of .cgi extensions.  Otherwise, this 
+script must be placed in your cgi-bin.  There are several variables which
+must be edited in the textclock.pl script.
+
+TEXTCLOCK.PL -
+
+    There are up to nine variables in the textclock.pl script, however
+    if you wish to receive the default display, you need not edit any
+    of them.  You can mix and match all of these options and see which
+    kind of clock you like the best.  You can get the clock to display
+    only the day of the week, only the date, only the time, everything
+    or make up your own combination!
+
+	$Display_Week_Day = '1';
+		If this option is set to '1', the day of the week will be 
+		displayed; Possible Values: Monday, Tuesday, Wednesday,
+		Thursday, Friday, Saturday and Sunday.  Setting this option
+		to '0' will suppress the printing of the Day of the Week.
+
+	$Display_Month = '1';
+		If this option is set to '1', the month will be printed.
+		Possible values include: January, February, March, April, May,
+		June, July, August, September, October, November and December.
+		If this option is set to '0', the month will not be displayed.
+
+	$Display_Month_Day = '1';
+		If this option is set to '1', the day of the month is
+		displayed, containing a value from 01 - 31.  Setting this to
+		'0' will hide the Day of the Month.
+
+	$Display_Year = '1';
+		If this option is set to '1', the four digit year is 
+		displayed, and it can be hidden by setting this to '0'.
+
+	$Display_Time = '1';
+		If this option is set to '1', a twenty four hour clock is
+		displayed.  Otherwise, if it is set to '0', it is supressed.
+
+	$Display_Time_Zone = '1';
+		Setting this to '1' allows users to your site to know what
+		time zone the date is being displayed from.  If it is set
+		to '1', the script will determine if it is Daylight Savings
+		or not.  If so, it uses $Daylight_Time_Zone as the Time Zone
+		to display.  Otherwise it uses $Standard_Time_Zone.
+
+	$Standard_Time_Zone = 'EST';
+	$Daylight_Time_Zone = 'EDT';
+		These are the names of your Time Zones.  The ones shown above
+		represent Eastern Coast Time Zones.  Other ones in the US
+		include Central Time (CST/CDT), Mountain Time (MST/MDT) and
+		Pacific Coast Time (PST/PDT).
+
+	$Display_Link = '1';
+		Wanna be generous and offer visitors a link to my site where
+		they can download this script?  If so, leave this set to '1'
+		and the displayed date will be linked to my web site.
+		Otehrwise, set it to '0'.
+
+
+##############################################################################
+
+		How to Call This Script From Your Web Page
+		------------------------------------------
+
+Calling this script from a web page is fairly simple.  You just use a standard
+Server Side Include call, such as:
+
+	<!--#exec cgi="/url/path/to/textclock.cgi"-->
+
+##############################################################################
+
+HISTORY
+
+   Version 1.0.2 - 7/15/96      - Missing ' after Day of the Week Fixed.
+   Version 1.0.1 - 7/15/96      - Minor Day of the Week Problem Fixed.
+   Version 1.0	 - 7/15/95	- First Version Released.
+
+##############################################################################
+
+Have fun with this script, but if you implement it on a page, please let me 
+know the URL of where it is implemented so I can see my work.
+
+If you have any questions, let me know and I will try and help!
+______________________________________________________________________________
+Matt Wright - mattw@worldwidemart.com - http://www.worldwidemart.com/scripts/

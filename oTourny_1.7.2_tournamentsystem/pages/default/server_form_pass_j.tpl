@@ -1,0 +1,1 @@
+<tr><td class="text">Join Password: {SERVER_JPASS}</td></tr>

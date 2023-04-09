@@ -1,0 +1,132 @@
+<?php /* Smarty version 2.5.0, created on 2006-02-27 17:29:47
+         compiled from index.htm */ ?>
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include("userheader.htm", array());
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+
+</head>
+
+<body bgcolor=white leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
+
+
+<table width=100% height=100% border=0 cellpadding=0 cellspacing=0>
+<tr align=center valign=middle><td>
+<br>
+
+<table border=0 width=300 cellpadding=0 cellspacing=0>
+<tr><td>
+
+<!-- ## LOGO -->
+
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr valign=bottom>
+<td><img src=tiny_images/tr1.gif width=25 height=20><br></td>
+<td width=100% align=center><h1><font color="#666666"> E-FoRuMTuRK LiNK !</font></h1><br></td>
+<td><img src=tiny_images/spacer.gif width=25 height=1><br></td>
+</tr>
+</table>
+
+<!-- /## LOGO -->
+
+<!-- ## FORM -->
+
+<table border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td><img src=tiny_images/tr2.gif width=25 height=95><br></td>
+<td background=tiny_images/bg1.gif valign=bottom>
+
+<table border=0 height=80 cellpadding=0 cellspacing=0 background="">
+
+<form name="fomu" action="" method="post">
+<tr valign=middle align=center><td class=wtxt> Url'yi Kopyalayiniz:</td></tr>
+<tr valign=middle align=center><td>
+
+<table border=0 cellpadding=0 cellspacing=0 background="">
+<tr><td><input name="fullurl" type="text" value="http://" size="42" maxlength="2560" style="width:450px; height:20px;FONT-FAMILY: Arial, Helvetica, Sans-serif; BACKGROUND-COLOR: #ffffff ; font-size: 12px; color: #000000;"></td></tr>
+</table>
+
+</td></tr>
+<tr><td>
+
+<table border=0 width=100% cellpadding=0 cellspacing=0 background="">
+<tr>
+<td><img src=tiny_images/spacer.gif width=42 height=1><br></td>
+<td width=100% align=center valign=middle><input type=submit value=" E-FT LiNK OLuSTuR !"></td>
+<td align=right valign=bottom><img src=tiny_images/tr4.gif width=42 height=38><br></td>
+</tr>
+</table>
+
+</td></tr>
+</form></table>
+
+</td>
+<td><img src=tiny_images/tr3.gif width=33 height=95><br></td>
+</tr>
+</table>
+
+<table border=0 width=100% cellpadding=0 cellspacing=0>
+<tr><td align=right><img src=tiny_images/tr5.gif width=365 height=7><br></td></tr>
+</table>
+
+<!-- /## FORM -->
+
+<img src=tiny_images/spacer.gif width=1 height=17><br>
+
+<!-- ## MENU -->
+
+<table border=0 width=100% cellpadding=0 cellspacing=0>
+<tr align=center>
+
+</tr>
+
+<?php if ($this->_tpl_vars['randlink']): ?>
+<tr align=center><td colspan=4 class=cop><br><br><u> GeRCeK AdReS:</u> <strong><a href="<?php echo $this->_tpl_vars['fullurl']; ?>
+" target=_blank><?php echo $this->_tpl_vars['fullurl']; ?>
+</a></strong> 
+<br>
+<br>	
+<b> E-FT LiNK HaLi: </b><br>
+<br>
+<a style="color:red;" href="<?php echo $this->_tpl_vars['url_to_index']; ?>
+?<?php echo $this->_tpl_vars['randlink']; ?>
+"><strong><?php echo $this->_tpl_vars['url_to_index']; ?>
+?<?php echo $this->_tpl_vars['randlink']; ?>
+</strong></a></td></tr>
+<?php endif; ?>
+
+<tr align=center><td colspan=4 class=cop><br><br> <a href="javascript:void(location.href='<?php echo $this->_tpl_vars['url_to_index']; ?>
+?fullurl='+escape(location.href))"  onmouseover="window.status=' E-FT LiNK CoNVeRT !.. ';return true" onclick="return false"><strong> 	E-FT LiNK </strong></a> <br></td></tr>
+</table>
+
+<!-- /## MENU -->
+
+<img src=tiny_images/spacer.gif width=1 height=40><br>
+
+<!-- ## BANNERS AREA -->
+
+<?php echo $this->_tpl_vars['ad']; ?>
+
+
+<!-- /## BANNERS AREA -->
+
+<img src=tiny_images/spacer.gif width=1 height=45><br>
+
+<!-- ## COPYRIGHT INFO -->
+<div align=center class=cop>
+<b><?php echo $this->_tpl_vars['records']; ?>
+</b> Url KaYiTLi  Powered by <a href="http://www.e-forumturk.com" target="_blank"><font class="cop"> E-FoRuMTuRK LiNK ! </font></a>.<br>
+Copyright &copy; 2006 <a href="http://www.e-forumturk.com" target="_blank"><font class="cop"> E-FoRuMTuRK </font></a>
+</div>
+<!-- /## COPYRIGHT INFO -->
+
+</td></tr>
+</table>
+
+<br>
+</td></tr>
+</table>
+
+</body>
+</html>

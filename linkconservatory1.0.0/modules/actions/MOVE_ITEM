@@ -1,0 +1,49 @@
+<?
+	/* MOVE_ITEM
+	** if we are allowed, move item to another wing
+	*/
+	if(($inputWing != "") && ($Browser_Admin=="YES"))
+	{
+		$Query = "UPDATE item set Wing=$inputWing where ID=$item ";
+		$DatabaseResult = mysql_query($Query, $DatabaseLink);
+	
+		/* 
+		** send mail to the conservatory or coolsites list 
+		*/
+		if($inputSendMail == "YES")
+		{
+			$Query = "SELECT ID, Title, URL, Description ";
+			$Query .= "FROM item ";
+			$Query .= "WHERE ID=$item";
+			$DatabaseResult = mysql_query($Query, $DatabaseLink);
+			$DatabaseRow = mysql_fetch_row($DatabaseResult);
+			$item_ID = $DatabaseRow[0];
+			$item_Title = $DatabaseRow[1];
+			$item_URL = $DatabaseRow[2];
+			$item_Description = $DatabaseRow[3];
+	
+			$Query = "SELECT Private, Title FROM wing ";
+			$Query .= "WHERE ID=$inputWing ";
+			$DatabaseResult = mysql_query($Query, $DatabaseLink);
+			$DatabaseRow = mysql_fetch_row($DatabaseResult);
+			$isPrivate = $DatabaseRow[0];
+			$wingTitle = $DatabaseRow[1];
+
+			$MailBody .= "WING\n   $wingTitle\n";
+			$MailBody .= "   <http://$SiteURL/$IndexScript?SCREEN=stroll&wing=$inputWing>\n\n";
+			$MailBody .= "SITE\n   $item_Title <http://$SiteURL/$LocationScript?inputItem=$item_ID>\n\n";
+			$MailBody .= "DESCRIPTION\n   $item_Description\n\n";
+
+
+			if($isPrivate == "N")
+			{
+				$MailTo = $MailingList_Add;
+				$MailFrom = "$Creator <$MailingList_Add>";
+				$MailSubject = "[Conservatory] $inputTitle";
+	
+				Mail($MailTo, $MailSubject, $MailBody, "From: $MailFrom");
+			}
+		}	
+		
+		$ActionResults = "Item Moved!";
+	}
