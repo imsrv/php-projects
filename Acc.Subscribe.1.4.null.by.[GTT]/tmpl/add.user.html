@@ -1,0 +1,115 @@
+<script language=javascript>
+function checkform() {
+  if (document.main.email.value == '') {
+    alert ("Please, type email");
+    document.main.email.focus();
+    return false;
+  }
+  return true;
+}
+</script>
+<form action=admin.cgi method=post onSubmit="return checkform();" name=main>
+<input type=hidden name=page value=adduser>
+<input type=hidden name=action value=adduser>
+<input type=hidden name=tid value="#FORM_tid#">
+<input type=hidden name=area value="#FORM_area#">
+<input type=hidden name=p value="#FORM_p#">
+<input type=hidden name=group value="#FORM_group#">
+<input type=hidden name=search value="#FORM_search#">
+<input type=hidden name=where value="#FORM_where#">
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>Edit subscriber</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+
+
+
+<table cellcpacing=0 cellpadding=0 border=0 width=100%><tr><td>
+
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>E-mail:</td><td><input type=text class=inpts size=30 name=email value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>First Name:</td><td><input type=text class=inpts size=30 name=first_name value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Last Name:</td><td><input type=text class=inpts size=30 name=last_name value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Full Name:</td><td><input type=text class=inpts size=30 name=full_name value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Company:</td><td><input type=text class=inpts size=30 name=company value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Language:</td><td><input type=text class=inpts size=30 name=language value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Phone:</td><td><input type=text class=inpts size=30 name=phone value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>ICQ:</td><td><input type=text class=inpts size=30 name=icq value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Address:</td><td><input type=text class=inpts size=30 name=address value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Address 2:</td><td><input type=text class=inpts size=30 name=address2 value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>City:</td><td><input type=text  class=inpts size=30 name=city value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>State:</td><td><input type=text class=inpts size=30 name=state value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Country:</td><td><input type=text class=inpts size=30 name=country value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Birthdate:</td><td><input type=text class=inpts size=30 name=birthdate value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Age:</td><td><input type=text class=inpts size=30 name=age value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Sex:</td><td><input type=text class=inpts size=30 name=sex value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Website:</td><td><input type=text class=inpts size=30 name=website value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Heard About:</td><td><input type=text class=inpts size=30 name=heard value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Business:</td><td><input type=text class=inpts size=30 name=business value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Date Subscribe:</td><td><input type=text class=inpts size=30 name=date_sub value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Date Unsubscribe:</td><td><input type=text class=inpts size=30 name=date_unsub value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>IP:</td><td><input type=text class=inpts size=30 name=ip value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Letters format:</td><td><input type=text class=inpts size=30 name=lettersformat value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Additional 1:</td><td><input type=text class=inpts size=30 name=additional1 value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Additional 2:</td><td><input type=text class=inpts size=30 name=additional2 value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Additional 3:</td><td><input type=text class=inpts size=30 name=additional3 value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Additional 4:</td><td><input type=text class=inpts size=30 name=additional4 value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Additional 5:</td><td><input type=text class=inpts size=30 name=additional5 value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Additional 6:</td><td><input type=text class=inpts size=30 name=additional6 value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Additional 7:</td><td><input type=text class=inpts size=30 name=additional7 value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Additional 8:</td><td><input type=text class=inpts size=30 name=additional8 value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Additional 9:</td><td><input type=text class=inpts size=30 name=additional9 value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Additional 10:</td><td><input type=text class=inpts size=30 name=additional10 value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Additional 11:</td><td><input type=text class=inpts size=30 name=additional11 value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Additional 12:</td><td><input type=text class=inpts size=30 name=additional12 value=""></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+</table>
+<br>
+<input type=Submit class=sbmt value=SAVE>
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+
+
+
+</form>

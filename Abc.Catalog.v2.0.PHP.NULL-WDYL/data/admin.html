@@ -1,0 +1,53 @@
+<form name="exc_upload" method="post" action="./?sect=parse" enctype="multipart/form-data">
+
+<table width="90%" border="0" align="center" cellpadding="25" cellspacing="0" class="BodyText">
+  <tr>
+    <td bgcolor="#C4D9ED"><font class="BodyText2">Select Template:</font></td>
+<td bgcolor="#C4D9ED">
+<%tif guest%>Template uploading is disabled in demo version.<%tendif guest%>
+<%tif !guest%><input name="template" type="file" size="30"><%tendif guest%>
+</td>
+	<td bgcolor="#C4D9ED">
+<%tif has_template%>Template already uploaded.<br><%tendif has_template%>
+<%tif !has_template%><b>Template is not exist. You should upload template.</b><br>
+	<%tendif has_template%>
+	</td>
+  </tr>
+  <tr>
+    <td><font class="BodyText2">Select Excel file:</font></td>
+    <td><input type="file" size=30 id="excel_file" name="excel"></td>
+	<td>Select Excel file from your local computer.</td>
+  </tr>
+  <tr>
+    <td bgcolor="#C4D9ED"><font class="BodyText2">Directory name:</font></td>
+	<td bgcolor="#C4D9ED">
+	<%tif guest%>
+	In demo version directory name always <b>guest</b>.<br>
+	In normal version you will have ability to specify any directory name.
+	<%tendif guest%>
+	<%tif !guest%>
+    <input name="data[dir]" type="text" id="dir_name" size="30">
+    <%tendif guest%>
+    </td>
+	<td bgcolor="#C4D9ED">The name of the directory, where HTML pages, created from Excel file, will be stored.</td>
+  </tr>
+  <tr>
+    <td><font class="BodyText2">Rows on page:</font></td>
+    <td><input name="data[rop]" type="text" id="rows_on_page" value="30" size="5"></td>
+	<td>You may indicate the quantity of rows, which will be accessible on each created HTML page.</td>
+  </tr>
+  <tr>
+    <td bgcolor="#C4D9ED"><font class="BodyText2">Pages navigator:</font></td>
+    <td bgcolor="#C4D9ED"><input name="data[pages]" type="text" id="page_count" value="10" size="5"></td>
+	<td bgcolor="#C4D9ED">You may indicate the quatity of elements for navigation on cretated HTML pages.</td>
+  </tr>
+  <tr>
+    <td>
+		<input type="button" value="Parse" onClick="javascript:if(document.exc_upload.excel_file.value.length==0) { alert('You must specify a file first'); return; }; submit();">
+	</td>
+    <td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+</table>
+
+</form>

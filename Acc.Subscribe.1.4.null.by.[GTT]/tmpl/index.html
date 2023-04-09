@@ -1,0 +1,149 @@
+<script language=javascript>
+function tsort(col) {
+
+}
+</script>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>Your subscriptions</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+	<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr>
+	<th><a name=name alt='Subscription name' title='Subscription name'>Subscription</a></th>
+	<th><a name=quantity alt='Q emails' title='Q emails'>Q</a></th>
+	<th><a name=stat alt="Subscription stats" title="Subscription stats">Stats</a></th>
+	<th align=center width=60>Action</th>
+</tr>
+#types-lines#
+</table>
+</td></tr></table>
+<form action=admin.cgi method=post><br>
+<input type=Button class=sbmt value="ADD NEW SUBSCRIPTION" onClick="document.location='admin.cgi?page=addnewtype';">
+</form>
+	</td></tr></table>
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+<br><br>
+
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>E-mail statistics (cumulative)</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+	<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><td class=tdd> Total emails:</td><td class=tdd align=right>#stat-total-emails#</td>
+<td class=tdd> Active:</td><td class=tdd align=right>#stat-active-emails#</td></tr>
+<tr><td class=tdd> Unsibscribed:</td><td class=tdd align=right>#stat-unsub-emails#</td>
+<td class=tdd> Expired:</td><td class=tdd align=right>#stat-expired-emails#</td></tr>
+<!--<td class=tdd> Dup emails:</td><td class=tdd align=right>#stat-dup-emails#</td></tr>
+<tr><td class=tdd> Checked emails:</td><td class=tdd align=right>#stat-checked-emails#</td>
+<td class=tdd> Bad emails:</td><td class=tdd align=right>#stat-bad-emails#</td></tr>
+-->
+</table>
+</td></tr></table>
+	</td></tr></table>
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+<br><br>
+
+
+
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>Week statistics (cumulative)</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+<table cellcpacing=0 cellpadding=0 border=0 width=100% align=center><tr><td>
+
+  <table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+  <table cellspacing=1 cellpadding=2 border=0 width=100%>
+  <tr valign=bottom>
+  #stat-week#
+  </tr>
+  </table>
+  </td></tr></table>
+</td></tr></table>
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+
+
+</td></tr></table>
+
+<!--[clear]-->
+<!--[types-lines]-->
+<tr>
+	<td class=tdd width=70%><a href=admin.cgi?page=subscr&tid=#id# class=ar>ID=#id#; &nbsp; #name#</a></td>
+	<td class=tdd align=right width=40>#col#</td>
+	<td class=tdd align=center width=30><a href=admin.cgi?page=statcampaignyear&tid=#id# target=statswin><img src=#image_dir#stat.gif border=0 title='Stats for subscription' alt='Stats for subscription' width=16 height=16></a></td>
+	<td class=tdd align=right width=60><a href=admin.cgi?page=edittype&tid=#id#><img src=#image_dir#edit.gif border=0 title='Edit subsctibtion' alt='Edit subscription' width=16 height=16></a> &nbsp; 
+		<a href=admin.cgi?page=deletetype&tid=#id# onclick="return confirm('Are you sure to delete subscription?');"><img src=#image_dir#del.gif title='Delete subscription' alt='Delete subscription' border=0 width=16 height=16></a></td>
+</tr>
+<tr><td colspan=4 class=tdi>
+	<table cellspacing=0 cellpadding=0 border=0 width=100%>
+	<tr><td colspan=2>Created: #createdate#</td><td>Changed: #changedate#</td><td align=right><a href=admin.cgi?page=subscr&tid=#id# class=ar>[manage]</a></td></tr>
+	<tr><td>Q emails: #col#</td><td>Q active: #qactive#</td><td>Q unsub: #qunsub#</td><td align=right><a href=admin.cgi?page=edittype&tid=#id# class=ar>[edit]</a></td></tr>
+	<tr><td>Q groups: #qgroups#</td><td> &nbsp; </td><td>Q expired: #qexpired#</td><td align=right><a href=admin.cgi?page=statcampaignyear&tid=#id# class=ar target=statswin>[stats]</a></td></tr>
+	</table>
+</td></tr>
+
+<!--[types-lines]-->
+
+<!--[templates]-->
+<li> <b>#name# <a href=admin.cgi?page=deletetemplate&id=#id# class=ar onClick="return confirm('Are you sure to delete template?');">[x]</a>
+<!--[templates]-->
+
+<!--[down_arrow]-->
+<img src=#image_dir#toparrow.gif>
+<!--[down_arrow]-->
+
+<!--[top_arrow]-->
+<img src=#image_dir#downarrow.gif>
+<!--[top_arrow]-->
+
+
+
+<!--[stat-week]-->
+<td class=tdd>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr valign=bottom><td width=50%><img src=#image_dir#s.gif width=1 height=100>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td class=tds><img src=#image_dir#s.gif width=1 height=#col_height#>#col#</td></tr></table>
+</td><td width=50%>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td class=tdc><img src=#image_dir#s.gif width=1 height=#unsub_height#>#unsub#</td></tr></table>
+</td></tr>
+<tr><td colspan=2 align=center class=tdb>#date#</td></tr>
+</table>
+</td>
+<!--[stat-week]-->
+
+<!--[sub-list]-->
+<option value='#id#'>#name#
+
+<!--[sub-list]-->
+
+<!--[clear]-->

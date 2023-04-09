@@ -1,0 +1,91 @@
+/*
+6XMailer - A PHP POP3 mail reader.
+Copyright (C) 2001  6XGate Systems, Inc.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+*/
+BODY {
+	border : 2px groove;
+	background : ButtonFace;
+	margin : 0;
+	padding : 0;
+	font : 8pt Arial, Helvetica, sans-serif;
+	color : ButtonText;
+}
+
+TABLE {
+	font : 8pt Arial, Helvetica, sans-serif;
+}
+
+BODY.Title FORM{
+	font-size: 8pt;
+}
+
+TABLE.TBar{
+	margin : 1px;
+	padding : 0;
+	vertical-align : middle;
+	font : 8pt Arial, Helvetica, sans-serif;
+}
+
+TABLE.TBar TD{
+	font : 8pt Arial, Helvetica, sans-serif;
+	padding : 0 8px 0 8px;
+	margin : 0 0 0 0;
+	border-color : ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight;
+	border-width : 1px;
+	border-style : solid;
+}
+
+TABLE.TBar TD A:Active{
+	color : ButtonText;
+	text-decoration : none;
+	font : 8pt Arial, Helvetica, sans-serif;
+	background : transparent;
+}
+
+TABLE.TBar TD A:Link{
+	color : ButtonText;
+	text-decoration : none;
+	font : 8pt Arial, Helvetica, sans-serif;
+	background : transparent;
+}
+
+TABLE.TBar TD A:Visited{
+	color : ButtonText;
+	text-decoration : none;
+	font : 8pt Arial, Helvetica, sans-serif;
+	background : transparent;
+}
+
+TABLE.TBar TD IMG{
+	padding : 0;
+	text-align : left;
+	margin : 2px 3px 2px 0;
+}
+
+TABLE.Button {
+	margin : 0;
+	padding : 0;
+	border-width : 0;
+	border-style : none;
+}
+
+TABLE.Button TD {
+	margin : 0;
+	padding : 0;
+	border-width : 0;
+	border-style : none;
+}

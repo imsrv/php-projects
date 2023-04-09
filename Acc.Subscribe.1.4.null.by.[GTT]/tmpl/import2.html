@@ -1,0 +1,101 @@
+<script language=javascript>
+function ch(a) {
+  for (i = 0; i<document.exportform.field.length; i++) {
+    if (a == 'select') {
+      document.exportform.field[i].checked = true;
+    }
+    if (a == 'deselect') {
+      document.exportform.field[i].checked = false;
+    }
+    if (a == 'reverse') {
+      document.exportform.field[i].checked = !document.exportform.field[i].checked;
+    }
+  }
+}
+function cimport() {
+  var win = window.open("", "_importwin", "width=300,height=300");
+  return true;
+
+}
+</script>
+
+
+<form action=admin.cgi method=post onSubmit="return cimport();" name=exportform target=_importwin>
+<input type=hidden name=page value=import>
+<input type=hidden name=action value=step3>
+<input type=hidden name=iid value=#FORM_iid#>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>Import users</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+	<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><th>Field in source</th><th>Copy to field</th></tr>
+#import-fields#
+
+	</table>
+<br>
+<input type=submit value="IMPORT" class=sbmt>
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+
+
+</form>
+
+
+<!--[clear]-->
+<!--[fields-list]-->
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td> &nbsp; &nbsp; <b>#field-name#</b> convert to:</td><td align=center>
+<select name=f#field-id#>
+<option value=''>Select field
+<option value=''>No import
+<option value='email'>E-mail
+<option value='first_name'>First name
+<option value='last_name'>Last name
+<option value='full_name'>Full name
+<option value='company'>Company
+<option value='phone'>Phone
+<option value='icq'>ICQ
+<option value='address'>Address
+<option value='address2'>Address2
+<option value='city'>City
+<option value='state'>State
+<option value='country'>Country
+<option value='birthdate'>Birth date
+<option value='age'>Age
+<option value='sex'>Sex
+<option value='website'>Website
+<option value='heard'>Heard about
+<option value='business'>Business
+<option value='language'>Language
+<option value='lettersformat'>Letter format
+<option value='date_sub'>Date subscribe
+<option value='ip'>IP address
+<option value='additional1'>Additional 1
+<option value='additional2'>Additional 2
+<option value='additional3'>Additional 3
+<option value='additional4'>Additional 4
+<option value='additional5'>Additional 5
+<option value='additional6'>Additional 6
+<option value='additional7'>Additional 7
+<option value='additional8'>Additional 8
+<option value='additional9'>Additional 9
+<option value='additional10'>Additional 10
+<option value='additional11'>Additional 11
+<option value='additional12'>Additional 12
+
+</select></td></tr>
+<tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+
+<!--[fields-list]-->
+
+
+<!--[clear]-->
+

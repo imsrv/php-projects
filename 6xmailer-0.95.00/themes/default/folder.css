@@ -1,0 +1,65 @@
+/*
+6XMailer - A PHP POP3 mail reader.
+Copyright (C) 2001  6XGate Systems, Inc.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+*/
+BODY {
+	margin : 0;
+	padding : 0;
+	color : ButtonText;
+	background-color : ButtonShadow;
+	font : 10pt Arial, Helvetica, sans-serif;
+	border-color : ThreeDShadow ThreeDHighlight ThreeDHighlight ThreeDShadow;
+	border-style : solid;
+	border-width : 1px;
+}
+
+TABLE {
+	font : 10pt Arial, Helvetica, sans-serif;
+}
+
+A:Link {
+	color : ButtonHighlight;
+	text-decoration : none;
+	background : transparent;
+}
+
+A:Visited {
+	color : ButtonHighlight;
+	text-decoration : none;
+	background : transparent;
+}
+
+A:Active {
+	color : ButtonHighlight;
+	text-decoration : none;
+	background : transparent;
+}
+
+P{
+	margin: 6pt;
+	font : 10pt Arial, Helvetica, sans-serif;
+}
+
+TABLE.OutlookHead {
+	background-color : ButtonFace;
+	color : ButtonText;
+	width : 100%;
+	margin : 0;
+	border-color : ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight;
+	border-style : solid;
+	border-width : 1px;
+}

@@ -1,0 +1,95 @@
+<script language=javascript>
+function sendtest() {
+  document.mainform.action.value='sendtest';
+  document.mainform.submit();
+}
+function sendnow() {
+  document.mainform.action.value='sendnow';
+  document.mainform.submit();
+}
+</script>
+
+<form action=admin.cgi method=post name=mainform target=_new>
+<input type=hidden name=lid value="#FORM_lid#">
+<input type=hidden name=page value=sendimmediatly>
+<input type=hidden name=action value=>
+<input type=hidden name=tid value="#FORM_tid#">
+<input type=hidden name=filter_id value=#FORM_filter_id#>
+<table cellcpacing=0 cellpadding=0 border=0 width=740 align=center><tr><td>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr>
+	<th><img src=#image_dir#newcamp.gif width=16 height=16> SEND LETTER</th>
+</tr>
+<tr><td class=td1>
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<b>Send e-mail sample to: </b> &nbsp; <input type=text name=e-sample> &nbsp; <input type=button value="SEND TEST" onClick="sendtest();" class=sbmt><br><br>
+<input type=button value="START" class=sbmt onClick="sendnow();">
+
+
+
+</td></tr></table>
+</form>
+
+
+
+</td></tr></table>
+</td></tr></table>
+</td></tr></table>
+
+<!--[clear]-->
+
+<!--[delay-list]-->
+<option value=#type# #selected#>#type#
+<!--[delay-list]-->
+
+<!--[select-footer]-->
+<option value=#id# #is-selected#>#name#
+<!--[select-footer]-->
+
+<!--[select-header]-->
+<option value=#id# #is-selected#>#name#
+<!--[select-header]-->
+
+<!--[select-body]-->
+<option value=#id# #is-selected#>#name#
+<!--[select-body]-->
+
+
+<!--[html-file-list]-->
+<option value=#id# #selected#>#name# #path#
+<!--[html-file-list]-->
+
+<!--[no-html-file-list]-->
+<option value=''>No html saved yet
+<!--[no-html-file-list]-->
+
+
+<!--[html-attached-list]-->
+<b>#path#</b> <input type=checkbox name=delete_html value=#id#> Delete<br>
+<!--[html-attached-list]-->
+
+<!--[no-html-attached-list]-->
+<b>No html uploaded yet</b>
+<!--[no-html-attached-list]-->
+
+
+<!--[file-file-list]-->
+<option value=#id# #selected#>#name# #path#
+<!--[file-file-list]-->
+
+<!--[no-file-file-list]-->
+<option value=''>No file saved yet
+<!--[no-file-file-list]-->
+
+
+<!--[file-attached-list]-->
+<b>#path#</b> <input type=checkbox name=delete_file value=#id#> Delete<br>
+<!--[file-attached-list]-->
+
+<!--[no-file-attached-list]-->
+<b>No file uploaded yet</b>
+<!--[no-file-attached-list]-->
+
+
+<!--[clear]-->

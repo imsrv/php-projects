@@ -1,0 +1,9 @@
+From: #admin-email#
+To: #email#
+Subject: Your account
+
+Hello #firstname# #lastname#,
+Your account at #siteurl#/admin.cgi :
+
+Login: #login#
+Password: #password#

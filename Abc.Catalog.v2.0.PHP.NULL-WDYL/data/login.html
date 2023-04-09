@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>ABC Catalog - [Login]</title>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="content-language" content="en">
+<STYLE>
+<!--
+
+.productName {
+	color: #005279;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	text-decoration: none;
+	font-weight : bold;
+}
+
+.login {
+	color: #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	text-decoration: none;
+	font-weight : bold;
+}
+
+.loginText
+ {
+	color: #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	font-weight : bold;
+}
+
+-->
+</STYLE>
+</head>
+
+<body bgcolor="#6699CC" text="#000000" link="#000000" vlink="#000000" alink="#000000">
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+<form name="exc_upload" method="post" action="./?sect=login" enctype="multipart/form-data">
+
+<table bgcolor="#005279" border=0 cellspacing=0 cellpadding=5 align=center>
+<tr>
+<td bgcolor="#6699CC" colspan=2 align="right"><font class="productName">ABC Catalog [GTT]&[WDYL-WTN] Rls</font></td>
+</tr>
+<tr>
+<td colspan=2><font class="login">Log-In</font></td>
+</tr>
+<tr>
+<td>
+
+  <!-- Start login table -->
+  <table border=0 cellspacing=0 cellpadding=10 width=400 align=center bgcolor="#006699">
+    <tr>
+      <td colspan="2" width=550>
+		<br><font class=loginText><%tv msg%></font>
+	  </td>
+    </tr>
+    <tr> 
+      <td width=150><font class="loginText">Username:</font></td>
+      <td width=500>&nbsp;&nbsp;<input type="text" name="login" size="22" value="<%tv login%>"></td>
+    </tr>
+    <tr> 
+      <td width=150><font class="loginText">Password:</font></td>
+	  <td awidth=500>&nbsp;&nbsp;<input type="password" name="password" size="22"></td>
+    </tr>
+  </table>
+  <!-- End login table -->
+
+</td>
+</tr>
+</table>
+
+
+<table border=0 cellspacing=0 cellpadding=0 width=400 align=center>
+<tr>
+<td align=center><br><input type="submit" name="Submit" value="Login"></td>
+</tr>
+</table>
+
+</form>
+
+</body>
+</html>

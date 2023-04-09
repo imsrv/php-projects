@@ -1,0 +1,107 @@
+=============================================================================
+6XMailer - A PHP POP3 mail reader.
+Copyright (C) 2001  6XGate Systems, Inc.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+==============================================================================
+
+0.65.02 - Sunday, February 25, 2001 01:34:26 AM Central Standard Time
+---------------------------------------------------------------------
+	* Added embedded image displaying.
+	* Added Forward and View Sorce.
+	* Changed a few comments in the configuration file.
+	* Add help for the new features or course.
+
+0.65.03 - Sunday, February 25, 2001 02:46:54 AM Central Standard Time
+---------------------------------------------------------------------
+(UNRELEASED)
+	* Made a correction in the about.php file.
+	* Added the future.txt file.
+	* Extended the embedded contect to APPLET, OBJECT, A, and LINK
+		tags.
+	* Correct some bugs in the message source viewing code.
+	
+0.70.00 - Sunday, February 25, 2001 5:24:56 AM Central Standard Time
+--------------------------------------------------------------------
+(UNRELEASED)
+	* Add attachment listing and downloading.
+	* Removed the replaced "Message" with a return to message link
+		on the source and attachmens page.
+	* Corrected a few grammatical problems with the strings.php in
+		the "English" pack.
+	  
+0.75.00 - Sunday, February 25, 2001 7:57:02 AM Central Standard Time
+--------------------------------------------------------------------
+(UNRELEASED)
+	* Added the feature to send attachments with e-mails.
+	
+0.75.01 - Monday, February 26, 2001 6:08:25 AM Central Standard Time
+--------------------------------------------------------------------
+	* Updated the help file.
+
+0.80.00 - Wednesday, February 28, 2001 9:53:42 AM Central Standard Time
+-----------------------------------------------------------------------
+	* Added an address book.
+	* Fixed a few bugs.
+
+0.80.05 - Thursday, March 01, 2001 5:22:01 AM Central Standard Time
+-------------------------------------------------------------------
+	* Fixed a few problems where people who's usernames was there
+	  e-mail addresses, will add the domain part at the end, if you
+	  don't set it in the config file.  In version .80.00 I made the
+	  mailer fail without that but it will run normally now.
+	* Made message headers and text pass through the session instead
+	  of logging on to the POP3 server for every page.  This doesn't
+	  include source viewing page or attachments page.  This should
+	  decrease the POP3 traffic down alot!.
+
+0.80.10 - Friday, March 02, 2001 6:40:49 AM Central Standard Time
+-----------------------------------------------------------------
+	* Fixed the address book to place address in the TO box on the
+	  send form.  It will simple put an address in the box if the
+	  send forms already loaded. If the send form isn't it loads it
+	  with the address in the box.
+	* Fixed some database bug.  Make sure you read the installation
+	  instructions.
+
+0.80.15 - Saturday, March 03, 2001 4:59:09 PM Central Standard Time
+-------------------------------------------------------------------
+(UNRELEASED)
+	* Fixed a bug with plain text messages that were sent with HTML
+	  files attached.
+	* Fixed a bug with quoted-printable attachments.
+
+0.81.00 - Sunday, March 04, 2001 5:00:25 PM Central Standard Time
+------------------------------------------------------------------
+	* Added attachment size limit variable.
+	* Fixed bug with binary attachments not having the whole file
+	  sent on Win32 machines.
+
+0.81.05 - I forgot when I finished this one
+-------------------------------------------------------------------
+(RELEASED under CVS)
+	* Fixed a bug that caused message forwards and replies to
+	  display the time in the subject field instead of the subject.
+	  
+0.90.00 - Thursday, March 15, 2001 1:14:06 PM Central Standard Time
+-------------------------------------------------------------------
+(RELEASED under CVS)
+	* Added Display Name.
+	* Fixed a few bugs that appeared on Windows NT.
+	
+0.95.00 - Saturday, March 17, 2001 7:06:28 PM Central Standard Time
+-------------------------------------------------------------------
+	* Added user message Signature.
+	* Fixed several minor bugs.

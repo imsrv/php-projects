@@ -1,0 +1,83 @@
+<?php
+	
+	//------------------------------------------------------------------------
+	// This script is a part of ABC eStore
+	//------------------------------------------------------------------------
+	
+	//
+	// Configuration stuff
+
+	$base_userdir_path = dirname( __FILE__ );
+	$session_file = $base_userdir_path . DIRECTORY_SEPARATOR . 'sessions.rc';
+	
+	//
+	// Start logging
+	
+	ob_start();
+	
+	function _Log( $msg )
+	{
+		$dt = date("D M j G:i:s Y");
+		echo "[$dt]: $msg\n";
+	}
+	
+	//
+	// Read sessions file
+
+	$sessions = parse_ini_file( $session_file );
+	$ct = count( $sessions );
+	
+	foreach( $sessions as $sid => $tm )
+	{
+		if( $tm >= time() )
+			$lines[] = "$sid=$tm";
+		else
+		{
+			$dt = strftime("%c", $tm);
+		
+			//
+			// Kill directory entries
+			
+			$dirname = $base_userdir_path . DIRECTORY_SEPARATOR . $sid;
+			
+			$dir = dir( $dirname );
+			
+			while (false !== ($entry = $dir->read()))
+			{
+				if( $entry == '.' || $entry == '..' )
+					continue;
+    			@unlink( $dirname . '/' . $entry );
+			}
+			
+			$dir->close();
+			
+			//
+			// Kill directory itself
+			
+			@rmdir( $dirname );
+			_Log("Removed $dirname. Session removed.");
+		}
+	}
+			
+	//
+	// Write updated sessions file
+	
+	$fd = fopen( $session_file, 'wb+' );
+	
+	if( isset( $lines ) )
+		$b = @fwrite( $fd, implode( "\n", $lines ) );
+
+	fclose( $fd );
+	
+	//
+	// Final update cron.log
+	
+	$fd = fopen("$base_userdir_path" . DIRECTORY_SEPARATOR .  "cron.log", "ab+");
+	fwrite( $fd, ob_get_contents() );
+	fclose($fd);
+	
+	//
+	// Finished logging.
+	
+	ob_end_clean();
+?>

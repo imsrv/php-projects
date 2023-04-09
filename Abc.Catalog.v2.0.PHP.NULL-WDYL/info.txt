@@ -1,0 +1,13 @@
+Info:
+  ABC Catalog is an easy-to-use managing     
+  catalogs program that allows you to publish 
+  on your web-site various data such as       
+  products catalogs, price-lists,             
+  specifications stored in Excel tables.      
+  All you need is to select an Excel file     
+  on your local computer and press the [Parse]
+  button.                                     
+  ABC Catalog lets you adjust look-and-feel  
+  properties of your generated HTML(color and 
+  width of table border, font and background  
+  color for category headers).                

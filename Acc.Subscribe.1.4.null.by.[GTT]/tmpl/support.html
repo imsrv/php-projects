@@ -1,0 +1,40 @@
+<script language=javascript>
+function checkform() {
+  if (document.mainform.email.value == '') {
+    alert('Please enter your e-mail!');
+    return false;
+  }
+  return true;
+}
+</script>
+
+<form action="" method=post name=mainform onsubmit="return checkform();" target=_blank><table cellspacing=0 cellpadding=0 border=0 width=100%> 
+  <tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>Comment to support</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+<input type=hidden name="order_var" value="#order_var#">
+<input type=hidden name="order_pass" value="#order_pass#">
+<input type=hidden name=product value="Acc Subscribe v1.4">
+<input type=hidden name=server_url value="#server-url#">
+
+<table cellspacing=0 cellpadding=1 border=0 width=100%>
+<tr><td>Your e-mail: </td><td><input type=text name=email value="#admin-email#" size=60 class=inpts></td></tr>
+<tr><td>Your name: </td><td><input type=text name=name value="" size=60 class=inpts></td></tr>
+<tr><td>Subject: </td><td><select name=subject class=inpts><option value="Question">General question<option value="Offer new feature">Offer new feature<option value="Bug report">Bug report<option value="Other">Other</select></td></tr>
+<tr><td colspan=2>Message: </td></tr>
+<tr><td colspan=2><textarea name=message cols=137 rows=10 class=inpts></textarea></td></tr>
+</table>
+<br>
+<input type=submit value="POST YOUR COMMENT" class=sbmt>
+</form>
+
+
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>

@@ -1,0 +1,86 @@
+/*
+6XMailer - A PHP POP3 mail reader.
+Copyright (C) 2001  6XGate Systems, Inc.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+*/
+BODY {
+	border : 1px inset;
+	font : normal normal normal 10pt Arial, Helvetica, sans-serif;
+	margin : 0px;
+	padding : 0px;
+	background : Window;
+	color : WindowText;
+}
+
+TABLE {
+	font : normal normal normal 10pt Arial, Helvetica, sans-serif;
+}
+
+A:Link {
+	color : Blue;
+	font : normal normal normal;
+	text-decoration : underline;
+}
+
+A:Visited {
+	color : Blue;
+	font : normal normal normal;
+	text-decoration : underline;
+}
+
+A:Active {
+	color : Blue;
+	font : normal normal normal;
+	text-decoration : underline;
+}
+
+P{
+	margin : 0px;
+	padding : 0px;
+	border : 0px;
+}
+
+P.BBodyText{
+	margin : 5pt;
+	padding : 0px;
+	border : 0px;
+}
+
+P.IBodyText{
+	margin : 5pt;
+	padding : 0px;
+	border : 0px;
+	text-indent : 36pt;
+}
+
+BLOCKQUOTE {
+	margin;
+	margin : 5pt 5pt 36pt 5pt;
+}
+
+H1 {
+	border : 0px;
+	margin : 5pt 5pt 15pt 5pt;
+	padding : 0px;
+	font : bold normal normal 22pt;
+}
+
+H2 {
+	border : 0px;
+	margin : 5pt 5pt 15pt 5pt;
+	padding : 0px;
+	font : bold italic normal 16pt;
+}

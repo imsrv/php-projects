@@ -1,0 +1,145 @@
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif width=3></td>
+	<td class=mh>Bulk sending</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+	<table cellspacing=0 cellpadding=0 border=0 width=100%><tr valign=top><td width=50%>
+<form action=admin.cgi name=testform method=post target=_mm_sendtest>
+<script language=javascript>
+function sendtest() {
+  if (document.testform.testemail.value == '')  {
+    alert ("Please enter e-mail");
+    return false;
+  }
+  window.open('', '_mm_sendtest', 'width=300,height=150,scrollbars=0,status=0');
+  document.testform.submit();
+}
+function startsend() {
+  window.open('', '_mm_bulk_send#FORM_bid#', 'width=300,height=200,scrollbars=0,status=0');
+  document.sendform.submit();
+}
+</script>
+<input type=hidden name=page value=sendimmediatly>
+<input type=hidden name=action value=sendtest>
+<input type=hidden name=lid value="#FORM_lid#">
+<input type=hidden name=bid value="#FORM_bid#">
+
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Send test email &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+	<table cellspacing=0 cellpadding=1 border=0 width=100%><tr><td>
+	Enter e-mail: <input type=text name=testemail class=inpts> &nbsp; <input type=button value=SEND class=sbmt onClick="sendtest();">
+	</td></tr></table>
+</form>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+	</td><td width=50%>
+<form action=admin.cgi method=post name=sendform target=_mm_bulk_send#FORM_bid#>
+<input type=hidden name=page value=sendimmediatly>
+<input type=hidden name=action value=startsend>
+<input type=hidden name=lid value="#FORM_lid#">
+<input type=hidden name=bid value="#FORM_bid#">
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Start sending &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+	<table cellspacing=0 cellpadding=0 border=0 width=100% height=22><tr><td>
+	Enter e-mail for notification: <input type=text name=notify_email class=inpts>
+	</td></tr></table>
+
+
+
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+<input type=button value="START" class=sbmt onClick="startsend();">
+
+</form>
+	</td></tr></table>
+
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+
+
+
+
+
+
+<!--[clear]-->
+
+<!--[delay-list]-->
+<option value=#type# #selected#>#type#
+<!--[delay-list]-->
+
+<!--[select-footer]-->
+<option value=#id# #is-selected#>#name#
+<!--[select-footer]-->
+
+<!--[select-header]-->
+<option value=#id# #is-selected#>#name#
+<!--[select-header]-->
+
+<!--[select-body]-->
+<option value=#id# #is-selected#>#name#
+<!--[select-body]-->
+
+
+<!--[html-file-list]-->
+<option value=#id# #selected#>#name# #path#
+<!--[html-file-list]-->
+
+<!--[no-html-file-list]-->
+<option value=''>No html saved yet
+<!--[no-html-file-list]-->
+
+
+<!--[html-attached-list]-->
+<b>#path#</b> <input type=checkbox name=delete_html value=#id#> Delete<br>
+<!--[html-attached-list]-->
+
+<!--[no-html-attached-list]-->
+<b>No html uploaded yet</b>
+<!--[no-html-attached-list]-->
+
+
+<!--[file-file-list]-->
+<option value=#id# #selected#>#name# #path#
+<!--[file-file-list]-->
+
+<!--[no-file-file-list]-->
+<option value=''>No file saved yet
+<!--[no-file-file-list]-->
+
+
+<!--[file-attached-list]-->
+<b>#path#</b> <input type=checkbox name=delete_file value=#id#> Delete<br>
+<!--[file-attached-list]-->
+
+<!--[no-file-attached-list]-->
+<b>No file uploaded yet</b>
+<!--[no-file-attached-list]-->
+
+
+<!--[clear]-->

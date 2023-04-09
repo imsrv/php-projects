@@ -1,0 +1,105 @@
+<form action=admin.cgi method=post>
+<input type=hidden name=lid value="#FORM_lid#">
+<input type=hidden name=page value=sendimmediatly>
+<input type=hidden name=action value=send>
+<input type=hidden name=tid value="#FORM_tid#">
+<input type=hidden name=filter_id value=#FORM_filter_id#>
+<table cellcpacing=0 cellpadding=0 border=0 width=740 align=center><tr><td>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr>
+	<th><img src=#image_dir#newcamp.gif width=16 height=16> SEND LETTER</th>
+</tr>
+<tr><td class=td1>
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr valign=top><td width=30%>
+<b>Select period:<br></b>
+<input type=radio name=period value=all #select-period-all#> All<br>
+<input type=radio name=period value=new #select-period-new#> Only new<br>
+<input type=radio name=period value=period #select-period-period#> Period: <select name=p><option value=select>Select<option value=today #select-p-today#>Today<option value=yesterday #select-p-yesterday#>Yesterday<option value=week #select-p-week#>Week<option value=month #select-p-month#>Month<option value=quarter #select-p-quarter#>Quarter<option value=year #select-p-year#>Year</select><br>
+<input type=radio name=period value=range #select-period-range#> From: <input type=text name=from value="#range_from#" size=10> To: <input type=text name=to value="#range_to#" size=10><br><br>
+</td><td width=30%>
+<b>E-mail type:</b><br>
+<input type=radio name=e_type value=all #select-etype-all#> All<br>
+<input type=radio name=e_type value=checked #select-etype-checked#> Only Checked<br>
+<input type=radio name=e_type value=unchecked #select-etype-bad#> Only Bad<br>
+<br>
+</td><td width=30%>
+<b>User type</b><br>
+<input type=radio name=u_type value=all #select-utype-all#> All<br>
+<input type=radio name=u_type value=active #select-utype-active#> Active<br>
+<input type=radio name=u_type value=unsubscribed #select-utype-unsub#> Unsubscribed<br>
+</td></tr></table>
+
+<tr><td class=tdb>
+<input type=Submit class=sbmt value="NEXT >>"> &nbsp; <input type=button onClick="document.location='admin.cgi?page=subscr&tid=#FORM_tid#';" value="CANCEL" class=sbmt>
+</td></tr>
+</table>
+
+
+
+
+
+</td></tr></table>
+</form>
+
+
+
+</td></tr></table>
+
+<!--[clear]-->
+
+<!--[delay-list]-->
+<option value=#type# #selected#>#type#
+<!--[delay-list]-->
+
+<!--[select-footer]-->
+<option value=#id# #is-selected#>#name#
+<!--[select-footer]-->
+
+<!--[select-header]-->
+<option value=#id# #is-selected#>#name#
+<!--[select-header]-->
+
+<!--[select-body]-->
+<option value=#id# #is-selected#>#name#
+<!--[select-body]-->
+
+
+<!--[html-file-list]-->
+<option value=#id# #selected#>#name# #path#
+<!--[html-file-list]-->
+
+<!--[no-html-file-list]-->
+<option value=''>No html saved yet
+<!--[no-html-file-list]-->
+
+
+<!--[html-attached-list]-->
+<b>#path#</b> <input type=checkbox name=delete_html value=#id#> Delete<br>
+<!--[html-attached-list]-->
+
+<!--[no-html-attached-list]-->
+<b>No html uploaded yet</b>
+<!--[no-html-attached-list]-->
+
+
+<!--[file-file-list]-->
+<option value=#id# #selected#>#name# #path#
+<!--[file-file-list]-->
+
+<!--[no-file-file-list]-->
+<option value=''>No file saved yet
+<!--[no-file-file-list]-->
+
+
+<!--[file-attached-list]-->
+<b>#path#</b> <input type=checkbox name=delete_file value=#id#> Delete<br>
+<!--[file-attached-list]-->
+
+<!--[no-file-attached-list]-->
+<b>No file uploaded yet</b>
+<!--[no-file-attached-list]-->
+
+
+<!--[clear]-->

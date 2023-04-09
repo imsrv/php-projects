@@ -1,0 +1,36 @@
+From: #email-from#
+To: #email#
+Subject: #subject#
+Mime-Version: 1.0
+X-Mailer: Acc Subscribe (id=#send-id#)
+#additional_header#Content-Type: multipart/alternative; boundary="----rTiVMhV6-W6gZJvcydUEImKER:1039369086"
+
+#text-plain#
+
+#html-part#
+
+#base-part#
+
+------rTiVMhV6-W6gZJvcydUEImKER:1039369086--
+<!--[clear]-->
+
+<!--[text-plain]-->------rTiVMhV6-W6gZJvcydUEImKER:1039369086
+Content-Type: text/plain
+
+#cont#
+<!--[text-plain]-->
+
+<!--[html-part]-->------rTiVMhV6-W6gZJvcydUEImKER:1039369086
+Content-Type: text/html
+
+#cont#
+<!--[html-part]-->
+
+<!--[base-part]-->------rTiVMhV6-W6gZJvcydUEImKER:1039369086
+Content-Type: #content-type#; name="#file-name#"
+Content-Disposition: attachment; filename="#file-name#"
+Content-Transfer-Encoding: base64
+
+#cont#
+<!--[base-part]-->
+<!--[clear]-->

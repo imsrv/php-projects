@@ -1,0 +1,47 @@
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>Help Section - Create / Edit subscribtion</a></td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+<b>`Main info` section:</b><br>
+Here you could specify Subscription name and admin e-mail for this subscription.
+You could use `Subscribtion name` variable in letters as #subscribtion_name# - this variable will be replaced to string you specify.<br><br>
+<b>`Other settings` section:</b><br>
+Here you could set how many e-mail should be on each page when you manage this subscription. Default value for this variable you could set on `Settings screen` <a href=admin.cgi?page=settings target=_blank class=s>[here]</a><br>
+You could set expiration days for every subscription - it mean your subscribers will be placed in Expire section and will not get any e-mail. You could manually move such subscribers to `Active section`.<br><br>
+<b>`Process users that send letters` section:</b><br>
+Here you could set information for pop3 account. This account will be checked every minute and all users that write letter to e-mail you specify will be added to subscription. Also in subscription will be added subscriber's full name is it set in `From` field. This e-mail will be deleted.<br><br>
+<!--<b>`Dupes action` section:</b><br>
+Here you could set should be saved dupes in your subscription or not<br><br>
+-->
+<b>`Processing e-mails` section:</b><br>
+Here you could specify e-mail address. On this address will be send letters with user information that subscribe to this subsctiption and form fields<br><br>
+<b>`Subscribe page` section:</b><br>
+This page will be showed your subscriber when subscribe via form. You  could specify in this section subscribe text (html page) or url where will be redirected user after subscribe (for example subscribe.html)<br><br>
+<b>`Unsubscribe page` section:</b><br>
+This page will be showed your subscriber when unsubscribe. You  could specify in this section unsubscribe text (html page) or url where will be redirected user after unsubscribe (for example unsubscribe.html)<br><br>
+<b>`Send e-mail when unsubscribe` section:</b><br>
+Here you could set letter text for unsubscribe e-mail. This e-mail will be send to user when it unsubscribe from your news.<br><br>
+<b>`Use confirm URL`</b><br>
+Select this section if you need to user double opt-in feature. Users will receive confirmation e-mail with link (random link). It user clicks on this link - it become active users and will receive your e-mail.<br>
+Here you could specify text that user will view after approving or url - where this user will be redirected.<br><br>
+<b>`Approve users after they subscribe` section:</b><br>
+Select this section, if you need to approve users that subscribed on your newsletters.<br>
+This users will receive e-mail (approve email) when you approve or not approve email if you delete user from subscription.<br>
+All users in this subscription will placed first on not approved section, and then (after approving) they moved to active users.<br><br>
+<b>`Description` section:</b><br>
+This is information text only for admins.
+
+
+
+
+
+
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>

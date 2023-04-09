@@ -1,0 +1,36 @@
+; Configuration file for products import.
+;
+; Type : 0 - string, 1 - integer, 2 - float, 3 - date. Types separated by ','
+; Only one field can be a key with value 1 !!! If more than one key parameter is set to 1,
+; the first occurance used.
+;
+
+[title]
+require = 1
+position = 0
+type = 0,1,2,3
+key = 1
+
+[description]
+require = 0
+position = 1
+type = 0,1,2,3
+key = 0
+
+[quantity]
+require = 0
+position = 2
+type = 0,1,2,3
+key = 0
+
+[price]
+require = 1
+position = 3
+type = 0,1,2,3
+key = 0
+
+[sale_price]
+require = 0
+position = 4
+type = 0,1,2,3
+key = 0

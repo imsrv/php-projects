@@ -1,0 +1,175 @@
+BODY {
+	margin : 5pt;
+	padding : 0;
+	font : normal normal normal 10pt/normal Arial, Helvetica, sans-serif;
+	border : 0 none;
+	background-color : White;
+	color : Black;
+	page : auto;
+	page-break-after : auto;
+	page-break-before : auto;
+	page-break-inside : avoid;
+	orphans : inherit;
+	marks : cross;
+	size : 8.5in;
+}
+
+TABLE {
+	font : normal normal normal 10pt/normal Arial, Helvetica, sans-serif;
+}
+
+A:Link {
+	text-decoration : underline;
+	color : Blue;
+	background-color : transparent;
+}
+
+A:Visited {
+	text-decoration : underline;
+	color : Blue;
+	background-color : transparent;
+}
+
+A:Active {
+	text-decoration : underline;
+	color : Blue;
+	background-color : transparent;
+}
+
+A:Hover {
+	text-decoration : underline;
+	color : Navy;
+	background-color : transparent;
+}
+
+H1, H2, H3, H4, H5, H6 {
+	border : 0 none;
+	margin : 15pt 0 15pt 0;
+	padding : 0;
+	font-weight : bold;
+	font-style : normal;
+}
+
+H1 {
+	font-size : 20pt;
+	text-align : center;
+	color : Navy;
+	background-color : transparent;
+}
+
+H2 {
+	font-size : 18pt;
+	border-width : 2px 0;
+	border-color : Navy White;
+	border-style : solid none;
+	background-color : #CCCCFF;
+	color : Navy;
+}
+
+H3 {
+	font-size : 14pt;
+	color : Navy;
+	background-color : transparent;
+	border-width : 0 0 1px 0;
+	border-style : none none solid none;
+	border-bottom-color : Navy;
+	border-color : Navy;
+}
+
+H4 {
+	font-size : 12pt;
+	font-style : italic;
+}
+
+H5 {
+	font-size : 11pt;
+	font-style : italic;
+}
+
+H6 {
+	font-size : 10pt;
+	font-style : italic;
+	margin : 15pt 0 0 0;
+	color : Navy;
+	background-color : transparent;
+	border-width : 0 0 1px 0;
+	border-style : none none solid none;
+	border-color : Navy;
+}
+
+P {
+	border : 0 none;
+	margin : 5pt 0 5pt 0;
+	padding : 0;
+	text-align : justify;
+}
+
+BLOCKQUOTE {
+	border : 0 none;
+	padding : 0;
+	margin : 5pt 36pt 5pt 36pt;
+	text-align : justify;
+}
+
+UL {
+	border : 0 none;
+	margin : 5pt 0 5pt 36pt;
+	padding : 0;
+}
+
+UL LI {
+	border : 0 none;
+	margin : 0;
+	padding : 0;
+	outline-color : Navy;
+	outline-style : inherit;
+}
+
+DL {
+	border : 0 none;
+	margin : 5pt 0pt 5pt 0pt;
+	padding : 0;
+}
+
+DL DD {
+	border : 0 none;
+	margin : 0 0 5pt 36pt;
+	padding : 0;
+	text-align : justify;
+}
+
+DL DT {
+	border : 0 none;
+	margin : 5pt 0 0 0;
+	padding : 0;
+	font-style : italic;
+	font-weight : bold;
+	color : Maroon;
+	background-color : transparent;
+}
+
+HR {
+	border : 0 none;
+	margin : 0;
+	padding : 0;
+	color : Navy;
+	background-color : Navy;
+	height : 2px;
+}
+
+I {
+	font-style : italic;
+}
+
+B {
+	font-weight : bold;
+}
+
+EM {
+	font-style : italic;
+	font-weight : bold;
+}
+
+STRONG {
+	font-weight : 900;
+}

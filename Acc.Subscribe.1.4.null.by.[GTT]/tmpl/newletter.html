@@ -1,0 +1,531 @@
+<script language=javascript>
+function checkform() {
+  var form1 = document.newletter;
+  if (form1.from.value == '') {
+    alert("Please, enter from e-mail");
+    form1.from.focus();
+    return false;
+  }
+  if (form1.subject.value == '') {
+    alert("Please, enter subject");
+    form1.subject.focus();
+    return false;
+  }
+  if ((form1.save_header_template.checked)&&(form1.header_template_name.value == '')) {
+    alert("Please, type name for header template");
+    form1.header_template_name.focus();
+    return false;
+  }
+  if ((form1.save_body_template.checked)&&(form1.body_template_name.value == '')) {
+    alert("Please, type name for body template");
+    form1.body_template_name.focus();
+    return false;
+  }
+  if ((form1.save_footer_template.checked)&&(form1.footer_template_name.value == '')) {
+    alert("Please, type name for footer template");
+    form1.footer_template_name.focus();
+    return false;
+  }
+  return true;
+}
+
+function checkk() {
+  var s = document.newletter;
+//  s.delay.disabled = s.immediatly.checked;
+//  s.delay_type.disabled = s.immediatly.checked;
+
+  s.header_id.disabled = !s.header_select[0].checked;
+  s.headertext.disabled = !s.header_select[1].checked;
+  s.save_header_template.disabled = !s.header_select[1].checked;
+  s.header_template_name.disabled = !s.header_select[1].checked || !s.save_header_template.checked;
+
+  s.body_id.disabled = !s.body_select[0].checked;
+  s.bodytext.disabled = !s.body_select[1].checked;
+  s.save_body_template.disabled = !s.body_select[1].checked;
+  s.body_template_name.disabled = !s.body_select[1].checked || !s.save_body_template.checked;
+
+  s.footer_id.disabled = !s.footer_select[0].checked;
+  s.footertext.disabled = !s.footer_select[1].checked;
+  s.save_footer_template.disabled = !s.footer_select[1].checked;
+  s.footer_template_name.disabled = !s.footer_select[1].checked || !s.save_footer_template.checked;
+
+  s.html1_name.disabled = !s.save_html1.checked;
+  s.file1_name.disabled = !s.save_file1.checked;
+  s.html2_name.disabled = !s.save_html2.checked;
+  s.file2_name.disabled = !s.save_file2.checked;
+  s.html3_name.disabled = !s.save_html3.checked;
+  s.file3_name.disabled = !s.save_file3.checked;
+  s.html4_name.disabled = !s.save_html4.checked;
+  s.file4_name.disabled = !s.save_file4.checked;
+  s.html5_name.disabled = !s.save_html5.checked;
+  s.file5_name.disabled = !s.save_file5.checked;
+
+  s.monthly_day.disabled = !s.shedule[3].checked || s.shed_immediatly.checked;
+  s.monthly_hour.disabled = !s.shedule[3].checked || s.shed_immediatly.checked;
+  s.monthly_min.disabled = !s.shedule[3].checked || s.shed_immediatly.checked;
+  s.weekly_day.disabled = !s.shedule[2].checked || s.shed_immediatly.checked;
+  s.weekly_hour.disabled = !s.shedule[2].checked || s.shed_immediatly.checked;
+  s.weekly_min.disabled = !s.shedule[2].checked || s.shed_immediatly.checked;
+  s.dayly_hour.disabled = !s.shedule[1].checked || s.shed_immediatly.checked;
+  s.dayly_min.disabled = !s.shedule[1].checked || s.shed_immediatly.checked;
+  s.delay.disabled = !s.shedule[0].checked || s.shed_immediatly.checked;
+  s.delay_type.disabled = !s.shedule[0].checked || s.shed_immediatly.checked;
+  s.shedule[0].disabled = s.shed_immediatly.checked;
+  s.shedule[1].disabled = s.shed_immediatly.checked;
+  s.shedule[2].disabled = s.shed_immediatly.checked;
+  s.shedule[3].disabled = s.shed_immediatly.checked;
+}
+</script>
+
+<form action=admin.cgi method=post ENCTYPE="multipart/form-data" onSubmit="return checkform()" name=newletter>
+<input type=hidden name=lid value="#FORM_lid#">
+<input type=hidden name=page value=editletter>
+<input type=hidden name=action value=editletter>
+<input type=hidden name=tid value="#FORM_tid#">
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif width=3></td>
+	<td class=mh>Add new letter &nbsp; &nbsp; <a href=admin.cgi?page=help2 target=_blank>[help]</a></td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Header section &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+       	<tr>
+		<td class=tdd>From:</td><td class=tdd><input type=text name=from size=50 value="#from#" class=inpts></td>
+<!--		<td class=tdd align=right><nobr>Delay: <input type=text name=delay value="#delay#" size=3 class=inpts> &nbsp; <select name=delay_type class=inpts>#delay-list#</select> &nbsp; <input type=checkbox name=immediatly #check_immediatly# onClick="checkk();"> <small>(immediatly)</small></nobr></td>-->
+	</tr>
+       	<tr>
+		<td class=tdd>Subject:</td><td class=tdd colspan=2><input type=text name=subject size=130 value="#subject#" class=inpts></td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Additional header fields &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+       	<tr><td class=tdd><textarea name=additional_header cols=140 rows=6 class=inpts>#additional_header#</textarea>
+	</tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+
+
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Text letter header &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+	<tr><td class=tdd><input type=radio name=header_select value=1 #header-template-checked# onClick="checkk();"></td><td class=tdd><select name=header_id class=inpts><option value=''>Select template for header#select-header#</select></td></tr>
+	<tr><td class=tdd><input type=radio name=header_select value=0 #header-text-checked# onClick="checkk();"></td><td class=tdd><textarea name=headertext cols=135 rows=4 class=inpts>#header-text#</textarea>
+	<tr><td><input type=checkbox name=save_header_template value=1 onClick="checkk();"></td><td>Save Header as template. Input name: <input type=text name=header_template_name value="#header-template-name#" size=30 class=inpts></td></tr>
+	</tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Text letter body &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+	<tr><td class=tdd><input type=radio name=body_select value=1 #body-template-checked# onClick="checkk();"></td><td class=tdd><select name=body_id class=inpts><option value=''>Select template for body#select-body#</select></td></tr>
+	<tr><td class=tdd><input type=radio name=body_select value=0 #body-text-checked# onClick="checkk();"></td><td class=tdd><textarea name=bodytext cols=135 rows=9 class=inpts>#body-text#</textarea>
+	<tr><td><input type=checkbox name=save_body_template value=1 onClick="checkk();"></td><td>Save Body as template. Input name: <input type=text name=body_template_name value="#body-template-name#" size=30 class=inpts></td></tr>
+	</tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Text letter footer &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+	<tr><td class=tdd><input type=radio name=footer_select value=1 #footer-template-checked# onClick="checkk();"></td><td class=tdd><select name=footer_id class=inpts><option value=''>Select template for footer#select-footer#</select></td></tr>
+	<tr><td class=tdd><input type=radio name=footer_select value=0 #footer-text-checked# onClick="checkk();"></td><td class=tdd><textarea name=footertext cols=135 rows=4 class=inpts>#footer-text#</textarea>
+	<tr><td><input type=checkbox name=save_footer_template value=1 onClick="checkk();"></td><td>Save Footer as template. Input name: <input type=text name=footer_template_name value="#footer-template-name#" size=30 class=inpts></td></tr>
+	</tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+
+
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; HTML part &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+	<tr><td class=tdd><select name=template_html multiple size=7 class=inpts style="width:570px;"><option value=''>HTML list:#html-file-list#</select></td></tr>
+	<tr><td class=tdd>Included html:<br>#html-attached-list#</td></tr>
+	<tr><td><input type=file name=html1 class=inpts> &nbsp; &nbsp; save to templates <input type=checkbox name=save_html1 value=1 onClick="checkk();"> name: <input type=text name=html1_name class=inpts size=30><br>
+	 <input type=file name=html2 class=inpts> &nbsp; &nbsp; save to templates <input type=checkbox name=save_html2 value=1 onClick="checkk();"> name: <input type=text name=html2_name class=inpts size=30><br>
+	 <input type=file name=html3 class=inpts> &nbsp; &nbsp; save to templates <input type=checkbox name=save_html3 value=1 onClick="checkk();"> name: <input type=text name=html3_name class=inpts size=30><br>
+	 <input type=file name=html4 class=inpts> &nbsp; &nbsp; save to templates <input type=checkbox name=save_html4 value=1 onClick="checkk();"> name: <input type=text name=html4_name class=inpts size=30><br>
+	 <input type=file name=html5 class=inpts> &nbsp; &nbsp; save to templates <input type=checkbox name=save_html5 value=1 onClick="checkk();"> name: <input type=text name=html5_name class=inpts size=30>
+	</td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Attache part &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+	<tr><td class=tdd><select name=template_file multiple size=7 class=inpts style="width:570px;"><option value=''>File list:#file-file-list#</select></td></tr>
+	<tr><td class=tdd>Attached files:<br>#file-attached-list#</td></tr>
+	<tr><td><input type=file name=file1 class=inpts> &nbsp; &nbsp; save to templates <input type=checkbox name=save_file1 value=1 onClick="checkk();"> name: <input type=text name=file1_name class=inpts size=30><br>
+	 <input type=file name=file2 class=inpts> &nbsp; &nbsp; save to templates <input type=checkbox name=save_file2 value=1 onClick="checkk();"> name: <input type=text name=file2_name class=inpts size=30><br>
+	 <input type=file name=file3 class=inpts> &nbsp; &nbsp; save to templates <input type=checkbox name=save_file3 value=1 onClick="checkk();"> name: <input type=text name=file3_name class=inpts size=30><br>
+	 <input type=file name=file4 class=inpts> &nbsp; &nbsp; save to templates <input type=checkbox name=save_file4 value=1 onClick="checkk();"> name: <input type=text name=file4_name class=inpts size=30><br>
+	 <input type=file name=file5 class=inpts> &nbsp; &nbsp; save to templates <input type=checkbox name=save_file5 value=1 onClick="checkk();"> name: <input type=text name=file5_name class=inpts size=30><br>
+<table cellspacing=0 cellpadding=1 border=0 width=100%><tr valign=top><td width=50%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Upload from web &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+	<table cellspacing=0 cellpadding=1 border=0 width=100%>
+	 <tr><td><input type=text name=file6 size=50 class=inpts value="http://"></td></tr>
+	 <tr><td><input type=text name=file7 size=50 class=inpts value="http://"></td></tr>
+	 <tr><td><input type=text name=file8 size=50 class=inpts value="http://"></td></tr>
+	 <tr><td><input type=text name=file9 size=50 class=inpts value="http://"></td></tr>
+	 <tr><td><input type=text name=file10 size=50 class=inpts value="http://"></td></tr>
+	</table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+</td><td width=50%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Attache from server &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+	<table cellspacing=0 cellpadding=1 border=0 width=100%>
+	 <tr><td>system path: <input type=text name=file11 size=50 class=inpts></td></tr>
+	 <tr><td>system path: <input type=text name=file12 size=50 class=inpts></td></tr>
+	 <tr><td>system path: <input type=text name=file13 size=50 class=inpts></td></tr>
+	 <tr><td>system path: <input type=text name=file14 size=50 class=inpts></td></tr>
+	 <tr><td>system path: <input type=text name=file15 size=50 class=inpts></td></tr>
+	</table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+</td></tr></table>
+	</td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Schedule section &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+<tr><td colspan=4><input type=checkbox name=shed_immediatly value=1 #shedule=0# onClick="checkk();"> Send immediatly</td></tr>
+<tr valign=top><td width=25%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; <input type=radio name=shedule value=1 #shedule=1# onClick="checkk();"> After subscribe &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+<tr>
+<td>In <input type=text name=delay value="#delay#" size=3 class=inpts> &nbsp; <select name=delay_type class=inpts>#delay-list#</select></td>
+</tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+</td><td width=25%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; <input type=radio name=shedule value=2 #shedule=2# onClick="checkk();"> Daily &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+<tr>
+<td>At <input type=text name=dayly_hour size=3 value="#dayly_hour#" class=inpts> hour <input type=text name=dayly_min value="#dayly_min#" size=3 class=inpts> min</td>
+</tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+</td><td width=25%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; <input type=radio name=shedule value=3 #shedule=3# onClick="checkk();"> Weekly &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+<tr><td>At <select name=weekly_day class=inpts><option value=1 #week_day=1#>Mon<option value=2 #week_day=2#>Tue<option value=3 #week_day=3#>Wed<option value=4 #week_day=4#>Thu<option value=5 #week_day=5#>Fri<option value=6 #week_day=6#>Sat<option value=7 #week_day=7#>Sun</select> day</td></tr>
+<tr><td><input type=text name=weekly_hour value="#weekly_hour#" size=3 class=inpts> hour <input type=text name=weekly_min value="#weekly_min#" size=3 class=inpts> min</td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+</td><td width=25%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; <input type=radio name=shedule value=4 #shedule=4# onClick="checkk();"> Monthly &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+<tr><td>At <input type=text name=monthly_day value="#monthly_day#" size=3 class=inpts> day</td></tr>
+<tr><td><input type=text name=monthly_hour value="#monthly_hour#" size=3 class=inpts> hour <input type=text name=monthly_min value="#monthly_min#" size=3 class=inpts> min</td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+</td>
+</tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+
+
+<!--<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%><tr><td class=td1>
+Hint: When you create letter, you can save all text and files in templates. This feature helps you use text and files in other letter without upload them.<br><br>
+When you create letter you could use next tags to personalize letter: #email#, #first-name#, #last-name#, #phone#, #icq#, #address#, #address2#, #city#, #state#, #country#, #birthdate#, #age#, #sex#, #website#, #business#, #date_now#, #ip#
+</td></tr></table>
+</td></tr></table>
+<br><br>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr>
+	<th colspan=2><img src=#image_dir#newcamp.gif width=16 height=16> ADD NEW LETTER</th>
+</tr>
+<tr><td class=td1> From:</td><td class=td1><input type=text name=from size=30 value="#from#"></td></tr>
+<tr><td class=td2> Subject:</td><td class=td2><input type=text name=subject size=30 value="#subject#"></td></tr>
+<tr valign=top><td class=td1><img src=#image_dir#desc.gif width=16 height=16> Header:</td><td class=td1>
+	<table cellspacing=0 cellpadding=0 border=0 width=100%><tr valign=top><td>
+	<input type=radio name=header_select value=1 #header-template-checked#></td><td><select name=header_id><option value=''>Select template for header#select-header#</select>
+	</td></tr><tr valign=top><td><input type=radio name=header_select value=0 #header-text-checked#></td><td><textarea name=headertext cols=350 rows=10>#header-text#</textarea>
+	</td></tr>
+	<tr><td><input type=checkbox name=save_header_template value=1></td><td>Save Header as template. Input name: <input type=text name=header_template_name value="#header-template-name#"></td></tr>
+	</table>
+</td></tr>
+<tr valign=top><td class=td2><img src=#image_dir#desc.gif width=16 height=16> Body:</td><td class=td2>
+	<table cellspacing=0 cellpadding=0 border=0 width=100%><tr valign=top><td>
+	<input type=radio name=body_select value=1 #body-template-checked#></td><td><select name=body_id><option value=''>Select template for body#select-body#</select>
+	</td></tr><tr valign=top><td><input type=radio name=body_select value=0 #body-text-checked#></td><td><textarea name=bodytext cols=120 rows=10>#body-text#</textarea></td></tr>
+	</td></tr>
+	<tr><td><input type=checkbox name=save_body_template value=1></td><td>Save Body as template. Input name: <input type=text name=body_template_name value="#body-template-name#"></td></tr>
+	</table>
+</td></tr>
+<tr valign=top><td class=td1><img src=#image_dir#desc.gif width=16 height=16> Footer:</td><td class=td1>
+	<table cellspacing=0 cellpadding=0 border=0 width=100%><tr valign=top><td>
+	<input type=radio name=footer_select value=1 #footer-template-checked#></td><td><select name=footer_id><option value=''>Select template for footer#select-footer#</select>
+	</td></tr><tr valign=top><td><input type=radio name=footer_select value=0 #footer-text-checked#></td><td><textarea name=footertext cols=120 rows=10>#footer-text#</textarea></td></tr>
+	</td></tr>
+	<tr><td><input type=checkbox name=save_footer_template value=1></td><td>Save Footer as template. Input name: <input type=text name=footer_template_name value="#footer-template-name#"></td></tr>
+	</table>
+</td></tr>
+
+
+<tr valign=top><td class=td2>Html:</td><td class=td2>
+	<table cellspacing=0 cellpadding=0 border=0><tr valign=top><td colspan=2>
+	Attached html:<br>#html-attached-list#<br></td></tr><tr valign=top><td>
+	<select name=template_html multiple size=7><option value=''>File list:#html-file-list#</select></td><td>
+	 <input type=file name=html1> save <input type=checkbox name=save_html1 value=1> name: <input type=text name=html1_name><br>
+	 <input type=file name=html2> save <input type=checkbox name=save_html2 value=1> name: <input type=text name=html2_name><br>
+	 <input type=file name=html3> save <input type=checkbox name=save_html3 value=1> name: <input type=text name=html3_name><br>
+	 <input type=file name=html4> save <input type=checkbox name=save_html4 value=1> name: <input type=text name=html4_name><br>
+	 <input type=file name=html5> save <input type=checkbox name=save_html5 value=1> name: <input type=text name=html5_name>
+
+	</td></tr></table>
+</td></tr>
+<tr><td class=td1>Attaches:</td><td class=td1>
+	<table cellspacing=0 cellpadding=0 border=0><tr valign=top><td colspan=2>
+	Attached files:<br>#file-attached-list#<br></td></tr><tr valign=top><td>
+	<select name=template_file multiple size=7><option value=''>File list:#file-file-list#</select></td><td>
+	 <input type=file name=file1> save <input type=checkbox name=save_file1 value=1> name: <input type=text name=file1_name><br>
+	 <input type=file name=file2> save <input type=checkbox name=save_file2 value=1> name: <input type=text name=file2_name><br>
+	 <input type=file name=file3> save <input type=checkbox name=save_file3 value=1> name: <input type=text name=file3_name><br>
+	 <input type=file name=file4> save <input type=checkbox name=save_file4 value=1> name: <input type=text name=file4_name><br>
+	 <input type=file name=file5> save <input type=checkbox name=save_file5 value=1> name: <input type=text name=file5_name>
+
+	</td></tr></table>
+</td></tr>
+<tr><td class=td2>Delay:</td><td class=td2><input type=text name=delay value="#delay#" size=3> &nbsp; <select name=delay_type>#delay-list#</select> (select 0 hour, to send e-mail immediatly when user will register)</td></tr>
+<tr><td class=td1 valign=top>Unsubscribe Link:</td><td class=td1><b>Please, add text below to letter, this link need to unsubscribe users:</b><br><br>to be taken off from future mailings please &lt;a href="#server-url#subscribe.cgi?action=unsubscribe&amp;email=#email#&amp;sub=#FORM_tid#"&gt;CLICK HERE&lt;/a&gt;</td></tr>
+
+</td></tr>
+<tr><td colspan=2 class=tdb>
+</td></tr>
+</table>
+</td></tr></table>
+-->
+
+<input type=Submit class=sbmt value="SAVE"> &nbsp; <input type=button onClick="document.location='admin.cgi?page=subscr&tid=#FORM_tid#';" value="CANCEL" class=sbmt>
+
+
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+</form>
+<br><br>
+
+<script language=javascript>
+checkk();
+</script>
+
+
+<!--[clear]-->
+
+<!--[delay-list]-->
+<option value=#type# #selected#>#type#
+<!--[delay-list]-->
+
+<!--[select-footer]-->
+<option value=#id# #is-selected#>#name#
+<!--[select-footer]-->
+
+<!--[select-header]-->
+<option value=#id# #is-selected#>#name#
+<!--[select-header]-->
+
+<!--[select-body]-->
+<option value=#id# #is-selected#>#name#
+<!--[select-body]-->
+
+
+<!--[html-file-list]-->
+<option value=#id# #selected#>#name# #path#
+<!--[html-file-list]-->
+
+<!--[no-html-file-list]-->
+<option value=''>No html saved yet
+<!--[no-html-file-list]-->
+
+
+<!--[html-attached-list]-->
+<b>#path#</b> <input type=checkbox name=delete_html value=#id#> Delete<br>
+<!--[html-attached-list]-->
+
+<!--[no-html-attached-list]-->
+<b>No html uploaded yet</b>
+<!--[no-html-attached-list]-->
+
+
+<!--[file-file-list]-->
+<option value=#id# #selected#>#name# #path#
+<!--[file-file-list]-->
+
+<!--[no-file-file-list]-->
+<option value=''>No file saved yet
+<!--[no-file-file-list]-->
+
+
+<!--[file-attached-list]-->
+<b>#path#</b> <input type=checkbox name=delete_file value=#id#> Delete<br>
+<!--[file-attached-list]-->
+
+<!--[no-file-attached-list]-->
+<b>No file uploaded yet</b>
+<!--[no-file-attached-list]-->
+
+
+<!--[clear]-->

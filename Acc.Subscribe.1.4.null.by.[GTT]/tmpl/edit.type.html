@@ -1,0 +1,476 @@
+<script language=javascript>
+function checkform() {
+  if (document.mainform.typename.value == '') {
+    alert ("Please, type subscription name");
+    document.mainform.typename.focus();
+    return false;
+  }
+  return true;
+}
+</script>
+
+<form action=admin.cgi method=post onSubmit="return checkform();" name=mainform>
+<input type=hidden name=page value=edittype>
+<input type=hidden name=action value=edittype>
+<input type=hidden name=tid value=#FORM_tid#>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>Edit subscription &nbsp; &nbsp; <a href="admin.cgi?page=help1" target=_blank><b>[help]</b></a></td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+	<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td>
+<table cellspacing=2 cellpadding=0 border=0 width=100%><tr><td width=50%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Main info &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100% height=45>
+       <tr><td class=tdd>Subscription name:</td><td class=tdd><input type=text name=typename size=30 class=inpts value="#s_name#"></td></tr>
+       <tr><td class=tdd>Admin e-mail:</td><td class=tdd><input type=text name=admin_email size=30 class=inpts value="#s_admin_email#"></td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+</td><td width=50%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Other settings &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+       <tr><td class=tdd>Show <input type=text name=num_on_page value='#s_col_on_page#' class=inpts size=5 style="text-align: right";> e-mails on page</td></tr>
+       <tr><td class=tdd>Delete subscriber in <input type=text name=delete_subscriber value='#s_active_days#' class=inpts size=5 style="text-align: right"> days &nbsp; &nbsp; (<input type=checkbox name=delete_subscriberno #s_active_daysno# onClick="checkk();"> no expire)</td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+</td></tr></table>
+<br>
+
+<table cellspacing=2 cellpadding=0 border=0 width=100%><tr><td width=50%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Subscribe page &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+       <tr><td class=tdd colspan=2><input type=radio name=subscribe_html_radio value=html #s_subscribe_text_url=html# onClick="checkk();"> Text for subscribe html:</td></tr>
+       <tr><td colspan=2><textarea name=subscribe_text cols=67 rows=6 class=inpts>#s_subscribe_html#</textarea><br><br></td></tr>
+       <tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+       <tr><td><nobr><input type=radio name=subscribe_html_radio value=url #s_subscribe_text_url=url# onClick="checkk();"> Subscribe URL:</nobr></td><td><input type=text name=subscribe_url size=40 class=inpts value="#s_subscribe_url#"></td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+</td><td width=50%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Unsubscribe page &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+       <tr><td class=tdd colspan=2><input type=radio name=unsubscribe_html_radio value=html #s_unsubscribe_text_url=html# onClick="checkk();"> Text for unsubscribe html:</td></tr>
+       <tr><td colspan=2><textarea name=unsubscribe_text cols=67 rows=6 class=inpts>#s_unsubscribe_html#</textarea><Br><br></td></tr>
+       <tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+       <tr><td><nobr><input type=radio name=unsubscribe_html_radio value=url #s_unsubscribe_text_url=url# onClick="checkk();"> Unubscribe URL:</nobr></td><td><input type=text name=unsubscribe_url size=40 class=inpts value="#s_unsubscribe_url#"></td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+</td></tr></table>
+<br>
+
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; <input type=checkbox name=confirmunsubscribe value=1 #s_send_confirm_unsubscribe=1# onClick="checkk()"> Send e-mail when unsubscribe &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+       <tr><td class=tdd>From e-mail:</td><td><input type=text name=confirmunsubscribefrom class=inpts size=90 value="#s_confirm_unsubscribe_email#"> </td></tr>
+       <tr><td class=tdd>Subject:</td><td><input type=text name=confirmunsubscribesubject class=inpts size=90 value="#s_confirm_unsubscribe_subject#"> </td></tr>
+       <tr><td class=tdd colspan=2>Message:</td></tr>
+       <tr><td colspan=2><textarea name=confirmunsubscribetext cols=142 rows=6 class=inpts>#s_confirm_unsubscribe_message#</textarea></td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+  <table cellspacing=0 cellpadding=0 border=0 width=100%>
+  <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+  <td class=tdd><nobr>&nbsp; <input type=checkbox name=use_confirm_url value=1 #s_use_confirm_url=1# onClick="checkk()"> Use confirm URL &nbsp;</nobr></td>
+  <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+  </tr></table>
+</td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+<tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+<td>
+     <table cellspacing=2 cellpadding=0 border=0 width=100%><tr valign=top><td width=50%>
+         <table cellspacing=0 cellpadding=0 border=0 width=100%>
+         <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+           <table cellspacing=0 cellpadding=0 border=0 width=100%>
+           <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+           <td class=tdd><nobr>&nbsp; Subscribe confirm page &nbsp;</nobr></td>
+           <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+           </tr></table>
+         </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+         <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+         <td>
+            <table cellspacing=2 cellpadding=0 border=0 width=100%>
+            <tr><td class=tdd colspan=2><input type=radio name=subscribe_confirm_html_radio value=html #s_subscribe_confirm_text_url=html# onClick="checkk();"> Text for subscribe confirm html:</td></tr>
+            <tr><td colspan=2><textarea name=subscribe_confirm_text cols=67 rows=6 class=inpts>#s_subscribe_confirm_html#</textarea><br><br></td></tr>
+            <tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+            <tr><td><nobr><input type=radio name=subscribe_confirm_html_radio value=url #s_subscribe_confirm_text_url=url# onClick="checkk();"> Subscribe confirm URL:</nobr></td><td><input type=text name=subscribe_confirm_url size=30 class=inpts value="#s_subscribe_confirm_url#"></td></tr>
+            </table>
+         </td>
+         <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+         <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+     </td><td width=50%>
+         <table cellspacing=0 cellpadding=0 border=0 width=100%>
+         <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+           <table cellspacing=0 cellpadding=0 border=0 width=100%>
+           <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+           <td class=tdd><nobr>&nbsp; Send e-mail with confirmation link &nbsp;</nobr></td>
+           <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+           </tr></table>
+         </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+         <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+         <td>
+            <table cellspacing=2 cellpadding=0 border=0 width=100% height=144>
+            <tr><td class=tdd>From e-mail:</td><td><input type=text name=confirmsubscribefrom value="#s_confirm_subscribe_email#" class=inpts size=30> </td></tr>
+            <tr><td class=tdd>Subject:</td><td><input type=text name=confirmsubscribesubject value="#s_confirm_subscribe_subject#" class=inpts size=30> </td></tr>
+            <tr><td class=tdd colspan=2>Message:</td></tr>
+            <tr><td colspan=2><textarea name=confirmsubscribetext cols=67 rows=6 class=inpts>#s_confirm_subscribe_message#</textarea></td></tr>
+            </table>
+         </td>
+         <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+         <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+<!--         <table cellspacing=0 cellpadding=0 border=0 width=100%>
+         <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+           <table cellspacing=0 cellpadding=0 border=0 width=100%>
+           <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+           <td class=tdd><nobr>&nbsp; Unsubscribe confirm page &nbsp;</nobr></td>
+           <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+           </tr></table>
+         </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+         <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+         <td>
+            <table cellspacing=2 cellpadding=0 border=0 width=100%>
+            <tr><td class=tdd colspan=2><input type=radio name=unsubscribe_confirm_html_radio value=html #s_unsubscribe_confirm_text_url=html# onClick="checkk();"> Text for unsubscribe confirm html:</td></tr>
+            <tr><td colspan=2><textarea name=unsubscribe_confirm_text cols=67 rows=6 class=inpts>#s_unsubscribe_confirm_html#</textarea><Br><br></td></tr>
+            <tr><td colspan=2 background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+            <tr><td><nobr><input type=radio name=unsubscribe_confirm_html_radio value=url #s_unsubscribe_confirm_text_url=url# onClick="checkk();"> Unubscribe confirm URL:</nobr></td><td><input type=text name=unsubscribe_confirm_url size=30 class=inpts value="#s_unsubscribe_confirm_url#"></td></tr>
+            </table>
+         </td>
+         <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+         <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+-->
+     </td></tr></table>
+
+</td>
+<td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+<tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+
+
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+  <table cellspacing=0 cellpadding=0 border=0 width=100%>
+  <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+  <td class=tdd><nobr>&nbsp; <input type=checkbox name=approveusers value=1 #s_use_approve=1# onClick="checkk()"> Approve users after they subscribe &nbsp;</nobr></td>
+  <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+  </tr></table>
+</td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+<tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+<td>
+  <table cellspacing=2 cellpadding=0 border=0 width=100%><tr><td width=50%>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+        <table cellspacing=0 cellpadding=0 border=0 width=100%>
+        <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+        <td class=tdd><nobr>&nbsp; <input type=checkbox name=approveapprove value=1 #s_send_approve=1# onClick="checkk();"> Send e-mail when approve &nbsp;</nobr></td>
+        <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+        </tr></table>
+      </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+      <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+      <td>
+         <table cellspacing=2 cellpadding=0 border=0 width=100%>
+         <tr><td class=tdd>From e-mail:</td><td><input type=text name=approvefrom class=inpts size=30 value="#s_approve_email#"> </td></tr>
+         <tr><td class=tdd>Subject:</td><td><input type=text name=approvesubject class=inpts size=30 value="#s_approve_subject#"> </td></tr>
+         <tr><td class=tdd colspan=2>Message:</td></tr>
+         <tr><td colspan=2><textarea name=approvetext cols=67 rows=6 class=inpts>#s_approve_message#</textarea></td></tr>
+         </table>
+      </td>
+      <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+      <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+  </td><td width=50%>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+        <table cellspacing=0 cellpadding=0 border=0 width=100%>
+        <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+        <td class=tdd><nobr>&nbsp; <input type=checkbox name=approvenotapprove value=1 #s_send_notapprove=1# onClick="checkk();"> Send e-mail when not approve &nbsp;</nobr></td>
+        <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+        </tr></table>
+      </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+      <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+      <td>
+         <table cellspacing=2 cellpadding=0 border=0 width=100%>
+         <tr><td class=tdd>From e-mail:</td><td><input type=text name=notapprovefrom class=inpts value="#s_notapprove_email#" size=30> </td></tr>
+         <tr><td class=tdd>Subject:</td><td><input type=text name=notapprovesubject class=inpts value="#s_notapprove_subject#" size=30> </td></tr>
+         <tr><td class=tdd colspan=2>Message:</td></tr>
+         <tr><td colspan=2><textarea name=notapprovetext cols=67 rows=6 class=inpts>#s_notapprove_message#</textarea></td></tr>
+         </table>
+      </td>
+      <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+      <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+  </td></tr></table>
+
+
+</td>
+<td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+<tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; <input type=checkbox name=checkemail value=1 #s_use_autoresponce=1# onClick="checkk();"> Process users that send letter &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+       <tr><td class=tdd>E-mail:</td><td><input type=text name=checkemailemail class=inpts size=30 value="#s_autoresponce_email#"> </td></tr>
+       <tr><td class=tdd>Host:</td><td><input type=text name=checkemailhost class=inpts size=30 value="#s_autoresponce_host#"> </td></tr>
+       <tr><td class=tdd>Login:</td><td><input type=text name=checkemaillogin class=inpts size=30 value="#s_autoresponce_login#"> </td></tr>
+       <tr><td class=tdd>Password:</td><td><input type=text name=checkemailpassword class=inpts size=30 value="#s_autoresponce_password#"> </td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+<br>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Processing e-mails &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+       <tr><td class=tdd><input type=text name=processingemails class=inpts size=120 value="#s_processing_emails#"></td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+
+<!--<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+  <table cellspacing=0 cellpadding=0 border=0 width=100%>
+  <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+  <td class=tdd><nobr>&nbsp; Send dayly stats to: &nbsp;</nobr></td>
+  <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+  </tr></table>
+</td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+<tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+<td>
+   <table cellspacing=2 cellpadding=0 border=0 width=100%>
+   <tr><td colspan=2><input type=text name=daylystats value="#s_dayly_stats#" size=140 class=inpts></td></tr>
+   </table>
+</td>
+<td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+<tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+  <table cellspacing=0 cellpadding=0 border=0 width=100%>
+  <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+  <td class=tdd><nobr>&nbsp; Send weekly stats to: &nbsp;</nobr></td>
+  <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+  </tr></table>
+</td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+<tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+<td>
+   <table cellspacing=2 cellpadding=0 border=0 width=100%>
+   <tr><td colspan=2><input type=text name=weeklystats value="#s_weekly_stats#" size=140 class=inpts></td></tr>
+   </table>
+</td>
+<td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+<tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+  <table cellspacing=0 cellpadding=0 border=0 width=100%>
+  <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+  <td class=tdd><nobr>&nbsp; Send monthly stats to: &nbsp;</nobr></td>
+  <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+  </tr></table>
+</td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+<tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+<td>
+   <table cellspacing=2 cellpadding=0 border=0 width=100%>
+   <tr><td colspan=2><input type=text name=monthlystats value="#s_monthly_stats#" size=140 class=inpts></td></tr>
+   </table>
+</td>
+<td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+<tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+<br>-->
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+        <table cellspacing=0 cellpadding=0 border=0 width=100%>
+        <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+        <td class=tdd><nobr>&nbsp; Description &nbsp;</nobr></td>
+        <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+        </tr></table>
+      </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+      <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+      <td>
+         <table cellspacing=2 cellpadding=0 border=0 width=100%>
+         <tr><td colspan=2><textarea name=typedesc cols=142 rows=6 class=inpts>#s_t_desc#</textarea></td></tr>
+         </table>
+      </td>
+      <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+      <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+  </td></tr></table>
+
+
+
+<br><br>
+<input type=Submit class=sbmt value=SAVE> &nbsp; <input type=button class=sbmt value=CANCEL onClick="document.location='admin.cgi';">
+<script language=javascript>
+function checkk() {
+  document.mainform.delete_subscriber.disabled = document.mainform.delete_subscriberno.checked;
+  if (document.mainform.subscribe_html_radio[0].checked) {
+    document.mainform.subscribe_text.disabled = false;
+    document.mainform.subscribe_url.disabled = true;
+  } else {
+    document.mainform.subscribe_text.disabled = true;
+    document.mainform.subscribe_url.disabled = false;
+  }
+  if (document.mainform.unsubscribe_html_radio[0].checked) {
+    document.mainform.unsubscribe_text.disabled = false;
+    document.mainform.unsubscribe_url.disabled = true;
+  } else {
+    document.mainform.unsubscribe_text.disabled = true;
+    document.mainform.unsubscribe_url.disabled = false;
+  }
+
+  document.mainform.confirmsubscribefrom.disabled = !document.mainform.use_confirm_url.checked;
+  document.mainform.confirmsubscribesubject.disabled = !document.mainform.use_confirm_url.checked;
+  document.mainform.confirmsubscribetext.disabled = !document.mainform.use_confirm_url.checked;
+  document.mainform.subscribe_confirm_html_radio[0].disabled = !document.mainform.use_confirm_url.checked;
+  document.mainform.subscribe_confirm_html_radio[1].disabled = !document.mainform.use_confirm_url.checked;
+
+  document.mainform.confirmunsubscribefrom.disabled = !document.mainform.confirmunsubscribe.checked;
+  document.mainform.confirmunsubscribesubject.disabled = !document.mainform.confirmunsubscribe.checked;
+  document.mainform.confirmunsubscribetext.disabled = !document.mainform.confirmunsubscribe.checked;
+
+  document.mainform.checkemailemail.disabled = !document.mainform.checkemail.checked;
+  document.mainform.checkemailhost.disabled = !document.mainform.checkemail.checked;
+  document.mainform.checkemaillogin.disabled = !document.mainform.checkemail.checked;
+  document.mainform.checkemailpassword.disabled = !document.mainform.checkemail.checked;
+//  document.mainform.checkemaildelete.disabled = !document.mainform.checkemail.checked;
+
+  st = true;
+  if (document.mainform.approveusers.checked == true) {
+    st = false;
+  }
+  document.mainform.approveapprove.disabled = !document.mainform.approveusers.checked;
+  s = true;
+  if (st == false && document.mainform.approveapprove.checked == true) {
+    s = false;
+  }
+  document.mainform.approvefrom.disabled = s;
+  document.mainform.approvesubject.disabled = s;
+  document.mainform.approvetext.disabled = s;
+
+  document.mainform.approvenotapprove.disabled = st;
+  s = true;
+  if (st == false && document.mainform.approvenotapprove.checked == true) {
+    s = false;
+  }
+  document.mainform.notapprovefrom.disabled = s;
+  document.mainform.notapprovesubject.disabled = s;
+  document.mainform.notapprovetext.disabled = s;
+
+//  document.mainform.subscribe_confirm_text_url.disabled = !document.mainform.use_confirm_url.checked;
+  document.mainform.subscribe_confirm_text.disabled = !document.mainform.use_confirm_url.checked;
+  document.mainform.subscribe_confirm_url.disabled = !document.mainform.use_confirm_url.checked;
+//  document.mainform.unsubscribe_confirm_text.disabled = !document.mainform.use_confirm_url.checked;
+//  document.mainform.unsubscribe_confirm_url.disabled = !document.mainform.use_confirm_url.checked;
+  if (document.mainform.use_confirm_url.checked) {
+    if (document.mainform.subscribe_confirm_html_radio[0].checked) {
+      document.mainform.subscribe_confirm_url.disabled = true;
+    } else {
+      document.mainform.subscribe_confirm_text.disabled = true;
+    }
+/*    if (document.mainform.unsubscribe_confirm_html_radio[0].checked) {
+      document.mainform.unsubscribe_confirm_url.disabled = true;
+    } else {
+      document.mainform.unsubscribe_confirm_text.disabled = true;
+    }*/
+  }
+}
+
+checkk();
+</script>
+
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+
+
+</form>
+
+
+

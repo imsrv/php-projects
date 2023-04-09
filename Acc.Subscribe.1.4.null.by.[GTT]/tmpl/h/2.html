@@ -1,0 +1,47 @@
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>Help Section - Create / Edit newsletters</a></td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+<b>`Additional header fields` section:</b><br>
+Here you could specify such variables in header of letter as Bcc, or X-Mailer.<br><br>
+
+<b>`HTML part` section:</b><br>
+You could upload html in this section from your hard drive, and your users will receive letters in html format.<br>
+In this html you could use any variables (description bellow)<br><br>
+
+<b>`Attache path` section:</b><br>
+Your could upload files from your hard drive, from web or from server. This is a good feature to send dynamic created newsletters. For example, you could create letters, that will be send every monday and you have a script, that generate news. then you simply set path to this script on this section (upload from web) and your users will receive latest newsletters.<br><br>
+
+<b>`Schedule` section:</b><br>
+Here you could set when this letter should be send to users.<br><br>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+</table>
+<b>Variables:</b><br>
+In your newsletters, you could use following variables, to make newsletters personalise:<br>
+#email#, #first_name#, #last_name#, #full_name#, #company#, #language#, #phone#, #icq#, #address#, #address2#, #city#, #state#, #country#, #birthdate#, #age#, #sex#, #website#, #heard#, #business#, #date_sub#, #date_unsub#, #ip#, #lettersformat#, #additional1#, #additional2#, #additional3#, #additional4#, #additional5#, #additional6#, #additional7#, #additional8#, #additional9#, #additional10#, #additional11#, #additional12# - user information.<br>
+#date#, #time#, #datetime# - date and variables.<br>
+#subscribiton_name#, #confirm-subscribe-url#, #unsubscribe_url#, #site-name#.<br>
+#rand=10# - will be replaced to random scring (10 character)<br>
+#file=/usr/home/some_file# - will be replaced to content of this file.<br>
+#url=www.somedomain.com# - will be replaced to content on this url.<br>
+You could also use :<br>
+#file=/usr/home/somedir/#email## (#email could be replaced to any different variable). or #url=www.google.com?q=#website##<br><br>
+
+To track how many e-mails was been read, please insert into html part #track_code# variable - this variable will be replaced to image with sizes 1x1. /Note: this feature available for letters that you send with `bulk sending` feature/
+
+
+
+
+
+
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>

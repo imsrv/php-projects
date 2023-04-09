@@ -1,0 +1,370 @@
+<form action=admin.cgi method=post onSubmit="return checkform()" name=mainform>
+<input type=hidden name=page value=forms>
+<input type=hidden name=action value=generate1>
+
+<script language=javascript>
+function checkform() {
+  if (document.mainform.subs.selectedIndex == -1) {
+    alert('Please select subscribtion');
+    return false;
+  }
+  return true;
+}
+
+function checkk() {
+  var s = document.mainform;
+  s.email_title.disabled = !s.email_ch.checked;
+  s.email_html_name.disabled = !s.email_ch.checked;
+//  s.email_type.disabled = !s.email_ch.checked;
+  s.first_name_title.disabled = !s.first_name_ch.checked;
+  s.first_name_html_name.disabled = !s.first_name_ch.checked;
+//  s.first_name_type.disabled = !s.first_name_ch.checked;
+  s.last_name_title.disabled = !s.last_name_ch.checked;
+  s.last_name_html_name.disabled = !s.last_name_ch.checked;
+//  s.last_name_type.disabled = !s.last_name_ch.checked;
+  s.full_name_title.disabled = !s.full_name_ch.checked;
+  s.full_name_html_name.disabled = !s.full_name_ch.checked;
+//  s.full_name_type.disabled = !s.full_name_ch.checked;
+  s.company_title.disabled = !s.company_ch.checked;
+  s.company_html_name.disabled = !s.company_ch.checked;
+//  s.company_type.disabled = !s.company_ch.checked;
+  s.language_title.disabled = !s.language_ch.checked;
+  s.language_html_name.disabled = !s.language_ch.checked;
+  s.language_type.disabled = !s.language_ch.checked;
+  s.phone_title.disabled = !s.phone_ch.checked;
+  s.phone_html_name.disabled = !s.phone_ch.checked;
+//  s.phone_type.disabled = !s.phone_ch.checked;
+  s.icq_title.disabled = !s.icq_ch.checked;
+  s.icq_html_name.disabled = !s.icq_ch.checked;
+//  s.icq_type.disabled = !s.icq_ch.checked;
+  s.address_title.disabled = !s.address_ch.checked;
+  s.address_html_name.disabled = !s.address_ch.checked;
+//  s.address_type.disabled = !s.address_ch.checked;
+  s.address2_title.disabled = !s.address2_ch.checked;
+  s.address2_html_name.disabled = !s.address2_ch.checked;
+//  s.address2_type.disabled = !s.address2_ch.checked;
+  s.city_title.disabled = !s.city_ch.checked;
+  s.city_html_name.disabled = !s.city_ch.checked;
+  s.city_type.disabled = !s.city_ch.checked;
+  s.state_title.disabled = !s.state_ch.checked;
+  s.state_html_name.disabled = !s.state_ch.checked;
+  s.state_type.disabled = !s.state_ch.checked;
+  s.country_title.disabled = !s.country_ch.checked;
+  s.country_html_name.disabled = !s.country_ch.checked;
+  s.country_type.disabled = !s.country_ch.checked;
+  s.birthdate_title.disabled = !s.birthdate_ch.checked;
+  s.birthdate_html_name.disabled = !s.birthdate_ch.checked;
+//  s.birthdate_type.disabled = !s.birthdate_ch.checked;
+  s.age_title.disabled = !s.age_ch.checked;
+  s.age_html_name.disabled = !s.age_ch.checked;
+//  s.age_type.disabled = !s.age_ch.checked;
+  s.sex_title.disabled = !s.sex_ch.checked;
+  s.sex_html_name.disabled = !s.sex_ch.checked;
+  s.sex_type.disabled = !s.sex_ch.checked;
+  s.website_title.disabled = !s.website_ch.checked;
+  s.website_html_name.disabled = !s.website_ch.checked;
+  s.website_type.disabled = !s.website_ch.checked;
+  s.heard_title.disabled = !s.heard_ch.checked;
+  s.heard_html_name.disabled = !s.heard_ch.checked;
+  s.heard_type.disabled = !s.heard_ch.checked;
+  s.business_title.disabled = !s.business_ch.checked;
+  s.business_html_name.disabled = !s.business_ch.checked;
+  s.business_type.disabled = !s.business_ch.checked;
+  s.lettersformat_title.disabled = !s.lettersformat_ch.checked;
+  s.lettersformat_html_name.disabled = !s.lettersformat_ch.checked;
+  s.lettersformat_type.disabled = !s.lettersformat_ch.checked;
+  s.additional1_title.disabled = !s.additional1_ch.checked;
+  s.additional1_html_name.disabled = !s.additional1_ch.checked;
+  s.additional1_type.disabled = !s.additional1_ch.checked;
+  s.additional2_title.disabled = !s.additional2_ch.checked;
+  s.additional2_html_name.disabled = !s.additional2_ch.checked;
+  s.additional2_type.disabled = !s.additional2_ch.checked;
+  s.additional3_title.disabled = !s.additional3_ch.checked;
+  s.additional3_html_name.disabled = !s.additional3_ch.checked;
+  s.additional3_type.disabled = !s.additional3_ch.checked;
+  s.additional4_title.disabled = !s.additional4_ch.checked;
+  s.additional4_html_name.disabled = !s.additional4_ch.checked;
+  s.additional4_type.disabled = !s.additional4_ch.checked;
+  s.additional5_title.disabled = !s.additional5_ch.checked;
+  s.additional5_html_name.disabled = !s.additional5_ch.checked;
+  s.additional5_type.disabled = !s.additional5_ch.checked;
+  s.additional6_title.disabled = !s.additional6_ch.checked;
+  s.additional6_html_name.disabled = !s.additional6_ch.checked;
+  s.additional6_type.disabled = !s.additional6_ch.checked;
+  s.additional7_title.disabled = !s.additional7_ch.checked;
+  s.additional7_html_name.disabled = !s.additional7_ch.checked;
+  s.additional7_type.disabled = !s.additional7_ch.checked;
+  s.additional8_title.disabled = !s.additional8_ch.checked;
+  s.additional8_html_name.disabled = !s.additional8_ch.checked;
+  s.additional8_type.disabled = !s.additional8_ch.checked;
+  s.additional9_title.disabled = !s.additional9_ch.checked;
+  s.additional9_html_name.disabled = !s.additional9_ch.checked;
+  s.additional9_type.disabled = !s.additional9_ch.checked;
+  s.additional10_title.disabled = !s.additional10_ch.checked;
+  s.additional10_html_name.disabled = !s.additional10_ch.checked;
+  s.additional10_type.disabled = !s.additional10_ch.checked;
+  s.additional11_title.disabled = !s.additional11_ch.checked;
+  s.additional11_html_name.disabled = !s.additional11_ch.checked;
+  s.additional11_type.disabled = !s.additional11_ch.checked;
+  s.additional12_title.disabled = !s.additional12_ch.checked;
+  s.additional12_html_name.disabled = !s.additional12_ch.checked;
+  s.additional12_type.disabled = !s.additional12_ch.checked;
+
+  s.select_type[0].disabled = !s.allow_select_subs.checked;
+  s.select_type[1].disabled = !s.allow_select_subs.checked;
+
+  s.thanks_url.disabled = !s.thanks_html[0].checked;
+  s.thanks_get.disabled = !s.thanks_html[1].checked;
+  s.thanks_post.disabled = !s.thanks_html[2].checked;
+}
+</script>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif width=3></td>
+	<td class=mh>Create new form</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Select subscribtions / groups to subscribe users &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+	<table cellspacing=0 cellpadding=2 border=0 width=100%><tr><td>
+<select name=subs class=inpts style="width: 580px" multiple size=7>#subs-options#</select>
+	</td></tr><tr><td>
+<input type=checkbox name=allow_select_subs value=1 onClick="checkk();"> Allow user to select subscribtions
+	</td></tr><tr><td>
+Select type: <input type=radio name=select_type value='checkboxes'> Checkboxes &nbsp; &nbsp; <input type=radio name=select_type value='select'> Select
+	</td></tr></table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Select form fields &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=1 border=0 width=100%>
+	<tr><th>Field</th><th>Use</th><th>Field title</th><th>HTML field name</th><th>Field type</th></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td>Email: </td><td align=center><input type=checkbox name=email_ch value=1 onClick="checkk();" checked></td><td><input type=text name=email_title value='Enter your email:' size=30 class=inpts></td><td ><input type=text name=email_html_name value='email' size=30 class=inpts></td><td >Text</td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >First name: </td><td  align=center><input type=checkbox name=first_name_ch value=1 onClick="checkk();" checked></td><td ><input type=text name=first_name_title value='Enter your first name:' size=30 class=inpts></td><td ><input type=text name=first_name_html_name value='first_name' size=30 class=inpts></td><td >Text</td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Last name: </td><td  align=center><input type=checkbox name=last_name_ch value=1 onClick="checkk();" checked></td><td ><input type=text name=last_name_title value='Enter your last name:' size=30 class=inpts></td><td ><input type=text name=last_name_html_name value='last_name' size=30 class=inpts></td><td >Text</td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Full name: </td><td  align=center><input type=checkbox name=full_name_ch value=1 onClick="checkk();"></td><td ><input type=text name=full_name_title value='Enter your full name:' size=30 class=inpts></td><td ><input type=text name=full_name_html_name value='full_name' size=30 class=inpts></td><td >Text</td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Company: </td><td  align=center><input type=checkbox name=company_ch value=1 onClick="checkk();"></td><td ><input type=text name=company_title value='Enter your company:' size=30 class=inpts></td><td ><input type=text name=company_html_name value='company' size=30 class=inpts></td><td >Text</td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Language: </td><td  align=center><input type=checkbox name=language_ch value=1 onClick="checkk();"></td><td ><input type=text name=language_title value='Enter your language:' size=30 class=inpts></td><td ><input type=text name=language_html_name value='language' size=30 class=inpts></td><td ><select name=language_type class=inpts><option value=''>Text<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Phone: </td><td  align=center><input type=checkbox name=phone_ch value=1 onClick="checkk();"></td><td ><input type=text name=phone_title value='Enter your phone:' size=30 class=inpts></td><td ><input type=text name=phone_html_name value='phone' size=30 class=inpts></td><td >Text</td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >ICQ: </td><td  align=center><input type=checkbox name=icq_ch value=1 onClick="checkk();"></td><td ><input type=text name=icq_title value='Enter your icq:' size=30 class=inpts></td><td ><input type=text name=icq_html_name value='icq' size=30 class=inpts></td><td >Text</td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Address: </td><td  align=center><input type=checkbox name=address_ch value=1 onClick="checkk();"></td><td ><input type=text name=address_title value='Enter your address:' size=30 class=inpts></td><td ><input type=text name=address_html_name value='address' size=30 class=inpts></td><td >Text</td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Address2: </td><td  align=center><input type=checkbox name=address2_ch value=1 onClick="checkk();"></td><td ><input type=text name=address2_title value='Enter your address2:' size=30 class=inpts></td><td ><input type=text name=address2_html_name value='address2' size=30 class=inpts></td><td >Text</td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >City: </td><td  align=center><input type=checkbox name=city_ch value=1 onClick="checkk();"></td><td ><input type=text name=city_title value='Enter your city:' size=30 class=inpts></td><td ><input type=text name=city_html_name value='city' size=30 class=inpts></td><td ><select name=city_type class=inpts><option value=''>Text<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >State: </td><td  align=center><input type=checkbox name=state_ch value=1 onClick="checkk();"></td><td ><input type=text name=state_title value='Enter your state' size=30 class=inpts></td><td ><input type=text name=state_html_name value='state' size=30 class=inpts></td><td ><select name=state_type class=inpts><option value=''>Text<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Country: </td><td  align=center><input type=checkbox name=country_ch value=1 onClick="checkk();"></td><td ><input type=text name=country_title value='Enter your country:' size=30 class=inpts></td><td ><input type=text name=country_html_name value='country' size=30 class=inpts></td><td ><select name=country_type class=inpts><option value=''>Text<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Birth date: </td><td  align=center><input type=checkbox name=birthdate_ch value=1 onClick="checkk();"></td><td ><input type=text name=birthdate_title value='Enter your birthdate:' size=30 class=inpts></td><td ><input type=text name=birthdate_html_name value='birthdate' size=30 class=inpts></td><td >Text</td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Age: </td><td  align=center><input type=checkbox name=age_ch value=1 onClick="checkk();"></td><td ><input type=text name=age_title value='Enter your age:' size=30 class=inpts></td><td ><input type=text name=age_html_name value='age' size=30 class=inpts></td><td >Text</td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Sex: </td><td  align=center><input type=checkbox name=sex_ch value=1 onClick="checkk();"></td><td ><input type=text name=sex_title value='Enter your sex:' size=30 class=inpts></td><td ><input type=text name=sex_html_name value='sex' size=30 class=inpts></td><td ><select name=sex_type class=inpts><option value=''>Text<option value='select'>Select<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Website: </td><td  align=center><input type=checkbox name=website_ch value=1 onClick="checkk();"></td><td ><input type=text name=website_title value='Enter your website:' size=30 class=inpts></td><td ><input type=text name=website_html_name value='website' size=30 class=inpts></td><td ><select name=website_type class=inpts><option value=''>Text<option value='textarea'>Textarea</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Heard about: </td><td  align=center><input type=checkbox name=heard_ch value=1 onClick="checkk();"></td><td ><input type=text name=heard_title value='Where did you heard about us:' size=30 class=inpts></td><td ><input type=text name=heard_html_name value='heard' size=30 class=inpts></td><td ><select name=heard_type class=inpts><option value=''>Text<option value='textarea'>Textarea<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Business: </td><td  align=center><input type=checkbox name=business_ch value=1 onClick="checkk();"></td><td ><input type=text name=business_title value='Enter your business:' size=30 class=inpts></td><td ><input type=text name=business_html_name value='business' size=30 class=inpts></td><td ><select name=business_type class=inpts><option value=''>Text<option value='textarea'>Textarea<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Letter format: </td><td  align=center><input type=checkbox name=lettersformat_ch value=1 onClick="checkk();"></td><td ><input type=text name=lettersformat_title value='Enter letter format:' size=30 class=inpts></td><td ><input type=text name=lettersformat_html_name value='lettersformat' size=30 class=inpts></td><td ><select name=lettersformat_type class=inpts><option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Additional1: </td><td  align=center><input type=checkbox name=additional1_ch value=1 onClick="checkk();"></td><td ><input type=text name=additional1_title value='Additional 1:' size=30 class=inpts></td><td ><input type=text name=additional1_html_name value='additional1' size=30 class=inpts></td><td ><select name=additional1_type class=inpts><option value=''>Text<option value='textarea'>Textarea<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Additional2: </td><td  align=center><input type=checkbox name=additional2_ch value=1 onClick="checkk();"></td><td ><input type=text name=additional2_title value='Additional 2:' size=30 class=inpts></td><td ><input type=text name=additional2_html_name value='additional2' size=30 class=inpts></td><td ><select name=additional2_type class=inpts><option value=''>Text<option value='textarea'>Textarea<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Additional3: </td><td  align=center><input type=checkbox name=additional3_ch value=1 onClick="checkk();"></td><td ><input type=text name=additional3_title value='Additional 3:' size=30 class=inpts></td><td ><input type=text name=additional3_html_name value='additional3' size=30 class=inpts></td><td ><select name=additional3_type class=inpts><option value=''>Text<option value='textarea'>Textarea<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Additional4: </td><td  align=center><input type=checkbox name=additional4_ch value=1 onClick="checkk();"></td><td ><input type=text name=additional4_title value='Additional 4:' size=30 class=inpts></td><td ><input type=text name=additional4_html_name value='additional4' size=30 class=inpts></td><td ><select name=additional4_type class=inpts><option value=''>Text<option value='textarea'>Textarea<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Additional5: </td><td  align=center><input type=checkbox name=additional5_ch value=1 onClick="checkk();"></td><td ><input type=text name=additional5_title value='Additional 5:' size=30 class=inpts></td><td ><input type=text name=additional5_html_name value='additional5' size=30 class=inpts></td><td ><select name=additional5_type class=inpts><option value=''>Text<option value='textarea'>Textarea<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Additional6: </td><td  align=center><input type=checkbox name=additional6_ch value=1 onClick="checkk();"></td><td ><input type=text name=additional6_title value='Additional 6:' size=30 class=inpts></td><td ><input type=text name=additional6_html_name value='additional6' size=30 class=inpts></td><td ><select name=additional6_type class=inpts><option value=''>Text<option value='textarea'>Textarea<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Additional7: </td><td  align=center><input type=checkbox name=additional7_ch value=1 onClick="checkk();"></td><td ><input type=text name=additional7_title value='Additional 7:' size=30 class=inpts></td><td ><input type=text name=additional7_html_name value='additional7' size=30 class=inpts></td><td ><select name=additional7_type class=inpts><option value=''>Text<option value='textarea'>Textarea<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Additional8: </td><td  align=center><input type=checkbox name=additional8_ch value=1 onClick="checkk();"></td><td ><input type=text name=additional8_title value='Additional 8:' size=30 class=inpts></td><td ><input type=text name=additional8_html_name value='additional8' size=30 class=inpts></td><td ><select name=additional8_type class=inpts><option value=''>Text<option value='textarea'>Textarea<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Additional9: </td><td  align=center><input type=checkbox name=additional9_ch value=1 onClick="checkk();"></td><td ><input type=text name=additional9_title value='Additional 9:' size=30 class=inpts></td><td ><input type=text name=additional9_html_name value='additional9' size=30 class=inpts></td><td ><select name=additional9_type class=inpts><option value=''>Text<option value='textarea'>Textarea<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Additional10: </td><td  align=center><input type=checkbox name=additional10_ch value=1 onClick="checkk();"></td><td ><input type=text name=additional10_title value='Additional 10:' size=30 class=inpts></td><td ><input type=text name=additional10_html_name value='additional10' size=30 class=inpts></td><td ><select name=additional10_type class=inpts><option value=''>Text<option value='textarea'>Textarea<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Additional11: </td><td  align=center><input type=checkbox name=additional11_ch value=1 onClick="checkk();"></td><td ><input type=text name=additional11_title value='Additional 11:' size=30 class=inpts></td><td ><input type=text name=additional11_html_name value='additional11' size=30 class=inpts></td><td ><select name=additional11_type class=inpts><option value=''>Text<option value='textarea'>Textarea<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+<tr><td colspan=5><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+	<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';"><td >Additional12: </td><td  align=center><input type=checkbox name=additional12_ch value=1 onClick="checkk();"></td><td ><input type=text name=additional12_title value='Additional 12:' size=30 class=inpts></td><td ><input type=text name=additional12_html_name value='additional12' size=30 class=inpts></td><td ><select name=additional12_type class=inpts><option value=''>Text<option value='textarea'>Textarea<option value='select'>Select<option value=checkbox>Checkboxes<option value=radio>Radio</select></td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Thanks html &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+	<table cellspacing=0 cellpadding=2 border=0 width=100%>
+	<tr><td><input type=radio name=thanks_html value='html' onClick="checkk();" checked></td><td>Redirect to: </td><td><input type=text name=thanks_url value='http://' size=40 class=inpts></td></tr>
+	<tr><td><input type=radio name=thanks_html value='get' onClick="checkk();"></td><td>Send data to other script (GET method): </td><td><input type=text name=thanks_get value='http://' size=40 class=inpts></td></tr>
+	<tr><td><input type=radio name=thanks_html value='post' onClick="checkk();"></td><td>Send data to other script (POST method): </td><td><input type=text name=thanks_post value='http://' size=40 class=inpts></td></tr>
+	</table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+
+
+
+<input type=Submit class=sbmt value="SAVE"> &nbsp; <input type=button onClick="document.location='admin.cgi?page=subscr&tid=#FORM_tid#';" value="CANCEL" class=sbmt>
+<br><br>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Manual integration &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+	<table cellspacing=0 cellpadding=2 border=0 width=100%>
+	<tr><td>
+Example1:<br>
+Your form:<br>
+&lt;form action="<b>http://server1.com/send.pl</b>" method=post&gt;<br>
+&lt;input type=text name=<b>email</b>&gt;<br>
+&lt;input type=submit value="Subscribe"&gt;<br>
+&lt;/form&gt;<br><br>
+
+Needs to be changed to:<br>
+&lt;form action="#server-url#subscribe.cgi" method=get&gt;<br>
+&lt;input type=text name=email&gt; - original field<br>
+&lt;input type=hidden name=mm_action value="<b>http://server1.com/send.pl</b>"&gt; - after processing form will be post here<br>
+&lt;input type=hidden name=mm_email value=<b>email</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_from value=form&gt; - required param<br>
+&lt;input type=hidden name=mm_id value=14&gt; - subscription ID<br>
+&lt;input type=submit&gt;<br>
+&lt;/form&gt;<br><br><br>
+Example2:<br>
+Your form:<br>
+&lt;form action="<b>http://server1.com/send.pl</b>" method=post&gt;<br>
+&lt;input type=text name=<b>email</b>&gt;<br>
+&lt;input type=text name=<b>first_name</b>&gt;<br>
+&lt;input type=text name=<b>last_name</b>&gt;<br>
+&lt;input type=text name=<b>address</b>&gt;<br>
+&lt;input type=text name=<b>phone</b>&gt;<br>
+&lt;input type=text name=<b>state</b>&gt;<br>
+&lt;input type=text name=<b>country</b>&gt;<br>
+&lt;input type=submit value="Subscribe"&gt;<br>
+&lt;/form&gt;<br><br>
+
+Needs to be changed to:<br>
+&lt;form action="#server-url#subscribe.cgi" method=get&gt;<br>
+&lt;input type=text name=<b>email</b>&gt; - original field<br>
+&lt;input type=text name=<b>first_name</b>&gt; - original field<br>
+&lt;input type=text name=<b>last_name</b>&gt; - original field<br>
+&lt;input type=text name=<b>address</b>&gt; - original field<br>
+&lt;input type=text name=<b>phone</b>&gt; - original field<br>
+&lt;input type=text name=<b>state</b>&gt; - original field<br>
+&lt;input type=text name=<b>country</b>&gt; - original field<br>
+&lt;input type=hidden name=mm_action value="<b>http://server1.com/send.pl</b>"&gt; - after processing form will be post here<br>
+&lt;input type=hidden name=mm_email value=<b>email</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_firstname value=<b>first_name</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_lastname value=<b>last_name</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_address value=<b>address</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_phone value=<b>phone</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_state value=<b>state</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_country value=<b>country</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_from value=form&gt; - required param<br>
+&lt;input type=hidden name=mm_id value=14&gt; - subscription ID (if needed to insert user in 2 subscriptions)<br>
+&lt;input type=submit&gt;<br>
+&lt;/form&gt;<br><br><br>
+Example3: (how user can select subscription)<br>
+Your form:<br>
+&lt;form action="<b>http://server1.com/send.pl</b>" method=post&gt;<br>
+&lt;input type=text name=<b>email</b>&gt;<br>
+&lt;input type=submit value="Subscribe"&gt;<br>
+&lt;/form&gt;<br><br>
+
+Needs to be changed to:<br>
+&lt;form action="#server-url#subscribe.cgi" method=get&gt;<br>
+&lt;input type=text name=email&gt; - original field<br>
+&lt;input type=hidden name=mm_action value="<b>http://server1.com/send.pl</b>"&gt; - after processing form will be post here<br>
+&lt;input type=hidden name=mm_email value=<b>email</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_from value=form&gt; - required param<br>
+&lt;input type=checkbox name=mm_id value=14&gt; - subscription ID<br>
+&lt;input type=checkbox name=mm_id value=15&gt; - subscription ID<br>
+&lt;input type=checkbox name=mm_id value=16&gt; - subscription ID<br>
+&lt;input type=submit&gt;<br>
+&lt;/form&gt;<br><br><br>
+How to add from your script:<br>
+perl sample:<br>
+#!/usr/bin/perl<br>
+print "Content-type: text/html\n\n";<br>
+`/usr/bin/perl subscribe.cgi "mm_email=some@email.com&mm_first_name=Here first name&mm_last_name=Here last name&mm_id=2" &`;<br>
+exit;<br><br><br>
+Script supports the following fields:<br>
+email, first_name, last_name, full_name, company, language, phone, icq, address, address2, city, state, country, birthdate, age, sex, website, heard, business, ip, lettersformat, additional1, additional2, additional3, additional4, additional5, additional6, additional7, additional8, additional9, additional10, additional11, additional12.
+
+</td></tr>
+	</table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+
+
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+</form>
+<br><br>
+<script language=javascript>
+checkk();
+</script>
+
+
+<!--[clear]-->
+<!--[subs-options]-->
+<option value=#id#>#parent##name#
+<!--[subs-options]-->
+
+
+<!--[clear]-->

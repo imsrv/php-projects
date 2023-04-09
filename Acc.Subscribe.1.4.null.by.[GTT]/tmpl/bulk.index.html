@@ -1,0 +1,175 @@
+<form action=admin.cgi method=post name=mainform>
+<input type=hidden name=page value=sendimmediatly>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif width=3></td>
+	<td class=mh>Bulk sending <a href=admin.cgi?page=help5 target=_blank class=ar style="color: white">[help]</a></td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Select group &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+	<select name=subs class=inpts size=7 multiple style="width:580px;">#sub-options#</select>
+
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr valign=top><td width=50%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Select user category &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+	<select name=cat class=inpts style="width:270px;"><option value='active'>Active<option value='unsubscribed'>Unsubscribed<option value='expired'>Expired<option value='notapproved'>Not approved<option value='notconfirmed'>Not confirmed</select>
+
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Start At &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+	<table cellspacing=0 cellpadding=0 border=0 width=100% height=27>
+	<tr><td>
+	<input type=text name=date_start value="#date-now#" class=inpts size=10> date; &nbsp; <input type=text name="hour_start" class=inpts size=2> hour; <small>(<input type=checkbox name=start_now value=1 checked onClick="checkk();"> immediatly)</small>
+	</td></tr></table>
+
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+</td><td width=50%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Select period &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+	<table cellspacing=0 cellpadding=1 border=0 width=100%>
+	<tr><td><input type=radio name=period value=all checked onClick="checkk();"></td><td> All</td></tr>
+	<tr><td><input type=radio name=period value=period onClick="checkk();"></td><td> Period: <select name=p class=inpts><option value=select>Select<option value=today >Today<option value=yesterday >Yesterday<option value=week >Week<option value=month >Month<option value=quarter>Quarter<option value=year>Year</select></td></tr>
+	<tr><td><input type=radio name=period value=range onClick="checkk();"></td><td> From: <input type=text name=from value="" size=10 class=inpts> To: <input type=text name=to value="" size=10 class=inpts></td></tr>
+	</table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+</td></tr></table>
+<br>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Recent e-mails &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+	<table cellspacing=0 cellpadding=0 border=0 width=100%>
+	<tr><td><input type=radio name=lid value=0 checked> New</td></tr>
+	#list-rec-emails#
+	</table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+<input type=submit value="SEND" class=sbmt>
+
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+
+<script language=javascript>
+function checkk() {
+  var s = document.mainform;
+  s.date_start.disabled = s.start_now.checked;
+  s.hour_start.disabled = s.start_now.checked;
+  s.p.disabled = !s.period[1].checked;
+  s.from.disabled = !s.period[2].checked;
+  s.to.disabled = !s.period[2].checked;
+
+}
+checkk();
+</script>
+
+
+
+
+
+</form>
+<br><br>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif width=3></td>
+	<td class=mh>Recent send status</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><th>ID</th><th>Sent</td><th>Seen <a href=admin.cgi?page=help3 target=_blank class=ar style="color: white">?</a></th><th>Undelivered  <a href=admin.cgi?page=help4 target=_blank class=ar style="color: white">?</a></th><th>Start at</th><th>End at</th><th>Del</th></tr>
+#bulk-status#
+</table>
+
+
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+
+
+
+<!--[clear]-->
+<!--[list-rec-emails]-->
+	<tr><td><input type=radio name=lid value=#id#> #subject# <a href=admin.cgi?page=deleterecentemail&id=#id#&tid=#FORM_tid# class=ar>[x]</a><br></td></tr>
+<!--[list-rec-emails]-->
+
+<!--[sub-options]-->
+<option value=#id#>#parent# -&gt; #name#
+<!--[sub-options]-->
+
+
+<!--[bulk-status]-->
+<tr><td>#id#</td><td align=right>#sent#</td><td align=right>#seen#</td><td align=right>#undeliver# <a href=admin.cgi?page=undelivered&id=#id# target=_blank class=ar>[get]</a></td><td align=center>#start#</td><td align=center>#end#</td><td align=center><a href=admin.cgi?page=deletebulk&id=#id# class=ar>[del]</a></td></tr>
+<!--[bulk-status]-->
+
+<!--[bulk-status-no]-->
+<tr><td colspan=7 class=tdi aling=center>No info</td></tr>
+<!--[bulk-status-no]-->
+
+
+<!--[clear]-->
+
+

@@ -1,0 +1,41 @@
+<table width="90%" border="0" align="center" cellpadding="10" cellspacing="0" class="BodyText">
+
+  <tr>
+    <td colspan=3><font class="MessageText">Preview your generated HTML files</td>
+  </tr>
+
+  <tr>
+    <td width="200" bgcolor="#C4D9ED"><font class="MessageText">Folder name</font></td>
+	<td bgcolor="#C4D9ED">&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td width="200">
+	
+<form name="remove" method="post" action="./?sect=catalog">
+	<table border="0" width="100%" class="BodyText" cellpadding="5">
+	<%tloop catalog%>
+	<tr>
+		<td width="100px" align="left" valign="top">
+			<b><%tlv entry%></b>
+		</td>
+		<td width="50px" align="left" valign="top">
+			<a href="<%tlv entry%>/index.htm" target="_blank">View</a>
+		</td>
+		<td>
+			<input type=checkbox name="del[]" value="<%tlv entry%>">
+		</td>
+	</tr>
+	<%tendloop catalog%>
+	<tr>
+		<td colspan=3 align=right>
+			<input type=submit name="submit" value="Delete selected">
+		</td>
+	</tr>
+	</table>
+</form>
+
+	</td>
+	<td>&nbsp;</td>
+  </tr>
+</table>  

@@ -1,0 +1,102 @@
+<form action=admin.cgi method=post><input type=hidden name=page value=settings><input type=hidden name=action value=set>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif width=3></td>
+	<td class=mh>Settings</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+
+<table cellspacing=0 cellpadding=2 border=0 width=100%>
+<tr valign=top><td width=50%>
+
+
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Global settings &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+
+<tr><td class=tdd>Site name</td><td class=tdd><input type=text name=sitename value="#site-name#" size=40 class=inpts></td></tr>
+<tr><td class=tdi colspan=2>Name or your site.</td></tr>
+<tr><td colspan=2><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+
+<tr><td class=tdd>Install URL</td><td class=tdd><input type=text name=installurl value="#installurl#" size=40 class=inpts></td></tr>
+<tr><td class=tdi colspan=2>The URL (not the path) scripts installed.</td></tr>
+<tr><td colspan=2><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+
+<tr><td class=tdd>Images URL</td><td class=tdd><input type=text name=imagesurl value="#imagesurl#" size=40 class=inpts></td></tr>
+<tr><td class=tdi colspan=2>The URL (not the path) catalog for images</td></tr>
+<tr><td colspan=2><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+
+<!--<tr><td class=tdd>DNS server</td><td class=tdd><input type=text name=dns value="#dns-ip#" size=40 class=inpts></td></tr>
+<tr><td class=tdi colspan=2>DNS server that allows resolving domain names</td></tr>
+<tr><td colspan=2><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+-->
+<tr><td class=tdd>E-mails on page</td><td class=tdd><input type=text name=emails_on_page value="#emails-on-page#" size=40 class=inpts></td></tr>
+<tr><td class=tdi colspan=2>Default quantity of emails on page in admin area</td></tr>
+<tr><td colspan=2><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+
+<tr><td class=tdd>Sendmail path</td><td class=tdd><input type=text name=sendmailpath value="#sendmailpath#" size=40 class=inpts></td></tr>
+<tr><td class=tdi colspan=2>Path to sendmail on your server.</td></tr>
+
+</table>
+
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+
+</td><td width=50%>
+
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Undelivered e-mails settings &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+
+<tr><td class=tdd>Return-path e-mail</td><td class=tdd><input type=text name=returnemail value="#return-email#" size=40 class=inpts></td></tr>
+<tr><td colspan=2><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+
+<tr><td class=tdd>POP3 host</td><td class=tdd><input type=text name=returnhost value="#return-host#" size=40 class=inpts></td></tr>
+<tr><td colspan=2><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+
+<tr><td class=tdd>POP3 login</td><td class=tdd><input type=text name=returnlogin value="#return-login#" size=40 class=inpts></td></tr>
+<tr><td colspan=2><table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr></table></td></tr>
+
+<tr><td class=tdd>POP3 password</td><td class=tdd><input type=text name=returnpassword value="#return-password#" size=40 class=inpts></td></tr>
+
+
+</table>
+
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+</td></tr></table>
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td class=tdd>&nbsp;</td></tr>
+<tr><td class=tdd><input type=Submit value=SET class=sbmt> &nbsp; <input type=button value="CANCEL" onClick="document.location='admin.cgi';" class=sbmt></td></tr>
+</table>
+</td></tr>
+
+
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>

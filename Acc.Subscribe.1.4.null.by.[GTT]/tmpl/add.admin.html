@@ -1,0 +1,214 @@
+<script language=javascript>
+
+function check_form() {
+  if (document.mainform.username.value == '') {
+    document.mainform.username.focus();
+    alert("Please, type login");
+    return false;
+  }
+  if (document.mainform.passwd.value == '') {
+    document.mainform.passwd.focus();
+    alert("Please, type password");
+    return false;
+  }
+  if (document.mainform.passwd.value != document.mainform.passwd2.value) {
+    document.mainform.passwd2.focus();
+    alert("Please, repeat right password");
+    return false;
+  }
+  if (document.mainform.username.value.indexOf(":") > 0) {
+    document.mainform.username.focus();
+    alert("Please, type right login. Without ':'");
+    return false;
+  }
+  return true;
+}
+
+function openCampaignsEdit() {
+  var w = window.open("admin.cgi?page=opencampedit&id="+document.mainform.editcampaignid.value, "_pop", "width=300,height=400,scrollbars=yes,status=0,resizable=1");
+}
+</script>
+
+<form action=admin.cgi method=post onSubmit="return check_form();" name=mainform>
+<input type=hidden name=page value=addadmin>
+<input type=hidden name=action value=addadmin>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>Add new user</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<td class=tdd>
+
+
+<table cellspacing=0 cellpadding=2 border=0 width=100%><tr valign=top><td widht=50%>
+  <table cellspacing=0 cellpadding=0 border=0 width=100%>
+  <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+    <td class=tdd><nobr>&nbsp; Account information &nbsp;</nobr></td>
+    <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+    </tr></table>
+  </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+  <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+  <td>
+     <table cellspacing=2 cellpadding=0 border=0 width=100%>
+
+     <tr><td class=tdd>Login:</td><td class=tdd><input type=text name=username size=30 class=inpts></td></tr>
+     <tr><td class=tdd>Password:</td><td class=tdd><input type=password name=passwd size=30 class=inpts></td></tr>
+     <tr><td class=tdd>Repeat password:</td><td class=td¢><input type=password name=passwd2 size=30 class=inpts></td></tr>
+     <tr><td class=tdd>E-mail:</td><td class=tdd><input type=text name=email size=30 class=inpts></td></tr>
+     <tr><td class=tdd colspan=2><input type=checkbox name=sendinfo value=1> - send login / password to user</td></tr>
+
+     </table>
+  </td>
+  <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+  <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+
+  <table cellspacing=0 cellpadding=0 border=0 width=100%>
+  <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+    <td class=tdd><nobr>&nbsp; Account expire &nbsp;</nobr></td>
+    <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+    </tr></table>
+  </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+  <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+  <td>
+     <table cellspacing=2 cellpadding=0 border=0 width=100%>
+     <tr><td class=tdd>Start date:</td><td class=tdd><input type=text name=startdate size=10 MAXLENGTH=10 class=inpts value="#date-now#"></td></tr>
+     <tr><td class=tdd>End date:</td><td class=tdd><input type=text name=enddate size=10 MAXLENGTH=10 class=inpts value=""> &nbsp; &nbsp; (<input type=checkbox name=enddateno value=1 checked onClick="expire_enable();"> no expire)</td></tr>
+<!--     <tr><td class=tdd>Impressions:</td><td class=tdd><input type=text name=endimp size=10 class=inpts value="0" style="text-align: right"> &nbsp; &nbsp; (<input type=checkbox name=endimpno value=1 checked onClick="expire_enable();"> no expire)</td></tr>-->
+<!--     <tr><td class=tdd>Clicks:</td><td class=tdd><input type=text name=endclick size=10 class=inpts value="0" style="text-align: right"> &nbsp; &nbsp; (<input type=checkbox name=endclickno value=1 checked onClick="expire_enable();"> no expire)</td></tr>-->
+
+     </table>
+  </td>
+  <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+  <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+  <table cellspacing=0 cellpadding=0 border=0 width=100%>
+  <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+    <td class=tdd><nobr>&nbsp; Subscribtion lists permissions &nbsp;</nobr></td>
+    <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+    </tr></table>
+  </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+  <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+  <td>
+     <table cellspacing=2 cellpadding=0 border=0 width=100%>
+     <tr><td class=tdd colspan=2>
+         <table cellspacing=0 cellpadding=0 border=0 width=100%>
+         <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+           <table cellspacing=0 cellpadding=0 border=0 width=100%>
+           <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+           <td class=tdd><nobr><input type=checkbox name=createcampaign value=1 checked onClick="allowcreatecampaign();"> allow to create subscribtions</nobr></td>
+           <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+           </tr></table>
+         </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+         <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+         <td>
+            <table cellspacing=2 cellpadding=0 border=0 width=100%>
+            <td class=tdd>Subscribtions limit <input type=text name=createcampaignlimit size=4 class=inpts value=1 style="text-align: right"> &nbsp; &nbsp; (<input type=checkbox name=createcampaignlimitno value=1 checked onClick="allowcreatecampaign();"> no limit)
+            </table>
+         </td>
+         <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+         <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+     </tr><input type=hidden name=editcampaignid><input type=hidden name=viewcampaignid>
+     <tr><td class=tdd><input type=checkbox name=editcampaign value=1 onClick="allow_actions();"> allow to edit other subscribtions</td><td class=tdd align=right><input type=button value="list" name=editcampaign_button class=sbmt onClick="openCampaignsEdit();"></td></tr>
+     </table>
+  </td>
+  <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+  <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+
+</td><td widht=50%>
+
+  <table cellspacing=0 cellpadding=0 border=0 width=100%>
+  <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+    <td class=tdd><nobr>&nbsp; User information &nbsp;</nobr></td>
+    <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+    </tr></table>
+  </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+  <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+  <td>
+     <table cellspacing=2 cellpadding=0 border=0 width=100%>
+     <tr><td class=tdd>First Name:</td><td class=tdd><input type=text name=firstname size=30 class=inpts></td></tr>
+     <tr><td class=tdd>Last Name:</td><td class=tdd><input type=text name=lastname size=30 class=inpts></td></tr>
+     <tr><td class=tdd>Address:</td><td class=tdd><input type=text name=address size=30 class=inpts></td></tr>
+     <tr><td class=tdd>City:</td><td class=tdd><input type=text name=city size=30 class=inpts></td></tr>
+     <tr><td class=tdd>State / Province:</td><td class=tdd><input type=text name=state size=30 class=inpts></td></tr>
+     <tr><td class=tdd>Zip:</td><td class=tdd><input type=text name=zip size=30 class=inpts></td></tr>
+     <tr><td class=tdd>Country:</td><td class=tdd><input type=text name=country size=30 class=inpts></td></tr>
+     <tr><td class=tdd>Phone:</td><td class=tdd><input type=text name=phone size=30 class=inpts></td></tr>
+     <tr><td class=tdd>Website:</td><td class=tdd><input type=text name=url size=30 class=inpts value="http://"></td></tr>
+
+     </table>
+  </td>
+  <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+  <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+
+</td></tr></table>
+<script language=javascript>
+  function expire_enable() {
+    document.mainform.enddate.disabled = (document.mainform.enddateno.checked == false ? false : true);
+/*    document.mainform.endimp.disabled = (document.mainform.endimpno.checked == false ? false : true);
+    document.mainform.endclick.disabled = (document.mainform.endclickno.checked == false ? false : true);*/
+  }
+  function allow_actions() {
+    document.mainform.editcampaign_button.disabled = (document.mainform.editcampaign.checked == true ? false : true);
+    if (!document.mainform.editcampaign.checked) {
+       document.mainform.editcampaignid.value='';
+    }
+  }
+  function allowcreatecampaign() {
+    if (document.mainform.createcampaign.checked) {
+      if (document.mainform.createcampaignlimitno.checked) {
+        document.mainform.createcampaignlimit.disabled = true;
+      } else {
+        document.mainform.createcampaignlimit.disabled = false;
+      }
+      document.mainform.createcampaignlimitno.disabled = false;
+
+    } else {
+      document.mainform.createcampaignlimit.disabled = true;
+      document.mainform.createcampaignlimitno.disabled = true;
+    }
+  }
+  allowcreatecampaign();
+  expire_enable();
+  allow_actions();
+</script>
+
+  <table cellspacing=0 cellpadding=0 border=0 width=100%>
+  <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+    <td class=tdd><nobr>&nbsp; Description &nbsp;</nobr></td>
+    <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+    </tr></table>
+  </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+  <tr><td background=#image_dir#g/4.gif><img src=#image_dir#g/4.gif width=2></td>
+  <td>
+     <table cellspacing=2 cellpadding=0 border=0 width=100%>
+     <tr><td class=tdd><textarea name=userdesc cols=140 rows=6 class=inpts></textarea></td></tr>
+     </table>
+  </td>
+  <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+  <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+
+<BR>
+<input type=Submit class=sbmt value="SAVE"> &nbsp; <input type=button onClick="document.location='admin.cgi';" value="CANCEL" class=sbmt>
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+</form>

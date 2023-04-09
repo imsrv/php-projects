@@ -1,0 +1,723 @@
+<script language=javascript>
+function tsort(col) {
+	document.location='admin.cgi?page=subscr&tid=#FORM_tid#&order='+col;
+}
+function deletedupes() {
+  dupwin = window.open('admin.cgi?page=deldupes&tid=#FORM_tid#', '_deletedupwin', 'width=300,height=150,resizable=1,scrollbars=0,status=0');
+}
+</script>
+
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>Subscription info</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+	<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td>
+
+<b>Subscription: ID = #FORM_tid#; &nbsp; &nbsp; #subscribtion-name#</b><br>
+Last export time: #subscribtion-export-time#<br>
+Last mailing time: #subscribtion-mailing-time#<br>
+<a href="javascript:deletedupes();" class=s>[delete dupes]</a>
+	</td></tr></table>
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+
+<br>
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif width=3></td>
+	<td class=mh>Groups / Users</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+	<table cellspacing=0 cellpadding=0 border=0 width=100%><tr valign=top><td width=50%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Show users &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+	<form action=admin.cgi method=get><input type=hidden name=page value=subscr><input type=hidden name=tid value=#FORM_tid#>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+       <tr><td class=tdd>User status:</td><td class=tdd><select name=area class=inpts>
+						<option value="active" #status=active#>Active subscribers
+						<option value="notapproved" #status=notapproved#>Not approved subscribers
+						<option value="notconfirmed" #status=notconfirmed#>Not confirmed subscribers
+						<option value="unsubscribed" #status=unsubscribed#>Unsubscribed users
+						<option value="expired" #status=expired#>Expired users</select></td></tr>
+       <tr><td class=tdd>Group:</td><td class=tdd><select name=group class=inpts>
+						<option value=''>Default group
+						#group-option#
+						</select></td></tr>
+       <tr><td class=tdd>Search:</td><td class=tdd><input type=text name=search value="#FORM_search#" class=inpts>
+<select name=where class=inpts>
+<option value=''>Anywhere
+<option value='email' #search-email#>E-mail
+<option value='first_name' #search-first_name#>First name
+<option value='last_name' #search-last_name#>Last name
+<option value='full_name' #search-full_name#>Full name
+<option value='company' #search-company#>Company
+<option value='language' #search-language#>Language
+<option value='phone' #search-phone#>Phone
+<option value='icq'  #search-icq#>ICQ
+<option value='address' #search-address#>Address
+<option value='address2' #search-address2#>Address2
+<option value='city' #search-city#>City
+<option value='state' #search-state#>State
+<option value='country' #search-country#>Country
+<option value='birthdate' #search-birthdate#>Birthdate
+<option value='age' #search-age#>Age
+<option value='sex' #search-sex#>Sex
+<option value='website' #search-website#>Website
+<option value='heard' #search-heard#>Heard
+<option value='business' #search-business#>Business
+<option value='additional1' #search-additional1#>Additional1
+<option value='additional2' #search-additional2#>Additional2
+<option value='additional3' #search-additional3#>Additional3
+<option value='additional4' #search-additional4#>Additional4
+<option value='additional5' #search-additional5#>Additional5
+<option value='additional6' #search-additional6#>Additional6
+<option value='additional7' #search-additional7#>Additional7
+<option value='additional8' #search-additional8#>Additional8
+<option value='additional9' #search-additional9#>Additional9
+<option value='additional10' #search-additional10#>Additional10
+<option value='additional11' #search-additional11#>Additional11
+<option value='additional12' #search-additional12#>Additional12
+</select>
+</td></tr>
+       <tr><td class=tdd colspan=2><input type=submit value=" SHOW " class=sbmt></td></tr>
+	</form>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+	</td><td width=50%>
+
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+	<form action=admin.cgi method=post><input type=hidden name=page value=addgroup><input type=Hidden name=tid value=#FORM_tid#><input type=hidden name=area value="#FORM_area#">
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Create new group &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+       <tr><td class=tdd>Group name:</td><td class=tdd><input type=text name=group_name value='New group' class=inpts size=30></td></tr>
+       <tr><td class=tdd colspan=2><input type=submit value=" ADD " class=sbmt></td></tr>
+       </table>
+	</form>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+	</td></tr></table>
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+<br>
+
+<script language=javascript>
+function fsubmit(a) {
+  document.actionform.action.value = a;
+  if (a == 'movetosubscription') {
+    document.actionform.target = '_copyprocess';
+    var w = window.open('', '_copyprocess', 'width=300,height=150,status=0,scrollbars=0');
+    document.actionform.submit();
+    document.actionform.target = '_self';
+    return;
+  }
+  document.actionform.submit();
+}
+</script>
+<form action=admin.cgi method=post name=actionform>
+<input type=hidden name=page value=subscraction>
+<input type=hidden name=tid value=#FORM_tid#>
+<input type=hidden name=p value=#FORM_p#>
+<input type=hidden name=group value=#FORM_group#>
+<input type=hidden name=area value=#FORM_area#>
+<input type=hidden name=action value=''>
+<input type=hidden name=search value="#FORM_search#">
+<input type=hidden name=where value="#FORM_where#">
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif width=3></td>
+	<td class=mh>Subscribtion list /
+	<!--[area=active]-->
+	Active users
+	<!--[area=active]-->
+	<!--[area=notapproved]-->
+	Not approved users
+	<!--[area=notapproved]-->
+	<!--[area=notconfirmed]-->
+	Not confirmed users
+	<!--[area=notconfirmed]-->
+	<!--[area=unsubscribed]-->
+	Unsubscribed users
+	<!--[area=unsubscribed]-->
+	<!--[area=expired]-->
+	Expired users
+	<!--[area=expired]-->
+
+	</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+   <table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+   <table cellspacing=1 cellpadding=2 border=0 width=100%>
+   <tr><th>e-mail</th><th colspan=4>Subscriber information</th><th>ACTION</th></tr>
+   #e-mail-list#
+   </table>
+   </td></tr></table>
+   	<table cellspacing=0 cellpadding=2 border=0 width=100%>
+	<tr><td colspan=2 align=center>
+<input type=button value="Modify" class=sbmt onclick="fsubmit('modify');"> &nbsp;
+<input type=button value="Delete selected" class=sbmt onclick="fsubmit('deleteusers');"> &nbsp;
+<input type=button value="Add new subscriber" class=sbmt onClick="document.location='admin.cgi?page=adduser&tid=#FORM_tid#&group=#FORM_group#&area=#FORM_area#&p=#FORM_p#&search=#FORM_search#&where=#FORM_where#';">
+	</td></tr>
+	<tr><td colspan=2>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr valign=top><td width=50%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Copy/Move to other subscribtion &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+<table cellspacing=0 cellpadding=1 border=0 width=100%>
+<tr><td><input type=radio name=copy_r value=move> Move &nbsp; <input type=radio name=copy_r value=copy checked> Copy</td></tr>
+<tr><td><input type=radio name=copy_w value=all> All &nbsp; <input type=radio name=copy_w value=selected checked> Selected</td></tr>
+<tr><td>To <select name=copy_d class=inpts style="width:250px;">#subscribelist-options#</select></td></tr>
+<tr><td><input type=button value="PROCESS" class=sbmt onclick="fsubmit('movetosubscription');"></td></tr>
+</table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+</td><td width=50%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Move selected to &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr valign=top><td width=50%>
+<table cellspacing=1 cellpadding=1 border=0 width=100%>
+<!--[button-active]--><tr><td><input type=button value="Active" class=sbmt onclick="fsubmit('movetoactive');"></tr></td><!--[button-active]-->
+<!--[button-notconfirmed]--><tr><td><input type=button value="Not Confirmed" class=sbmt onclick="fsubmit('movetonotconfirmed');"></td></tr><!--[button-notconfirmed]-->
+<!--[button-notapproved]--><tr><td><input type=button value="Not Approved" class=sbmt onclick="fsubmit('movetonotapproved');"></td></tr><!--[button-notapproved]-->
+</table>
+</td><td width=50%>
+<table cellspacing=1 cellpadding=1 border=0 width=100%>
+<!--[button-unsubscribed]--><tr><td><input type=button value="Unsubscribed" class=sbmt onclick="fsubmit('movetounsubscribed');"></td></tr><!--[button-unsubscribed]-->
+<!--[button-expired]--><tr><td><input type=button value="Expired" class=sbmt onclick="fsubmit('movetoexpired');"></td></tr><!--[button-expired]-->
+</table>
+</td></tr></table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+</td></tr></table>
+</form>
+
+
+	</td></tr>
+	<tr><td>
+   	#e-mail-pages#
+   	</td><td align=right>
+   <form action=admin.cgi method=get>
+   <input type=hidden name=tid value=#FORM_tid#>
+   <input type=hidden name=page value=subscr><input type=hidden name=group value=#FORM_group#>
+   <input type=hidden name=area value=#FORM_area#>
+   <input type=hidden name=search value="#FORM_search#">
+   <input type=hidden name=where value=#FORM_where#>
+   Page <input type=text name=p value="#FORM_p#" class=inpts size=5 style="text-align: right;"> of <b>#max_page#</b> <input type=submit value=GO class=sbmt style="text-size: 8px;">
+   </form>
+   	</td></tr>
+	</table>
+
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+<br>
+
+
+
+
+<form action=admin.cgi method=post name=main>
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif width=3></td>
+	<td class=mh>Scheduled letters</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<!--<tr><td colspan=2 class=td1>Here you can add letters, that will send to users. You can setup schedule for them. For example - first letter will send immediatly, second letter - in 2 days, third - in 2 weeks and so on</td></tr>-->
+<tr><th width=90%>Subject</th><th width=10%>Action</th></tr>
+#letters-list#
+</table>
+</td></tr></table>
+<br><input type=button value="NEW LETTER" class=sbmt onClick="document.location='admin.cgi?page=newletter&tid=#FORM_tid#&group=#FORM_group#&p=#FORM_p#&area=#FORM_area#';">
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+<br>
+</form>
+
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>E-mail statistics</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+	<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><td class=tdd> Total emails:</td><td class=tdd align=right>#stat-total-emails#</td>
+<td class=tdd> Not confirmed:</td><td class=tdd align=right>#stat-notconfirmed-emails#</td></tr>
+<tr><td class=tdd> Not approved:</td><td class=tdd align=right>#stat-notapproved-emails#</td>
+<td class=tdd> Active:</td><td class=tdd align=right>#stat-active-emails#</td></tr>
+<tr><td class=tdd> Disabled:</td><td class=tdd align=right>#stat-disabled-emails#</td>
+<td class=tdd> Unsibscribed:</td><td class=tdd align=right>#stat-unsubscribed-emails#</td></tr>
+<tr><td class=tdd> Expired:</td><td class=tdd align=right>#stat-expired-emails#</td>
+<td class=tdd colspan=2> &nbsp; </td></tr>
+<!--<td class=tdd> Dup emails:</td><td class=tdd align=right>#stat-dup-emails#</td></tr>
+<tr><td class=tdd> Checked emails:</td><td class=tdd align=right>#stat-checked-emails#</td>
+<td class=tdd> Bad emails:</td><td class=tdd align=right>#stat-bad-emails#</td></tr>
+-->
+
+</table>
+</td></tr></table>
+	</td></tr></table>
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+<br>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>Form samples</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+<table cellcpacing=0 cellpadding=0 border=0 width=100% align=center>
+<tr valign=top><td width=33% align=center>
+<form onSubmit="return false;">
+<table cellspacing=0 cellpadding=0 border=0 width=80% bgcolor=black><tr><td>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><td class=tdd>E-mail:</td><td class=tdd><input type=text name=email class=inpts size=20></td></tr>
+<tr><td class=tdd colspan=2><input type=button value="Subscribe"</td></tr>
+</table>
+</table>
+</td><td width=33% align=center>
+<table cellspacing=0 cellpadding=0 border=0 width=80% bgcolor=black><tr><td>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><td class=tdd>E-mail:</td><td class=tdd><input type=text name=email class=inpts size=20></td></tr>
+<tr><td class=tdd>Name:</td><td class=tdd><input type=text name=name class=inpts size=20></td></tr>
+<tr><td class=tdd colspan=2><input type=button value="Subscribe"</td></tr>
+</table>
+</table>
+
+</td><td width=33% align=center>
+<table cellspacing=0 cellpadding=0 border=0 width=80% bgcolor=black><tr><td>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><td class=tdd>First name:</td><td class=tdd><input type=text name=email class=inpts size=20></td></tr>
+<tr><td class=tdd>Last name:</td><td class=tdd><input type=text name=email class=inpts size=20></td></tr>
+<tr><td class=tdd>E-mail:</td><td class=tdd><input type=text name=email class=inpts size=20></td></tr>
+<tr><td class=tdd colspan=2><input type=button value="Subscribe"</td></tr>
+</table>
+</table>
+</td></tr><tr><td align=center>
+<textarea class=inpts cols=40 rows=6><form action='#server-url#subscribe.cgi' method=get><input type=hidden name=mm_id value=sub>
+<input type=hidden name=sub value='#FORM_tid#'>
+Enter your email: <input type=text name='email'><input type=hidden name=mm_email value='email'><br>
+<input type=submit value="subscribe">
+</form>
+</textarea>
+</td><td align=center>
+<textarea class=inpts cols=40 rows=6><form action='#server-url#subscribe.cgi' method=get><input type=hidden name=mm_id value=sub>
+<input type=hidden name=sub value='#FORM_tid#'>
+Enter your email: <input type=text name='email'><input type=hidden name=mm_email value='email'><br>
+Enter your first name: <input type=text name='first_name'><input type=hidden name=mm_first_name value='first_name'><br>
+<input type=submit value="subscribe">
+</form>
+</textarea>
+</td><td align=center>
+<textarea class=inpts cols=40 rows=6><form action='#server-url#subscribe.cgi' method=get><input type=hidden name=mm_id value=sub>
+<input type=hidden name=sub value='#FORM_tid#'>
+Enter your email: <input type=text name='email'><input type=hidden name=mm_email value='email'><br>
+Enter your first name: <input type=text name='first_name'><input type=hidden name=mm_first_name value='first_name'><br>
+Enter your last name: <input type=text name='last_name'><input type=hidden name=mm_last_name value='last_name'><br>
+<input type=submit value="subscribe">
+</form>
+</textarea>
+</form>
+</td></tr>
+
+<tr><td class=tdi align=center colspan=3>You could insert this code into your html to subscribe your users right now.<br>Please use `Forms` section if you need more customize those forms.</td></tr>
+
+</table>
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+<br>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>Week statistics</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+<table cellcpacing=0 cellpadding=0 border=0 width=100% align=center><tr><td>
+
+
+
+
+  <table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+  <table cellspacing=1 cellpadding=2 border=0 width=100%>
+  <tr valign=bottom>
+  #stat-week#
+  </tr>
+  </table>
+  </td></tr></table>
+</td></tr></table>
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+
+
+
+<!--<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><th>How to integrate</th></tr>
+<tr valign=bottom><td class=td1>
+Example1:<br>
+Your form:<br>
+&lt;form action="<b>http://server1.com/send.pl</b>" method=post&gt;<br>
+&lt;input type=text name=<b>email</b>&gt;<br>
+&lt;input type=submit value="Subscribe"&gt;<br>
+&lt;/form&gt;<br><br>
+
+Needs to be changed to:<br>
+&lt;form action="#server-url#subscribe.cgi" method=get&gt;<br>
+&lt;input type=text name=email&gt; - original field<br>
+&lt;input type=hidden name=mm_action value="<b>http://server1.com/send.pl</b>"&gt; - after processing form will be post here<br>
+&lt;input type=hidden name=mm_email value=<b>email</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_from value=form&gt; - required param<br>
+&lt;input type=hidden name=mm_id value=#FORM_tid#&gt; - subscription ID<br>
+&lt;input type=submit&gt;<br>
+&lt;/form&gt;<br><br><br>
+Example2:<br>
+Your form:<br>
+&lt;form action="<b>http://server1.com/send.pl</b>" method=post&gt;<br>
+&lt;input type=text name=<b>email</b>&gt;<br>
+&lt;input type=text name=<b>first_name</b>&gt;<br>
+&lt;input type=text name=<b>last_name</b>&gt;<br>
+&lt;input type=text name=<b>address</b>&gt;<br>
+&lt;input type=text name=<b>phone</b>&gt;<br>
+&lt;input type=text name=<b>state</b>&gt;<br>
+&lt;input type=text name=<b>country</b>&gt;<br>
+&lt;input type=submit value="Subscribe"&gt;<br>
+&lt;/form&gt;<br><br>
+
+Needs to be changed to:<br>
+&lt;form action="#server-url#subscribe.cgi" method=get&gt;<br>
+&lt;input type=text name=<b>email</b>&gt; - original field<br>
+&lt;input type=text name=<b>first_name</b>&gt; - original field<br>
+&lt;input type=text name=<b>last_name</b>&gt; - original field<br>
+&lt;input type=text name=<b>address</b>&gt; - original field<br>
+&lt;input type=text name=<b>phone</b>&gt; - original field<br>
+&lt;input type=text name=<b>state</b>&gt; - original field<br>
+&lt;input type=text name=<b>country</b>&gt; - original field<br>
+&lt;input type=hidden name=mm_action value="<b>http://server1.com/send.pl</b>"&gt; - after processing form will be post here<br>
+&lt;input type=hidden name=mm_email value=<b>email</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_firstname value=<b>first_name</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_lastname value=<b>last_name</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_address value=<b>address</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_phone value=<b>phone</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_state value=<b>state</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_country value=<b>country</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_from value=form&gt; - required param<br>
+&lt;input type=hidden name=mm_id value=#FORM_tid#&gt; - subscription ID<br>
+&lt;input type=hidden name=mm_id value=14&gt; - subscription ID (if needed to insert user in 2 subscriptions)<br>
+&lt;input type=submit&gt;<br>
+&lt;/form&gt;<br><br><br>
+Example3: (how user can select subscription)<br>
+Your form:<br>
+&lt;form action="<b>http://server1.com/send.pl</b>" method=post&gt;<br>
+&lt;input type=text name=<b>email</b>&gt;<br>
+&lt;input type=submit value="Subscribe"&gt;<br>
+&lt;/form&gt;<br><br>
+
+Needs to be changed to:<br>
+&lt;form action="#server-url#subscribe.cgi" method=get&gt;<br>
+&lt;input type=text name=email&gt; - original field<br>
+&lt;input type=hidden name=mm_action value="<b>http://server1.com/send.pl</b>"&gt; - after processing form will be post here<br>
+&lt;input type=hidden name=mm_email value=<b>email</b>&gt; - field name where will be typed e-mail<br>
+&lt;input type=hidden name=mm_from value=form&gt; - required param<br>
+&lt;input type=checkbox name=mm_id value=#FORM_tid#&gt; - subscription ID<br>
+&lt;input type=checkbox name=mm_id value=14&gt; - subscription ID<br>
+&lt;input type=checkbox name=mm_id value=15&gt; - subscription ID<br>
+&lt;input type=checkbox name=mm_id value=16&gt; - subscription ID<br>
+&lt;input type=submit&gt;<br>
+&lt;/form&gt;<br><br><br>
+How to add from your script:<br>
+perl sample:<br>
+#!/usr/bin/perl<br>
+print "Content-type: text/html\n\n";<br>
+`/usr/bin/perl subscribe.cgi "mm_email=some@email.com&mm_firstname=Here first name&mm_lastname=Here last name&mm_id=#FORM_tid#" &`;<br>
+exit;<br><br><br>
+Script supports the following fields:<br>
+email, firstname, lastname, phone, icq, address, address2, city, state, country, birthdate, age, sex, website, heard, business.
+</td></tr>
+</table>
+</td></tr></table>-->
+
+<br><br>
+
+</td></tr></table>
+
+<!--[clear]-->
+
+<!--[list-rec-emails]-->
+	<input type=radio name=lid value=#id#> #subject# <a href=admin.cgi?page=deleterecentemail&id=#id#&tid=#FORM_tid# class=ar>[x]</a><br>
+<!--[list-rec-emails]-->
+
+<!--[list-rec-filters]-->
+	<input type=radio name=rec_filter value=#id#> Period: #period#, user type: #u-type#, e-mail type: #e-type# <a href=admin.cgi?page=deleterecentfilter&id=#id#&tid=#FORM_tid# class=ar>[x]</a><br>
+<!--[list-rec-filters]-->
+
+
+
+<!--[letter-list]-->
+<tr><td class=tdd>#subject#</td><td class=tdd align=right>
+	<a href=admin.cgi?page=editletter&lid=#id#&tid=#FORM_tid#><img src=#image_dir#edit.gif width=16 height=16 border=0 alt="Edit letter"></a> &nbsp;
+	<a href=admin.cgi?page=deleteletter&lid=#id#&tid=#FORM_tid# onClick="return confirm('Are you sure to delete?');"><img src=#image_dir#del.gif width=16 height=16 border=0 alt="Delete letter"></a>
+</td></tr>
+<tr><td class=tdi colspan=2>#delay_type#: (<small>#delay_time#</small>) &nbsp; &nbsp; &nbsp; Type: <small>text#attache#</small>
+<!--[letter-list]-->
+
+
+
+<!--[html-attache]-->
+ / html
+<!--[html-attache]-->
+<!--[file-attache]-->
+ with attache
+<!--[file-attache]-->
+
+
+
+
+
+
+<!--[stat-week]-->
+<td class=tdd>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr valign=bottom><td width=50%><img src=#image_dir#s.gif width=1 height=100>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td class=tds><img src=#image_dir#s.gif width=1 height=#col_height#>#col#</td></tr></table>
+</td><td width=50%>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td class=tdc><img src=#image_dir#s.gif width=1 height=#unsub_height#>#unsub#</td></tr></table>
+</td></tr>
+<tr><td colspan=2 align=center class=tdb>#date#</td></tr>
+</table>
+</td>
+<!--[stat-week]-->
+
+<!--[e-mail-active-list]-->
+<tr>
+ <td class=tdd colspan=5>
+	<input type=checkbox name='emailcheckbox' value='#id#'> <b>&lt;</b><a href=mailto:#email# class=s>#email#</a><b>&gt;</b> &nbsp;<small>#user-name#</small> #flag#</td>
+ <td align=right class=tdd>	<a href="admin.cgi?page=edituser&id=#id#&tid=#FORM_tid#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#&search=#FORM_search#&where=#FORM_where#"><img src=#image_dir#edit.gif width=16 height=16 border=0></a> &nbsp;
+	<a href="admin.cgi?page=deleteemail&tid=#FORM_tid#&email=#id#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#" onClick="return confirm('Are you sure to delete?');"><img src=#image_dir#del.gif width=16 height=16 border=0></a></td></tr>
+<tr>
+ <td class=tdi colspan=6>
+  <table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td>
+	Subscribed: <small>#date#</small>
+  </td><td align=right>
+	Group: <select name=group#id# class=inpts><option value=''>Default#group-option#</select>
+  </td></tr>
+  <tr><td>
+	Status: <select name='active#id#' class=inpts><option value=active #select-active#>Active<option value=disabled #select-disabled#>Disabled</select>
+  </td><td align=right>
+	<a href=admin.cgi?page=formfields&lid=#id#&tid=#FORM_tid# class=s>[view form fields]</a> &nbsp;
+	<a href="admin.cgi?page=edituser&id=#id#&tid=#FORM_tid#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#&search=#FORM_search#&where=#FORM_where#" class=s>[edit user]</a> &nbsp;
+	<a href="admin.cgi?page=deleteemail&tid=#FORM_tid#&email=#id#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#" class=s onClick="return confirm('Are you sure to delete?');">[delete email]</a>
+  </td></tr></table>
+</td></tr>
+<!--[e-mail-active-list]-->
+<!--[e-mail-not-approved-list]-->
+<tr>
+ <td class=tdd colspan=5>
+	<input type=checkbox name='emailcheckbox' value='#id#'> <b>&lt;</b><a href=mailto:#email# class=s>#email#</a><b>&gt;</b> &nbsp;<small>#user-name#</small> #flag#</td>
+ <td align=right class=tdd>	<a href="admin.cgi?page=edituser&id=#id#&tid=#FORM_tid#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#&search=#FORM_search#&where=#FORM_where#"><img src=#image_dir#edit.gif width=16 height=16 border=0></a> &nbsp;
+	<a href="admin.cgi?page=deleteemail&tid=#FORM_tid#&email=#id#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#" onClick="return confirm('Are you sure to delete?');"><img src=#image_dir#del.gif width=16 height=16 border=0></a></td></tr>
+<tr>
+ <td class=tdi colspan=6>
+  <table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td>
+	Subscribed: <small>#date#</small>
+  </td><td align=right>
+	Group: <select name=group#id# class=inpts><option value=''>Default#group-select#</select>
+  </td></tr>
+  <tr><td>
+&nbsp;
+  </td><td align=right>
+	<a href=admin.cgi?page=formfields&lid=#id#&tid=#FORM_tid# class=s>[view form fields]</a> &nbsp;
+	<a href="admin.cgi?page=edituser&id=#id#&tid=#FORM_tid#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#&search=#FORM_search#&where=#FORM_where#" class=s>[edit user]</a> &nbsp;
+	<a href="admin.cgi?page=deleteemail&tid=#FORM_tid#&email=#id#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#" class=s onClick="return confirm('Are you sure to delete?');">[delete email]</a>
+  </td></tr></table>
+</td></tr>
+<!--[e-mail-not-approved-list]-->
+<!--[e-mail-not-confirmed-list]-->
+<tr>
+ <td class=tdd colspan=5>
+	<input type=checkbox name='emailcheckbox' value='#id#'> <b>&lt;</b><a href=mailto:#email# class=s>#email#</a><b>&gt;</b> &nbsp;<small>#user-name#</small> <span align=right>#flag#</span></td>
+ <td align=right class=tdd>	<a href="admin.cgi?page=edituser&id=#id#&tid=#FORM_tid#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#&search=#FORM_search#&where=#FORM_where#"><img src=#image_dir#edit.gif width=16 height=16 border=0></a> &nbsp;
+	<a href="admin.cgi?page=deleteemail&tid=#FORM_tid#&email=#id#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#" onClick="return confirm('Are you sure to delete?');"><img src=#image_dir#del.gif width=16 height=16 border=0></a></td></tr>
+<tr>
+ <td class=tdi colspan=6>
+  <table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td>
+	Subscribed: <small>#date#</small>
+  </td><td align=right>
+	Group: <select name=group#id# class=inpts><option value=''>Default#group-select#</select>
+  </td></tr>
+  <tr><td>
+&nbsp;
+  </td><td align=right>
+	<a href=admin.cgi?page=formfields&lid=#id#&tid=#FORM_tid# class=s>[view form fields]</a> &nbsp;
+	<a href="admin.cgi?page=edituser&id=#id#&tid=#FORM_tid#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#&search=#FORM_search#&where=#FORM_where#" class=s>[edit user]</a> &nbsp;
+	<a href="admin.cgi?page=deleteemail&tid=#FORM_tid#&email=#id#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#" class=s onClick="return confirm('Are you sure to delete?');">[delete email]</a>
+  </td></tr></table>
+</td></tr>
+<!--[e-mail-not-confirmed-list]-->
+<!--[e-mail-unsubscribed-list]-->
+<tr>
+ <td class=tdd colspan=5>
+	<input type=checkbox name='emailcheckbox' value='#id#'> <b>&lt;</b><a href=mailto:#email# class=s>#email#</a><b>&gt;</b> &nbsp;<small>#user-name#</small> #flag#</td>
+ <td align=right class=tdd>	<a href="admin.cgi?page=edituser&id=#id#&tid=#FORM_tid#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#&search=#FORM_search#&where=#FORM_where#"><img src=#image_dir#edit.gif width=16 height=16 border=0></a> &nbsp;
+	<a href="admin.cgi?page=deleteemail&tid=#FORM_tid#&email=#id#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#" onClick="return confirm('Are you sure to delete?');"><img src=#image_dir#del.gif width=16 height=16 border=0></a></td></tr>
+<tr>
+ <td class=tdi colspan=6>
+  <table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td>
+	Subscribed: <small>#date#</small>
+  </td><td align=right>
+	Group: <select name=group#id# class=inpts><option value=''>Default#group-select#</select>
+  </td></tr>
+  <tr><td>
+	Unsubscribed: <small>#date-unsub#</small>
+  </td><td align=right>
+	<a href=admin.cgi?page=formfields&lid=#id#&tid=#FORM_tid# class=s>[view form fields]</a> &nbsp;
+	<a href="admin.cgi?page=edituser&id=#id#&tid=#FORM_tid#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#&search=#FORM_search#&where=#FORM_where#" class=s>[edit user]</a> &nbsp;
+	<a href="admin.cgi?page=deleteemail&tid=#FORM_tid#&email=#id#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#" class=s onClick="return confirm('Are you sure to delete?');">[delete email]</a>
+  </td></tr></table>
+</td></tr>
+<!--[e-mail-unsubscribed-list]-->
+<!--[e-mail-expired-list]-->
+<tr>
+ <td class=tdd colspan=5>
+	<input type=checkbox name='emailcheckbox' value='#id#'> <b>&lt;</b><a href=mailto:#email# class=s>#email#</a><b>&gt;</b> &nbsp;<small>#user-name#</small> #flag#</td>
+ <td align=right class=tdd>	<a href="admin.cgi?page=edituser&id=#id#&tid=#FORM_tid#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#&search=#FORM_search#&where=#FORM_where#"><img src=#image_dir#edit.gif width=16 height=16 border=0></a> &nbsp;
+	<a href="admin.cgi?page=deleteemail&tid=#FORM_tid#&email=#id#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#" onClick="return confirm('Are you sure to delete?');"><img src=#image_dir#del.gif width=16 height=16 border=0></a></td></tr>
+<tr>
+ <td class=tdi colspan=6>
+  <table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td>
+	Subscribed: <small>#date#</small>
+  </td><td align=right>
+	Group: <select name=group#id# class=inpts><option value=''>Default#group-option#</select>
+  </td></tr>
+  <tr><td>
+	&nbsp;
+  </td><td align=right>
+	<a href=admin.cgi?page=formfields&lid=#id#&tid=#FORM_tid# class=s>[view form fields]</a> &nbsp;
+	<a href="admin.cgi?page=edituser&id=#id#&tid=#FORM_tid#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#&search=#FORM_search#&where=#FORM_where#" class=s>[edit user]</a> &nbsp;
+	<a href="admin.cgi?page=deleteemail&tid=#FORM_tid#&email=#id#&p=#FORM_p#&group=#FORM_group#&area=#FORM_area#" class=s>[delete email]</a>
+  </td></tr></table>
+</td></tr>
+<!--[e-mail-expired-list]-->
+<!--[e-mail-list-empty-active-list]-->
+<tr><td class=tdi colspan=6 align=center>No subscribers here</td></tr>
+<!--[e-mail-list-empty-active-list]-->
+<!--[e-mail-list-empty-not-approved-list]-->
+<tr><td class=tdi colspan=6 align=center>No subscribers here</td></tr>
+<!--[e-mail-list-empty-not-approved-list]-->
+<!--[e-mail-list-empty-not-confirmed-list]-->
+<tr><td class=tdi colspan=6 align=center>No subscribers here</td></tr>
+<!--[e-mail-list-empty-not-confirmed-list]-->
+<!--[e-mail-list-empty-unsubscribed-list]-->
+<tr><td class=tdi colspan=6 align=center>No subscribers here</td></tr>
+<!--[e-mail-list-empty-unsubscribed-list]-->
+<!--[e-mail-list-empty-expired-list]-->
+<tr><td class=tdi colspan=6 align=center>No subscribers here</td></tr>
+<!--[e-mail-list-empty-expired-list]-->
+
+<!--[e-mail-pages]-->
+<a href="admin.cgi?page=subscr&tid=#FORM_tid#&p=#page#&group=#FORM_group#&area=#FORM_area#&search=#FORM_search#&where=#FORM_where#" class=s>#page#</a>
+<!--[e-mail-pages]-->
+
+<!--[ok1]-->
+<img src=#image_dir#ok1.gif width=16 height=16 border=0>
+<!--[ok1]-->
+<!--[ok2]-->
+<img src=#image_dir#ok2.gif width=16 height=16 border=0>
+<!--[ok2]-->
+
+<!--[group-option]-->
+<option value=#group-id# #active-group#>#group-name#
+<!--[group-option]-->
+
+<!--[group-select]-->
+<option value=#group-id# #group-select=current-group#>#group-name#
+<!--[group-select]-->
+
+<!--[empty-letters-list]-->
+<tr><td class=tdi colspan=2 align=center>No letters now</td></tr>
+<!--[empty-letters-list]-->
+
+<!--[subscribelist-options]-->
+<option value=#id#>#name#
+<!--[subscribelist-options]-->
+
+<!--[clear]-->
+

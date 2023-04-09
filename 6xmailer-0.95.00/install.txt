@@ -1,0 +1,196 @@
+=============================================================================
+6XMailer - A PHP POP3 mail reader.
+Copyright (C) 2001  6XGate Systems, Inc.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+==============================================================================
+
+These scripts in this zip file or tarball are only at the BETA stage of production and have
+not been fully tested in a production environment.
+
+============
+Requirements
+============
+
+This mail reader was written with PHP 4.0.4PL1 running on the development server. I am not
+sure if all the commands used or limited to this version of PHP as of this time, if someone
+would please test it on earlier version and tell me the results.
+
+These are the following requirements to use 6XMailer:
+	* An operating system that supports and has TCP/IP installed 
+	* A web server that supports and has PHP 4 installed with the IMAP extensions installed 
+	  enabled 
+	* A POP3 server and a SMTP server 
+	* A web browser with cookie and POST support 
+	* mySQL
+
+Recommended setup:
+	* OS: Linux 2, Windows 9x/Me, Windows NT/2000 
+	* WWW Server: Apache 1.3x, Personal Web Server 4.0, IIS 4.0 or better 
+	* PHP: The latest version PHP with the IMAP extensions.
+	* Browser: Internet Explorer 4.0 or better, Netscape Communicator 6.0 or better,
+	* Mozilla 0.6 or better 
+
+============
+Installation
+============
+
+Once you have obtained a copy of 6XMailer, you need to setup your web server the way you
+wish to host the mailer scripts and make sure these directories have the proper permissions.
+Later I will add separate section for each web server and how to configure them in any
+number of ways to host 6XMailer.
+
+Once you have configured your web server and created the directory for the scripts,
+decompress the zip or tarball to that directory with the option to restore the directory
+structure. With that done, open the config.php and edit it to match your network's or
+server's configuration. For more information about the config.php file refer to the
+Configuration section. The SMTP configuration is controlled by the php.ini file.
+
+You must also enabled the IMAP extensions in PHP to use this script.  First make sure that
+the extensions are compiled acording to the PHP documents.  Then, open you php.ini file and
+find a line (if you compiled the extensions as a seperate module) that reades
+;extension=php_imap.dll, or what ever name the module compiled under, and remove the ";"
+from in front of the line.  Then restart your web-server if necessary.
+
+Once you are finished editing the settings file, run the file in the SQL directory with
+mySQL as follows, you may edit the database name in the sql files:
+
+	If you are installing 6XMailer for the first time run setup_new.sql.
+	If you upgrading from a previous version run the file update_from_(version).sql,
+	replacing (version) with the version you are upgrading from.  This will not delete
+	existing data in the address books or user settings database.
+
+Then go into your php.ini file and find a setting called register_globals and set it to
+Off. Then find the track_vars and set it to On. If you can't change this settings in
+php.ini because of other scripts running on your server, then simply go into the your
+Apache configuration file httpd.conf or in the .htaccess for the 6XMailer if you running
+Apache (which I recommend) and change these settings by adding these lines:
+
+php_flag register_globals off
+php_flag track_vars on
+
+in the <Directory> or <VIRTUALHOST> sections that host 6XMailer, or in the .htaccess file
+that is in the directory that contains 6XMailer.
+
+	
+=============
+Configuration
+=============
+
+Most of the configuration of 6XMailer is controller by the config.php script, the SMTP
+portion of the configuration is in the php.ini file.
+
+-----------
+POP3 Server
+-----------
+
+This section of the config.php file is information about your POP3 server and POP3 domain.
+
+$POPHostname
+	This is the IP address or a fully qualified host name of your POP3 server.
+
+$POPPort
+	This is the port that your POP3 server is listening on, this usually defaults to 110.
+
+$POPDomain
+	This value is used to add the domain part of the e-mail address to the end of usernames.
+	NOTE: Do not set this if your username is your e-mail address.
+
+-----------
+SMTP Server
+-----------
+
+These are settings in your php.ini that define the SMTP server information that the mailer
+will ues to send e-mail.
+
+SMTP
+	This is the SMTP server to use to send e-mail, this setting is only for system that do
+	not have a built-in or commonly defined SMTP server, daemon, or service.
+
+sendmail_from
+	Do not modify or use this setting, it is the default e-mail address that all sent
+	message are from, this is never used by 6XMailer as it sends an e-mail under the name
+	of the logged on user.
+
+sendmail_path
+	This is the path and command line of the sendmail binary on any system that uses or
+	has sendmail installed. Typically this is not used on any Microsoft based machine.
+
+------------
+Text Strings
+------------
+
+This section of config.php contains several strings of text used by the mailer that you and
+safely customize.
+
+$MailSystemTitle
+	This is the title of the mailer system, this can be the name of your company or some
+	code name, it's up to you.
+
+$QuoteInReply
+	This is the text that is placed between the original and the reply message when
+	replying to an e-mail.
+
+--------------
+Other settings
+--------------
+
+These are other settings in the config.php file that will allow you to customize and
+configure the mailer.
+
+$Language
+	This is the language that the mailer will be in; this helps to define the labels, help
+	documentation, and about page. Language files and scripts or stored in the lang
+	directory. This defaults to English.
+
+$Theme
+	This is the name of the theme that the mailer will use. It defines the look and feel of
+	the mailer. A theme is a collection of style sheets, setting scripts, and image files.
+	Themes are stored in the themes directory.
+
+$RefreshList
+	This is the number of seconds that the browser will wait before automatically reloading
+	the Mail List. It's default is 600 (10 minutes)
+
+$AttachmentSize 
+	This lets the administrator limit the size of the files that can be attached to mail.  If
+	this size ends in a "M", or "k" then the the size will be based on a Megabyte or kilobyte.
+	If no ending exists then the size is in bytes.  The ending is case insensitive.  No
+	setting or a setting of 0 with any ending means no limit. 
+
+--------------
+mySQL settings
+--------------
+
+These are other settings in the config.php file that will allow you specify the settings
+to access a mySQL server with the databases beeded to run 6XMailer.
+
+$QLPort
+	This is the port that your mySQL server is on. It defaults as "3306".
+
+$QLHostname
+	This is the hostname of you mySQL server. It defaults as "localhost".
+
+$QLSocket
+	This is the path to the socket. No default.
+
+$QLUsername
+	The username needed to access your mySQL server.
+
+$QLPassword
+	The password needed to access your mySQL server.
+
+$QLDatabase
+	The name of the database to use for the per-user settings.

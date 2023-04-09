@@ -1,0 +1,291 @@
+<!--
+Copyright (c)  6XGate Systems, Inc.
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with the Invariant Sections being LIST THEIR TITLES, with the
+Front-Cover Texts being LIST, and with the Back-Cover Texts being LIST.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License".
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>6XMailer User's Manual</title>
+<link rel="STYLESHEET" type="text/css" href="main.css">
+</head>
+<body bgcolor="White" text="Black" link="Blue" vlink="Blue" alink="Blue">
+
+<h1><img src="images/6XMailerLogo.gif" width="284" height="47" alt="6XMailer" border="0" hspace="0" vspace="0"></h1>
+<H1>User's Manual</H1>
+
+<H2>Table of Contents</H2>
+
+<ul>
+	<li><a href="#c1">Introduction</a></li>
+	<li><a href="#c2">License and Disclaimer</a></li>
+	<li><a href="#c3">Obtaining the Latest Copy</a></li>
+	<li><a href="#c4">From the Readme File</a></li>
+	<li><a href="#c5">Requirements</a></li>
+	<li><a href="#c6">Installation</a></li>
+	<li>
+		<a href="#c7">Configuration</a>
+		<ul>
+			<li><a href="#c7-1">POP Server</a></li>
+			<li><a href="#c7-2">SMTP Server</a></li>
+			<li><a href="#c7-3">Text Strings</a></li>
+			<li><a href="#c7-4">Other settings</a></li>
+			<li><a href="#c7-5">mySQL settings</a></li>
+		</ul>
+	</li>
+	<li><a href="#c8">History of Changes</a></li>
+</ul>
+
+<H2><a name="c1">Introduction</a></H2>
+<p>This document has been provided to cover installation, configuration, and administration of the 6XMailer PHP POP3 Mail Reader. &nbsp;6XMailer is a set of PHP 4 scripts, HTML documents, style sheets (Level 1) that provide a highly customizable web-based POP3 mail reader. &nbsp;It features themes, multilingual support, and built-in help system.</p>
+
+<H2><a name="c2">License and Disclaimer</a></H2>
+<p>6XMailer - A PHP POP3 mail reader.</p>
+<p>Copyright &copy;2001 6XGate Systems, Inc.</p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. &nbsp;See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.</p>
+
+<H2><a name="c3">Obtaining the Latest Copy</a></H2>
+<p>To obtain the latest copy of 6XMailer, then visit 6XGate Systems' web site at: &nbsp;<a href="http://www.sixxgate.da.ru">www.sixxgate.da.ru</a>. &nbsp;There will also be archived copies of previous releases as well. &nbsp;The best way to support 6XMailer is to use it.</p>
+
+<H2><a name="c4">From the Readme File</a></H2>
+<p>These scripts in this zip file or tarball are only at the BETA stage of production and have not been fully tested in a production environment.</p>
+<p>The documents and user's manual are located in the documents directory.</p>
+<p><b>NOTE:</b> &nbsp;You must check the configuration file to make sure that the mailer will work with your system, if not, problems may occur.</p>
+<p>Please refer to the install.txt file for requirements, installation instructions, and configuration information. &nbsp;<b>ALWAYS!!!</b> &nbsp;Since this script is im BETA, these instructions will change.</p>
+<p>If anyone would like to help me with coding, documentation, or any other aspect of this mailer such as themes or language packs, then goto <a href="http://www.sixxgate.da.ru">www.sixxgate.da.ru</a> and e-mail me at the e-mail address under the Contacting Us page.</p>
+
+<H2><a name="c5">Requirements</a></H2>
+<p>This mail reader was written with PHP 4.0.4PL1 running on the development server. &nbsp;I am not sure if all the commands used or limited to this version of PHP as of this time, if someone would please test it on earlier version and tell me the results.</p>
+<p>These are the following requirements to use 6XMailer:</p>
+<ul>
+	<li>An operating system that supports and has TCP/IP installed</li>
+	<li>A web server that supports and has PHP 4 installed with the IMAP extensions installed enabled</li>
+	<li>A POP3 server and a SMTP server</li>
+	<li>A web browser with cookie and POST support</li>
+	<li>mySQL</li>
+</ul>
+<p>Recommended setup:</p>
+<ul>
+	<li><b>OS:</b> &nbsp;Linux 2, Windows 9x/Me, Windows NT/2000</li>
+	<li><b>WWW Server:</b> &nbsp;Apache 1.3x, Personal Web Server 4.0, IIS 4.0 or better</li>
+	<li><b>PHP:</b> &nbsp;The latest version PHP with the IMAP extensions.</li>
+	<li><b>Browser:</b> &nbsp;Internet Explorer 4.0 or better, Netscape Communicator 6.0 or better, Mozilla 0.6 or better</li>
+</ul>
+
+<H2><a name="c6">Installation</a></H2>
+<p>Once you have obtained a copy of 6XMailer, you need to setup your web server the way you wish to host the mailer scripts and make sure these directories have the proper permissions. &nbsp;Later I will add separate section for each web server and how to configure them in any number of ways to host 6XMailer.</p>
+<p>Once you have configured your web server and created the directory for the scripts, decompress the zip or tarball to that directory with the option to restore the directory structure. &nbsp;With that done, open the config.php and edit it to match your network's or server's configuration. &nbsp;For more information about the <i>config.php</i> file refer to the Configuration section. &nbsp;The SMTP configuration is controlled by the <i>php.ini</i> file.</p>
+<p>You must also enabled the IMAP extensions in PHP to use this script. &nbsp;First make sure that the extensions are compiled acording to the PHP documents. &nbsp;Then, open you <i>php.ini</i> file and find a line (if you compiled the extensions as a seperate module) that reades <b>;extension=php_imap.dll</b>, or what ever name the module compiled under, and remove the &quot;<b>;</b>&quot; from in front of the line. &nbsp;Then restart your web-server if necessary.</p>
+<p>Once you are finished editing the settings file, run the file in the SQL directory with mySQL as follows, you may edit the database name in the sql files:</p>
+<ul>
+	<li>If you are installing 6XMailer for the first time run <i>setup_new.sql</i>.</li>
+	<li>If you upgrading from a previous version run the file <i>update_from_(version).sql</i>, replacing <i>(version)</i> with the version you are upgrading from. &nbsp;This will not delete existing data in the address books or user settings database.</li>
+</ul>
+<p>Then go into your <i>php.ini</i> file and find a setting called <b>register_globals</b> and set it to  <b>Off</b>.  Then find the <b>track_vars</b> and set it to <b>On</b>.  If you can't change this settings in <i>php.ini</i> because of other scripts running on your server, then simply go into the your Apache configuration file <i>httpd.conf</i> or in the <i>.htaccess</i> for the 6XMailer if you running Apache (which I recommend) and change these settings by adding these lines:</p>
+	<blockquote>php_flag register_globals off<br>php_flag track_vars on</blockquote>
+<p>in the <b>&lt;Directory&gt;</b> or <b>&lt;VIRTUALHOST&gt;</b> sections that host 6XMailer, or in the <i>.htaccess</i> file that is in the directory that contains 6XMailer.</p>
+
+
+<H2><a name="c7">Configuration</a></H2>
+<p>Most of the configuration of 6XMailer is controller by the config.php script, the SMTP portion of the configuration is in the php.ini file.</p>
+
+<H3><a name="c7-1">POP3 Server</a></H3>
+<p>This section of the <i>config.php</i> file is information about your POP3 server and POP3 domain.</p>
+
+<dl>
+	<dt>$POPHostname</dt>
+	<dd>This is the IP address or a fully qualified host name of your POP3 server.</dd>
+
+	<dt>$POPPort</dt>
+	<dd>This is the port that your POP3 server is listening on, this usually defaults to 110.</dd>
+
+	<dt>$POPDomain</dt>
+	<dd>This value is used to add the domain part of the e-mail address to the end of usernames. &nbsp;<b>NOTE:</b> &nbsp;Do not set this if your username is your e-mail address.</dd>
+</dl>
+	
+<H3><a name="c7-2">SMTP Server</a></H3>
+<p>These are settings in your <i>php.ini</i> that define the SMTP server information that the mailer will ues to send e-mail.</p>
+
+<dl>
+	<dt>SMTP</dt>
+	<dd>This is the SMTP server to use to send e-mail, this setting is only for system that do not have a built-in or commonly defined SMTP server, daemon, or service.</dd>
+
+	<dt>sendmail_from</dt>
+	<dd>Do not modify or use this setting, it is the default e-mail address that all sent message are from, this is never used by 6XMailer as it sends an e-mail under the name of the logged on user.</dd>
+
+	<dt>sendmail_path</dt>
+	<dd>This is the path and command line of the sendmail binary on any system that uses or has sendmail installed. &nbsp;Typically this is not used on any Microsoft based machine.</dd>
+</dl>
+
+<H3><a name="c7-3">Text Strings</a></H3>
+<p>This section of <i>config.php</i> contains several strings of text used by the mailer that you and safely customize.</p>
+
+<dl>
+	<dt>$MailSystemTitle</dt>
+	<dd>This is the title of the mailer system, this can be the name of your company or some code name, it's up to you.</dd>
+
+	<dt>$QuoteInReply</dt>
+	<dd>This is the text that is placed between the original and the reply message when replying to an e-mail.</dd>
+</dl>
+
+<H3><a name="c7-4">Other settings</a></H3>
+<p>These are other settings in the <i>config.php</i> file that will allow you to customize and configure the mailer.</p>
+
+<dl>
+	<dt>$DemoMode</dt>
+	<dd>This setting will disable the functions for sending mail, creating per-user setting, and using the address book.</dd>
+
+	<dt>$Language</dt>
+	<dd>This is the language that the mailer will be in; this helps to define the labels, help documentation, and about page. &nbsp;Language files and scripts or stored in the <i>lang</i> directory. &nbsp;This defaults to English.</dd>
+
+	<dt>$Theme</dt>
+	<dd>This is the name of the theme that the mailer will use. &nbsp;It defines the look and feel of the mailer. &nbsp;A theme is a collection of style sheets, setting scripts, and image files. &nbsp;Themes are stored in the <i>themes</i> directory.</dd>
+
+	<dt>$RefreshList</dt>
+	<dd>This is the number of seconds that the browser will wait before automatically reloading the <b>Mail List</b>. &nbsp;It's default is 600 (10 minutes)</dd>
+
+	<dt>$AttachmentSize</dt>
+	<dd>This lets the administrator limit the size of the files that can be attached to mail. &nbsp;If this size ends in a "M", or "k" then the the size will be based on a Megabyte or kilobyte. &nbsp;If no ending exists then the size is in bytes. &nbsp;The ending is case insensitive. &nbsp;No setting or a setting of 0 with any ending means no limit.</dd>
+</dl>
+
+<H3><a name="c7-5">mySQL settings</a></H3>
+<p>These are other settings in the <i>config.php</i> file that will allow you specify the settings to access a mySQL server with the databases beeded to run 6XMailer.</p>
+
+<dl>
+	<dt>$QLPort</dt>
+	<dd>This is the port that your mySQL server is on. &nbsp;It defaults as &quot;3306&quot;.</dd>
+
+	<dt>$QLHostname</dt>
+	<dd>This is the hostname of you mySQL server. &nbsp;It defaults as &quot;localhost&quot;.</dd>
+
+	<dt>$QLSocket</dt>
+	<dd>This is the path to the socket. &nbsp;No default.</dd>
+
+	<dt>$QLUsername</dt>
+	<dd>The username needed to access your mySQL server.</dd>
+	
+	<dt>$QLPassword</dt>
+	<dd>The password needed to access your mySQL server.</dd>
+
+	<dt>$QLDatabase</dt>
+	<dd>The name of the database to use for the per-user settings.</dd>
+</dl>
+
+<H2><a name="c8">History of Changes</a></H2>
+<h6>0.65.02 - Sunday, February 25, 2001 01:34:26 AM Central Standard Time</h6>
+<ul>
+	<li>Added embedded image displaying.</li>
+	<li>Added Forward and View Sorce.</li>
+	<li>Changed a few comments in the configuration file.</li>
+	<li>Add help for the new features or course.</li>
+</ul>
+
+<h6>0.65.03 - Sunday, February 25, 2001 02:46:54 AM Central Standard Time</h6>
+<p><em>(UNRELEASED)</em></p>
+<ul>
+	<li>Made a correction in the about.php file.</li>
+	<li>Added the future.txt file.</li>
+	<li>Extended the embedded contect to APPLET, OBJECT, A, and LINK tags.</li>
+	<li>Correct some bugs in the message source viewing code.</li>
+</ul>
+	
+<h6>0.70.00 - Sunday, February 25, 2001 5:24:56 AM Central Standard Time</h6>
+<p><em>(UNRELEASED)</em></p>
+<ul>
+	<li>Add attachment listing and downloading.</li>
+	<li>Removed the replaced "Message" with a return to message link on the source and attachmens page.</li>
+	<li>Corrected a few grammatical problems with the strings.php in the "English" pack.</li>
+</ul>
+	  
+<h6>0.75.00 - Sunday, February 25, 2001 7:57:02 AM Central Standard Time</h6>
+<p><em>(UNRELEASED)</em></p>
+<ul>
+	<li>Added the feature to send attachments with e-mails.</li>
+</ul>
+	
+<h6>0.75.01 - Monday, February 26, 2001 6:08:25 AM Central Standard Time</h6>
+<ul>
+	<li>Updated the help file.</li>
+</ul>
+
+<h6>0.80.00 - Wednesday, February 28, 2001 9:53:42 AM Central Standard Time</h6>
+<ul>
+	<li>Added an address book.</li>
+	<li>Fixed a few bugs.</li>
+</ul>
+
+<h6>0.80.05 - Thursday, March 01, 2001 5:22:01 AM Central Standard Time</h6>
+<ul>
+	<li>Fixed a few problems where people who's usernames was there e-mail addresses, will add the domain part at the end, if you don't set it in the config file.  In version .80.00 I made the mailer fail without that but it will run normally now.</li>
+	<li>Made message headers and text pass through the session instead of logging on to the POP3 server for every page.  This doesn't include source viewing page or attachments page.  This should decrease the POP3 traffic down alot!.</li>
+</ul>
+
+<h6>0.80.10 - Friday, March 02, 2001 6:40:49 AM Central Standard Time</h6>
+<p><em>(UNRELEASED)</em></p>
+<ul>
+	<li>Fixed the address book to place address in the TO box on the send form.  It will simple put an address in the box if the send forms already loaded. If the send form isn't it loads it with the address in the box.</li>
+	<li>Fixed some database bug.  Make sure you read the installation instructions.</li>
+</ul>
+
+<h6>0.81.00 - Sunday, March 04, 2001 5:00:25 PM Central Standard Time</h6>
+<ul>
+	<li>Added attachment size limit variable.</li>
+	<li>Fixed bug with binary attachments not having the whole file sent on Win32 machines.</li>
+</ul>
+
+<h6>0.81.05 - Sunday, March 04, 2001 5:00:25 PM Central Standard Time</h6>
+<p><em>(RELEASED under CVS)</em></p>
+<ul>
+	<li>Fixed a bug that caused message forwards and replies to display the time in the subject field instead of the subject.</li>
+</ul>
+
+<h6>0.90.00 - Thursday, March 15, 2001 1:14:06 PM Central Standard Time</h6>
+<p><em>(RELEASED under CVS)</em></p>
+<ul>
+	<li>Added Display Name.</li>
+	<li>Fixed a few bugs that appeared on Windows NT.</li>
+</ul>
+
+<h6>0.95.00 - Saturday, March 17, 2001 7:06:28 PM Central Standard Time</h6>
+<ul>
+	<li>Added user message Signature.</li>
+	<li>Fixed several minor bugs.</li>
+</ul>
+
+<hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+	<td align="left" valign="top">
+		No e-mail yet!
+	</td>
+	<td align="right" valign="top">
+		<a href="http://www.php.net"><img src="../images/php-small-black.gif" width="88" height="31" alt="powered by php" border="0" hspace="2" vspace="2"></a><a href="http://www.microsoft.com/windows/ie/default.htm"><img src="../images/getielogo.gif" width="88" height="31" alt="Get Internet Explorer" border="0" hspace="2" vspace="2"></a><a href="http://home.netscape.com"><img src="../images/netscape_now_anim.gif" width="90" height="30" alt="Choose Netscape Now" border="0" hspace="2" vspace="2"></a><br>
+		<A href="http://validator.w3.org/"><img src="../images/vh40.gif" width="88" height="31" alt="Valid HTML 4.0!" border="0" hspace="2" vspace="2"></a><A href="http://jigsaw.w3.org/css-validator"><img src="../images/vcss.gif" width="88" height="31" alt="Valid CSS!" border="0" hspace="2" vspace="2"></a>
+	</td>
+</tr>
+</table>
+<hr>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+	<td align="left" valign="top">
+		For 6XMailer 0.95.00
+	</td>
+	<td align="center" valign="top">
+		Friday, March 02, 2001 6:37:29 AM Central Standard Time
+	</td>
+	<td align="right" valign="top">
+		Document version 0.10.50
+	</td>
+</tr>
+</table>
+
+</body>
+</html>

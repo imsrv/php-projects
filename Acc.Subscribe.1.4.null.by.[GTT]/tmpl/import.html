@@ -1,0 +1,149 @@
+<script language=javascript>
+function checkform() {
+  if (document.mainform.sub.selectedIndex == 0) {
+    alert("Please, select subscribtion!");
+    return false;
+  }
+  return true;
+}
+</script>
+<form action=admin.cgi method=post enctype="multipart/form-data" name=mainform onsubmit="return checkform();">
+<input type=hidden name=tid value="#FORM_tid#">
+<input type=hidden name=page value=import>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>Import e-mails</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Select subscription list &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+       <tr><td class=tdd><select name=sub class=inpts style="width: 580px;"><option value=''>-==Select subscription==-#sub-list#</select></td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+<br>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr valign=top><td width=50%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; <input type=radio name=importfrom value=file checked onClick="checkk();"> Import from CSV file &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+       <tr><td class=tdd><input type=file name=file class=inpts></td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; Letters &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100% height=59>
+       <tr><td class=tdd><input type=checkbox name=setdisabled value=1> Set disabled</td></tr>
+       <tr><td class=tdd><input type=checkbox name=sendadminconfirm value=1 onClick="checkk();"> Send confirm letter to admin</td><td><input type=text name=admin_email class=inpts></td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+
+</td><td width=50%>
+    <table cellspacing=0 cellpadding=0 border=0 width=100%>
+    <tr><td width=2><img src=#image_dir#g/1.gif width=2></td><td>
+      <table cellspacing=0 cellpadding=0 border=0 width=100%>
+      <tr><td background=#image_dir#g/2.gif width=20><img src=#image_dir#g/2.gif></td>
+      <td class=tdd><nobr>&nbsp; <input type=radio name=importfrom value=mysql onClick="checkk();"> Import from MySQL database &nbsp;</nobr></td>
+      <td background=#image_dir#g/2.gif width=80%><img src=#image_dir#g/2.gif></td>
+      </tr></table>
+    </td><td width=2><img src=#image_dir#g/3.gif width=2></td></tr>
+    <tr><td background=#image_dir#g/4.gif width=2><img src=#image_dir#g/4.gif width=2></td>
+    <td>
+       <table cellspacing=2 cellpadding=0 border=0 width=100%>
+       <tr><td class=tdd>MySQL host</td><td><input type=text name=mysqlhost value='localhost' class=inpts></td></tr>
+       <tr><td class=tdd>MySQL database</td><td><input type=text name=mysqldatabase value='' class=inpts></td></tr>
+       <tr><td class=tdd>MySQL user</td><td><input type=text name=mysqluser value='' class=inpts></td></tr>
+       <tr><td class=tdd>MySQL password</td><td><input type=text name=mysqlpassword value='' class=inpts></td></tr>
+       <tr><td class=tdd>MySQL table</td><td><input type=text name=mysqltable value='' class=inpts></td></tr>
+       </table>
+    </td>
+    <td background=#image_dir#g/5.gif><img src=#image_dir#g/5.gif widht=2></td></tr>
+    <tr><td width=2><img src=#image_dir#g/6.gif width=2></td><td background=#image_dir#g/7.gif><img src=#image_dir#g/7.gif></td><td width=2><img src=#image_dir#g/8.gif width=2></td></tr></table>
+</td></tr></table>
+<br>
+<input type=submit value="CONTINUE" class=sbmt>
+
+
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+</form>
+<br><br>
+<script language=javascript>
+function checkk() {
+  document.mainform.file.disabled = document.mainform.importfrom[1].checked;
+  document.mainform.mysqlhost.disabled = document.mainform.importfrom[0].checked;
+  document.mainform.mysqldatabase.disabled = document.mainform.importfrom[0].checked;
+  document.mainform.mysqluser.disabled = document.mainform.importfrom[0].checked;
+  document.mainform.mysqlpassword.disabled = document.mainform.importfrom[0].checked;
+  document.mainform.mysqltable.disabled = document.mainform.importfrom[0].checked;
+  document.mainform.admin_email.disabled = !document.mainform.sendadminconfirm.checked;
+}
+checkk();
+</script>
+
+<!--
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>File format</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td class=tdd>
+	<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td>
+
+<tr><td class=tdd>File format for upload:<br>
+	e-mail[tab]first name[tab]last name[tab]phone[tab]icq[tab]address[tab]address2[tab]city[tab]state[tab]country[tab]birthdate[tab]age[tab]sex[tab]website[tab]business[tab]ip</td></tr>
+	</td></tr></table>
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+<br><br>
+-->
+
+<!--[clear]-->
+<!--[sub-list]-->
+<option value='#id#'>#name#
+<!--[sub-list]-->
+
+
+<!--[clear]-->

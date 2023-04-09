@@ -1,0 +1,56 @@
+<table cellspacing=0 cellpadding=0 border=0 width=100% align=center>
+<tr><td width=3><img src=#image_dir#s/1.gif></td><td background=#image_dir#s/2.gif><img src=#image_dir#s/2.gif></td><td width=3><img src=#image_dir#s/3.gif></td></tr>
+<td background=#image_dir#s/4.gif width=3 rowspan=6><img src=#image_dir#s/4.gif></td>
+	<td class=mh>Users</td>
+<td background=#image_dir#s/5.gif width=3 rowspan=6><img src=#image_dir#s/5.gif></td></tr>
+<tr><td background=#image_dir#s/tline.gif><img src=#image_dir#s/tline.gif></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<td class=tdd>
+
+<table cellcpacing=0 cellpadding=0 border=0 width=100% align=center><tr><td>
+<form action=admin.cgi method=get><input type=hidden name=page value=addadmin>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr>
+	<th>Account name</th>
+	<th>User name</th>
+	<th>E-mail</th>
+	<th>Last IP</th>
+	<th>Last logged</th>
+	<th>Edit</th>
+	<th>Del</th>
+</tr>
+#user-lines#
+</table>
+</td></tr></table>
+
+
+</td></tr></table>
+
+<br><input type=submit value="ADD NEW ADMIN" class=sbmt>
+</form>
+
+</td></tr>
+<tr><td class=mi><br></td></tr>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+<tr><td width=3><img src=#image_dir#s/6.gif></td><td background=#image_dir#s/7.gif><img src=#image_dir#s/7.gif></td><td width=3><img src=#image_dir#s/8.gif width=3></td></tr>
+</table>
+
+
+
+<!--[user-lines]-->
+<tr onMouseOver="bgColor='#eeeeee';" onMouseOut="bgColor='';">
+	<td><a href=admin.cgi?page=editadmin&uid=#user-id# class=ar>#user-name#</a></td>
+	<td>#firstname# #lastname#</td>
+	<td><a href=mailto:#email# class=ar>#email#</a></td>
+	<td align=right><nobr>#user-ip# #flag#</nobr></td>
+	<td align=right>#user-time#</td>
+	<td align=center><a href=admin.cgi?page=editadmin&uid=#user-id#><img src=#image_dir#edit.gif width=16 height=16 border=0></a></td>
+	<td align=center><a href=admin.cgi?page=deleteadmin&uid=#user-id# onClick="return confirm('Are you sure to delete user?');"><img src=#image_dir#del.gif width=16 height=16 border=0></a></td>
+</tr>
+<tr><td colspan=7>
+<table cellspacing=0 cellpadding=0 border=0 width=100%>
+<tr><td background=#image_dir#s/dline.gif><img src=#image_dir#s/dline.gif></td></tr>
+</table>
+</td></tr>
+<!--[user-lines]-->
