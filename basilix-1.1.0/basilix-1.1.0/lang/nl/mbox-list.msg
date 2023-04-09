@@ -1,0 +1,37 @@
+<?
+// MBox listing messages
+$lang_msg["mboxlst"] = array(
+	201	=>	'Van',
+	202	=>	'Sorteer op Van',
+	203	=>	'Aan',
+	204	=>	'Sorteer op Aan',
+	205	=>	'Datum',
+	206	=>	'Sorteer op Datum',
+	207	=>	'Grootte',
+	208	=>	'Sorteer op Grootte',
+	209	=>	'Onderwerp',
+	210	=>	'Sorteer op Onderwerp',
+	211	=>	'(geen subject)',
+	212	=>	'Verplaats geselecteerde berichten naar',
+	213	=>	'Doe het',
+	214	=>	'Leeg Folder',
+	215	=>	'Verwijder geselecteerde berichten',
+	216	=>	'Wis geselecteerde berichten definitief',
+	217	=>	'Vorige',
+	218	=>	'Volgende',
+	219	=>	'Er zijn geen berichten om weer te geven in deze folder.',
+	220	=>	'U heeft geen folder geselecteerd, probeer het nog eens..',
+	221	=>	'U heeft geen berichten geselecteerd, probeer het nog eens..',
+	222	=>	'Het geselecteerde bericht kon niet worden verplaatst, probeer het later nog eens..',
+	223	=>	'De geselecteerde berichten (%d) zijn met succes naar de Prullenbak verplaatst.',
+	224	=>	'Het geselecteerde bericht kon niet worden verwijdert, probeer het later nog eens..',
+	225	=>	'De geselecteerde berichten zijn met succes verplaatst.',
+	226	=>	'De geselecteerde berichten konden niet definitief gewist worden, probeer het later nog eens..',
+	227	=>	'De geselecteerde berichten zijn met succes definitief gewist.',
+	228	=>	'Pagina: ',
+	229	=>	'Weet U zeker dat U deze folder wilt leegmaken?',
+	230	=>	'Welkom! Uw laatste verbinding was van',
+	231	=>	'Het bericht is met succes verwijderd.',
+	232	=>	'Het bericht is met succes definitief gewist.'
+);
+?>

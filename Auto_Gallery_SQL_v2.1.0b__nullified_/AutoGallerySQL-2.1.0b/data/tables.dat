@@ -1,0 +1,78 @@
+
+
+$table{'a_Posts'} = "CREATE TABLE a_Posts  ( " .
+                    "Post_ID       INT       NOT NULL   AUTO_INCREMENT, " .
+                    "Email         CHAR(128) NOT NULL, " .
+                    "Gallery_URL   CHAR(128) NOT NULL, " .
+                    "Description   CHAR(255) NOT NULL, " .
+                    "Recip_URL     CHAR(128) NOT NULL, " .
+                    "Partial_URL   CHAR(128) NOT NULL, " .
+                    "Num_Pics      INT       NOT NULL, " .
+                    "Category      CHAR(64)  NOT NULL, " .
+                    "Submit_Date   DATETIME  NOT NULL, " .
+                    "Approve_Date  DATETIME  NOT NULL, " .
+                    "Partner_ID    CHAR(10)  NOT NULL, " .
+                    "Moderator     CHAR(10)  NOT NULL, " .
+                    "Confirm_ID    INT       NOT NULL, " .
+                    "Confirmed     CHAR(1)   NOT NULL   DEFAULT '0', " .
+                    "Send_Email    CHAR(1)   NOT NULL   DEFAULT '0', " .
+                    "Approved      CHAR(1)   NOT NULL   DEFAULT '0', " .
+                    "Archived      CHAR(1)   NOT NULL   DEFAULT '0', " .
+                    "Permanent     CHAR(1)   NOT NULL   DEFAULT '0', " .
+                    "Recip_Checked CHAR(1)   NOT NULL   DEFAULT '0', " .
+                    "Recip_Found   CHAR(1)   NOT NULL   DEFAULT '0', " .
+                    "IP_Address    CHAR(16)  NOT NULL, " .
+                    "Icons         CHAR(128) NOT NULL, " .
+                    "Rating        INT       NOT NULL, " .
+                    "Page_ID       CHAR(64)  NOT NULL, " .
+                    "Page_Bytes    INT       NOT NULL, " .
+                    "Text_Links    INT       NOT NULL, " .
+                    "Banner_Links  INT       NOT NULL, " .
+                    "Throughput    FLOAT     NOT NULL, " .
+                    "PRIMARY KEY ( Post_ID ), " .
+                    "INDEX ( Confirm_ID ), " .
+                    "INDEX ( Category ), " .
+                    "INDEX ( Page_ID ) )";
+
+
+
+$table{'a_Moderators'} = "CREATE TABLE a_Moderators ( " .
+                         "Moderator_ID    CHAR(10)   NOT NULL, " .
+                         "Email           CHAR(64)   NOT NULL, " .
+                         "Name            CHAR(32)   NOT NULL, " .
+                         "Password        CHAR(32)   NOT NULL, " .
+                         "Priv_Super      CHAR(1)    NOT NULL   DEFAULT '0', " .
+                         "Priv_Posts      CHAR(1)    NOT NULL   DEFAULT '0', " .
+                         "Priv_Setup      CHAR(1)    NOT NULL   DEFAULT '0', " .
+                         "Priv_HTML       CHAR(1)    NOT NULL   DEFAULT '0', " .
+                         "Priv_Ban        CHAR(1)    NOT NULL   DEFAULT '0', " .
+                         "Priv_Mail       CHAR(1)    NOT NULL   DEFAULT '0', " .
+                         "Priv_Partner    CHAR(1)    NOT NULL   DEFAULT '0', " .
+                         "Priv_Moderator  CHAR(1)    NOT NULL   DEFAULT '0', " .
+                         "Priv_Cheat      CHAR(1)    NOT NULL   DEFAULT '0', " .
+                         "PRIMARY KEY ( Moderator_ID ) )";
+
+
+
+$table{'a_Partners'} = "CREATE TABLE a_Partners ( " .
+                       "Partner_ID     CHAR(10)    NOT NULL, " .
+                       "Email          CHAR(64)    NOT NULL, " .
+                       "Name           CHAR(32)    NOT NULL, " .
+                       "Site_URL       CHAR(128)   NOT NULL, " .
+                       "Password       CHAR(32)    NOT NULL, " .
+                       "Icons          CHAR(128)   NOT NULL, " .
+                       "Rating         INT         NOT NULL, " .
+                       "Auto_Approve   CHAR(1)     NOT NULL  DEFAULT '0', " .
+                       "PRIMARY KEY ( Partner_ID ) )";
+
+
+
+$table{'a_Cheats'} = "CREATE TABLE a_Cheats ( " .
+                     "Cheat_ID       INT       NOT NULL    AUTO_INCREMENT, " .
+                     "IP_Address     CHAR(16)  NOT NULL, " .
+                     "Post_ID        INT       NOT NULL, " .
+                     "Description    CHAR(255) NOT NULL, " .
+                     "PRIMARY KEY ( Cheat_ID ) )";
+
+
+1;

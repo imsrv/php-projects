@@ -1,0 +1,44 @@
+############################################################
+# BannerAdmin 1.2.0                                               #
+############################################################
+# by Boris Brodsky                                         #
+# Contact: php10@hotmail.com                               #
+# Homepage: http://www.arch.f2s.com                        #
+############################################################
+
+This is completely free script, but i'll be happy to see my name 
+or link to my site on some place on Your site, Thanks!
+
+#############################################################
+About:
+
+Very simple program for banner administration, this prog.may hold 2 types
+of banners(Front page banners and Inside page banners),and very simple 
+admin page for adding new banners, or viewing the statistics for each 
+banner.To disaplay banner hase been used RANDOM function. 
+Script language: PHP4 (extntion .php)
+DB: MySql
+
+If 
+
+
+
+############################################################################
+Install.:
+1. Upload banner directory to your web server
+2. USe file tables.sql to create DB 
+3. change db settings on common.php
+4. change db settings on FrontPageBanners.php and InsidePageBanners.php
+5. Add one of this pages:-FrontPageBanners.php or InsidePageBanners.php 
+   to your page(this page mast have ext. php)
+
+
+5. Change password on admin.php. Current password is: xxx and user name: xxx
+
+ 
+
+  Enjoy
+
+############################################################################
+
+If you have any suggestions please let me know!

@@ -1,0 +1,8 @@
+<?
+//
+// Empty a folder HTML file
+//
+?>
+<div align="center">
+<?php push_errinfo() ?>
+</div>

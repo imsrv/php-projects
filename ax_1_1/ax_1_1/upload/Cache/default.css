@@ -1,0 +1,39 @@
+/* CSS Document */
+BODY { background: #003366; color: #fff; font-family: Arial; font-size: 10pt; font-weight: none; }
+A:LINK, A:VISITED, A:ACTIVE { color: #fff; text-decoration: underline; }
+A:HOVER { color: #fff; text-decoration: none; }
+.maintable { border: 1px solid; border-collapse: collapse; width: 750; background: #fff; horizontal-align: center; }
+TD.HEADER { background: #006699; background-image: url(./style_images%IMG_DIR%logo_stripe.jpg); color: #fff; font-family: Arial; font-size: 10pt; height: 120; valign: middle; }
+TD.MENU { background: #205C92; background-image: url(./style_images%IMG_DIR%menu.jpg); color: #fff; font-family: Arial; font-size: 8pt; font-weight: none; }
+TD.MENU A:LINK, TD.MENU A:VISITED, TD.MENU A:ACTIVE { color: #fff; text-decoration: none; }
+TD.MENU A:HOVER { color: #fff; text-decoration: none; }
+TD.MAIN { background: #fff; color: #000; font-family: Arial; font-size: 8pt; font-weight: none; vertical-align: top; margin-top: auto; margin-left: 2; }
+TD.MAIN A:LINK, TD.MAIN A:VISITED, TD.MAIN A:ACTIVE { color: #000; text-decoration: underline; }
+TD.MAIN A:HOVER { color: #000; text-decoration: none; }
+TD.MAIN_2 { background: #cccccc; color: #000; font-family: Times; font-size: 8pt; font-weight: none; vertical-align: top; margin-top: auto; margin-left: auto; }
+TD.MAIN_2 A:LINK, TD.MAIN_2 A:VISITED, TD.MAIN_2 A:ACTIVE { color: #000; text-decoratino: underline; }
+TD.MAIN_2 A:HOVER { color: #000; text-decoration: none; }
+TD.FORM { background: #fff; font-family: Arial; font-size: 8pt; color: #000; font-weight: none; }
+.PM { background: #cfcfcf; font-family: Arila; font-size: 8pt; font-weight: bold; border: 1px solid; border-color: #000; }
+TD.PMT { background: #efefef; font-family: Verdana; font-size: 8pt; color: #000; font-weight: none; }
+TD.PMT A:LINK, TD.PMT A:VISITED { color: #000; text-decoration: none; }
+TD.PMT A:ACTIVE { color: #006699; text-decoration: underline; }
+TD.PMT A:HOVER { color: #003366; text-decoration: underline; }
+#copyright { color: #fff; font-family: Times; font-size: 8pt; font-weight: bold; }
+#copyright a:link, #copyright a:visited, #copyright a:active, #copyright a:hover { color: #fff; text-decoration: underline; }
+#info { color: #fff; font-family: Arial; font-size: 8pt; font-weight: bold; }
+#navstrip { background: #efefef; color: #000; font-family: Arial; font-weight: none; font-size: 8pt; border: 1px dotted #000; height: 22px; vertical-align: middle; margin-left: 2px; }
+#navstrip a:link, #navstrip a:visited, #navstrip a:active { color: #000; text-decoration: none; }
+#navstrip a:hover { color: #000000; text-decoration: underline; }
+#quote { color: #000; background: #efefef; border: 1px dashed; border-color: #000; font-family: Arial; font-size: 8pt; margin-left: 2; }
+#quote a:link, #quote a:active, #quote a:visited { color: #000; text-decoration: underlined }
+#quote a:hover { color: #000; text-decoration: none }
+#code { color: #000; background: #efefef; border: 1px dashed; border-color: #000; font-family: Courier; font-size: 8pt; margin-left: 2; }
+#code a:link, #code a:active, #code a:visited { color: #000; text-decoration: underlined }
+#code a:hover { color: #000; text-decoration: none }
+#bbcode_help { width: 95%; height: 95%; align: center; background: #efefef; border: 1px dashed; border-collapse: collapse; border-color: #fff; font-size: 8pt; font-family: Arial; vertical-align: center; }
+.submit { color: #000; font-family: Verdana; font-size: 8pt; cursor: hand; }
+.field { color: #000; font-family: Times; fon-size: 8pt; border: 1px solid; border-color: #003366; }
+.textarea { color: #000; font-family: Arial; font-size: 9pt; }
+
+

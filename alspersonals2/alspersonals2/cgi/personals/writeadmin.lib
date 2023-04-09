@@ -1,0 +1,99 @@
+# Write info to admin page
+require "configdat.lib";
+
+sub writeadmin {
+&vars;
+##########################################################################################
+
+# Write data file for admin use
+
+open (HTML, ">>$userdata/$username.html") || die "Cannot create $userdata/$username/$password\.html\n";
+flock (HTML, 2) or die "can't lock file\n";
+print HTML "<html><head><title>Profile for user $username</title></head>\n"; 
+print HTML "<body bgcolor=ffffff topmargin=0 bottommargin=0 rightmargin=0 leftmargin=0 marginheight=0 marginwidth=0>\n";
+print HTML "<table cellspacing=\"0\" cellpadding=\"0\" width=100\% height=80 border=0 bgcolor=404040>\n";
+print HTML "<tr><td><center><h1><font color=ffffff>User Data</font></h1></center></td></tr></table>\n";
+print HTML "<blockquote><font size=2 face=univers>The file <b>$username$password.html</b> was created on <b>$date</b> at <b>$time</b>.\n";
+print HTML "The username associated with this file is <b>$username</b>.\n";
+print HTML "The password associated with this file is <b>$password</b>.\n";
+print HTML "The IP address associated with this user is <b>$remote_addr</b><br>\n";
+print HTML "The emailaddress supplied by this user is: <a href=\"mailto:$emailaddr\"><b>$emailaddr</b></a></blockquote></font>\n";
+print HTML "<br><br><br></td></tr></table>\n";
+print HTML "<table cellspacing=\"0\" cellpadding=\"0\" width=100\% height=80 border=0 bgcolor=404040>\n";
+print HTML "<tr><td>&nbsp;</td></tr></table>\n";
+print HTML "</body></html>\n";
+close (HTML);
+
+#######################################################################################################################
+
+#write info to admin page
+
+open (FILE, "$adminpage") || die "That file cannot be opened\n";
+flock (FILE, 1)  or die  "cannot lock index file\n";
+	@lines = <FILE>;
+close (FILE);
+$sizelines = @lines;
+
+open (FILE, ">$adminpage") || die "That file cannot be opened\n";
+flock (FILE, 2)  or die  "cannot lock index file\n";
+
+	for ($a = 0; $a <=$sizelines; $a++) {
+
+	$_ = $lines[$a];
+
+	
+
+       if (/<!--indexoftitles-->/)  {	
+
+       print FILE "<!--indexoftitles-->\n";
+       print FILE "<option value=\"$profilesurl/$username.html\">$username</option>
+	\n";
+	} 
+	else {
+	      print FILE $_;
+
+
+	}
+
+	}
+
+close (FILE);
+
+#####################################################################################
+
+open (FILE, "$adminpage") || die "That file cannot be opened\n";
+flock (FILE, 1)  or die  "cannot lock index file\n";
+	@lines = <FILE>;
+close (FILE);
+$sizelines = @lines;
+
+open (FILE, ">$adminpage") || die "That file cannot be opened\n";
+flock (FILE, 2)  or die  "cannot lock index file\n";
+
+	for ($a = 0; $a <=$sizelines; $a++) {
+
+	$_ = $lines[$a];
+
+	
+
+       if (/<!--indexoffilenames-->/)  {	
+
+       print FILE "<!--indexoffilenames-->\n";
+	 print FILE "<option value=\"$username\">$username</option>
+	\n";
+	} 
+	else {
+	      print FILE $_;
+
+
+	}
+
+	}
+
+close (FILE);
+
+}
+####################################################################################
+1;
+
+

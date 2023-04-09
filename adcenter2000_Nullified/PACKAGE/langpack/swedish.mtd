@@ -1,0 +1,8 @@
+$data{methods}=qq~<option $selected{genstats} value="genstats">Övergripande statistik</option><option $selected{monstats} value="monstats">Månads Statisik</option><option $selected{daystats} value="daystats">Daglig Statisik</option><option $selected{hourstats} value="hourstats">Statisik per timme</option><option $selected{affiliate} value="affiliate">Utökad statistik</option><option $selected{htmlcode} value="htmlcode">HTML kod</option><option $selected{genman} value="genman">Generella inställningar</option><option $selected{perman} value="perman">Personliga inställningar</option><option $selected{banman} value="banman">Banner</option><option $selected{tasman} value="tasman">Måltavlor för banner</option><option $selected{tabman} value="tabman">Visa banner (kategorier)</option><option $selected{tacman} value="tacman">Visa banner (land)</option><option $selected{adtman} value="adtman">Tidsinställningar</option>~;
+$data{methods}.=qq~<option $selected{visitors} value="visitors">Räknar meny</option>~ if ($enablecounter);
+$data{methods}.=qq~<option $selected{sendml} value="sendml">Mailinglista meny</option>~ if ($enablemaillist);
+$data{methods}.=qq~<option $selected{tx} value="tx">TX2000 Meny</option>~ if ($enabletex);
+$data{methods}.=qq~<option $selected{str} value="str">SwimBanner Meny</option>~ if ($enableswim);
+$data{methods}.=qq~<option $selected{faq} value="faq">FAQ</option>~;
+$data{methods}.=qq~<option $selected{support} value="support">Support</option>~;
+$data{methods}.=qq~<option value="backindex">Tillbaka till index</option>~;

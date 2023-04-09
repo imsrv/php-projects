@@ -1,0 +1,33 @@
+a {  font-family: Arial, Helvetica, sans-serif; color: navy; TEXT-DECORATION: none}
+a:hover {  font-family: Arial, Helvetica, sans-serif; color: navy; TEXT-DECORATION: none}
+a.menu {  font-family: Arial, Helvetica, sans-serif; color: #333333; TEXT-DECORATION: none}
+a.menu:hover {  font-family: Arial, Helvetica, sans-serif; color: white; TEXT-DECORATION: none}
+td {  font-family: Arial, Helvetica, sans-serif; font-size: 11px; COLOR: #555555;}
+.bodytext {  font-family: Arial, Helvetica, sans-serif; font-size: 12px;}
+.cmn {  font-family: Arial, Helvetica, sans-serif; font-size: 11px;}
+.small {  font-family: Arial, Helvetica, sans-serif; font-size: 11px;}
+.topic {  font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bold;}
+TEXTAREA {  font-family: Arial, Helvetica, sans-serif; font-size: 11px;BACKGROUND:#1772CB;COLOR: #ffffff;}
+SELECT {  font-family: Arial, Helvetica, sans-serif; font-size: 11px;BACKGROUND:#1772CB;COLOR: #ffffff;}
+INPUT {  font-family: Arial, Helvetica, sans-serif; FONT-SIZE: 10px;BACKGROUND:#1772CB;COLOR: #ffffff;}
+
+body{
+	scrollbar-face-color: #666666;
+	scrollbar-track-color: #CCCCCC;
+	scrollbar-arrow-color: #66AAEE;
+
+	scrollbar-highlight-color: #DDDDDD;
+	scrollbar-3dlight-color: #999999;
+	scrollbar-shadow-color: #DDDDDD;
+	scrollbar-darkshadow-color: #888888;
+}
+.std_button {
+	background-color: #3678BF;
+  color: #99CFC1;
+  font-size: 11px;
+  font-weight : normal;
+  border-style: solid;
+  border-width : 1;  
+  boder-color : #99CFC1
+  font-family: tahoma
+}

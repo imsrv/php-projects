@@ -1,0 +1,517 @@
+<html>
+<head>
+  <title>Setup AutoGallery SQL v#%VERSION%#</title>
+  <script language="JavaScript">
+    function openHelp(url, name) { 
+      window.open(url, name, 'scrollbars=1,resizable=no,width=350,height=450,status=0,menubar=0');
+    }
+  </script>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="white" link="blue">
+
+<div align="center">
+
+<form method="POST" action="setup.cgi">
+
+<table border="0" cellpadding="0" cellspacing="0" width="650">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="700">
+
+  <tr>
+    <td bgcolor="#004080" align="center" colspan="2">
+      <font face="Arial" size="3" color="white" style="font-size: 15px;">
+      <b>AutoGallery SQL v#%VERSION%# Setup</b>
+      </font>
+    </td>
+  </tr>
+
+  <tr bgcolor="#afafaf">
+    <td align="center" colspan="2">
+      <font face="Arial" size="2">
+      <b>Fields marked in <font color="red">red</font> are required</b>
+      </font>
+    </td>
+  </tr>
+
+
+
+  <!-- DIRECTORY SETUP -->
+  <tr bgcolor="#dcdcdc">
+    <td width="150" valign="top">
+      <font face="Arial" size="2"><b>Directory Setup</b></font>
+    </td>
+    <td width="550">
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>HTML Directory:</b></font><br>
+      <input type="text" name="HTML_DIR" value="#%HTML_DIR%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The directory on your server where you want the TGP pages created.<br>
+      Example: /web/home/username/docs/tgp
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Full Path To mysql:</b></font><br>
+      <input type="text" name="MYSQL" value="#%MYSQL%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The full path to the mysql program on your server.<br>
+      If you do not know this information, ask your server administrator.<br>
+      Example: /usr/bin/mysql
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Full Path To mysqldump:</b></font><br>
+      <input type="text" name="MYSQLDUMP" value="#%MYSQLDUMP%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The full path to the mysqldump program on your server.<br>
+      If you do not know this information, ask your server administrator.<br>
+      Example: /usr/bin/mysqldump
+      </font>
+
+    </td>
+  </tr>
+
+
+
+  <!-- URL SETUP -->
+  <tr bgcolor="#ececec">
+    <td valign="top" width="100">
+      <font face="Arial" size="2"><b>URL Setup</b></font>
+    </td>
+
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>CGI URL:</b></font><br>
+      <input type="text" name="CGI_URL" value="#%CGI_URL%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The base URL on your site where the software is installed.<br>
+      Example: http://www.domain.com/cgi-bin/tgp
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>HTML URL:</b></font><br>
+      <input type="text" name="HTML_URL" value="#%HTML_URL%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The full URL where the TGP pages will be created.<br>
+      Example: http://www.domain.com/tgp
+      </font>
+    </td>
+  </tr>
+
+
+
+  <!-- EMAIL SETUP -->
+  <tr bgcolor="#dcdcdc">
+    <td valign="top">
+      <font face="Arial" size="2"><b>E-Mail Setup</b></font>
+    </td>
+
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Sendmail Location or SMTP Server Hostname:</b></font><br>
+      <input type="text" name="SENDMAIL" value="#%SENDMAIL%#" size="40" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      On Unix: The full path to sendmail.<br>
+      Example: /usr/sbin/sendmail<br>
+      On NT: The hostname/IP of your SMTP server.<br>
+      Example: smtp.yourdomain.com
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Your E-mail Address:</b></font><br>
+      <input type="text" name="ADMIN_EMAIL" value="#%ADMIN_EMAIL%#" size="40" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The email address you want to use in association with the list.<br>
+      Example: webmaster@yourdomain.com
+      </font>
+    </td>
+  </tr>
+
+
+
+  <!-- DETAILS -->
+  <tr bgcolor="#ececec">
+    <td valign="top">
+      <font face="Arial" size="2"><b>Details</b></font>
+    </td>
+
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Main TGP Page(s):</b></font><br>
+      <input type="text" name="MAIN_PAGE" value="#%MAIN_PAGE%#" size="40" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The filename(s) you want the main page of posts written to.<br>
+      Single Page Example: index.html<br>
+      Multiple Page Example: index.html,tgp.html,galleries.html<br>
+      Separate all pages by commas, with no spaces before or after a comma
+      <br><br>
+      <b>Note:</b> This will not spread the posts across several pages, it<br>
+      will just allow you to have multiple pages with the same posts but<br>
+      different layout and advertisements.  More details can be<br>
+      found in the overview.html documentation file.
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Categories:</b></font></font><br>
+      <input type="text" name="CATEGORIES" value="#%CATEGORIES%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The categories posters will be able to choose from for their galleries.<br>
+      Example: Category 1,Category 2,Category 3<br>
+      Seperate categories by commas with no space before or after a comma.
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Movie Categories:</b></font></font><br>
+      <input type="text" name="MOVIE_CATS" value="#%MOVIE_CATS%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      From the list of categories above, indicate which are movie-only categories.<br>
+      Example: Category 2,Category 3<br>
+      Seperate categories by commas with no space before or after a comma.
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>File Extension:</b></font><br>
+      <input type="text" name="FILE_EXT" value="#%FILE_EXT%#" size="10" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The file extension to use for the categorized archive pages.<br>
+      Example: html
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Date Format:</b></font><br>
+      <input type="text" name="DATE_FORMAT" value="#%DATE_FORMAT%#" size="15" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The format to be used for dates generated by the script.<br>
+      Example: %n-%j-%y<br>
+      See the dates.html documentation file for more information
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Time Format:</b></font><br>
+      <input type="text" name="TIME_FORMAT" value="#%TIME_FORMAT%#" size="15" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The format to be used for times generated by the script.<br>
+      Example: %g:%i%a<br>
+      See the dates.html documentation file for more information
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Time Zone Offset:</b></font><br>
+      <input type="text" name="TIME_ZONE" value="#%TIME_ZONE%#" size="15" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The time zone offset to use for date/time displays on the list.<br>
+      If your server is in EST and you are in CST, this would be -1<br>
+      Example: -1
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Normal Posts Color:</b></font><br>
+      <input type="text" name="NORMAL_COLOR" value="#%NORMAL_COLOR%#" size="15" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The font color to use for normal posts.<br>
+      Example: black
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Partner Posts Color:</b></font><br>
+      <input type="text" name="PARTNER_COLOR" value="#%PARTNER_COLOR%#" size="15" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The font color to use for partner posts.<br>
+      Example: red
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Normal Posts Size:</b></font><br>
+      <input type="text" name="NORMAL_SIZE" value="#%NORMAL_SIZE%#" size="15" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The font size to use for normal posts.<br>
+      Example: 2
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Partner Posts Size:</b></font><br>
+      <input type="text" name="PARTNER_SIZE" value="#%PARTNER_SIZE%#" size="15" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The font size to use for partner posts.<br>
+      Example: 3
+      </font>
+
+    </td>
+  </tr>
+
+
+
+  <!-- ARCHIVE PAGES -->
+  <tr bgcolor="#dcdcdc">
+    <td valign="top">
+      <font face="Arial" size="2"><b>Archives</b></font>
+    </td>
+
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      #%USE_ARCHIVES%# <b>Enable the archives?</b>
+      <br><br>
+
+      If you checked the box above, you should continue filling out the items below.<br>
+      If you did not check the box, you can continue on to the Options section.
+      
+      <br><br>
+ 
+      An archive will be created for each of the categories you have.
+
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Pages Per Archive:</b></font><br>
+      <input type="text" name="PAGES_PER_ARCHIVE" value="#%PAGES_PER_ARCHIVE%#" size="5" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The number of pages each archive should span.<br>
+      Example: 2
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Posts Per Page:</b></font><br>
+      <input type="text" name="POSTS_PER_PAGE" value="#%POSTS_PER_PAGE%#" size="5" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The maximum number of posts to dislpay on each page of each archive.<br>
+      Example: 100
+      </font>
+    </td>
+  </tr>
+
+
+  
+  <!-- GALLERY ANALYZER -->
+  <tr bgcolor="#ececec">
+    <td valign="top">
+      <font face="Arial" size="2"><b>Gallery Analyzer</b></font>
+    </td>
+
+    <td>
+      #%USE_COUNT_PICS%#    <font face="Verdana" size="1" style="font-size: 11px;"><b>Have the software determine the number of pics on the gallery?</b></font><br>
+      #%USE_REJECT_300%#    <font face="Verdana" size="1" style="font-size: 11px;"><b>Reject gallery URLs that forward (30x status codes)?</b></font><br>
+      #%USE_TAKE_SAMPLE%#   <font face="Verdana" size="1" style="font-size: 11px;"><b>Take sample of gallery content to check speed and size?</b></font><br>
+      #%USE_COUNT_LINKS%#   <font face="Verdana" size="1" style="font-size: 11px;"><b>Count the number of links on the gallery page?</b></font><br>
+      #%USE_DUP_CONTENT%#   <font face="Verdana" size="1" style="font-size: 11px;"><b>Check for duplicate gallery content?</b></font><br>
+      #%USE_BANNED_HTML%#   <font face="Verdana" size="1" style="font-size: 11px;"><b>Check for banned HTML on the gallery?</b></font><br>
+      #%USE_CHECK_RECIP%#   <font face="Verdana" size="1" style="font-size: 11px;"><b>Check for a reciprocal link to your site?</b></font><br>      
+      #%USE_RECIP_GALLERY%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Reciprocal link must be located on their gallery page?</b></font><br>
+      #%USE_REQ_RECIP%#     <font face="Verdana" size="1" style="font-size: 11px;"><b>Reject submissions that do not have a reciprocal link?</b></font><br>
+      #%USE_RECIP_BOOST%#   <font face="Verdana" size="1" style="font-size: 11px;"><b>Give a +1 rating boost to galleries that have a reciprocal link?</b></font>
+
+      <br><br>
+
+      <font face="Verdana" size="1" color="red" style="font-size: 11px;"><b>Minimum Number of Pics:</b></font><br>
+      <input type="text" name="MINIMUM_PICS" value="#%MINIMUM_PICS%#" size="5" style="font-family: Verdana; font-size: 11px;"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The minimum number of pics on a gallery page required in order to get listed.<br>
+      Example: 10
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" color="red" style="font-size: 11px;"><b>Maximum Number of Pics:</b></font><br>
+      <input type="text" name="MAXIMUM_PICS" value="#%MAXIMUM_PICS%#" size="5" style="font-family: Verdana; font-size: 11px;"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The maximum number of pics on a gallery page required in order to get listed.<br>
+      Example: 25
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" color="red" style="font-size: 11px;"><b>Minimum Number of Movies:</b></font><br>
+      <input type="text" name="MINIMUM_MOVIES" value="#%MINIMUM_MOVIES%#" size="5" style="font-family: Verdana; font-size: 11px;"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The minimum number of movies on a gallery page required in order to get listed.<br>
+      Example: 5
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" color="red" style="font-size: 11px;"><b>Maximum Number of Movies:</b></font><br>
+      <input type="text" name="MAXIMUM_MOVIES" value="#%MAXIMUM_MOVIES%#" size="5" style="font-family: Verdana; font-size: 11px;"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The maximum number of movies on a gallery page required in order to get listed.<br>
+      Example: 25
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" color="red" style="font-size: 11px;"><b>Minimum Image Size:</b></font><br>
+      <input type="text" name="IMAGE_SIZE" value="#%IMAGE_SIZE%#" size="15" style="font-family: Verdana; font-size: 11px;"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The minimum allowed image size, in bytes, allowed in order to get listed.<br>
+      Example: 12288
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" color="red" style="font-size: 11px;"><b>Minimum Movie Size:</b></font><br>
+      <input type="text" name="MOVIE_SIZE" value="#%MOVIE_SIZE%#" size="15" style="font-family: Verdana; font-size: 11px;"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The minimum allowed movie size, in bytes, allowed in order to get listed.<br>
+      Example: 102400
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" color="red" style="font-size: 11px;"><b>Valid Image File Extensions:</b></font><br>
+      <input type="text" name="IMAGE_EXTENSIONS" value="#%IMAGE_EXTENSIONS%#" size="40" style="font-family: Verdana; font-size: 11px;"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      A comma separated list of file extensions that the gallery images can have.<br>
+      Example: jpg,gif,jpeg,bmp
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" color="red" style="font-size: 11px;"><b>Valid Movie File Extensions:</b></font><br>
+      <input type="text" name="MOVIE_EXTENSIONS" value="#%MOVIE_EXTENSIONS%#" size="40" style="font-family: Verdana; font-size: 11px;"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      A comma separated list of file extensions that the gallery movies can have.<br>
+      Example: avi,mpg,rm,wmv,mpeg,mov
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" color="red" style="font-size: 11px;"><b>Minimum Throughput:</b></font><br>
+      <input type="text" name="MINIMUM_SPEED" value="#%MINIMUM_SPEED%#" size="5" style="font-family: Verdana; font-size: 11px;"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The minimum download speed (in kilobytes per second) allowed in order to get listed.<br>
+      Example: 5
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" color="red" style="font-size: 11px;"><b>Maximum Links:</b></font><br>
+      <input type="text" name="MAXIMUM_LINKS" value="#%MAXIMUM_LINKS%#" size="5" style="font-family: Verdana; font-size: 11px;"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The maximum number of links allowed on the gallery page.<br>
+      See the analyzer.html documentation file for assistance with this field.<br>
+      Example: 10
+      </font>
+    </td>
+  </tr>
+
+
+
+  <!-- OPTIONS -->
+  <tr bgcolor="#ececec">
+    <td valign="top">
+      <font face="Arial" size="2"><b>Other Options</b></font>
+    </td>
+
+    <td>
+      #%USE_CONFIRM%#       <font face="Verdana" size="1" style="font-size: 11px;"><b>Submissions must be confirmed through submitter's e-mail address?</b></font><br>
+      #%USE_CHECK_DUPS%#    <font face="Verdana" size="1" style="font-size: 11px;"><b>Check for duplicate gallery URLs during submission?</b></font><br>      
+      #%USE_REQ_DESC%#      <font face="Verdana" size="1" style="font-size: 11px;"><b>Require a gallery description for submission?</b></font><br>
+      #%USE_LOWER_CASE%#    <font face="Verdana" size="1" style="font-size: 11px;"><b>Convert all but the first letter of descriptions to lower case letters?</b></font><br>
+      #%USE_PAD_NUMBERS%#   <font face="Verdana" size="1" style="font-size: 11px;"><b>Prefix single digit numbers with a zero?</b></font><br>
+      #%USE_LOG_EMAIL%#     <font face="Verdana" size="1" style="font-size: 11px;"><b>Log all e-mail addresses of those who submit galleries?</b></font><br>
+      #%USE_AUTO_APPROVE%#  <font face="Verdana" size="1" style="font-size: 11px;"><b>Auto-approve all submissions without reviewing?</b></font><br>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font face="Verdana" size="1" style="font-size: 11px;">Process all posts in the queue before enabling the auto-approve option.</font>
+
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Auto-Update Interval:</b></font><br>
+      <input type="text" name="AUTO_INTERVAL" value="#%AUTO_INTERVAL%#" size="25" style="font-family: Verdana; font-size: 11px;"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The minimum number of seconds that should elapse between page updates.<br>
+      This will only work if using the auto-approve feature.<br>
+      Example: 3600
+      </font>
+
+      <hr width="100%" size="1" noshade>
+
+      <font face="Verdana" size="1" color="red" style="font-size: 11px;"><b>Display The </b></font> 
+      <input type="text" name="MAIN_POSTS" value="#%MAIN_POSTS%#" size="5" style="font-family: Verdana; font-size: 11px;">
+      <select name="ARCH_METHOD" style="font-family: Verdana; font-size: 11px;">
+        #%ARCH_METHOD%#
+      </select>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      <font color="red"><b>On The Main Pages</b></font><br>
+      The number of posts you want to display on the main pages.<br>
+      More details on these options can be found in the overview.html documentation file.<br>
+      "Most Recent Posts" Example: 100<br>
+      "Most Recent Posts Per Category" Example: 25<br>
+      "Most Recent Days Worth Of Posts" Example: 2
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Extra Sorting Options:</b></font><br>
+      <input type="text" name="SORT_OPTIONS" value="#%SORT_OPTIONS%#" size="25" style="font-family: Verdana; font-size: 11px;"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The sorting string used to determine what order to retreive galleries from the database.<br>
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" color="red" style="font-size: 11px;"><b>Maximum Posts Per General Submitter Per Day:</b></font><br>
+      <input type="text" name="G_POSTS_PER_DAY" value="#%G_POSTS_PER_DAY%#" size="5" style="font-family: Verdana; font-size: 11px;"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The maximum number of posts that can be submitted by each person.<br>
+      Example: 2
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" color="red" style="font-size: 11px;"><b>Maximum Posts Per Partner Per Day:</b></font><br>
+      <input type="text" name="P_POSTS_PER_DAY" value="#%P_POSTS_PER_DAY%#" size="5" style="font-family: Verdana; font-size: 11px;"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The maximum number of posts that can be submitted by each partner.<br>
+      Example: 5
+      </font>
+      <br><br>
+
+      
+
+      <font face="Verdana" size="1" color="red" style="font-size: 11px;"><b>Maximum Description Length:</b></font><br>
+      <input type="text" name="DESC_LENGTH" value="#%DESC_LENGTH%#" size="5" style="font-family: Verdana; font-size: 11px;"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The maximum number of characters allowed in a gallery description.<br>
+      Example: 100
+      </font>
+    </td>
+  </tr>
+
+
+  
+
+
+  <!-- SAVE DATA -->
+  <tr bgcolor="#dcdcdc">
+    <td align="center" colspan="2">
+
+      <input type="submit" value="Save This Data" style="font-size: 11px; font-family: Verdana">
+
+    </td>
+  </tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</form>
+
+</body>
+</html>

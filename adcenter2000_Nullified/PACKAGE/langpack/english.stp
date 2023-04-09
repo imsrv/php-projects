@@ -1,0 +1,6 @@
+$types=qq~<select name=type><option value="banner">Banner Exchange</option>~;
+$types.=qq~<option value="banners">Top Banners</option>~;
+$types.=qq~<option value="counter">Counter Hits</option>~ if ($enablecounter);
+$types.=qq~<option value="sbanner">SwimBanner Exchange</option>~ if ($enableswim);
+$types.=qq~<option value="tx">Text Exchange</option>~ if ($enabletex);
+$types.=qq~</select>~;

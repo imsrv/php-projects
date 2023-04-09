@@ -1,0 +1,84 @@
+sub validate {
+&vars;
+
+if(($gender eq "Not Specified")||($age eq "Not Specified")||($sexualorientation eq "Not Specified")
+||($height eq "Not Specified")||($ethnicbackground eq "Not Specified")){
+
+print "Content-type:text/html\n\n";
+print " $mainheader<br><br>\n"; 
+print "<blockquote><font size=1 face=verdana>
+<br>You must select an option for each field that is preceded by a red star 
+(<font color=\"red\" size=1 face=\"verdana\">*</font>)\n"; 
+print "Please go back and make the necessary corrections.</blockquote></font>\n";
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\"> </FORM></center>\n";
+print "<br><br>$botcode\n";
+exit;
+
+}
+
+if(($status eq "")||($reltype eq "")){
+
+print "Content-type:text/html\n\n";
+print " $mainheader<br><br>\n"; 
+print "<blockquote><font size=1 face=verdana>
+<br>You must select an option for each field that<br>is preceded by a red star 
+(<font color=\"red\" size=1 face=\"verdana\">*</font>)
+<br>\n"; 
+print "Please go back and make the necessary corrections.</blockquote></font>\n";
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\"> </FORM></center>\n";
+print "<br><br>$botcode\n";
+exit;
+
+}
+
+if(($state eq "")||($country eq "")){
+
+print "Content-type:text/html\n\n";
+print " $mainheader<br><br>\n"; 
+print "<blockquote><font size=1 face=verdana>
+<br>You must enter your state and country
+<br>\n"; 
+print "Please go back and make the necessary corrections.</blockquote></font>\n";
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\"> </FORM></center>\n";
+print "<br><br>$botcode\n";
+exit;
+
+}
+
+if($state eq "makechoice"){
+
+print "Content-type:text/html\n\n";
+print " $mainheader<br><br>\n"; 
+print "<blockquote><font size=1 face=verdana>
+<br>You must select your state of residence.
+<br>\n"; 
+print "Please go back and make the necessary corrections.</blockquote></font>\n";
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\"> </FORM></center>\n";
+print "<br><br>$botcode\n";
+exit;
+
+}
+
+
+if(($username eq "")||($password eq "")){&missingUorP;}
+
+
+
+	@words = split(/ /,$additionalinfo);
+	$x = @words;
+	$difference = $x - $adinfolength;
+
+	if($x > $adinfolength){
+	print "Content-type:text/html\n\n";
+	print "
+	$mainheader<br><br>
+	<table><tr><td><br><br>
+	<blockquote><font size=2 face=verdana>
+	There is a $adinfolength word limit for for the additional information you can include in your profile. Please go back and edit your ad. You have (<b>$x</b>) words in your ad.
+	You need to reduce your ad word count by (<b>$difference</b>). <a href=\"javascript:history.go(-1)\">Go back</a>.
+	</font></blockquote></td></tr></table><br><br>
+	$botcode\n";
+	exit;}
+
+}
+1;

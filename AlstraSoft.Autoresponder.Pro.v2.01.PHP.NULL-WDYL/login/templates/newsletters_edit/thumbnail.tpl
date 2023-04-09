@@ -1,0 +1,1 @@
+<img src="{THUMBNAIL_PATH}" border="0">

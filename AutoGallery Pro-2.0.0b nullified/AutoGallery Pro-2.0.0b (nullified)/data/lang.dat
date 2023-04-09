@@ -1,0 +1,13 @@
+$L_CHEAT_DESC = "Cheat Description";
+$L_DESCRIPTION = "Description";
+$L_DOMAIN = "Domain or URL";
+$L_EMAIL = "E-mail Address";
+$L_GALLERY_URL = "Gallery URL";
+$L_NO = "No";
+$L_PARTNER_ID = "Partner ID";
+$L_RECIP_URL = "Reciprocal Link URL";
+$L_SITE_URL = "Site URL";
+$L_WORD = "Word or Phrase";
+$L_YES = "Yes";
+
+1;

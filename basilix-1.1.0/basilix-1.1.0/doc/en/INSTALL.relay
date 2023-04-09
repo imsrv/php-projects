@@ -1,0 +1,33 @@
+BasiliX sends the mail via SMTP connection which is a better way
+of sending a mail with a php script. However, this may encounter
+you some problems, like relaying. After you are finished with
+your basilix configuration, and before announcing and making
+it public, you need to do an important task. 
+
+Send messages, to some e-mail accounts (you can send send to
+devnull@basilix.org too if you want) in order to test whether
+or not the RELAYING of your MTA is okay.
+
+If Basilix gives you an error code -103, which is "relaying error"
+(RCPT TO), keep on reading. Below you will find the URL for your 
+MTA that will help you adjust the server for relaying.
+
+Repeat this task for every SMTP host that defined for each
+domain.
+
+-----------------------------------------------------------------
+QMAIL:
+======
+
+Author:	Chris Johnson	
+URL:	http//www.palomine.net/qmail/relaying.html
+
+-----------------------------------------------------------------
+SENDMAIL:
+=========
+
+Author:	Claus Aßmann
+URL:	http://www.sendmail.org/~ca/email/relayingdenied.html
+
+
+

@@ -1,0 +1,15 @@
+To:  #%EMAIL%#
+From: #%ADMIN_EMAIL%#
+Subject: Partner Login Information
+
+Here is the login information you requested:
+
+Username: #%USERNAME%#
+Password: #%PASSWORD%#
+
+You can use this information to make posts to our TGP and
+edit your partner account.  Use the following URL for access:
+#%CGI_URL%#/partner.cgi
+
+Regards,
+TGP Webmaster

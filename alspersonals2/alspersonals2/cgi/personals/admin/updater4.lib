@@ -1,0 +1,220 @@
+
+sub admdelpicb {
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<blockquote>
+<font size=2 face=verdana>
+Enter the name of the user whose picture you want to remove from the picture board
+<form method="post" action="$admincgiurl/updater.pl">
+<font size=2 face=verdana>$picb10</font></blockquote>
+<center><table><tr><td><b><font size=2 face=verdana>Username</font></td>
+<td><input type="text" name="username" size=15></td></tr><tr>
+<td><center><input type="submit" name="admpbrmpic" value="Start" class="button">
+</td></table></center><br><br>
+</form>
+
+<br>
+<br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;
+}
+
+sub admpbrmpic {
+
+if($FORM{'username'} eq ""){
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<font size=2 face=verdana><blockquote>There was no name entered. In order to look up the ticket number
+it is necessary that you enter the name of the person whose picture you want to remove from the pictureboard.
+<P>
+<a href="javascript:history.go(-1)">Go back</a>
+</font></blockquote>
+<br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;
+}
+
+unless(-e "$messagecenterdir/$FORM{'username'}"){
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br>
+<table><tr><td>
+<font size=2 face=verdana><blockquote>
+There was no member folder found for <b>$FORM{'username'}</b>
+.</font><br><br>
+</td></tr></table>
+<br>
+<br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html></form>
+EOF
+exit;
+}
+
+unless(-e "$messagecenterdir/$FORM{'username'}/pbpicdet.txt"){
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br>
+<table><tr><td>
+<font size=2 face=verdana><blockquote>
+The file that stores the information needed to delete the picture associated with
+<b>$FORM{'username'}</b> was not found. If the picture was added to the picture board
+before the deletion feature was added to the program, the picture cannot be removed 
+from the board using the deletion feature. It must be removed manually by removing the
+relative table from the file in question. If the picture board is for women seeking men, the 
+file in question will be picboards/wsm/pbfiles/wsm.txt and so on...
+</font><br><br>
+</td></tr></table>
+<br>
+<br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html></form>
+EOF
+exit;
+}
+
+
+open(IN, "$messagecenterdir/$FORM{'username'}/pbpicdet.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($user,$pass,$id)=split(/\|/, $line);
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br>
+<table><tr><td>
+<form method="post" action="$admincgiurl/updater.pl">
+<input type="hidden" name="adcat" value="$FORM{'adcat'}">
+<input type="hidden" name="postersname" value="$FORM{'postersname'}">
+<font size=2 face=verdana><blockquote>
+The information you need appears below. Select the picture board category
+and press "Remove" to remove the picture from the picture board.</font><br><br>
+</blockquote>
+<center><table><tr><td><b><font size=2 face=verdana>Username</font></td>
+<td><input type="text" name="username" value="$user" size=15></td></tr><tr>
+<td><b><font size=2 face=verdana>Password</font></td>
+<td><input type="password" name="password" value="$pass" size=15></td></tr><tr>
+<td><b><font size=2 face=verdana>Picture ID Number</font></td>
+<td><input type="text" name="picidnumber" value="$id" size=15></td></tr><tr>
+<td><b><font size=2 face=verdana>Which Category</font></td>
+<td><select name="pbcat">
+<option value="wsm">Women Seeking Men</option>
+<option value="msw">Men Seeking Women</option>
+<option value="wsw">Women Seeking Women</option>
+<option value="msm">Men Seekin Men</option>
+</select></td></tr><tr>
+<td><center><input type="submit" name="adminpbrem" value="Remove" class="button">
+</td></table></center><br><br>
+
+</td></tr></table>
+<br>
+<br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html></form>
+EOF
+exit;
+}
+}
+
+
+sub adminpbrem {
+
+$tpcat=$FORM{'pbcat'};
+
+
+opendir(DIR, "$picboarddir/$tpcat/pbfiles");
+@dircont=readdir(DIR);
+closedir(DIR);
+
+foreach $fileindir(@dircont){
+unless(($fileindir eq ".")||($fileindir eq "..")){
+
+open(IN, "$picboarddir/$tpcat/pbfiles/$fileindir")||&oops($!,"Cannot read $picboarddir/$tpcat/pbfiles/$fileindir");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+open(OUT,">$picboarddir/$tpcat/pbfiles/$fileindir") || &oops ($!,"Cannot write $picboarddir/$tpcat/pbfiles/$fileindir");
+flock (OUT, 2);
+foreach $line(@lines) {
+if ($line !~ /$FORM{'picidnumber'}/) {
+print OUT "$line";
+}
+}
+close (OUT);
+}
+}
+
+$cnt=unlink "$messagecenterdir/$FORM{'username'}/pbpicdet.txt";
+
+
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<font size=2 face=verdana><blockquote>The picture has been removed.
+<P>
+
+</font></blockquote>
+<br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;
+}
+
+1;

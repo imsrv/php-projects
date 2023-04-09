@@ -1,0 +1,84 @@
+<center>
+<script language=javascript>
+function open_stat(date) {
+  window.open('admin.cgi?page=hourbannerstat&bid=#FORM_bid#&date='+date, 'banstat', 'width=250,height=500,status=0,scrollbars=1,resizable=1');
+}
+</script>
+<table cellspacing=0 cellpadding=0 border=0 width=50%><tr><td>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100% align=center><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr>
+	<th colspan=2><img src=#image_dir#info.gif width=16 height=16> BANNER INFO</th>
+</tr>
+<tr><td class=td1><img src=#image_dir#name.gif width=16 height=16> Name:</td><td class=td1>#name#</td></tr>
+<tr valign=top><td class=td2><img src=#image_dir#desc.gif width=16 height=16> Description:</td><td class=td2>#b_desc#</td></tr>
+<tr><td class=td1><img src=#image_dir#type.gif width=16 height=16> Banner type:</td><td class=td1>#ban_type#</td></tr>
+<tr><td class=td2><img src=#image_dir#check_b.gif width=16 height=16> Expires:</td><td class=td2>#ban_exp#</td></tr>
+<tr><td class=td1 colspan=2 align=center>#banner#</td></tr>
+<tr><td class=td2><img src=#image_dir#url.gif width=16 height=16> Banner URL:</td><td class=td2><a href="#url#" class=ar target=_blank>#url#</a></td></tr>
+<tr><td class=td1 colspan=2>
+	<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td align=left><a href=admin.cgi?page=bannergo&dir=prev&bid=#FORM_bid#&tid=#FORM_tid#><img src=#image_dir#prev.gif width=16 height=16 alt='Previous Banner' title='Previous Banner' border=0></a></td><td align=right><a href=admin.cgi?page=bannergo&dir=next&bid=#FORM_bid#&tid=#FORM_tid#><img src=#image_dir#next.gif width=16 height=16 alt='Next Banner' title='Next Banner' border=0></a></td></tr></table>
+</td></tr>
+<form>
+<tr><td colspan=2 class=tdb>
+<input type=button class=sbmt value=RETURN onclick='document.location="admin.cgi?page=banners&tid=#FORM_tid#";'>
+</td></tr>
+</table>
+
+</td></tr></table>
+</form>
+<br><br>
+
+<table cellspacing=0 cellpadding=0 border=0 width=50% align=center><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr>
+	<th colspan=4><img src=#image_dir#stat.gif width=16 height=16> STATISTICS</th>
+</tr>
+<tr><th>Date</th><th>Imps</th><th>Clicks</th><th>Hourly stat</th></tr>
+#stat-line#
+<tr><td class=tdb>Total:<td class=tdb align=right>#stat-total-shows#</td><td class=tdb align=right>#stat-total-clicks#</td><td class=tdb><img src=#image_dir#s.gif width=1 height=1></td></tr>
+</table>
+</td></tr></table>
+</td></tr></table>
+
+
+
+
+
+
+
+
+<!--[expire-never]-->
+<img src=#image_dir#ok.gif width=16 height=16 alt='Never expire' title='Never expire'> Never
+<!--[expire-never]-->
+
+<!--[expire-date]-->
+<img src=#image_dir#ok.gif width=16 height=16 alt='expire after #date-expire#' title='expire after #date-expire#'> #date-expire#
+<!--[expire-date]-->
+<!--[expire-date-yes]-->
+<img src=#image_dir#alert.gif width=16 height=16 alt='expire after #date-expire#' title='expire after #date-expire#'> #date-expire#
+<!--[expire-date-yes]-->
+
+<!--[expire-click]-->
+<img src=#image_dir#ok.gif width=16 height=16 alt='expire when #click-expire# clicks' title='expire when #click-expire# clicks'> #click-expire# clicks
+<!--[expire-click]-->
+<!--[expire-click-yes]-->
+<img src=#image_dir#alert.gif width=16 height=16 alt='expire when #click-expire# clicks' title='expire when #click-expire# clicks'> #click-expire# clicks
+<!--[expire-click-yes]-->
+
+<!--[expire-show]-->
+<img src=#image_dir#ok.gif width=16 height=16 alt='expire when #show-expire# impressions' title='expire when #show-expire# impressions'> #show-expire# imps
+<!--[expire-show]-->
+<!--[expire-show-yes]-->
+<img src=#image_dir#alert.gif width=16 height=16 alt='expire when #show-expire# impressions' title='expire when #show-expire# impressions'> #show-expire# imps
+<!--[expire-show-yes]-->
+
+
+<!--[stat-line]-->
+<tr><td class=td#?1:2#><nobr>#stat-date#</nobr></td><td class=td#?1:2# align=right>#stat-shows#</td><td class=td#?1:2# align=right>#stat-clicks#</td><td class=td#?1:2# align=center><a href="javascript:open_stat('#stat-date#')"><img src=#image_dir#clock.gif width=16 height=16 border=0></a></tr>
+<!--[stat-line]-->
+
+<!--[no-stat-line]-->
+<tr><td class=td1 colspan=4 align=center>No statistics</tr>
+<!--[no-stat-line]-->

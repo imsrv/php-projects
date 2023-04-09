@@ -1,0 +1,38 @@
+<?
+// 'Settings' messages
+$lang_msg["settings"] = array(
+	501	=>	'N&atilde;o foi poss&iacute;vel salvar as configura&ccedil;&otilde;es. Por favor tente mais tarde',
+	502	=>	'A nova configura&ccedil;&atilde;o foi salva.',
+	503	=>	'Seu nome',
+	504	=>	'(Ser&aacute; adicionado ao campo <u>Remetente</u> de cada mensagem enviada)',
+	505	=>	'Assinatura',
+	506	=>	'(ser&aaucte; adicionada a cada mensagem enviada)',
+	507	=>	'Linguagem',
+	508	=>	'(linguagem padr&atilde;o)',
+	509	=>	'Ordenar mensagens por',
+	510	=>	'(algoritmo padr&atilde;o de ordena&ccedil;&atilde;o)',
+	511	=>	'Ordena&ccedil;&atilde;o reversa',
+	512	=>	'(if yes, most recent messages will be displayed top)',
+	513	=>	'Salvar mensagens enviadas',
+	514	=>	'(se "sim", uma c&oacute;pia da mensagem ser&aacute; armazenada na pasta "Enviadas")',
+	515	=>	'Mover para a lixeira',
+	516	=>	'(se "sim", as mensagens a serem apagadas ser&atilde;o enviadas &agrave; lixeira)',
+	517	=>	'Tamanho da p&aacute;gina',
+	518	=>	'(N&uacute;mero de mensagens listadas por p&aacute;gina)',
+	519	=>	'Data',
+	520	=>	'Remetente',
+	521	=>	'Assunto',
+	522	=>	'Tamanho',
+	523	=>	'Decora&ccedil;&atilde;o',
+	524	=>	'(Muda visualiza&ccedil;&atilde;o do programa)',
+	525	=>	'Salvar configura&ccedil;&atilde;o',
+	526	=>	'Show',
+	527	=>	'Hide',
+	528	=>	'Show/Hide',
+	529	=>	'(show or hide the user folder list in the left menu)',
+	530	=>	'Prev/Next',
+	531	=>	'(shows the previous and the next message links when reading a message -- this is slow on large mailboxes)',
+	532	=>	'Reply-To',
+	533	=>	'(the recipient will reply to this address -- if empty <b>%e</b> is used)'
+);
+?>

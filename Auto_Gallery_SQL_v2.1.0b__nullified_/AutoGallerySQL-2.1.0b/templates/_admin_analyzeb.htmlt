@@ -1,0 +1,53 @@
+<tr bgcolor="#cccccc">
+<td align="center" colspan="3">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Import Options</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td align="center" colspan="3">
+
+
+<table>
+<tr>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<input type="radio" name="approved" value="0" checked> Place these galleries in the queue<br>
+<input type="radio" name="approved" value="1"> Place these galleries in the current database
+</font>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td align="center" colspan="3">
+<input type="hidden" name="file" value="#%FILE%#">
+<input type="hidden" name="delim" value="#%DELIM%#">
+<input type="hidden" name="run" value="importGalleries">
+<input type="submit" name="submit" value="Import Galleries" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+<br><br>
+
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b><a href="admin.cgi" class="reg">Back To Main Page</a></b>
+</font>
+
+<br><br>
+
+</form>
+
+</body>
+</html>

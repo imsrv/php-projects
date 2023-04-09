@@ -1,0 +1,315 @@
+require "configdat.lib";
+
+sub getfeatured {
+
+print qq~
+$mainheader
+$themenu
+<table cellpadding=0 cellspacing=0 width=100% width=60 bgcolor=ffffff><tr><td>
+<td width=20>&nbsp;</td><td><br>
+<form method="post" action="$cgiurl/personals.pl">
+<br><br>
+$text117
+<br><br>
+</td></tr></table>
+<br>
+
+<br>  
+<center><table><tr>
+<td width=20>&nbsp;</td>
+<td><b><font size=2 face=verdana>Enter Your Username </font></b></td>
+<td><input type="TEXT" name="username" value="$inmembername" size=20 class="box"></td></tr><tr>
+
+<td width=20>&nbsp;</td>
+<td><b><font size=2 face=verdana>Enter Your Password </font></b></td>
+<td><input type="password" name="password" value="$inpassword" size=20 class="box"></td></tr><tr>
+
+<td>&nbsp;</td>
+<td><input type="submit" name="featureprofile" value="Feature My Profile" class="button"></td>
+<td>&nbsp;</td></tr></table>
+</form>
+$botcode~;
+
+}
+
+###########################################################################
+
+
+sub addtofeaturelist {
+&vars;
+if(($username eq "")||($password eq "")){&missingUorP;}
+&checkexists;
+}
+
+###########################################################################
+
+sub checkexists {
+&vars;
+
+unless(-e "$admincgidir/getfeatured.txt"){
+open (FILE, ">>$admincgidir/getfeatured.txt") || die "Cannot open $admincgidir/getfeatured.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "\n";  
+close (FILE);}
+
+
+open(IN, "$admincgidir/getfeatured.txt");
+@lines =<IN>;
+close(IN);
+
+$x = @lines;
+
+unless($x > 0){&checkuser;}
+
+foreach $line(@lines){
+if($line =~ /$FORM{'username'}/){
+&alreadylisted;
+}
+
+else {
+&checkuser;
+
+}
+}
+}
+
+
+sub checkuser {
+&vars;
+
+unless(-e "$users/$username.txt"){&userfilenotfound;}
+open (FILE, "$users/$username.txt") || &oops ($!, "Could not open $users/$username.txt");
+flock (FILE, 1) or die "Cannot lock file\n";
+while (<FILE>) {
+chop;
+	@datafile=split(/\n/);
+	foreach $line (@datafile) {
+	&feachku($line);
+	}
+	}
+	close(FILE);
+	
+
+}
+
+
+sub feachku($line){
+
+local ($line) = @_;
+	local ($loginname,$password,$emailaddr);
+		  ($loginname,$password,$emailaddr)= split(/\|/, $line);
+
+
+if(($FORM{'username'} eq "$loginname")&&($FORM{'password'} eq "$password")){
+&checkprofile;
+}
+
+else {
+&usercheckfailed;
+}
+}
+
+sub checkprofile {
+&vars;
+
+if((-e "$profilesdir/catwsw/$username.html")||
+(-e "$profilesdir/catwsm/$username.html")||
+(-e "$profilesdir/catmsw/$username.html")||
+(-e "$profilesdir/catmsm/$username.html")){
+&feanext;}
+
+else {
+&noprofile;}
+
+
+}
+
+sub feanext {
+&vars;
+
+if(-e "$profilesdir/catwsw/$username.html"){$profilecat=catwsw;}
+if(-e "$profilesdir/catwsm/$username.html"){$profilecat=catwsm;}
+if(-e "$profilesdir/catmsw/$username.html"){$profilecat=catmsw;}
+if(-e "$profilesdir/catmsm/$username.html"){$profilecat=catmsm;}
+
+opendir(DIR, "$profilesdir/$profilecat/datafiles");
+@dircont=readdir(DIR);
+closedir(DIR);
+
+foreach $plfileindir(@dircont){
+if($plfileindir =~ /proflist/){
+
+open(IN, "$profilesdir/$profilecat/datafiles/$plfileindir")||&oops($!,"Cannot read $profilesdir/$profilecat/datafiles/$plfileindir");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+foreach $line(@lines) {
+($username,$picfilename,$additionalinfo,$age,$country,$state,$city,$zip)=split(/\|/,$line);
+
+if($FORM{'username'} eq "$username"){
+$userpicture = $picfilename;
+$theage=$age;}
+
+
+unless(-e "$userimagesdir/$userpicture"){&picnotfound;}
+}
+}
+}
+
+print "Content-type:text/html\n\n";
+print "$mainheader
+$themenu
+<br><br><br>\n";
+print "<table><tr><td><blockquote>
+<form method=\"post\" action=\"$cgiurl/personals.pl\">
+<input type=\"hidden\" name=\"username\" value=\"$FORM{'username'}\">
+<input type=\"hidden\" name=\"picturename\" value=\"$userpicture\">
+<input type=\"hidden\" name=\"profilecat\" value=\"$profilecat\">
+<input type=\"hidden\" name=\"age\" value=\"$theage\">
+<br><br><br>
+$text118
+<br><br><br>
+</blockquote><p>
+<center><input type=\"submit\" name=\"processfeaturerequest\" value=\"Complete Process\" class=\"button\"></center></td></tr></table><br><br>\n";
+print "$botcode\n";
+exit;
+}
+
+
+sub processfeaturerequest {
+&vars;
+
+if(($FORM{'profilecat'} eq "catwsw")||($FORM{'profilecat'} eq "catwsm")){
+
+if($FORM{'picturename'} eq ""){&picnotfound;}
+open (FILE, ">>$admincgidir/getfeaturedf.txt") || die "Cannot open $admincgidir/getfeaturedf.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "<td><input type=\"radio\" name=\"username\" value=\"$username\"><a href=\"$profilesurl/$FORM{'profilecat'}/$username.html\"><font size=2 face=verdana>$username</font></a></td></tr><tr>\n";  
+close (FILE);
+$uncap=uc($username);
+open (FILE, ">>$admincgidir/featuredlinksf.txt") || die "Cannot open $admincgidir/featuredlinksf.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "<font size=2 face=verdana,geneva color=ffffff><b><CENTER>$uncap</CENTER></b></font><a href=\"$profilesurl/$FORM{'profilecat'}/$username.html\"><center><img src=\"$userimagesurl/$FORM{'picturename'}\"  width=200 height=\"175\" hspace=5 vspace=5 border=0><br><FONT SIZE=2 FACE=VERDANA color=ffffff>View Profile</FONT></center></a>";
+close (FILE);}
+
+else {
+if($FORM{'picturename'} eq ""){&picnotfound;}
+open (FILE, ">>$admincgidir/getfeaturedm.txt") || die "Cannot open $admincgidir/getfeaturedm.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "<td><input type=\"radio\" name=\"username\" value=\"$username\"><a href=\"$profilesurl/$FORM{'profilecat'}/$username.html\"><font size=2 face=verdana>$username</font></a></td></tr><tr>\n";  
+close (FILE);
+
+$uncap=uc($username);
+open (FILE, ">>$admincgidir/featuredlinksm.txt") || die "Cannot open $admincgidir/featuredlinksm.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "<font size=2 face=verdana,geneva color=ffffff><b><CENTER>$uncap</CENTER></b></font><a href=\"$profilesurl/$FORM{'profilecat'}/$username.html\"><center><img src=\"$userimagesurl/$FORM{'picturename'}\"  width=200 height=\"175\" hspace=5 vspace=5 border=0><br><FONT SIZE=2 FACE=VERDANA color=ffffff>View Profile</FONT></center></a>";
+close (FILE);}
+
+&requestreceived;
+}
+
+
+
+#############################################################################
+
+sub usercheckfailed {
+print "Content-type:text/html\n\n";
+print "$mainheader
+$themenu
+<br><br><br>\n";
+print "<table><tr><td>\n";
+print "<blockquote>
+<br><br><br>
+$text119
+
+<br><br><br>
+
+<a href=\"javascript:history.go(-1)\"><font size=2 face=verdana>
+Go back</a></font></blockquote></td></tr></table><br><br><br>\n";
+print "<br>$botcode\n";
+exit;
+}
+
+
+
+##################################################################################
+
+sub noprofile {
+
+print "Content-type:text/html\n\n";
+print "$mainheader
+$themenu<br><br>\n";
+print "<table width=100\%><tr><td><blockquote>
+<br><br><br>
+$text120
+
+<a href=\"$cgiurl/postad.pl?createprofile\"><font size=2 face=verdana>
+click here to create a profile.</a>
+<br><br>
+<blockquote></font>\n";
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\" class=\"button\"> </FORM></center></td></tr></table>\n";
+print "<br><br>$botcode\n";
+exit;
+
+}
+
+
+
+##################################################################################
+
+sub picnotfound {
+
+print "Content-type:text/html\n\n";
+print "$mainheader
+$themenu<br>\n";
+print "<table width=100\%><tr><td><blockquote>
+<br><br>
+$text121
+<br><br><br>
+<blockquote>\n";
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-2)\" class=\"button\"> </FORM></center></td></tr></table>\n";
+print "<br><br>$botcode\n";
+exit;
+
+}
+
+###########################################################################
+
+sub requestreceived {
+print "Content-type:text/html\n\n";
+print "$mainheader
+$themenu<br>\n";
+print "<table width=100\%><tr><td><blockquote>
+<br><br>
+$text122
+
+<br><br><blockquote></font>\n";
+print "<center><FORM method=\"post\" action=\"$cgiurl/personals.pl?launchindex\">
+<INPUT type=\"submit\" value=\"Personals Home\" class=\"button\"> </FORM></center></td></tr></table>\n";
+print "<br><br>$botcode\n";
+exit;
+}
+
+##################################################################################
+
+sub alreadylisted {
+print "Content-type:text/html\n\n";
+print "$mainheader
+$themenu<br>\n";
+print "<table width=100\%><tr><td><blockquote>
+<br><br>
+$text123
+
+<br><br><blockquote>
+
+<center><FORM method=\"post\" action=\"$cgiurl/personals.pl?launchindex\">
+<INPUT type=\"submit\" value=\"Personals Home\" class=\"button\"> </FORM></center></td></tr></table>\n";
+print "<br><br>$botcode\n";
+exit;
+}
+
+##################################################################################
+
+
+1;

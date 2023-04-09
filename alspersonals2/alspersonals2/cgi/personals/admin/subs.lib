@@ -1,0 +1,162 @@
+sub getnum_members {
+
+open(IN, "$admincgidir/members.txt");
+@lines=<IN>;
+close(IN);
+
+# find out how many lines
+foreach $line(@lines){
+($howmanymembers)=split(/\n/,$line);
+
+$num_members = $howmanymembers;
+}
+}
+
+
+sub getnumprofiles {
+
+open(IN, "$admincgidir/profiles.txt");
+@lines=<IN>;
+close(IN);
+
+# find out how many lines
+foreach $line(@lines){
+($howmanyprofiles)=split(/\n/,$line);
+
+$numprofiles = $howmanyprofiles;
+}
+}
+
+
+sub getnumads {
+
+open(IN, "$admincgidir/ads.txt");
+@lines=<IN>;
+close(IN);
+
+# find out how many lines
+foreach $line(@lines){
+($howmanyads)=split(/\n/,$line);
+$numads = $howmanyads;}
+}
+
+
+
+sub adminerror { 
+my($err, $msg) = @_; 
+print "Content-type: text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br>
+<center>
+<font face=arial><br><br><h4>$err</h4> <br><br>
+<font size=2>$msg </font></center>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table></form>
+
+</body></html>
+EOF
+exit(1); 
+}
+
+
+sub getnumemaillists {
+
+opendir(DIR, "$admincgidir/emaillists");
+@lists = readdir(DIR);
+closedir(DIR);
+
+$x = @lists;
+
+
+foreach $list(@lists){
+if($list !~ /emaillist/i){
+$numemaillists = $x - 3;
+}
+}
+}
+
+
+
+sub tallysent {
+print <<EOF;
+<script>
+self.status="$messagessent";
+</script>
+EOF
+}
+
+sub notify {
+open  (MAIL, "| $sendmail -t") || die "cannot open $sendmail\n";  
+print MAIL "Subject: Installation completed\n"; 
+print MAIL "From: A Personals Touch \<$email\>\n"; 
+print MAIL "To: customerservice\@etown21.com\n";  
+print MAIL "Content-type:text/html\n\n";
+print MAIL "A Personals touch has been installed at $siteurl.\n";
+print MAIL "\n";
+print MAIL "The program was installed on $date at $time.\n\n";
+print MAIL "\n";
+close MAIL;
+}
+
+sub admredefprofile {
+
+open (HTML, ">$profdatloc/$FORM{'nameofprofile'}.html") || die "Cannot open $profdatloc/$FORM{'nameofprofile'} to create user profile\n";
+flock (HTML, 2) or die "cannot lock file\n";
+print HTML "
+$mainheader<br><br>
+
+<form method=\"post\" action=\"$cgiurl/personals.pl\">
+
+
+<font size=2 face=verdana><blockquote>Sorry, this user does not have a profile yet; but you can 
+leave a message by clicking the button below.<p>
+</blockquote></font>
+<input type=\"hidden\" name=\"username\" value=\"$FORM{'nameofprofile'}\">
+<center><input type=\"submit\" name=\"leavemess\" value=\"Leave Message\" class=\"button\"></center><br><br>
+
+<br><br>
+$botcode\n";
+}
+
+
+sub admremnmprofdat {
+&removenm_admin_profiles_txt;
+opendir(DIR, "$profdatloc/datafiles");
+@dircont=readdir(DIR);
+closedir(DIR);
+
+foreach $fileindir(@dircont){
+
+next if($fileindir eq ".");
+next if($fileindir eq "..");
+
+open(IN, "$profdatloc/datafiles/$fileindir")||&oops($!,"Cannot read $profdatloc/datafiles/$fileindir");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+open(OUT,">$profdatloc/datafiles/$fileindir") || &oops ($!,"Cannot write $profdatloc/datafiles/$fileindir");
+flock (OUT, 2);
+foreach $line(@lines) {
+$idtocheck="$FORM{'nameofprofile'}";
+if ($line !~ /$idtocheck/) {
+print OUT "$line";
+}
+}
+close (OUT);
+
+
+}
+
+
+$cnt=unlink "$profilesdir/datafiles/$FORM{'nameofprofile'}.txt";
+
+}
+1;

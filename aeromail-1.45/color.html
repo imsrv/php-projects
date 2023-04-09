@@ -1,0 +1,320 @@
+<!--
+
+COLOR_FONT
+COLOR_BG
+
+COLOR_HEAD
+COLOR_FONT_HEAD
+
+COLOR_TITLE
+COLOR_ROW_ON
+COLOR_ROW_OFF
+
+-->
+
+<style>
+
+.wack {cursor: hand; border-width: 2px; border-color: black; border-style: solid; font-size: 14px; font-family: verdana; background-color: cccccc; color: 000000}
+.bord {border-width: 2px; border-color: black; border-style: solid}
+
+</style>
+
+<script>
+
+function launch_junque()
+{
+
+	JunqueWindow =  "toolbar=no,"+
+			"location=no,"+
+			"directories=no,"+
+			"resizable=yes,"+
+			"menubar=no,"+
+			"scrollbars=auto,"+
+			"status=no,"
+
+	wax = window.open('about:blank','waxwin','width=370,height=615,'+JunqueWindow)
+
+	wax.document.write("<title>Config File</title><pre>");
+	wax.document.write("&lt;?php\n\n");
+	wax.document.write("//---------------------------\n");
+	wax.document.write("// junque theme include file\n");
+	wax.document.write("//---------------------------\n\n");
+	wax.document.write("// font(s) used in AeroMail\n");
+	wax.document.write("$FONT\t\t\t\t= \"verdana,arial,helvetica\";\n\n");
+	wax.document.write("// font color\n");
+	wax.document.write("$COLOR_FONT\t\t\t= \"" + THE_BODY.style.color + "\";\n\n");
+	wax.document.write("// background color\n");
+	wax.document.write("$COLOR_BG\t\t\t= \"" + THE_BODY.style.backgroundColor + "\";\n\n");
+	wax.document.write("// color for the header\n");
+	wax.document.write("$COLOR_HEAD\t\t\t= \"" + COLOR_HEAD.style.backgroundColor + "\";\n");
+	wax.document.write("$COLOR_FONT_HEAD\t\t= \""+ COLOR_FONT_HEAD.style.color +"\";\n\n");
+	wax.document.write("// color for field titles\n");
+	wax.document.write("$COLOR_TITLE\t\t\t= \"" + WAX1.style.backgroundColor + "\";\n\n");
+	wax.document.write("// color for colored row\n");
+	wax.document.write("$COLOR_ROW_ON\t\t\t= \"" + ON1.style.backgroundColor + "\";\n\n");
+	wax.document.write("// color for uncolored row\n");
+	wax.document.write("$COLOR_ROW_OFF\t\t\t= \"" + OFF1.style.backgroundColor + "\";\n\n");
+	wax.document.write("// link colors\n");
+	wax.document.write("$COLOR_LINK\t\t\t= \"#003399\";\n");
+	wax.document.write("$COLOR_VLINK\t\t\t= \"#003399\";\n");
+	wax.document.write("$COLOR_ALINK\t\t\t= \"#669966\";\n\n");
+	wax.document.write("?&gt;</pre><p align=right><input type=button value='Close' onClick='self.close()'>");
+
+}
+
+function change_color(what)
+{
+
+	newcolor = junque.A.value + junque.B.value + junque.C.value;
+
+	switch(what) {
+		case '1':
+			THE_BODY.style.backgroundColor = newcolor;
+			break;
+		case '2':
+			THE_BODY.style.color = newcolor;
+			break;
+		case '3':
+			COLOR_HEAD.style.backgroundColor = newcolor;
+			break;
+		case '4':
+			COLOR_FONT_HEAD.style.color = newcolor;
+			break;
+		case '5':
+			WAX1.style.backgroundColor = newcolor;
+			WAX2.style.backgroundColor = newcolor;
+			WAX3.style.backgroundColor = newcolor;
+			WAX4.style.backgroundColor = newcolor;
+			WAX5.style.backgroundColor = newcolor;
+			WAX6.style.backgroundColor = newcolor;
+			WAX7.style.backgroundColor = newcolor;
+			break;
+		case '6':
+			ON1.style.backgroundColor = newcolor;
+			ON2.style.backgroundColor = newcolor;
+			ON3.style.backgroundColor = newcolor;
+			ON4.style.backgroundColor = newcolor;
+			ON5.style.backgroundColor = newcolor;
+			ON6.style.backgroundColor = newcolor;
+			ON7.style.backgroundColor = newcolor;
+			ON8.style.backgroundColor = newcolor;
+			ON9.style.backgroundColor = newcolor;
+			ON10.style.backgroundColor = newcolor;
+			ON11.style.backgroundColor = newcolor;
+			ON12.style.backgroundColor = newcolor;
+			ON13.style.backgroundColor = newcolor;
+			ON14.style.backgroundColor = newcolor;
+			ON15.style.backgroundColor = newcolor;
+			break;
+		case '7':
+			OFF1.style.backgroundColor = newcolor;
+			OFF2.style.backgroundColor = newcolor;
+			OFF3.style.backgroundColor = newcolor;
+			OFF4.style.backgroundColor = newcolor;
+			OFF5.style.backgroundColor = newcolor;
+			OFF6.style.backgroundColor = newcolor;
+			OFF7.style.backgroundColor = newcolor;
+			OFF8.style.backgroundColor = newcolor;
+			OFF9.style.backgroundColor = newcolor;
+			OFF10.style.backgroundColor = newcolor;
+			break;
+	}
+}
+
+function update_color(what)
+{
+	switch(what) {
+		case '1':
+			newcolor = THE_BODY.style.backgroundColor;
+			break;
+		case '2':
+			newcolor = THE_BODY.style.color;
+			break;
+		case '3':
+			newcolor = COLOR_HEAD.style.backgroundColor;
+			break;
+		case '4':
+			newcolor = COLOR_FONT_HEAD.style.color;
+			break;
+		case '5':
+			newcolor = WAX1.style.backgroundColor;
+			break;
+		case '6':
+			newcolor = ON1.style.backgroundColor;
+			break;
+		case '7':
+			newcolor = OFF1.style.backgroundColor;
+			break;
+	}
+
+	junque.A.value = newcolor.substr(1,2);
+	junque.B.value = newcolor.substr(3,2);
+	junque.C.value = newcolor.substr(5,2);
+
+	show_color();
+
+}
+
+function show_color()
+{
+	JACK.style.backgroundColor = junque.A.value + junque.B.value + junque.C.value;
+	change_color(document.junque.whazzup[document.junque.whazzup.selectedIndex].value)
+}
+
+function adjust_val(what, how)
+{
+
+	waxed = new Array("00", "11", "22", "33", "44", "55", "66", "77",
+			  "88", "99", "AA", "BB", "CC", "DD", "EE", "FF");
+
+	jack = 0;
+
+	for(i=0 ; i<waxed.length ; i++) 
+	{
+		if(waxed[i] == junque[what].value.toUpperCase()) break;
+	}
+
+	if((how == "up") && (i != 15))
+	{
+		jack = 1;
+	}
+
+	if((how == "down") && (i != 0))
+	{
+		jack = -1;
+	}
+
+	junque[what].value = waxed[i + jack];
+
+	show_color();
+
+}
+
+</script>
+
+<title>Color Selection Application for AeroMail</title>
+
+<body id=THE_BODY topmargin=11 bgcolor=ffffff text=000000 link=003399 alink=669966 vlink=003399>
+<form name="junque">
+
+<table border=0 cellpadding=0 cellspacing=0 width=100%><tr><td bgcolor="666699">
+<table border=0 cellpadding=5 cellspacing=1 width=100%>
+  <tr><td colspan=5 id=COLOR_HEAD bgcolor=666699>
+	<table id=COLOR_FONT_HEAD border=0 cellpadding=0 cellspacing=1 width=100%>
+	  <tr><td>
+	  <font size=3 face=verdana><b>INBOX - AeroMail - 5 messages
+	</b></font></td><td align=right><table border=0 cellpadding=0 cellspacing=0><tr><td>
+		<select name=folder onChange="document.switchbox.submit()">
+		<option>switch current folder to:
+		</select></td><td>
+		&nbsp;&nbsp;<input type=button value="Folders"></td></tr></table></td></tr></table></td></tr>
+
+<tr><input type=hidden name=what value=""><input type=hidden name=folder value="INBOX">
+<td id=WAX1 align=center bgcolor=ccccff><img src="images/refresh.gif" border=0 height=16 width=21></td>
+<td id=WAX2 bgcolor=ccccff><font size=2 face=verdana><b>Subject</b></font></td>
+<td id=WAX3 bgcolor=ccccff><font size=2 face=verdana><b>From</b></font></td>
+<td id=WAX4 bgcolor=ccccff><font size=2 face=verdana><b>Received</b></font></td>
+<td id=WAX5 bgcolor=ccccff><font size=2 face=verdana><b>Size</b></font></td></tr>
+
+<tr><td id=ON1 bgcolor=ddeebb align=center><input type=checkbox name="msglist[]" value=5></td>
+<td id=ON2 bgcolor=ddeebb><font size=2 face=verdana><a href="">[aeromail] wax and wane!</a></font>&nbsp;</td>
+<td id=ON3 bgcolor=ddeebb><font size=2 face=verdana><a href="">Matteour Blainerd</a></font></td>
+<td id=ON4 bgcolor=ddeebb><font size=1 face=verdana>Man 3/29/00 1:35</font></td>
+<td id=ON5 bgcolor=ddeebb><font size=1 face=verdana>6.2 k</font></td></tr>
+
+<tr><td id=OFF1 bgcolor=ffffff align=center><input type=checkbox name="msglist[]" value=5></td>
+<td id=OFF2 bgcolor=ffffff><font size=2 face=verdana><a href="">Tire still jacked?</a></font>&nbsp;</td>
+<td id=OFF3 bgcolor=ffffff><font size=2 face=verdana><a href="">Rocky Raccoon</a></font></td>
+<td id=OFF4 bgcolor=ffffff><font size=1 face=verdana>Jon 6/27/00 9:32</font></td>
+<td id=OFF5 bgcolor=ffffff><font size=1 face=verdana>2.3 k</font></td></tr>
+
+<tr><td id=ON6 bgcolor=ddeebb align=center><input type=checkbox name="msglist[]" value=5></td>
+<td id=ON7 bgcolor=ddeebb><font size=2 face=verdana><a href="">Just go take a flying...</a></font>&nbsp;</td>
+<td id=ON8 bgcolor=ddeebb><font size=2 face=verdana><a href="">Shawn McManus</a></font></td>
+<td id=ON9 bgcolor=ddeebb><font size=1 face=verdana>Fin 13/32/00 16:20</font></td>
+<td id=ON10 bgcolor=ddeebb><font size=1 face=verdana>4.1 k</font></td></tr>
+
+<tr><td id=OFF6 bgcolor=ffffff align=center><input type=checkbox name="msglist[]" value=5></td>
+<td id=OFF7 bgcolor=ffffff><font size=2 face=verdana><a href="">Colors suck big time</a></font>&nbsp;</td>
+<td id=OFF8 bgcolor=ffffff><font size=2 face=verdana><a href="">Markeous Kaushmaneous</a></font></td>
+<td id=OFF9 bgcolor=ffffff><font size=1 face=verdana>Min 3/22/22 10:35</font></td>
+<td id=OFF10 bgcolor=ffffff><font size=1 face=verdana>234</font></td></tr>
+
+<tr><td id=ON11 bgcolor=ddeebb align=center><input type=checkbox name="msglist[]" value=5></td>
+<td id=ON12 bgcolor=ddeebb><font size=2 face=verdana><a href="">[aeromail] you suck!</a></font>&nbsp;</td>
+<td id=ON13 bgcolor=ddeebb><font size=2 face=verdana><a href="">Fritz Coughman</a></font></td>
+<td id=ON14 bgcolor=ddeebb><font size=1 face=verdana>Yul 4/21/30 6:36</font></td>
+<td id=ON15 bgcolor=ddeebb><font size=1 face=verdana>567</font></td></tr>
+
+
+
+<tr><td id=WAX6 bgcolor=ccccff align=center><img src="images/check.gif" border=0 height=16 width=21></td>
+
+<td id=WAX7 bgcolor=ccccff colspan=4>
+
+	<table width=100% border=0 cellpadding=0 cellspacing=0>
+	<tr>
+	<td>
+		<input type=button value="Delete">
+		<input type=button value="Compose">
+		<input type=button value="Login">
+	</td>
+	<td align=right>
+		<select name=tofolder>
+		<option>move selected messages into:
+		</select>
+	</td></tr></table>
+
+</td></tr>
+</table>
+</td></tr></table>
+
+<p>
+
+<table cellpadding=10><tr><td>
+<table id=JACK class=bord bgcolor=FFFFFF><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr></table></td><td>
+
+<table>
+<tr><td align=center><div class=wack onClick="adjust_val('A', 'up')"> + </div></td>
+    <td align=center><div class=wack onClick="adjust_val('B', 'up')"> + </div></td>
+    <td align=center><div class=wack onClick="adjust_val('C', 'up')"> + </div></td></tr>
+<tr><td align=center><input name=A value="FF" size=2 onBlur="show_color()"></td>
+    <td align=center><input name=B value="FF" size=2 onBlur="show_color()"></td>
+    <td align=center><input name=C value="FF" size=2 onBlur="show_color()"></td></tr>
+<tr><td align=center><div class=wack onClick="adjust_val('A', 'down')"> - </div></td>
+    <td align=center><div class=wack onClick="adjust_val('B', 'down')"> - </div></td>
+    <td align=center><div class=wack onClick="adjust_val('C', 'down')"> - </div></td></tr>
+</table>
+
+<input type=hidden value="000000" name="the_color">
+
+
+</td><td>
+
+<select name=whazzup onChange="update_color(document.junque.whazzup[document.junque.whazzup.selectedIndex].value)">
+<option value=1>Body Background Color</option>
+<option value=2>Body Font Color</option>
+<option value=3>Header Background Color</option>
+<option value=4>Header Font Color</option>
+<option value=5>Title Background Color</option>
+<option value=6>Row On Color</option>
+<option value=7>Row Off Color</option>
+</select>
+
+
+</td><td><input type=button value="Generate Config" onClick="launch_junque()"></td></tr></table>
+</form>
+
+
+<script>
+
+THE_BODY.style.backgroundColor = "FFFFFF";
+THE_BODY.style.color = "000000"
+COLOR_HEAD.style.backgroundColor = "666699";
+COLOR_FONT_HEAD.style.color = "FFFFFF";
+WAX1.style.backgroundColor = "CCCCFF";
+ON1.style.backgroundColor = "DDEEBB";
+OFF1.style.backgroundColor = "FFFFFF";
+
+</script>

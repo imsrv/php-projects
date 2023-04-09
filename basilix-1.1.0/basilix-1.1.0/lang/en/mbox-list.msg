@@ -1,0 +1,37 @@
+<?
+// MBox listing messages
+$lang_msg["mboxlst"] = array(
+	201	=>	'From',
+	202	=>	'Sort by From',
+	203	=>	'To',
+	204	=>	'Sort by To',
+	205	=>	'Date',
+	206	=>	'Sort by Date',
+	207	=>	'Size',
+	208	=>	'Sort by Size',
+	209	=>	'Subject',
+	210	=>	'Sort by Subject',
+	211	=>	'(no subject)',
+	212	=>	'Move selected messages to',
+	213	=>	'Do it',
+	214	=>	'Empty Folder',
+	215	=>	'Delete selected messages',
+	216	=>	'Purge selected messages',
+	217	=>	'Prev',
+	218	=>	'Next',
+	219	=>	'There are no messages to display in this folder.',
+	220	=>	'You didnot select the folder, please try again..',
+	221	=>	'You did not select any message, please try again..',
+	222	=>	'I could not move the selected messages, please try again later..',
+	223	=>	'The selected messages (%d) have been successfully moved to Trash.',
+	224	=>	'I could not delete the selected messages, please try again later..',
+	225	=>	'The selected messages have been successfully moved.',
+	226	=>	'I could not purge the selected messages, please try again later..',
+	227	=>	'The selected messages have been successfully purged.',
+	228	=>	'Page: ',
+	229	=>	'Do you really want to empty this folder?',
+	230	=>	'Welcome, your last connection was from',
+	231	=>	'The message has been successfully deleted.',
+	232	=>	'The message has been successfully purged.'
+);
+?>

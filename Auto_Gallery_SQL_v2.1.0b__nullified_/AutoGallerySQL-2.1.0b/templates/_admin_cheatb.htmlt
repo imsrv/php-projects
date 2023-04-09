@@ -1,0 +1,41 @@
+</table>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+
+<table width="100%">
+<tr>
+<td align="center">
+<select name="run" style="font-size: 11px; font-family: Verdana">
+  <option value="cheatNothing">Do Nothing</option>
+  <option value="cheatBan">Delete & Ban</option>
+  <option value="cheatDelete">Delete Only</option>
+</select>
+<input type="submit" name="submit" value="Execute Function" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<br><br>
+
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b><a href="admin.cgi" class="reg">Back To Main Page</a></b>
+</font>
+
+<br><br>
+
+</form>
+
+</body>
+</html>

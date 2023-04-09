@@ -1,0 +1,6 @@
+<?
+//
+// Logout msg
+//
+?>
+<div align="center"><br><?php echo $logout_msg?><br></div><br>

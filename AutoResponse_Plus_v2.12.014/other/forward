@@ -1,0 +1,25 @@
+\loginname, "|/usr/bin/perl /path/from/your/domains/root/to/your/cgi-bin/arplus/emailcapture.pl"
+
+*****************************************************************
+*                         INSTRUCTIONS                          *
+*****************************************************************
+* DELETE THESE INSTRUCTIONS WHEN YOU HAVE FINISHED, LEAVING     *
+* ONLY THE ABOVE COMMAND LINE AND THEN AT LEAST TWO BLANK       *
+* LINES.                                                        *
+*****************************************************************
+* Step 1: Change loginname to your server's login name.         *
+*                                                               *
+* Step 2: Change /usr/bin/perl to the correct path to Perl for  *
+*         your server.                                          *
+*                                                               *
+* Step 3: Change the emailcapture.pl path to the path to your   *
+*         emailcapture.pl. This path is from your domain's root *
+*         directory, NOT your host's root directory.            *
+*         Sometimes these are the same.                         *
+*                                                               *
+* Step 4: Refer to 'install.htm' for details on uploading and   *
+*         activating this file.                                 *
+*****************************************************************
+* LEAVE AT LEAST TWO BLANK LINES AT THE END OF THIS FILE        *
+*****************************************************************
+

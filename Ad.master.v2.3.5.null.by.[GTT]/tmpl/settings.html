@@ -1,0 +1,34 @@
+<form action=admin.cgi method=post><input type=hidden name=page value=settings><input type=hidden name=action value=set>
+<table cellspacing=0 cellpadding=0 border=0 width=740 align=center><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=1 border=0 width=100%>
+<tr><th colspan=2><img src=#image_dir#settings.gif width=16 height=16> Settings</th></tr>
+
+<tr><td class=td1>Install URL</td><td class=td1><input type=text name=installurl value=#installurl#></td></tr>
+<tr><td class=td2 colspan=2>The URL (not the path) scripts installed.</td></tr>
+
+<tr><td class=td1>Dup view time</td><td class=td1><input type=text name=timeview value=#timeview#> min</td></tr>
+<tr><td class=td2 colspan=2>If you want to prevent multiple exposures of a single  banner to a single visitor from counting against that banner's total,  set this variable to the minimum number of minutes which must elapse  between counted views.  For example, if you set it to 5, once a given  visitor has seen a particular banner, further showings of that banner  to that visitor will *not* be counted by the system until at least  five minutes have elapsed.  Normally, this variable should be left  at 0, both for reasons of improved efficiency and because most of the  time you won't *want* to "undercount" your exposures.  However, if  you are running an exchange, and have problems with members trying to  "inflate" their statistics, and don't want to be bothered having to  spot the abusers manually and put them on a permanent "ignore" list,  this is the next-best solution.</td></tr>
+
+<tr><td class=td1>Dup click time</td><td class=td1><input type=text name=timeclick value=#timeclick#> min</td></tr>
+<tr><td class=td2 colspan=2>This variable works exactly the same as the Dup View Time variable, only it determines how many minutes must pass before a  second click-thru (rather than a second exposure) will be counted by  the system.</td></tr>
+
+<tr valign=top><td class=td1>Ignore IP</td><td class=td1><textarea name=ignoreip cols=30 rows=5>#ignoreIP#</textarea></td></tr>
+<tr><td class=td2 colspan=2>You can enter a list of IP addresses or domain names  (or portions thereof) in this variable, separated by spaces.  Any  visitor whose IP or domain matches an entry in this list will still  be shown banners; however, the views or click-thrus will *not* be  recorded by the script.  This allows administrators to prevent their  own activity on their Web sites from counting against their  advertiser's banner's exposure counts, and also provides an easy way  of dealing with exchange members who try to artificially inflate  their exposure counts by repeatedly viewing their own pages.</td></tr>
+
+<tr><td class=td1>Max banner size</td><td class=td1><input type=text name=maxbannersize value=#maxbannersize#> kb</td></tr>
+<tr><td class=td2 colspan=2>The maximum size (in kilobytes) of banners.  If you  set this to 20, for example, any attempt by a user to upload a banner  graphic larger than 20 kb will be automatically rejected.</td></tr>
+
+<!--<tr><td class=td1>Install URL</td><td class=td1><input type=text name=sendmailpath value="#sendmailpath#"></td></tr>
+<tr><td class=td2 colspan=2>This variable defines what, if any, mail program is to  be utilized by the script. The definition is the absolute path to the "sendmail"  program, at least if you're on a server that *has* it.</td></tr>-->
+
+<tr><td class=td1>Images URL</td><td class=td1><input type=text name=imagesurl value="#imagesurl#"></td></tr>
+<tr><td class=td2 colspan=2>The URL (not the path) catalog for images</td></tr>
+
+<tr><td class=td1>Images path</td><td class=td1><input type=text name=imagespath value="#imagespath#"></td></tr>
+<tr><td class=td2 colspan=2>The path (not the URL) catalog for images</td></tr>
+
+<tr><td class=tdb colspan=2><input type=Submit value=SET class=sbmt> &nbsp; <input type=button value="CANCEL" onClick="document.location='admin.cgi';" class=sbmt></td></tr>
+
+</table>
+</td></tr></table>
+

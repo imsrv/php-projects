@@ -1,0 +1,38 @@
+<?
+// 'Settings' messages
+$lang_msg["settings"] = array(
+	501	=>	'Impossible d\'enregistrer les nouveaux paramètres, essayez plus tard...',
+	502	=>	'Les nouveaux paramètres ont été enregistrés.',
+	503	=>	'Votre Nom',
+	504	=>	'(sera associé à la partie <u>De</u> des e-mails envoyés)',
+	505	=>	'Signature',
+	506	=>	'(sera ajoutée à tous les messages que vous envoyez)',
+	507	=>	'Langue',
+	508	=>	'(Langue par défaut)',
+	509	=>	'Trier les messages par',
+	510	=>	'(algorithme de tri par défaut)',
+	511	=>	'Tri inverse',
+	512	=>	'(Si oui, les messages les plus récents apparaîtront en haut)',
+	513	=>	'sauvegarder les messages envoyés',
+	514	=>	'(Si oui, les messages envoyés seront sauvegardés dans "Messages envoyés")',
+	515	=>	'Déplacer dans la corbeille',
+	516	=>	'(Si oui, les messages supprimés seront déplacés dans la Corbeille)',
+	517	=>	'Taille de la Page',
+	518	=>	'(message par page quand on liste une boîte aux lettres)',
+	519	=>	'Date',
+	520	=>	'De',
+	521	=>	'Sujet',
+	522	=>	'Taille',
+	523	=>	'Thème',
+	524	=>	'(change l\'apparence de l\'application Webmail)',
+	525	=>	'Enregistrer les paramètres',
+	526	=>	'Show',
+	527	=>	'Hide',
+	528	=>	'Show/Hide',
+	529	=>	'(show or hide the user folder list in the left menu)',
+	530	=>	'Prev/Next',
+	531	=>	'(shows the previous and the next message links when reading a message -- this is slow on large mailboxes)',
+	532	=>	'Reply-To',
+	533	=>	'(the recipient will reply to this address -- if empty <b>%e</b> is used)'
+);
+?>

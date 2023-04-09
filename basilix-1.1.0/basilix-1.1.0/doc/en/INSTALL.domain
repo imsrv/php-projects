@@ -1,0 +1,57 @@
+The domain configuration file is in the configuration file of
+the basilix installation directory. We assume that you
+installed to /usr/local/basilix.
+
+The format of the file "/usr/local/basilix/conf/domains.conf" is
+easy enough.
+
+Each domain should have the following lines:
+------------------------------------------------------------------
+$bsx_domains[$i]["domain"]      = "piranha.bcc.bilkent.edu.tr";
+$bsx_domains[$i]["imap_host"]   = "139.179.14.84";
+$bsx_domains[$i]["imap_port"]   = "143";
+$bsx_domains[$i]["smtp_host"]   = "139.179.14.84";
+$bsx_domains[$i]["imap_stype"]  = "1"; // Washington IMAPd (RedHat default)
+$bsx_domains[$i]["virtual"]	= "0";
+$bsx_domains[$i++]["desc"]      = "Piranha Box";
+------------------------------------------------------------------
+
+where;
+
+domain:	
+	is the name of the domain. for instance if your email
+	address is gubarak@domain123.com, then the domain
+	should be domain123.com
+
+imap_host: 
+	this specifies the hostname that allowes us to read
+	the mails for "domain123.com" via IMAP.
+	e.g: imap.domain123.com (can also be its IP address)
+
+smtp_host:
+	this is the hostname that gives relay permission
+	to domain "domain123.com". we will send mails
+	for this domain from this address via SMTP.
+	e.g: smtp.domain123.com (can also be its IP)
+
+imap_stype:
+
+	the type of the imap server. If it's wu-imapd
+	the value must be "1", if it's Cyrus, the
+	value must be "2". If it is Courier IMAPd then
+	the value is "3".
+
+virtual:
+	if the domains are virtual and you use Courier-IMAPd
+	then set this to 1.
+	I didn't test the virtual mechanism with other IMAP
+	servers, but AFAIK, there are a couple of hacked
+	IMAP servers that allow virtual domains (with vpopmail
+	or aka vchkpw). However, theoretically, they should
+	work out.
+desc:
+	this is the description of this domain. this description
+	will be displayed in the login form as select box.
+	e.g: domain 123
+
+-arslanm

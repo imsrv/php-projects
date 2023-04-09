@@ -1,0 +1,478 @@
+<html>
+<head>
+  <title>AutoRank Pro Administration</title>
+  <script language="JavaScript">
+    function openHelp(url, name) { 
+      window.open(url, name, 'scrollbars=1,resizable=no,width=350,height=450,status=0,menubar=0');
+    }
+  </script>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<font face="Verdana,Arial" size="2" color="red">
+<b>#%MESSAGE%#</b>
+</font>
+
+<br><br>
+
+<form action="admin.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="700">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center" colspan="2">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Account Details For '#%USERNAME%#'</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td width="175">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>E-Mail Address</b>
+</font>
+</td>
+<td width="525">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<a href="mailto:#%EMAIL%#" class="reg">#%EMAIL%#</a>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Site URL</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<a href="#%SITE_URL%#" target="_blank" class="reg">#%SITE_URL%#</a>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Site Title</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%TITLE%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Description</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%DESCRIPTION%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Banner URL</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<a href="#%BANNER_URL%#" target="_blank" class="reg">#%BANNER_URL%#</a>&nbsp;
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Banner Height</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%HEIGHT%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Banner Width</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%WIDTH%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Category</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%CATEGORY%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Reciprocal Link URL</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<a href="#%RECIP_URL%#" target="_blank" class="reg">#%RECIP_URL%#</a>&nbsp;
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Password</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%PASSWORD%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>#%FIELD_1_NAME%#</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%FIELD_1%#&nbsp;
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>#%FIELD_2_NAME%#</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%FIELD_2%#&nbsp;
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>#%FIELD_3_NAME%#</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%FIELD_3%#&nbsp;
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td valign="top">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Icons</b>
+</font>
+</td>
+<td>
+#%ICONS%#
+<font face="Verdana" size="2" style="font-size: 11px;">
+&nbsp;
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Account Status</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%SUSPENDED%#, #%LOCKED%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Inactive</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%INACTIVE%# Resets
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Signup Date</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%SIGNUP_DATE%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Hit Weight</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%WEIGHT%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Hits In Since Last Reset</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%HITS_IN%# (#%RAW_HITS_IN%# Unweighted)
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Hits Out Since Last Reset</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%HITS_OUT%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Total Hits In</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%TOTAL_IN%# (#%RAW_TOTAL_IN%# Unweighted)
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Total Hits Out</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%TOTAL_OUT%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Average Hits In/Day</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%IN_PER_DAY%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Average Hits In/Week</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%IN_PER_WEEK%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Average Hits In/Month</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%IN_PER_MONTH%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Average Hits Out/Day</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%OUT_PER_DAY%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Average Hits Out/Week</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%OUT_PER_WEEK%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Average Hits Out/Month</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%OUT_PER_MONTH%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ffffff">
+<td colspan="2" align="center">
+
+
+<input type="hidden" name="check" value="1">
+
+<input type="hidden" name="id" value="#%USERNAME%#">
+<input type="hidden" name="from" value="#%FROM%#">
+<input type="hidden" name="show" value="#%SHOW%#">
+<input type="hidden" name="page" value="#%PAGE%#">
+<input type="hidden" name="sort" value="#%SORT%#">
+<input type="hidden" name="scat" value="#%GROUP%#">
+<input type="hidden" name="key" value="#%KEY%#">
+
+<select name="run" style="font-size: 11px; font-family: Verdana">
+  <option value="displayEditMember">Edit Member</option>
+  <option value="displayMail">Mail Member</option>
+  <option value="deleteMember">Delete Member</option>
+  #%LOCK_OPT%#
+  #%SUSP_OPT%#
+</select>
+<input type="submit" value="Execute Function" style="font-size: 11px; font-family: Verdana">
+
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+<input type="hidden" name="apwd" value="#%APWD%#">
+</form>
+
+<br>
+
+<form action="admin.cgi" method="POST">
+<input type="hidden" name="apwd" value="#%APWD%#">
+#%BACK%#
+</form>
+
+<br><br>
+
+</body>
+</html>

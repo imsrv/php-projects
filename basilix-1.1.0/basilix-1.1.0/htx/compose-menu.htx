@@ -1,0 +1,76 @@
+<?php 
+//
+// Give a final information about the sent/unsent mail -- HTML file
+//
+?>
+<div align="center">
+<br>
+<?php start_form("draftList")?>
+<input type="hidden" name="RequestID" value="CMPSNEW">
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+<tr><td align="center" class="tblborder">
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tr>
+<td align="center" width="1" class="mboxhdr" nowrap>&nbsp;</td>
+<td align="right" width="1" class="mboxhdr" nowrap><?php echo nbsp($lng->p(459))?></td>
+<td align="center" width="10%" class="mboxhdr" nowrap><?php echo nbsp($lng->p(467))?></td>
+<td align="left" width="30%" class="mboxhdr" nowrap><?php echo nbsp($lng->p(404))?></td>
+<td align="left" width="58%" class="mboxhdr" nowrap><?php echo nbsp($lng->p(407))?></td>
+</tr>
+<?php
+for($i = 0 ; $i < count($draft_msgs) ; $i++) {
+	$t_subject = $draft_msgs[$i]["MSGSUBJECT"];
+	$t_to = $draft_msgs[$i]["MSGTO"];
+	$t_msgid = $draft_msgs[$i]["MSGID"];
+	$t_msgatchs = $draft_msgs[$i]["MSGATCHS"];
+	$t_msgdate = date("d/m/Y H:i", $draft_msgs[$i]["MSGDATE"]);
+
+	if($t_msgid < 100000) {
+		if($t_msgid < 100) $t_msgidstr = "0000$t_msgid";
+		else if($t_msgid < 1000 && $t_msgid >= 100) $t_msgidstr = "000$t_msgid";
+		else if($t_msgid < 10000 && $t_msgid >= 10000) $t_msgidstr = "00$t_msgid";
+		else $t_msgidstr = "0$t_msgid";
+	} else $t_msgidstr = $t_msgid;
+	if(strlen($t_subject) > 42) {
+           $t_subject = substr($t_subject, 0, 42);
+           $t_subject .= "...";
+        }
+	if(strlen($t_to) > 42) {
+           $t_to = substr($t_to, 0, 42);
+           $t_to .= "...";
+        }
+	
+	
+?>
+<tr>
+<td align="center" width="1" class="oldmsg" nowrap><input type="radio" name="premail" value="<?php echo $t_msgid?>" style="border-width:0px;"></td>
+<td align="right" width="1" class="oldmsg" nowrap><?php echo nbsp($t_msgidstr)?></td>
+<td align="center" width="10%" class="oldmsg" nowrap><?php echo nbsp($t_msgdate)?></td>
+<td align="left" width="30%" class="oldmsg" nowrap><?php echo nbsp(htmlspecialchars($t_to))?></td>
+<td align="left" width="58%" class="oldmsg" nowrap><?php echo nbsp(htmlspecialchars($t_subject))?></td>
+</tr>
+<?php } ?>
+<tr>
+<td align="center" colspan="5" width="100%" class="normalbg">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td align="center" class="normalbg" width="50%">
+<input type="submit" class="button" name="delDraft" value="<?php echo $lng->p(460)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>
+</td>
+<td align="center" class="normalbg" width="50%">
+<input type="submit" class="button" name="contDraft" value="<?php echo $lng->p(461)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>
+</td>
+</tr>
+</table>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<?php stop_form()?>
+<br><hr width="50%">
+<?php start_form("draftList")?>
+<input type="hidden" name="RequestID" value="CMPSNEW">
+<input type="hidden" name="createNew" value="yes">
+<input type="submit" class="button" value="<?php echo $lng->p(462)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>
+<?php stop_form()?>
+</div>

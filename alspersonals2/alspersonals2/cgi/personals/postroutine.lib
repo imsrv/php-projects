@@ -1,0 +1,418 @@
+sub postpersad {
+&vars;
+$counter = 0;
+
+	if (($adpagenm eq "") || ($persadheadline eq "") || ($adtext eq "")
+	||($username eq "")||($password eq "")) {
+	
+	&missinginfo;
+	}
+
+	@words = split(/ /,$adtext);
+	$x = @words;
+	$difference = $x - $adlength;
+
+	if($x > $adlength){
+	print "Content-type:text/html\n\n";
+	print "
+	$mainheader
+$submenu
+<br><br>
+	<table><tr><td><br><br>
+	<blockquote><font size=2 face=verdana>
+	There is a $adlength word limit for personal ads. Please go back and edit your ad. You have (<b>$x</b>) words in your ad.
+	You need to reduce your ad word count by (<b>$difference</b>). <a href=\"javascript:history.go(-1)\">Go back</a>.
+	</font></blockquote></td></tr></table><br><br>
+	$botcode\n";
+	exit;}
+	
+	
+	
+	unless($adpicname eq ""){
+	if($adpicname ne ""){
+	unless($adpicname =~/\.gif$|\.GIF$|\.jpg$|\.JPG$|\.jpeg$/){&nopicfileextension;}}
+		
+	unless(-e "$userimagesdir/$adpicname"){&picfilenotfound;}}
+	
+	unless(-e "$users/$username.txt"){
+	&problemencountered;}
+
+	open (FILE, "$users/$username.txt") || &oops ($!, "Could not open $users/$username.txt");
+	flock (FILE, 1) or die "Cannot lock file\n";
+	while (<FILE>) {
+	chop;
+	@datafile=split(/\n/);
+	foreach $line (@datafile) {
+	&chkuse($line);
+	}
+	}
+	close(FILE);
+	}
+
+
+	sub chkuse($line){
+
+	local ($line) = @_;
+	local ($loginname,$password,$emailaddr);
+		  ($loginname,$password,$emailaddr)= split(/\|/, $line);
+
+
+	if(($FORM{'username'} eq "$loginname")&&($FORM{'password'} eq "$password"))
+	{&userhasad;}else{&invalidlogin;}}
+
+
+	sub userhasad {
+	&vars;
+
+	
+	if(-e "$messagecenterdir/$username/ads.txt"){
+
+	print "Content-type:text/html\n\n";
+	print "$mainheader
+$submenu
+<br><br>
+	<font size=2 face=verdana><blockquote>It appears you have already posted an ad. You cannot post another ad before you delete
+	your previous ad.\n";
+
+	open(IN, "$messagecenterdir/$FORM{'username'}/ads.txt");
+	@lines=<IN>;
+	close(IN);
+
+	foreach $line(@lines){
+	($one,$two)=split(/\|/,$line);
+	$dtn=$two;}
+
+	print "<a href=\"$cgiurl/delad.pl?dtn=$dtn\"><span style=text-decoration:underline; font-weight=bold; font-size=10pt;><b>Click here to delete your ad</span></a>
+	</blockquote></font><br><br><br><br><br><br><br><br><br><br>$botcode\n";
+	exit;
+	}
+	else {
+	&postprocedure;
+	}
+	}
+
+	sub postprocedure {
+	&vars;
+
+	$adtext =~ s/\n/<br>/g;
+
+	if($adpagenm eq "wsmads"){$profilecat = "catwsm";}
+	if($adpagenm eq "wswads"){$profilecat = "catwsw";}
+	if($adpagenm eq "msmads"){$profilecat = "catmsm";}
+	if($adpagenm eq "mswads"){$profilecat = "catmsw";}
+
+
+	open (FILE, "$persadsdir/adsnum.txt");
+	$ocnt = <FILE>;
+	# chop $ocnt;
+	$ocnt++;
+	$ncnt = $ocnt;
+ 	
+	open (FILE, ">$persadsdir/adsnum.txt");
+	print FILE "$ncnt";
+	close(FILE);
+
+      	$delticknum = $ncnt * $randpwdint;
+	if($adpicname ne ""){
+	$adpicode="<a href=\"$profilesurl/$profilecat/$username.html\"><img src=\"$userimagesurl/$adpicname\" width=100 height=100 border=0></a>";
+	$thepictu=$adpicname;
+	}
+
+	else { $adpicode="";}	
+	
+	$adstarttime = time();
+##############################################################################
+# Begin writing ad text to file
+
+unless(-e "$persadscgidir/$adpagenm/ads/$adpagenm.txt"){
+open (FILE, ">>$persadscgidir/$adpagenm/ads/$adpagenm.txt") || &oops ($!, "Could not open $persadscgidir/$adpagenm/ads/adpagenm.txt");   
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "\n";
+close(FILE);chmod 0777, '$persadscgidir/$adpagenm/ads/$adpagenm.txt';}
+
+open (FILE, ">>$persadscgidir/$adpagenm/ads/$adpagenm.txt") || &oops ($!, "Could not open $persadscgidir/$adpagenm/ads/$adpagenm.txt");  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE " <center><table width=80% cellpadding=2 cellspacing=2 border=0><tr><td><table width=100% height=35 cellpadding=0 cellspacing=0 border=0><tr><td bgcolor=$adheadertdbgcolor width=10%>&nbsp;<input type=\"hidden\" name=delticknum value=\"$delticknum\"><input type=\"hidden\" name=adstarttime value=\"$adstarttime\"></td><td bgcolor=$adheadertdbgcolor width=90%><font size=$adheaderfsize color=$adheaderfcolor face=$adheaderfstyle>$persadheadline</font></td></tr></table></td></tr><tr><td bgcolor=$adtexttdbgcolor><table width=100% cellpadding=0 cellspacing=0 border=0><tr><td><center>$adpicode</center></td><td><blockquote><font size=$adtextfsize face=$adtextfstyle color=$adtextfcolor>$adtext</font></blockquote></td></tr></table></td></tr><tr><td bgcolor=$adtextbgcolor><form method=\"post\" action=\"$cgiurl/personals.pl\"></td></tr><tr><td bgcolor=$adpostedby_tdbgcolor><table width=100% cellpadding=0 cellspacing=0 border=0><tr><td width=20>&nbsp;</td><td><font size=$adpostedbyfsize color=$adpostedbyfcolor face=$adpostedbyfstyle><b>Posted By:</b><a href=\"$profilesurl/$profilecat/$username.html\"><font color=$adusernamelinkcolor>$username</font></a></td><td><font size=$adpostedbyfsize color=$adpostedbyfcolor face=$adpostedbyfstyle><b>Posted On:</b> $date</td><td><input type=\"hidden\" name=\"username\" value=\"$username\"><input type=\"submit\" name=\"leavemess\" value=\"Leave Message\" class=\"button\"></td><td></form></td></tr></table></td></tr></table><br></center>\n";
+close (FILE);
+
+
+open (FILE, ">>$messagecenterdir/$username/ads.txt") || &oops ($!, "Could not open $messagecenterdir/$username/ads.txt");   
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$username|$delticknum\n";
+close(FILE);
+
+open (FILE, ">$messagecenterdir/$username/addata.txt") || &oops ($!, "Could not open $messagecenterdir/$username/addata.txt");   
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$username|$password|$delticknum|$adpagenm|$thepictu|$persadheadline|$adtext\n";
+close (FILE);
+
+
+open(IN, "$admincgidir/ads.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($numberofads)=split(/\n/,$line);
+$oldadcount=$numberofads;
+$newadcount=$numberofads + 1;
+
+open (FILE, ">$admincgidir/ads.txt") || die "Cannot open $admincgidir/ads.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$newadcount\n";  
+close (FILE);
+}
+
+
+# End writing ad 
+
+#############################################################################
+
+&persadposted;
+
+
+}
+
+
+
+
+#############################################################################
+sub persadposted
+  {
+
+print "Content-type:text/html\n\n";
+print qq~
+$mainheader
+$submenu<br>
+<center><table cellpadding=0 cellspacing=0 width=350 border=0><tr>
+<td>
+
+$text127
+
+<font color=0000ff>Ticket Number:</font> <b>$delticknum</b>
+<br><br>Please write down your ticket number and keep it
+in a safe place.</font>
+</blockquote></font>
+<P></td></tr></table></center><br><br><br><br><br>
+$botcode
+~;
+
+
+exit;
+}
+
+############################################################################
+
+sub updatepersad {
+&vars;
+&premovead;
+$counter = 0;
+
+	if (($adpagenm eq "") || ($persadheadline eq "") || ($adtext eq "")||($username eq "")||($password eq ""))
+	 {
+	
+	&missinginfo;
+	}
+
+	@words = split(/ /,$adtext);
+	$x = @words;
+	$difference = $x - $adlength;
+
+	if($x > $adlength){
+	print "Content-type:text/html\n\n";
+	print "
+	$mainheader<br><br><br>
+	<table><tr><td><br><br>
+	<blockquote><font size=2 face=verdana>
+	There is a $adlength word limit for personal ads. Please go back and edit your ad. You have (<b>$x</b>) words in your ad.
+	You need to reduce your ad word count by (<b>$difference</b>). <a href=\"javascript:history.go(-1)\">Go back</a>.
+	</font></blockquote></td></tr></table><br><br><br><br><br><br><br><br><br>
+	$botcode\n";
+	exit;}
+
+		
+	if($adpicname eq ""){
+	$apicode="";
+	$thepictu="";
+	&updadprocedure;}
+
+	if($adpicname ne ""){
+	unless($adpicname =~/\.gif$|\.GIF$|\.jpg$|\.JPG$|\.jpeg$/){&nopicfileextension;}}
+		
+	unless(-e "$userimagesdir/$adpicname"){&picfilenotfound;}
+	
+	if($adpicname ne ""){
+	$adpicode="<a href=\"$profilesurl/$profilecat/$username.html\"><img src=\"$userimagesurl/$adpicname\" width=100 height=100 border=0></a>";
+	$thepictu=$adpicname;
+	}
+
+		
+	&updadprocedure;
+
+	}
+
+
+	sub updadprocedure {
+	&vars;
+
+	$adtext =~ s/\n/<br>/g;
+
+	if($adpagenm eq "wsmads"){$profilecat = "catwsm";}
+	if($adpagenm eq "wswads"){$profilecat = "catwsw";}
+	if($adpagenm eq "msmads"){$profilecat = "catmsm";}
+	if($adpagenm eq "mswads"){$profilecat = "catmsw";}
+
+
+	open (FILE, "$persadsdir/adsnum.txt");
+	$ocnt = <FILE>;
+	# chop $ocnt;
+	$ocnt++;
+	$ncnt = $ocnt;
+ 	
+	$adstarttime = time();
+##############################################################################
+# Begin writing ad text to file
+
+open(IN,"$persadscgidir/$adpagenm/ads/$adpagenm.txt");
+@lines=<IN>;
+close(IN);
+
+$numlines=@lines;
+
+if($numlines >= 250){
+
+open(IN, "$persadscgidir/$adpagenm/next.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+
+$adataval = $line;
+$adnewval = $adataval + 1;
+
+rename("$persadscgidir/$adpagenm/ads/$adpagenm.txt", "$persadscgidir/$adpagenm/ads/$adpagenm$adnewval.txt");
+
+open (FILE, ">$persadscgidir/$adpagenm/next.txt") || die "Cannot open $persadscgidir/$adpagenm/next.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$adnewval\n";  
+close (FILE);
+}
+}
+
+open (FILE, ">>$persadscgidir/$adpagenm/ads/$adpagenm.txt") || &oops ($!, "Could not open $persadscgidir/$adpagenm/ads/$adpagenm.txt");  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE " <center><table width=80% cellpadding=2 cellspacing=2 border=0><tr><td><table width=100% height=35 cellpadding=0 cellspacing=0 border=0><tr><td bgcolor=$adheadertdbgcolor width=10%>&nbsp;<input type=\"hidden\" name=delticknum value=\"$FORM{'delticknum'}\"><input type=\"hidden\" name=adstarttime value=\"$adstarttime\"></td><td bgcolor=$adheadertdbgcolor width=90%><font size=$adheaderfsize color=$adheaderfcolor face=$adheaderfstyle>$persadheadline</font></td></tr></table></td></tr><tr><td bgcolor=$adtexttdbgcolor><table width=100% cellpadding=0 cellspacing=0 border=0><tr><td><center>$adpicode</center></td><td><blockquote><font size=$adtextfsize face=$adtextfstyle color=$adtextfcolor>$adtext</font></blockquote></td></tr></table></td></tr><tr><td bgcolor=$adtextbgcolor><form method=\"post\" action=\"$cgiurl/personals.pl\"></td></tr><tr><td bgcolor=$adpostedby_tdbgcolor><table width=100% cellpadding=0 cellspacing=0 border=0><tr><td width=20>&nbsp;</td><td><font size=$adpostedbyfsize color=$adpostedbyfcolor face=$adpostedbyfstyle><b>Posted By:</b><a href=\"$profilesurl/$profilecat/$username.html\"><font color=$adusernamelinkcolor>$username</font></a></td><td><font size=$adpostedbyfsize color=$adpostedbyfcolor face=$adpostedbyfstyle><b>Updated On:</b> $date</td><td><input type=\"hidden\" name=\"username\" value=\"$username\"><input type=\"submit\" name=\"leavemess\" value=\"Leave Message\" class=\"button\"></td><td></form></td></tr></table></td></tr></table><br></center>\n";
+close (FILE);
+
+
+open (FILE, ">$messagecenterdir/$username/ads.txt") || &oops ($!, "Could not open $messagecenterdir/$username/ads.txt");   
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$username|$FORM{'delticknum'}\n";
+
+open (FILE, ">$messagecenterdir/$username/addata.txt") || &oops ($!, "Could not open $messagecenterdir/$username/addata.txt");   
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$username|$password|$FORM{'delticknum'}|$adpagenm|$thepictu|$persadheadline|$adtext\n";
+
+
+
+
+# End writing ad 
+
+#############################################################################
+
+&persadupdated;
+
+}
+
+
+sub viewads {
+
+print "Content-type:text/html\n\n";
+print "<html><head><title>Delete Profile</title></head>
+<body topmargin=0 bottommargin=0 marginheight=0 marginwidth=0 leftmargin=0 rightmargin=0>
+$mainheader
+$submenu
+<br>
+<br>
+<center>
+<form method=\"post\" action=\"personals.pl\">
+<table cellpadding=0 cellspacing=0 width=300>
+<tr><td><font size=1 face=verdana color=000000>
+
+$textviewads
+
+</td></tr></table>
+
+<br><br>
+<table cellpadding=0 cellspacing=0 width=300><tr>
+<td><center><select name=showadspage onchange=\"window.location.href=this.options[this.selectedIndex].value\">
+<option value=\"\" selected>Select Category</option>
+<option value=\"$cgiurl/persads/mswads/mswads.pl\">Men Seeking Women</option>
+<option value=\"$cgiurl/persads/wsmads/wsmads.pl\">Women Seeking Men</option>
+<option value=\"$cgiurl/persads/msmads/msmads.pl\">Men Seeking Men</option>
+<option value=\"$cgiurl/persads/wswads/wswads.pl\">Women Seeking Women</option>
+</select></center></td></tr></table><br>
+<input type=\"submit\" name=\"showads\" value=\"Submit\" class=\"button\"></center>
+</form>
+$botcode
+</body></html>\n";
+
+}
+
+sub premovead {
+
+opendir(DIR, "$persadsdir/$FORM{'adpagenm'}/ads");
+@ddocs=readdir(DIR);
+closedir(DIR);
+
+foreach $ddoc(@ddocs){
+
+unless(($ddoc eq ".")||($ddoc eq "..")){
+
+open(IN, "$persadsdir/$FORM{'adpagenm'}/ads/$ddoc")||&oops($!,"Cannot read $persadsdir/$FORM{'adpagenm'}/ads/$ddoc");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+open(OUT,">$persadsdir/$FORM{'adpagenm'}/ads/$ddoc") || &oops ($!,"Cannot write $persadsdir/$FORM{'adpagenm'}/ads/$ddoc");
+flock (OUT, 2);
+foreach $line(@lines) {
+$codetofind = $FORM{'delticknum'};
+if ($line !~ /$codetofind/) {
+print OUT "$line";
+}
+}
+}
+}
+close (OUT);
+
+}
+
+
+sub persadupdated
+  {
+print "Content-type:text/html\n\n";
+print qq~
+$mainheader
+$submenu
+<br>
+<center><table cellpadding=0 cellspacing=0 width=350 border=0><tr>
+<td>
+
+<font size=2 face=verdana><blockquote>
+Your ad has been updated</font>
+
+<font size=2 face=verdana color=0000ff>Ticket Number:
+ <b>$FORM{'delticknum'}</b></font>
+<br>
+<font size=2 face=verdana>Please write down your ticket number and keep it
+in a safe place.</font>
+</blockquote></font>
+<P></td></tr></table></center><br><br><br><br>
+$botcode
+~;
+exit;
+}
+
+
+
+1;

@@ -1,0 +1,54 @@
+<tr>
+<td bgcolor="#cccccc" colspan="3">
+<input type="checkbox" name="id" value="#%CHEAT_ID%#"> 
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>#%CHEAT_ID%# - <a href="#%GALLERY_URL%#" target="_blank" class="reg">#%GALLERY_URL%#</a></b>
+</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Post ID:</b> #%POST_ID%#
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+
+</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Submitter's E-mail:</b> <a href="mailto:#%EMAIL%#" class="reg">#%EMAIL%#</a>
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Reporter's IP:</b> <a href="javascript:openExtern('extern.cgi?act=resolv&dat=#%SUBMIT_IP%#');" class="reg">#%SUBMIT_IP%#</a>
+</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec" colspan="2">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Description:</b> #%DESCRIPTION%#
+</font>
+</td>
+</tr>

@@ -1,0 +1,18 @@
+To: #%TO%#
+From: #%FROM%#
+Subject: Account Added To Your AutoRank Pro List
+
+An account has been added to your top sites list.
+Breif information about this site:
+
+Username    : #%USER%#
+E-mail      : #%EMAIL%#
+Site Title  : #%TITLE%#
+Description : #%DESC%#
+Site URL    : #%URL%#
+
+You can view more information about this account
+from your administrative script, and if you are
+reviewing new accounts this is where you will need
+to go to approve or reject this account:
+#%ADMIN%#

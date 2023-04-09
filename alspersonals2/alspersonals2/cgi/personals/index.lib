@@ -1,0 +1,138 @@
+
+sub launchindex {
+
+$inmembername=$thusername;
+$inpassword=$thpassword;
+$classifi=$classification;
+$inclass=$classification;
+$namecookie = cookie(-name    =>   "amembernamecookie",
+                         -value   =>   "$inmembername",
+                         -path    =>   "$cookiepath",
+                         -expires =>   "+30d");
+    $passcookie = cookie(-name    =>   "apasswordcookie",
+                         -value   =>   "$inpassword",
+                         -path    =>   "$cookiepath",
+                         -expires =>   "+30d");
+   $classcookie = cookie(-name    =>   "aclasscookie",
+                         -value   =>   "$classifi",
+                         -path    =>   "$cookiepath",
+                         -expires =>   "+30d");
+    print header(-cookie=>[$namecookie, $passcookie,$classcookie]);
+
+open(IN, "feaf.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($ffea) = split(/\n/, $line);
+
+$feaf = $ffea;
+}
+
+open(IN, "feam.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($mfea) = split(/\n/, $line);
+
+$feam = $mfea;
+}
+
+
+
+
+print "
+<html><head>
+<link rel=stylesheet type=text/css href=styles.css>
+<title>$sitename</title>
+<SCRIPT LANGUAGE=\"JavaScript\">
+<!--
+if (window != top) top.location.href = location.href;
+// -->
+</SCRIPT>
+</head>
+
+<body topmargin=0 bottommargin=0 marginheight=0 marginwidth=0 leftmargin=0 rightmargin=0 link=0000ff vlink=ff0000 bgcolor=$indexmainbodybgcolor text=000000>
+$mainheader
+$themenu
+
+<table cellpadding=1 cellspacing=1 width=100% bgcolor=$feaprotablecolor1 border=0><tr><td width=70%>
+<table width=100% cellpadding=0 cellspacing=0 border=0 height=30><tr>
+<td><center><span style=\"color:$profilesofweekfontcolor; font-family:$profilesofweekfontfamily; font-size:$profilesofweekfontsize; text-decoration:none; font-weight:bold;\">
+PROFILES OF THE WEEK</span></center></td></tr></table>
+<table width=100%><tr>
+<td width=35% valign=\"top\" bgcolor=$feaprotdcolor1>
+<center><table width=100% height=250><tr><td>
+$feaf
+</td></tr></table></center></td>
+<td width=35% valign=\"top\" bgcolor=$feaprotdcolor3><center><table width=100% height=250><tr><td>
+$feam</td></tr></table></center></td></tr></table></td>
+
+<td width=30% valign=\"top\">
+<table width=100% bgcolor=$monlinetablecolor border=0><tr><td><center>
+<center><span style=\"color:000000; font-family:geneva,verdana,arial,univers; font-size:8pt; text-decoration:none; font-weight:bold;\">
+($currentuserspresent) members online</span></center></td></tr></table>
+<table width=100% HEIGHT=250 bgcolor=$tdbgcolor2 cellpadding=2 cellspacing=2 valign=top><tr><td valign=top>
+
+<table width=100% bgcolor=$tdbgcolor3 cellpaddibg=2 cellspacing=2 border=0 valign=top><tr>
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/personals.pl?myprofile\"><font color=$left_menu_font_color size=1 face=verdana>MY PROFILE</font></a></center></td></tr><tr>
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/personals.pl?msgcenform\"><font color=$left_menu_font_color size=1 face=verdana>MY MESSAGES</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?createprofile\"><font color=$left_menu_font_color size=1 face=verdana>CREATE A PROFILE</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?edpro\"><font color=$left_menu_font_color size=1 face=verdana>EDIT PROFILE</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/delprofile.pl\"><font color=$left_menu_font_color size=1 face=verdana>DELETE PROFILE</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?browse_ads\"><font color=$left_menu_font_color size=1 face=verdana>BROWSE PROFILES</font></a></center></td></tr><tr>
+
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?place_new\"><font color=$left_menu_font_color size=1 face=verdana>POST AN AD</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?edad\"><font color=$left_menu_font_color size=1 face=verdana>EDIT AD</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?del_persad\"><font color=$left_menu_font_color size=1 face=verdana>DELETE AD</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?viewads\"><font color=$left_menu_font_color size=1 face=verdana>VIEW ADS</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?getfeatured\"><font color=$left_menu_font_color size=1 face=verdana>GET FEATURED</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/personals.pl?mescenform\"><font color=$left_menu_font_color size=1 face=verdana>SEND A MESSAGE</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><font color=$left_menu_font_color size=1 face=verdana><b>CHAT</b> 
+<select name=chatlocale class=\"selist\" onchange=\"window.location.href=this.options[this.selectedIndex].value\">
+<option value=\"Choose Room\" selected>Choose Room</option>
+<option value=\"$cgiurl/chatdocs/rm1/index.pl\">Lounge One</option>
+<option value=\"$cgiurl/chatdocs/rm2/index.pl\">Lounge Two</option>
+<option value=\"$cgiurl/chatdocs/rm2/index.pl\">Lounge Three</option>
+</select>
+
+</font></center></td></tr></table></td></tr></table>
+
+<input type=\"hidden\" name=username value=\"$thusername\">
+<input type=\"hidden\" name=password value=\"$thpassword\">
+<input type=\"hidden\" name=classification value=\"$classifi\">
+</td></tr></table></td></tr></table>
+
+
+$botcode
+</body></html>
+\n";
+}
+
+
+1;

@@ -1,0 +1,8 @@
+$data{methods}=qq~<option $selected{genstats} value="genstats">General Stats</option><option $selected{monstats} value="monstats">Monthly Stats</option><option $selected{daystats} value="daystats">Daily Stats</option><option $selected{hourstats} value="hourstats">Hourly Stats</option><option $selected{affiliate} value="affiliate">Extended Stats</option><option $selected{htmlcode} value="htmlcode">Get HTML Code</option><option $selected{genman} value="genman">General Settings</option><option $selected{perman} value="perman">Personal Settings</option><option $selected{banman} value="banman">Banner Management</option><option $selected{tasman} value="tasman">Target Sites Management</option><option $selected{tabman} value="tabman">Banner Display Management</option><option $selected{tacman} value="tacman">Target Country Management</option><option $selected{adtman} value="adtman">Advertising Time Management</option>~;
+$data{methods}.=qq~<option $selected{visitors} value="visitors">Counter Menu</option>~ if ($enablecounter);
+$data{methods}.=qq~<option $selected{sendml} value="sendml">Mailing List Menu</option>~ if ($enablemaillist);
+$data{methods}.=qq~<option $selected{tx} value="tx">TX2000 Menu</option>~ if ($enabletex);
+$data{methods}.=qq~<option $selected{str} value="str">SwimBanner Menu</option>~ if ($enableswim);
+$data{methods}.=qq~<option $selected{faq} value="faq">FAQ</option>~;
+$data{methods}.=qq~<option $selected{support} value="support">Support</option>~;
+$data{methods}.=qq~<option value="backindex">Back to index page</option>~;

@@ -1,0 +1,32 @@
+<table cellcpacing=0 cellpadding=0 border=0 width=50% align=center><tr><td>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr>
+	<th>Account Name</th>
+	<th>IP</th>
+	<th>Logged</th>
+</tr>
+#log-lines#
+<form>
+<tr><td colspan=3 class=tdb><input type=Button class=sbmt value="RETURN" onClick="document.location='admin.cgi';"> &nbsp; <input type=button class=sbmt value=TODAY onClick="document.location='admin.cgi?page=log';"> &nbsp; <input type=button class=sbmt value=WEEK onClick="document.location='admin.cgi?page=log&range=week';"> &nbsp; <input type=button class=sbmt value=MONTH onClick="document.location='admin.cgi?page=log&range=month';"></td></tr>
+</table>
+
+
+
+</td></tr></table>
+</form>
+
+
+</td></tr></table>
+
+
+
+
+<!--[log-lines]-->
+<tr>
+	<td class=td#?1:2#>#log-name#</a></td>
+	<td class=td#?1:2# align=right>#ip-address#</td>
+	<td class=td#?1:2# align=right>#log-time#</td>
+</tr>
+<!--[log-lines]-->

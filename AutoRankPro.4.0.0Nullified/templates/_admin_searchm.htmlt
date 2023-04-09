@@ -1,0 +1,93 @@
+<tr bgcolor="#cccccc">
+<td width="16">
+<input type="checkbox" name="id" value="#%USERNAME%#"> 
+</td>
+<td width="342">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>#%USERNAME%#</b>
+</font>
+</td>
+<td width="342" align="right" colspan="2">
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;
+</font>
+</td>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td colspan="3">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Site:</b> <a href="#%SITE_URL%#" target="new" class="reg">#%TITLE%#</a> - #%DESCRIPTION%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>E-mail:</b> <a href="mailto:#%EMAIL%#" class="reg">#%EMAIL%#</a>
+</font>
+</td>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Hits In:</b> #%HITS_IN%# (#%RAW_HITS_IN%#)
+</font>
+</td>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Total In:</b> #%TOTAL_IN%# (#%RAW_TOTAL_IN%#)
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Category:</b> #%CATEGORY%#
+</font>
+</td>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Hits Out:</b> #%HITS_OUT%#
+</font>
+</td>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Total Out:</b> #%TOTAL_OUT%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Banner:</b> #%BANNER_URL%#
+</font>
+</td>
+<td colspan="2">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Status:</b> #%SUSPENDED%#, #%LOCKED%#
+</font>
+</td>
+</tr>

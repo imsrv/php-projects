@@ -1,0 +1,290 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>AnnouncementX Readme</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="author" content="Ivan Cat">
+<style type="text/css">
+<!--
+/* CSS Document */
+BODY { background: #003366; color: #fff; font-family: Arial; font-size: 10pt; font-weight: none; }
+A:LINK, A:VISITED, A:ACTIVE { color: #fff; text-decoration: underline; }
+A:HOVER { color: #fff; text-decoration: none; }
+TD.ROW { background: #E4DDBE; color: #000; font-family: Verdana; font-size: 9pt; }
+TD.ROW A:LINK, TD.ROW A:VISITED { color: #006699; font-family: Verdana; text-decoration: underline; }
+TD.ROW A:ACTIVE { color: #0000ff; font-family: Verdana; text-decoration: none; }
+TD.ROW A:HOVER { color: #003366; font-family: Verdana; text-decoration: none; }
+TD.ROW2 { background: #fff; color: #000; font-family: Arial; font-size: 10pt; font-weight: bold }
+#comment { color: #000; font-family: Arial; font-size: 8pt; }
+#note { color: #000; font-family: Arial; font-size: 8pt; }
+#header { color: #000; font-family: Garamond; font-size: 20pt; }
+-->
+</style>
+</head>
+
+<body topmargin="30">
+
+	<a name="top"></a>
+	<table align="center" width="90%" border="1" style="border-collapse: collapse" bordercolor="#000">
+		<tr>
+			<td align="left" class="ROW">
+			<br />
+			<center><a href="#table" title='Permissions table'>Permissions table</a> | 
+			<a href="#update" title="Updating AX">Updating AX</a> | 
+			<a href="#features" title="New Features">New features</a></center><br />
+			<div id="header">AnnouncementX New Installation Guide</div>
+			Welcome! This guide will help you to install and configure AnnouncementX.<br /><br />
+			
+			To install AnnouncementX, please, follow these steps:<br /><br />
+			
+			<b>1.</b> Upload all the files from the 'upload' directory to a directory you on your server.<br />
+			This server should have php and mysql installed to run AnnouncementX<br />
+			<b>2.</b> Chmod files and folders as it is shown in <a href='#table'>this table</a><br />
+			<b>3.</b> Run the installer by using the installation file: <i>www.yoururl.com/yourfolder/install/install.php</i><br />
+			<b>4.</b> After the installation you must chmod the <i>conf_global</i> file once again: chmod it to <I>0666</I><br />
+			<b>5.</b> Now you've succesfully installed AnnouncementX and can enjoy using it.<br /><br />
+			<b>Note:</b> after the installation process the installer will be locked. To unlock it you will have to delete the following
+			file: <em>finish.lock</em> in the <i>install</i> directory<br /><br />
+			<b>Note:</b> it is not recommended to terminate the installation process before it is finished. In case that happened
+			clean the chosen mysql database or choose another one.<br /><br />
+				
+				<a name="table"></a>
+				<table cellpadding="3" cellspacing="2" width="80%" align="center" border="1" style="border-collapse: collapse; border: 1px dotted" bordercolor="#000">
+					<tr>
+						<td align="center" colspan="2" bgcolor="#006699">
+						<strong>Files' permissions</strong>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" bgcolor="#006699" width="50%">
+						<B>Folder/File*</B>
+						</td>
+						<td align="center" bgcolor="#006699">
+						<b>Permissions</b>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./admin<br />
+						(and all files in it)
+						</td>
+						<td align="center" class="ROW2">
+						0666
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./Backup<br /> (for backup/restore sessions)
+						</td>
+						<td align="center" class="ROW2">
+						0777
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./Backup/Recovery<br /> (for backup/restore sessions)
+						</td>
+						<td align="center" class="ROW2">
+						0777
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./Cahce
+						</td>
+						<td align="center" class="ROW2">
+						0666
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./install/
+						</td>
+						<td align="center" class="ROW2">
+						0666
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./Skin
+						</td>
+						<td align="center" class="ROW2">
+						0666
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./Skin/default<br />(and all files in this folder)
+						</td>
+						<td align="center" class="ROW2">
+						0666
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./sources
+						</td>
+						<td align="center" class="ROW2">
+						0666
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./style_images<br />
+						(and all files and subfolders in it)
+						</td>
+						<td align="center" class="ROW2">
+						0666
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./conf_global.php**
+						</td>
+						<td align="center" class="ROW2">
+						0777
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./index.php
+						</td>
+						<td align="center" class="ROW2">
+						0666
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./install/install.php**
+						</td>
+						<td align="center" class="ROW2">
+						0777
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./sources/bbcode.js
+						</td>
+						<td align="center" class="ROW2">
+						0666
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./sources/bbcode_new.js
+						</td>
+						<td align="center" class="ROW2">
+						0666
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./sources/error_functions.php
+						</td>
+						<td align="center" class="ROW2">
+						0666
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./sources/iplogs.txt
+						</td>
+						<td align="center" class="ROW2">
+						0777
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./sources/main_functions.php
+						</td>
+						<td align="center" class="ROW2">
+						0666
+						</td>
+					</tr>
+					<tr>
+						<td align="center" class="ROW2">
+						./update.php
+						</td>
+						<td align="center" class="ROW2">
+						0666
+						</td>
+					</tr>
+				</table>
+				
+				<br />
+				<div id="comment">&nbsp;&nbsp;* - dot (.) means root AnnouncementX folder<br />
+				&nbsp;&nbsp;** - after installation it should be chmoded to 0666</div><br />
+				<b>Note:</b> it is highly recommended to use the permissions listed in the table above, otherwise, the proper work
+				of AnnouncementX is not guaranteed.<br />
+				<div align="right"><a href="#top" title="Top">Top</a></div>
+				<br /><br />
+				
+				<a name="update"></a>
+				<div id="header">Updating AX from 1.0 to 1.1</div><br /><br />
+				So, here's the list of things you have to do to update your AnnouncementX v.1.0 to AnnouncementX v.1.1
+				<ol>
+					<li>
+					Download the newest version (v.1.1)
+					</li>
+					<li>
+					Upload new files and replace the old ones during the upload <b>(except <em>conf_blobal.php</em>)</b>
+					</li>
+					<li>
+					Run file <strong>update.php</strong> from the root directory (where AX's <strong>index.php</strong> is)
+					</li>
+					<li>
+					Follow the update process and fill in the required fields
+					</li>
+					<li>
+					Enjoy using the newest version of AnnouncementX
+					</li>
+				</ol><br />
+				<div align="right"><a href="#top" title="Top">Top</a></div>
+				<br /><br />
+				
+				<a name="features"></a>
+				<div id="header">New Features of AX v.1.1</div><br /><br />
+				
+				So, here's the list of new features:
+				<ul>
+					<li>
+					Brand new skin control<br />
+					<div id="note">Now you can control the appearance by changing parametres in the css file and replacing the image files, 
+					and all this via AX Admin CP</div>
+					</li>
+					<li>
+					Enchanced functionality<br />
+					<div id="note">AnnouncementX is way smarter and more reliable than the previous version, so you can use it even for big 
+					company sites!</div>
+					</li>
+					<li>
+					Increased security<br />
+					<div id="note">Now AX is even more secure, new features like md5 encryption for passwords made it almost the most repliable 
+					BB in the world! Also, each registered member now has a personal notebook that helps you remember what you have planned and never forget to do anything!</div>
+					</li>
+					<li>
+					Search system<br />
+					<div id="note">With the new search system you can easily find topics or users you want to.</div>
+					</li>
+					<li>
+					Updated BBCode<br />
+					<div id="note">You want your messages look really interesting? In that case AX BBCode is the thing you need! The new BBCode 
+					allows you to make things that can give your message an outstanding appearance!</div>
+					</li>
+					<li>
+					Updated AdminCP<br />
+					<div id="note">Now AdminCP is a really good thing: it allows you to make AX work as you want! With some new features it is 
+					something, that is really useful for every admin in this world!</div>
+					</li>
+					<li>
+					And even more...
+					</li>
+				</ul>
+				<div align="right"><a href="#top" title="Top">Top</a></div><br /><br />
+			</td>
+		</tr>
+	</table>
+
+
+</body>
+</html>

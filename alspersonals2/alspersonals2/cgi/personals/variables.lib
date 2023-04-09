@@ -1,0 +1,94 @@
+sub vars {   
+
+$username			= $FORM{'username'};   
+$password			= $FORM{'password'};   
+$emailaddr			= $FORM{'emailaddr'};   
+$gender				= $FORM{'gender'};   
+$age				= $FORM{'age'};   
+$sexualorientation		= $FORM{'sexualorientation'};   
+$weight				= $FORM{'weight'};   
+$height				= $FORM{'height'};   
+$zodiacsign			= $FORM{'zodiacsign'};   
+$ethnicbackground		= $FORM{'ethnicbackground'};   
+$profession			= $FORM{'profession'};    
+$picyn				= $FORM{'picyn'};  
+$additionalinfo			= $FORM{'additionalinfo'};  
+$picfilename			= $FORM{'picfilename'};
+$status				= $FORM{'status'}; 
+$reltype			= $FORM{'reltype'}; 
+$lsname				= $FORM{'lsname'};
+$lspic				= $FORM{'lspic'};
+$lsheadline			= $FORM{'lsheadline'};
+$lovestory			= $FORM{'lovestory'};
+$pbcat				= $FORM{'pbcat'};
+$pbmessage			= $FORM{'pbmessage'};
+$pbpic				= $FORM{'pbpic'};
+$pbrec				= $FORM{'pbrec'};
+$sendersusername		= $FORM{'sendersusername'};
+$message			= $FORM{'message'};
+$senderspassword		= $FORM{'senderspassword'};
+$featuremen			= $FORM{'featuremen'};
+$featurewomen			= $FORM{'featurewomen'};
+$picname			= $FORM{'picname'};
+$feagender			= $FORM{'feagender'};
+$subject			= $FORM{'subject'};
+$lookingfor			= $FORM{'lookingfor'};
+$betwages			= $FORM{'betwages'};
+$partnersheight1		= $FORM{'partnersheight1'};
+$partnersheight2		= $FORM{'partnersheight2'};
+$partnersethnicbackground	= $FORM{'partnersethnicbackground'};
+$adtext				= $FORM{'adtext'};
+$mygender			= $FORM{'mygender'};
+$parentalstatus			= $FORM{'parentalstatus'};
+$smoker_nonsmoker		= $FORM{'smoker_nonsmoker'};
+$adpagenm			= $FORM{'adpagenm'};
+$persadheadline			= $FORM{'persadheadline'};
+$delticknum			= $FORM{'delticknum'};
+$adpicname			= $FORM{'adpicname'};
+$messagenumber			= $FORM{'messagenumber'};
+$keyphrase			= $FORM{'keyphrase'};
+$city				= $FORM{'city'};
+$state				= $FORM{'state'};
+$zip				= $FORM{'zip'};
+$country			= $FORM{'country'};
+$andor				= $FORM{'andor'};
+$key				= $FORM{'key'};
+$kywds				= $FORM{'kywds'};
+$smokinghabit			= $FORM{'smokinghabit'};
+$pparentalstatus		= $FORM{'pparentalstatus'};
+$firstname			= $FORM{'firstname'};
+$lastname			= $FORM{'lastname'};
+$dofbirth			= $FORM{'dofbirth'};
+$mofbirth			= $FORM{'mofbirth'};
+$yofbirth			= $FORM{'yofbirth'};
+$street				= $FORM{'street'};
+$profilecategory		= $FORM{'profilecategory'};
+$favoriteactivity		= $FORM{'favoriteactivity'};
+$favemovie			= $FORM{'favemovie'};
+$faveperformer			= $FORM{'faveperformer'};
+$mytype				= $FORM{'mytype'};
+$yourtype			= $FORM{'yourtype'};
+
+$lovestory 			=~ s/\n/&&/g; # replace newlines with spaces in text area
+$lovestory 			=~ s/&&/<br><br>/g;
+$lovestory 			=~ s/&&/%%/g;
+$lovestory 			=~ s/"//g;
+$additionalinfo 		=~ s/\n/&&/g; # replace newlines with spaces in text area
+$additionalinfo      		=~ s/&&/<br><br>/g;
+$additionalinfo 		=~ s/&&/%%/g;
+$additionalinfo 		=~ s/"//g;
+$message 			=~ s/\n/&&/g; # replace newlines with spaces in text area
+$message 			=~ s/&&/<br><br>/g;
+$message 			=~ s/&&/%%/g;
+$message 			=~ s/"//g;
+$adtext 			=~ s/\n/&&/g; # replace newlines with spaces in text area
+$adtext 			=~ s/&&/<br><br>/g;
+$adtext 			=~ s/&&/%%/g;
+$adtext 			=~ s/"//g;
+
+
+}    
+
+ 
+
+ 1;

@@ -1,0 +1,59 @@
+<html>
+<head>
+  <title>Search</title>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #4a5a84;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #4a5a84;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#4a5a84" vlink="#adadad" alink="#ff0000">
+
+
+<div align="center">
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Search Results For '#%KEY%#'</b>
+</font>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td>
+<br>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<ol>

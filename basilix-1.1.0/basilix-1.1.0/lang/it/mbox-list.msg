@@ -1,0 +1,37 @@
+<?
+// MBox listing messages
+$lang_msg["mboxlst"] = array(
+	201	=>	'Da',
+	202	=>	'Ordina per mittente',
+	203	=>	'A',
+	204	=>	'Ordina per destinatario',
+	205	=>	'Data',
+	206	=>	'Ordina per data',
+	207	=>	'Dimensione',
+	208	=>	'Ordina per dimensione',
+	209	=>	'Oggetto',
+	210	=>	'Ordina per oggetto',
+	211	=>	'(nessun oggetto)',
+	212	=>	'Sposta i messaggi selezionati a',
+	213	=>	'Applica',
+	214	=>	'Svuota cartella',
+	215	=>	'Elimina i messaggi selezionati',
+	216	=>	'Cancella i messaggi selezionati',
+	217	=>	'Precedente',
+	218	=>	'Successivo',
+	219	=>	'Non ci sono messaggi in questa cartella.',
+	220	=>	'Non hai selezionato la cartella, ritenta..',
+	221	=>	'Non hai selezionato nessun messaggio, ritenta..',
+	222	=>	'Impossibile spostare i messaggi, ritenta più tardi..',
+	223	=>	'Il messaggio selezionato (%d) è stato spostato nel cestino con successo.',
+	224	=>	'Impossibile eliminare i messaggi selezionati, ritenta più tardi..',
+	225	=>	'I messaggi selezionati sono stati spostati con successo.',
+	226	=>	'Impossibile cancellare i messaggi selezionati, ritenta più tardi..',
+	227	=>	'I messaggi selezionati sono stati cancellati con successo.',
+	228	=>	'Pagina: ',
+	229	=>	'Vuoi davvero svuotare questa cartella?',
+	230	=>	'Benvenuto, la tua ultima connessione è stata da',
+	231	=>	'Il messaggio è stato eliminato con successo.',
+	232	=>	'Il messaggio è stato cancellato con successo.'
+);
+?>

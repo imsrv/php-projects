@@ -1,0 +1,101 @@
+<html>
+<head>
+  <title>Link Syntax</title>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Valid Link Syntax</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ffffff">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+Below are all the acceptable links that you may use to link to our site.  Make sure you serve all
+banners off of your server.  You can copy the link syntax from this page.
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#dcdcdc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+
+Example link:
+
+<br><br>
+
+<b><a href="#%TRACK_URL%#" target="_blank">Vote for our site!</a></b>
+
+<br><br>
+
+To use this link on your site, simply copy the following HTML:
+
+<br><br>
+
+<div align="center">
+
+<textarea cols="80" rows="6" wrap="off" style="font-size: 11px; font-family: Verdana">
+<font face="Verdana" size="2">
+<b><a href="#%TRACK_URL%#" target="_blank">Vote for our site!</a></b>
+</font>
+</textarea>
+
+</div>
+
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+
+</body>
+</html>

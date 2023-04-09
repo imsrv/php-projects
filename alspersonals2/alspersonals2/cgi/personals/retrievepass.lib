@@ -1,0 +1,26 @@
+sub retrievepass {
+
+print "Content-type:text/html\n\n";
+print <<EOF;
+
+$mainheader
+
+<br><br>
+<form method="post" action="$cgiurl/personals.pl">
+<center><table cellpadding=0 cellspacing=0 width=80% border=0><tr>
+<td>
+
+$text125
+
+<center>
+<input type="text" name="emailaddr" size=32></font></td></tr></table>
+
+<input type="submit" name="loginreminder" value="Email My Login Information" class="button"></center>
+<br><br>
+</form>
+$botcode
+EOF
+exit;
+}
+
+1;

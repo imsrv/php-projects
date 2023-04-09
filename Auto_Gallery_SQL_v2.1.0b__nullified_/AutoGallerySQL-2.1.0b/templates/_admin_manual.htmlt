@@ -1,0 +1,194 @@
+<html>
+<head>
+  <title>AutoGallery SQL Administration</title>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<font face="Verdana" size="1" style="font-size: 11px;" color="red">
+<b>#%MESSAGE%#</b>
+</font>
+
+<br><br>
+
+<form action="admin.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center" colspan="2">
+<font face="Arial" size="3" color="white">
+<b>Add A Gallery</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td width="150">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>E-Mail Address</b>
+</font>
+</td>
+<td width="450">
+<input type="text" name="email" size="30" style="font-family: Verdana; font-size: 11px;">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Gallery URL</b>
+</font>
+</td>
+<td>
+<input type="text" name="gurl" size="50" style="font-family: Verdana; font-size: 11px;">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Description</b>
+</font>
+</td>
+<td>
+<input type="text" name="desc" size="50" style="font-family: Verdana; font-size: 11px;">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b># of Pics</b>
+</font>
+</td>
+<td>
+<input type="text" name="pics" size="5" style="font-family: Verdana; font-size: 11px;">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Category</b>
+</font>
+</td>
+<td>
+<select name="cat" style="font-family: Verdana; font-size: 11px;">
+#%CAT_OPTIONS%#
+</select>
+</td>
+</tr>
+
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Gallery Type</b>
+</font>
+</td>
+<td>
+<select name="perm" style="font-family: Verdana; font-size: 11px;">
+<option value="1">Permanent - ok to put in the archives</option>
+<option value="0">Temporary - not ok to put in the archives</option>
+</select>
+</td>
+</tr>
+
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Reciprocal Link URL</b>
+</font>
+</td>
+<td>
+<input type="text" name="rurl" size="50" style="font-family: Verdana; font-size: 11px;">
+</td>
+</tr>
+
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Moderator Rating</b>
+</font>
+</td>
+<td>
+<input type="text" name="rate" size="10" value="1" style="font-family: Verdana; font-size: 11px;">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Icons</b>
+</font>
+</td>
+<td>
+#%ICON_SELECT%#
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td colspan="2" align="center">
+<input type="hidden" name="run" value="manualSubmit">
+<input type="submit" value="Add This Gallery" style="font-family: Verdana; font-size: 11px;">
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</form>
+
+
+<br><br>
+
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b><a href="admin.cgi" class="reg">Back To Main Admin Page</a></b>
+</font>
+
+</div>
+
+</body>
+</html>

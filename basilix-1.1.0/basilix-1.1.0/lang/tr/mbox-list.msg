@@ -1,0 +1,37 @@
+<?
+// Posta kutusu listeleme mesajlarý
+$lang_msg["mboxlst"] = array(
+	201	=>	'Kimden',
+	202	=>	'Kimden\'e göre sýnýflandýr',
+	203	=>	'Kime',
+	204	=>	'Kime\'ye göre sýnýflandýr',
+	205	=>	'Tarih',
+	206	=>	'Tarih\'e göre sýnýflandýr',
+	207	=>	'Boyut',
+	208	=>	'Boyut\'a göre sýnýflandýr',
+	209	=>	'Konu',
+	210	=>	'Konu\'ya göre sýnýflandýr',
+	211	=>	'(konusuz)',
+	212	=>	'Seçili mesajlari yandaki posta kutusuna taþý:',
+	213	=>	'Taþý',
+	214	=>	'Posta Kutusunu Boþalt',
+	215	=>	'Seçili mesajlarý çöp kutusuna taþý',
+	216	=>	'Seçili mesajlarý sil',
+	217	=>	'Önceki',
+	218	=>	'Sonraki',
+	219	=>	'Bu Posta Kutusunda listelenecek mesaj yok.',
+	220	=>	'Posta Kutusunu seçmediniz, lütfen tekrar deneyiniz..',
+	221	=>	'Mesaj seçmediniz, lütfen tekrar deneyiniz..',
+	222	=>	'Seçili mesajlari taþýyamadim, lütfen daha sonra tekrar deneyiniz..',
+	223	=>	'Seçili mesajlar (%d adet) baþarýyla çöp kutusuna taþýnmýþtýr.',
+	224	=>	'Seçili mesajlarý çöp kutusuna taþýyamadim, lütfen daha sonra tekrar deneyiniz..',
+	225	=>	'Seçili mesajlar baþarýyla taþýnmýþtýr.',
+	226	=>	'Seçili mesajlarý silemedim, lütfen daha sonra tekrar deneyiniz..',
+	227	=>	'Seçili mesajlar baþarýyla silinmiþtir.',
+	228	=>	'Sayfa: ',
+	229	=>	'Bu Posta Kutusunu boþaltmak istediðinizden emin misiniz?',
+	230	=>	'Merhaba, son baðlantý bilginiz:',
+	231	=>	'Mesaj baþarýyla çöp kutusuna taþýndý',
+	232	=>	'Mesaj baþarýyla silindi.'
+);
+?>

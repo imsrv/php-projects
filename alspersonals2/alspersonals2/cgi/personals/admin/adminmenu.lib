@@ -1,0 +1,122 @@
+sub adminmenu {
+
+print <<EOF;
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+
+<title>Administration Center</title>
+<link rel=stylesheet type=text/css href=$personalsurl/includes/adminstyles.css>
+     
+</head>
+
+
+
+
+
+<body bgcolor=ffffff topmargin=0 bottommargin=0 rightmargin=0 leftmargin=0 marginheight=0 marginwidth=0>
+<center><table cellspacing="0" cellpadding="0" width=100% border="0" height=30 bgcolor=404040>
+<tr><td width=30>&nbsp;</td><td><font size=2 face=verdana color=ffffff>Administration Center</font></td>
+<td><center><a href="$cgiurl/personals.pl?launchindex"><font size=2 face=verdana color=ffffff>Log Out</font></a></td>
+<td align="right"><font size=1 color=ffffff face=verdana>
+<script language="javascript">
+	    todaysDate = new Date();
+	    //dayarray = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+	    dayarray = new Array("Sunday, ", "Monday, ", "Tuesday, ", "Wednesday, ", "Thursday, ", "Friday, ", "Saturday, ");
+	    montharray = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+	    document.write(dayarray[todaysDate.getDay()] + montharray[todaysDate.getMonth()] + " " + todaysDate.getDate() + " ");
+	    if (todaysDate.getYear() < 1000){
+	        document.write(todaysDate.getYear() + 1900);
+	    }
+	    else {
+	        document.write(todaysDate.getYear());
+	    }
+	</script></font></td></tr></table>
+
+<table width=100% bgcolor=c0c0c0 cellpadding=0 cellspacing=0 border=0 bordercolordark=black bordercolorlight=white>
+<tr><td width=40>&nbsp;</td>
+<td><font size=1 face=verdana>
+
+EOF
+
+&getnum_members;
+
+print <<EOF;
+
+(<b>$num_members</b>)registered members</font>
+</td><td nowrap width=1 bgcolor=eeeeee></td>
+<td width=10>&nbsp;</td>
+<td><font size=1 face=verdana>(<b>$currentuserspresent</b>) users online</font></td>
+<td nowrap width=1 bgcolor=eeeeee></td>
+<td width=10>&nbsp;</td>
+
+EOF
+
+&getnumprofiles;
+
+print <<EOF;
+
+<td><font size=1 face=verdana>(<b>$numprofiles</b>)profiles created</font></td>
+<td nowrap width=1 bgcolor=eeeeee></td>
+<td width=10>&nbsp;</td>
+
+EOF
+
+&getnumads;
+
+print <<EOF;
+
+<td><font size=1 face=verdana>(<b>$numads</b>)ads posted</font></td>
+</tr></table>
+
+
+<table width=100% cellpadding=1 cellspacing=1 bgcolor=404040 border=0><tr>
+<td bgcolor=eeeeee width=20>&nbsp;</td>
+<td bgcolor=eeeeee><a href="$admincgiurl/updater.pl?changefeatureprof">
+<center><font size=1 color=000000 face=verdana>Change Featured Profiles</font></a></center></td>
+<td bgcolor=eeeeee>
+<a href="$admincgiurl/updater.pl?launchmailcenter">
+<center><font size=1 color=000000 face=verdana>Send Out Email</font></a></center></td>
+<td bgcolor=eeeeee>
+<a href="$admincgiurl/updater.pl?adspy">
+<center><font size=1 color=000000 face=verdana>Run Ad Spy</font></a></center></td>
+<td bgcolor=eeeeee>
+<a href="$admincgiurl/updater.pl?admdelmemad">
+<center><font size=1 color=000000 face=verdana>Delete An Ad</font></a>
+</center></td>
+<td bgcolor=eeeeee>
+<a href="$admincgiurl/updater.pl?picinspector">
+<center><font size=1 color=000000 face=verdana>Run Picture Inspector</font></a></center></td></tr><tr>
+<td bgcolor=eeeeee width=20>&nbsp;</td>
+<td bgcolor=eeeeee>
+<a href="$admincgiurl/updater.pl?showallprofiles">
+<center><font size=1 color=000000 face=verdana>Show All Profiles</font></a></center></td>
+<td bgcolor=eeeeee>
+<a href="$admincgiurl/updater.pl?showallmembers">
+<center><font size=1 color=000000 face=verdana>Show All Members</font></a></center></td>
+<td bgcolor=eeeeee>
+<a href="$admincgiurl/updater.pl?manmescen">
+<center><font size=1 color=000000 face=verdana>Manage Message Centers</font></a></center></td>
+<td bgcolor=eeeeee>
+<a href="$admincgiurl/updater.pl?expelmember">
+<center><font size=1 color=000000 face=verdana>Expel Member</font></a></center></td>
+<td bgcolor=eeeeee>
+<a href="mailto:bugreport\@etown21.com">
+<center><font size=1 color=000000 face=verdana>Report Bugs</font></a></center></td>
+</tr>
+</table>
+
+
+<table cellpadding=0 cellspacing=0 width=100% border=0 bordercolordark=black bordercolorlight=white>
+<tr><td width=30% valign="top">
+
+</td>
+<td width=70%></td></tr></table>
+</center>
+
+EOF
+}
+
+1;

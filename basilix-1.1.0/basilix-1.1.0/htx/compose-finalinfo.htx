@@ -1,0 +1,25 @@
+<?php 
+//
+// Give a final information about the sent/unsent mail -- HTML file
+//
+?>
+<div align="center">
+<?php push_errinfo() ?>
+<?php 
+if($ok_sent) {
+?>
+<br>
+<table border="0" cellpadding="0" cellspacing="0" width="50%">
+<tr>
+<td align="left" class="normalbg"><ul>
+<?php
+for($j = 0 ; $j < count($cmps_finalinfo) ; $j++) echo "<li>" . htmlspecialchars($cmps_finalinfo[$j]) . "</li><br>\n";
+?>
+</td></tr>
+</table>
+<?php 
+} else {
+  echo "<br>" . $lng->p(451);
+}
+?>
+</div>

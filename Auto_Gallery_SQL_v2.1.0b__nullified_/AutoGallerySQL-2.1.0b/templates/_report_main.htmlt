@@ -1,0 +1,103 @@
+<html>
+<head>
+  <title>Report A Cheater or Dead Link</title>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<form action="report.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center" colspan="2">
+<font face="Arial" size="3" color="white">
+<b>Report A Broken Link or Cheater</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td colspan="2">
+<font face="Verdana" size="1" style="font-size: 11px;">
+Use the form below to report a dead link or a site that is breaking our rules.  You do
+not need to tell us the URL, just give a short description of what the site is doing to
+break the rules, or simply enter 'This is a dead link' if the link no longer works.
+
+<br><br>
+<i>Insert Your Rules Here</i>
+<br><br>
+
+If we determine that your report is correct, we will remove the offending post and possibly
+ban it from our TGP.  Thank you for helping to keep our TGP top quality.
+
+<br><br>
+
+<b>Gallery URL:</b> <a href="#%GALLERY_URL%#" target="_blank">#%GALLERY_URL%#</a><br>
+<b>Description:</b> #%DESCRIPTION%#<br>
+<b>Number of Pics:</b> #%NUM_PICS%#<br>
+<b>Category:</b> #%CATEGORY%#
+
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td align="center">
+<textarea name="desc" cols="80" rows="5" wrap="virtual" style="font-family: Verdana; font-size: 11px;"></textarea>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td colspan="2" align="center">
+<input type="hidden" name="id" value="#%POST_ID%#">
+<input type="submit" name="submit" value="Send Report" style="font-family: Verdana; font-size: 11px;">
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</form>
+
+</body>
+</html>

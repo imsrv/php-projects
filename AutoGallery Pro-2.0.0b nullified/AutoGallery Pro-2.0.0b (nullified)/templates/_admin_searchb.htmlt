@@ -1,0 +1,44 @@
+</table>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+
+<table width="100%">
+<tr>
+<td align="center">
+<select name="run" style="font-size: 11px; font-family: Verdana">
+  <option value="displayEditPost">Edit Selected Post</option>
+  <option value="displayMail">E-mail Selected Posters</option>
+  <option value="archivePosts">Archive Selected Posts</option>
+  <option value="deletePosts">Delete Selected Posts</option>
+</select>
+<input type="hidden" name="db" value="#%DATABASE%#">
+<input type="hidden" name="from" value="displayMain">
+<input type="hidden" name="efnct" value="mailPosters">
+<input type="submit" name="submit" value="Execute Function" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<br><br>
+
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b><a href="admin.cgi" class="reg">Back To Main Page</a></b>
+</font>
+
+<br><br>
+
+</form>
+
+</body>
+</html>

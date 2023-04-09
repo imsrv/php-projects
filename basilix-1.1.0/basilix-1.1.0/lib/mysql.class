@@ -1,0 +1,439 @@
+<?
+/*
++----------------------------------------------------------------------+
+| BasiliX - Copyright (C) 2000-2002 Murat Arslan <arslanm@basilix.org> |
++----------------------------------------------------------------------+
+*/
+
+// MySQL related stuff (tired of commenting)
+// -----------------------------------------------------------------------
+class MySQL {
+   var $socket = "";
+   var $dbname = "";
+   var $dbhost = "";
+   var $dbuser = ""; 
+   var $dbpass = "";
+   
+   function MySQL() {
+       // init
+       global $BSX_DB_USER, $BSX_DB_PASS, $BSX_DB_NAME, $BSX_DB_HOST;
+       $this->dbuser = $BSX_DB_USER;
+       $this->dbpass = $BSX_DB_PASS;
+       $this->dbname = $BSX_DB_NAME;
+       $this->dbhost = $BSX_DB_HOST;
+   }
+   // errors
+   function error($text) {
+      $err_no = mysql_errno();
+      $err_msg = mysql_error();
+      printf("<b>MySQL ERROR:</b> %s (%d):<br>%s<br>\n",
+	     $err_msg, $err_no, $text);
+      exit();
+   }
+   
+   // connect to the db
+   function open() {
+      $i = mysql_connect($this->dbhost, $this->dbuser, $this->dbpass);
+      if(!$i)
+	$this->error("Error connecting to the database server.");
+      if(!mysql_select_db($this->dbname, $i))
+	$this->error("Error selecting the database.");
+      $this->socket = $i;
+   }
+   
+   // close the connection
+   function close() {
+      if($this->socket) mysql_close($this->socket);
+      $this->socket = "";
+   }
+
+   // select the rows and append them to an array
+   function select_rows($query) {
+      if(empty($this->socket)) return false;
+
+      $results = mysql_query($query, $this->socket);
+      if(!$results || empty($results)) return false;
+
+      $i = 0;
+      $data = array();
+      while($row = mysql_fetch_array($results)) {
+	 $data[$i] = $row;
+	 $i++;
+      }
+      mysql_free_result($results);
+      return $data;
+   }
+   
+   // insert a row
+   function insert_row($query) {
+      if(empty($this->socket)) return false;
+      $rc = mysql_query($query);
+      if($rc == false) return false;
+      $id = mysql_insert_id($this->socket);
+      return $id;
+   }
+   
+   // sessions
+   function session_create($u, $d, $p, $s, $t, $h, $a) {
+      if($h == "") $h = "Unknown";
+      $query = "INSERT INTO SESSION (USERNAME,DOMAIN,PASSWORD,SESSIONID,LASTACCESS,LASTTIME,LASTHOST,LASTADDR) ";
+      $query .= "VALUES ('$u', '$d', '$p','$s','$t','$t','$h','$a')";
+      $rc = $this->insert_row($query);
+      return $rc;
+   }
+
+   function session_update($r, $p, $s, $t, $h, $a) {
+      if($h == "") $h = "Unknown";
+      $query = "UPDATE SESSION SET SESSIONID='$s',PASSWORD='$p',LASTTIME='$t',LASTHOST='$h',LASTADDR='$a' WHERE CUSTOMERID='$r'";
+      $rc = mysql_query($query);
+      return $rc;
+   }
+
+   function session_checkuser($u, $d) {
+      $query = "SELECT CUSTOMERID,LASTTIME,LASTHOST,LASTADDR FROM SESSION WHERE USERNAME='$u' AND DOMAIN='$d'";
+      return $this->select_rows($query);
+   }
+
+   function session_zero($s) {
+      $query = "UPDATE SESSION SET PASSWORD='',SESSIONID='' WHERE SESSIONID='$s'";
+      $rc = mysql_query($query);
+      return $rc;
+   }
+
+   function session_getuservals($s) {
+      $query = "SELECT CUSTOMERID,USERNAME,DOMAIN,PASSWORD FROM SESSION WHERE SESSIONID='$s'";
+      $data = $this->select_rows($query);
+      if(!empty($data)) {
+	$tt = time();
+	$query = "UPDATE SESSION SET LASTACCESS='$tt' WHERE SESSIONID='$s'";
+	$rc = mysql_query($query);
+      }
+      return $data;
+   }
+   // online users
+   function online_users() {
+      $t = time();
+      $query = "SELECT COUNT(*) CNT FROM SESSION WHERE PASSWORD != '' AND ($t - LASTACCESS < 900)"; #15m
+      $data = $this->select_rows($query);
+      $ou = $data[0]["CNT"];
+      return $ou;
+   }
+
+   // address book
+   // load the addressbook items of the user
+   function get_allabook($cid) {
+      $query = "SELECT * FROM ADDRESSBOOK WHERE OWNERID=$cid ORDER BY NICKNAME";
+      return $this->select_rows($query);
+   }
+
+   // load the addressbook group items of the user
+   function get_allabookgrp($cid) {
+      $query = "SELECT * FROM ADDRESSBOOKGRP WHERE OWNERID=$cid ORDER BY GRPNAME";
+      return $this->select_rows($query);
+   }
+           
+   // add an entry
+   function addr_add($cid, $nick, $email, $name, $tel, $fax, $note) {
+      $nick = addslashes($nick);
+      $email = addslashes($email);
+      $name = addslashes($name);
+      $tel = addslashes($tel);
+      $fax = addslashes($fax);
+      $note = addslashes($note);
+      $query = "INSERT INTO ADDRESSBOOK (OWNERID, NICKNAME, EMAIL, NAME, TELEPHONE, FAX, NOTE) VALUES ";
+      $query .= "('$cid', '$nick','$email','$name','$tel','$fax','$note')";
+      $rc = $this->insert_row($query);
+      return $rc;
+   }
+
+   // delete an entry
+   function addr_delitem($cid, $id) {
+      // first erase the user from the groups
+      $this->addr_delitemgrp($cid, $id);
+      $query = "DELETE FROM ADDRESSBOOK WHERE OWNERID=$cid AND ROWID=$id";
+      $rc = mysql_query($query);
+      if($rc == false) return false;
+      $ar = mysql_affected_rows($this->socket);
+      if($ar == 0) return false;
+      else return true;
+   }
+ 
+   // user -> which groups
+   function addr_uid2grps($cid, $id) {
+      $query = "SELECT AG.MEMBERS MEMBERS, AG.GRPNAME GRPNAME, AG.ROWID ROWID ";
+      $query .= "FROM ADDRESSBOOKGRP AG, ADDRESSBOOK A ";
+      $query .= "WHERE AG.OWNERID=$cid AND AG.OWNERID=A.OWNERID AND ";
+      $query .= "(MEMBERS LIKE '$id,%' OR MEMBERS LIKE '%,$id,%' OR MEMBERS LIKE '%,$id' OR MEMBERS='$id') ";
+      $query .= "GROUP BY ROWID";
+      $data = $this->select_rows($query);
+      if(empty($data)) return false;
+      return $data;
+   }
+
+   // erase the user from all the groups he is subscribed.
+   function addr_delitemgrp($cid, $id) {
+      // first find out to which groups this user subscribed.
+      $grps = $this->addr_uid2grps($cid, $id);
+      if(empty($grps)) return 0;
+      $ret = 0;
+      for($i = 0 ; $i < count($grps) ; $i++) {
+          $cur_grp = $grps[$i];
+          $rowid = $cur_grp["ROWID"];
+          $members = $cur_grp["MEMBERS"];
+          $m_arr = explode(",", $members);
+          $nmembers = "";
+          for($j = 0 ; $j < count($m_arr) ; $j++) {
+              if($m_arr[$j] != $id) {
+		 if(empty($nmembers)) $nmembers = $m_arr[$j];
+		 else $nmembers = $nmembers . "," . $m_arr[$j];
+	      }
+          }
+          $query = "UPDATE ADDRESSBOOKGRP SET MEMBERS='$nmembers' WHERE OWNERID=$cid AND ROWID=$rowid";
+          $ret += mysql_query($query);
+      }
+      return $ret;
+   }
+
+   // update an entry
+   function addr_update($cid, $rowid, $nick, $email, $name, $tel, $fax, $note) {
+      $nick = addslashes($nick);
+      $email = addslashes($email);
+      $name = addslashes($name);
+      $tel = addslashes($tel);
+      $fax = addslashes($fax);
+      $note = addslashes($note);
+      $query = "UPDATE ADDRESSBOOK SET NICKNAME='$nick',EMAIL='$email',NAME='$name',TELEPHONE='$tel',FAX='$fax',NOTE='$note' ";
+      $query .= "WHERE OWNERID=$cid AND ROWID=$rowid";
+      return mysql_query($query);
+   }
+
+   // retrieve an entry
+   function addr_getitem($cid, $rowid) {
+      $query = "SELECT * FROM ADDRESSBOOK WHERE OWNERID=$cid AND ROWID=$rowid";
+      return $this->select_rows($query);
+   }
+
+   // add a new group
+   function addr_addgrp($cid, $name) {
+      $name = addslashes($name);
+      $query = "INSERT INTO ADDRESSBOOKGRP (OWNERID, GRPNAME) VALUES ";
+      $query .= "('$cid','$name')";
+      $rc = $this->insert_row($query);
+      return $rc;
+   }
+
+   // delete a group
+   function addr_delgrp($cid, $id) {
+      $query = "DELETE FROM ADDRESSBOOKGRP WHERE OWNERID=$cid AND ROWID=$id";
+      $rc = mysql_query($query);
+      if($rc == false) return false;
+      $ar = mysql_affected_rows($this->socket);
+      if($ar == 0) return false;
+      else return true;
+   }
+
+   // retrieve the members of the group
+   function addr_grpmem($cid, $id) {
+      $query = "SELECT MEMBERS FROM ADDRESSBOOKGRP WHERE OWNERID=$cid AND ROWID=$id";
+      $dat = $this->select_rows($query);
+      $members = $dat[0]["MEMBERS"];
+      $mem_arr = explode(",", $members);
+      if(count($members) == 1 && empty($mem_arr[0])) return array();
+      return $mem_arr;
+   }
+
+   function addr_uid2nick($cid, $id) {
+      $query = "SELECT NICKNAME FROM ADDRESSBOOK WHERE OWNERID=$cid AND ROWID=$id";
+      $dat = $this->select_rows($query);
+      $nick = $dat[0]["NICKNAME"];
+      return $nick;
+   }
+
+   // retrieve the name of the group
+   function addr_getgrpname($cid, $id) {
+      $query = "SELECT GRPNAME FROM ADDRESSBOOKGRP WHERE OWNERID=$cid AND ROWID=$id";
+      $data = $this->select_rows($query);
+      if(empty($data)) return "";
+      return $data[0]["GRPNAME"];
+   }
+
+   // add user to a group
+   function addr_grpaddmem($cid, $gid, $uid) {
+      $query = "SELECT MEMBERS FROM ADDRESSBOOKGRP WHERE OWNERID=$cid AND ROWID=$gid";
+      $dat = $this->select_rows($query);
+      $members = $dat[0]["MEMBERS"];
+      if(empty($members)) $nmembers = $uid;
+      else {
+	 $mem_arr = explode(",", $members);
+	 for($i = 0 ; $i < count($mem_arr) ; $i++) {
+	    if($mem_arr[$i] == $uid) return false;
+	 }
+         $nmembers = $members . "," . $uid;
+      }
+      $nmembers = addslashes($nmembers);
+      $query = "UPDATE ADDRESSBOOKGRP SET MEMBERS='$nmembers' WHERE OWNERID=$cid AND ROWID=$gid";
+      return mysql_query($query);
+   }
+
+   // delete a user from the group
+   function addr_grpdelmem($cid, $gid, $uid) {
+      $members = $this->addr_grpmem($cid, $gid);
+      if(empty($members)) return false;
+      $nmembers = "";
+      for($i = 0 ; $i < count($members) ; $i++) {
+          if($members[$i] != $uid) {
+             if(empty($nmembers)) $nmembers = $members[$i];
+             else $nmembers = $nmembers . "," . $members[$i];
+          }
+      }
+      $query = "UPDATE ADDRESSBOOKGRP SET MEMBERS='$nmembers' WHERE OWNERID=$cid AND ROWID=$gid";
+      return mysql_query($query);
+   }
+
+   // update the memberlist (via javascript)
+   function addr_update_memberlist($cid, $gid, $memberlist) {
+      $query = "UPDATE ADDRESSBOOKGRP SET MEMBERS='$memberlist' WHERE OWNERID='$cid' AND ROWID='$gid'";
+      return mysql_query($query);
+   }
+     
+   // settings
+   // save
+   function settings_save($cid, $lang, $name, $sign, $sort, $rsort, $sent, $trash, $psize, $theme, $ifexpand, $pn, $rt) {
+      $name = addslashes($name);
+      $sign = addslashes($sign);
+      $rt = addslashes($rt);
+
+      $query = "UPDATE SETTINGS SET ";
+      $query .= "NAME='$name', SIGN='$sign', LANG='$lang', SORT='$sort', RSORT='$rsort',";
+      $query .= "PSIZE='$psize', SAVESENT='$sent', MOVETRASH='$trash', THEME='$theme', IFEXPAND='$ifexpand'";
+      $query .= ",PREVNEXT='$pn',REPLYTO='$rt' WHERE CUSTOMERID='$cid'";
+      return mysql_query($query);
+   }
+
+   // load
+   function settings_load($cid) {
+      $query = "SELECT * FROM SETTINGS WHERE CUSTOMERID='$cid'";
+      return $this->select_rows($query);
+   }
+
+   // init
+   function settings_init($cid) {
+      $query = "INSERT INTO SETTINGS (CUSTOMERID) VALUES ('$cid')";
+      return $this->insert_row($query);
+   }
+
+   function settings_theme_usage() {
+      $query = "SELECT COUNT(*) CNT, THEME FROM SETTINGS GROUP BY THEME";
+      return $this->select_rows($query);
+   }
+
+   // sendmsgs table
+   // create a new mail to be sent
+   function sendmsgs_init($cid) {
+      $t = time();
+      $query = "INSERT INTO SENDMSGS (CUSTOMERID, MSGDATE) VALUES ('$cid', '$t')";
+      $rc = mysql_query($query);
+      if($rc == false) return false;
+      $id = mysql_insert_id($this->socket);
+      return $id;
+   }
+
+   // load drafts
+   function sendmsgs_load_drafts($cid) {
+      $query = "SELECT * FROM SENDMSGS WHERE CUSTOMERID='$cid'";
+      return $this->select_rows($query);
+   }
+
+   // load the premail
+   function sendmsgs_load_premail($cid, $pm) {
+      $query = "SELECT * FROM SENDMSGS WHERE CUSTOMERID='$cid' AND MSGID='$pm'";
+      $data = $this->select_rows($query);
+      return $data[0];
+   }
+
+   // delete the selected draft
+   function sendmsgs_del_draft($cid, $pm) {
+      $query = "DELETE FROM SENDMSGS WHERE CUSTOMERID='$cid' AND MSGID='$pm'";
+      $rc = mysql_query($query);
+      if($rc == false) return false;
+      $ar = mysql_affected_rows($this->socket);
+      if($ar == 0) return false;
+      else return true;
+   }
+
+   // remove the empty drafts
+   function sendmsgs_del_empty_drafts($cid) {
+      $query = "DELETE FROM SENDMSGS WHERE CUSTOMERID='$cid' AND MSGTO is NULL AND MSGCC is NULL ";
+      $query .= "AND MSGBCC is NULL AND MSGSUBJECT is NULL AND MSGBODY is NULL AND MSGATCHS is NULL";
+      $rc = mysql_query($query);
+      if($rc == false) return false;
+      $ar = mysql_affected_rows($this->socket);
+      if($ar == 0) return false;
+      else return true;
+   }      
+
+   // load the attachments
+   function sendmsgs_load_atchs($cid, $pm) {
+      $query = "SELECT MSGATCHS FROM SENDMSGS WHERE CUSTOMERID='$cid' AND MSGID='$pm'";
+      $data = $this->select_rows($query);
+      if(empty($data)) return "";
+      return $data[0]["MSGATCHS"];
+   }
+   // save the draft
+   function sendmsgs_update_premail($cid, $pm, $from, $to, $cc, $bcc, $subject, $body) {
+      $from = addslashes($from);
+      $to = addslashes($to);
+      $cc = addslashes($cc);
+      $bcc = addslashes($bcc);
+      $subject = addslashes($subject);
+      $body = addslashes($body);
+      
+      $t = time();
+     
+      $query = "UPDATE SENDMSGS SET MSGFROM='$from', MSGTO='$to', MSGCC='$cc', MSGBCC='$bcc'";
+      $query .= ", MSGSUBJECT='$subject', MSGBODY='$body', MSGDATE='$t' WHERE CUSTOMERID='$cid' AND MSGID='$pm'";
+      return mysql_query($query);
+   }      
+
+   // update only the attachments
+   function sendmsgs_update_premail_atchs($cid, $pm, $atchs) {
+      $atchs = addslashes($atchs);
+     
+      $t = time();
+      $query = "UPDATE SENDMSGS SET MSGATCHS='$atchs', MSGDATE='$t' WHERE CUSTOMERID='$cid' AND MSGID='$pm'";
+      return mysql_query($query);
+   }      
+
+   // check if this premail is owned by the customer
+   function sendmsgs_check_premail($cid, $pm) {
+      $query = "SELECT COUNT(*) CNT FROM SENDMSGS WHERE CUSTOMERID='$cid' AND MSGID='$pm'";
+      $data = $this->select_rows($query);
+      if(empty($data)) return 0;
+      return $data[0]["CNT"];
+   }
+
+   // remove the draft since its sent
+   function sendmsgs_del_premail($cid, $pm) {
+      $query = "DELETE FROM SENDMSGS WHERE CUSTOMERID='$cid' AND MSGID='$pm'";
+      $rc = mysql_query($query);
+      if($rc == false) return false;
+      $ar = mysql_affected_rows($this->socket);
+      if($ar == 0) return false;
+      else return true;
+   }
+
+   // update the folders of the user
+   function folders_update($cid, $fstr) {
+      $query = "UPDATE SESSION SET LASTFOLDERS='$fstr' WHERE CUSTOMERID='$cid'";
+      return mysql_query($query);
+   }
+
+   // load the folders of the user
+   function folders_load($cid) {
+      $query = "SELECT LASTFOLDERS FROM SESSION WHERE CUSTOMERID='$cid'";
+      $data = $this->select_rows($query);
+      if(empty($data)) return array();
+      return $data[0];
+   }
+}
+?>

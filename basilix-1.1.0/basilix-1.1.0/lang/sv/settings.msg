@@ -1,0 +1,38 @@
+<?
+// 'Settings' messages
+$lang_msg["settings"] = array(
+	501	=>	'Det gick inte att spara de nya instllningarna. F&ouml;rs&ouml;k senare...',
+	502	=>	'De nya inst&auml;llningarna har sparats.',
+	503	=>	'Ditt namn',
+	504	=>	'(kommer att st&aring; framf&ouml;r din mailadress i \'Fr&aring;n\' -f&auml;ltet p&aring; de brev du skickar)',
+	505	=>	'Signatur',
+	506	=>	'(kommer att l&auml;ggas till sist i alla dina utg&aring;ende brev)',
+	507	=>	'Spr&aring;k',
+	508	=>	'(spr&aring;ket som anv&auml;nds i alla vyer)',
+	509	=>	'Sortera efter',
+	510	=>	'(Grundinst&auml;llningen f&ouml;r sortering i alla listor))',
+	511	=>	'Sortera fallande',
+	512	=>	'(Avg&ouml;r sorteringsordningen i alla vyer. Fallande sortering efter datum ger nya brev &ouml;verst)',
+	513	=>	'Spara skickade brev',
+	514	=>	'(sparar alla skickade brev i mappen "Skickade brev")',
+	515	=>	'Kasta i "Papperskorgen"',
+	516	=>	'(flyttar alla raderade brev till Papperskorgen i st&auml;llet för att radera dem)',
+	517	=>	'Visa antal',
+	518	=>	'(antal brev som visas p&aring; varje sida i mapparna)',
+	519	=>	'Datum',
+	520	=>	'Fr&aring;n',
+	521	=>	'&Auml;rende',
+	522	=>	'Storlek',
+	523	=>	'F&auml;rgtema',
+	524	=>	'(&auml;ndrar utseende p&aring; websidorna)',
+	525	=>	'Spara inst&auml;llningar',
+	526	=>	'Show',
+	527	=>	'Hide',
+	528	=>	'Show/Hide',
+	529	=>	'(show or hide the user folder list in the left menu)',
+	530	=>	'Prev/Next',
+	531	=>	'(shows the previous and the next message links when reading a message -- this is slow on large mailboxes)',
+	532	=>	'Reply-To',
+	533	=>	'(the recipient will reply to this address -- if empty <b>%e</b> is used)'
+);
+?>

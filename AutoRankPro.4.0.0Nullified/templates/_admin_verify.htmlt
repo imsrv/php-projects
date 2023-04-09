@@ -1,0 +1,190 @@
+<html>
+<head>
+  <title>Setup AutoRank Professional v#%VERSION%#</title>
+  <script language="JavaScript">
+    function openHelp(url, name) { 
+      window.open(url, name, 'scrollbars=1,resizable=no,width=350,height=450,status=0,menubar=0');
+    }
+  </script>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="white" link="blue">
+
+<div align="center">
+
+<table border="0" cellpadding="0" cellspacing="0" width="650">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="650">
+<tr>
+<td bgcolor="#004080" align="center" colspan="">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Variables Successfully Recorded</b>
+</font>
+</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#dcdcdc">
+<font face="Verdana" size="2" style="font-size: 11px;">
+Your options and variable settings have been recorded. 
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<br><br>
+
+<table border="0" cellpadding="0" cellspacing="0" width="650">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="650">
+<tr>
+<td bgcolor="#004080" align="center" colspan="2">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>AutoRank Pro Setup Verification</b>
+</font>
+</td>
+</tr>
+<tr bgcolor="#afafaf">
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Test</b>
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Test Result</b>
+</font>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+Writing a file to the data directory
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%DDIR_TEST%#
+</font>
+</td>
+</tr>
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+Writing a file to the HTML directory
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%HDIR_TEST%#
+</font>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+Writing a file to the image directory
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%IDIR_TEST%#
+</font>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<br><br>
+
+<table border="0" cellpadding="0" cellspacing="0" width="650">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="650">
+<tr>
+<td bgcolor="#004080" align="center" colspan="2">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Other Information</b>
+</font>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+
+<b>Current Date and Time:</b> #%DATE%# #%TIME%#
+
+<br><br>
+
+The setup is now complete.  If the tests above have passed, you are ready to continue using
+AutoRank Pro.  If the tests did not pass, verify that you have the correct paths and permissions
+setup.  Below are some common error messages.
+
+<br><br>
+
+<b>Permission denied</b> - This error indicates that you have not set the proper permissions on
+the directories.  Make sure the data directory and HTML directory are both set to 777.
+
+<br><br>
+
+<b>No such file or directory</b> - This error indicates you have entered an invalid pathname
+for the directory.  Double check for typos.  If you continue to get this error message, contact
+your server administrator to get the correct path to your files.
+
+<br><br>
+
+Once the tests have passed, you can continue on to the <b><a href="admin.cgi" class="reg">administrative interface</a></b>.
+
+</font>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>

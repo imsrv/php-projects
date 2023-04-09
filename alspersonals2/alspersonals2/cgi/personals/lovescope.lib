@@ -1,0 +1,56 @@
+sub getlovescope {
+
+&vars;
+
+open(IN,"$lovescopedir/lovescope.txt")||&oops($!,"cannot read $file");
+@lines = <IN>;
+$xx = @lines;
+close(IN);
+srand();
+$x=rand();
+$x = ($x * $xx);
+$x = int($x);
+open(IN,"$lovescopedir/lovescope.txt")||&oops($!,"cannot read $file");
+@lines = <IN>;
+close(IN);
+$lovescope = $lines[$x];
+
+}
+
+
+
+sub importmessages {
+
+}
+
+
+sub oops { 
+
+my($err, $msg) = @_; 
+print "Content-type: text/html\n\n";
+print " 
+$mainheader<br><br>
+<font face=arial><br><br><h4>$err</h4> <br><br>
+<font size=2>$msg </font>
+$botcode
+</body> 
+</html>\n"; 
+exit; 
+}
+
+
+sub cgiError { 
+
+my($err, $msg) = @_; 
+print "Content-type: text/html\n\n";
+print " 
+$mainheader<br><br>
+<font face=arial><br><br><h4>$err</h4> <br><br>
+<font size=2>$msg </font>
+$botcode
+</body> 
+</html>\n"; 
+exit; 
+}
+
+1;

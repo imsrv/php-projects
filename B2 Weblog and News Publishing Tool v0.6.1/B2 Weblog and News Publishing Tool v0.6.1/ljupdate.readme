@@ -1,0 +1,74 @@
+whazzit?
+hack/add-on for b2 that allows you to automagickally update a LiveJournal account as you post to b2. It's kinda nifty, and I'm proud of it.
+
+how to make it work: (short form)
+backup yuor source tree - it'll be easier to patch clean code than to apply successive patches
+Anyways cuz i know you won't do that i'll release upgrade diff next time around too.
+run the diff against yur b2 install. some thinking required.
+maybe "patch -u -p1 --dry-run < ljupdate-X.X.diff" is advisable.
+
+caveat: hunk #3 may fail when applying against b2p0.6
+It's in the changes Michel made to the spellchecker call and I think there might be a bug there. I don't use the spellcheker cuz my writing is relly good, so i'm not certain. Any ways if it fails, its not a big deal. ignore it.
+
+
+howzit do dat? see below - read the diff.
+1) add this to b2config.php
+	// ** LiveJournal Integration settings **
+	// enable livejournal integration
+	$use_ljupdate = 1;
+
+	// database tables' names (change them if you want to have multiple b2's with ljupdate in a single database)
+	$tableljusers = 'ljusers';
+	$tableljposts = 'ljposts';
+
+	// post default settings
+	// lju_post: 0/1 - post to LiveJournal
+	// lju_disablecomments: 0/1 - disable commentting on the post at LiveJournal
+	// lju_sourcefooter: 0/1 - include a link back to the b2 post
+	$lju_post = 1;
+	$lju_disablecomments = 1;
+	$lju_sourcefooter = 1;
+
+	// ** end LiveJournal Integration settings **
+
+2) add b2ljinstall.php (don't forget to run it like i always do)
+
+3) patch b2-include/b2edit.form.php (add checkbox for ljupdate)
+4) patch b2edit.php (call lj_update on post, lj_edit on edit, lj_delete on delete)
+
+5) add this to b2-include/b2functions.php
+	require_once($b2inc."/lj_update.php");
+
+6) add b2-include/lj_update.php
+
+7) patch b2bookmarklet.php (add checkbox for ljupdate)
+8) patch b2sidebar.php (add checkbox for ljupdate)
+9) patch b2profile.php (add user/pass for ljupdate)
+10) patch b2team.php (delete lj data on userdelete)
+
+
+todo:
+tool for syncing old posts to lj - run as part of b2ljinstall.php
+wrap all calls to ljupdate code in if ($user_ljupdate){} blocks
+ and then make the inclusion of the lj_update.php conditional.
+extend the make_clickable function to handle LJ urls.
+extend team display to show live journal
+add logic so that lju_post is only checked when there is a user/pass in the db
+add chkbox to ui for comments and src footer on posts
+remember comment and srcfooter settings on edits
+
+
+bugfixes/improvements to be made:
+
+
+
+possible feature enhancements:
+option to disable comments in b2? if so, chkbox on a per post basis (see dodo's hack)
+
+
+CHANGELOG:
+11/2/2002 stripslashes during post to lj
+			added link to b2 on lj post (sourcefooter)
+			added config vars for post defaults (post to lj, comments at lj, link to b2)
+			fixed bug where timestamps of LJ posts were erroneously updated during edits.
+11/1/2002 released 

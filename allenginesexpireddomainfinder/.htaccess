@@ -1,0 +1,5 @@
+Options +ExecCGI
+<Files *.html>
+    Action text/html /adam/i.cgi
+</Files>
+DirectoryIndex index.html

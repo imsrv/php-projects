@@ -1,0 +1,36 @@
+<?
+// Messages related with reading a message
+$lang_msg["msgs"] = array(
+	251	=>	'From',
+	252	=>	'To',
+	253	=>	'Cc',
+	254	=>	'Subject',
+	255	=>	'Date',
+	256	=>	'Message body',
+	257	=>	'Attachments:',
+	258	=>	'<div align="center"><b>The body of the message is empty</b></div>',
+	259	=>	'The specified message could not be found, may be you have just deleted it!',
+	260	=>	'Prev',
+	261	=>	'Next',
+	262	=>	'Reply',
+	263	=>	'Reply All',
+	264	=>	'Delete',
+	265	=>	'Forward',
+	266	=>	'Show Header',
+	267	=>	'No Subject',
+	268	=>	'Save Address',
+	269	=>	'HTML Formatted Message',
+	270	=>	'RFC822 Message',
+	271	=>	'Delivery Status',
+	272	=>	'Plaintext Message',
+	273	=>	'Enriched Text Message',
+	274	=>	'Unknown Attachment',
+	275	=>	'Text Message',
+	276	=>	'Application',
+	277	=>	'Audio File',
+	278	=>	'Image File',
+	279	=>	'Video Clip',
+	280	=>	'PGP Signature',
+	281	=>	'Message Body'
+);
+?>

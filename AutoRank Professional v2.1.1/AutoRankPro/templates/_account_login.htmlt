@@ -1,0 +1,59 @@
+<html>
+<head>
+  <title>Account Login</title>
+</head>
+<body bgcolor="white" link="blue">
+<div align="center">
+<p>
+<form action="accounts.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="300">
+<tr bgcolor="#000000">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#7384BD" align="center" colspan="2">
+<font face="Arial" size="3" color="white">
+<b>Account Login</b>
+</font>
+</td>
+</tr>
+<tr bgcolor="#dcdcdc">
+<td>
+<font face="Verdana, Arial" size="1"><b>
+Username:</b>
+</td>
+<td bgcolor="white">
+#%USERNAME_FIELD%#
+</td>
+</tr>
+<tr bgcolor="#dcdcdc">
+<td>
+<font face="Verdana, Arial" size="1"><b>
+Password:</b>
+</td>
+<td bgcolor="white">
+#%PASSWORD_FIELD%#
+</td>
+</tr>
+<td colspan="2" align="center" bgcolor="white">
+
+<table><tr><td>
+#%EDIT_RADIO%# <font face="Verdana, Arial" size="1">Edit Your Account</font><br>
+#%STATS_RADIO%# <font face="Verdana, Arial" size="1">View Account Stats</font><br>
+#%LINK_RADIO%# <font face="Verdana, Arial" size="1">Display Proper Link Syntax</font>
+</td></tr></table>
+<p>
+<input type="submit" name="submit" value="Log In">
+</td></tr>
+</table>
+</td></tr></table>
+
+<p>
+
+<font face="Verdana, Arial" size="2">
+<a href="accounts.cgi?remind">Forgot your password? Click here</a></font>
+
+</body>
+</html>

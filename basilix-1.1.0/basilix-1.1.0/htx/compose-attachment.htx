@@ -1,0 +1,99 @@
+<?php 
+//
+// Compose msg HTML file
+//
+?>
+<div align="center">
+<?php start_form("cmpsAttach", "enctype=\"multipart/form-data\"")?>
+<input type="hidden" name="RequestID" value="CMPSATCH">
+<input type="hidden" name="premail" value="<?php echo $premail?>">
+<table border="0" cellpadding="0" cellspacing="0" width="90%">
+<tr><td align="center" class="tblborder">
+<table border="0" cellpadding="3" cellspacing="1" width="100%">
+<tr>
+<td align="left" class="normalbg"><?php echo nbsp($lng->p(434))?></td>
+</tr>
+<tr>
+<td align="center" class="normalbg"><br><input type="file" name="cmps_myfile" size="20"><br>&nbsp;</td>
+</tr>
+<tr>
+<td align="center" class="normalbg"><hr width="30%"></td>
+</tr>
+<tr>
+<td align="left" class="normalbg"><?php $lng->sb(435);$lng->sr("%t", convert_size($BSX_ATTACH_TOTAL)); echo nbsp($lng->sp());?></td>
+</tr>
+<tr>
+<td align="center" class="normalbg"><br><input class="button" type="submit" name="cmps_myattach" value="<?php echo $lng->p(427)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'><br>&nbsp;</td></tr>
+<tr>
+<td align="left" class="normalbg"><br><?php echo $lng->p(436)?></td>
+</tr>
+</table>
+</td></tr>
+</table>
+<br><?php push_errinfo()?><br>
+<table border="0" cellpadding="0" cellspacing="0" width="90%">
+<tr><td align="center" class="tblborder">
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tr>
+<td class="mboxhdr" align="right" width="1%" nowrap>&nbsp;</td>
+<td class="mboxhdr" align="left" nowrap><?php echo nbsp($lng->p(421))?></td>
+<td class="mboxhdr" align="center" width="10%" nowrap><?php echo nbsp($lng->p(422))?></td>
+<td class="mboxhdr" align="center" width="30%" nowrap><?php echo nbsp($lng->p(423))?></td>
+</tr>
+<?php 
+if(empty($cmps_atchs)) {
+?>
+<tr><td class="normalbg" align="center" colspan="4"><br><b><?php echo nbsp($lng->p(425))?></b><br>&nbsp;</td></tr>
+<?php  
+} else {
+	$tmp_atchs = explode(chr(2), $cmps_atchs);
+	$tmp_total_size = 0;
+	for($i = 0 ; $i < count($tmp_atchs) ; $i++) {
+		$tmp_arr = explode(chr(3), $tmp_atchs[$i]);
+		$tmp_name = $tmp_arr[0];
+		$tmp_type = $tmp_arr[1];
+		$tmp_size = $tmp_arr[2];
+		$tmp_total_size += $tmp_size;
+?>
+<tr>
+<td class="normalbg" align="right" width="1%" nowrap><input type="radio" name="cmps_myunattachfile" value="<?php echo base64_encode($tmp_name)?>" style="border-width:0px;"></td>
+<td class="normalbg" align="left"><?php echo nbsp($tmp_name)?></td>
+<td class="normalbg" align="right" width="10%"><?php echo nbsp(convert_size($tmp_size))?></td>
+<td class="normalbg" align="left" width="30%"><?php echo nbsp($tmp_type)?></td>
+</tr>
+<?php
+	}
+	if($i > 2) {
+?>
+<tr>
+<td class="normalbg" colspan="2">&nbsp;</td>
+<td class="normalbg" align="right" width="10%" nowrap><b><?php echo nbsp(convert_size($tmp_total_size))?></b></td>
+<td class="normalbg">&nbsp;</td>
+</tr>
+<?php
+	}
+?>
+<tr><td class="normalbg" align="center" colspan="4"><br><input type="submit" class="button" name="cmps_myunattach" value="<?php echo $lng->p(465)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'><br>&nbsp;</td>
+<?php
+}
+?>
+</table>
+</td></tr></table>
+<?php stop_form()?>
+<?php start_form("composeReturn")?>
+<input type="hidden" name="RequestID" value="CMPSNEW">
+<input type="hidden" name="contDraft" value="yes">
+<input type="hidden" name="premail" value="<?php echo $premail?>">
+<table border="0" cellpadding="0" cellspacing="0" width="90%">
+<tr><td align="center" class="tblborder">
+<table border="0" cellpadding="3" cellspacing="1" width="100%">
+<tr>
+<td align="left" class="normalbg"><?php echo nbsp($lng->p(437))?></td>
+</tr>
+<tr>
+<td align="center" class="normalbg"><br><input type="submit" class="button" value="<?php echo $lng->p(429)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'><br>&nbsp;</td>
+</tr>
+</table>
+</td></tr>
+</table>
+<?php stop_form()?>

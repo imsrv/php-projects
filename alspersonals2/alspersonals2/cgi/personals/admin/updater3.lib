@@ -1,0 +1,255 @@
+sub expelmember {
+if($ENV{'HTTP_REFERER'} !~ /$admincgiurl/){
+
+print "Content-type:text/html\n\n";
+print "<br><br><br><br><blockquote><font size=2 face=verdana><b><b>Access Violation</b><br><br>
+You are not authorized to access this document. </font></blockquote><br><br><br>\n";
+exit;}
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br>
+<table width=100% cellpadding=0 cellspacing=0 border=0><tr>
+<td><form method="post" action="$admincgiurl/updater.pl">
+<center><table cellpadding=2 cellspacing=2 border=0><tr>
+<td><font size=2 face=verdana>Enter the Member's Name</font></td></tr><tr>
+<td><input type="text" name="username" size=25></td></tr><tr>
+<td><input type="hidden" name="delaction" value="expelling"></td></tr><tr>
+<td><input type="submit" name="doexpulsion" value="Expel Member" class="button"></td></tr></table></center>
+</td></tr></table></form>
+<br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+
+}
+
+
+sub doexpulsion {
+
+if($FORM{'username'} eq ""){
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br><font size=2 face=verdana><blockquote>You are trying to expel
+a member but you have not entered all the required information.
+Please <a href="javascript:history.go(-1)">go back</a>
+and enter the required information.</font></blockquote><br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;}
+
+
+unless(-e "$users/$username.txt"){
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br><font size=2 face=verdana><blockquote>No member was found by the name <b>$username</b>.
+Please <a href="javascript:history.go(-1)">go back</a>
+and enter the username to delete.</font></blockquote><br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;}
+
+open(IN, "$users/$FORM{'username'}.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($one,$two,$three)=split(/\|/,$line);
+$mememail=$three;
+}
+
+
+$ctdel=$FORM{'username'};
+
+$cnt=unlink "$users/$FORM{'username'}.txt";
+&removenm_admin_profiles_txt;
+&removenm_profdat_txt;
+&removenm_members_txt;
+&removenm_proflist_txt;
+&delmescendir;
+
+&contdel2;
+}
+
+
+sub contdel2 {
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br><font size=2 face=verdana><blockquote>
+
+<b>$FORM{'username'}</b> has been expelled. All information on this member has been permanently deleted. 
+If you wish to notify the member that they have been expelled, you may write your message below.<P>
+
+</font></blockquote><br>
+<form method="post" action="$admincgiurl/messagemailer.pl">
+<center><table><tr>
+<td><font size=2 face=verdana>Subject of Message</font></td>
+<td><input type="text" size="40" name="subject" value="Your membership has been revoked"></td></tr><tr>
+<td><font size=2 face=verdana>Name of Sender</font></td>
+<td><input type="text" name="title" value="Administrator"></td></tr><tr>
+<td><font size=2 face=verdana>Recipient Name</font></td>
+<td><input type="text" name="username" value="$FORM{'username'}"></td></tr><tr>
+<td><font size=2 face=verdana>Recipient's email address</font></td>
+<td><input type="text" name="sendto" value="$mememail"></td></tr><tr>
+<td valign="top"><font size=2 face=verdana>Body of Message</font></td>
+<td><textarea name="message" rows="6" cols="40"></textarea></td></tr><tr>
+<td>&nbsp;</td><td><input type="submit" name="notifymember" value="Notify Member" class="button"></td></tr></table>
+</center>
+</form>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;
+}
+
+
+
+sub admdelmemad {
+if($ENV{'HTTP_REFERER'} !~ /$admincgiurl/){
+print "Content-type:text/html\n\n";
+print "<br><br><br><br><blockquote><font size=2 face=verdana><b><b>Access Violation</b><br><br>
+You are not authorized to access this document. </font></blockquote><br><br><br>\n";
+exit;}
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+
+<table cellspacing="0" cellpadding="0" width=100% height=30 border="0" bgcolor=eeeeee>
+<tr>
+<td><form method="post" action="$admincgiurl/updater.pl"><br><blockquote><font color=000000 face=verdana size=1>
+To find the deletion ticket number associated with a particular ad, enter the name of the person who posted the ad (Shown at "Posted By: ) into the "look up ticket number" box below, select the ad category; then 
+press the "Look up ticket number button.<br>
+<b>Enter Ad Posters Name:</b>&nbsp;<input type="text" name="postersname" size=20>
+&nbsp;
+<select name="adcat">
+<option value="">Select Ad Category</option>
+<option value="wsmads">Women Seeking Men</option>
+<option value="mswads">Men Seeking Women</option>
+<option value="wswads">Women Seeking Women</option>
+<option value="msmads">Men Seeking Men</option>
+</select>
+<input type="submit" name="lookupticknum" value="Look up ticket number" class="button">
+</td></tr></table><br>
+<br>
+
+<br>
+
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html></form>
+EOF
+exit;
+}
+
+sub cleanfilesuggestions {
+
+$cnt = unlink "$admincgidir/suggestions.txt";
+
+open (FILE, ">>$admincgidir/suggestions.txt") || die "Cannot open $admincgidir/suggestions.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "";  
+close (FILE);
+chmod 0777, '$admincgidir/suggestions.txt';
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+
+<table cellspacing="0" cellpadding="0" width=100% height=30 border="0" bgcolor=eeeeee>
+<tr>
+<td>
+<br>
+</td></tr></table><br>
+<br>
+<center><font size=2 face=verdana>The file has been cleaned.</font></center>
+<br>
+
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html></form>
+EOF
+exit;
+}
+
+sub cleanfilecomplaints {
+
+$cnt = unlink "$admincgidir/complaints.txt";
+
+open (FILE, ">>$admincgidir/complaints.txt") || die "Cannot open $admincgidir/complaints.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "";  
+close (FILE);
+chmod 0777, '$admincgidir/complaints.txt';
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+
+<table cellspacing="0" cellpadding="0" width=100% height=30 border="0" bgcolor=eeeeee>
+<tr>
+<td>
+<br>
+</td></tr></table><br>
+<br>
+<center>
+<font size=2 face=verdana>The file has been cleaned.</font>
+</center>
+<br>
+
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html></form>
+EOF
+exit;
+}
+1;

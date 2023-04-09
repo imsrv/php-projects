@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=win-1251">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>Avrora CJ</TITLE>
+</HEAD>
+<body bgcolor="#FFFFFF" text="#000000">
+<P><font style="font-size: 12px; font-family: Arial, Helvetica, sans-serif;">
+
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Для ротации вам необходимы 
+<br>
+&nbsp;&nbsp;&nbsp;<span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F0000">./thumb/thumb.csv</span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">, в формате <span style="font-family:Helvetica,Arial; font-size:10pt; color:#0000FF"><b>линк</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#FF0000"><b>;</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#0000FF"><b>картинка</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+&nbsp;&nbsp;&nbsp;<span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F0000">./thumb/thumb.stats</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">, который создается автоматически и содержит данные о кликах на тумбы.
+<br>
+Сами тумбы должны располагатся в директории <span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F0000">./thumb</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> . 
+<br>
+
+<br>
+В начале страницы "морды" укажите строку <span style="font-family:Helvetica,Arial; font-size:10pt; color:#00007F">&lt;?php $TH=get_thumb(60,20); ?&gt;</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">, где первое число, это процент кликабельных тумб, а второе, число тумб, сколько вы хотите получить. 
+<br>
+В результате вы получите 20 тумб отсортированных по популярности. Первая тумба - самая популярная, вторая менее, третья еще меньше  так далее. Для того, что бы вывести картинку  тумбы и линк вы должны использовать следующий код:<span style="font-family:Helvetica,Arial; font-size:10pt; color:#00007F">
+<br>
+</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#00007F">&lt;?=$TH[x]['thumb']?&gt;</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">&nbsp;&nbsp;&nbsp;- выведет картинку тумбы
+<br>
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#00007F">&lt;?=$TH[</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#00007F">x</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#00007F">]['url']?&gt;</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">&nbsp;&nbsp;&nbsp;- выведет линк тумбы
+<br>
+
+<br>
+Соответственно вместо x подставляйте нужный вам номер (от 1 до 20). Например
+<br>
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F00">&lt;a href="cj_out.php?thumb=</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#00007F">&lt;?=$TH[1]['thumb']?&gt;</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F00">&amp;p=50&amp;url=</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#00007F">&lt;?=$TH[1]['url']?&gt;</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F00">"&gt;&lt;img src="./thumb/</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#00007F">&lt;?=$TH[1]['thumb']?&gt;</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F00">" border="0"&gt;</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F00">
+<br>
+
+<br>
+</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">Обратите внимание, что для ротации тумб используется дополнительный параметр <span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F00">thumb=имя</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F00">_</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F00">тумбы</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">, который необходим для того, что бы определять какую тумбу кликнули.
+<br>
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F00">
+<br>
+</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">В дистрибутиве Avrora CJ идет полностью рабочий пример ротатора тумб.<span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F00">
+<br>
+</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F7F">
+<br>
+</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#FF0000">Внимание</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">: после закачки нового <span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F0000">thumb.csv</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"> и тумбов, всегда удаляйте <span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F0000">thumb.stats</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">, это необходимо для обнуления статистики. 
+<br>
+
+<br>
+</span></span>
+
+</font></P>
+</BODY>
+</HTML>

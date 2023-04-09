@@ -1,0 +1,116 @@
+<script language=javascript>
+function tsort(col) {
+	document.location='admin.cgi?order='+col;
+}
+</script>
+
+<table cellcpacing=0 cellpadding=0 border=0 width=740 align=center><tr><td>
+<br>
+
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr>
+	<th><a href="javascript:tsort('#order-types#types')" alt='Campaign name' title='Campaign name'>CAMPAIGN</a> #types-sort-image#</th>
+	<th><a href="javascript:tsort('#order-col#col')" alt='Banner count' title='Banner count'>COL</a> #col-sort-image#</th>
+	<th><a href="javascript:tsort('#order-show#show')" alt='Impression count' title='Impression count'>SHOW</a> #show-sort-image#</th>
+	<th><a href="javascript:tsort('#order-click#click')" alt='Click count' title='Click count'>CLICK</a> #click-sort-image#</th>
+	<th><a href="javascript:tsort('#order-acps#acps')" alt='Average CPS' title='Average CPS'>A. CPS</a> #acps-sort-image#</th>
+	<th><a href="javascript:tsort('#order-acpst#acpst')" alt='Average CPS today' title='Average CPS today'>A. CPS TODAY</a> #acpst-sort-image#</th>
+	<th><a name=stats alt='Banner stats' title='Banner stats'>STATS</a></th>
+	<th><a name=code alt='Campaign code' title='Campaign code'>CODE</a></th>
+	<th><a name=edit alt='Edit campaign' title='Edit campaign'>EDIT</a></th>
+	<th><a name=del alt='Delete campaign' title='Delete campaign'>DEL</a></th>
+</tr>
+#types-lines#
+</table>
+
+
+
+</td></tr></table>
+<br><br>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><th colspan=2><img src=#image_dir#stat.gif width=16 height=16> Statistics</th></tr>
+<tr><td class=td1><img src=#image_dir#total.gif width=16 height=16> Total banners:</td><td class=td1>#stat-total-banners#</td></tr>
+<tr><td class=td2><img src=#image_dir#alert.gif width=16 height=16> Expired banners:</td><td class=td2>#stat-expired-banners#</td></tr>
+<tr><td class=td1><img src=#image_dir#ok.gif width=16 height=16> Active banners:</td><td class=td1>#stat-active-banners#</td></tr>
+</table>
+</td></tr></table>
+<br><br>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><th colspan=7><img src=#image_dir#stat.gif width=16 height=16> Statistics for last week</th></tr>
+<tr valign=bottom>
+#stat-week#
+</tr>
+</table>
+</td></tr></table>
+<br><br>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><th colspan=12><img src=#image_dir#stat.gif width=16 height=16> Statistics for last 12 hours</th></tr>
+<tr valign=bottom>
+#stat-day#
+</tr>
+</table>
+</td></tr></table>
+
+
+</td></tr></table>
+
+
+
+
+<!--[types-lines]-->
+<tr>
+	<td class=td#?1:2#><a href=admin.cgi?page=banners&tid=#id# class=ar><img src=#image_dir#p.gif border=0 width=16 height=16> #name#</a></td>
+	<td class=td#?1:2# align=right>#count#</td>
+	<td class=td#?1:2# align=right>#shows#</td>
+	<td class=td#?1:2# align=right>#clicks#</td>
+	<td class=td#?1:2# align=right>#cps# %</td>
+	<td class=td#?1:2# align=right>#cpstoday# %</td>
+	<td class=td#?1:2# align=center width=50><a href=admin.cgi?page=statcampaignyear&tid=#id# target=statswin><img src=#image_dir#stat.gif width=16 height=16 border=0></a></td>
+	<td class=td#?1:2# align=center width=30><a href=admin.cgi?page=getcamcode&tid=#id#><img src=#image_dir#getcode.gif border=0 title='Get advertise code' alt='Get advertise code' width=16 height=16></a></td>
+	<td class=td#?1:2# align=center width=30><a href=admin.cgi?page=edittype&tid=#id#><img src=#image_dir#edit.gif border=0 title='Edit campaign' alt='Edit Campaign' width=16 height=16></a></td>
+	<td class=td#?1:2# align=center width=30><a href=admin.cgi?page=deletetype&tid=#id#><img src=#image_dir#del.gif title='Delete campaign' alt='Delete campaign' border=0 width=16 height=16></a></td>
+</tr>
+<!--[types-lines]-->
+
+
+<!--[down_arrow]-->
+<img src=#image_dir#toparrow.gif>
+<!--[down_arrow]-->
+
+<!--[top_arrow]-->
+<img src=#image_dir#downarrow.gif>
+<!--[top_arrow]-->
+
+
+
+<!--[stat-week]-->
+<td class=td1 width=14%>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr valign=bottom><td width=50%><img src=#image_dir#s.gif width=1 height=100>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td class=tds><img src=#image_dir#s.gif width=1 height=#shows_height#>#shows#</td></tr></table>
+</td><td width=50%>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td class=tdc><img src=#image_dir#s.gif width=1 height=#clicks_height#>#clicks#</td></tr></table>
+</td></tr>
+<tr><td colspan=2 align=center class=tdb>#date#</td></tr>
+</table>
+</td>
+<!--[stat-week]-->
+
+<!--[stat-day]-->
+<td class=td1 width=8%>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr valign=bottom><td width=50%><img src=#image_dir#s.gif width=1 height=100>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td class=tds><img src=#image_dir#s.gif width=1 height=#shows_height#>#shows#</td></tr></table>
+</td><td width=50%>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td class=tdc><img src=#image_dir#s.gif width=1 height=#clicks_height#>#clicks#</td></tr></table>
+</td></tr>
+<tr><td colspan=2 align=center class=tdb>#date#</td></tr>
+</table>
+</td>
+<!--[stat-day]-->

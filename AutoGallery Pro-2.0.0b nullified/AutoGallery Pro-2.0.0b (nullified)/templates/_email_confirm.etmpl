@@ -1,0 +1,12 @@
+To:  #%EMAIL%#
+From: #%ADMIN_EMAIL%#
+Subject: TGP Submission Confirmation
+
+You have recently submitted a thumbnail gallery to our TGP.
+In order to confirm your submission, please visit the URL
+listed below.
+
+#%CONFIRM_URL%#
+
+Regards,
+TGP Webmaster

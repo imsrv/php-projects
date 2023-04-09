@@ -1,0 +1,1 @@
+<img src="images/disabled.gif" border="0" width="17" height="16" align="middle">

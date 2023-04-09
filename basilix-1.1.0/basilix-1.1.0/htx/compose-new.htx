@@ -1,0 +1,140 @@
+<?php 
+//
+// Compose msg HTML file
+//
+?>
+<div align="center">
+<script language="JavaScript" src="<?php echo $BSX_BASEHREF?>/js/compose.js"></script>
+<script language="JavaScript"><!-- //
+	var no_rcpt = "<?php echo $lng->p(452)?>";
+	var no_body = "<?php echo $lng->p(453)?>";
+// --></script>
+<?php push_jsaddrs() ?>
+<br><?php push_errinfo() ?>
+<?php start_form("composeMail", "onSubmit='return cmpsValidate();' enctype='multipart/form-data'")?>
+<input type="hidden" name="RequestID" value="CMPSSEND">
+<input type="hidden" name="premail" value="<?php echo $premail?>">
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+<?php
+if($is_js && $abook_items_cnt) {
+?>
+<tr>
+<td class="chknext" align="center" colspan="2" width="100%">
+<?php
+$abook_grpitems_cnt = $abook_grpitems_cnt + 1 - 1;
+$lng->sb(402); $lng->sr("%d", $abook_items_cnt); $lng->sr("%g", $abook_grpitems_cnt);
+$lng->sr("%u", ""); $lng->sr("</a>", ""); $abook_msg = $lng->sp();
+echo "&lt;$abook_msg&gt;<br>";
+?>&nbsp;&nbsp;
+<select name="abook_item" size="1" onChange="resetSelected(0);">
+<option value="0"><?php echo $lng->p(412)?></option>
+<?php
+for($i = 0 ; $i < $abook_items_cnt ; $i++) {
+	$tmp_id = $abook_items[$i]["id"];
+	$tmp_nick = $abook_items[$i]["nick"];
+	$tmp_name = $abook_items[$i]["name"];
+	$tmp_email = $abook_items[$i]["email"];
+	$tmp_str = $tmp_nick;
+	if(!empty($tmp_email)) $tmp_str = $tmp_str . " (" . $tmp_email . ")";
+?>
+<option value="<?php echo $tmp_id?>"><?php echo $tmp_str?></option>
+<?php } ?>
+</select>
+&nbsp;&nbsp;
+<select name="abook_grpitem" size="1" onChange="resetSelected(1);">
+<option value="0"><?php echo $lng->p(413)?></option>
+<?php
+for($i = 0 ; $i < $abook_grpitems_cnt ; $i++) {
+	$tmp_id = $abook_grpitems[$i]["id"];
+	$tmp_grpname = $abook_grpitems[$i]["grpname"];
+	$tmp_str = $tmp_grpname;
+?>
+<option value="<?php echo $tmp_id?>"><?php echo $tmp_str?></option>
+<?php } ?>
+</select>
+</td>
+</tr>
+<?php
+} // if(is_js)
+?>
+<tr>
+<tr><td align="center" class="tblborder" colspan="2">
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tr>
+<td class="cmsghdr" align="left" width="20%"><?php echo nbsp($lng->p(403))?></td>
+<td class="cmsgval" align="left" width="80%">&nbsp;
+<input type="text" name="cmps_from" size="30" value="<?php echo htmlspecialchars($cmps_from)?>">&nbsp;</td>
+</tr>
+<tr>
+<td class="cmsghdr" align="left" width="20%"><?php echo nbsp($lng->p(404))?></td>
+<td class="cmsgval" align="left" width="80%">&nbsp;
+<input type="text" name="cmps_to" size="30" value="<?php echo htmlspecialchars($cmps_to)?>">&nbsp;
+<a tabindex="-1" href="#add2to" onClick="cmps_abook_add('cmps_to');"><?php echo $lng->p(414)?></a>
+</td>
+</tr>
+<tr>
+<td class="cmsghdr" align="left" width="20%"><?php echo nbsp($lng->p(405))?></td>
+<td class="cmsgval" align="left" width="80%">&nbsp;
+<input type="text" name="cmps_cc" size="30" value="<?php echo htmlspecialchars($cmps_cc)?>">&nbsp;
+<a tabindex="-1" href="#add2cc" onClick="cmps_abook_add('cmps_cc');"><?php echo $lng->p(415)?></a>
+</td>
+</tr>
+<tr>
+<td class="cmsghdr" align="left" width="20%"><?php echo nbsp($lng->p(406))?></td>
+<td class="cmsgval" align="left" width="80%">&nbsp;
+<input type="text" name="cmps_bcc" size="30" value="<?php echo htmlspecialchars($cmps_bcc)?>">&nbsp;
+<a tabindex="-1" href="#add2bcc" onClick="cmps_abook_add('cmps_bcc');"><?php echo $lng->p(416)?></a>
+</td>
+</tr>
+<tr>
+<td class="cmsghdr" align="left" width="20%"><?php echo nbsp($lng->p(407))?></td>
+<td class="cmsgval" align="left" width="80%">&nbsp;
+<input type="text" name="cmps_subject" size="30" value="<?php echo htmlspecialchars($cmps_subject)?>">&nbsp;</td>
+</td>
+</tr>
+<tr>
+<td class="cmsghdr" align="left" valign="top" width="20%" nowrap>&nbsp;<input type="submit" class="button" name="cmps_atchform" value="<?php echo $lng->p(408)?>" onClick="url_atchs=true;" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>&nbsp;</td>
+<td class="cmsgatchlist" align="left" width="80%">&nbsp;<?php 
+if(!empty($cmps_atchs)) {
+	$tmp_atchs = explode(chr(2), $cmps_atchs);
+	$tmp_glue = "";
+	$tmp_str = "";
+	for($i = 0 ; $i < count($tmp_atchs) ; $i++) {
+		$tmp_arr = explode(chr(3), $tmp_atchs[$i]);
+		$tmp_name = $tmp_arr[0];
+		$tmp_size = $tmp_arr[2];
+		if(!empty($tmp_name)) {
+			$lng->sb(464); $lng->sr("%f", $tmp_name); $tmp_cstr = $lng->sp();
+			$tmp_str .= $tmp_glue .  $tmp_name . "<font size=\"-2\"> / " . convert_size($tmp_size) . "</font>";
+			$tmp_glue = "<br>&nbsp;";
+		}
+	}
+} else {
+	$tmp_str = $lng->p(411);
+}
+echo $tmp_str;
+?>
+</td>
+</tr>
+<tr>
+<td class="cmsgbod" align="center" colspan="2" width="100%">
+<textarea name="cmps_body" rows="20" cols="60"><?php echo $cmps_body?></textarea>
+</td>
+</tr>
+<tr>
+<td class="normalbg" align="center" colspan="2" width="100%">
+<table border="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" width="50%" class="chknext">&nbsp;
+<input type="submit" class="button" name="cmps_savedraft" value="<?php echo $lng->p(463)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>
+</td>
+<td align="right" width="50%" class="chknext">
+<?php echo nbsp($lng->p(409))?><input type="checkbox" name="cmps_sign" value="1" <?php if($cmps_sign) echo "checked";?> style="border-width:0px;">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="button" name="cmps_send" value="<?php echo $lng->p(410)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>&nbsp;</td>
+</tr></table>
+</td>
+</tr>
+</table>
+</td></tr>
+</table>
+</div>
+<?php stop_form()?>

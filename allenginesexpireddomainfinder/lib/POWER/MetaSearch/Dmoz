@@ -1,0 +1,15 @@
+#############################################################
+#############################################################
+##        Aaron's All Engine Expired Domain Finder         ##
+##                This is a Commercial Script              ##
+##        Modification, Distribution or Resale without     ##
+##        Prior written permission is in Violation of      ##
+##        the copyrights and International Intellectual    ##
+##        Property Laws.  Violators will be prosecuted!    ##
+##        http://www.aaronscgi.com - aaron@aaronscgi.com   ##
+#############################################################
+#############################################################
+url     => "http://search.dmoz.org/cgi-bin/search?search=^~query~^&cat=&t=s&fb=0&all=no",
+ip      => "207.200.81.135",
+Rec     => qr{<li><a href=\"([^\"]*)\">(.*?)</a>.*?\s*-\s*(.*?)<br>}si,
+Next    => qr{<a href=\"([^\"]*)\">Next</a>}si,

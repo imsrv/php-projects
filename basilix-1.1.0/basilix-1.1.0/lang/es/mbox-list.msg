@@ -1,0 +1,37 @@
+<?
+// MBox listing messages
+$lang_msg["mboxlst"] = array(
+	201	=>	'Desde',
+	202	=>	'Ordenar por Remitentes',
+	203	=>	'Para',
+	204	=>	'Ordenar por Destinatarios',
+	205	=>	'Fecha',
+	206	=>	'Ordenar por Fecha',
+	207	=>	'Tamaño',
+	208	=>	'Ordenar por Tamaño',
+	209	=>	'Asunto',
+	210	=>	'Ordenar por Asunto',
+	211	=>	'(sin Asunto)',
+	212	=>	'Mover los mensajes seleccionados a',
+	213	=>	'Hacerlo',
+	214	=>	'Carpeta Vacía',
+	215	=>	'Borrar mensajes seleccionados',
+	216	=>	'Purgar mensajes seleccionados',
+	217	=>	'Prev',
+	218	=>	'Prox',
+	219	=>	'No hay mensajes para ver en esta carpeta.',
+	220	=>	'Olvidó seleccionar una carpeta, vuelva a intentar..',
+	221	=>	'Olvidó seleccionar un mensaje, vuelva a intentar..',
+	222	=>	'No se pudieron mover los mensajes seleccionados, vuelva a intentarlo más tarde..',
+	223	=>	'Los mensajes seleccionados (%d) han sido movidos a la papelera.',
+	224	=>	'No se pudieron borrar los mensajes seleccionados, vuelva a intentarlo más tarde..',
+	225	=>	'Los mensajes seleccionados han sido movidos.',
+	226	=>	'No se pueden purgar los mensajes seleccionados, vuelva a intentarlo más tarde..',
+	227	=>	'Los mensajes seleccionados han sido purgados.',
+	228	=>	'Página: ',
+	229	=>	'Ud. realmente quiere vaciar esta carpeta?',
+	230	=>	'Bienvenido, su última conexión fue desde',
+	231	=>	'El mensaje ha sido puesto en la papelara.',
+	232	=>	'El mensaje ha sido purgado, ya no es recuperable.'
+);
+?>

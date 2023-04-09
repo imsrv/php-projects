@@ -1,0 +1,25 @@
+1.1.0:
+	- addressbook improvements
+	- menu is back on the left side of the window
+	- draft mechanism
+	- reply-to added
+	- prev/next added
+	- desired domain feature added
+	- user folder listing added
+	- several themes added
+	- minor bug fixes
+1.0.4b:
+	- addressbook improvements.
+	- turkish language bugs fixed.
+	- courier imapd support is given
+	- virtual domain support for courier imapd is given
+	- a couple of bug fixes.
+1.0.3b:
+	- changed the database username (basilix -> bsxuser)
+	to give a chance to import the old addressbook entries
+	from the 0.9.7 version.
+	- fixed a bug in files/logout.php3
+	- erased some unused request ids
+1.0.2b:
+
+	- completely re-written.

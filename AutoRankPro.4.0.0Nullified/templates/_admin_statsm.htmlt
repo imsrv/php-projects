@@ -1,0 +1,27 @@
+<tr bgcolor="#ffffff">
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%RESET_DATE%#
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%HITS_IN%#
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%HITS_OUT%#
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%ACTIVE%#
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%TOP_RANKED%#
+</font>
+</td>
+</tr>

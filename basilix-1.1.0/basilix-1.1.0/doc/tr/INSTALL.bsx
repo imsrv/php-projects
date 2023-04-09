@@ -1,0 +1,101 @@
+Ýlk önce PHP, MySQL ve IMAP desteði verilmiþ bir web sunucusuna
+(tercihan Apache) ihtiyaç vardýr. BasiliX, Apache 1.3.19, PHP 3.0.18,
+WU-IMAP 2000c ve MySQL v3.23.33 kullanýlarak yazýlmýþtýr. Eðer bu sürümlere
+yakýn sürümler kullanýrsanýz (ya da daha üst) daha rahat edersiniz.
+
+Eger sunucunuz yukaridaki özelliklere sahipse, 2. aþamaya geçebilirsiniz.
+
+1) Apache web sunucusu, PHP, MySQL ve IMAP kurulumlarý.
+-------------------------------------------------------
+
+Ýlgili dosyalarý aþaðýdaki adreslerden çekiniz:
+
+o Apache: http://www.apache.org
+o PHP   : http://www.php.net (PHP3 ve PHP4 calýþmaktadýr)
+o MySQL : http://www.mysql.org
+o IMAP  : ftp://ftp.cac.washington.edu
+
+Bu yazýlýmlarýn KURULUM dosyalarýný okuyarak programlarý sisteminize
+kurunuz.
+
+2) BasiliX kurulum.
+-------------------
+
+En son BasiliX sürümünü makinanýza indiriniz; en son sürüm: v1.1.0. 
+Kurulacak hedef dizin /usr/local/basilix dizinidir. BasiliX dosyalarýný
+bu dizine yerleþtirerek, basilix ayar, kütüphane gibi dosyalarýn
+web üzerinden eriþimlerini engelliyoruz. Eðer /usr/local/basilix
+haricinde bir dizin kullanmanýz gerekiyorsa, aþaðýdaki komutlardaki
+dizin kýsmýný deðiþtiriniz.
+
+Dosyayý makinanýza indirdikten sonra, root olunuz (su root) ve
+dosyayý açýnýz:
+
+$ su root
+Password:
+# cd /usr/local
+# gzip -d -c basilix-1.1.0.tar.gz | tar xvf -
+# cd basilix
+
+Dosyalarý HTTP protokolünün eriþemeyeceði, dolayýsýyla kullanýcýlarýn
+webten eriþemeyecekleri bir dizine yerleþtirdik. Ancak, sistemde 
+bulunan lokal kullanýcýlar dosyalara hala eriþebilir (örneðin, "dbset"
+dizini içinde yer alan, içerisinde veritabaný kullanýcý adý ve
+þifresi gibi bilgileri içeren "mysql-set.inc" dosyasi). Tüm basilix
+dizinini güven altýna almak için aþaðýdaki komutlarý giriyoruz:
+
+# chown -R nobody /usr/local/basilix
+# chmod 700 /usr/local/basilix
+
+Yukarýdaki komutta web sunucunuzun (apache olduðunu varsayalým)
+"nobody" kullanýcýsý ile çalýþtýðýný farzettik. Eðer baþka bir
+kullanýcý ismi ile çalýþýyorsa web sunucusu, yukarýdaki komutta
+ilgili yeri deðiþtiriniz.
+
+Artik, web tarafýndan görülecek dosya ve dizinleri aktif hale
+getirebiliriz. Bunlar; css dizini, js dizini, images dizini,
+banners dizini, index.php3 dosyasý ve basilix.php3 dosyasýdýr.
+Eðer webten eriþim saðlanýlacak /home/httpd/html/basilix ise,
+aþaðýdaki komutlarý girmemiz gerekiyor (root olarak):
+
+# cd /usr/local/basilix
+# mv js /home/httpd/html/basilix
+# mv css /home/httpd/html/basilix
+# mv images /home/httpd/html/basilix
+# mv banners /home/httpd/html/basilix
+# mv index.php3 /home/httpd/html/basilix
+# mv basilix.php3 /home/httpd/html/basilix
+# chown -R nobody /home/httpd/html/basilix
+
+Böylelikle web kullanýcýlarý sadece CSS dosyalarýna, resim dosyalarýna
+(banners dizini dahil) ve iki adet PHP dosyasýna eriþebileceklerdir.
+Geriye kalan tüm dosyalar güvenli bir þekilde baþka bir dizinde durmaktadýr.
+
+Bu noktada /home/httpd/html/basilix dizininde iki adet dosya 
+(index.php3, basilix.php3) ve dört adet dizin bulunmasý (css, js, 
+images, banners) gerekiyor. Eðer PHP3 yerine PHP4 kullanýyorsaniz, aþaðýdaki
+komutlarý girmelisiniz (root olarak):
+
+# cd /home/httpd/html/basilix
+# ln -fs basilix.php3 basilix.php
+# ln -fs index.php3 index.php
+
+Yukarýda, PHP dosya uzantýsýnýn ".php3" veya ".php" olduðu
+varsayýlmýþtýr. Þayet dosya uzantýnýz bunlarýn haricinde birþeyse
+(".phtml" gibi), .phtml uzantýsý için de sembolik link yaratmalýsýnýz.
+Bunun için yukarýdaki komutlarý .php uzantýlarýný .phtml yaparak tekrar
+giriniz.
+
+Eðer kullanacaðýnýz dizin /usr/local/basilix deðilse, basilix.php3
+ve index.php3 dizini içerisinde yer alan ilk "require" satýrýnda
+deðiþiklik yapmanýz gerekmektedir.
+
+/usr/local/basilix/conf dizinine girin ve "global.conf" dosyasýný
+isteðinize göre editleyin.
+
+Gene ayný dizinde bulunan "basilix.conf" dosyasýný editleyin ve
+$BSX_BANNERDIR deðiþkenini "/home/httpd/html/basilix/banners" deðerine
+eþitleyin (eðer /home/httpd/html/basilix deðil de baþka bir dizinde
+ise web alaný, o halde o dizini yazýn)
+
+-arslanm 

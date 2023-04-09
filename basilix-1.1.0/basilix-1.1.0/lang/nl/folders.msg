@@ -1,0 +1,37 @@
+<?
+// Folders screen messages
+$lang_msg["folders"] = array(
+	151	=>	'Folder',
+	152	=>	'Totaal',
+	153	=>	'Ongelezen',
+	154	=>	'Grootte',
+	155	=>	'Maak een persoonlijke folder:',
+	156	=>	'Maak mijn persoonlijke folder',
+	157	=>	'U kunt een willekeurig aantal persoonlijke folders maken. Om een nieuwe persoonlijke folder te maken, typ hieronder de naam en klik op de MAAK knop.',
+	158	=>	'U heeft geen foldernaam opgegeven, probeer het nog eens.',
+	159	=>	'Die folder bestaat reeds, probeer het nog eens.',
+	160	=>	'Uw nieuw folder is met succes gemaakt.',
+	161	=>	'Verwijder een folder:',
+	162	=>	'Verwijder geselecteerde folder!',
+	163	=>	'Verwijderde folders zijn <u><b>NIET</b> herstelbaar</u>. Als U een folder wilt verwijderen, selecteer deze en klik de VERWIJDER knop.',
+	164	=>	'U heeft geen folder geselecteerd om te verwijderen, probeer het nog eens.',
+	165	=>	'De opgegeven folder kon niet verwijderd worden, probeer het later nog eens..',
+	166	=>	'De opgegeven folder is met succes verwijderd.',
+	167	=>	'Hernoem een folder:',
+	168	=>	'Hernoem geselecteerde folder',
+	169	=>	'Als U een persoonlijke folder wilt hernoemen, selecteer deze dan en klik op HERNOEM.',
+	170	=>	'Oude foldernaam',
+	171	=>	'Niewe foldernaam',
+	172	=>	'U heeft geen folder opgegeven om te hernoemen, probeer het nog eens..',
+	173	=>	'U heeft geen nieuwe foldernaam opgegeven, probeer het nog eens..',
+	174	=>	'De opgegeven folder kon niet worden hernoemd, probeer het later nog eens..',
+	175	=>	'Uw folder is met succes hernoemd.',
+	176	=>	'Leeg de prullenbak',
+	177	=>	'De nieuwe folder kon niet gemaakt worden. Zit U misschien over uw quota heen? Probeer het anders later nog eens..',
+	178	=>	'De opgegeven folder is met succes leeggemaakt.',
+	179	=>	'De opgegeven folder kon niet worden leeggemaakt, probeer het later nog eens..',
+	180	=>	'Weet U zeker dat U deze folder wilt leegmaken?',
+	181	=>	'Fout tijdens het maken van de "Prullenbak"',
+	182	=>	'Fout tijdens het maken van de "Verstuurde berichten"-folder'
+);
+?>

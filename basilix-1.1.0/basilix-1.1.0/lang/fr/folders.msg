@@ -1,0 +1,37 @@
+<?
+// Folders screen messages
+$lang_msg["folders"] = array(
+	151	=>	'Dossier',
+	152	=>	'Total',
+	153	=>	'Non lu',
+	154	=>	'Taille',
+	155	=>	'Créer un dossier personnel:',
+	156	=>	'Créer mon dossier personel',
+	157	=>	'Vous pouvez créer autant de dossiers personnel que vous voulez. Pour créer un nouveau dossier personnel,entrez son nom ci-dessous et cliquez sur le bouton CREER.',
+	158	=>	'Vous n\'avez pas saisi le nom du nouveau dossier.',
+	159	=>	'Ce dossier existe déjà, essayez à nouveau.',
+	160	=>	'Votre nouveau dossier a été créé avec succès.',
+	161	=>	'Supprimer un dossier:',
+	162	=>	'Supprime le dossier sélectionné',
+	163	=>	'Les dossiers supprimés <u><b>NE SONT PAS</b></u> recupérables. Si vous souhaitez supprimer un dossier, sélectionnez le et cliquez sur le bouton SUPPRIMER.',
+	164	=>	'Vous n\'avez pas sélectionné un nom de dossier à supprimer, essayez à nouveau.',
+	165	=>	'Impossible de supprimer le dossier choisi, essayez plus tard...',
+	166	=>	'Le dossier choisi a bien été supprimé.',
+	167	=>	'Renommer un dossier:',
+	168	=>	'Renommer le dossier sélectionné',
+	169	=>	'Si vous voulez renommer un dossier personnel, sélectionnez le et cliquez sur le bouton RENOMMER.',
+	170	=>	'Ancien nom',
+	171	=>	'Nouveau nom',
+	172	=>	'Vous n\'avez pas sélectionné un nom de dossier à renommer, essayez à nouveau...',
+	173	=>	'Vous n\'avez pas saisi le nouveau nom du dossier, essayez à nouveau...',
+	174	=>	'Renommage du dossier choisi impossible, essayez plus tard..',
+	175	=>	'Le dossier a bien été renommé.',
+	176	=>	'Vider la corbeille',
+	177	=>	'Impossible de créer le nouveau dossier. Peut-être avez-vous dépassé votre quota? essayez plus tard...',
+	178	=>	'Le dossier choisi a bien été vidé.',
+	179	=>	'Impossible de vider le dossier spécifié, essayez plus tard...',
+	180	=>	'Etes-vous sûr(e)de vouloir vider ce dossier?',
+	181	=>	'Erreur de creation de la Corbeille',
+	182	=>	'Erreur de création du dossier Messages envoyés '
+);
+?>

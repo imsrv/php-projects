@@ -1,0 +1,83 @@
+<html>
+<head>
+  <title>AutoGallery SQL Administration</title>
+  <script language="JavaScript">
+    function openHelp(url, name) { 
+      window.open(url, name, 'scrollbars=1,resizable=no,width=350,height=450,status=0,menubar=0');
+    }
+    function openExtern(url, name) { 
+      window.open(url, name, 'scrollbars=1,resizable=no,width=500,height=250,status=0,menubar=0');
+    }
+  </script>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<font face="Verdana" size="1" style="font-size: 11px;" color="red">
+<b>#%MESSAGE%#</b>
+</font>
+
+<br><br>
+
+<form action="admin.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="700">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="0" border="0" width="100%">
+
+<tr>
+<td bgcolor="#004080" align="center">
+
+<table>
+<tr>
+<td>
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>#%RESULTS%# Results For '#%KEYWORD%#'<br>
+</font>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+
+<tr>
+<td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">

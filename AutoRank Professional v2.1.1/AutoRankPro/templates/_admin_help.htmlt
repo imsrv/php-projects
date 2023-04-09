@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>AutoRank Pro Help</title>
+  <style type="text/css">
+  <!--
+    A:link { text-decoration: none; }
+    A:active {text-decoration: none;}
+    A:visited {text-decoration: none;}
+    A:hover {text-decoration: none; color: #FF0000;}
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="purple" alink="#ff0000">
+
+<div align="center">
+
+<table width="100%">
+<tr>
+<td>
+<font face="Verdana,Arial" size="1">
+
+#%HELP_DATA%#
+
+<p>
+
+<b><a href="javascript:parent.window.close();">Close Window</a></b>
+
+</font>
+
+</td>
+</tr>
+</table>

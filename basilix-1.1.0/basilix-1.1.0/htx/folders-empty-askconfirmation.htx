@@ -1,0 +1,8 @@
+<?
+//
+// Ask confirmation (for nonjavascript browsers) - empty a folder HTML file
+//
+?>
+<div align="center">
+<?php push_emptfol_nonjs($mbox)?>
+</div>

@@ -1,0 +1,15 @@
+#############################################################
+#############################################################
+##        Aaron's All Engine Expired Domain Finder         ##
+##                This is a Commercial Script              ##
+##        Modification, Distribution or Resale without     ##
+##        Prior written permission is in Violation of      ##
+##        the copyrights and International Intellectual    ##
+##        Property Laws.  Violators will be prosecuted!    ##
+##        http://www.aaronscgi.com - aaron@aaronscgi.com   ##
+#############################################################
+#############################################################
+url     => "http://lycospro.lycos.com/srchpro/?aloc=sb_init_content&first=1&lpv=1&query=^~query~^&t=all&type=advwebsites",
+ip      => "209.202.192.36",
+Rec     => qr{<LI><FONT.*?&target=(.*?)&.*?>(.*?)</a>(.*?)</FONT>}si,
+Next    => qr{<A HREF=(/srchpro/\?[^>]*)><B>next</B></A>}si,

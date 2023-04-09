@@ -1,0 +1,207 @@
+$HEAD = <<HEAD;
+<html>
+<head>
+  <title>AutoGallery SQL - Link Check Results</title>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="800">
+  <tr bgcolor="#aaaaaa">
+    <td align="center">
+
+      <table cellspacing="1" cellpadding="3" border="0" width="100%">
+
+        <tr>
+          <td bgcolor="#004080" align="center" colspan="6">
+            <font face="Arial" size="3" color="white" style="font-size: 15px;">
+            <b>AutoGallery SQL - Link Check Results</b>
+            </font>
+          </td>
+        </tr>
+
+        <tr bgcolor="#cccccc">
+          <td align="center">
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>ID</b>
+            </font>
+          </td>
+          <td align="center">
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>URL</b>
+            </font>
+          </td>
+          <td align="center">
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Status</b>
+            </font>
+          </td>
+          <td align="center">
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Recip</b>
+            </font>
+          </td>
+          <td align="center">
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Banned</b>
+            </font>
+          </td>
+          <td align="center">
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Remove</b>
+            </font>
+          </td>
+        </tr>
+HEAD
+
+
+$FOOT = <<FOOT;
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+<br><br>
+
+<table width="400" cellspacing="0" cellpadding="3">
+  <tr bgcolor="#cccccc">
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      <b>Started At:</b>
+      </font>
+    </td>
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      #%START%#
+      </font>
+    </td>
+  </tr>
+  <tr bgcolor="#ececec">
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      <b>Completed At:</b>
+      </font>
+    </td>
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      #%STOP%#
+      </font>
+    </td>
+  </tr>
+  <tr bgcolor="#cccccc">
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      <b>Running Time:</b>
+      </font>
+    </td>
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      #%RUNTIME%#
+      </font>
+    </td>
+  </tr>
+  <tr bgcolor="#ececec">
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      <b>URLs Examined:</b>
+      </font>
+    </td>
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      #%EXAMINED%#
+      </font>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+</body>
+</html>
+FOOT
+
+
+$ROW = <<ROW;
+	    <tr bgcolor="#cccccc">
+          <td width="90%" colspan="2">
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>#%POST_ID%# <a href="#%GALLERY_URL%#" class="reg" target="_blank">#%GALLERY_URL%#</a></b>
+            </font>
+          </td>
+          <td align="center" width="10%">
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b><a href="#%CGI_URL%#/admin/delete.cgi?id=#%POST_ID%#" class="reg" target="_blank">Remove</a></b>
+            </font>
+          </td>
+
+        </tr>
+        <tr bgcolor="#ececec">
+          <td width="50%">
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Status:</b> #%CODE%#<br>
+            <b>Recip:</b> #%RECIP%#<br>
+            <b>Images:</b> #%IMAGES%#<br>
+            <b>Page:</b> #%PAGE%#<br>
+            <b>Partner:</b> #%PARTNER%#
+            </font>
+          </td>
+          <td colspan="2" width="50%">
+          <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Banned HTML:</b> #%BANNED_HTML%#<br>
+            <b>Throughput:</b> #%THROUGHPUT%#<br>
+            <b>Links:</b> #%LINKS%#<br>
+            <b>Content:</b> #%CONTENT%#<br>
+            <b>Category:</b> #%CATEGORY%#
+            </font>
+          </td>
+        </tr>
+ROW
+
+
+$SECTION = <<SECTION;
+        <tr>
+          <td bgcolor="#aaaaaa" align="center" colspan="3">
+            <font face="Arial" size="3" style="font-size: 15px;">
+            <b>#%DATABASE%# Database</b>
+            </font>
+          </td>
+        </tr>
+SECTION
+
+1;

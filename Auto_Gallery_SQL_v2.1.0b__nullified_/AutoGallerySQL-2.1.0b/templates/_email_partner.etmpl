@@ -1,0 +1,16 @@
+To: #%EMAIL%#
+From: #%ADMIN_EMAIL%#
+Subject: Added as a Partner
+
+#%CONTACT%#, you have been added as a partner for our TGP.  This will allow
+you to come to our site and instantly post galleries to our TGP without
+having to wait for approval.  Below is the information you will need to
+access the partner posting area of our TGP.
+
+Post A Gallery: #%CGI_URL%#/partner.cgi
+Edit Your Details: #%CGI_URL%#/partner.cgi?login
+Username: #%PARTNER_ID%#
+Password: #%PASSWORD%#
+
+Regards,
+TGP Administrator

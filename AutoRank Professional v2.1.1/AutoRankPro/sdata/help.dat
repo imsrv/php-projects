@@ -1,0 +1,596 @@
+package HELPINFO;
+
+$HELPINFO::PAGE{'TOPICS'} = <<'TOPICS';
+<b><font size="2"><a href="help.cgi?page=BANS">Banning Items</a></font></b>
+<p>
+<b>Word Bans</b> <br>
+<b>E-mail Bans</b><br>
+<b>Domain Bans</b><br>
+<p>
+<b><font size="2"><a href="help.cgi?page=ALL">Viewing All Members</a></font></b>
+<p>
+<b>Getting More Details</b><br>
+<b>Editing An Account</b><br>
+<b>Viewing Account Stats</b><br>
+<b>Deleting Accounts</b><br>
+<p>
+<b><font size="2"><a href="help.cgi?page=EDITMEM">Editing An Account</a></font></b>
+<p>
+<b>Making Changes</b><br>
+<b>Adding Icons To An Account</b><br>
+<b>Removing Icons From Account</b><br>
+<b>Locking An Account</b><br>
+<b>Unlocking An Account</b><br>
+<p>
+<b><font size="2"><a href="help.cgi?page=DISPLAYMEM">Viewing A Member</a></font></b>
+<p>
+<b>Editing A Member</b><br>
+<b>Deleting The Member</b><br>
+<b>Viewing Account Stats</b><br>
+<b>Suspending An Account</b><br>
+<b>Reactivating An Account</b><br>
+<b>Locking An Account</b><br>
+<b>Unlocking An Account</b><br>
+<p>
+<b><font size="2"><a href="help.cgi?page=NEW">Viewing New Accounts</a></font></b>
+<p>
+<b>Approving An Account</b><br>
+<b>Rejecting An Account</b><br>
+<b>Editing An Account</b><br>
+<p>
+<b><font size="2"><a href="help.cgi?page=BACKUP">Backing Up Databases</a></font></b>
+<p>
+<b>Selecting Backup Files</b><br>
+<b>Backing Up Data</b><br>
+<b>Restoring Data</b><br>
+<p>
+<b><font size="2"><a href="help.cgi?page=ERRLOG">Error Log</a></font></b>
+<p>
+<b>Permission Denied Error</b><br>
+<b>No Such File or Directory Error</b><br>
+<b>Resource Temporarily Unavailable</b><br>
+<p>
+<b><font size="2"><a href="help.cgi?page=CHTLOG">Cheating Log</a></font></b>
+<p>
+<b>Clearing The Log</b><br>
+<b>Multiple Click Cheat</b><br>
+<b>Double CGI Cheat</b><br>
+<p>
+<b><font size="2"><a href="help.cgi?page=MAIL">Sending Mail</a></font></b>
+<p>
+<b>Selecting Recipients</b><br>
+<b>Sending The E-mail </b><br>
+<p>
+<b><font size="2"><a href="help.cgi?page=EMAILS">Listing E-Mails</a></font></b>
+<p>
+<b>Separating Character </b><br>
+<p>
+<b><font size="2"><a href="help.cgi?page=HTML">Editing Your HTML</a></font></b>
+<p>
+<b>The Template</b><br>
+<b>The Header</b><br>
+<b>The Footer</b><br>
+<b>Header/Footer Template</b><br>
+<b>Saving The Data</b><br>
+<p>
+TOPICS
+
+$HELPINFO::PAGE{'NEW'} = <<'NEW';
+<b><font size="2" color="#000099">Viewing New Accounts</font></b>
+<p>
+If you have choosen to review new signups, this is the page where
+you can approve and decline those accounts.
+<p>
+<b>Approving An Account</b>
+<p>
+To approve an account, all you need to do is check the box next to it's description.
+Now select the Approve Account option next to the Execute Function button.
+Once you have done that, press the Execute Function button, and the account will be
+ready for use with the top list.  An e-mail will be sent to the account holder informing
+them that their account is activated. _email_added.etmpl contains the message that will
+be sent.  You can accept multiple accounts at once by checking multiple boxes.
+<p>
+<b>Rejecting An Account</b>
+<p>
+To reject an account, all you need to do is check the box next to it's description.
+Now select the Reject Account option next to the Execute Function button.
+Once you have done that, press the Execute Function button, and the account will be
+removed from the database.  An e-mail will be sent to the account holder informing
+them that their account is rejected. _email_reject.etmpl contains the message that will
+be sent.  You can reject multiple accounts at once by checking multiple boxes.
+<p>
+<b>Editing An Account</b>
+<p>
+If you want to edit an account before accepting it, just check the box next to the
+site.  Now select the Edit Selected Member option next to the Execute Function button.
+Once you have done that, press the Execute Function button and you will be taken to a
+page where you can edit the account. 
+NEW
+
+$HELPINFO::PAGE{'MAIL'} = <<'MAIL';
+<b><font size="2" color="#000099">Sending Mail</font></b>
+<p>
+From this page you can send e-mail to one or more of your members.  This
+page allows you to select a single member, multiple members, or all members
+to send the e-mails to.
+<p>
+<b>Selecting Recipients</b>
+<p>
+The Send To: field allows you to select your recipients.  If you want to send
+e-mail to all members, select the first option - "All Members".  If you want
+to send e-mail to a single member, select only that member.  If you want to send
+the e-mail to multiple members, but not all of them, hold the ctrl key down
+on your keyboard while you click on the members you want to send to.
+<p>
+<b>Sending The E-mail</b>
+<p>
+Once you have selected who you want to send to, the subject of your message, and
+entered your message, you are ready to sent the e-mail.  All you have to do is 
+press the Send Email button.  Once you do this, you will be immediately returned
+to the main page - the e-mails will be sent in the background.
+MAIL
+
+$HELPINFO::PAGE{'EMAILS'} = <<'EMAILS';
+<b><font size="2" color="#000099">Listing E-mails</font></b>
+<p>
+This page will allow you to get a list of all your member's e-mail addresses.
+This can be useful for use with external e-mail clients.
+<p>
+<b>Seperating Character</b>
+<p>
+In this field you will enter the character to seperate the e-mail addresses
+with. For example, if you enter "," you will get a list like:
+<p>
+email@site.com, email2@site2.com, etc
+<p>
+Use &lt;br&gt; if you want them listed one on top of another.
+EMAILS
+
+$HELPINFO::PAGE{'ERRLOG'} = <<'ERRLOG';
+<b><font size="2" color="#000099">Error Log</font></b>
+<p>
+This page will display all of the errors that the script has experienced.
+Most of the time this log should be fairly small, assuming you have properly
+installed the software.
+<p>
+<b>Permission Denied Error</b>
+<p>
+The permission denied error indicates that improper permissions have been
+set on a file or directory.  Double check your permissions settings and make
+sure they are correct for your server.
+<p>
+<b>No Such File or Directory Error</b>
+<p>
+This indicates the script could not find the file/directory it was looking for.
+Generally this means you have not setup your directory paths properly.
+<p>
+<b>Resource Temporarily Unavailable</b>
+<p>
+This is not a bad error to receive in most cases.  It just indicates that two 
+users were trying to access the same database at the same time.  The script will
+not allow this (assuming you are using the GDBM version).  This is good because
+it will prevent corruption of your databases.
+ERRLOG
+
+$HELPINFO::PAGE{'CHTLOG'} = <<'CHTLOG';
+<b><font size="2" color="#000099">Cheating Log</font></b>
+<p>
+This page will allow you to view a log of possible cheating attempts.  It
+is important to note that these are only <b>possible</b> cheating attemps.
+You should do some further investigation, and not just rely on this information
+to accuse your members.  This data is a good starting point, but some of the
+data that is logged is just a person accidently doing things that appear to
+be cheating.
+<p>
+<b>Clearing The Log</b>
+<p>
+You should clear this log every so often, as it can get very large if you don't
+keep your eyes on it.  To clear the log, just press the Clear Cheat Log button.
+<p>
+<b>Multiple Click Cheat</b>
+<p>
+This message indicates that a person clicked through multiple times in a row for
+an account.  The account ID is listed so you can track down which accounts are
+trying to boost their count.
+<p>
+<b>Double CGI Cheat</b>
+<p>
+This message indicates that a member tried to circumvent the Double CGI cheat 
+protection of the script.  This usually means they tried to embed the link to
+your site in a img tag or something similar.
+CHTLOG
+
+$HELPINFO::PAGE{'BREAKS'} = <<'BREAKS';
+<b><font size="2" color="#000099">Editing List Breaks</font></b>
+<p>
+This is the page where you can edit the HTML that appears in your list
+breaks.  You must have entered some list breaks in setup.cgi in order
+to use this function.
+<p>
+<b>Saving HTML</b>
+<p>
+To save some HTML for a list break, all you need to do is enter the HTML
+into the provided space.  Once you have entered the HTML, select which
+break it is you want to save this HTML for.  Now you can press the Save
+Break button and your HTML will be recorded.
+<p>
+<b>Loading HTML</b>
+<p>
+If you have already setup HTML for a list break and want to make changes
+to it, all you need to do is select the list break you are wanting to 
+edit.  Once you have selected that break, press the Load Break button and
+your HTML will appear in the box.  You can then edit and save it as per the
+instructions above.
+<p>
+<b>Notes</b>
+<p>
+Some things to remember about list breaks:<p>
+- You cannot put a textarea tag into any list break<br>
+- If you are using a table for your rankings, you will need to include
+the proper table code in the list break so it will appear in the proper
+location.  Usually this consists of starting a new table row, entering
+your HTML wrapped in a td tag, and then closing out the table row.
+<p>
+Some sample list breaks have been included with the documentation.  See
+the samples.html file for more information
+BREAKS
+
+$HELPINFO::PAGE{'BACKUP'} = <<'BACKUP';
+<b><font size="2" color="#000099">Backing Up Databases</font></b>
+<p>
+This page is where you will be able to backup your databases so you can
+be sure not to loose any data.  This will also be useful if you move to 
+a new server, as it will make importing your databases trivial.
+<p>
+<b>Selecting Backup Files</b>
+<p>
+All databases will be backed up to plain text files.  On this page there
+are three fields you need to fill in.  They will all be the names of the
+files you want to backup the data to, or the names of the files you want
+to import saved data from.  If you are backing up, these files will be 
+placed in the script data directory;  if you are restoring, these files
+will need to be placed in the script data directory before begining the
+restoration process.
+<p>
+<b>Backing Up Data</b>
+<p>
+Once you have selected the filenames you want to backup to, just press the
+Backup Data button.  Three files will be created in your sdata directory,
+and you will need to download those in ASCII mode to your local computer.
+<p>
+<b>Restoring Data</b>
+<p>
+To restore data you will need to upload your backup files to the sdata directory
+in ASCII mode.  Once they have all been uploaded, enter their filenames in the
+appropriate boxes, then press the Restore Data button.  Your data will be restored
+and the list will be ready for normal operations.
+BACKUP
+
+$HELPINFO::PAGE{'SETUP'} = <<'SETUP';
+<b><font size="2" color="#000099">Script Setup</font></b>
+<p>
+This page is where you will setup the basic variables for the script.
+All of the variables should have adequate descriptions below them, including
+an example setting.  This should be enough to get you going.  Here we will
+only discuss a few of the checkbox options.
+<p>
+<b>Forward surfers to a random ranking page?</b><br>
+This option, if checked, will make the script choose a random page from your
+"Page List:" value to forward surfers to.  Each surfer will be forwarded to 
+a random page.  If you check this, you do not need to fill in the "Forward URL"
+value.
+<p>
+<b>Log Errors?</b><br>
+If this option is checked, all error messages that the script generates will
+be logged.  This only logs fatal errors (ie if a file cannot be accessed).
+Data errors are not logged;  cheating attempts are always logged.
+<p>
+<b>Use double CGI cheat protection?</b><br>
+If this option is checked, surfers will be forwarded to a gateway page before
+they make it to your main ranking pages.  This gateway will verify that a real
+surfer is clicking through, and it is not a cheating attempt by the member.
+<p>
+<b>Review new additions before listing?</b><br>
+If this option is checked, accounts will not be instantly added.  You will have
+to approve all signups before they can be listed on your site.
+<p>
+<b>Mark new sites with an icon?</b><br>
+If this option is checked, a "new" icon will be displayed next to sites that
+have recenly signed up.  If you check this box you will need to fill in the
+URL to your new icon, and the number of seconds to display them for.
+SETUP
+
+
+$HELPINFO::PAGE{'BANS'} = <<'BANS';
+<b><font size="2" color="#000099">Banning Items</font></b>
+<p>
+This page allows you to ban words, URLs, and e-mail addresses from your
+pic post.  E-mail and URL bans are checked when a member signs up for an
+account, and when they edit their account.  Word bans are checked when a
+member posts a pic for their account.
+
+<p>
+
+<b>Word Bans</b>
+<p>
+To ban a word, simply enter the word you want to ban, select the "Ban Type" to 
+be Word, set "Add or Remove?" to Add, then press the "Update Ban List" button.
+You will then be returned to the ban page where you should see the word you entered
+in the word ban column.
+<p>
+To un-ban a word, simply enter the word you want to un-ban, select the "Ban Type" to 
+be Word, set "Add or Remove?" to Remove, then press the "Update Ban List" button.
+You will then be returned to the ban page where you should no longer see the word 
+you entered in the word ban column.
+<p>
+
+<b>E-mail Bans</b>
+<p>
+To ban an e-mail, simply enter the address you want to ban, select the "Ban Type" to 
+be E-mail, set "Add or Remove?" to Add, then press the "Update Ban List" button.
+You will then be returned to the ban page where you should see the e-mail you entered
+in the e-mail ban column.
+<p>
+To un-ban an e-mail, simply enter the address you want to un-ban, select the "Ban Type" to 
+be E-mail, set "Add or Remove?" to Remove, then press the "Update Ban List" button.
+You will then be returned to the ban page where you should no longer see the e-mail 
+you entered in the e-mail ban column.
+<p>
+The e-mail ban can be used to ban full e-mail addresses, or just e-mail addresses from
+a certain domain.  If you want to ban j.smith@site.com from your list, enter the complete
+e-mail address.  If, however, you don't want people using Hotmail to be able to sign up, 
+just enter hotmail.com in the box and no one using an @hotmail.com address will be able to
+sign up.
+<p>
+
+<b>Domain Bans</b>
+<p>
+To ban a domain, simply enter the URL you want to ban, select the "Ban Type" to 
+be Domain, set "Add or Remove?" to Add, then press the "Update Ban List" button.
+You will then be returned to the ban page where you should see the URL you entered
+in the domain ban column.
+<p>
+To un-ban an domain, simply enter the URL you want to un-ban, select the "Ban Type" to 
+be Domain, set "Add or Remove?" to Remove, then press the "Update Ban List" button.
+You will then be returned to the ban page where you should no longer see the URL 
+you entered in the domain ban column.
+<p>
+The domain ban can be used to ban a full URL, or a complete domain.  If you want to ban
+http://www.site.com/~j.smith/index.html, simply enter that full URL in the box.  If, however, you
+want to ban everyone from http://www.site.com from signing up, simply enter the domain site.com.
+BANS
+
+$HELPINFO::PAGE{'ICONS'} = <<'ICONS';
+<b><font size="2" color="#000099">Adding/Removing Icons</font></b>
+<p>
+This function will allow you to add icons that you can choose from to add to member's accounts.
+If you have selected an icon for an account - done through the account edit function - it will
+be displayed next to that account's ranking.
+<p>
+<b>Adding An Icon</b>
+<p>
+To add an icon all you need to do is choose a simple name to identify it, then enter the full
+URL to it's location.  After you have done that, press the Add Icon button, and it will be added
+to the list of possible icons to choose from.
+<p>
+<b>Removing Icons</b>
+<p>
+All current icons are displayed at the bottom of this page.  If you want to remove one (or more) simply
+check the box next to the icon(s) you wish to remove.  Once you have selected the icons you want to remove
+press the Remove Icons button and they will be taken out of the possible selections.
+ICONS
+
+$HELPINFO::PAGE{'ALL'} = <<'ALL';
+<b><font size="2" color="#000099">Viewing All Members</font></b>
+<p>
+This function allows you to see limited information about each of your members.  From this
+page you can also select other functions for member accounts such as editing them and viewing
+their current stats.
+<p>
+<b>Getting More Details</b>
+<p>
+If you would like to see more information about a member account, simply check the box next to
+the account you wish to view.  In the selection box next to the Execute Function button, you will
+select the "Display Member's Details" option.  Once you have selected the member and the function,
+press the Execute Function button and you will be taken to a page with more information about
+a member.
+<p>
+<b>Editing An Account</b>
+<p>
+If you would like to edit the details of an account, simply check the box next to the account
+you wish to edit.  In the selection box next to the Execute Function button, you will select
+the "Edit Selected Member" option.  Once you have selected the member and the function,
+press the Execute Function button and you will be taken to a page where you can adjust the account info.
+This is where you will be able to add icons to an account description.
+<p>
+<b>Deleting Accounts</b>
+<p>
+If you would like to delete an account, or multiple accounts, simply check the box next to all
+of the accounts you wish to delete.  In the selection box next to the Execute Function button, you will select
+the "Delete Selected Members" option.  Once you have selected the member(s) and the function,
+press the Execute Function button.  You will be returned to the page listing all accounts, and a message
+will appear confirming the deletion of accounts.
+ALL
+
+$HELPINFO::PAGE{'EDITMEM'} = <<'EDITMEM';
+<b><font size="2" color="#000099">Editing An Account</font></b>
+<p>
+This function allows you to edit all the details of an account.  This is where you can change
+the site's information, as well as add icons to a site description.
+<p>
+<b>Making Changes</b>
+<p>
+Making changes to an account is very simple.  Just go down through the form making changes as you see
+fit.  Once you are finished making all the changes, simply press the Update Account button and the
+changes will be stored.
+<p>
+<b>Adding Icons To An Account</b>
+<p>
+If you want certain icons to appear next to an account's posts, this is where you will select them.  Once
+you have setup a few icons on the "View/Update Icons" page, you will be able to select them from the
+page where you edit member's accounts.  Just put a check in the box next to the icon you want to appear,
+then press the Update Account button.  After you do this, you may want to rebuild the main pages so the
+icons will be added.
+<p>
+<b>Removing Icons From Account</b>
+<p>
+If you want to remove an icon from an account description, simply uncheck the icon that you want
+removed.  After you have done that you can press the Update Account button and the changes will
+be saved.  Once you have done this, you may want to rebuild the main pages so the icons will be removed.
+<p>
+<b>Suspending An Account</b>
+<p>
+If the account you are viewing is currently active and you want to suspend it, all you need to do is select "Yes"
+next to the "Suspended?" item.  Once you have selected that, press the Update Account button.  The
+member will no longer be able to login to their account, and their site will not be listed until it has been re-activated.
+<p>
+<b>Reactivating An Account</b>
+<p>
+If the account you are viewing is currently suspended and you want to reactivate it, all you need to do is select "No"
+next to the "Suspended?" item.  Once you have selected that, press the Update Account button.  The
+member will now have access to their account and will be eligible for ranking.
+<p>
+<b>Locking An Account</b>
+<p>
+If the account you are viewing is currently unlocked and you want to lock it, all you need to do is select "Yes"
+next to the "Locked?" item.  Once you have selected that, press the Update Account button.  Locking an account will
+make it so the account holder cannot make any changes to their account information.  They will, however still
+be ranked on the list.
+<p>
+<b>Unlocking An Account</b>
+<p>
+If the account you are viewing is currently locked and you want to unlock it, all you need to do is select "No"
+next to the "Locked?" item.  Once you have selected that, press the Update Account button.  The
+member will now have access to edit their account.
+EDITMEM
+
+$HELPINFO::PAGE{'DISPLAYMEM'} = <<'DISPLAYMEM';
+<b><font size="2" color="#000099">Viewing A Member</font></b>
+<p>
+This function allows you to view details about an account, and also leads you to other pages
+where you can edit the account or view its stats.  This is also the page where you suspend
+and re-activate accounts.
+<p>
+<b>Editing A Member</b>
+<p>
+If you wish to edit the member you are currently viewing, all you need to do is select the
+Edit Member option from the selection field next to the Execute Function button.  Once you
+have selected that, press the Execute Function button and you will be taken to a page where
+you can edit the details of an account.  This is also where you will add icons to an account's
+description.
+<p>
+<b>Deleting The Member</b>
+<p>
+If you wish to delete the member you are currently viewing, all you need to do is select the
+Delete Member option from the selection field next to the Execute Function button.  Once you
+have selected that, press the Execute Function button and the account, and all it's postings, 
+will be removed.
+<p>
+<b>Suspending An Account</b>
+<p>
+If the account you are viewing is currently active and you want to suspend it, all you need to do is select the
+Suspend Account option from the selection field next to the Execute Function button.  Once you
+have selected that, press the Execute Function button and the account will be suspended.  The
+member will no longer be able to login to their account, and their site will not be listed until it has been re-activated.
+<p>
+<b>Reactivating An Account</b>
+<p>
+If the account you are viewing is currently suspended and you want to reactivate it, all you need
+to do is select the Activate Account option from the selection field next to the Execute Function button.
+Once you have selected that, press the Execute Function button and the account will be reactivated.  The
+member will now have access to their account and will be eligible for ranking.
+<p>
+<b>Locking An Account</b>
+<p>
+If the account you are viewing is currently unlocked and you want to lock it, all you need to do is select the
+Lock Account option from the selection field next to the Execute Function button.  Once you
+have selected that, press the Execute Function button and the account will be locked.  Locking an account will
+make it so the account holder cannot make any changes to their account information.  They will, however still
+be ranked on the list.
+<p>
+<b>Unlocking An Account</b>
+<p>
+If the account you are viewing is currently locked and you want to unlock it, all you need
+to do is select the Unlock Account option from the selection field next to the Execute Function button.
+Once you have selected that, press the Execute Function button and the account will be unlocked.  The
+member will now have access to edit their account.
+DISPLAYMEM
+
+$HELPINFO::PAGE{'HTML'} = <<'HTML';
+<b><font size="2" color="#000099">Editing Your HTML</font></b>
+<p>
+This function allows you to setup a header, footer, and template to use for the page(s) you select.
+A complete description of templates can be found in the templates.html file included with the
+script distribution.  A description of how to edit the header and footer is included in the
+install.html file under "After Installation".  We will briefly cover the header, footer, and template
+here as well.
+<p>
+<b>The Template</b>
+<p>
+Editing the template is probably one of the most complicated parts of the script.  It does, however, make
+the script extremely easy to integrate into your site.  If you haven't already, you should first read over
+the templates.html file included with the software.
+<p>
+The first time you go to edit the template, there will be a default value in place.  That default will
+work fine, but you may want to modify it for your site.  Notice that the default contains the HTML for
+only one ranking.  This is required!  If you find yourself inserting any script values more than once in
+the template, then you are probably doing something wrong.  Basically what happens is the script reads
+in your template, then replaces all of the values surrounded by #%%# with the proper data.  The
+possible script values are:
+
+<p>
+
+#%RANK%# - The site's current rank<br>
+#%FONT_SIZE%# - The font size to use, from setup.cgi<br>
+#%BANNER%# - The site's banner<br>
+#%TITLE%# - The site's title<br>
+#%IN%# - The number of hits sent BY the site<br>
+#%OUT%# - The number of hits sent TO the site<br>
+#%DESC%# - The description of the site<br>
+#%NEW%# - This will place a new icon<br>
+#%URL%# - This is the outgoing URL for the account<br>
+#%PREVRANK%# - This is the site's previous rank<br>
+#%PREVIN%# - This is site's previous hits in value<br>
+#%CAT%# - This is the site's category<br>
+#%ICONS%# - This will display icons for the site
+
+<p>
+
+Insert those in the way you want them to appear, and the script will use them for each of the ranks
+that are going to appear on that page.  We have also included a few samples with the software distribution.  
+Those are all located in the docs/samples directory which should have been created when you un-zipped the archive.
+<p>
+<b>The Header</b>
+<p>
+In this box you will enter all of the HTML that you want to come before the list of posts.  You
+can enter any HTML you want, except for a textarea tag.
+<p>
+<b>The Footer</b>
+<p>
+In this box you will enter all of the HTML that you want to come after the list of posts.  You
+can enter any HTML you want, except for a textarea tag.
+<p>
+<b>Header/Footer Template</b>
+<p>
+There are some template values that you can insert into the header and footer for the site of the
+moment, last updated time, and total members in your database.  Those values are:
+<p>
+#%UPDATE%# - The last updated time<br>
+#%NEXTUP%# - The time the next re-rank will occur<br>
+#%TOTAL%# - Total members in the database<br>
+#%TITLE%# - Title for the site of the moment<br>
+#%DESC%# - Description for the site of the moment<br>
+#%BANNER%# - Banner for the site of the moment<br>
+#%URL%# - Outgoing URL for the site of the moment<br>
+#%ICONS%# - Icons for the site of the moment
+<p>
+<b>Saving The Data</b>
+<p>
+Once you have the HTML entered as you want it, you will need to save it.  This can be done by pressing
+the Update HTML button near the bottom of the page.  You will also need to select what pages to use the
+HTML for.  If you select "Use for this page only" the HTML will be used for only the page that you
+selected (this is listed at the top of this page).  If you select "Use for all pages" then the HTML you
+entered will be used for all of your pages.
+HTML
+
+1;

@@ -1,0 +1,18 @@
+BasiliX Dokümantasyon (birilerinin daha iyisini yazmasý lazým):
+==============================================================
+
+Kurulum ve ayarlamalar için, aþaðýdaki dosyalarý sýrayla okuyunuz:
+
+1) INSTALL.bsx
+
+2) INSTALL.db
+
+3) INSTALL.domain
+
+4) Eðer direk SMTP baðlantýsýyla e-mail'lerin gönderilmesini istiyorsanýz INSTALL.relay dosyasýný okuyunuz.
+
+5) INSTALL.theme
+
+6) bitti, keyfini çýkarýn.
+
+-arslanm

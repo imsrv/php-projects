@@ -1,0 +1,89 @@
+</table>
+</td>
+</tr>
+
+<tr bgcolor="#ffffff">
+<td>
+
+<table width="100%">
+<tr>
+<td align="center">
+
+<input type="hidden" name="show" value="#%SHOW%#">
+<input type="hidden" name="page" value="#%PAGE%#">
+<input type="hidden" name="sort" value="#%SORT%#">
+<input type="hidden" name="scat" value="#%GROUP%#">
+<input type="hidden" name="from" value="displayAll">
+
+<select name="run" style="font-size: 11px; font-family: Verdana">
+  <option value="displayEditMember">Edit Selected Member</option>
+  <option value="displayMail">Mail Selected Members</option>
+  <option value="displayMember">Display Member Details</option>
+  #%NEXT%#
+  <option value=""></option>
+  <option value="deleteMember">Delete Selected Members</option>
+</select>
+
+<input type="submit" value="Execute Function" style="font-size: 11px; font-family: Verdana">
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<input type="hidden" name="apwd" value="#%APWD%#">
+</form>
+
+
+<form action="admin.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="700">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="700">
+
+<tr bgcolor="#ececec">
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Jump directly to the page that starts with rank</b>
+</font>
+<select  name="page" style="font-size: 11px; font-family: Verdana"#%STATUS%#>
+#%JUMP%#
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="submit" value="Jump" style="font-size: 11px; font-family: Verdana"#%STATUS%#>
+<input type="hidden" name="show" value="#%SHOW%#">
+<input type="hidden" name="page" value="#%PAGE%#">
+<input type="hidden" name="sort" value="#%SORT%#">
+<input type="hidden" name="scat" value="#%GROUP%#">
+<input type="hidden" name="apwd" value="#%APWD%#">
+<input type="hidden" name="from" value="displayAll">
+<input type="hidden" name="run" value="quickJump">
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</form>
+
+<form action="admin.cgi" method="POST">
+<input type="hidden" name="apwd" value="#%APWD%#">
+#%BACK%#
+</form>
+
+<br><br>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<?
+//
+// Folders create/delete/rename HTML file
+//
+?>
+<div align="center">
+<!-- folder modify : START -->
+<?php push_errinfo() ?>
+<table border="0" cellpadding="3" cellspacing="1" width="95%">
+<tr><td align="left" class="pagehdr"><b><?php echo $lng->p(155)?></b>
+</td></tr>
+</table>
+<table border="0" cellpadding="3" cellspacing="1" width="95%">
+<tr><td align="left" class="normalbg">
+<?php start_form("create_folder")?>
+<input type="hidden" name="RequestID" value="CRTFOL">
+<?php echo $lng->p(157)?><br><br>
+<div align="center">
+<input type="text" name="folderName" size="10" maxlength="20">&nbsp;&nbsp;
+<input type="submit" class="button" value="<?php echo $lng->p(156)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>
+</div>
+<?php stop_form()?>
+</td></tr></table>
+<?php
+if(count($bsx_mboxes) != 2) {
+?>
+<p> <!-- folder delete -->
+<table border="0" cellpadding="3" cellspacing="1" width="95%">
+<tr><td align="left" class="pagehdr"><b><?php echo $lng->p(161)?></b>
+</td></tr>
+</table>
+<table border="0" cellpadding="3" cellspacing="1" width="95%">
+<tr><td align="left" class="normalbg">
+<?php start_form("delete_folder")?>
+<input type="hidden" name="RequestID" value="DELFOL">
+<?php echo $lng->p(163)?><br><br>
+<div align="center">
+<select name="folderName" size="1">
+<option value="0"><?php echo $lng->p(3)?></option>
+<option value="0">------------</option>
+<?php 
+for($i = 0 ; $i < count($bsx_mboxes) ; $i++) {
+   // we dont want users delete this folders
+   if($bsx_mboxes[$i] == $BSX_SENTMAIL_NAME ||
+      $bsx_mboxes[$i] == $BSX_TRASH_NAME) continue;
+?>
+<option value="<?php echo htmlspecialchars($bsx_mboxes[$i])?>"><?php echo $bsx_mboxes[$i]?></option>
+<?php 
+}
+?>
+</select>&nbsp;&nbsp;
+<input type="submit" class="button" value="<?php echo $lng->p(162)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>
+</div>
+<?php stop_form()?>
+</td></tr></table>
+<p> <!-- folder rename -->
+<table border="0" cellpadding="3" cellspacing="1" width="95%">
+<tr><td align="left" class="pagehdr"><b><?php echo $lng->p(167)?></b>
+</td></tr>
+</table>
+<table border="0" cellpadding="3" cellspacing="1" width="95%">
+<tr><td align="left" class="normalbg">
+<?php start_form("delete_folder")?>
+<input type="hidden" name="RequestID" value="RENFOL">
+<?php echo $lng->p(169)?><br><br>
+<div align="center">
+<?php echo $lng->p(170)?>: <select name="oldFolderName" size="1">
+<option value="0"><?php echo $lng->p(3)?></option>
+<option value="0">------------</option>
+<?php 
+for($i = 0 ; $i < count($bsx_mboxes) ; $i++) {
+   // we dont want users rename this folders
+   if($bsx_mboxes[$i] == $BSX_SENTMAIL_NAME ||
+      $bsx_mboxes[$i] == $BSX_TRASH_NAME) continue;
+?>
+<option value="<?php echo htmlspecialchars($bsx_mboxes[$i])?>"><?php echo $bsx_mboxes[$i]?></option>
+<?php 
+}
+?>
+</select>&nbsp;&nbsp;<?php echo $lng->p(171)?>: 
+<input type="text" name="newFolderName" size="10" maxlength="12"><br><br>
+<input type="submit" class="button" name="renameMyFolder" value="<?php echo $lng->p(168)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>
+</div>
+<?php stop_form()?>
+</td></tr></table>
+
+<?php
+} // if(count($bsx_mboxes) != 2)
+?>
+</div>
+<!-- folder modify : FINISH -->

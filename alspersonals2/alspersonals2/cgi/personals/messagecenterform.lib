@@ -1,0 +1,159 @@
+require "configdat.lib";
+sub mescenform {
+&vars;
+
+print "Content-type:text/html\n\n";
+print <<EOF;
+
+<html>
+<head>
+<link rel=stylesheet type=text/css href=$personalsurl/styles.css>
+
+	<title>Message Center</title>
+</head>
+<body topmargin=0 bottommargin=0 marginheight=10 marginwidth=10 leftmargin=0 rightmargin=0 link=0000ff vlink=ff0000 bgcolor=ffffff text=000000>
+$mainheader
+$submenu
+
+<table bgcolor=$messagecenterbgcolor1 cellpadding=0 cellspacing=0 width=100% border=0><tr>
+<td>
+<form method="post" action="$cgiurl/personals.pl">
+<blockquote>
+<table><tr>
+<td><b><font size=1 face=verdana color=$msgcenfcolor1>Send To:</td>
+<td><input type="text" name="username" value="$FORM{'username'}" size=20></font></td></tr><tr>
+<td><b><font size=1 face=verdana color=$msgcenfcolor1>Sender's Username:</td>
+<td><input type="text" name="sendersusername" value="$inmembername" size=20></font></td></tr><tr>
+<td><b><font size=1 face=verdana color=$msgcenfcolor1>Sender's Password:</td>
+<td><input type="password" name="senderspassword" value="$inpassword" size=20></font></td></tr></table></blockquote>
+</td>
+<td bgcolor=$messagecenterbgcolor3><blockquote><font size=1 face=verdana>
+<center><table><tr>
+<td><blockquote>
+<b><font size=1 face=verdana>Subject</b></font></blockquote></td>
+<td><input type="text" name="subject" size=40></td></tr><tr>
+<td valign="top"><blockquote>
+<b><font size=1 face=verdana>Message:</b></font></blockquote></td>
+<td><textarea name="message" cols=30 rows=6></textarea></td></tr><tr>
+<td>&nbsp;</td><td><center><input type="submit" name="savemess" value="Send Message" class="button"></center></td></tr>
+</table></td>
+</form>
+
+
+
+</tr></table>
+
+
+$botcode
+
+EOF
+exit;
+}
+
+
+sub msgcenform {
+
+print "Content-type:text/html\n\n";
+print <<EOF;
+
+<html>
+<head>
+<link rel=stylesheet type=text/css href=$personalsurl/styles.css>
+	<title>Delete Profile</title>
+</head>
+<body topmargin=0 bottommargin=0 marginheight=10 marginwidth=10 leftmargin=0 rightmargin=0 link=0000ff vlink=ff0000 bgcolor=ffffff text=000000>
+$mainheader
+$submenu
+<br><br>
+<form method="post" action="$cgiurl/personals.pl">
+
+<center><table cellpadding=0 cellspacing=0 border=0><tr>
+<td width=60%><center><table><tr>
+<td><font size=1 face=verdana>Username:</font></td>
+<td><input type="text" name="username" value="$inmembername" size=20></td></tr>
+<tr>
+<td><font size=1 face=verdana>Password:</font></td>
+<td><input type="password" name="password" value="$inpassword" size=20></td></tr><tr>
+<td>&nbsp;</td><td>
+<input type="submit" name="checkmessages" value="Check Messages" class="button"></td></tr></table></center></td>
+<td width=40%><blockquote><font size=1 face=verdana>
+
+
+To check your messages, enter your user name and your password
+into the text boxes on the right, then click \"Check Messages\"!
+
+<a href="$cgiurl/personals.pl?retrievepass">Forgotten your username and/or password?  </a></font></blockquote></td></tr></table>
+</center>
+<br><br><br>
+$botcode
+EOF
+
+exit;
+}
+
+
+sub myprofile {
+
+print qq~
+
+$mainheader
+$submenu
+<form method="post" action="$cgiurl/personals.pl">
+
+<table cellpadding=0 cellspacing=0 width=100% width=60><tr><td>
+<td width=20>&nbsp;</td><td>
+<blockquote>
+<font size=2 face=verdana>If the username and password is incorrect or missing, enter the correct username and password and click "Go"
+to view your profile.</font></blockquote>
+
+</td></tr></table>
+<br><br>
+
+<center>
+<table><tr>
+<td><b><font size=1 face=verdana>Username </font></td>
+<td><input type="text" name="username" value="$inmembername" size=15 class="box"></td></tr><tr>
+<td><b><font size=1 face=verdana>Password </font></td>
+<td><input type="password" name="password" value="$inpassword" size=15 class="box">&nbsp;&nbsp;
+
+<input type="submit" name="getprofile" value="Go" class="button"></center></td>
+</tr></table>
+<font size=1 face=verdana><a href="$cgiurl/personals.pl?retrievepass">Forgot your username and password?</a>
+<br><br>
+</center>
+<br><br>
+</form>
+$botcode~;
+
+
+}
+
+sub getprofile {
+unless(-e "$users/$FORM{'username'}.txt"){&problemencountered;}
+
+open(IN, "$users/$FORM{'username'}.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($one,$two,$three)=split(/\|/,$line);
+if(($FORM{'username'} eq "$one")&&($FORM{'password'} eq "$two")){
+&proceedwithgetprofile;}
+else {&invalidlogin;}
+}
+}
+
+sub proceedwithgetprofile {
+
+if(-e "$profilesdir/catwsm/$FORM{'username'}.html"){
+print "Location:$profilesurl/catwsm/$FORM{'username'}.html\n\n";}
+elsif(-e "$profilesdir/catwsw/$FORM{'username'}.html"){
+print "Location:$profilesurl/catwsw/$FORM{'username'}.html\n\n";}
+elsif(-e "$profilesdir/catmsm/$FORM{'username'}.html"){
+print "Location:$profilesurl/catmsm/$FORM{'username'}.html\n\n";}
+elsif(-e "$profilesdir/catmsw/$FORM{'username'}.html"){
+print "Location:$profilesurl/catmsw/$FORM{'username'}.html\n\n";}
+else {print "Location:$cgiurl/personals.pl?launchindex\n\n";}
+
+}
+1;

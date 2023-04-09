@@ -1,0 +1,38 @@
+Sýkça Sorulan Sorular ve Cevaplarý:
+===================================
+
+Önce sorular:
+-------------
+S1) BasiliX'i kurdum ama boþ sayfa alýyorum?
+
+Q2) PHP, IMAP ve MySQL destekli, ama hala boþ sayfa çýkýyor?
+
+Q3) Netscape/Explorer kullanýyorum ve BasiliX beni ilgili
+    tarayýcýnýn download sayfasýna yönlendiriyor?
+
+Q4) "Fatal error: Maximum execution of XX seconds exceeded"
+    hata mesajýný alýyorum, neden olabilir?
+
+
+Ve cevaplarý:
+-----------------
+C1) PHP'nizin IMAP destekli olup olmadýðýný kontrol edin.
+    Bunun için lib/imap.class dosyasýnda bulunan open()
+    fonksiyonun baþýndaki @ karakterini silmeniz gerekiyor.
+    @ karakteri olasý uyarý mesajlarýný ekrana vermiyor
+    (hatalý þifre gibi). Eðer hala Fatal Error alýyorsanýz
+    (imap_open() no such function), PHP'niz IMAP destekli
+    deðil demektir.
+
+C2) php3.ini (ya da php.ini) dosyasýndaki include_path deðiþkeninin
+    deðerini kontrol edin. Bu dosya genelde /usr/local/lib dizininde
+    bulunur. Deðiþkenin deðerine basilix'in dizinini 
+    (/usr/local/basilix) eklemeyi deneyin.
+
+C3) Tarayýcýnýzý güncellemeniz gerekmektedir.
+    Netscape için > 4.0
+    IE Explorer için > 4.0
+
+A4) lib/util.inc dosyasýnýn baþýnda yer alan set_time_limi(0)
+    komutunun baþýnda diyez (#) varsa kaldýrýn.
+

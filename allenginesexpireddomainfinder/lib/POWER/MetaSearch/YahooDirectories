@@ -1,0 +1,15 @@
+#############################################################
+#############################################################
+##        Aaron's All Engine Expired Domain Finder         ##
+##                This is a Commercial Script              ##
+##        Modification, Distribution or Resale without     ##
+##        Prior written permission is in Violation of      ##
+##        the copyrights and International Intellectual    ##
+##        Property Laws.  Violators will be prosecuted!    ##
+##        http://www.aaronscgi.com - aaron@aaronscgi.com   ##
+#############################################################
+#############################################################
+url     => "http://search.yahoo.com/bin/search?p=^~query~^",
+ip      => "66.218.71.128",
+Rec     => qr{<li><big>\s*<a href=\"http:[^\"]*?/\*([^\"]*)\">(.*?)</a>(.*?)<br>}si,
+Next    => qr{<a href=\"([^\"]*)\">Next 20}si,

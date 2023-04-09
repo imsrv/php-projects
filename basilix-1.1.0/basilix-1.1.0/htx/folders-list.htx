@@ -1,0 +1,62 @@
+<?php 
+//
+// Folders Listing HTML file
+//
+?>
+<!-- folder list : START -->
+<div align="center">
+<br>
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+<tr><td align="center" class="tblborder">
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tr>
+<td class="folderhdr" align="left" nowrap><?php echo nbsp($lng->p(151))?></td>
+<td class="folderhdr" align="right" width="5%" nowrap><?php echo nbsp($lng->p(152))?></td>
+<td class="folderhdr" align="right" width="5%" nowrap><?php echo nbsp($lng->p(153))?></td>
+<td class="folderhdr" align="right" width="5%" nowrap><?php echo nbsp($lng->p(154))?></td>
+</tr>
+<?php 
+for($i = 0 ; $i < $mbox_cnt ; $i++) {
+?>
+<tr>
+<td class="folderlst" align="left">&nbsp;
+<?php put_ahref("RequestID=MBOXLST&mbox=" . urlencode($mboxes[$i]["name"]), $mboxes[$i]["name"])?>
+<?php 
+if($mboxes[$i]["name"] == $BSX_TRASH_NAME && $mboxes[$i]["nmsgs"] > 0) {
+  $trash_msgs = $mboxes[$i]["nmsgs"];
+  $trash_size = $mboxes[$i]["size"];
+?>
+&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&lt;<?php 
+if($is_js) {
+    $confirm_msg = $lng->p(180);
+    $confirm_url = "$BSX_BASEHREF/$BSX_LAUNCHER?RequestID=EMPTFOL&mbox=" . urlencode(imap_utf7_decode($mboxes[$i]["name"])) . "&is_js=" . $is_js;
+    if($SESSID) $confirm_url .= "&SESSID=" . $SESSID;
+    if($is_ssl) $confirm_url .= "&is_ssl=" . $is_ssl;
+    echo "<a href=\"javascript:ask_confirm('$confirm_msg', '$confirm_url');\">" . $lng->p(176) . "</a>";
+} else {
+    put_ahref("RequestID=EMPTFOL&mbox=" . urlencode(imap_utf7_decode($mboxes[$i]["name"])) . "&confirmed=0", $lng->p(176));
+}
+?>
+&gt;
+<?php
+}
+?>
+</td>
+<td class="folderlst" align="right" width="10%" nowrap><?php echo nbsp($mboxes[$i]["nmsgs"])?></td>
+<td class="folderlst" align="right" width="10%" nowrap><?php echo nbsp($mboxes[$i]["unread"])?></td>
+<td class="folderlst" align="right" width="10%" nowrap><?php echo nbsp($mboxes[$i]["size"])?></td>
+</tr>
+<?php } ?>
+<tr>
+<td class="folderlst" align="right"><b><?php echo $lng->p(152)?>:</b>&nbsp;</td>
+<td class="folderlst" align="right" width="10%" nowrap><b><?php echo nbsp($total["msg"])?></b></td>
+<td class="folderlst" align="right" width="10%" nowrap><b><?php echo nbsp($total["unread"])?></b></td>
+<td class="folderlst" align="right" width="10%" nowrap><b><?php echo nbsp(convert_size($total["size"]))?></b></td>
+</tr>
+</table>
+</td></tr>
+</table>
+<? // ?>
+<br>
+</div>
+<!-- folder list : FINISH -->

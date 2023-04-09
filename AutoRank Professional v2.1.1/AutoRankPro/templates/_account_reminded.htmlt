@@ -1,0 +1,33 @@
+  <html>
+  <head>
+    <title>E-Mail Sent</title>
+  <body bgcolor="white" link="blue">
+  <div align="center">
+  <p>
+  <form method="POST">
+  
+  <table border="0" cellpadding="0" cellspacing="0" width="600">
+  <tr bgcolor="#000000">
+  <td align="center">
+
+  <table cellspacing="1" cellpadding="3" border="0" width="100%">
+  <tr>
+  <td bgcolor="#7384BD" align="center">
+  <font face="Arial" size="3" color="white">
+  <b>E-mail Sent</b>
+  </font>
+  </td>
+  </tr>
+  <tr>
+  <td bgcolor="white">
+  <font face="Verdana,Arial" size="2">
+  Your account has been located!<p>
+  E-mail containing your login information has been sent to <b>#%EMAIL%#</b><p>
+  If you have further questions, you should contact the administrator.
+  </td>
+  </tr>
+  </table>
+  </td></tr></table><p>
+
+  </body>
+  </html>

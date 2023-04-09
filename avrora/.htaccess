@@ -1,0 +1,12 @@
+php_flag magic_quotes_gpc on
+php_flag register_globals off
+php_value error_reporting 63
+
+<FilesMatch "^(art)$">
+	ForceType application/x-httpd-php 
+</FilesMatch>
+
+AddDefaultCharset windows-1251
+
+RewriteEngine On
+RewriteRule ^news/(.*)$ index.php?date=$1

@@ -1,0 +1,38 @@
+<?
+// 'Settings' messages
+$lang_msg["settings"] = array(
+	501	=>	'无法将设定存档, 请稍後再试',
+	502	=>	'新的设定已存档.',
+	503	=>	'您的姓名',
+	504	=>	'(将被附加在寄出信件的 <u>From</u> 栏位之後)',
+	505	=>	'签名档',
+	506	=>	'(将被附加在每封寄出的信件之後)',
+	507	=>	'语言',
+	508	=>	'(预设语言)',
+	509	=>	'信件排序方式',
+	510	=>	'(预设排序法)',
+	511	=>	'反排序',
+	512	=>	'(最新信件是否需显示在顶端)',
+	513	=>	'储存寄件备份',
+	514	=>	'(若选 yes, 寄出的信件将被存放在 "Sent Mail" 信匣)',
+	515	=>	'移至垃圾桶',
+	516	=>	'(若选 yes, 删除的信件将被移至垃圾桶 Trash folder)',
+	517	=>	'每页数量',
+	518	=>	'(当检视信匣时, 每页显示的信件数)',
+	519	=>	'日期',
+	520	=>	'发信人',
+	521	=>	'主旨',
+	522	=>	'大小',
+	523	=>	'外观',
+	524	=>	'(改变萤幕显示的外观)',
+	525	=>	'储存设定',
+	526	=>	'Show',
+	527	=>	'Hide',
+	528	=>	'Show/Hide',
+	529	=>	'(show or hide the user folder list in the left menu)',
+	530	=>	'Prev/Next',
+	531	=>	'(shows the previous and the next message links when reading a message -- this is slow on large mailboxes)',
+	532	=>	'Reply-To',
+	533	=>	'(the recipient will reply to this address -- if empty <b>%e</b> is used)'
+);
+?>

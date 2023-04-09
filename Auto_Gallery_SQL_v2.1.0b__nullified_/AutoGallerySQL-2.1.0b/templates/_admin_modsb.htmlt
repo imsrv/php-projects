@@ -1,0 +1,44 @@
+
+</table>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td align="center">
+
+<table width="100%">
+<tr>
+<td align="center">
+
+<select name="run" style="font-size: 11px; font-family: Verdana">
+  <option value="displayEditMod">Edit Selected Moderator</option>
+  <option value="displayMail">E-mail Selected Moderators</option>
+  <option value="deleteModerators">Delete Selected Moderators</option>
+</select>
+
+<input type="hidden" name="db" value="moderators">
+<input type="hidden" name="efnct" value="mailModerators">
+<input type="submit" name="submit" value="Execute Function" style="font-size: 11px; font-family: Verdana">
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<br><br>
+
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b><a href="admin.cgi" class="reg">Back To Main Page</a></b>
+</font>
+
+</div>
+
+</body>
+</html>

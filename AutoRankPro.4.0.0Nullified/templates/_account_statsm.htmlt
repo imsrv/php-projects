@@ -1,0 +1,27 @@
+<tr bgcolor="#ffffff">
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%DATE%#
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%HITS_IN%#
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%HITS_OUT%#
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%OVERALL_RANK%#
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%CATEGORY_RANK%#
+</font>
+</td>
+</tr>

@@ -1,0 +1,12 @@
+AuthName "Protected Area"
+AuthType Basic
+AuthUserFile /dev/null
+AuthGroupFile /dev/null
+
+require valid-user
+
+
+
+## YOU DO NOT NEED TO EDIT THIS FILE
+
+

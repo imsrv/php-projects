@@ -1,0 +1,37 @@
+<?
+// MBox listing messages
+$lang_msg["mboxlst"] = array(
+	201	=>	'Remetente',
+	202	=>	'Ordenar por remetente',
+	203	=>	'Destinat&aacute;rio',
+	204	=>	'Ordenar por destinat&aacute;rio',
+	205	=>	'Data',
+	206	=>	'Ordenar por data',
+	207	=>	'Tamanho',
+	208	=>	'Ordenar por tamanho',
+	209	=>	'Assunto',
+	210	=>	'Ordenar por assunto',
+	211	=>	'(sem assunto)',
+	212	=>	'Mover mensagens selecionadas para',
+	213	=>	'Fa&ccedil;a',
+	214	=>	'Pasta vazia',
+	215	=>	'Mover mensagens selecionadas para a lixeira',
+	216	=>	'Apagar mensagens selecionadas',
+	217	=>	'Anterior',
+	218	=>	'Seguinte',
+	219	=>	'N&atilde;o existem mensagens a mostrar nesta pasta.',
+	220	=>	'Nenhuma pasta foi selecionada. Por favor tente novamente.',
+	221	=>	'Nenhuma mensagem foi selecionada. Por favor tente novamente',
+	222	=>	'N&atilde;o foi poss&iacute;vel mover a mensagem. Por favor tente novamente mais tarde.',
+	223	=>	'As %d mensagens selecionadas foram movidas para a lixeira com sucesso.',
+	224	=>	'N&atilde;o foi poss&iacute;vel mover a mensagem para a lixeira. Por favor tente novamente mais tarde.',
+	225	=>	'As mensagens foram mudadas com sucesso.',
+	226	=>	'N&atilde;o foi poss&iacute;vel apagar a mensagem. Por favor tente novamente mais tarde.',
+	227	=>	'As mensagens foram removidas com sucesso.',
+	228	=>	'P&aacute;gina: ',
+	229	=>	'Tem certeza que deseja limpar esta pasta?',
+	230	=>	'Bem-vindo, seu &uacute;ltimo acesso ocorreu a partir de',
+	231	=>	'A mensagem foi movida para a lixeira com sucesso.',
+	232	=>	'A mensagem foi removida com sucesso.'
+);
+?>

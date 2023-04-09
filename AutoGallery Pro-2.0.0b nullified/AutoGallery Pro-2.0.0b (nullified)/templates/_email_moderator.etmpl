@@ -1,0 +1,14 @@
+To: #%EMAIL%#
+From: #%ADMIN_EMAIL%#
+Subject: Added as a Moderator
+
+#%NAME%#, you have been added as a moderator for our TGP.  Below is the
+information you will need to access the administrative portion of our
+TGP software.
+
+Admin URL: #%CGI_URL%#/admin/admin.cgi
+Username: #%USERNAME%#
+Password: #%PASSWORD%#
+
+Regards,
+TGP Administrator

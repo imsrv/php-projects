@@ -1,0 +1,60 @@
+
+
+$useracitvecount = 10;
+$useripaddr = $ENV{'REMOTE_ADDR'};
+$curhrmin = time;
+$affirmative = 0;
+$currentuserspresent = 0;
+
+#Check if users file exist, if not create it.
+if (! (-f "$perscgidir/users.txt")) 
+{
+open (FILE, ">$perscgidir/users.txt");
+close FILE;
+chmod(0666, "$perscgidir/users.txt");
+}
+
+open FILE,"+<$perscgidir/users.txt";
+flock (FILE, 1);
+@activeusers = <FILE>;
+chomp(@activeusers);
+
+seek(FILE,0,0);
+truncate(FILE,0);
+
+foreach $line (@activeusers) 
+{
+($nowthis,$nowthat) = split/\|/,$line;
+if ($nowthis eq $useripaddr) {$nowthat = $curhrmin;$affirmative = 1;}
+if ($curhrmin < $nowthat + ($useracitvecount * 60)) 
+	{
+	print FILE "$nowthis|$nowthat\n";	
+	$currentuserspresent = $currentuserspresent + 1;
+	}
+}
+if ($affirmative == 0) 
+	{
+	print FILE "$useripaddr|$curhrmin\n";
+	$currentuserspresent = $currentuserspresent + 1;
+	}
+close (FILE);
+
+
+
+
+
+sub filelock
+{
+my $filelock = 0;
+while ($filelock < 5) 	
+	{
+	if (flock(@_[0], 2)) {return 0;}
+	sleep (1);
+	$filelock++;
+	}
+	exit;
+}
+
+
+
+1;

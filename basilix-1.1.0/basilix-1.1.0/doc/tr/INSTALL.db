@@ -1,0 +1,55 @@
+BasiliX kurulumunuz bittikten sonra, program için gereken MySQL
+veritabanýný oluþturmanýz gerekmektedir. (Henüz PostgreSQL için
+olan postgresql.class dosyasý yazýlmadýðý için ilgili veritabanýný
+þu aþamada kullanamýyoruz)
+
+Veritabanýna ilgili kullanýcý (dbkullanici) ve þifre (dbsifre)
+ile baðlanýnýz. dbkullanýcý kýsmýný veritabaný kullanýcýsý
+dbsifre'yi ise þifresi ile deðiþtiriniz:
+
+$ mysql -u dbkullanici -p dbsifre
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 5525 to server version: 3.23.33
+
+Type 'help' for help.
+
+mysql>
+
+Bu aþamada mysql> komut satýrinda aþaðidaki komutlarý giriniz.
+("bsxsifre" kýsmýný arzu ettiðiniz baþka bir þifre ile deðiþtiriniz)
+
+mysql> CREATE DATABASE BASILIX;
+mysql> GRANT ALL ON BASILIX.* TO bsxuser@localhost IDENTIFIED BY 'bsxsifre';
+mysql> FLUSH PRIVILEGES;
+mysql> QUIT;
+
+Ýlk komut "BASILIX" isminde bir veritabaný oluþtururken, ikinci
+komut ile bu veritabanýný "bsxsifre" ile kullanacak olan 
+"bsxuser@localhost" bir takým yetkiler verilmektedir. Burada
+"bsxsifre" ile tanýmlanmýþ olan þifre kýsmýný deðiþtirmeyi
+unutmayýnýz.
+
+Artýk, veritabanýnýz kullanýma hazýr. Bu aþamada BasiliX için
+gereken tablolarýn oluþturulmasý için aþaðýdaki komutu girmek gerekiyor.
+(bsxsifre kýsmýný az önce yukarýda seçmiþ olduðunuz þifre,
+/usr/local/basilix dizinini ise eðer baþka bir dizine kurulum
+yaptýysaniz o dizin ile deðiþtiriniz)
+
+$ mysql -u bsxuser -p bsxsifre < /usr/local/basilix/db/mysql/basilix.sql
+
+/usr/local/basilix/dbset/mysql-set.inc dosyasýný bir editor
+ile açýn, ve içerisinde bulunan veritabaný kullanýcý adi
+ve þifresini yukarýdaki bilgiler doðrultusunda deðiþtirin.
+
+Son olarak, ayný dosyada pwencrypt() ve pwdecrypt() isminde iki
+adet fonksiyon goreceksiniz. Bu fonksiyonlar base64 þifreleme
+algoritmasýný kullanarak, geçici olarak veritabanýnda duran
+kullanýcý þifrelerini þifreler. Eðer bunun haricinde bir
+çift-yönlü þifreleme algoritmasý kullanmak istiyorsanýz
+algoritmalarý bu fonksiyonlar altýnda tanýmlayabilirsiniz.
+Veritabanýnda yer alan kullanýcý þifrelerini þifrelenmiþ
+bir þekilde tutmanýn amacý ise herhangi bir "select" cümleciði ile
+cevap olarak salt metin olarak okunabilir þifrelerin
+görünmesini engellemektir.
+
+-arslanm

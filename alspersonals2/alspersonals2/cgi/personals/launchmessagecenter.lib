@@ -1,0 +1,205 @@
+sub openmessagecenter {
+&vars;
+
+if(($username eq "") ||($password eq "")){    
+print "Content-type: text/html\n\n"; 	  
+print "<html><head><title>Login Error</title></head>\n"; 	  
+print "<body bgcolor=ffffff>\n"; 	  
+print "$mainheader<p>\n"; 	  
+print "<center><font face=univers,times,verdana,arial,helvetica size=2>You did not enter one or more 
+of the following:<br><ul><li>Username<li>Password</ul><br>\n";
+print "Please go back and re-enter your login information.</font></center>\n"; 	  
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\" class=\"button\"> </FORM></center>\n"; 	  
+print "</body></html>\n";   
+exit;   
+}  
+
+unless(-e "$users/$username.txt"){
+&problemencountered;}
+
+open (FILE, "$users/$username.txt") || &oops ($!, "Could not open $users/$username.txt");
+@lines=<FILE>;
+close(FILE);
+
+foreach $line(@lines){
+ 
+($loginname,$password,$emailaddr)= split(/\|/, $line);
+
+
+if(($FORM{'username'} eq "$loginname")&&($FORM{'password'} eq "$password")){
+&nextmescenopen;}
+
+
+else {
+&invalidlogin;}
+}}
+
+
+sub nextmescenopen {
+&vars;
+
+use CGI qw(:standard);
+$query = new CGI;
+
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader
+<table width=100% bgcolor=$bgcolor1><tr><td>
+<table width=100%  cellpadding=0 cellspacing=0 border=0 bgcolor=$bgcolor1><tr>
+<td bgcolor=$bgcolor1 width=40% height=60 valign="top"><center><font size=2 face=verdana><b>Welcome, $username</b>
+<br>
+EOF
+
+
+open(IN, "$messagecenterdir/$username/nummessages.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($nummessages)=split(/\n/, $line);}
+
+if($nummessages >=1){
+print "
+<font size=1 face=verdana>You have <b><font color=maroon>$nummessages</font></b> Messages
+</font>\n";}
+else {
+print "<font size=1 face=verdana>You have no messages</font>\n";}
+
+print <<EOF;
+
+</center></td>
+<td width=70% bgcolor=$bgcolor1 height=60 valign="top">
+&nbsp;</td>
+</tr><tr>
+<td width=30% bgcolor=$bgcolor1 valign="top">
+<form method="post" action="$cgiurl/personals.pl">
+<center><table width=100% cellpadding=2 cellspacing=2 border=0 bgcolor=$msgbxlftmenubgcolormain><tr>
+<td bgcolor=$messageboxmenutdcellbgcolor>
+<center><a href="$cgiurl/personals.pl?launchindex"><font color=purple size=1 face=verdana>HOME</font></a></center></td></tr><tr>
+
+<td bgcolor=$messageboxmenutdcellbgcolor>
+<center><a href="$cgiurl/postad.pl\?browse_ads"><font color=purple size=1 face=verdana>BROWSE PROFILES</font></a></center></td></tr><tr>
+
+
+<td bgcolor=$messageboxmenutdcellbgcolor>
+<center><a href="$cgiurl/postad.pl\?place_new"><font color=purple size=1 face=verdana>POST AN AD</font></a></center></td></tr><tr>
+
+
+<td bgcolor=$messageboxmenutdcellbgcolor>
+<center><a href="$cgiurl/delprofile.pl"><font color=purple size=1 face=verdana>DELETE PROFILE</font></a></center></td></tr><tr>
+
+
+<td bgcolor=$messageboxmenutdcellbgcolor>
+<center><a href="$cgiurl/postad.pl\?del_persad"><font color=purple size=1 face=verdana>DELETE AD</font></a></center></td></tr><tr>
+
+<td bgcolor=$messageboxmenutdcellbgcolor>
+<center><a href="$cgiurl/postad.pl\?send_message"><font color=purple size=1 face=verdana>SEND A MESSAGE</font></a></center></td></tr><tr>
+EOF
+
+if($showusersonline eq "yes"){
+print "<td bgcolor=$messageboxmenutdcellbgcolor>
+<center><font color=purple size=1 face=verdana>USERS ONLINE: 
+ <b>$currentuserspresent</b>
+</font></center></td></tr><tr>\n";}
+
+print <<EOF;
+<td>
+<table width=100% height=150 cellpadding=0 cellspacing=0><tr>
+<td width=100% height=30 bgcolor=$randomlovescopeheaderbgcolor><center><font size=2 face=verdana color=$msgbxfcolor3><b>Random Lovescope</b></font></center>
+</td></tr><td width=100% height=120 bgcolor=$randomlovescopetdbgcolor>
+<font size=1 face=verdana><blockquote>
+EOF
+
+&getlovescope;
+
+print <<EOF;
+$lovescope
+</blockquote></font></td></tr>
+</table>
+
+
+</td></tr>
+
+
+</table></center></td>
+&nbsp;
+<td width=69% bgcolor=$bgcolormain valign="top">
+<table width=100% height=35 cellpadding=0 cellspacing=0 bgcolor=$bgcolor2><tr>
+<td><center><input type="submit" name="read" value="Read" class="button"> <font size=1 face=verdana color=$msgbxfcolor1>selected message</font></center></td><td>
+<center><input type="submit" name="delchecked" value="Delete" class="button"> <font size=1 face=verdana color=$msgbxfcolor1>selected message</font></center></td></tr></table>
+<table width=100% cellpadding=2 cellspacing=2 border=0><tr>
+
+<td width=33% bgcolor=$bgcolor3><center><font size=2 face=verdana color=$msgbxfcolor2><b>From</b></font></center></td>
+<td width=34% bgcolor=$bgcolor3><center><font size=2 face=verdana color=$msgbxfcolor2><b>Subject</b></font></center></td>
+<td width=33% bgcolor=$bgcolor3><center><font size=2 face=verdana color=$msgbxfcolor2><b>Date</b></font></center></td>
+</tr><tr>
+EOF
+
+open(IN, "$messagecenterdir/$username/messages.txt");
+@lines=<IN>;
+close(IN);
+
+# find out how many lines
+$x = @lines;
+
+
+for( $i = $x; $i >=0; $i-- ){
+print "$lines[$i]";
+}
+
+
+print <<EOF;
+
+
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr></table></td></tr></table>
+<input type="hidden" name="username" value="$username">
+<input type="hidden" name="password" value="$password">
+</td></tr></table>
+
+$botcode
+EOF
+exit;
+}
+
+
+sub getmesnum {
+
+unless(-e "$messagecenterdir/$username/nummessages.txt"){
+$new="0";}
+
+open(IN, "$messagecenterdir/$username/nummessages.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($numberofmessages) = split(/\|/, $line);
+
+$new = $numberofmessages;
+
+
+}
+}
+
+
+sub importmessages {
+
+open(IN, "$messagecenterdir/$username/messages.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($themessages) = split(/\|/, $line);
+
+$showmessages = $line;
+
+}
+}
+
+
+
+
+
+1;

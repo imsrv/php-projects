@@ -1,0 +1,200 @@
+<html>
+<head>
+  <title>AutoRank Pro Administration</title>
+  <script language="JavaScript">
+    function openHelp(url, name) { 
+      window.open(url, name, 'scrollbars=1,resizable=no,width=350,height=450,status=0,menubar=0');
+    }
+  </script>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<font face="Verdana" size="2" style="font-size: 11px;" color="red">
+<b>#%MESSAGE%#</b>
+</font>
+
+<br><br>
+
+<form action="admin.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="500">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center" colspan="2">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Update Blacklists</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td valign="top">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Item To Blacklist</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+One per line
+</font><br>
+<textarea name="ban" rows="5" cols="40" style="font-size: 11px; font-family: Verdana"></textarea>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Blacklist Type</b>
+</font>
+</td>
+<td>
+<select name="type" style="font-size: 11px; font-family: Verdana">
+  <option value="url">Domain Name/URL</option>
+  <option value="email">E-Mail Address</option>
+  <option value="word">Word/Phrase</option>
+  <option value="IP">IP Address</option>
+</select>
+</td>
+</tr>
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Add or Remove?</b>
+</font>
+</td>
+<td>
+<select name="run" style="font-size: 11px; font-family: Verdana">
+  <option value="addBan">Add</option>
+  <option value="removeBan">Remove</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#ececec" align="center" colspan="2">
+<input type="submit" value="Update Blacklist" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<br><br>
+
+<table border="0" cellpadding="0" cellspacing="0" width="750">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center" colspan="4">
+<font face="Arial" size="3" color="white">
+<b>Current Blacklist Items</b>
+</font>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#cccccc" align="center" width="25%">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>E-Mail Addresses</b>
+</font>
+</td>
+<td bgcolor="#cccccc" align="center" width="25%">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Domain Names & URLs</b>
+</font>
+</td>
+<td bgcolor="#cccccc" align="center" width="25%">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Words and Phrases</b>
+</font>
+</td>
+<td bgcolor="#cccccc" align="center" width="25%">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>IP Addresses</b>
+</font>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#ffffff" valign="top">
+<pre>
+#%EMAIL%#
+</pre>
+</td>
+<td bgcolor="#ffffff" valign="top">
+<pre>
+#%DOMAIN%#
+</pre>
+</td>
+<td bgcolor="#ffffff" valign="top">
+<pre>
+#%WORD%#
+</pre>
+</td>
+<td bgcolor="#ffffff" valign="top">
+<pre>
+#%IP%#
+</pre>
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+<input type="hidden" name="apwd" value="#%APWD%#">
+</form>
+
+<br>
+
+<form action="admin.cgi" method="POST">
+<input type="hidden" name="apwd" value="#%APWD%#">
+#%BACK%#
+</form>
+<br><br>
+
+</body>
+</html>

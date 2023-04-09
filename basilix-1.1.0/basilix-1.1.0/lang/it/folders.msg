@@ -1,0 +1,37 @@
+<?
+// Folders screen messages
+$lang_msg["folders"] = array(
+	151	=>	'Cartella',
+	152	=>	'Totale',
+	153	=>	'Non letti',
+	154	=>	'Dimensione',
+	155	=>	'Crea una cartella personale:',
+	156	=>	'Crea la mia cartella personale',
+	157	=>	'Puoi creare quante cartelle personali vuoi. Per creare una nuova cartella personale, inserisci il nome qui sotto e clicca sul bottone CREA.',
+	158	=>	'Non hai inserito il nome della nuova cartella, ritenta.',
+	159	=>	'Questa cartella è già esistente, ritenta.',
+	160	=>	'La tua nuova cartella è stata creata con successoYour new folder has been successfully created.',
+	161	=>	'Elimina una cartella:',
+	162	=>	'Elimina la cartella selezionata.',
+	163	=>	'Le cartelle eliminate <u><b>NON</b> sono recuperabili</u>. Se vuoi eliminare una cartella, selezionala e clicca sul bottone ELIMINA.',
+	164	=>	'Non hai selezionata il nome della catella da eliminare, ritenta.',
+	165	=>	'Impossibile cancellare la cartella specificata, ritenta più tardi..',
+	166	=>	'La cartella che hai specificato è stata eliminata con successo.',
+	167	=>	'Rinomina una cartella:',
+	168	=>	'Rinomina la cartella selezionata',
+	169	=>	'Se desideri rinominare una cartella personale, selezionala e clicca sul bottone RINOMINA.',
+	170	=>	'Nome della vecchia cartella',
+	171	=>	'Nome della nuova cartella',
+	172	=>	'Non hai selezionato il nome della cartella da rinominare, ritenta..',
+	173	=>	'Non hai inserito il nome della nuova cartella, ritenta..',
+	174	=>	'Non è possibile rinominare la cartella specificata, ritenta più tardi..',
+	175	=>	'La tua cartella è stata rinominata con successo.',
+	176	=>	'Cestino vuoto',
+	177	=>	'Non ho potuto creare la nuova cartella. Potresti aver riempito lo spazio a tua disposizione? ritenta più tardi..',
+	178	=>	'La cartella specificata è stata svuotata con successo.',
+	179	=>	'Non ho potuto svuotare la cartella specificata, ritenta più tardi..',
+	180	=>	'Vuoi davvero svuotare questa cartella?',
+	181	=>	'Errore nella creazione della cartella Cestino',
+	182	=>	'Errore nella creazione della cartella Posta Inviata'
+);
+?>

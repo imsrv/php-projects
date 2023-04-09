@@ -1,0 +1,46 @@
+Ýstediðiniz sayýda tema tanýmlayabilirsiniz:
+
+1) "css" dizinine giriniz (eðer /home/httpd/html/basilix
+    yerine baþka bir dizinde ise web alaný, aþaðýdaki
+    komut satýrýnda ilgili deðiþikliði yapýnýz)
+
+	$ cd /home/httpd/html/basilix/css
+
+2) Öngörulen CSS dizinini kendi istediðiniz yeni tema
+   dizinine kopyalayýnýz (yeni temanýzýn adýnýn orion
+   olduðunu farzedelim)
+
+	$ cp -R default orion
+
+3) Yeni temanýzýn bulunduðu dizine giriniz.
+
+	$ cd orion
+
+4) Burada Internet Explorer için "ie.css" ve Netscape için
+   "ns.css" dosyalarýný bulacaksýnýz. Bu dosyalarý arzu
+   ettiðiniz þekilde deðiþtirerek kaydediniz. Ancak tanýmlanmýþ
+   kýsýmlarý silmemeye/deðiþtirmemeye, sadece özelliklerini
+   deðiþtirmeye dikkat ediniz.
+
+5) BasiliX'in ayar dizinine giriniz. (öngörülen kurulum 
+   /usr/local/basilix dizinine yapýlmýþti. eðer siz 
+   baþka bir dizine kurduysanýz aþaðýdaki komut satýrýnda
+   ilgili deðiþikliði yapýnýz)
+
+	$ cd /usr/local/basilix/conf
+
+6) theme.conf dizinini herhangi bir editör programla açýp
+   aþaðýdaki satýrlarý ekleyiniz.
+
+	$bsx_theme[$i]["dir"]           = "orion";
+	$bsx_theme[$i]["active"]        = 1;    // 1 is "aktif", 0 is "aktif deðil"
+	$bsx_theme[$i++]["desc"]        = "Orion theme";
+
+	"active" ileride eklenecek olan web tarafýndan
+	yönetim modülü tarafýndan kullanýlacaktýr.
+
+7) Tanýmladýðýnýz yeni temayý "Ayarlar" penceresinden
+   deneyiniz.
+
+-arslanm
+

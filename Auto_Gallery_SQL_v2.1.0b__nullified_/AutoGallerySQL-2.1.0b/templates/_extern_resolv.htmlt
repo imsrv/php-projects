@@ -1,0 +1,70 @@
+<html>
+<head>
+  <title>AutoGallery SQL Administration</title>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body>
+
+<div align="center">
+
+<table border="0" cellpadding="0" cellspacing="0" width="450">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Resolving IP Address</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>IP Address:</b> #%IP_ADDRESS%#<br>
+<b>Resolved To:</b> #%HOSTNAME%#
+</font>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>

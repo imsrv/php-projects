@@ -1,0 +1,37 @@
+AuthName "AutoRank Pro Administration"
+AuthType Basic
+AuthUserFile /home/soft/cgi-bin/arp/admin/.htpasswd
+AuthGroupFile /dev/null
+
+require valid-user
+
+
+##   NOTICE
+##   
+##   If you are on a Cobalt RAQ server, you will probably need to add the following
+##   item to the top of this file:
+##    
+##       AuthPAM_enabled off
+##
+##
+
+## This is a sample .htaccess file.  You will need to change the AuthUserFile
+## directive above so that it points to the location of the .htpasswd file
+## in the admin directory.  The .htpasswd file will be created by the init.cgi
+## script, so the part you need to change is /home/soft/cgi-bin/agp/admin
+##
+## Example:
+## If the full path to your admin directory is /home/username/cgi-bin/arp/admin
+## Then the above line should look like the following:
+##    
+##   AuthUserFile /home/username/cgi-bin/arp/admin/.htpasswd
+##
+## You must use a full path or it will not function correctly.  If you do not know
+## the full path, do not try to guess.  Contact your server administrator and ask
+## them for that information.  If the directory is not set properly, you will not
+## be able to login to the administrative section.
+##
+## You should not need to edit any other part of this file, unless you
+## receive a 500 server error message when trying to acess setup.cgi or admin.cgi.
+## If you do, contact your server administrator for details on the correct syntax for
+## a .htaccess file on your server.  Make sure you upload this file in ASCII mode!

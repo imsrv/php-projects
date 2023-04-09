@@ -1,0 +1,335 @@
+a {
+	color: #852;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #000;
+	text-decoration: underline;
+}
+
+body {
+	font-family: tahoma;
+	font-size: 12px;
+}
+
+.smaller {
+	font-size: 90%;
+}
+
+.center {
+	text-align: center;
+}
+
+div.reported {
+	background-color: #ffefe6 !important;
+}
+
+div.reported div.head {
+	background-color: #fcb !important;
+}
+
+div.unapproved {
+	background-color: #f0f0e6;
+}
+
+div.unapproved div.head {
+	background-color: #ddb !important;
+}
+
+div.unread {
+	background-color: #f4f4f0 !important;
+}
+
+div.unread div.head {
+	background-color: #f4f4f0 !important;
+	border-bottom: 0 !important;
+}
+
+div.post {
+	margin: 10px 0 10px 0;
+	padding: 8px 8px 0 8px;
+}
+
+div.approved {
+	border: 1px silver solid;
+	background-color: #fffffa;
+}
+
+div.post div.body {
+	margin: 0;
+	padding: 0;
+}
+
+div.post div.body p {
+	font-size: 12px;
+	line-height: 17px;
+	padding: 2px 0;
+	text-align: justify;
+}
+
+div.post div.body hr {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+div.post div.body p.signature {
+	font-size: 0.8em;
+	padding: 2px 2px 0 2px;
+	margin-top: 2px;
+	color: #777;
+}
+
+div.post div.body p.footer {
+	font-size: 0.8em;
+	padding: 2px 2px 0 2px;
+	margin-top: 2px;
+	border-top: 1px #ddb solid;
+}
+
+div.post div.body p.approve {
+	font-size: 0.8em;
+	padding: 2px 2px 0 2px;
+	margin-top: 2px;
+}
+
+div.post div.body p.approve input {
+	padding: 0;
+	margin: 0 3px 0 0;
+}
+
+div.post div.body p.approve label {
+	padding: 0;
+	margin: 0;
+}
+
+div.post div.body blockquote.forum-quote {
+	border-left: 1px #e5e580 solid;
+	padding: 1px 10px;
+	background-color: #f5f5cc;
+}
+
+div.post div.body blockquote.forum-quote p {
+	font-size: 11px;
+	line-height: 16px;
+	padding: 1px 0;
+}
+
+div.post div.head {
+	color: #777777;
+	padding: 3px;
+	margin: 0;
+	background-color: #f8f8f0;
+	border-bottom: 1px #ddb solid;
+}
+
+div.post div.head h2 {
+	font-size: 14px;
+	font-weight: bold;
+	padding: 0 0 2px 0;
+	margin: 0;
+}
+
+div.post div.head p.info {
+	padding: 0 0 4px 0;
+	margin: 0;
+	font-size: 10px;
+}
+
+hr {
+	height: 1px;
+	color: #ccc;
+	background-color: #ccc;
+	border: 0;
+	padding: 0;
+	width: 90%;
+}
+
+img {
+	border: 0;
+}
+
+input, textarea, select {
+	border: 1px #000 solid;
+	margin: 2px;
+	padding: 1px;
+	background-color: #fff;
+}
+
+p.copyright {
+	border-top: 1px #ddd solid;
+	text-align: center;
+	font-size: 9px;
+	padding: 4px;
+}
+
+p.location {
+	font-size: 7.5pt;
+	color: #666;
+	padding: 0 0 5px 5px;
+	border-bottom: 1px #ddd solid;
+}
+
+.forum {
+	border: 1px silver solid;
+	padding: 8px;
+	font-size: 12px;
+	background-color: #fffffa;
+	margin-bottom: 10px;
+}
+
+table.forum th {
+	vertical-align: middle;
+	padding: 0 5px 5px 5px;
+	margin: 0;
+	font-size: 12px;
+	border-bottom: 1px #ddb solid;
+}
+
+table.forum td.title {
+	padding: 5px;
+	font-size: 12px;
+	margin: 0;
+	line-height: 16px;
+}
+
+table.forum td.odd {
+	background-color: #fffff8;
+	border-bottom: 1px #ddb solid;
+}
+
+table.forum td.even {
+	background-color: #f8f8f0;
+	border-bottom: 1px #ddb solid;
+}
+
+table.forum td.poster, table.forum td.date, table.forum td.replies, table.forum td.bookmark-forum {
+	font-size: 11px;
+	padding: 5px;
+	margin: 0;
+	text-align: center;
+}
+
+table.forum td {
+	padding: 5px;
+}
+
+table.forum p.topic-title {
+	padding: 1px 0 3px 0;
+	margin: 0;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+table.forum p.topic-description {
+	padding: 0;
+	margin: 0;
+	font-size: 11px;
+	line-height: 16px;
+}
+
+table.forum p.forum-title {
+	padding: 1px 0 3px 0;
+	margin: 0;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+table.forum p.forum-description {
+	padding: 0;
+	margin: 0;
+	font-size: 11px;
+	line-height: 16px;
+}
+
+table.forum p.forum-subforums {
+	margin: 2px 0 0 0;
+	padding: 0;
+	border-top: 1px silver solid;
+	font-size: 11px;
+	color: #666;
+}
+
+#logo {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+#title {
+	position: absolute;
+	top: 40px;
+	right: 200px;
+	left: 300px;
+	text-align: center;
+}
+
+#title h1 {
+	font-size: 22px;
+	font-weight: bold;
+}
+
+#title h2 {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#title h1, #title h2 {
+	margin: 0;
+	padding: 0 0 5px 0;
+}
+
+#box-signin, #box-search, #box-stats {
+	position: absolute;
+	right: 10px;
+	background-color: #fff;
+	border: 1px #999 solid;
+	width: 160px;
+	margin: 0;
+	padding: 5px 10px 5px 10px;
+	font-size: 10px;
+	text-align: right;
+}
+
+#box-signin h2, #box-search h2, #box-stats h2 {
+	font-size: 13px;
+	padding: 0 0 3px 0;
+	margin: 0;
+}
+
+#box-signin input, #box-search input {
+	font-size: 9px;
+	vertical-align: middle;
+}
+
+#box-signin input.submit, #box-search input.submit {
+	padding: 1px;
+}
+
+#box-signin {
+	top: 10px;
+	height: 90px;
+}
+
+#box-search {
+	top: 120px;
+	height: 70px;
+}
+
+#box-stats {
+	top: 210px;
+}
+
+#box-stats ol, #box-stats ul {
+	padding: 0;
+}
+
+#main {
+	margin: 135px 210px 0 5px;
+}
+
+#main h1 {
+	padding: 0 0 5px 0;
+	margin: 0;
+	font-size: 20px;
+}

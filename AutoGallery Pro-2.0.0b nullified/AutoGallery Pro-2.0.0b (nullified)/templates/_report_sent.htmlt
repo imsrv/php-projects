@@ -1,0 +1,83 @@
+<html>
+<head>
+  <title>Report Recorded</title>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center" colspan="2">
+<font face="Arial" size="3" color="white">
+<b>Report Has Been Recorded</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td colspan="2">
+<font face="Verdana" size="1" style="font-size: 11px;">
+Your cheat/broken link report has been recorded, and we will review it shortly.  Thank you for
+taking the time to let us know about this situation.  Below is the information you submitted, along
+with an ID that has been assigned to this report.  If you need to contact us for any reason about
+this report, you will need to use that ID.
+
+<br><br>
+
+<b>Report ID:</b> #%CHEAT_ID%#<br>
+<b>Description</b><br>
+#%CHEAT_DESC%#
+<br><br>
+<div align="center">
+<b><a href="#%TGP_URL%#" class="reg">Back To The TGP</a></b>
+</div>
+</font>
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>

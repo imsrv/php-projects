@@ -1,0 +1,746 @@
+<html>
+<head>
+  <title>Setup AutoRank Professional v#%VERSION%#</title>
+  <script language="JavaScript">
+    function openHelp(url, name) { 
+      window.open(url, name, 'scrollbars=1,resizable=no,width=350,height=450,status=0,menubar=0');
+    }
+  </script>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="white" link="blue">
+
+<div align="center">
+
+<font face="Arial" size="3" color="red">
+<b>#%MESSAGE%#</b>
+</font>
+
+<br><br>
+
+<form method="POST" action="setup.cgi">
+
+<table border="0" cellpadding="0" cellspacing="0" width="650">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="700">
+
+  <tr>
+    <td bgcolor="#004080" align="center" colspan="2">
+      <font face="Arial" size="3" color="white" style="font-size: 15px;">
+      <b>AutoRank Professional v#%VERSION%# Setup</b><br>
+         An xCGI Release Nulled by drew010
+      </font>
+    </td>
+  </tr>
+
+  <tr bgcolor="#afafaf">
+    <td align="center" colspan="2">
+      <font face="Arial" size="2">
+      <b>Fields marked in <font color="red">red</font> are required</b>
+      </font>
+    </td>
+  </tr>
+
+
+
+  <!-- DIRECTORY SETUP -->
+  <tr bgcolor="#dcdcdc">
+    <td width="150" valign="top">
+      <font face="Arial" size="2"><b>Directory Setup</b></font>
+    </td>
+    <td width="550">
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>HTML Directory:</b></font><br>
+      <input type="text" name="HTML_DIR" value="#%HTML_DIR%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The directory on your server where you want the ranking pages created.<br>
+      Example: /web/home/username/docs/autorank
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Image Directory:</b></font><br>
+      <input type="text" name="IMAGE_DIR" value="#%IMAGE_DIR%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The directory on your server where you want the member banners to be stored.<br>
+      Example: /web/home/username/docs/autorank/images<br>
+      This directory cannot be inside the cgi-bin.
+      </font>
+    </td>
+  </tr>
+
+
+
+  <!-- URL SETUP -->
+  <tr bgcolor="#ececec">
+    <td valign="top" width="100">
+      <font face="Arial" size="2"><b>URL Setup</b></font>
+    </td>
+
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>CGI URL:</b></font><br>
+      <input type="text" name="CGI_URL" value="#%CGI_URL%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The base URL where the software is installed on your server.<br>
+      Example: http://www.domain.com/cgi-bin/autorank
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Forward URL:</b></font><br>
+      <input type="text" name="FORWARD_URL" value="#%FORWARD_URL%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The full URL surfers will be sent to when they come to your site through rankem.cgi.<br>
+      Example: http://www.domain.com/autorank/index.html
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>HTML URL:</b></font><br>
+      <input type="text" name="HTML_URL" value="#%HTML_URL%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The full URL where the ranking pages will be created.<br>
+      Example: http://www.domain.com/autorank
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Image URL:</b></font><br>
+      <input type="text" name="IMAGE_URL" value="#%IMAGE_URL%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The full URL where the member banners will be stored.<br>
+      Example: http://www.domain.com/autorank/images
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>In URL:</b></font><br>
+      <input type="text" name="IN_URL" value="#%IN_URL%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The full URL and filename of the incoming hit tracking script.<br>
+      Example: http://www.domain.com/cgi-bin/autorank/rankem.cgi
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Out URL:</b></font><br>
+      <input type="text" name="OUT_URL" value="#%OUT_URL%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The full URL and filename of the outgoing hit tracking script.<br>
+      Example: http://www.domain.com/cgi-bin/autorank/out.cgi
+      </font>
+    </td>
+  </tr>
+
+
+
+  <!-- EMAIL SETUP -->
+  <tr bgcolor="#dcdcdc">
+    <td valign="top">
+      <font face="Arial" size="2"><b>E-Mail Setup</b></font>
+    </td>
+
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Sendmail Location or SMTP Server Hostname:</b></font><br>
+      <input type="text" name="SENDMAIL" value="#%SENDMAIL%#" size="40" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The full path to sendmail or the hostname of your SMTP server.<br>
+      Sendmail Example: /usr/sbin/sendmail<br>
+      SMTP Example: mail.yourdomain.com
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Your E-mail Address:</b></font><br>
+      <input type="text" name="ADMIN_EMAIL" value="#%ADMIN_EMAIL%#" size="40" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The email address you want to use in association with the list.<br>
+      Example: webmaster@yourdomain.com
+      </font>
+      <br><br>
+
+      #%USE_MEM_EMAIL%#   <font face="Verdana" size="1" style="font-size: 11px;"><b>Send confirmation e-mail to person signing up?</b></font><br>
+      #%USE_ADMIN_EMAIL%# <font face="Verdana" size="1" style="font-size: 11px;"><b>E-mail administrator when new account is added?</b></font><br>
+      #%USE_EDIT_EMAIL%#  <font face="Verdana" size="1" style="font-size: 11px;"><b>E-mail administrator when an account is edited?</b></font><br>
+    </td>
+  </tr>
+
+
+
+  <!-- OVERALL RANKS -->
+  <tr bgcolor="#ececec">
+    <td valign="top">
+      <font face="Arial" size="2"><b>Overall Ranks</b></font>
+    </td>
+
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Overall Sites To List:</b></font><br>
+      <input type="text" name="SITES_TO_LIST" value="#%SITES_TO_LIST%#" size="10" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The total number of sites to be listed on the ranking pages.<br>
+      Example: 100
+      </font>
+      <br><br>
+
+      #%USE_FILLER%#   <font face="Verdana" size="1" style="font-size: 11px;"><b>Fill in empty overall ranks with filler HTML?</b></font><br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Main Ranking Page:</b></font><br>
+      <input type="text" name="RANKING_PAGE" value="#%RANKING_PAGE%#" size="20" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The main ranking page for your site.  The #1 overall ranking will appear on this page.<br>
+      Example: index.html
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Split List At:</b></font><br>
+      <input type="text" name="SPLIT_LIST" value="#%SPLIT_LIST%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      Where to split the list and start a new page. (leave blank if none)<br>
+      Example: 25,50,75&nbsp;&nbsp; <b>(NO SPACES!)</b><br>
+      This setup will be <b>4 pages</b> with ranks:<br>
+      1-25 on the first<br>
+      26-50 on the second<br>
+      51-75 on the third<br>
+      76-END on the last
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Break List At:</b></font><br>
+      <input type="text" name="BREAK_LIST" value="#%BREAK_LIST%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      Where to insert breaks in the list; for banner ads, etc. (leave blank if none)<br>
+      Example: 5,30,70&nbsp;&nbsp; <b>(NO SPACES!)</b><br>
+      Breaks occur after the rank indicated.
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Font Sizes:</b></font><br>
+      <input type="text" name="FONT_SIZES" value="#%FONT_SIZES%#" size="45" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      List of font sizes and corresponding ranks.<br>
+      Example: 1-5=>4,6-25=>3,26-50=>2,51-100=>1<br>
+      This setup will use a font size of:<br>
+      4 for ranks 1-5<br>
+      3 for ranks 6-25<br>
+      2 for ranks 26-50<br>
+      1 for ranks 51-100<br>
+      Note that you must start at a low rank and work your way to a higher rank.
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Overall Banners To Show:</b></font><br>
+      <input type="text" name="NUM_BANNERS" value="#%NUM_BANNERS%#" size="10" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The number of member banners to show on the overall ranking pages.<br>
+      Example: 5
+      </font>
+    </td>
+  </tr>
+
+
+
+  <!-- CATEGORY RANKS -->
+  <tr bgcolor="#dcdcdc">
+    <td valign="top">
+      <font face="Arial" size="2"><b>Category Ranks</b></font>
+    </td>
+
+    <td>
+      #%USE_CAT_PAGES%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Generate seperate ranking pages for each category?</b>
+      
+      <br><br>
+      You only need to fill in the rest of these fields if you checked the box above.<br>
+      Items marked in blue are required if you checked the box above.
+      </font>
+      <br><br>
+
+      #%USE_RERANK_CAT%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Update category pages at each rerank?</b></font><br>
+      #%USE_FORWARD_CAT%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Forward surfers to the category page of the site they came from?</b></font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="blue"><b>Sites To List Per Category:</b></font><br>
+      <input type="text" name="C_SITES_TO_LIST" value="#%C_SITES_TO_LIST%#" size="10" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The number of sites to be listed on category pages.<br>
+      Example: 100
+      </font>
+      <br><br>
+
+      #%USE_C_FILLER%#   <font face="Verdana" size="1" style="font-size: 11px;"><b>Fill in empty category ranks with filler HTML?</b></font><br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="blue"><b>Categories:</b></font></font><br>
+      <input type="text" name="CATEGORIES" value="#%CATEGORIES%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The categories members will be able to choose from for their account.<br>
+      Example: Category 1,Category 2,Category 3<br>
+      Seperate categories by commas with no space before or after a comma.
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Split List At:</b></font><br>
+      <input type="text" name="C_SPLIT_LIST" value="#%C_SPLIT_LIST%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      Where to split the list and start a new page. (leave blank if none)<br>
+      Example: 25,50,75&nbsp;&nbsp; <b>(NO SPACES!)</b><br>
+      This setup will be <b>4 pages</b> with ranks:<br>
+      1-25 on the first<br>
+      26-50 on the second<br>
+      51-75 on the third<br>
+      76-END on the last
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Break List At:</b></font><br>
+      <input type="text" name="C_BREAK_LIST" value="#%C_BREAK_LIST%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      Where to insert breaks in the list; for banner ads, etc. (leave blank if none)<br>
+      Example: 5,30,70&nbsp;&nbsp; <b>(NO SPACES!)</b><br>
+      Breaks occur after the rank indicated.
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Font Sizes:</b></font><br>
+      <input type="text" name="C_FONT_SIZES" value="#%C_FONT_SIZES%#" size="45" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      List of font sizes and corresponding ranks.<br>
+      Example: 1-5=>4,6-25=>3,26-50=>2,51-100=>1<br>
+      This setup will use a font size of:<br>
+      4 for ranks 1-5<br>
+      3 for ranks 6-25<br>
+      2 for ranks 26-50<br>
+      1 for ranks 51-100<br>
+      Note that you must start at a low rank and work your way to a higher rank.
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="blue"><b>File Extension:</b></font><br>
+      <input type="text" name="FILE_EXT" value="#%FILE_EXT%#" size="10" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The file extension to use for category pages.<br>
+      Example: html
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="blue"><b>Category Banners To Show:</b></font><br>
+      <input type="text" name="C_NUM_BANNERS" value="#%C_NUM_BANNERS%#" size="10" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The number of member banners to show on the category ranking pages.<br>
+      Example: 5
+      </font>
+    </td>
+  </tr>
+
+
+
+  <!-- BANNERS -->
+  <tr bgcolor="#ececec">
+    <td valign="top">
+      <font face="Arial" size="2"><b>Banners</b></font>
+    </td>
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Maximum Banner Height:</b></font><br>
+      <input type="text" name="BANNER_HEIGHT" value="#%BANNER_HEIGHT%#" size="10" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The maximum height value members can use for their banners.<br>
+      Example: 60
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Maximum Banner Width:</b></font><br>
+      <input type="text" name="BANNER_WIDTH" value="#%BANNER_WIDTH%#" size="10" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The maximum width value members can use for their banners.<br>
+      Example: 468
+      </font>
+      <br><br>
+
+      #%USE_FORCE_DIMS%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Force all member banners to these dimensions?</b></font><br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Maximum Banner Size In Bytes:</b></font><br>
+      <input type="text" name="BANNER_BYTES" value="#%BANNER_BYTES%#" size="10" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The maximum size in bytes that a member banner can be.<br>
+      This will only work if you have one of the download options enabled below.<br>
+      Example: 12288  &nbsp;&nbsp;&nbsp;&nbsp;(no commas!)
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Banner Alt Value:</b></font><br>
+      <input type="text" name="ALT_VALUE" value="#%ALT_VALUE%#" size="40" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The value to place in the alt attribute of member banner image tags.<br>
+      Example: Click Here To Visit This Site
+      </font>
+
+      <br><br>
+
+      #%USE_CHECK_BANNERS%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Download member banners to get height, width, and check byte size?</b></font><br>
+      #%USE_SERVE_BANNERS%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Download member banners and serve them from your server?</b></font><br>
+
+      <hr width="100%" size="1" noshade>
+
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      <b>If you want to use a banner from your server for all accounts that do not<br>
+      fill in banner information, complete the three fields below.</b>
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Default Banner URL:</b></font><br>
+      <input type="text" name="DEF_BANNER" value="#%DEF_BANNER%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The full URL to the default banner to use for accounts.<br>
+      Example: http://www.domain.com/images/banner.gif
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Default Banner Height:</b></font><br>
+      <input type="text" name="DEF_HEIGHT" value="#%DEF_HEIGHT%#" size="10" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The height of the default banner.<br>
+      Example: 60
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Default Banner Width:</b></font><br>
+      <input type="text" name="DEF_WIDTH" value="#%DEF_WIDTH%#" size="10" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The width of the default banner.<br>
+      Example: 468
+      </font>   
+    </td>
+  </tr>
+
+
+
+  <!-- OTHER OPTIONS -->
+  <tr bgcolor="#dcdcdc">
+    <td valign="top">
+      <font face="Arial" size="2"><b>Other Options</b></font>
+    </td>
+      
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Minimum Hits:</b></font><br>
+      <input type="text" name="MIN_HITS" value="#%MIN_HITS%#" size="10" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The minimum number of hits needed to get listed.<br>
+      Example: 1
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Site Title Max Length:</b></font><br>
+      <input type="text" name="TITLE_LEN" value="#%TITLE_LEN%#" size="15" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The maximum number of characters allowed for member site titles.<br>
+      Example: 60
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Site Description Max Length:</b></font><br>
+      <input type="text" name="DESC_LEN" value="#%DESC_LEN%#" size="15" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The maximum number of characters allowed for member site descriptions.<br>
+      Example: 255
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Time Zone Offset:</b></font><br>
+      <input type="text" name="TIME_ZONE" value="#%TIME_ZONE%#" size="15" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The time zone offset to use for date/time displays on the list.<br>
+      If your server is in EST and you are in CST, this would be -1<br>
+      Example: -1
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Date Format:</b></font><br>
+      <input type="text" name="DATE_FORMAT" value="#%DATE_FORMAT%#" size="15" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The format to be used for dates generated by the script.<br>
+      Example: %n-%j-%y<br>
+      See the dates.html documentation file for more information
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Time Format:</b></font><br>
+      <input type="text" name="TIME_FORMAT" value="#%TIME_FORMAT%#" size="15" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The format to be used for times generated by the script.<br>
+      Example: %g:%i%a<br>
+      See the dates.html documentation file for more information
+      </font>
+      <br><br>
+
+      #%USE_REVIEW%#      <font face="Verdana" size="1" style="font-size: 11px;"><b>Review new accounts before listing?</b></font><br>
+      #%USE_REV_EDIT%#    <font face="Verdana" size="1" style="font-size: 11px;"><b>Review all member account editing before listing?</b></font><br>
+      #%USE_REQ_RECIP%#   <font face="Verdana" size="1" style="font-size: 11px;"><b>Require a reciprocal link URL for submission?</b></font><br>
+      #%USE_DUP_CHECK%#   <font face="Verdana" size="1" style="font-size: 11px;"><b>Check for duplicate accounts during signup?</b></font><br>
+      #%USE_URL_CHECK%#   <font face="Verdana" size="1" style="font-size: 11px;"><b>Verify URLs during account submission?</b></font><br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Rank sites by:</b></font><br>
+      <select name="SORT_METHOD" style="font-size: 11px; font-family: Verdana">
+        <option value="hitsIn"#%hitsIn%#>Hits In Since Last Reset</option>
+        <option value="hitsOut"#%hitsOut%#>Hits Out Since Last Reset</option>
+        <option value="totalIn"#%totalIn%#>Total Hits In</option>
+        <option value="totalOut"#%totalOut%#>Total Hits Out</option>
+        <option value="inPerDay"#%inPerDay%#>Average Hits In Per Day</option>
+        <option value="inPerWeek"#%inPerWeek%#>Average Hits In Per Week</option>
+        <option value="inPerMonth"#%inPerMonth%#>Average Hits In Per Month</option>
+        <option value="outPerDay"#%outPerDay%#>Average Hits Out Per Day</option>
+        <option value="outPerWeek"#%outPerWeek%#>Average Hits Out Per Week</option>
+        <option value="outPerMonth"#%outPerMonth%#>Average Hits Out Per Month</option>
+      </select>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Decimal Places:</b></font><br>
+      <input type="text" name="DECIMALS" value="#%DECIMALS%#" size="12" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The number of decimal places to show for Hits/Time values<br>
+      Example: 2
+      </font>
+
+      <hr width="100%" size="1" noshade>
+
+      #%USE_CRON%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Check this box if you are using cron to update the list.</b></font><br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Rerank Time:</b></font><br>
+      <input type="text" name="RERANK" value="#%RERANK%#" size="12" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The minimum number of seconds between list re-ranks<br>
+      Example: 3600
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;" color="red"><b>Reset Time:</b></font><br>
+      <input type="text" name="RESET" value="#%RESET%#" size="12" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The minimum number of seconds between list resets<br>
+      Example: 86400
+      </font>
+      <br>
+
+      <hr width="100%" size="1" noshade>
+
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      <b>If you want your table row colors to alternate, fill in the following items</b>
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>First Row Color:</b></font><br>
+      <input type="text" name="COLOR_1" value="#%COLOR_1%#" size="12" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The color to use for the first row, and then every other, in your table.<br>
+      Example: #dcdcdc
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Second Row Color:</b></font><br>
+      <input type="text" name="COLOR_2" value="#%COLOR_2%#" size="12" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The color to use for the second row, and then every other, in your table.<br>
+      Example: #afafaf
+      </font>
+      <br>
+
+      <hr width="100%" size="1" noshade>
+
+      #%USE_NEW_ICON%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Mark new sites with an icon?</b></font><br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>New Icon HTML:</b></font><br>
+      <input type="text" name="NEW_ICON" value="#%NEW_ICON%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The full HTML tag to use for the new image.<br>
+      Example: &lt;img src="http://www.domain.com/images/new_icon.gif"&gt;
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Time to display icon:</b></font><br>
+      <input type="text" name="DISPLAY_NEW" value="#%DISPLAY_NEW%#" size="12" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The minimum number of seconds to display the new icon next to a site.<br>
+      This number should be at least as large as your rerank time.<br>
+      Example: 86400
+      </font>
+      <br>
+
+      <hr width="100%" size="1" noshade>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>If you want to display up and down images next to sites, fill in the following.</b></font><br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Up Image HTML:</b></font><br>
+      <input type="text" name="UP_IMAGE" value="#%UP_IMAGE%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The full HTML tag to use for the "up" image.<br>
+      Example: &lt;img src="http://www.domain.com/images/up.gif"&gt;
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Down Image HTML:</b></font><br>
+      <input type="text" name="DOWN_IMAGE" value="#%DOWN_IMAGE%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The full HTML tag to use for the "down" image.<br>
+      Example: &lt;img src="http://www.domain.com/images/down.gif"&gt;
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Unchanged Image HTML:</b></font><br>
+      <input type="text" name="SAME_IMAGE" value="#%SAME_IMAGE%#" size="60" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The full HTML tag to use for the "unchanged" image.<br>
+      Example: &lt;img src="http://www.domain.com/images/unch.gif"&gt;
+      </font>
+    </td>
+  </tr>
+
+
+
+  <!-- USER DEFINED -->
+  <tr bgcolor="#ececec">
+    <td valign="top">
+      <font face="Arial" size="2"><b>User Defined</b></font>
+    </td>
+
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      Fill out the following if you are using any of the 3 user defined database fields.
+      </font>
+
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Field One Name:</b></font><br>
+      <input type="text" name="FIELD_1_NAME" value="#%FIELD_1_NAME%#" size="40" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The name of the data you are collecting for field one.<br>
+      Example: Sample Image URL
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Field Two Name:</b></font><br>
+      <input type="text" name="FIELD_2_NAME" value="#%FIELD_2_NAME%#" size="40" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The name of the data you are collecting for field two.<br>
+      Example: ICQ Number
+      </font>
+      <br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Field Three Name:</b></font><br>
+      <input type="text" name="FIELD_3_NAME" value="#%FIELD_3_NAME%#" size="40" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The name of the data you are collecting for field three.<br>
+      Example: Contact Name
+      </font>
+      <br><br>
+
+      #%USE_REQ_FIELD_1%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Require field one for account submission?</b></font><br>
+      #%USE_REQ_FIELD_2%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Require field two for account submission?</b></font><br>
+      #%USE_REQ_FIELD_3%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Require field three for account submission?</b></font><br>
+    </td>
+  </tr>
+
+
+
+  <!-- CHEAT PROTECTION -->
+  <tr bgcolor="#dcdcdc">
+    <td valign="top">
+      <font face="Arial" size="2"><b>Cheat Protection</b></font>
+    </td>
+
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      If you are using the C hit tracking add on, changing these settings will have no affect.  You need to make all changes to the cheat
+      protection options in the source code for the add on, and then recompile it.
+      </font>
+
+      <br><br>
+
+      #%USE_CHEAT_LOG%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Keep a log of all cheating attempts?<font color="red">*</font></b></font><br>
+      #%USE_NO_PROXY%#  <font face="Verdana" size="1" style="font-size: 11px;"><b>Filter out hits coming from proxy servers?</b></font><br>
+      #%USE_IP_LOG%#    <font face="Verdana" size="1" style="font-size: 11px;"><b>Keep an IP log for each member?<font color="red">*</font></b></font><br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Clean Time:</b> (required if logging IPs)</font><br>
+      <input type="text" name="CLEAN_TIME" value="#%CLEAN_TIME%#" size="20" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The minimum number of seconds between IP log clearings.<br>
+      Example: 86400
+      </font>
+      <br><br>
+
+      #%USE_COOKIES%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Enable cookies?</b></font><br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Expire Time:</b> (required if using cookies)</font><br>
+      <input type="text" name="COOKIE_TIME" value="#%COOKIE_TIME%#" size="20" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The number of seconds a cookie should last before expiring.<br>
+      Example: 86400
+      </font>
+      <br><br>
+
+      #%USE_GATEWAY%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Enable the gateway (double CGI) page?</b></font><br>
+      #%USE_REQ_COOK%# <font face="Verdana" size="1" style="font-size: 11px;"><b>Only cookie enabled browsers can send hits?</b> (must be using gateway)</font><br><br>
+
+      <font face="Verdana" size="1" style="font-size: 11px;"><b>Session Time:</b> (required if using double CGI)</font><br>
+      <input type="text" name="SESSION_TIME" value="#%SESSION_TIME%#" size="20" style="font-size: 11px; font-family: Verdana"><br>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+      The number of seconds a gateway session should last before expiring.<br>
+      Example: 45
+      </font>
+    </td>
+  </tr>
+
+
+
+  <!-- SAVE DATA -->
+  <tr bgcolor="#ececec">
+    <td align="center" colspan="2">
+      <input type="submit" value="Save This Data" style="font-size: 11px; font-family: Verdana">
+    </td>
+  </tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</form>
+
+<table width="650" cellspacing="0" cellpadding="0" border="0">
+  <tr bgcolor="#ffffff">
+    <td>
+      <font face="Verdana" size="1" style="font-size: 11px;">
+
+      <b><font face="Verdana" size="1" style="font-size: 11px;" color="red">*</font></b> Enabling any of these options can use a large amount of disk space.  Make
+      sure you have at least 20 megabytes of free space for an average sized list.  Sites with many members will require more space.
+
+      </font>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<?
+// 'Settings' messages
+$lang_msg["settings"] = array(
+	501	=>	'Asetusten tallennus ei onnistunut.',
+	502	=>	'Asetukset on tallennettu.',
+	503	=>	'Sinun nimesi',
+	504	=>	'(t‰m‰ nimi tullaan lis‰‰m‰‰n <u>l‰hett‰j‰-kentt‰‰n</u> kaikkiin l‰hett‰miisi viesteihin)',
+	505	=>	'Allekirjoitus',
+	506	=>	'(allekirjoitus lis‰t‰‰n kirjoittamasi viestin loppuun)',
+	507	=>	'Kieli',
+	508	=>	'(oletuskieli)',
+	509	=>	'J‰rjest‰ viestit',
+	510	=>	'(oletusarvoinen j‰rjestys)',
+	511	=>	'K‰‰nteisesti',
+	512	=>	'(jos valitsit t‰m‰n, uusimmat viestit ovat muita ylemp‰n‰)',
+	513	=>	'Tallenna l‰hetyt viestit',
+	514	=>	'(jos valitsit t‰m‰n, kaikista l‰hett‰m‰si viesteist‰ tallennetaan kopio "L‰hetetyt" kansioon)',
+	515	=>	'Siirr‰ roskakoriin kun poistat viestin',
+	516	=>	'(jos valitsit t‰m‰n, viesti poiston yhteydess‰ siirret‰‰n ensin roskakoriin)',
+	517	=>	'Sivun koko',
+	518	=>	'(montako viesti‰ n‰ytet‰‰n per sivu)',
+	519	=>	'P‰iv‰ys',
+	520	=>	'L‰hett‰j‰',
+	521	=>	'Aihe',
+	522	=>	'Koko',
+	523	=>	'Teema',
+	524	=>	'(t‰st‰ voit vaihtaa mieleisesi v‰riteeman)',
+	525	=>	'Tallenna asetukset',
+	526	=>	'Show',
+	527	=>	'Hide',
+	528	=>	'Show/Hide',
+	529	=>	'(show or hide the user folder list in the left menu)',
+	530	=>	'Prev/Next',
+	531	=>	'(shows the previous and the next message links when reading a message -- this is slow on large mailboxes)',
+	532	=>	'Reply-To',
+	533	=>	'(the recipient will reply to this address -- if empty <b>%e</b> is used)'
+);
+?>

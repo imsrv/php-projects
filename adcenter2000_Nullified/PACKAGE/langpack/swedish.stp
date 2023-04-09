@@ -1,0 +1,6 @@
+$types=qq~<select name=type><option value="banner">Banner program</option>~;
+$types.=qq~<option value="banners">Topp Banners</option>~;
+$types.=qq~<option value="counter">Räknare</option>~ if ($enablecounter);
+$types.=qq~<option value="sbanner">SwimBanner Program</option>~ if ($enableswim);
+$types.=qq~<option value="tx">Text annonsering</option>~ if ($enabletex);
+$types.=qq~</select>~;

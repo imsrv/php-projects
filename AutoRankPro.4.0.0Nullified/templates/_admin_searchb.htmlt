@@ -1,0 +1,48 @@
+</table>
+</td>
+</tr>
+
+<tr bgcolor="#ffffff">
+<td>
+
+<table width="100%">
+<tr>
+<td align="center">
+
+<select name="run" style="font-size: 11px; font-family: Verdana">
+  <option value="displayEditMember">Edit Selected Member</option>
+  <option value="displayMail">Mail Selected Memberss</option>
+  <option value="displayMember">Display Member Details</option>
+  <option value=""></option>
+  <option value="deleteMember">Delete Selected Members</option>
+</select>
+<input type="hidden" name="from" value="displaySearch">
+<input type="hidden" name="key" value="#%KEY%#">
+<input type="submit" value="Execute Function" style="font-size: 11px; font-family: Verdana">
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<input type="hidden" name="apwd" value="#%APWD%#">
+</form>
+
+<br>
+
+<form action="admin.cgi" method="POST">
+<input type="hidden" name="apwd" value="#%APWD%#">
+#%BACK%#
+</form>
+
+<br><br>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<tr>
+<td bgcolor="#cccccc" colspan="3">
+<input type="checkbox" name="id" value="#%POST_ID%#"> 
+<font face="Verdana" size="1" style="font-size: 11px;"> <b>#%POST_ID%#</b> : 
+<b><a href="#%GALLERY_URL%#" target="_blank" class="reg">#%GALLERY_URL%#</a> - #%NUM_PICS%# #%CATEGORY%# Pics</b>
+</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Submitter's E-mail:</b> <a href="mailto:#%EMAIL%#" class="reg">#%EMAIL%#</a>
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Submitter's IP:</b> <a href="javascript:openExtern('extern.cgi?act=resolv&dat=#%SUBMIT_IP%#');" class="reg">#%SUBMIT_IP%#</a>
+</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Approval Time:</b> #%APPROVE_TIME%#
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Permanent:</b> #%PERMANENT%#
+</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Approved By:</b> #%APPROVED_BY%#
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Partner ID:</b> #%PARTNER_ID%#
+</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec" colspan="2">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Description:</b> #%DESCRIPTION%#
+</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Recip:</b> #%RECIP_CHECKED%#, #%RECIP_FOUND%# &nbsp;&nbsp;&nbsp;<a href="javascript:openExtern('extern.cgi?act=recip&dat=#%CODED_RECIP%#');" class="reg">#%CHECK_RECIP%#</a> &nbsp;:&nbsp; <a href="javascript:openExtern('extern.cgi?act=url&dat=#%CODED_GURL%#');" class="reg">Verify Gallery URL</a>
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Rating:</b> #%RATING%#
+</font>
+</td>
+</tr>

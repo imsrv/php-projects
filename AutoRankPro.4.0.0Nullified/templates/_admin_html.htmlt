@@ -1,0 +1,144 @@
+<html>
+<head>
+  <title>AutoRank Pro Administration</title>
+  <script language="JavaScript">
+    function openHelp(url, name) { 
+      window.open(url, name, 'scrollbars=1,resizable=no,width=350,height=450,status=0,menubar=0');
+    }
+  </script>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<form action="admin.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="700">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Editing the HTML for #%PAGE%#</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td align="center">
+<font face="Arial" size="2">
+<b>Header HTML</b>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td align="center">
+<textarea name="head" cols="95" rows="30" wrap="OFF" style="font-size: 11px; font-family: Verdana">#%HEAD%#</textarea>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td align="center">
+<font face="Arial" size="2">
+<b>Template HTML</b>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td align="center">
+<textarea name="temp" cols="95" rows="20" wrap="OFF" style="font-size: 11px; font-family: Verdana">#%TEMP%#</textarea>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td align="center">
+<font face="Arial" size="2">
+<b>Filler HTML</b>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td align="center">
+<textarea name="fill" cols="95" rows="20" wrap="OFF" style="font-size: 11px; font-family: Verdana">#%FILL%#</textarea>
+</td>
+</tr>
+
+
+<tr bgcolor="#cccccc">
+<td align="center">
+<font face="Arial" size="2">
+<b>Footer HTML</b>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td align="center">
+<textarea name="foot" cols="95" rows="30" wrap="OFF" style="font-size: 11px; font-family: Verdana">#%FOOT%#</textarea>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td align="center">
+<input type="hidden" name="run" value="updateHTML">
+<input type="submit" value="Update HTML" style="font-size: 11px; font-family: Verdana">
+<font face="Verdana" size="2" style="font-size: 11px;"><b>For</b></font>
+<select name="pages" style="font-size: 11px; font-family: Verdana">
+<option value="#%PAGE%#">#%PAGE%# Only</option>
+<option value="#%OVERALL%#">All Overall Pages</option>
+#%CATEGORY%#
+#%ALL%#
+</select>
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+<input type="hidden" name="apwd" value="#%APWD%#">
+</form>
+
+<br>
+
+<form action="admin.cgi" method="POST">
+<input type="hidden" name="apwd" value="#%APWD%#">
+#%BACK%#
+</form>
+
+<br><br>
+
+</body>
+</html>

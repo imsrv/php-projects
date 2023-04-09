@@ -1,0 +1,37 @@
+<?
+// Posta kutularý mesajlarý
+$lang_msg["folders"] = array(
+	151	=>	'Posta Kutusu',
+	152	=>	'Toplam',
+	153	=>	'Okunmamýþ',
+	154	=>	'Boyut',
+	155	=>	'Yeni posta kutusu oluþturma:',
+	156	=>	'Yeni Posta Kutusunu Oluþtur',
+	157	=>	'Ýstediðiniz sayýda posta kutusu oluþturabilirsiniz. Yeni bir posta kutusu oluþturmak için, lütfen ismini aþaðýya yazýn ve "Yeni posta kutusunu oluþtur" butonuna basýn.',
+	158	=>	'Yeni posta kutusunun adýný girmediniz, lütfen tekrar deneyiniz..',
+	159	=>	'Belirtilen posta kutusu zaten var, lütfen tekrar deneyiniz..',
+	160	=>	'Yeni posta kutusu baþarýyla oluþturulmuþtur.',
+	161	=>	'Posta kutusu silme:',
+	162	=>	'Seçili Posta Kutusunu Sil',
+	163	=>	'Silinen posta kutulari sonradan <u><b>geri getirilemez</b></u>. Eðer bir posta kutusunu silmek istiyorsaniz, lütfen istediðiniz posta kutusunu seçin, ve "Seçili posta kutusunu sil" butonuna basýn.',
+	164	=>	'Silinecek posta kutusunu seçmediniz, lütfen tekrar deneyiniz..',
+	165	=>	'Belirtilen posta kutusu silinemedi, lütfen daha sonra tekrar deneyiniz..',
+	166	=>	'Belirtilen posta kutusu baþarýyla silinmiþtir.',
+	167	=>	'Posta kutusunun adýný deðiþtirme:',
+	168	=>	'Seçili Posta Kutusunun Adýný Deðiþtir',
+	169	=>	'Herhangi bir posta kutusunun adýný deðiþtirmek istiyorsaniz, ilgili posta kutusunu seçin, ve "Seçili Posta Kutusunun Adýný Deðiþtir" butonuna basýn.',
+	170	=>	'Eski isim',
+	171	=>	'Yeni isim',
+	172	=>	'Ýsmi deðiþtirilecek posta kutusunu seçmediniz, lütfen tekrar deneyiniz..',
+	173	=>	'Ismi deðiþtirilecek posta kutusunun yeni ismini seçmediniz..',
+	174	=>	'Posta kutusunun adý deðiþtirilemedi, lütfen daha sonra tekrar deneyiniz..',
+	175	=>	'Posta kutusunun adý baþarýyla deðiþtirildi.',
+	176	=>	'Çöp kutusunu boþalt',
+	177	=>	'Yeni posta kutusu oluþturulamadi. Lütfen daha sonra tekrar deneyiniz..',
+	178	=>	'Belirtilen posta kutusu baþarýyla boþaltýldý',
+	179	=>	'Belirtilen posta kutusu boþaltýlamadý, lütfen daha sonra tekrar deneyiniz..',
+	180	=>	'Bu Posta Kutusunu boþaltmak istediðinizden emin misiniz?',
+	181	=>	'Çöp kutusu oluþturulamadý!',
+	182	=>	'Giden mesajlar kutusu oluþturulamadi!'
+);
+?>

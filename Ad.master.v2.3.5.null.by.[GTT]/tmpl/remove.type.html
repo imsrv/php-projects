@@ -1,0 +1,48 @@
+<script language=javascript>
+function checkform() {
+  if (document.mainform.selarea.selectedIndex <= 0) {
+    alert('Please, select campaign to move banners');
+    return false;
+  }
+  return true;
+}
+</script>
+<table cellcpacing=0 cellpadding=0 border=0 width=50% align=center><tr><td>
+<form action=admin.cgi method=post name=mainform onSubmit="return checkform();">
+<input type=hidden name=page value=deletetype>
+<input type=hidden name=action value=removeselect1>
+<input type=hidden name=tid value="#FORM_tid#">
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr>
+	<th colspan=2><img src=#image_dir#move.gif width=16 height=16> MOVE BANNERS TO OTHER CAMPAIGN</th>
+</tr>
+<tr><td class=td1><img src=#image_dir#name.gif width=16 height=16> Name:</td><td class=td1>#t_name#</td></tr>
+<tr valign=top><td class=td2><img src=#image_dir#desc.gif width=16 height=16> Description:</td><td class=td2>#t_desc#</td></tr>
+<tr valign=top><td class=td1><img src=#image_dir#contain.gif width=16 height=16> Campaign contains #num_banners# banners</td><td class=td1><a href=admin.cgi?page=banners&tid=#FORM_tid# class=ar>[view banners]</a></td></tr>
+<tr valign=top><td class=td2><img src=#image_dir#move.gif width=16 height=16> Move banners to:</td><td class=td2>
+	<select name=selarea><option value=''>Select area
+	#option-selarea#
+	</select>
+	</td></tr>
+<tr><td colspan=2 class=tdb>
+<input type=Button class=sbmt value="REMOVE ALL" onClick="document.location='admin.cgi?page=deletetype&action=deleteall&tid=#FORM_tid#';">
+ &nbsp; <input type=submit class=sbmt value="MOVE BANNERS TO OTHER CAMPAIGN">
+ &nbsp; <input type=button class=sbmt value=CANCEL onClick="document.location='admin.cgi';">
+</td></tr>
+</table>
+
+
+
+
+</td></tr></table>
+</form>
+
+
+
+</td></tr></table>
+
+
+<!--[option-selarea]-->
+<option value=#area-id#>#area-name#
+<!--[option-selarea]-->

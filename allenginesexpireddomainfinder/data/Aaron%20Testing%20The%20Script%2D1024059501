@@ -1,0 +1,1559 @@
+$VAR1 = [
+          {
+            'metasearch_time' => '30',
+            'keyword' => 'Aaron Testing The Script',
+            'total' => '595',
+            'ip_time' => '24',
+            'domains' => 237,
+            'nxdomain' => '65',
+            'whois_time' => '2',
+            'expire' => '0'
+          },
+          {
+            'host' => 'aaai.org',
+            'rank' => {
+                        'LycosPro' => '15'
+                      }
+          },
+          {
+            'host' => 'aarongifford.com',
+            'rank' => {
+                        'Msn' => '21',
+                        'Google' => '5'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'aaroninjapan.com',
+            'rank' => {
+                        'LycosPro' => '62'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'aaronj.com',
+            'rank' => {
+                        'Google' => '32',
+                        'Teoma' => '15'
+                      }
+          },
+          {
+            'host' => 'aaronsw.com',
+            'rank' => {
+                        'LycosPro' => '60',
+                        'Google' => '71'
+                      }
+          },
+          {
+            'host' => 'abisource.com',
+            'rank' => {
+                        'Google' => '36'
+                      }
+          },
+          {
+            'host' => 'activestate.com',
+            'rank' => {
+                        'Msn' => '109'
+                      }
+          },
+          {
+            'host' => 'actornews.com',
+            'rank' => {
+                        'LycosPro' => '18'
+                      }
+          },
+          {
+            'host' => 'aintitcool.com',
+            'rank' => {
+                        'LycosPro' => '135'
+                      }
+          },
+          {
+            'host' => 'aip.org',
+            'rank' => {
+                        'Msn' => '47'
+                      }
+          },
+          {
+            'host' => 'americancomposers.org',
+            'rank' => {
+                        'Msn' => '124'
+                      }
+          },
+          {
+            'host' => 'americanunitarian.org',
+            'rank' => {
+                        'LycosPro' => '122'
+                      }
+          },
+          {
+            'host' => 'angelfire.com',
+            'rank' => {
+                        'Teoma' => '32'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'anywhereyougo.com',
+            'rank' => {
+                        'Google' => '87'
+                      }
+          },
+          {
+            'host' => 'aol.com',
+            'rank' => {
+                        'Msn' => '130',
+                        'Google' => '106',
+                        'Teoma' => '11'
+                      }
+          },
+          {
+            'host' => 'apache.org',
+            'rank' => {
+                        'Msn' => '104',
+                        'Google' => '69'
+                      }
+          },
+          {
+            'host' => 'apachelabs.org',
+            'rank' => {
+                        'Google' => '35'
+                      }
+          },
+          {
+            'host' => 'apple.com',
+            'rank' => {
+                        'Teoma' => '33'
+                      }
+          },
+          {
+            'host' => 'aps.org',
+            'rank' => {
+                        'LycosPro' => '134'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'armory.com',
+            'rank' => {
+                        'Msn' => '63'
+                      }
+          },
+          {
+            'host' => 'arrogancy.net',
+            'rank' => {
+                        'Msn' => '43'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'artsdesire.com',
+            'rank' => {
+                        'LycosPro' => '73'
+                      }
+          },
+          {
+            'host' => 'ascusc.org',
+            'rank' => {
+                        'LycosPro' => '47',
+                        'Teoma' => '68'
+                      }
+          },
+          {
+            'host' => 'asmallvictory.net',
+            'rank' => {
+                        'LycosPro' => '35'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'att.net',
+            'rank' => {
+                        'Msn' => '41'
+                      }
+          },
+          {
+            'host' => 'baremetal.com',
+            'rank' => {
+                        'Msn' => '102'
+                      }
+          },
+          {
+            'host' => 'bb4.com',
+            'rank' => {
+                        'LycosPro' => '140',
+                        'Google' => '18',
+                        'Teoma' => '58'
+                      }
+          },
+          {
+            'host' => 'bespecific.com',
+            'rank' => {
+                        'Msn' => '166'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'beyondstructure.com',
+            'rank' => {
+                        'Msn' => '9'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'bitmechanic.com',
+            'rank' => {
+                        'Msn' => '178'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'bluesnews.com',
+            'rank' => {
+                        'Msn' => '79'
+                      }
+          },
+          {
+            'host' => 'boardgamegeek.com',
+            'rank' => {
+                        'LycosPro' => '110'
+                      }
+          },
+          {
+            'host' => 'boim.com',
+            'rank' => {
+                        'Msn' => '71',
+                        'Google' => '80',
+                        'Teoma' => '13'
+                      }
+          },
+          {
+            'host' => 'bond-consulting.com',
+            'rank' => {
+                        'Msn' => '152'
+                      }
+          },
+          {
+            'host' => 'buddhistaidsproject.org',
+            'rank' => {
+                        'LycosPro' => '123'
+                      }
+          },
+          {
+            'host' => 'catalog.com',
+            'rank' => {
+                        'Msn' => '192'
+                      }
+          },
+          {
+            'host' => 'catherders.com',
+            'rank' => {
+                        'LycosPro' => '99'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'ccone.net',
+            'rank' => {
+                        'Teoma' => '3'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'cgisecurity.com',
+            'rank' => {
+                        'Google' => '24'
+                      }
+          },
+          {
+            'host' => 'chordate.com',
+            'rank' => {
+                        'LycosPro' => '129',
+                        'Teoma' => '60'
+                      }
+          },
+          {
+            'host' => 'chrissshack.com',
+            'rank' => {
+                        'Teoma' => '78'
+                      }
+          },
+          {
+            'host' => 'clickz.com',
+            'rank' => {
+                        'Msn' => '10',
+                        'LycosPro' => '77'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'cncseries.com',
+            'rank' => {
+                        'LycosPro' => '11'
+                      }
+          },
+          {
+            'host' => 'cnn.com',
+            'rank' => {
+                        'Msn' => '31'
+                      }
+          },
+          {
+            'host' => 'compaq.com',
+            'rank' => {
+                        'LycosPro' => '43'
+                      }
+          },
+          {
+            'host' => 'coyotelinux.com',
+            'rank' => {
+                        'LycosPro' => '105'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'cpan.org',
+            'rank' => {
+                        'Google' => '99'
+                      }
+          },
+          {
+            'host' => 'ctssn.com',
+            'rank' => {
+                        'Msn' => '25',
+                        'Google' => '22'
+                      }
+          },
+          {
+            'host' => 'darkhorizons.com',
+            'rank' => {
+                        'LycosPro' => '65',
+                        'Google' => '6',
+                        'Teoma' => '18'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'davefaq.com',
+            'rank' => {
+                        'Msn' => '74',
+                        'Teoma' => '49'
+                      }
+          },
+          {
+            'host' => 'davidkrause.com',
+            'rank' => {
+                        'Msn' => '194'
+                      }
+          },
+          {
+            'host' => 'dbmsmag.com',
+            'rank' => {
+                        'Msn' => '187',
+                        'LycosPro' => '19'
+                      }
+          },
+          {
+            'host' => 'debian.org',
+            'rank' => {
+                        'Msn' => '39',
+                        'Google' => '13',
+                        'Teoma' => '22'
+                      }
+          },
+          {
+            'host' => 'defcon.org',
+            'rank' => {
+                        'LycosPro' => '38'
+                      }
+          },
+          {
+            'host' => 'dell.com',
+            'rank' => {
+                        'Google' => '85'
+                      }
+          },
+          {
+            'host' => 'develooper.com',
+            'rank' => {
+                        'Teoma' => '75'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'digiserve.com',
+            'rank' => {
+                        'LycosPro' => '36'
+                      }
+          },
+          {
+            'host' => 'dithered.com',
+            'rank' => {
+                        'Msn' => '168'
+                      }
+          },
+          {
+            'host' => 'dmdeveloper.com',
+            'rank' => {
+                        'Msn' => '161'
+                      }
+          },
+          {
+            'host' => 'drcnet.org',
+            'rank' => {
+                        'Teoma' => '76'
+                      }
+          },
+          {
+            'host' => 'drizzle.com',
+            'rank' => {
+                        'LycosPro' => '54'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'ecnet.net',
+            'rank' => {
+                        'LycosPro' => '37',
+                        'Teoma' => '36'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'edexcellence.net',
+            'rank' => {
+                        'LycosPro' => '4'
+                      }
+          },
+          {
+            'host' => 'egroups.com',
+            'rank' => {
+                        'Msn' => '28'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'erols.com',
+            'rank' => {
+                        'LycosPro' => '44',
+                        'Teoma' => '42'
+                      }
+          },
+          {
+            'host' => 'escomposlinux.org',
+            'rank' => {
+                        'Msn' => '120'
+                      }
+          },
+          {
+            'host' => 'eskimo.com',
+            'rank' => {
+                        'LycosPro' => '16'
+                      }
+          },
+          {
+            'host' => 'euskal-linux.org',
+            'rank' => {
+                        'LycosPro' => '127'
+                      }
+          },
+          {
+            'host' => 'execpc.com',
+            'rank' => {
+                        'LycosPro' => '104'
+                      }
+          },
+          {
+            'host' => 'faqs.org',
+            'rank' => {
+                        'Teoma' => '50'
+                      }
+          },
+          {
+            'host' => 'freshmeat.net',
+            'rank' => {
+                        'Msn' => '89'
+                      }
+          },
+          {
+            'host' => 'gargaro.com',
+            'rank' => {
+                        'LycosPro' => '50'
+                      }
+          },
+          {
+            'host' => 'geocities.com',
+            'rank' => {
+                        'Msn' => '72',
+                        'Google' => '78'
+                      }
+          },
+          {
+            'host' => 'geocrawler.com',
+            'rank' => {
+                        'Google' => '68'
+                      }
+          },
+          {
+            'host' => 'gist.com',
+            'rank' => {
+                        'LycosPro' => '101'
+                      }
+          },
+          {
+            'host' => 'glfwda.org',
+            'rank' => {
+                        'Msn' => '119'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'gmane.org',
+            'rank' => {
+                        'Google' => '27'
+                      }
+          },
+          {
+            'host' => 'gnome.org',
+            'rank' => {
+                        'Msn' => '173'
+                      }
+          },
+          {
+            'host' => 'gnu.org',
+            'rank' => {
+                        'Google' => '15'
+                      }
+          },
+          {
+            'host' => 'goof.com',
+            'rank' => {
+                        'Msn' => '172',
+                        'Teoma' => '4'
+                      }
+          },
+          {
+            'host' => 'goonda.org',
+            'rank' => {
+                        'Google' => '50'
+                      }
+          },
+          {
+            'host' => 'graeven.com',
+            'rank' => {
+                        'Google' => '110'
+                      }
+          },
+          {
+            'host' => 'heartlandcafe.com',
+            'rank' => {
+                        'Google' => '21'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'hollywoodscript.com',
+            'rank' => {
+                        'Msn' => '62'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'home.net',
+            'rank' => {
+                        'LycosPro' => '55',
+                        'Teoma' => '14'
+                      }
+          },
+          {
+            'host' => 'hometheaterforum.com',
+            'rank' => {
+                        'LycosPro' => '7'
+                      }
+          },
+          {
+            'host' => 'hwg.org',
+            'rank' => {
+                        'Google' => '92'
+                      }
+          },
+          {
+            'host' => 'hyperbole.com',
+            'rank' => {
+                        'Msn' => '137'
+                      }
+          },
+          {
+            'host' => 'hypermart.net',
+            'rank' => {
+                        'Msn' => '3'
+                      }
+          },
+          {
+            'host' => 'ibm.com',
+            'rank' => {
+                        'Teoma' => '80'
+                      }
+          },
+          {
+            'host' => 'icemcfd.com',
+            'rank' => {
+                        'LycosPro' => '5'
+                      }
+          },
+          {
+            'host' => 'icomics.com',
+            'rank' => {
+                        'Google' => '17'
+                      }
+          },
+          {
+            'host' => 'ign.com',
+            'rank' => {
+                        'LycosPro' => '116'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'ilrt.org',
+            'rank' => {
+                        'Google' => '108'
+                      }
+          },
+          {
+            'host' => 'infonline.net',
+            'rank' => {
+                        'LycosPro' => '97'
+                      }
+          },
+          {
+            'host' => 'inktomi.com',
+            'rank' => {
+                        'Msn' => '36'
+                      }
+          },
+          {
+            'host' => 'insecure.org',
+            'rank' => {
+                        'Google' => '11',
+                        'Teoma' => '48'
+                      }
+          },
+          {
+            'host' => 'intermountain.com',
+            'rank' => {
+                        'Msn' => '181'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'internatif.org',
+            'rank' => {
+                        'Teoma' => '40'
+                      }
+          },
+          {
+            'host' => 'internet.com',
+            'rank' => {
+                        'Msn' => '23',
+                        'LycosPro' => '86',
+                        'Teoma' => '59'
+                      }
+          },
+          {
+            'host' => 'irchelp.org',
+            'rank' => {
+                        'Teoma' => '55'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'jabber.org',
+            'rank' => {
+                        'Msn' => '144',
+                        'Google' => '49'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'jammed.com',
+            'rank' => {
+                        'Google' => '82'
+                      }
+          },
+          {
+            'host' => 'javascriptcity.com',
+            'rank' => {
+                        'Msn' => '24',
+                        'Google' => '81'
+                      }
+          },
+          {
+            'host' => 'jeffbridges.com',
+            'rank' => {
+                        'LycosPro' => '139'
+                      }
+          },
+          {
+            'host' => 'jobfizz.com',
+            'rank' => {
+                        'Teoma' => '20'
+                      }
+          },
+          {
+            'host' => 'kde.org',
+            'rank' => {
+                        'Google' => '1'
+                      }
+          },
+          {
+            'host' => 'khazaria.com',
+            'rank' => {
+                        'LycosPro' => '107'
+                      }
+          },
+          {
+            'host' => 'landfield.com',
+            'rank' => {
+                        'Teoma' => '16'
+                      }
+          },
+          {
+            'host' => 'learnasp.com',
+            'rank' => {
+                        'LycosPro' => '80'
+                      }
+          },
+          {
+            'host' => 'learningdifficulty.org',
+            'rank' => {
+                        'Msn' => '6',
+                        'LycosPro' => '12',
+                        'Google' => '42',
+                        'Teoma' => '5'
+                      }
+          },
+          {
+            'host' => 'levien.com',
+            'rank' => {
+                        'LycosPro' => '64'
+                      }
+          },
+          {
+            'host' => 'lightstreampubs.com',
+            'rank' => {
+                        'Teoma' => '19'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'linklord.com',
+            'rank' => {
+                        'Msn' => '78'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'linux.org',
+            'rank' => {
+                        'Google' => '96'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'linuxcare.com',
+            'rank' => {
+                        'Msn' => '184'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'linuxdj.com',
+            'rank' => {
+                        'LycosPro' => '78',
+                        'Teoma' => '61'
+                      }
+          },
+          {
+            'host' => 'linuxgazette.com',
+            'rank' => {
+                        'LycosPro' => '149'
+                      }
+          },
+          {
+            'host' => 'linuxhq.com',
+            'rank' => {
+                        'LycosPro' => '109'
+                      }
+          },
+          {
+            'host' => 'linuxrouter.org',
+            'rank' => {
+                        'Google' => '101'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'linuxtoday.com',
+            'rank' => {
+                        'Teoma' => '44'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'lophty.com',
+            'rank' => {
+                        'Google' => '107'
+                      }
+          },
+          {
+            'host' => 'lug.net',
+            'rank' => {
+                        'Msn' => '185'
+                      }
+          },
+          {
+            'host' => 'macintouch.com',
+            'rank' => {
+                        'Teoma' => '56'
+                      }
+          },
+          {
+            'host' => 'macnn.com',
+            'rank' => {
+                        'Msn' => '154'
+                      }
+          },
+          {
+            'host' => 'macosr.com',
+            'rank' => {
+                        'Google' => '112'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'macsonly.com',
+            'rank' => {
+                        'Msn' => '193'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'mailgate.org',
+            'rank' => {
+                        'Msn' => '188'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'mathforum.org',
+            'rank' => {
+                        'Google' => '53'
+                      }
+          },
+          {
+            'host' => 'mbay.net',
+            'rank' => {
+                        'LycosPro' => '45',
+                        'Teoma' => '41'
+                      }
+          },
+          {
+            'host' => 'mdle.com',
+            'rank' => {
+                        'Msn' => '64'
+                      }
+          },
+          {
+            'host' => 'mearcair.com',
+            'rank' => {
+                        'Google' => '20',
+                        'Teoma' => '17'
+                      }
+          },
+          {
+            'host' => 'microsoft.com',
+            'rank' => {
+                        'LycosPro' => '20',
+                        'Google' => '67',
+                        'Teoma' => '31'
+                      }
+          },
+          {
+            'host' => 'mobygames.com',
+            'rank' => {
+                        'Msn' => '97'
+                      }
+          },
+          {
+            'host' => 'monkey.org',
+            'rank' => {
+                        'Google' => '60'
+                      }
+          },
+          {
+            'host' => 'moshpit.org',
+            'rank' => {
+                        'Google' => '89'
+                      }
+          },
+          {
+            'host' => 'mozilla.org',
+            'rank' => {
+                        'Msn' => '83'
+                      }
+          },
+          {
+            'host' => 'mrscott.com',
+            'rank' => {
+                        'LycosPro' => '126'
+                      }
+          },
+          {
+            'host' => 'mslawyer.com',
+            'rank' => {
+                        'LycosPro' => '26'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'navigo.com',
+            'rank' => {
+                        'LycosPro' => '146'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'neohapsis.com',
+            'rank' => {
+                        'Google' => '59'
+                      }
+          },
+          {
+            'host' => 'netsys.com',
+            'rank' => {
+                        'Msn' => '105'
+                      }
+          },
+          {
+            'host' => 'networkcomputing.com',
+            'rank' => {
+                        'LycosPro' => '10'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'northernlight.com',
+            'rank' => {
+                        'NorthernLight' => '1'
+                      }
+          },
+          {
+            'host' => 'nytheatre-wire.com',
+            'rank' => {
+                        'LycosPro' => '94'
+                      }
+          },
+          {
+            'host' => 'omnipotent.com',
+            'rank' => {
+                        'Msn' => '30',
+                        'Google' => '98'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'osxzone.com',
+            'rank' => {
+                        'Google' => '57'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'ozones.com',
+            'rank' => {
+                        'Msn' => '195'
+                      }
+          },
+          {
+            'host' => 'pacbell.net',
+            'rank' => {
+                        'Msn' => '55'
+                      }
+          },
+          {
+            'host' => 'pbs.org',
+            'rank' => {
+                        'Msn' => '146',
+                        'Teoma' => '29'
+                      }
+          },
+          {
+            'host' => 'penjar.net',
+            'rank' => {
+                        'LycosPro' => '61'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'perlmonks.net',
+            'rank' => {
+                        'LycosPro' => '59'
+                      }
+          },
+          {
+            'host' => 'perlmonks.org',
+            'rank' => {
+                        'LycosPro' => '56'
+                      }
+          },
+          {
+            'host' => 'pettyfans.com',
+            'rank' => {
+                        'Google' => '102'
+                      }
+          },
+          {
+            'host' => 'philringnalda.com',
+            'rank' => {
+                        'Google' => '64'
+                      }
+          },
+          {
+            'host' => 'php-cgi.com',
+            'rank' => {
+                        'Google' => '77'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'phpbuilder.com',
+            'rank' => {
+                        'Msn' => '53'
+                      }
+          },
+          {
+            'host' => 'phpbuilder.net',
+            'rank' => {
+                        'Msn' => '69'
+                      }
+          },
+          {
+            'host' => 'pirchworld.com',
+            'rank' => {
+                        'Msn' => '111'
+                      }
+          },
+          {
+            'host' => 'pitas.com',
+            'rank' => {
+                        'LycosPro' => '119'
+                      }
+          },
+          {
+            'host' => 'planetunreal.com',
+            'rank' => {
+                        'Msn' => '157'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'polarhome.com',
+            'rank' => {
+                        'Msn' => '123'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'poplog.org',
+            'rank' => {
+                        'Msn' => '17'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'primeprofits.com',
+            'rank' => {
+                        'LycosPro' => '87'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'probertencyclopaedia.com',
+            'rank' => {
+                        'LycosPro' => '27'
+                      }
+          },
+          {
+            'host' => 'prohosting.com',
+            'rank' => {
+                        'Msn' => '68'
+                      }
+          },
+          {
+            'host' => 'protocol7.com',
+            'rank' => {
+                        'Msn' => '125'
+                      }
+          },
+          {
+            'host' => 'purl.org',
+            'rank' => {
+                        'Teoma' => '67'
+                      }
+          },
+          {
+            'host' => 'purpletech.com',
+            'rank' => {
+                        'Teoma' => '51'
+                      }
+          },
+          {
+            'host' => 'python.org',
+            'rank' => {
+                        'Msn' => '171'
+                      }
+          },
+          {
+            'host' => 'rccad.com',
+            'rank' => {
+                        'Msn' => '156'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'redhat.com',
+            'rank' => {
+                        'Google' => '103'
+                      }
+          },
+          {
+            'host' => 'redmonk.net',
+            'rank' => {
+                        'Msn' => '113',
+                        'Google' => '56'
+                      }
+          },
+          {
+            'host' => 'robertgraham.com',
+            'rank' => {
+                        'Teoma' => '37'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'rolandtanglao.com',
+            'rank' => {
+                        'LycosPro' => '8'
+                      }
+          },
+          {
+            'host' => 'rootsweb.com',
+            'rank' => {
+                        'Msn' => '16'
+                      }
+          },
+          {
+            'host' => 'rpgplanet.com',
+            'rank' => {
+                        'Msn' => '56'
+                      }
+          },
+          {
+            'host' => 'salon.com',
+            'rank' => {
+                        'Teoma' => '64'
+                      }
+          },
+          {
+            'host' => 'screentalk.org',
+            'rank' => {
+                        'Msn' => '40'
+                      }
+          },
+          {
+            'host' => 'seul.org',
+            'rank' => {
+                        'Google' => '58'
+                      }
+          },
+          {
+            'host' => 'sgi.com',
+            'rank' => {
+                        'Msn' => '7'
+                      }
+          },
+          {
+            'host' => 'siltown.com',
+            'rank' => {
+                        'LycosPro' => '103'
+                      }
+          },
+          {
+            'host' => 'skylab.org',
+            'rank' => {
+                        'Msn' => '90',
+                        'Teoma' => '1'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'sneaker.org',
+            'rank' => {
+                        'Google' => '40'
+                      }
+          },
+          {
+            'host' => 'soaplite.com',
+            'rank' => {
+                        'Teoma' => '34'
+                      }
+          },
+          {
+            'host' => 'soft.com',
+            'rank' => {
+                        'Msn' => '116'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'sourceforge.net',
+            'rank' => {
+                        'LycosPro' => '2',
+                        'Google' => '33'
+                      }
+          },
+          {
+            'host' => 'spiritone.com',
+            'rank' => {
+                        'Msn' => '5',
+                        'LycosPro' => '68',
+                        'Google' => '55',
+                        'Teoma' => '6'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'sqatester.com',
+            'rank' => {
+                        'Google' => '7',
+                        'Teoma' => '23'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'sqrug.com',
+            'rank' => {
+                        'Msn' => '115'
+                      }
+          },
+          {
+            'host' => 'steppenwolf.com',
+            'rank' => {
+                        'LycosPro' => '138'
+                      }
+          },
+          {
+            'host' => 'stltoday.com',
+            'rank' => {
+                        'LycosPro' => '1'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'swtech.com',
+            'rank' => {
+                        'Msn' => '170'
+                      }
+          },
+          {
+            'host' => 'swynk.com',
+            'rank' => {
+                        'Msn' => '70'
+                      }
+          },
+          {
+            'host' => 'teachers.net',
+            'rank' => {
+                        'Google' => '75'
+                      }
+          },
+          {
+            'host' => 'telnetd.com',
+            'rank' => {
+                        'Msn' => '165'
+                      }
+          },
+          {
+            'host' => 'tentler.com',
+            'rank' => {
+                        'Teoma' => '54'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'termisoc.org',
+            'rank' => {
+                        'LycosPro' => '67',
+                        'Google' => '30'
+                      }
+          },
+          {
+            'host' => 'testworks.com',
+            'rank' => {
+                        'Msn' => '136'
+                      }
+          },
+          {
+            'host' => 'thepen.com',
+            'rank' => {
+                        'LycosPro' => '72'
+                      }
+          },
+          {
+            'host' => 'ticm.com',
+            'rank' => {
+                        'LycosPro' => '6'
+                      }
+          },
+          {
+            'host' => 'toddh.net',
+            'rank' => {
+                        'Msn' => '93'
+                      }
+          },
+          {
+            'host' => 'tomorrowlands.org',
+            'rank' => {
+                        'Msn' => '101'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'tummy.com',
+            'rank' => {
+                        'Google' => '14'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'tux.org',
+            'rank' => {
+                        'Msn' => '176'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'tvbarn.com',
+            'rank' => {
+                        'Msn' => '18',
+                        'LycosPro' => '66',
+                        'Teoma' => '12'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'tweakers.net',
+            'rank' => {
+                        'Google' => '113'
+                      }
+          },
+          {
+            'host' => 'ultranet.com',
+            'rank' => {
+                        'LycosPro' => '22'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'unreality.org',
+            'rank' => {
+                        'LycosPro' => '112'
+                      }
+          },
+          {
+            'host' => 'usenix.org',
+            'rank' => {
+                        'Teoma' => '27'
+                      }
+          },
+          {
+            'host' => 'userland.com',
+            'rank' => {
+                        'Teoma' => '43'
+                      }
+          },
+          {
+            'host' => 'vbxml.com',
+            'rank' => {
+                        'LycosPro' => '41'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'vim.org',
+            'rank' => {
+                        'Msn' => '54',
+                        'LycosPro' => '98',
+                        'Teoma' => '62'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'vix.com',
+            'rank' => {
+                        'Teoma' => '74'
+                      }
+          },
+          {
+            'host' => 'vrml.org',
+            'rank' => {
+                        'Msn' => '66'
+                      }
+          },
+          {
+            'host' => 'w3.org',
+            'rank' => {
+                        'Msn' => '20',
+                        'LycosPro' => '3',
+                        'Google' => '2'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'w3j.com',
+            'rank' => {
+                        'LycosPro' => '13'
+                      }
+          },
+          {
+            'host' => 'wdforums.com',
+            'rank' => {
+                        'Msn' => '86',
+                        'Google' => '70',
+                        'Teoma' => '69'
+                      }
+          },
+          {
+            'host' => 'wdvl.com',
+            'rank' => {
+                        'Msn' => '26',
+                        'Google' => '46'
+                      }
+          },
+          {
+            'host' => 'web3d.org',
+            'rank' => {
+                        'Google' => '12',
+                        'Teoma' => '70'
+                      }
+          },
+          {
+            'host' => 'webdog.org',
+            'rank' => {
+                        'LycosPro' => '92'
+                      }
+          },
+          {
+            'host' => 'webgenie.com',
+            'rank' => {
+                        'Teoma' => '8'
+                      }
+          },
+          {
+            'host' => 'weblogs.com',
+            'rank' => {
+                        'Msn' => '110'
+                      }
+          },
+          {
+            'host' => 'webwarrior.net',
+            'rank' => {
+                        'LycosPro' => '79'
+                      }
+          },
+          {
+            'host' => 'wiredgeek.net',
+            'rank' => {
+                        'LycosPro' => '58'
+                      }
+          },
+          {
+            'host' => 'word-productions.com',
+            'rank' => {
+                        'Msn' => '140'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'wvah.com',
+            'rank' => {
+                        'Msn' => '13',
+                        'LycosPro' => '74'
+                      }
+          },
+          {
+            'host' => 'ximian.com',
+            'rank' => {
+                        'Google' => '52',
+                        'Teoma' => '21'
+                      }
+          },
+          {
+            'host' => 'xml.org',
+            'rank' => {
+                        'Msn' => '160'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'xmlhack.com',
+            'rank' => {
+                        'Msn' => '138'
+                      }
+          },
+          {
+            'host' => 'yahoo.com',
+            'rank' => {
+                        'Google' => '93'
+                      }
+          },
+          {
+            'host' => 'ymo.net',
+            'rank' => {
+                        'Msn' => '134'
+                      }
+          },
+          {
+            'host' => 'zapkerpow.com',
+            'rank' => {
+                        'Google' => '97'
+                      }
+          },
+          {
+            'host' => 'zepa.net',
+            'rank' => {
+                        'Msn' => '51'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'zgp.org',
+            'rank' => {
+                        'LycosPro' => '130'
+                      }
+          },
+          {
+            'nxdomain' => 1,
+            'host' => 'zork.net',
+            'rank' => {
+                        'Msn' => '46'
+                      }
+          },
+          {
+            'host' => 'zymm.com',
+            'rank' => {
+                        'Teoma' => '47'
+                      }
+          }
+        ];

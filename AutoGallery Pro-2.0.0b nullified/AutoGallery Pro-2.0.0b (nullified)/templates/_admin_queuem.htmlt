@@ -1,0 +1,97 @@
+<tr>
+<td bgcolor="#cccccc" colspan="3" nowrap>
+<input type="checkbox" name="id" value="#%POST_ID%#"><font face="Verdana" size="1" style="font-size: 11px;"><b>A</b>
+</font>
+<input type="checkbox" name="rej" value="#%POST_ID%#"><font face="Verdana" size="1" style="font-size: 11px;"><b>R</b>
+</font>
+<input type="checkbox" name="ban" value="#%POST_ID%#"><font face="Verdana" size="1" style="font-size: 11px;"><b>B</b>
+</font>
+&nbsp;&nbsp;&nbsp;<font face="Verdana" size="1" style="font-size: 11px;"><b>|&nbsp;&nbsp;&nbsp;&nbsp;#%POST_ID%#</b> : 
+<b><a href="#%GALLERY_URL%#" target="_blank" class="reg">#%GALLERY_URL%#</a> - 
+<input type="text" size="2" name="pics_#%POST_ID%#" value="#%NUM_PICS%#" style="font-size: 11px; font-family: Verdana"> 
+<select name="cat_#%POST_ID%#" style="font-size: 11px; font-family: Verdana">
+#%CAT_OPTIONS%#
+</select>
+Pics</b>
+</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec" colspan="2">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Description:</b> <input type="text" size="80" name="desc_#%POST_ID%#" value="#%DESCRIPTION%#" style="font-size: 11px; font-family: Verdana">
+</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>E-mail:</b> <a href="mailto:#%EMAIL%#" class="reg">#%EMAIL%#</a>
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>IP Address:</b> <a href="javascript:openExtern('extern.cgi?act=resolv&dat=#%SUBMIT_IP%#');" class="reg">#%SUBMIT_IP%#</a>
+</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Time:</b> #%SUBMIT_TIME%#
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Permanent:</b> #%PERMANENT%#
+</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Recip:</b> #%RECIP_CHECKED%#, #%RECIP_FOUND%# &nbsp;&nbsp;&nbsp;<a href="javascript:openExtern('extern.cgi?act=recip&dat=#%CODED_RECIP%#');" class="reg">#%CHECK_RECIP%#</a>
+</font>
+</td>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<a href="javascript:openExtern('extern.cgi?act=url&dat=#%CODED_GURL%#');" class="reg">Verify URL</a>
+</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1" style="font-size: 11px;">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec" colspan="2">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Reject Reason:</b>
+<select name="#%R_SELECT%#" style="font-size: 11px; font-family: Verdana">
+  <option value="none">None</option>
+  #%REJ%#
+</select>
+</font>
+</td>
+</tr>

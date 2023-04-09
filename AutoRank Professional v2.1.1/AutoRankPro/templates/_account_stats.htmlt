@@ -1,0 +1,92 @@
+<html>
+<head>
+  <title>Account Stats</title>
+</head>
+<body bgcolor="white" link="blue">
+<div align="center">
+
+<table border="0" cellpadding="0" cellspacing="0" width="400">
+<tr bgcolor="#000000">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#7384BD" align="center" colspan="2">
+<font face="Arial" size="3" color="white">
+<b>Account Stats</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#dcdcdc">
+<td>
+<font face="Verdana, Arial" size="1"><b>
+Hits In Since Last Reset</b>
+</td>
+<td bgcolor="#ffffff" align="center">
+<font face="Verdana, Arial" size="1">
+#%HITS_IN%#
+</td>
+</tr>
+
+<tr bgcolor="#dcdcdc">
+<td>
+<font face="Verdana, Arial" size="1"><b>
+Hits Out Since Last Reset</b>
+</td>
+<td bgcolor="#ffffff" align="center">
+<font face="Verdana, Arial" size="1">
+#%HITS_OUT%#
+</td>
+</tr>
+
+<tr bgcolor="#dcdcdc">
+<td>
+<font face="Verdana, Arial" size="1"><b>
+Rank When the List Was Last Reset</b>
+</td>
+<td bgcolor="#ffffff" align="center">
+<font face="Verdana, Arial" size="1">
+#%PREVRANK%#
+</td>
+</tr>
+
+<tr bgcolor="#dcdcdc">
+<td>
+<font face="Verdana, Arial" size="1"><b>
+Hits In When the List Was Last Reset</b>
+</td>
+<td bgcolor="#ffffff" align="center">
+<font face="Verdana, Arial" size="1">
+#%PREVIN%#
+</td>
+</tr>
+
+<tr bgcolor="#afafaf">
+<td align="center" colspan="2">
+<font face="Verdana, Arial" size="2"><b>Previous Stats</b>
+</td>
+</tr>
+
+<tr bgcolor="#ffffff">
+<td colspan="2" align="center">
+
+<table><tr><td>
+<pre>
+DATE        HITS IN       HITS OUT     RANKED
+----        -------       --------     ------
+#%STATS%#
+</pre>
+</td></tr></table>
+
+</td>
+</tr>
+
+</table>
+
+</td></tr></table>
+
+
+
+</body>
+</html>

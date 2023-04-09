@@ -1,0 +1,112 @@
+<tr bgcolor="#666666">
+<td colspan="2">
+<font face="Verdana" size="1" style="font-size: 11px;" color="#ffffff">
+<b>Post #%POST_ID%#</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td width="120">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>E-Mail</b>
+</font>
+</td>
+<td width="530">
+<input type="text" name="email_#%POST_ID%#" size="30" value="#%EMAIL%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Gallery URL</b>
+</font>
+</td>
+<td>
+<input type="text" name="gurl_#%POST_ID%#" size="50" value="#%GALLERY_URL%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Description</b>
+</font>
+</td>
+<td>
+<input type="text" name="desc_#%POST_ID%#" size="50" value="#%DESCRIPTION%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b># of Pics</b>
+</font>
+</td>
+<td>
+<input type="text" name="pics_#%POST_ID%#" size="5" value="#%NUM_PICS%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Category</b>
+</font>
+</td>
+<td>
+<select name="cat_#%POST_ID%#" style="font-size: 11px; font-family: Verdana">
+#%CAT_OPTIONS%#
+</select>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Permanent</b>
+</font>
+</td>
+<td>
+<select name="perm_#%POST_ID%#" style="font-size: 11px; font-family: Verdana">
+#%PERMANENT%#
+</select>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Recip URL</b>
+</font>
+</td>
+<td>
+<input type="text" name="rurl_#%POST_ID%#" size="50" value="#%RECIP_URL%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Rating</b>
+</font>
+</td>
+<td>
+<input type="text" name="rate_#%POST_ID%#" size="2" value="#%RATING%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Icons</b>
+</font>
+</td>
+<td>
+#%ICONS%#
+</td>
+</tr>

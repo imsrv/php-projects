@@ -1,0 +1,19 @@
+To:  #%EMAIL%#
+From: #%FROM%#
+Subject: Password For The Top List
+
+Here is the login information you requested:
+
+Username: #%USER%#
+Password: #%PASS%#
+
+You can use this information to log in to the
+account maitenence portion of our site. The
+URL to access account maintenence is:
+#%EDIT%#
+
+The link to send hits to our site is:
+#%LINK%#
+
+Regards,
+Top List Webmaster

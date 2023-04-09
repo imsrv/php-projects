@@ -1,0 +1,94 @@
+First, you need a web server (Apache is preferred) and PHP installed
+with MySQL and IMAP features included. Basilix was written with 
+Apache 1.3.19, PHP 3.0.18, WU-IMAP 2000c and MySQL v3.23.33, so if you 
+prefer these versions (or laters) you'll be happier.
+
+If you have your web server ready to fly, skip to step 2.
+
+1) Apache web server, PHP, MySQL and IMAP installations.
+--------------------------------------------------------
+
+Download the files from the respective locations:
+
+o Apache: http://www.apache.org
+o PHP   : http://www.php.net (both PHP3 and PHP4 work)
+o MySQL : http://www.mysql.org
+o IMAP  : ftp://ftp.cac.washington.edu
+
+Refer to their INSTALLATION files. 
+
+2) BasiliX installation.
+------------------------
+
+Obtain the latest BasiliX distribution, current is v1.1.0. The default
+target directory for installation is /usr/local/basilix. By putting
+the basilix files under /usr/local/basilix, we try make the basilix 
+configuration, libraries, etc. files UNACCESSABLE from the Web. If you 
+want to use another directory, please replace it in the below commands.
+
+Once you downloaded the file, be root (su root), and extract the file:
+
+$ su root
+Password:
+# cd /usr/local
+# gzip -d -c basilix-1.1.0.tar.gz | tar xvf -
+# cd basilix
+
+Okay, we put the files in a directory which cannot be accessed via HTTP.
+However, local users still can access the files (for example in
+directory "dbset" there resides a file named "mysql-set.inc" in which
+the database user password settings are stored). We enter a simple command
+to secure the whole basilix directory:
+
+# chown -R nobody /usr/local/basilix
+# chmod 700 /usr/local/basilix
+
+Above we assumed that the web server (apache let's say) runs as "nobody".
+If it's some other username, replace the above with yours.
+
+Now, we should move some files and directories to the webspace. These
+files, and directories are; css dir, js dir, images dir, banners dir,
+index.php3 file and basilix.php3. If the directory of the webspace 
+which you aim to serve the users at some http:// point is (let's say)
+/home/httpd/html/basilix, then we need to enter the following
+commands (we are still root):
+
+# cd /usr/local/basilix
+# mv js /home/httpd/html/basilix
+# mv css /home/httpd/html/basilix
+# mv images /home/httpd/html/basilix
+# mv banners /home/httpd/html/basilix
+# mv index.php3 /home/httpd/html/basilix
+# mv basilix.php3 /home/httpd/html/basilix
+# chown -R nobody /home/httpd/html/basilix
+
+Web users can only access to Javascript files, CSS files, Images (including
+banners directory), and two launcher PHP files. All the rest is in some
+secure place.
+
+At this point /home/httpd/html/basilix should have two files
+(index.php3, basilix.php3) and four directories (css, js, images, banners).
+In case you use PHP4 (instead of PHP3) --and for making the package
+compatible-- enter the following commands:
+
+# cd /home/httpd/html/basilix
+# ln -fs basilix.php3 basilix.php
+# ln -fs index.php3 index.php
+
+We assumed above the PHP extension is ".php3" or ".php". If you are
+using some other extension (like ".phtml"), make the symbolic links
+for .phtml extensions too.
+
+If the directory you selected is not /usr/local/basilix, change
+them in basilix.php3, and index.php3 (the first "require" lines).
+
+Okay now you can configure the BasiliX. Enter to the
+/usr/local/basilix/conf directory and edit "global.conf" file
+as you desire.
+
+And edit the "basilix.conf" in the same directory, change
+the value of $BSX_BANNERDIR to "/home/httpd/html/basilix/banners".
+(if your web space is some other directory, set to your
+directory)
+
+-arslanm 

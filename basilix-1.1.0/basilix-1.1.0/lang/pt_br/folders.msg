@@ -1,0 +1,37 @@
+<?
+// Folders screen messages
+$lang_msg["folders"] = array(
+	151	=>	'Pasta',
+	152	=>	'Total',
+	153	=>	'N&atilde;o lidas',
+	154	=>	'Tamanho',
+	155	=>	'Criar pasta pessoal:',
+	156	=>	'Criar minha pasta pessoal',
+	157	=>	'Pode-se criar infinitas pastas pessoais. Para criar uma pasta pessoal, digite o nome desta pasta e aperte o bot&atilde;o CRIAR.',
+	158	=>	'O nome da pasta &eacute; inv&aacute;lido. Por favor tente novamente.',
+	159	=>	'Esta pasta j&aacute; existe. Por favor tente novamente.',
+	160	=>	'A nova pasta foi criada com sucesso.',
+	161	=>	'Apagar uma pasta:',
+	162	=>	'Apagar a pasta selecionada',
+	163	=>	'Pastas apagadas <u><b>N&Atilde;O</b> s&atilde;o recuper&aacute;veis</u>. Para apagar uma pasta, aperte o bot&atilde;o APAGAR.',
+	164	=>	'O nome da pasta a apagar &eacute; inv&aacute;lido. Por favor tente novamente.',
+	165	=>	'N&atilde;o foi poss&iacute;vel apagar a pasta. Por favor tente novamente mais tarde.',
+	166	=>	'A pasta especificada foi removida com sucesso.',
+	167	=>	'Renomear pasta pessoal:',
+	168	=>	'Renomear a pasta selecionada',
+	169	=>	'Para renomear uma pasta, aperte o bot&atilde;o RENOMEAR.',
+	170	=>	'Nome atual da pasta',
+	171	=>	'Novo nome da pasta',
+	172	=>	'O nome da pasta a ser renomeada &eacute; inv&aacute;lido. Por favor tente novamente.',
+	173	=>	'O novo nome da pasta &eacute; inv&aacute;lido. Por favor tente novamente.',
+	174	=>	'N&atilde;o foi poss&aacute;vel renomear a pasta selecionada. Por favor tente novamente mais tarde.',
+	175	=>	'A pasta foi renomeada com sucesso.',
+	176	=>	'Pasta "Lixeiro" vazia',
+	177	=>	'N&atilde;o foi poss&aacute;vel criar a pasta. Talvez sua cota de disco esteja excedida. Por favor tente novamente mais tarde.',
+	178	=>	'A pasta especificada foi esvaziada com sucesso.',
+	179	=>	'N&atilde;o foi poss&aacute;vel renomear a pasta selecionada. Por favor tente novamente mais tarde.',
+	180	=>	'Deseja realmente esvaziar esta pasta?',
+	181	=>	'Erro ao criar a pasta "Lixeiro"',
+	182	=>	'Erro ao criar a pasta de mensagens enviadas'
+);
+?>

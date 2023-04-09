@@ -1,0 +1,273 @@
+<?php
+//
+// Address Book HTML file
+//
+?>
+<script language="JavaScript" src="<?php echo $BSX_BASEHREF?>/js/abook.js"></script>
+<script language="JavaScript">
+        var no_nick = "<?php echo $lng->p(351)?>";
+        var no_email = "<?php echo $lng->p(352)?>";
+</script>
+<div align="center">
+<br>
+<?php is_importolddb()?>
+<?php start_form("addrList")?>
+<input type="hidden" name="RequestID" value="ABOOK">
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+<tr><td align="center" class="tblborder">
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tr>
+<td class="addrhdr" align="center" width="1%" nowrap>&nbsp;</td>
+<td class="addrhdr" align="center" width="10%" nowrap><?php echo $lng->p(301)?></td>
+<td class="addrhdr" align="center" width="15%" nowrap><?php echo $lng->p(302)?></td>
+<td class="addrhdr" align="center" width="10%" nowrap><?php echo $lng->p(303)?></td>
+<td class="addrhdr" align="center" width="10%" nowrap><?php echo $lng->p(304)?></td>
+<td class="addrhdr" align="center" width="10%" nowrap><?php echo $lng->p(305)?></td>
+<td class="addrhdr" align="center" width="54%" nowrap><?php echo $lng->p(325)?></td>
+</tr>
+<?php
+if(!$abook_items_cnt) {
+?>
+<tr><td class="normalbg" align="center" colspan="7"><br><b><?php echo $lng->p(307)?></b><br>&nbsp;</td></tr>
+<?php  
+} else { 
+   for($i = 0 ; $i < $abook_items_cnt ; $i++) {
+?>
+<tr>
+<td class="addrlst" align="center" width="1%" nowrap><input type="radio" style="border-width:0;" name="addrID" value="<?php echo $abook_items[$i]["id"]?>"></td>
+<td class="addrlst" align="left" width="10%" nowrap><?php echo nbsp($abook_items[$i]["nick"])?></td>
+<td class="addrlst" align="left" width="15%" nowrap><?php echo nbsp($abook_items[$i]["email"])?></td>
+<td class="addrlst" align="left" width="10%" nowrap><?php echo nbsp($abook_items[$i]["name"])?></td>
+<td class="addrlst" align="left" width="10%" nowrap><?php echo nbsp($abook_items[$i]["tel"])?></td>
+<td class="addrlst" align="left" width="10%" nowrap><?php echo nbsp($abook_items[$i]["fax"])?></td>
+<td class="addrlst" align="right" width="54%" nowrap>&nbsp;<?php abook_showgrps($abook_items[$i]["id"])?>&nbsp;</td>
+</tr>
+<?php }} ?>
+<tr>
+<td class="normalbg" align="center" colspan="7"><br>
+<input type="submit" class="button" name="addItem" value="<?php echo $lng->p(308)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>&nbsp&nbsp;
+<?php
+if($abook_items_cnt) {
+?>
+<input type="submit" class="button" name="modItem" value="<?php echo $lng->p(309)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>&nbsp&nbsp;
+<input type="submit" class="button" name="delItem" value="<?php echo $lng->p(310)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>&nbsp&nbsp;
+<!-- <input type="submit" class="button" name="grpItem" value="<?php echo $lng->p(325)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'> -->
+<?php } ?>
+<br>
+&nbsp;
+</td></tr>
+</table>
+</td></tr>
+</table>
+<?php stop_form()?>
+<?php push_errinfo() ?>
+<?php is_delitem() ?>
+<?php if(is_modadditem($v_addmod)) { ?>
+<?php start_form("addrAddEdt", "onSubmit='return addValidate();'")?>
+<input type="hidden" name="RequestID" value="ABOOK">
+<input type="hidden" name="<?php echo $v_addmod[0]?>" value="1">
+<? if(!empty($modItem)) { ?>
+<input type="hidden" name="addrID" value="<?php echo $addrID?>">
+<? } ?>
+<table border="0" cellpadding="0" cellspacing="0" width="80%">
+<tr><td align="center" class="tblborder">
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tr>
+<td class="addrlst" align="left" width="30%" nowrap><b><?php echo nbsp($lng->p(301))?>:</b></td>
+<td class="addrlst" align="left">&nbsp;<input class="input" type="text" name="add_nick" size="30" maxlength="20" value="<?php echo $add_nick?>">&nbsp;<font color="red">*</font></td>
+</tr>
+<tr>
+<td class="addrlst" align="left" width="30%" nowrap><b><?php echo nbsp($lng->p(302))?>:</b></td>
+<td class="addrlst" align="left">&nbsp;<input class="input" type="text" name="add_email" size="30" maxlength="64" value="<?php echo $add_email?>">&nbsp;<font color="red">*</font></td>
+</tr>
+<tr>
+<td class="addrlst" align="left" width="30%" nowrap><b><?php echo nbsp($lng->p(303))?>:</b></td>
+<td class="addrlst" align="left">&nbsp;<input class="input" type="text" name="add_name" size="30" maxlength="64" value="<?php echo $add_name?>"></td>
+</tr>
+<tr>
+<td class="addrlst" align="left" width="30%" nowrap><b><?php echo nbsp($lng->p(304))?>:</b></td>
+<td class="addrlst" align="left">&nbsp;<input class="input" type="text" name="add_tel" size="30" maxlength="64" value="<?php echo $add_tel?>"></td>
+</tr>
+<tr>
+<td class="addrlst" align="left" width="30%" nowrap><b><?php echo nbsp($lng->p(305))?>:</b></td>
+<td class="addrlst" align="left">&nbsp;<input class="input" type="text" name="add_fax" size="30" maxlength="64" value="<?php echo $add_fax?>"></td>
+</tr>
+<tr>
+<td class="addrlst" align="left" width="30%" nowrap><b><?php echo nbsp($lng->p(306))?>:</b></td>
+<td class="addrlst" align="left">&nbsp;<input class="input" type="text" name="add_note" size="30" maxlength="128" value="<?php echo $add_note?>"></td>
+</tr>
+<tr>
+<td class="normalbg" colspan="2" align="center" width="100%" nowrap><br>
+<input class="button" type="submit" name="<?php echo $v_addmod[2]?>" value="<?php echo $v_addmod[3]?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>
+<br>&nbsp;</td>
+</tr>
+</table>
+</td></tr>
+</table>
+<?php stop_form()?>
+<?php
+}
+?>
+<?php
+if(!empty($grpItem) && $abook_items_cnt) {
+?>
+<?php start_form("grpList")?>
+<input type="hidden" name="RequestID" value="ABOOK">
+<input type="hidden" name="grpItem" value="1">
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+<tr><td align="center" class="tblborder">
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tr>
+<td class="addrhdr" align="center" width="1%" nowrap>&nbsp;</td>
+<td class="addrhdr" align="left" width="10%" nowrap><?php echo nbsp($lng->p(355))?></td>
+<td class="addrhdr" align="left"><?php echo nbsp($lng->p(356))?></td>
+</tr>
+<?
+if(!$abook_grpitems_cnt) {
+?>
+<tr>
+<td class="addrlst" align="center" width="100%" colspan="3"><br><b><?php echo nbsp($lng->p(326))?></b><br><br>
+<?php
+} else {
+   for($i = 0 ; $i < $abook_grpitems_cnt ; $i++) {
+?>
+<tr>
+<td class="addrlst" align="center" width="1%" nowrap><input type="radio" style="border-width:0;" name="grpID" value="<?php echo $abook_grpitems[$i]["id"]?>"></td>
+<td class="addrlst" align="left" width="10%" nowrap><?php echo nbsp($abook_grpitems[$i]["grpname"])?></td>
+<td class="addrlst" align="left" width="100%">&nbsp;
+<?php 
+   $sql->open();
+   $this_members = $sql->addr_grpmem($customerID, $abook_grpitems[$i]["id"]);
+   $glue = "";
+   for($j = 0 ; $j < count($this_members) ; $j++) {
+	echo $glue . abook_uid2nick($this_members[$j]);
+	$glue = ", ";
+   }
+   $sql->close();
+?>
+&nbsp;</td>
+</tr>
+<?php
+   }
+?>
+<tr>
+<td class="normalbg" align="center" colspan="3" width="100%">
+<br>
+<?php
+   echo "<input type=\"submit\" class=\"button\" name=\"grpShowMembers\" value=\"" . $lng->p(337) . "\" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>&nbsp;";
+   echo "<input type=\"submit\" class=\"button\" name=\"grpDel\" value=\"" . $lng->p(328) . "\" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'><br>";
+   if(!empty($grpDel) && $grpID) {
+      echo "<br><b>$grp_delname:</b> ";
+      for($i = 0 ; $i < count($grp_members) ; $i++) {
+          if(!$i) echo " (" . abook_uid2nick($grp_members[$i]);
+	  else echo ", " . abook_uid2nick($grp_members[$i]);
+      }
+      if($i) echo ")</b><br>";
+      else echo $lng->p(346) . "</b><br>\n";
+      echo "<br>" . $lng->p(336) . "<br>\n";
+      put_ahref("RequestID=ABOOK&grpDel=yes&grpID=" . $grpID . "&confirmed=yes", $lng->p(1));
+      echo "&nbsp;|&nbsp;";
+      put_ahref("RequestID=ABOOK&grpItem=yes", $lng->p(2));
+   }
+   echo "<br><hr width=\"50%\"><br>\n";
+}     
+?>
+<input type="text" name="grpName" size="12" maxlength="32">
+<input type="submit" class="button" name="grpAdd" value="<?php echo $lng->p(327)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>
+<?php stop_form()?>
+</td>
+</tr>
+</table></td></tr></table>
+<?php
+if(!empty($grpShowMembers)) {
+?>
+<br>
+<?php start_form("grpEdit")?>
+<input type="hidden" name="RequestID" value="ABOOK">
+<input type="hidden" name="grpShowMembers" value="1">
+<input type="hidden" name="grpItem" value="1">
+<input type="hidden" name="memberlist" value="<?php echo join(",", $grp_members)?>">
+<input type="hidden" name="grpID" value="<?php echo $grpID?>">
+<table border="0" cellpadding="0" cellspacing="0" width="80%">
+<tr><td align="center" class="tblborder">
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tr>
+<td align="center" width="100%" class="normalbg">
+<div align="left">&nbsp;<b><u><?php echo $lng->p(339)?></b><?php echo $grp_basename?></u></div>
+<br>
+<?php if($is_js) { ?>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td width="12%" class="normalbg">&nbsp;</td>
+<td align="right" width="25%" class="normalbg">
+<select name="items" size="10" style="width:100%;">
+<?php
+for($i = 0 ; $i < $abook_items_cnt ; $i++) {
+    echo "<option value=\"" . $abook_items[$i]["id"] . "\">" . $abook_items[$i]["nick"] . "</option>\n";
+}
+?>
+</select>
+</td>
+<td align="center" width="25%" class="normalbg">
+<input type="button" class="button" onClick="javascript:moveItem(1);" value="<?php echo $lng->p(357)?>">
+<hr width="10%">
+<input type="button" class="button" onClick="javascript:moveItem(0);" value="<?php echo $lng->p(358)?>">
+</td>
+<td align="left" width="25%" class="normalbg">
+<select name="grpitems" size="10" style="width:100%;">
+<?php
+for($i = 0 ; $i < count($grp_members) ; $i++) {
+    echo "<option value=\"" . $grp_members[$i] . "\">" . abook_uid2nick($grp_members[$i]) . "</option>\n";
+}
+?>
+</select>
+</td>
+<td width="13%" class="normalbg" align="left" valign="center">
+<a name="moveupdown"></a>
+<a href="#moveupdown" onClick="javascript:upDownItem(0);"><?php echo $lng->p(360)?></a>
+<br>
+<a href="#moveupdown" onClick="javascript:upDownItem(1);"><?php echo $lng->p(361)?></a>
+</td>
+</tr>
+<tr>
+<td colspan="5" align="center" class="normalbg">
+<hr width="50%">
+<input type="submit" class="button" name="grpUpdate" value="<?php echo $lng->p(359)?>">
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+<?php } else { // is_js ?>
+<?php
+if($grp_members_cnt = count($grp_members)) {
+   echo "<select name=\"daddrID\" size=\"1\">\n";
+   echo "<option value=\"0\">" . $lng->p(3) . "</option>\n";
+   echo "<option value=\"0\">-------</option>\n";
+   for($i = 0 ; $i < $grp_members_cnt ; $i++) {
+       echo "<option value=\"" . $grp_members[$i] . "\">" . abook_uid2nick($grp_members[$i]) . "</option>\n";
+   }
+   echo "</select>&nbsp;";
+   echo "<input type=\"submit\" class=\"button\" name=\"grpDelMember\" value=\"" . $lng->p(340) . "\" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'><br>";
+   echo "<br><hr width=\"50%\"><br>\n";
+} else {
+   echo $lng->p(345) . "<br><br>\n";
+}
+echo "<select name=\"aaddrID\" size=\"1\">\n";
+echo "<option value=\"0\">" . $lng->p(3) . "</option>\n";
+echo "<option value=\"0\">-------</option>\n";
+for($i = 0 ; $i < $abook_items_cnt ; $i++) {
+    echo "<option value=\"" . $abook_items[$i]["id"] . "\">" . $abook_items[$i]["nick"] . "</option>\n";
+}
+echo "</select>&nbsp;";
+echo "<input type=\"submit\" class=\"button\" name=\"grpAddMember\" value=\"" . $lng->p(341) . "\" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'><br>&nbsp;";
+?>
+</td>
+</tr>
+</table>
+<?php } // is_js ?>
+</td></tr></table>
+<?php stop_form()?>
+<? } ?>
+<? } ?>
+

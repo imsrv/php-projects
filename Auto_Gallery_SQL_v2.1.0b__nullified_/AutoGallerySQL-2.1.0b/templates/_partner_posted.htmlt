@@ -1,0 +1,143 @@
+<html>
+<head>
+  <title>Gallery Added</title>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center" colspan="2">
+<font face="Arial" size="3" color="white">
+<b>Gallery Added To Our TGP</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td colspan="2">
+<font face="Verdana" size="1" style="font-size: 11px;">
+Your post has been assigned the ID <b>#%POST_ID%#</b>.  If you need to contact us about
+this post, please include the post ID in your message.
+<br><br>
+Your submission has been added to the current database and will be visible on our TGP
+at the next update.  Thank you for your submission.
+</font>
+</td>
+</tr>
+
+
+<tr bgcolor="#cccccc">
+<td width="150">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Gallery URL</b>
+</font>
+</td>
+<td width="450">
+<font face="Verdana" size="1" style="font-size: 11px;">
+#%GALLERY_URL%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Description</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+#%DESCRIPTION%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b># of Pics</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+#%NUM_PICS%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Category</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+#%CATEGORY%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Permanent</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+#%PERMANENT%#
+</font>
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</form>
+
+</body>
+</html>

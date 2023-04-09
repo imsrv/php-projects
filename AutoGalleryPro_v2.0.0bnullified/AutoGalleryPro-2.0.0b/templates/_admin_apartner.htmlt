@@ -1,0 +1,167 @@
+<html>
+<head>
+  <title>AutoGallery Pro Administration</title>
+  <script language="JavaScript">
+    function openHelp(url, name) { 
+      window.open(url, name, 'scrollbars=1,resizable=no,width=350,height=450,status=0,menubar=0');
+    }
+  </script>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<font face="Verdana" size="1" style="font-size: 11px;" color="red">
+<b>#%MESSAGE%#</b>
+</font>
+
+<br><br>
+
+<form action="admin.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center" colspan="2">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Add A Partner</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td width="150">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Username</b>
+</font>
+</td>
+<td width="450">
+<input type="text" name="user" size="12" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Password</b>
+</font>
+</td>
+<td>
+<input type="text" name="pass" size="12" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Name/Nickname</b>
+</font>
+</td>
+<td>
+<input type="text" name="name" size="30" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>E-mail Address</b>
+</font>
+</td>
+<td>
+<input type="text" name="mail" size="30" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Site URL</b>
+</font>
+</td>
+<td>
+<input type="text" name="surl" size="50" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td valign="top">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Icons</b>
+</font>
+</td>
+<td>
+#%ICON_SELECT%#
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td colspan="2">
+<input type="checkbox" name="conf" value="1">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Send a confirmation e-mail to the above e-mail address?</b>
+</font>
+</td>
+</tr>
+
+
+<tr bgcolor="#cccccc">
+<td colspan="2" align="center">
+<input type="hidden" name="run" value="addPartner">
+<input type="submit" name="submit" value="Add Partner" style="font-size: 11px; font-family: Verdana">
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<br><br>
+
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b><a href="admin.cgi" class="reg">Back To Main Page</a></b>
+</font>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<tr>
+<td colspan="5" align="center" bgcolor="#ffffff">
+<form action="admin.cgi" method="POST">
+<input type="hidden" name="run" value="clearAdminStats">
+<input type="submit" name="submit" value="Clear Stats" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+<input type="hidden" name="apwd" value="#%APWD%#">
+</form>
+
+<br>
+
+<form action="admin.cgi" method="POST">
+<input type="hidden" name="apwd" value="#%APWD%#">
+#%BACK%#
+</form>
+
+</body>
+</html>

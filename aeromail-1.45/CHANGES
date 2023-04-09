@@ -1,0 +1,59 @@
+AeroMail
+
+Version 1.0
+
+* Initial release
+
+Version 1.02
+
+* Added support for Cyrus IMAP servers
+* Changed all extensions on .php files to .php3
+* Added variables to store server type, server suffix, redirection URL
+* Fixed imap_sort() problem when sorting on zero messages
+* Added Readme, Changes, and License files
+
+Version 1.10
+
+* Added support for reading attachments
+* Attached images are displayed inline
+* MIME messages are broken up and displayed by part
+* Added support for sending attachments
+* URL's in message body are converted into links
+* E-mail addresses in body are converted into links
+* Encoded header lines are decoded
+* Fixed display of quoted-printable text
+
+Version 1.20
+
+* Error trapping added when moving and no messages are selected
+* Added Reply All and Forward functionality with message quoting
+* Added Delete button on the message display screen
+* Improved login process with multiple chances to login
+* INBOX is always forced to refresh
+
+Version 1.26
+
+* Multi-language support added
+* Configurable user interface added
+* Bugfixes when from or to field is not present
+
+Version 1.30
+
+* Multi-language support improved
+* Themes support improved
+* Re-Login button added
+* Message selection button added
+* Fixed problem with folders/attachments that have spaces
+* Changed all <? tags to <?php
+
+Version 1.40
+
+* Added support for genericstable sendmail routing
+* Switched all file extensions to .php
+* Now PHP4 compatible
+* Added message count per screen
+* New look and feel
+
+Version 1.45
+
+* Various Security patches (thanks to metaur@prontomail.com)

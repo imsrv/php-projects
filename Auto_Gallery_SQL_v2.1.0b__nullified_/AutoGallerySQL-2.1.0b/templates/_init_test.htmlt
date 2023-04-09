@@ -1,0 +1,264 @@
+<html>
+<head>
+  <title>AutoGallery SQL Initialization</title>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="600">
+<tr>
+<td bgcolor="#004080" align="center" colspan="2">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Initialization Tests</b>
+</font>
+</td>
+</tr>
+<tr bgcolor="#afafaf">
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Test</b>
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Test Result</b>
+</font>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+Checking for DBI Perl module
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%DBI_TEST%#
+</font>
+</td>
+</tr>
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+Checking for MySQL Perl module
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%DBD_TEST%#
+</font>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+def.html file exists and was properly uploaded
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%DEF_TEST%#
+</font>
+</td>
+</tr>
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+errors.dat file exists and was properly uploaded
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%ERRORS_TEST%#
+</font>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+lang.dat file exists and was properly uploaded
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%LANG_TEST%#
+</font>
+</td>
+</tr>
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+Checking .htaccess file for proper AuthUserFile setting
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%HT_TEST%#
+</font>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+Checking admin directory permissions
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%ADIR_TEST%#
+</font>
+</td>
+</tr>
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+Checking data directory permissions
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%DDIR_TEST%#
+</font>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+Checking template files permissions
+</font>
+</td>
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+#%TFILES_TEST%#
+</font>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Test Information</b>
+</font>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="2" style="font-size: 11px;">
+Some of the pre-installation tests did not pass.  Below are descriptions of each test and what you can do to
+resolve the problems.  If you wish to ignore this and bypass the pre-installation tests, <a href="init.cgi?bypass" class="reg">click here</a>.
+
+<br><br>
+
+<b>DBI and MySQL Perl module tests</b>
+
+<br><br>
+
+These two tests check to make sure the required Perl modules are installed on your server.  If either of these fail, you will need to contact
+your server administrator and ask them to install those modules.  URLs where each can be found are:
+
+<br><br>
+
+http://cpan.valueclick.com/modules/by-module/DBI/DBI-1.21.tar.gz
+http://cpan.valueclick.com/modules/by-module/DBD/Msql-Mysql-modules-1.2219.tar.gz
+
+<br><br>
+
+<b>def.html, errors.dat, and lang.dat file tests</b>
+
+<br><br>
+
+If any of these tests fail this indicates the specified file is either missing or corrupted.  Double check to make sure you
+have uploaded all of these files to the data directory and that they were uploaded in ASCII mode.  If you still cannot
+get this test to pass, download a new copy of the software from the owners lounge and use the files from that distribution.
+
+<br><br>
+
+<b>.htaccess AuthUserFile setting test</b>
+
+<br><br>
+
+This test will check to make sure that the AuthUserFile setting in the .htaccess file points to a valid directory on your server.
+If this test fails, it indicates that you have not setup the correct full path to your admin directory.  Check for typos in the
+directory setting, and if necessary contact your server administrator to verify you are using the correct path.
+
+<br><br>
+
+<b>admin and data directory permissions</b>
+
+<br><br>
+
+If either of these tests fail, it indicates that the correct permissions have not been set on the specified directory.  In most cases
+you will need to use 777 permissions on both of these directories.
+
+<br><br>
+
+<b>Template files permissions test</b>
+
+<br><br>
+
+If this test fails, it indicates that one or more of the files in the templates directory does not have the correct permissions.  In most
+cases you will need to use 666 permissions on all files in the templates directory.  The file which has incorrect permissions will be listed
+with this error.
+</font>
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+88Scripts.com miniCalendar Installation Guide
+===============================================
+
+The following are some simple steps for installation:
+
+1) Insert the following portion of code where you want 
+   your miniCalendar to appear.
+
+   // START THE CALENDAR SECTION//
+   $sc = "orange"; //this is today's color
+   $bc = "#eeeeee"; //this is the background color
+   $hc = "#0080ff"; //this is the header color
+   include("miniCalendarClass.php");
+   $calendar = new miniCalendar('index.php',$d,$m,$y);
+   $calendar->buildMiniCalendar(80,80,$sc, $bc, $hc);
+   // END THE CALENDAR SECTION//
+
+
+Enjoy!
+
+If you have any problem with this installation instructions, please contact
+webmaster@88scripts.com.
+
+If you want to be notified for any future upgrades of this script, please
+send an email to webmaster@88scripts.com with subject as "NOTIFY UPGRADE".
+
+
+88Scripts.com

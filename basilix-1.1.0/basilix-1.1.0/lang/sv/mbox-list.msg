@@ -1,0 +1,37 @@
+<?
+// MBox listing messages
+$lang_msg["mboxlst"] = array(
+	201	=>	'Fr&aring;n',
+	202	=>	'Sortera efter Fr&aring;n',
+	203	=>	'Till',
+	204	=>	'Sortera efter Till',
+	205	=>	'Datum',
+	206	=>	'Sortera efter Datum',
+	207	=>	'Storlek',
+	208	=>	'Sortera efter Storlek',
+	209	=>	'&Auml;rende',
+	210	=>	'Sortera efter &Auml;rende',
+	211	=>	'(inget &auml;rende)',
+	212	=>	'Flytta markerade brev till',
+	213	=>	'Ok!',
+	214	=>	'T&ouml;m mappen',
+	215	=>	'Kasta markerade brev i Papperskorgen',
+	216	=>	'Radera markerade brev',
+	217	=>	'F&ouml;reg.',
+	218	=>	'N&auml;sta',
+	219	=>	'Det finns inga brev i den h&auml;r mappen.',
+	220	=>	'Du valde inte mapp, f&ouml;rs&ouml;k igen...',
+	221	=>	'Du valde inget brev, f&ouml;rs&ouml;k igen...',
+	222	=>	'Det gick inte att flytta markerade meddelanden, f&ouml;rs&ouml;k igen senare...',
+	223	=>	'De markerade breven (%d) har kastats i Papperskorgen.',
+	224	=>	'Det gick inte att kasta markerade meddelanden i Papperskorgen, f&ouml;rs&ouml;k igen senare...',
+	225	=>	'De markerade breven har flyttats.',
+	226	=>	'Det gick inte att radera markerade meddelanden, f&ouml;rs&ouml;k igen senare...',
+	227	=>	'De markerade breven har raderats',
+	228	=>	'Sida: ',
+	229	=>	'&Auml;r du s&auml;ker p&aring; att du vill t&ouml;mma mappen?',
+	230	=>	'V&auml;lkommen, din f&ouml;rra inloggning gjordes fr&aring;n',
+	231	=>	'Brevet har kastats i Papperskorgen.',
+	232	=>	'Brevet har raderats.'
+);
+?>

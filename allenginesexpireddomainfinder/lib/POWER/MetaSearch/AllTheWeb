@@ -1,0 +1,17 @@
+#############################################################
+#############################################################
+##        Aaron's All Engine Expired Domain Finder         ##
+##                This is a Commercial Script              ##
+##        Modification, Distribution or Resale without     ##
+##        Prior written permission is in Violation of      ##
+##        the copyrights and International Intellectual    ##
+##        Property Laws.  Violators will be prosecuted!    ##
+##        http://www.aaronscgi.com - aaron@aaronscgi.com   ##
+#############################################################
+#############################################################
+### 17-01-2002 23:30
+url     => "http://www.alltheweb.com/search?cat=web&lang=any&query=^~query~^",
+ip      => "66.77.74.20",
+#Rec    => qr{<dt>.*?href=\"([^\"]*)\">(.*?)</dt>(.*?)<br>}si,
+Rec     => qr{<dt>.*?href=\"([^\"]*)\".*?>(.*?)</dt>(.*?)<br>}si,
+Next    => qr{<a class=\"link\" href=\"(search\?[^\"]+)\">\&nbsp;\&gt;\&gt;}si,

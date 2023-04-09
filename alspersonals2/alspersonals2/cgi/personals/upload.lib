@@ -1,0 +1,52 @@
+sub pboardetalupload {
+print "Content-type:text/html\n\n";
+print "$mainheader\n";
+print "<br><blockquote><font color=000000 face=verdana size=2>Click the \"Browse\" button to search for a file on your computer. 
+After you have selected a file click \"Upload File\" to upload the file. 
+You are limited to $maxfilesize k file size. The speed at which the 
+file uploads depends on your system and on the size of the file 
+you're uploading. Please be patient while the file uploads. </font></blockquote><br>\n";
+print "<form ENCTYPE=\"multipart/form-data\" action=\"$cgiurl/lsfileupload.pl\" method=\"post\">\n";
+print "<center><input type=\"file\" name=\"file-to-upload-01\" size=\"30\" accept=\"image/jpeg,image/gif\" class=\"button\">&nbsp;\n";
+print "<input type=\"hidden\" name=\"age\" value=\"$age\">
+<input type=\"hidden\" name=\"reltype\" value=\"$reltype\">
+<input type=\"hidden\" name=\"gender\" value=\"$gender\">
+<input type=\"hidden\" name=\"lookingfor\" value=\"$lookingfor\">\n";
+print "<input type=\"submit\" name=\"uploadfile\" value=\"Upload File\" class=\"button\"></center>\n";
+print "</form></center>
+$botcode
+</center>
+</body></html>\n";
+exit;
+}
+
+
+
+
+
+
+
+sub uploadadpic {
+print "Content-type:text/html\n\n";
+print "$mainheader\n";
+print "<br><blockquote><font color=000000 face=verdana size=2>Click the \"Browse\" button to search for a file on your computer. 
+After you have selected a file click \"Upload File\" to upload the file. 
+You are limited to $maxfilesize k file size. The speed at which the 
+file uploads depends on your system and on the size of the file 
+you're uploading. Please be patient while the file uploads. </font></blockquote><br>\n";
+print "<form ENCTYPE=\"multipart/form-data\" action=\"$cgiurl/lsfileupload.pl\" method=\"post\">\n";
+print "<center><input type=\"file\" name=\"file-to-upload-01\" size=\"30\" accept=\"image/jpeg,image/gif\" class=\"button\">&nbsp;\n";
+print "<input type=\"hidden\" name=\"age\" value=\"$age\">
+<input type=\"hidden\" name=\"reltype\" value=\"$reltype\">
+<input type=\"hidden\" name=\"gender\" value=\"$gender\">
+<input type=\"hidden\" name=\"lookingfor\" value=\"$lookingfor\">\n";
+print "<input type=\"submit\" name=\"uploadfile\" value=\"Upload File\" class=\"button\"></center>\n";
+print "</form></center>
+$botcode\n";
+exit;
+}
+
+
+#################################################################################################################################################
+
+1;

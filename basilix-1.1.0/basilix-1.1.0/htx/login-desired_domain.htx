@@ -1,0 +1,63 @@
+<?php 
+//
+// Login form HTML file
+//
+?>
+<!-- login form (desired_domain) : START -->
+<div align="center"><br>
+<script language="JavaScript">
+if(self.name == "abookwin" || self.name == "msghdrwin" || self.name == "atchwin") {
+        window.close();
+}
+</script>
+<img src="<?php echo $BSX_BASEHREF?>/images/bsxlogo.gif">
+<?php start_form("loginForm")?>
+<input type="hidden" name="RequestID" value="LOGIN">
+<table border="0" cellpadding="1" cellspacing="0" width="50%"><tr bgcolor="#dcdcdc"><td>
+<table border="0" cellpadding="2" cellspacing="1" width="100%">
+<?php
+if($LOGIN_ERR != "") {
+?>
+<tr><td align="center" colspan="2" class="error"><?php echo $LOGIN_ERR?></td></tr>
+<?php
+}
+?>
+<tr>
+<td align="left" class="login"><?php echo $lng->p(51)?></td>
+<td align="left" class="login">
+<input type="text" name="username" class="input" size="10" maxlength="32">@<input type="hidden" name="domain" value="<?php echo $this_bsxdomain_id + 1?>"><?php echo $bsx_domains[$this_bsxdomain_id]["domain"]?>
+<input type="hidden" name="is_js" value="">
+</td>
+</tr>
+<tr>
+<td align="left" class="login"><?php echo $lng->p(52)?></td>
+<td align="left" class="login"><input type="password" name="password" class="input" size="10" maxlength="12" tabindex="1"></td>
+</tr>
+<tr><td align="right" colspan="2" class="login">
+<a href="<?php echo $BSX_BASEHREF?>/<?php echo $BSX_LAUNCHER?>?is_alldomains=1"><?php echo $lng->p(62)?></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<?php
+if($GLOBALS["BSX_IS_SSL"]) {
+  if($is_ssl) { 
+	$newval = 0;
+	$label = $lng->p(57); 
+	$http_url = ereg_replace("https://", "http://", $BSX_BASEHREF);
+  } else { 
+	$newval = 1; 
+	$label = $lng->p(56);
+	$http_url = ereg_replace("http://", "https://", $BSX_BASEHREF);
+  }
+?>
+<a href="<?php echo $http_url?>/<?php echo $BSX_LAUNCHER?>?is_ssl=<?php echo $newval?>" tabindex="4"><?php echo $label?></a>
+<?php } ?>
+&nbsp;&nbsp;&nbsp;<input type="submit" name="doLogin" class="button" value="<?php echo $lng->p(53)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)' tabindex="2">
+</td></tr>
+</table>
+</td></tr>
+</table>
+<script language="Javascript">
+    document.loginForm.is_js.value = is_js;
+</script>
+<?php stop_form()?>
+</div>
+<!-- login form (desired_login) : FINISH -->

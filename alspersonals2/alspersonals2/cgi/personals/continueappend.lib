@@ -1,0 +1,82 @@
+sub continue {
+
+&vars;
+
+
+
+print "Content-type:text/html\n\n";
+
+	print "
+
+		
+
+		<HTML>
+
+		<HEAD>
+
+			<TITLE>Begin Append Picture</TITLE>
+
+		</HEAD>
+
+		<BODY BGCOLOR=\"#FFFFFF\" topmargin=0 bottommargin=0 leftmargin=0 rightmargin=0 marginheight=0 marginwidth=0>
+
+<table cellpadding=0 cellspacing=0 width=100% height=60 bgcolor=$cptdcolor1><tr>
+
+<td>&nbsp;</td></tr></table>
+
+		
+
+<center><table cellpadding=0 cellspacing=0 width=60% border=0><tr><td>
+
+		<br><br>
+
+	<font size=2 face=verdaba><blockquote>If the information is not already entered, you must enter your username and password below to assure that your picture gets appended to the
+
+	 	correct profile. You must also enter the name of the file you have just uploaded. For example, if the name of the
+
+file was \"mypic.jpg\", you enter \"mypic.jpg\" into the filename text box; and the email address
+
+at which you would like to receive email from persons interested in your profile.</blockquote> <br><br>
+
+<form method=\"post\" action=\"personals.pl\">
+
+<table cellpadding=0 cellspacing=0 width=60% border=0><tr>
+
+<td><font size=2 face=univers><b>Enter Username</b></font></td>
+
+<td><input type=\"text\" name=\"username\" value=$username size=15></td></tr><tr>
+
+<td><font size=2 face=univers><b>Enter Password</b></font></td>
+
+<td><input type=\"password\" name=\"password\"	value=$password size=15></td></tr><tr>
+
+<td><font size=2 face=univers><b>Your Picture File Name</b></font></td>
+
+<td><input type=\"text\" name=\"picfilename\" value=$picfilename size=15></td></tr><tr>
+
+<td><font size=2 face=univers><b>Email Address</b></font></td>
+
+<td><input type=\"text\" name=\"emailaddr\" value=$emailaddr size=15></td>
+
+</tr></table><br>
+<input type=\"hidden\" name=\"gender\" value=\"$gender\">
+<input type=\"hidden\" name=\"lookingfor\" value=\"$lookingfor\">
+<center><input type=\"submit\" name=\"appendpic\" value=\"Append Picture\"></center><br><br>
+
+</form>
+
+	</td></tr></table></center>
+
+<table cellpadding=0 cellspacing=0 width=100% height=60 bgcolor=$cptdcolor1><tr>
+
+<td>&nbsp;</td></tr></table>
+
+</body></html>\n";
+
+
+
+}
+
+
+
+1;

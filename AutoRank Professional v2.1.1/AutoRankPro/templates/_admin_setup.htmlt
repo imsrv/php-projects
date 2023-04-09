@@ -1,0 +1,313 @@
+<html>
+<head>
+  <title>Setup AutoRank Professional</title>
+  <script language="JavaScript">
+  function openHelp(url, name) { 
+    window.open(url, name, 'scrollbars=1,resizable=no,width=350,height=450,status=0,menubar=0');
+  }
+  </script>
+</head>
+<body bgcolor="white" link="blue">
+
+<div align="center">
+
+<form method="POST" action="setup.cgi">
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr bgcolor="#000000">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="100%">
+<tr>
+<td bgcolor="#7384BD" align="center" colspan="2">
+<font face="Arial" size="3" color="white">
+<b>AutoRank Pro Setup</b>
+</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#dcdcdc" valign="top">
+<font face="Arial" size="2"><b>Directory Setup</b></font>
+</td>
+<td bgcolor="#ffffff">
+<!-- HTML DIRECTORY -->
+<font face="Verdana" size="1"><b>HTML Directory:</b> (required)</font><br>
+<input type="text" name="VAR_HD" value="#%HTML_DIR%#" size="40"><br>
+<font face="Verdana" size="1">
+The full path to the location where the main HTML pages will reside.<br>
+Example: /web/home/username/docs/autorank
+</font>
+</tr>
+
+<tr>
+<td bgcolor="#dcdcdc" valign="top">
+<font face="Arial" size="2"><b>URL Setup</b></font>
+</td>
+<td bgcolor="#ffffff">
+<!-- CGI URL -->
+<font face="Verdana" size="1"><b>CGI URL:</b> (required)</font><br>
+<input type="text" name="VAR_CU" value="#%CGI_URL%#" size="40"><br>
+<font face="Verdana" size="1">
+The full URL to the location where the CGI scripts reside.<br>
+Example: http://www.domain.com/cgi-bin/autorank
+</font>
+<p>
+<!-- FORWARD URL -->
+<font face="Verdana" size="1"><b>Forward URL:</b> (required)</font><br>
+<input type="text" name="VAR_FU" value="#%FORWARD_URL%#" size="40"><br>
+<font face="Verdana" size="1">
+The full URL surfers will be sent to when they click through.<br>
+Example: http://www.domain.com/autorank/index.html
+</font>
+<p>
+<!-- RANDOM PAGE -->
+#%RANDOM_CHK%# <font face="Verdana" size="1"><b>Forward surfers to a random ranking page?</b></font>
+<p>
+<!-- HTML URL -->
+<font face="Verdana" size="1"><b>HTML URL:</b> (required)</font><br>
+<input type="text" name="VAR_HU" value="#%HTML_URL%#" size="40"><br>
+<font face="Verdana" size="1">
+The full URL to where your list pages will reside.<br>
+Example: http://www.domain.com/autorank
+</font>
+<p>
+</tr>
+
+<tr>
+<td bgcolor="#dcdcdc" valign="top">
+<font face="Arial" size="2"><b>E-Mail Setup</b></font>
+</td>
+<td bgcolor="#ffffff">
+<!-- SENDMAIL OR SMTP -->
+<font face="Verdana" size="1"><b>Location of Sendmail OR SMTP Server Address:</b> (required)</font><br>
+<input type="text" name="VAR_ES" value="#%EMAIL_SERVER%#" size="40"><br>
+<font face="Verdana" size="1">
+On Unix: The full path to sendmail.<br>
+Example: /usr/sbin/sendmail<br>
+On NT: The hostname of your SMTP server.<br>
+Example: smtp.yourdomain.com<br>
+</font>
+<p>
+<!-- SMTP CHECKBOX -->
+#%SMTP_CHK%# <font face="Verdana" size="1"><b>Check this if you entered an SMTP server above.</b></font>
+<P>
+<font face="Verdana" size="1"><b>Your E-mail Address:</b> (required)</font><br>
+<input type="text" name="VAR_EM" value="#%EMAIL%#" size="40"><br>
+<font face="Verdana" size="1">
+The email address you want to use in association with the list.<br>
+Example: webmaster@yourdomain.com
+</font>
+</tr>
+
+<tr>
+<td bgcolor="#dcdcdc" valign="top">
+<font face="Arial" size="2"><b>List Details</b></font>
+</td>
+<td bgcolor="#ffffff">
+<font face="Verdana" size="1"><b>Categories:</b></font><br>
+<input type="text" name="VAR_CT" value="#%CATS%#" size="40"><br>
+<font face="Verdana" size="1">
+A list of categories that members will be able to select from.<br>
+Example: Category One,Category Two,Category Three<br>
+Seperate all categories by commas, with no spaces before or after a comma
+</font>
+<p>
+<font face="Verdana" size="1"><b>Split List At:</b></font><br>
+<input type="text" name="VAR_SA" value="#%SPLIT%#" size="20"><br>
+<font face="Verdana" size="1">
+Where to split the list and start a new page. (leave blank if none)<br>
+Example: 25,50,75&nbsp;&nbsp; <b>(NO SPACES!)</b><br>
+This setup will be <b>4 pages</b> with ranks:<br>
+1-25 on the first<br>
+26-50 on the second<br>
+51-75 on the third<br>
+76-END on the last
+</font>
+<p>
+<font face="Verdana" size="1"><b>Break List At:</b></font><br>
+<input type="text" name="VAR_BA" value="#%BREAK%#" size="20"><br>
+<font face="Verdana" size="1">
+Where to insert breaks in the list; for banner ads, etc. (leave blank if none)<br>
+Example: 5,30,70&nbsp;&nbsp; <b>(NO SPACES!)</b><br>
+Breaks occur after the rank indicated.
+</font>
+<p>
+<font face="Verdana" size="1"><b>Page List:</b> (required)</font><br>
+<input type="text" name="VAR_PL" value="#%PAGES%#" size="30"><br>
+<font face="Verdana" size="1">
+List of html pages that the ranking list will be printed to.<br>
+The first page entered will be the page with rank one on it.<br>
+There should be one more value entered here than the number of list splits.<br>
+Example: index.html,index2.html,index3.html,index4.html
+</font>
+<p>
+<font face="Verdana" size="1"><b>Font Sizes:</b></font><br>
+<input type="text" name="VAR_FS" value="#%FONTS%#" size="30"><br>
+<font face="Verdana" size="1">
+List of font sizes and corresponding ranks.<br>
+Example: 1-5=>4,6-25=>3,26-50=>2,51-100=>1<br>
+This setup will use a font size of:<br>
+4 for ranks 1-5<br>
+3 for ranks 6-25<br>
+2 for ranks 26-50<br>
+1 for ranks 51-100<br>
+Note that you must start at a low rank and work your way to a higher rank.
+</font>
+<p>
+<font face="Verdana" size="1"><b>Total Sites To List:</b> (required)</font><br>
+<input type="text" name="VAR_SL" value="#%TOTAL%#" size="5"><br>
+<font face="Verdana" size="1">
+The total number of sites to be listed.<br>
+Example: 100
+</font>
+<p>
+<font face="Verdana" size="1"><b>Minimum Hits:</b></font><br>
+<input type="text" name="VAR_MH" value="#%MIN%#" size="3"><br>
+<font face="Verdana" size="1">
+The minimum number of hits needed to get listed.<br>
+Example: 1
+</font>
+<p>
+<font face="Verdana" size="1"><b>Banners To Show:</b></font><br>
+<input type="text" name="VAR_BN" value="#%BANNERS%#" size="3"><br>
+<font face="Verdana" size="1">
+The number of banners to show.<br>
+Example: 5
+</font>
+<p>
+<font face="Verdana" size="1"><b>Site Title Max Length:</b></font><br>
+<input type="text" name="VAR_MT" value="#%MAX_TIT%#" size="5"><br>
+<font face="Verdana" size="1">
+The maximum number of characters allowed for member site titles.<br>
+Example: 60
+</font>
+<p>
+<font face="Verdana" size="1"><b>Site Description Max Length:</b></font><br>
+<input type="text" name="VAR_MD" value="#%MAX_DESC%#" size="5"><br>
+<font face="Verdana" size="1">
+The maximum number of characters allowed for member site descriptions.<br>
+Example: 255
+</font>
+<p>
+<font face="Verdana" size="1"><b>Time Zone Offset:</b></font><br>
+<input type="text" name="VAR_TZ" value="#%TZOFF%#" size="10"><br>
+<font face="Verdana" size="1">
+The time zone offset to use for date/time displays on the list.<br>
+If your server is in EST and you are in CST, this would be -1<br>
+Example: -1
+</font>
+</tr>
+
+<tr>
+<td bgcolor="#dcdcdc" valign="top">
+<font face="Arial" size="2"><b>Options</b></font>
+</td>
+<td bgcolor="#ffffff">
+#%SOM_CHK%# <font face="Verdana" size="1"><b>Site of the moment must be ranked?</b></font>
+<br>
+#%ERRORS_CHK%# <font face="Verdana" size="1"><b>Log script errors?</b></font>
+<br>
+#%CHT_CHK%# <font face="Verdana" size="1"><b>Log cheat messages?</b></font>
+<br>
+#%OUT_CHK%# <font face="Verdana" size="1"><b>Count outgoing hits?</b></font>
+<br>
+#%DOUBLE_CHK%# <font face="Verdana" size="1"><b>Use double CGI cheat protection?</b></font>
+<br>
+#%REV_CHK%# <font face="Verdana" size="1"><b>Review new additions before listing?</b></font>
+<br>
+#%EMAIL_CHK%# <font face="Verdana" size="1"><b>Send confirmation e-mail to person signing up?</b></font>
+<br>
+#%ADM_CHK%# <font face="Verdana" size="1"><b>E-mail administrator when new account is added?</b></font>
+<br>
+<hr size="1">
+<!-- UPDATING THE LIST -->
+#%CRON_CHK%# <font face="Verdana" size="1"><b>Use cron to update the list?</b><br><br>
+Set the following only if you did NOT check the box above<br><br>
+<b>Rerank time:</b></font><br>
+<input type="text" name="VAR_RR" value="#%RERANK%#" size="12"><br>
+<font face="Verdana" size="1">
+The minimum number of seconds between list re-ranks<br>
+Example: 3600
+</font><p>
+<font face="Verdana" size="1"><b>Reset time:</b></font><br>
+<input type="text" name="VAR_RS" value="#%RESET%#" size="12"><br>
+<font face="Verdana" size="1">
+The minimum number of seconds between list resets<br>
+Example: 86400
+</font>
+<br>
+<hr size="1">
+<!-- NEW ICON -->
+#%NEW_CHK%# <font face="Verdana" size="1"><b>Mark new sites with an icon?</b></font><p>
+<font face="Verdana" size="1">
+<b>New Icon URL:</b></font><br>
+<input type="text" name="VAR_NI" value="#%NEW_ICON%#" size="40"><br>
+<font face="Verdana" size="1">
+The full URL to the new icon to display next to new accounts.<br>
+Example: http://www.domain.com/images/new_icon.gif
+</font>
+<p>
+<font face="Verdana" size="1">
+<b>Time to display icon:</b></font><br>
+<input type="text" name="VAR_NS" value="#%NEW_SHOW%#" size="12"><br>
+<font face="Verdana" size="1">
+The minimum number of seconds to display the new icon next to a site.<br>
+This number should be at least as large as your rerank time.<br>
+Example: 7200
+</font>
+<br>
+<hr size="1">
+<!-- BANNER SIZES -->
+<font face="Verdana" size="1">
+If you want to have all banners be the same size, fill in the following values<p>
+<b>Banner Height:</b></font><br>
+<input type="text" name="VAR_BH" value="#%HEIGHT%#" size="5"><br>
+<font face="Verdana" size="1">
+The height value to use for all banners.<br>
+Example: 60
+</font>
+<p>
+<font face="Verdana" size="1"><b>Banner Width:</b></font><br>
+<input type="text" name="VAR_BW" value="#%WIDTH%#" size="5"><br>
+<font face="Verdana" size="1">
+The width value to use for all banners.<br>
+Example: 468
+</font>
+<div align="right">
+<font face="Verdana,Arial" size="1"><b><a href="javascript:openHelp('help.cgi?page=SETUP');">Help</a>
+</div>
+</td>
+</tr>
+
+</table>
+</td></tr></table>
+
+<p>
+
+<table border="0" cellpadding="0" cellspacing="0" width="300">
+<tr bgcolor="#000000">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="100%">
+<tr>
+<td bgcolor="#7384BD" align="center" colspan="">
+<font face="Arial" size="3" color="white">
+<b>Enter Password</b>
+</font>
+</td>
+</tr>
+<tr>
+<td bgcolor="#dcdcdc" align="center">
+<font face="Arial" size="2">
+<b>Password: </b></font>
+<input type="password" name="password" size="12">
+</td>
+</tr>
+<tr>
+<td bgcolor="#ffffff" align="center">
+<font face="Arial" size="2">
+<input type="submit" name="submit" value="Save This Data">
+</td>
+</tr>
+</table>
+</td></tr></table><p>

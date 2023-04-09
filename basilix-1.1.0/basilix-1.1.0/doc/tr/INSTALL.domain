@@ -1,0 +1,54 @@
+Alan adlarýnin (domain) ayarlanabileceði dosya normalde
+/usr/local/basilix/conf/domain.cof dosyasýdýr. BasiliX'i 
+öngörülen dizine kurduðunuz varsayýlmýþtýr.
+
+/usr/local/basilix/conf/domains.conf dosyasýnýn formatý
+pek zor deðildir.
+
+Her alan adý aþaðýdaki satýrlara sahip olmak zorundadir:
+------------------------------------------------------------------
+$bsx_domains[$i]["domain"]      = "piranha.bcc.bilkent.edu.tr";
+$bsx_domains[$i]["imap_host"]   = "139.179.14.84";
+$bsx_domains[$i]["imap_port"]   = "143";
+$bsx_domains[$i]["smtp_host"]   = "139.179.14.84";
+$bsx_domains[$i]["imap_stype"]  = "1"; // Washington IMAPd (RedHat default)
+$bsx_domains[$i]["virtual"]     = "0";
+$bsx_domains[$i++]["desc"]      = "Piranha Box";
+------------------------------------------------------------------
+
+burada;
+
+domain:	
+	alan adýnýn kendisidir. örneðin e-mail adresi
+	gubarak@domain123.com ise burada alan adý (domain)
+	domain123.com olmalýdýr.
+
+imap_host: 
+	mesajlarýn okunmasý için baðlanýlacak olan IMAP
+	sunucusunun adresidir. örnegin imap.domain123.com
+	(ayný zamanda IP adresi de olabilir)
+
+smtp_host:
+	mesajlarýn gönderilirken kullanýlacaðý SMTP
+	sunucusunun adresidir. örnegin smtp.domain123.com
+	(ayný zamanda IP de olabilir)
+
+imap_stype:
+	IMAP sunucusunun tipidir. Eðer IMAP sunucusu
+	wu-imapd ise deðer "1", Cyrus ise "2", 
+	Courier IMAP ise "3" olmalidir.
+
+virtual:
+	eðer kullanacaðýnýz domain sanal bir domain ise
+	ve Courier IMAP kullanýyorsaniz deðerini 1 yapýnýz.
+	sanal alan rutinlerini Courier haricindekilerle
+	denemiþ deðilim, ama bildiðim kadarýyla, etrafta
+	IMAPin sanal alan için deðiþtirilmiþ sürümleri
+	mevcut. Denenmemiþ olmasýna raðmen teoride
+	çalýþmasý gerekir.
+
+desc:
+	login ekranýnda görulen, alan adýnýn taným kýsmýdir.
+	örneðin, "domain 123".
+
+-arslanm

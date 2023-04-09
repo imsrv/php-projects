@@ -1,0 +1,304 @@
+1	Autos, Boats & Planes:Automotive
+2	Autos, Boats & Planes:Aviation
+3	Autos, Boats & Planes:Boats
+4	Autos, Boats & Planes:Motorcycles
+5	Autos, Boats & Planes:Trucks
+6	Business:Business News & Resources
+7	Business:Companies & Industries
+8	Business:Economics
+9	Business:Education & Business Schools
+10	Business:Entrepreneurial
+11	Business:Intellectual Property
+12	Business:International Economy
+13	Business:Jobs, Careers & Work
+14	Business:Marketing
+15	Business:Miscellaneous
+16	Business:Multi Level
+17	Business:Products & Services
+18	Business:Small Business Information
+19	Business:Trade
+20	Business:Transportation
+21	Clubs & Organizations:American Legion
+22	Clubs & Organizations:Charity
+23	Clubs & Organizations:Community Events
+24	Clubs & Organizations:Community Organizations
+25	Clubs & Organizations:Community Service & Volunteerism
+26	Clubs & Organizations:Elks
+27	Clubs & Organizations:Environment & Nature
+28	Clubs & Organizations:Lions
+29	Clubs & Organizations:Military
+30	Clubs & Organizations:Non-profits
+31	Clubs & Organizations:Public Health & Safety
+32	Clubs & Organizations:Relief Organizations
+33	Clubs & Organizations:Service Related
+34	Clubs & Organizations:VFW
+35	Computer & Internet:Buy, Sell & Support
+36	Computer & Internet:Communications
+37	Computer & Internet:Computer Science
+38	Computer & Internet:Cyberculture
+39	Computer & Internet:DOS/Windows
+40	Computer & Internet:Education & Trade
+41	Computer & Internet:Ezines
+42	Computer & Internet:Free Stuff
+43	Computer & Internet:Hardware
+44	Computer & Internet:Information & Documentation
+45	Computer & Internet:Internet Services
+46	Computer & Internet:Macintosh
+47	Computer & Internet:Miscellaneous
+48	Computer & Internet:Multimedia
+49	Computer & Internet:Networking
+50	Computer & Internet:Operating Systems
+51	Computer & Internet:Personal Computers
+52	Computer & Internet:Programming Languages
+53	Computer & Internet:Security & Encryption
+54	Computer & Internet:Software
+55	Computer & Internet:Unix
+56	Culture & Religion:Ancient Civilizations
+57	Culture & Religion:Christianity
+58	Culture & Religion:Cultures
+59	Culture & Religion:Debates & Skeptics
+60	Culture & Religion:Eastern Religions
+61	Culture & Religion:Holidays
+62	Culture & Religion:Islam
+63	Culture & Religion:Judaism
+64	Culture & Religion:Occult & Mysticism
+65	Culture & Religion:Other Religions & Beliefs
+66	Culture & Religion:Signs of the Times
+67	Culture & Religion:Spiritual Leaders
+68	Culture & Religion:Spirituality
+69	Education & Reference:Adult & Continuing
+70	Education & Reference:Career & Vocational
+71	Education & Reference:Distance Learning
+72	Education & Reference:Guidance
+73	Education & Reference:Higher Education
+74	Education & Reference:Instructional Technology
+75	Education & Reference:K-12 Programs
+76	Education & Reference:Language Education
+77	Education & Reference:Other Education
+78	Education & Reference:Reference Sources
+79	Education & Reference:Teaching & Learning
+80	Entertainment & Leisure:Advice
+81	Entertainment & Leisure:Amusement/theme parks
+82	Entertainment & Leisure:Astrology
+83	Entertainment & Leisure:Comics & Animation
+84	Entertainment & Leisure:Contests/Surveys/Polls
+85	Entertainment & Leisure:Cool Links
+86	Entertainment & Leisure:Dating & Relationships
+87	Entertainment & Leisure:Events
+88	Entertainment & Leisure:Food & Eating
+89	Entertainment & Leisure:Gaming
+90	Entertainment & Leisure:Gossip
+91	Entertainment & Leisure:Humor, Jokes & Fun
+92	Entertainment & Leisure:Magic
+93	Entertainment & Leisure:Miscellaneous
+94	Entertainment & Leisure:Models & Celebrities
+95	Entertainment & Leisure:Paranormal Phenomena
+96	Entertainment & Leisure:Publications
+97	Entertainment & Leisure:Sci-fi, Fantasy & Horror
+98	Entertainment & Leisure:Trivia
+99	Games:Action
+100	Games:Adventure
+101	Games:Bar Games
+102	Games:Board Games
+103	Games:Card Games
+104	Games:Childrens Games
+105	Games:Crosswords & Puzzles
+106	Games:Game Machines
+107	Games:Internet Games
+108	Games:Miscellaneous
+109	Games:Programming
+110	Games:Reviews
+111	Games:Role Playing
+112	Games:Shareware
+113	Games:Simulation
+114	Games:Sports
+115	Games:Strategy
+116	Games:Video Games
+117	Health & Fitness:Alternative Medicine
+118	Health & Fitness:Arts Therapy
+119	Health & Fitness:Dentistry
+120	Health & Fitness:Diet & Nutrition
+121	Health & Fitness:Diseases & Conditions
+122	Health & Fitness:Fitness & Exercise
+123	Health & Fitness:Geriatrics & Aging
+124	Health & Fitness:Medicine
+125	Health & Fitness:Mental Health
+126	Health & Fitness:Miscellaneous
+127	Health & Fitness:Pharmacology
+128	Health & Fitness:Reproductive Health
+129	Health & Fitness:Resource Advice
+130	Health & Fitness:Weight Management
+131	Health & Fitness:Womens Health
+132	Health & Fitness:Workplace
+133	Hobbies & Interests:Antiques & Collectibles
+134	Hobbies & Interests:Astrology
+135	Hobbies & Interests:Crafts & Hobbies
+136	Hobbies & Interests:ESP & Psychics
+137	Hobbies & Interests:Genealogy
+138	Hobbies & Interests:Miscellaneous
+139	Hobbies & Interests:Supernatural
+140	Hobbies & Interests:Toys
+141	Hobbies & Interests:UFOs
+142	Life Family Issues:Abusive Relationships
+143	Life Family Issues:Birth
+144	Life Family Issues:Children
+145	Life Family Issues:Counseling
+146	Life Family Issues:Death
+147	Life Family Issues:Disabilities
+148	Life Family Issues:Families
+149	Life Family Issues:Housing
+150	Life Family Issues:Learning Disabilities
+151	Life Family Issues:Personal Issues
+152	Life Family Issues:Personal Services
+153	Life Family Issues:Relationships
+154	Life Family Issues:Retirement
+155	Life Family Issues:Reunions
+156	Life Family Issues:Weddings
+157	Money & Finance:Economics
+158	Money & Finance:Exchanges
+159	Money & Finance:Financial Services
+160	Money & Finance:Financing
+161	Money & Finance:Futures & Options
+162	Money & Finance:Insurance
+163	Money & Finance:Investment Services
+164	Money & Finance:Mutual Funds
+165	Money & Finance:Quotes
+166	Money & Finance:Real Estate
+167	Money & Finance:Stocks, Bonds & Futures
+168	Money & Finance:Taxes
+169	Movies & Television:Action & Adventure
+170	Movies & Television:Actors & Actresses
+171	Movies & Television:Animation
+172	Movies & Television:Awards
+173	Movies & Television:Cable & Networks
+174	Movies & Television:Children
+175	Movies & Television:Classics
+176	Movies & Television:Comedy
+177	Movies & Television:Cult Movies
+178	Movies & Television:Documentaries
+179	Movies & Television:Drama
+180	Movies & Television:Film Festivals
+181	Movies & Television:Film Making
+182	Movies & Television:Foreign Film
+183	Movies & Television:Hong Kong Movies
+184	Movies & Television:Horror
+185	Movies & Television:Miscellaneous
+186	Movies & Television:Multimedia
+187	Movies & Television:Other People
+188	Movies & Television:Reviews
+189	Movies & Television:Science Fiction & Fantasy
+190	Movies & Television:Television Shows
+191	Music & Radio:Alternative
+192	Music & Radio:Ambient/New Age
+193	Music & Radio:Artists
+194	Music & Radio:Awards
+195	Music & Radio:Bluegrass
+196	Music & Radio:Blues
+197	Music & Radio:Charts, Polls & Contests
+198	Music & Radio:Classical
+199	Music & Radio:Computer
+200	Music & Radio:Country & Western
+201	Music & Radio:Disco
+202	Music & Radio:Education
+203	Music & Radio:Events
+204	Music & Radio:Folk
+205	Music & Radio:Industrial
+206	Music & Radio:Instruments
+207	Music & Radio:Jazz
+208	Music & Radio:Metal
+209	Music & Radio:Other
+210	Music & Radio:Radio
+211	Music & Radio:Rap & Hip Hop
+212	Music & Radio:Reviews
+213	Music & Radio:Rock
+214	Music & Radio:Sheet Music
+215	Music & Radio:Soul/R & B
+216	Music & Radio:Talk Radio
+217	Music & Radio:Vocal
+218	Music & Radio:World/Reggae
+219	Personal Home Pages:Art
+220	Personal Home Pages:Favorite Things
+221	Personal Home Pages:Friends & Family
+222	Personal Home Pages:General
+223	Personal Home Pages:People
+224	Personal Home Pages:Photo Gallery
+225	Personal Home Pages:Resume
+226	Personal Home Pages:Strange & Bizarre
+227	Personal Home Pages:Teen Stuff
+228	Personal Home Pages:Under Construction
+229	Personal Home Pages:Useful Stuff
+230	Personal Home Pages:Useless Pages
+231	Pets, Home & Garden:Food & Cooking
+232	Pets, Home & Garden:Furnishings
+233	Pets, Home & Garden:Gardening
+234	Pets, Home & Garden:Home Improvement
+235	Pets, Home & Garden:Pets & Animals
+236	Science & Technology:Agriculture
+237	Science & Technology:Alternative
+238	Science & Technology:Archaeology
+239	Science & Technology:Astronomy
+240	Science & Technology:Aviation & Aeronautics
+241	Science & Technology:Biology
+242	Science & Technology:Chemistry
+243	Science & Technology:Cognitive Sciences
+244	Science & Technology:Earth Sciences
+245	Science & Technology:Ecology
+246	Science & Technology:Energy
+247	Science & Technology:Engineering
+248	Science & Technology:Forensics
+249	Science & Technology:Geography
+250	Science & Technology:Institutes
+251	Science & Technology:Mathematics
+252	Science & Technology:Physics
+253	Science & Technology:Psychology
+254	Science & Technology:Social Science
+255	Science & Technology:Weights & Measures
+256	Science & Technology:Zoology
+257	Shopping & Services:Auctions
+258	Shopping & Services:Classifieds
+259	Shopping & Services:Electronic Goods
+260	Shopping & Services:Gifts, Arts & Crafts
+261	Shopping & Services:Health & Beauty
+262	Shopping & Services:Home & Garden
+263	Shopping & Services:Music, Books & Videos
+264	Shopping & Services:Sporting Goods
+265	Shopping & Services:Store, Mall & Catalogs
+266	Shopping & Services:Transaction Resources
+267	Society & Issues:Alternative
+268	Society & Issues:Civil Liberties
+269	Society & Issues:Consumer Rights
+270	Society & Issues:Crime & Justice
+271	Society & Issues:Economy
+272	Society & Issues:Government
+273	Society & Issues:International Affairs
+274	Society & Issues:Law
+275	Society & Issues:Military
+276	Society & Issues:Politics - Left
+277	Society & Issues:Politics - Middle
+278	Society & Issues:Politics - Other
+279	Society & Issues:Politics - Right
+280	Society & Issues:Social Issues
+281	Society & Issues:Social Sciences
+282	Sports:Air & Water Sports
+283	Sports:All-Sports Interests
+284	Sports:Baseball
+285	Sports:Basketball
+286	Sports:Extreme Sports
+287	Sports:Football
+288	Sports:Ice & Snow Sports
+289	Sports:Other Ball Sports
+290	Sports:Other Sports
+291	Sports:Outdoors
+292	Sports:Rankings & Ratings
+293	Sports:Spectator Sports
+294	Sports:Sport Racing
+295	Travel:Accommodations
+296	Travel:Adventure & Sports
+297	Travel:Agents & Booking
+298	Travel:Air Travel
+299	Travel:Car, Train, Bus & Ferry
+300	Travel:Convention & Visitors Bureaus
+301	Travel:Cruises, Resorts & Beaches
+302	Travel:Guides & Maps
+303	Travel:Miscellaneous
+304	Travel:National Parks

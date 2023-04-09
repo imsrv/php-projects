@@ -1,0 +1,53 @@
+require "configdat.lib";
+sub send_message {
+&vars;
+if (! $inmembername) { $inmembername = cookie("amembernamecookie"); }
+	    	if (! $inpassword)   { $inpassword   = cookie("apasswordcookie"); }
+		if(! $inclass){$inclass=cookie("aclasscookie");}
+
+print "Content-type:text/html\n\n";
+print <<EOF;
+
+<html>
+<head>
+<link rel=stylesheet type=text/css href=$personalsurl/styles.css>
+
+	<title>Message Center</title>
+</head>
+<body topmargin=0 bottommargin=0 marginheight=10 marginwidth=10 leftmargin=0 rightmargin=0 link=0000ff vlink=ff0000 bgcolor=ffffff text=000000>
+$mainheader
+$themenu
+<blockquote>$submenu</blockquote>
+<br>
+<table cellpadding=0 cellspacing=0 
+ border=0><tr>
+<td>
+<form method="post" action="$cgiurl/personals.pl">
+<blockquote>
+<table><tr>
+<td><b><font size=2 face=verdana>Send To:</td>
+<td><input type="text" name="username" value="$FORM{'username'}" size=15></font></td></tr><tr>
+<td><b><font size=2 face=verdana>From:</td>
+<td><input type="text" name="sendersusername"  value="$inmembername" size=15></font></td></tr><tr>
+<td><b><font size=2 face=verdana>Your Password:</td>
+<td><input type="password" name="senderspassword" value="$inpassword"  size=15></font></td>
+</tr><tr>
+
+<td>
+<b><font size=2 face=verdana>Subject</b></font></td>
+<td><input type="text" name="subject" size=25></td></tr><tr>
+<td valign="top">
+<b><font size=2 face=verdana>Message:</b></font></td>
+<td><textarea name="message" cols=35 rows=6></textarea></td></tr><tr>
+<td>&nbsp;</td><td><center><input type="submit" name="savemess" value="Send Message" class="button"></center></td></tr>
+</table></td>
+</form>
+</tr></table></blockquote>
+<br><br><br>
+$botcode
+
+EOF
+exit;
+}
+
+1;

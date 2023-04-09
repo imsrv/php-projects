@@ -1,0 +1,38 @@
+<?
+// 'Settings' messages
+$lang_msg["settings"] = array(
+	501	=>	'No se pudo grabar la nueva configuración, inténtelo más tarde',
+	502	=>	'La nueva configuración ha sido grabada.',
+	503	=>	'Su Nombre',
+	504	=>	'(será puesto en la casilla <u>Desde</u>, para los mensajes salientes)',
+	505	=>	'Firma',
+	506	=>	'(Será colocada en cada mensaje que envíe)',
+	507	=>	'Lenguaje',
+	508	=>	'(Predetermina el Lenguaje)',
+	509	=>	'Ordenar mensajes por',
+	510	=>	'(Predetermina la forma en que se ordenaran los mensajes)',
+	511	=>	'Orden inverso',
+	512	=>	'(Si selecciona SI, los mensajes recientes se mostrarán arriba)',
+	513	=>	'Guardar mensajes salientes',
+	514	=>	'(Si selecciona SI, los mensajes enviados serán guardados en la carpeta mensajes enviados)',
+	515	=>	'Mover a la Papelera',
+	516	=>	'(Si selecciona SI, los mensajes que envía a la papelera serán purgados)',
+	517	=>	'Tamaño de la página',
+	518	=>	'(Mensajes por página)',
+	519	=>	'Fecha',
+	520	=>	'Desde',
+	521	=>	'Asunto',
+	522	=>	'Tamaño',
+	523	=>	'Tema',
+	524	=>	'(Cambia el aspecto de su sistema de E-Mail)',
+	525	=>	'Guardar configuración',
+	526	=>	'Show',
+	527	=>	'Hide',
+	528	=>	'Show/Hide',
+	529	=>	'(show or hide the user folder list in the left menu)',
+	530	=>	'Prev/Next',
+	531	=>	'(shows the previous and the next message links when reading a message -- this is slow on large mailboxes)',
+	532	=>	'Reply-To',
+	533	=>	'(the recipient will reply to this address -- if empty <b>%e</b> is used)'
+);
+?>

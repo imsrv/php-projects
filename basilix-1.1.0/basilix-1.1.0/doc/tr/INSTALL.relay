@@ -1,0 +1,34 @@
+BasiliX mesajlarý php scriptiyle mail göndermenin en iyi yolu
+olan SMTP baðlantýsý ile göndermektedir. Ancak gene de,
+bu bir takým sorunlarý da beraberinde getirebilir. BasiliX'in
+kurulum iþlemlerini bitirdikten sonra ve BasiliX'i kullanýma
+açýk hale getirmeden önce kendiniz sorun olup olmadýðýný
+test etmelisiniz.
+
+Bunun için, bazý e-mail adreslerine mesajlar atýp 
+(devnull@basilix.org adresine test amaçlý mail atabilirsiniz)
+kullanýlan SMTP sunucusunun hata verip vermediðini test edin.
+
+Eðer BasiliX -103 hata kodunu gönderiyorsa, aþaðýdaki ilgili
+SMTP sunucusu linkini takip ederek sunucuya ilgili ayarý
+yapýnýz.
+
+Bu iþlemi kullanýlacak tüm domainlerin kullanacaði SMTP
+sunucularý için tekrarlayýnýz.
+
+-----------------------------------------------------------------
+QMAIL:
+======
+
+Author:	Chris Johnson	
+URL:	http//www.palomine.net/qmail/relaying.html
+
+-----------------------------------------------------------------
+SENDMAIL:
+=========
+
+Author:	Claus Aßmann
+URL:	http://www.sendmail.org/~ca/email/relayingdenied.html
+
+
+

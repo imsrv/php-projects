@@ -1,0 +1,38 @@
+<?
+// 'Ayarlar' mesajlarý
+$lang_msg["settings"] = array(
+	501	=>	'Yeni ayarlarý kaydedemedim, lütfen daha sonra tekrar deneyiniz..',
+	502	=>	'Yeni ayarlar baþarýyla kaydedilmiþtir',
+	503	=>	'Adýnýz',
+	504	=>	'(gönderdiðiniz mesajlarýn <u>Kimden</u> kýsmýna eklenecektir)',
+	505	=>	'Ýmzanýz',
+	506	=>	'(gönderdiðiniz mesajlarýn sonuna eklenecektir)',
+	507	=>	'Dil',
+	508	=>	'(kullanýlan dil seçimi)',
+	509	=>	'Mesajlarýn sýnýflandýrýlmasý',
+	510	=>	'(kullanýlan sýnýflandýrma)',
+	511	=>	'Tersten sýnýflandýrma',
+	512	=>	'(evet seçilirse, en son gelen mesajlar en üstte gösterilecektir)',
+	513	=>	'Giden mesajlarý kaydet',
+	514	=>	'(evet seçilirse, gönderdiðiniz mesajlar "Giden Mesajlar" kutusuna kaydedilecektir)',
+	515	=>	'Çöp kutusuna gönder',
+	516	=>	'(evet seçilirse, silinen mesajlar çöp kutusuna gönderilecektir)',
+	517	=>	'Sayfa boyu',
+	518	=>	'(mesajlarýn kaçar kaçar listeleneceði)',
+	519	=>	'Tarih',
+	520	=>	'Kimden',
+	521	=>	'Konu',
+	522	=>	'Boyut',
+	523	=>	'Tema',
+	524	=>	'(BasiliX\'in görünüþünu deðiþtirir)',
+	525	=>	'Ayarlarý Kaydet',
+	526	=>	'Göster',
+	527	=>	'Sakla',
+	528	=>	'Göster/Sakla',
+	529	=>	'(sol menüdeki kullanýcýya özel posta kutularýný gösterir ya da saklar)',
+	530	=>	'Önceki/Sonraki',
+	531	=>	'(mesaj okuma penceresinde önceki ve sonraki mesaja linkler gösterilir -- büyük posta kutularýnda yavaþ bir iþlemdir)',
+	532	=>	'Reply-To',
+	533	=>	'(mesajý alan kiþi bu email adresine cevap gönderir -- boþ býrakýlmasý durumunda <b>%e</b> adresi kullanýlacaktýr)'
+);
+?>

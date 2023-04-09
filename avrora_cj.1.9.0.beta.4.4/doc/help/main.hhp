@@ -1,0 +1,35 @@
+[OPTIONS]
+Compatibility=1.1 Or later
+Default Window=Main
+Default topic=D:\project\www.av-cj.loc\help\index.htm
+Default font=Tahoma,8,1
+Contents file=main.hhc
+Index file=main.hhk
+Display compile progress=Yes
+Full-text search=Yes
+Language=0x419 Russian
+
+[WINDOWS]
+Main="","main.hhc","main.hhk","D:\project\www.av-cj.loc\help\index.htm","D:\project\www.av-cj.loc\help\index.htm",,,,,0x20,180,0x104E,[80,60,720,540],0x0,0x0,,,,,0
+
+[FILES]
+about.html
+features.htm
+help.ask.html
+index.htm
+info.features.htm
+info.performance.html
+install.html
+install.request.html
+install.update.html
+work.block.html
+work.faces.html
+work.fase_rotation.html
+work.force.html
+work.html
+work.settings.html
+work.system_traders.html
+work.thumb.html
+work.trade_param.html
+work.trader_stats.html
+work.with_trader.html

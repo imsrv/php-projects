@@ -1,0 +1,37 @@
+<?
+// Folders screen messages
+$lang_msg["folders"] = array(
+	151	=>	'Folder',
+	152	=>	'Ca³o¶æ',
+	153	=>	'Nieprzeczytane',
+	154	=>	'Rozmiar',
+	155	=>	'Utwórz folder:',
+	156	=>	'Utwórz mój prywatny folder',
+	157	=>	'Mo¿esz stworzyæ dowoln± liczbê folderów. Aby utworzyæ nowy folder, podaj jego nazwê poni¿ej i kliknij Utwórz.',
+	158	=>	'Nie poda³e¶ nazwy folderu, spróbuj jeszcze raz.',
+	159	=>	'Ten folder ju¿ istnieje, spróbuj jeszcze raz.',
+	160	=>	'Folder zosta³ utworzony.',
+	161	=>	'Usuñ folder:',
+	162	=>	'Usuñ zaznaczony folder',
+	163	=>	'Skasowane foldery <u><b>nie s±</b> do odzyskania</u>. Je¶li chcesz usun±æ folder, zaznacz go i naci¶nij przycisk Usuñ.',
+	164	=>	'Nie poda³e¶ nazwy folderu do usuniêcia, spróbuj jeszcze raz.',
+	165	=>	'Nie mo¿na skasowaæ zaznczonego folderu, spróbuj pó¼niej..',
+	166	=>	'Zaznaczony folder zosta³ usuniêty.',
+	167	=>	'Zmieñ nazwê:',
+	168	=>	'Zmieñ nazwê zaznaczonego folderu',
+	169	=>	'Je¶li chcesz zmieniæ nazwê prywatnemu folderowi, zaznacz go i naci¶nij przycisk Zmieñ nazwê.',
+	170	=>	'Poprzednia nazawa folderu',
+	171	=>	'Nowa nazwa folderu',
+	172	=>	'Nie zaznaczy³e¶ folderu, któremu chcia³e¶ zmieniæ nazwê, spróbuj jeszcze raz..',
+	173	=>	'Nie poda³e¶ nowej nazwy folderu, spróbuj jeszcze raz..',
+	174	=>	'Nie mo¿na zmieniæ nazwy zaznaczonego folderu, spróbuj pó¼niej..',
+	175	=>	'Nazwa zmieniona.',
+	176	=>	'opró¿nij Kosz',
+	177	=>	'Nie mo¿na utworzyæ nowego folderu. Mo¿e przekroczy³e¶ dopuszczalny rozmiar na dysku? spróbuj pó¼niej..',
+	178	=>	'Usuniêto.',
+	179	=>	'Nie mogê opró¿niæ zaznaczonego folderu, spróbuj pó¼niej..',
+	180	=>	'Czy na pewno chcesz opró¿niæ folder Kosz?',
+	181	=>	'B³±d przy tworzeniu folderu Kosz',
+	182	=>	'B³±d przy tworzeniu folderu Elementy wys³ane'
+);
+?>

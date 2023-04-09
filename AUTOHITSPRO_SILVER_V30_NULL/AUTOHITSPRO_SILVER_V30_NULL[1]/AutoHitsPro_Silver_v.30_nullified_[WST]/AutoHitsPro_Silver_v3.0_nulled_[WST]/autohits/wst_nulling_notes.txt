@@ -1,0 +1,23 @@
+in root directory:
+
+error_inc.php
+	removed 2 referral links to domain.com for non working banner adv credits, this when installed appears in 	email template sent to new user upon signup.
+faq.php
+	removed 2 referral links to domain.com for non working banner adv credits, also, 2 email support links to 	developer.
+
+config_real_inc.php
+	Lines 15,16,changed emails from admin@email.net & support@email.net to admin@yourdomain.com & 	support@yourdomain.com
+
+footer_inc.php
+	nulled "powered by" link
+
+in admin directory:
+
+root/admin/footer_inc.php
+	deleted copyright link to developer in admin footer
+
+root/admin/header_inc.php
+	removed link to developer's site in "powered by"
+
+root/admin/error_inc.php
+	removed email link to admin@email.net that appears in ...edit admin messages as return email. Replaced with 	"support@yourdomain.com" 

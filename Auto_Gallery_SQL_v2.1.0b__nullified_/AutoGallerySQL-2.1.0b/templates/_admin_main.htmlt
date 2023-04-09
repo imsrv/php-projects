@@ -1,0 +1,369 @@
+<html>
+<head>
+  <title>AutoGallery SQL Administration</title>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<font face="Verdana" size="1" style="font-size: 11px;" color="red">
+<b>#%MESSAGE%#</b>
+</font>
+
+<br><br>
+
+<form action="admin.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="650">
+  <tr bgcolor="#aaaaaa">
+    <td align="center">
+
+      <table cellspacing="1" cellpadding="4" border="0" width="100%">
+
+        <tr>
+          <td bgcolor="#004080" align="center" colspan="2">
+            <font face="Arial" size="3" color="white" style="font-size: 15px;">
+            <b>AutoGallery SQL Administration</b>
+            </font>
+          </td>
+        </tr>
+
+        <tr bgcolor="#cccccc">
+          <td width="15" align="center">
+            <input type="radio" name="run" value="execute" checked>
+          </td>
+          <td width="635">
+            <select name="fnct" style="font-size: 11px; font-family: Verdana">
+              <option value="rebuildAll">Rebuild All Pages</option>
+              <option value="rebuildMain">Rebuild Main Page</option>
+              <option value="rebuildArchives">Rebuild Archives</option>
+	          <option value="displayManual">Manually Submit a Post</option>
+              <option value="displayImport">Import Galleries</option>
+              <option value="displayBans">Edit Blacklist</option>
+              <option value="displayRecip">Edit Recip Links</option>
+	          <option value="displayBanned">Edit Banned HTML</option>
+              <option value="displayReject">Edit Reject Emails</option>
+              <option value="displayIcons">Edit Partner Icons</option>
+              <option value="displayLang">Edit Language Settings</option>
+              <option value="displayAddPartner">Add a Partner</option>
+              <option value="displayAddMod">Add a Moderator</option>
+              <option value="displayAllPartners">Display All Partners</option>
+              <option value="displayAllMods">Display All Moderators</option>
+              <option value="displayCheats">Display Cheat Reports</option>
+              #%P0ST_STATUS%#
+              <option value=""></option>
+              <option value="restoreTemplate">Restore Default Template</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr bgcolor="#ececec">
+          <td align="center">
+            <input type="radio" name="run" value="displayPosts">
+          </td>
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Display</b>
+            </font>
+            <select name="dbcat" style="font-size: 11px; font-family: Verdana">
+            <option value="">Overall</option>
+            #%CAT_OPTIONS%#
+            </select>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Galleries In The</b>
+            </font>
+            <select name="db" style="font-size: 11px; font-family: Verdana">
+              #%QUEUE%#
+              <option value="Current">Current Database</option>
+              #%ARCHIVES%#
+            </select>
+            <select name="show" style="font-size: 11px; font-family: Verdana">
+              <option value="9999999">All</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="40">40</option>
+              <option value="80">80</option>
+            </select>
+            <input type="hidden" name="end" value="0">
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Per Page</b>
+            </font>
+          </td>
+        </tr>
+
+        <tr bgcolor="#cccccc">
+          <td align="center">
+            <input type="radio" name="run" value="displayHTML">
+          </td>
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Edit the HTML for</b>
+            </font>
+            <select name="hpage" style="font-size: 11px; font-family: Verdana">
+            #%TGP_PAGES%#
+            </select>
+          </td>
+        </tr>
+
+        <tr bgcolor="#ececec">
+          <td align="center">
+            <input type="radio" name="run" value="displayTemplate">
+          </td>
+          <td>
+            <font face="Verdana" size="2" style="font-size: 11px;">
+            <b>Edit the</b>
+            </font>
+            <select name="template" style="font-size: 11px; font-family: Verdana">
+              <option value='_post_main.htmlt'>_post_main.htmlt</option>
+              <option value='_post_approved.htmlt'>_post_approved.htmlt</option>
+              <option value='_post_confirm.htmlt'>_post_confirm.htmlt</option>
+              <option value='_post_confirmed.htmlt'>_post_confirmed.htmlt</option>
+              <option value='_post_disabled.htmlt'>_post_disabled.htmlt</option>
+              <option value='_post_queued.htmlt'>_post_queued.htmlt</option>
+              <option value='_partner_login.htmlt'>_partner_login.htmlt</option>
+              <option value='_partner_remind.htmlt'>_partner_remind.htmlt</option>
+              <option value='_partner_reminded.htmlt'>_partner_reminded.htmlt</option>
+              <option value='_partner_main.htmlt'>_partner_main.htmlt</option>
+              <option value='_partner_edit.htmlt'>_partner_edit.htmlt</option>
+              <option value='_partner_edited.htmlt'>_partner_edited.htmlt</option>
+              <option value='_partner_posted.htmlt'>_partner_posted.htmlt</option>
+              <option value='_report_main.htmlt'>_report_main.htmlt</option>
+              <option value='_report_sent.htmlt'>_report_sent.htmlt</option>
+              <option value='_error_data.htmlt'>_error_data.htmlt</option>
+              <option value='_error_http.htmlt'>_error_http.htmlt</option>
+              <option value='_email_approved.etmpl'>_email_approved.etmpl</option>
+              <option value='_email_confirm.etmpl'>_email_confirm.etmpl</option>
+              <option value='_email_partner.etmpl'>_email_partner.etmpl</option>
+              <option value='_email_moderator.etmpl'>_email_moderator.etmpl</option>
+              <option value='_email_remind.etmpl'>_email_remind.etmpl</option>
+            </select>
+            <font face="Verdana" size="2" style="font-size: 11px;">
+            <b>template</b>
+            </font>
+          </td>
+        </tr>
+
+        <tr bgcolor="#cccccc">
+          <td align="center">
+            <input type="radio" name="run" value="displayPost">
+          </td>
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Display post with ID</b>
+            </font>
+            <input type="text" name="id" size="12" style="font-size: 11px; font-family: Verdana">
+          </td>
+        </tr>
+
+        <tr bgcolor="#ececec">
+          <td align="center">
+            <input type="radio" name="run" value="displaySearch">
+          </td>
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Search the</b>
+            </font>
+            <select name="field" style="font-size: 11px; font-family: Verdana">
+              <option value="Gallery_URL">Gallery URL</option>
+              <option value="Description">Gallery Description</option>
+              <option value="Email">E-mail Address</option>
+              <option value="Recip_URL">Reciprocal URL</option>
+              <option value="IP_Address">IP Address</option>
+            </select>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>field of all posts for keyword</b>
+            </font>
+            <input type="text" name="key" size="15" style="font-size: 11px; font-family: Verdana">
+          </td>
+        </tr>
+
+	    <tr bgcolor="#cccccc">
+          <td align="center">
+            <input type="radio" name="run" value="clearQueue">
+          </td>
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Delete all galleries in the queue that are older than</b>
+            </font>
+	        <input type="text" name="date" size="10" maxlength="10" style="font-size: 11px; font-family: Verdana">
+	        <font face="Verdana" size="1" style="font-size: 11px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;<b>YYYY-MM-DD</b>
+            </font>
+          </td>
+        </tr>
+
+        <tr bgcolor="#ececec">
+          <td align="center">
+            <input type="radio" name="run" value="displayBackup">
+          </td>
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Backup/Restore Databases</b>
+            <font color="red">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#%REMIND%#</b>
+            </font>
+            </font>
+          </td>
+        </tr>
+
+        <tr bgcolor="#cccccc">
+          <td align="center">
+            &nbsp;
+          </td>
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b><a href="setup.cgi" class="reg">Edit Variables and Options</a></b>
+            </font>
+          </td>
+        </tr>
+
+        <tr bgcolor="#ececec">
+          <td align="center" colspan="2">
+            <input type="submit" name="submit" value="Execute Function" style="font-size: 11px; font-family: Verdana">
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+<input type="hidden" name="page" value="0">
+
+<br><br>
+
+<table border="0" cellpadding="0" cellspacing="0" width="450">
+  <tr bgcolor="#aaaaaa">
+    <td align="center">
+
+      <table cellspacing="1" cellpadding="4" border="0" width="100%">
+        <tr>
+          <td bgcolor="#004080" align="center" colspan="2">
+            <font face="Arial" size="3" color="white" style="font-size: 15px;">
+            <b>Statistics And Information</b>
+            </font>
+          </td>
+        </tr>
+
+        <tr bgcolor="#cccccc">
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Galleries Awaiting Approval</b>
+            </font>
+          </td>
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            #%IN_QUEUE%#
+            </font>
+          </td>
+        </tr>
+
+        <tr bgcolor="#ececec">
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Cheat Reports</b>
+            </font>
+          </td>
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            #%CHEAT_REPORTS%#
+            </font>
+          </td>
+        </tr>
+
+        <tr bgcolor="#cccccc">
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Last Database Backup Occurred</b>
+            </font>
+          </td>
+          <td>
+            <font face="Verdana" size="1" color="#%COLOR%#" style="font-size: 11px;">
+            #%LAST_BACKUP%# ago
+            </font>
+          </td>
+        </tr>
+
+        <tr bgcolor="#ececec">
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Your Script's Version</b>
+            </font>
+          </td>
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            #%VERSION%#
+            </font>
+          </td>
+        </tr>
+
+        <tr bgcolor="#cccccc">
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <b>Your Main TGP Page</b>
+            </font>
+          </td>
+          <td>
+            <font face="Verdana" size="1" style="font-size: 11px;">
+            <a href="#%TGP_PAGE%#" class="reg" target="_new">Click Here</a>
+            </font>
+          </td>
+        </tr>
+
+        <tr bgcolor="#ececec">
+          <td>
+            <font face="Verdana" size="2" style="font-size: 11px;">
+            <b>JMB Software Owners Lounge</b>
+            </font>
+          </td>
+          <td>
+            <font face="Verdana" size="2" style="font-size: 11px;">
+            <!--CyKuH [WTN]-->Disable by WTN Team `2002
+            </font>
+          </td>
+        </tr>
+
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+</form>
+
+</body>
+</html>
+

@@ -1,0 +1,37 @@
+<?
+// Folders screen messages
+$lang_msg["folders"] = array(
+	151	=>	'Kansio',
+	152	=>	'Yhteens‰',
+	153	=>	'Lukemattomia',
+	154	=>	'Koko',
+	155	=>	'Luo uusi kansio:',
+	156	=>	'Luo kansio',
+	157	=>	'Voit luoda useita kansioita. Kun haluat luoda kansion, kirjoita kansion nimi tekstikentt‰‰n ja paina "Luo kansio"-nappia.',
+	158	=>	'Et antanut kansiolle mit‰‰n nime‰, ole hyv‰ ja yrit‰ uudelleen.',
+	159	=>	'T‰m‰n niminen kansio on jo olemassa, yrit‰ uudelleen eri nimell‰.',
+	160	=>	'Uusi kansio on luotu.',
+	161	=>	'Poista kansio:',
+	162	=>	'Poista valittu kansio',
+	163	=>	'Poistettua kansiota <u><b>EI VOIDA</b> en‰‰ palauttaa</u>. Jos kuitenkin haluat poistaa kansion, valitse se ja paina "Poista kansio"-nappia.',
+	164	=>	'You did not select a folder name to be deleted, please try again.',
+	165	=>	'I could not delete the folder you have specified, please try again later..',
+	166	=>	'The folder you have specified has been successfully deleted.',
+	167	=>	'Rename a folder:',
+	168	=>	'Rename selected folder',
+	169	=>	'If you want to rename a personal folder, please select it and click the RENAME button.',
+	170	=>	'Old folder name',
+	171	=>	'New folder name',
+	172	=>	'You did not select a folder name to rename, please try again..',
+	173	=>	'You did not enter the new folder name, please try again..',
+	174	=>	'I could not rename the folder you have specified, please try again later..',
+	175	=>	'Your folder has been succesfully renamed.',
+	176	=>	'empty Trash folder',
+	177	=>	'I could not create the new folder. Could you be over your disk quota? please try again later..',
+	178	=>	'The folder you have specified has been successfully emptied.',
+	179	=>	'I could not empty the folder you have specified, please try again later..',
+	180	=>	'Do you really want to empty this folder?',
+	181	=>	'Error creating Trash folder',
+	182	=>	'Error creating Sent Mail folder'
+);
+?>

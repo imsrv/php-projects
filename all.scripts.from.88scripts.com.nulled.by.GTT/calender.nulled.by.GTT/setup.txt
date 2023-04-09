@@ -1,0 +1,23 @@
+88Scripts.com Event Calendar Installation Guide
+===============================================
+
+The following are some simple steps for installation:
+
+1) Open the "./include/connection.php" file.
+2) Change $site, $your_username, $your_password and $your_database to your
+   appropriate setting.
+3) Open tables.sql and change the last line of the admin login to your own.
+4) Run tables.sql in your MySQL to create the tables needed.
+5) Go to your path of the Event Calendar and now you are set to go!
+
+
+Enjoy!
+
+If you have any problem with this installation instructions, please contact
+webmaster@88scripts.com.
+
+If you want to be notified for any future upgrades of this script, please
+send an email to webmaster@88scripts.com with subject as "NOTIFY UPGRADE".
+
+
+88Scripts.com

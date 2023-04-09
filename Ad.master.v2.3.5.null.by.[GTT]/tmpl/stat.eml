@@ -1,0 +1,53 @@
+From: admaster
+To: #email#
+Subject: Banner statistics - #name#
+Mime-Version: 1.0
+X-Mailer: Ad Master
+Content-Type: multipart/alternative; boundary="----rTiVMhV6-W6gZJvcydUEImKER:1039369086"
+
+------rTiVMhV6-W6gZJvcydUEImKER:1039369086
+Content-Type: text/plain
+
+Statistics for banner #name#
+#start-date# - #end-date#
+
+Date		Imps		Clicks		CPS
+#strings-text#
+
+To see full statistics, please login here:
+#path-to-admin-area#admin.cgi
+
+
+
+Ad Master v2.3
+
+------rTiVMhV6-W6gZJvcydUEImKER:1039369086
+Content-Type: text/html
+
+<html><body>
+<center>
+
+Statistics for banner #name#<br>
+<b>#start-date# - #end-date#</b><br><br>
+
+<table cellspacing=0 cellpadding=2 border=1 width=50%>
+<tr><th>Date</th><th>Imps</th><th>Clicks</th><th>CPS</th></tr>
+#strings-html#
+</table>
+<br>
+To see full statistics, please login 
+<a href=#path-to-admin-area#admin.cgi>here</a>
+<br><br><br>
+
+Ad Master v2.3
+</center>
+</body>
+------rTiVMhV6-W6gZJvcydUEImKER:1039369086--
+<!--[clear]-->
+<!--[strings-text]-->#date#		#imps#		#clicks#	#cps#
+<!--[strings-text]-->
+
+<!--[strings-html]-->
+<tr><td>#date#</td><td align=right>#imps#</td><td align=right>#clicks#</td><td align=right>#cps#</td></tr>
+<!--[strings-html]-->
+<!--[clear]-->

@@ -1,0 +1,161 @@
+#!/usr/bin/perl -w
+#####################################################################
+##  Program Name	: AutoGallery SQL                          ##
+##  Version		: 2.1.0b                                   ##
+##  Program Author      : JMB Software                             ##
+##  Retail Price	: $85.00 United States Dollars             ##
+##  xCGI Price		: $00.00 Always 100% Free                  ##
+##  WebForum Price      : $00.00 Always 100% Free                  ##
+##  Supplier By  	: Dionis                                   ##
+##  Delivery by         : Slayer                                   ##
+##  Nullified By	: CyKuH [WTN]                              ##
+##  Distribution        : via WebForum and Forums File Dumps       ##
+#####################################################################
+##            linkcheck - command line link cheking tool           ##
+#####################################################################
+
+$CDIR = '/home/soft/cgi-bin/ags';               ## The full directory path to your AutoGallery SQL Installation
+
+#####################################################################
+##  Removing the link back to JMB Softwar is a copyright violation.##
+##  Altering or removing any of the code that is responsible, in   ##
+##  any way, for generating that link is strictly forbidden.       ##
+##  Anyone violating the above policy will have their license      ##
+##  terminated on the spot.  Do not remove that link - ever.       ##
+#####################################################################
+
+
+############################
+##  Available options
+=start
+
+
+- Check number of pics on gallery
+- Do not allow 30x status codes
+- Take sample of gallery content
+- Count links on gallery page
+- Check for banned HTML on gallery page
+- Check for reciprocal link on gallery page
+- Check that page has not changed
+- Minimum number of pics/movies
+- Maximum number of pics/movies
+- Minimum pic/movie size
+- Minimum throughput
+- Determine which galleries to check
+- Option to make process a daemon
+- Generate an HTML report
+- Email administrator when finished running
+- Rebuild TGP pages when done running
+
+
+=cut
+##
+############################
+
+
+print "\n\t****  NOT YET COMPLETED  ****\n\n";
+exit;
+
+
+
+chdir($CDIR);
+
+$SIG{INT} = \&handleInterrupt;
+$START    = 0;
+$STOP     = 0;
+$CHECKED  = 0;
+
+
+require 'ags.pl';
+
+if( !-e "$DDIR/lvars.dat" )
+{
+    handleError('NO_VARIABLES');
+}
+
+require "$DDIR/lvars.dat";
+require "$DDIR/lcheck.dat";
+
+
+if( $GENERATE_REPORT )
+{
+    fwrite("$DDIR/report.html", $HEAD);
+}
+
+
+my $sth = SQLQuery("SELECT * FROM a_Posts");
+
+$START = now();
+
+
+while( $post = $sth->fetchrow_hashref )
+{
+    my %results;
+
+    $FRM{'cat'} = $post->{'Category'};
+    analyzeGallery($post->{'Gallery_URL'}, \%results);
+
+
+    if( $GENERATE_REPORT )
+    {
+        addRow($post, \%results);
+    }
+    ###
+    ### HERE'S WHERE WE HAVE FUN AND PROCESS THE RESULTS OF GALLERY ANALYSIS
+    ###
+
+    $CHECKED++;
+}
+
+
+$STOP = now();
+
+$sth->finish;
+
+
+if( $GENERATE_REPORT )
+{
+    fwrite("$DDIR/report.html", $FOOT);
+}
+
+
+#printf("\nChecked %d galleries in %.2f seconds\n", $CHECKED, $STOP-$START);
+
+
+
+
+#########################################################################################
+#########################################################################################
+
+
+
+## Add a row to the report file
+sub addRow
+{
+}
+
+
+
+
+## Process interrupt signal
+sub handleInterrupt
+{
+    print "Interrupted\n";
+    exit;
+}
+
+
+
+## Handle any errors encountered
+sub handleError
+{
+    my $key   = shift;
+    my %codes = (
+                  'NO_VARIABLES' => 'Please run the linkcheck configuration function in the administrative interface'
+                );
+
+    print "\n*** ERROR ***\n";
+    print "$codes{$key}\n\n";
+    exit;
+}
+

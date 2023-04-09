@@ -1,0 +1,15 @@
+To:  #%EMAIL%#
+From: #%ADMIN_EMAIL%#
+Subject: Post Approved
+
+Your posting to our TGP has been approved, and will be visible on our
+main TGP page shortly.  Below is the information used for this post.
+
+Post ID: #%POST_ID%#
+Gallery URL: #%GALLERY_URL%#
+Description: #%DESCRIPTION%#
+Number Pics: #%NUM_PICS%#
+Recip URL: #%RECIP_URL%#
+
+Regards,
+TGP Webmaster

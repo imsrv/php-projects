@@ -1,0 +1,55 @@
+<script language=javascript>
+
+function check_form() {
+  if (document.mainform.username.value == '') {
+    document.mainform.username.focus();
+    alert("Please, type login");
+    return false;
+  }
+  if (document.mainform.passwd.value != document.mainform.passwd2.value) {
+    document.mainform.passwd2.focus();
+    alert("Please, repeat right password");
+    return false;
+  }
+  return true;
+}
+</script>
+<table cellcpacing=0 cellpadding=0 border=0 width=50% align=center><tr><td>
+<form action=admin.cgi method=post onSubmit="return check_form();" name=mainform>
+<input type=hidden name=page value=adduser>
+<input type=hidden name=action value=adduser>
+<input type=hidden name=uid value=#FORM_uid#>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr>
+	<th colspan=2><img src=#image_dir#user.gif width=16 height=16> EDIT USER (Step 1)</th>
+</tr>
+<tr><td class=td1><img src=#image_dir#name.gif width=16 height=16> Login:</td><td class=td1><input type=text name=username size=30 value="#user-name#"></td></tr>
+<tr><td class=td2><img src=#image_dir#users.gif width=16 height=16> New password:</td><td class=td2><input type=password name=passwd size=30></td></tr>
+<tr><td class=td1><img src=#image_dir#users.gif width=16 height=16> Repeat password:</td><td class=td1><input type=password name=passwd2 size=30></td></tr>
+<tr valign=top><td class=td2><img src=#image_dir#desc.gif width=16 height=16> Description:</td><td class=td2><textarea name=userdesc cols=30 rows=5>#user-desc#</textarea></td></tr>
+<tr><td class=td1><img src=#image_dir#type.gif width=16 height=16> Account type:</td><td class=td1>
+	<select name=acctype>
+	<option value=superuser #user-sel-superuser#>Super User
+	<option value=campaignadmin #user-sel-campaignadmin#>Campaign Admin
+	<option value=banneradmin #user-sel-banneradmin#>Banner Admin
+	<option value=statuser #user-sel-statuser#>Stat User
+	</select>
+</td></tr>
+<tr><td class=td2><img src=#image_dir#email.gif width=16 height=16> E-mail:</td><td class=td2><input type=text name=email value="#user-email#"></td></tr>
+<tr><td class=td1><img src=#image_dir#url.gif width=16 height=16> User site URL:</td><td class=td1><input type=text name=url size=30 value="#user-url#"></td></tr>
+<tr><td colspan=2 class=tdb>
+<input type=Submit class=sbmt value="STEP 2>>"> &nbsp; <input type=button onClick="document.location='admin.cgi?page=users';" value="CANCEL" class=sbmt>
+</td></tr>
+</table>
+
+
+
+
+
+</td></tr></table>
+</form>
+
+
+
+</td></tr></table>

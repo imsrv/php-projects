@@ -1,0 +1,25 @@
+</td>
+</tr>
+<tr>
+<td bgcolor="#ffffff" align="center">
+<input type="submit" name="submit" value="Clear Log" style="font-size: 11px; font-family: Verdana">
+<input type="hidden" name="run" value="clearCheatLog">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<input type="hidden" name="apwd" value="#%APWD%#">
+</form>
+
+<br>
+
+<form action="admin.cgi" method="POST">
+<input type="hidden" name="apwd" value="#%APWD%#">
+#%BACK%#
+</form>
+
+</body>
+</html>

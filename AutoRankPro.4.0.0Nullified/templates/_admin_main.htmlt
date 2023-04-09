@@ -1,0 +1,410 @@
+<html>
+<head>
+  <title>AutoRank Pro Administration</title>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<font face="Verdana" size="2" color="red" style="font-size: 11px;">
+<b>#%MESSAGE%#</b>
+</font>
+
+<br><br>
+
+<form action="admin.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="700">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="700">
+
+  <tr>
+    <td bgcolor="#004080" align="center" colspan="2">
+      <font face="Arial" size="3" color="white" style="font-size: 15px;">
+      <b>AutoRank Pro Administration</b><br>
+         Ax xCGI Release Nulled by drew010
+      </font>
+    </td>
+  </tr>
+
+  <tr bgcolor="#cccccc">
+    <td width="30" align="center">
+      <input type="radio" name="run" value="execute" checked>
+    </td>
+    <td width="620">
+      <select name="function" style="font-size: 11px; font-family: Verdana">
+        <option value="rerankList">Rerank The List</option>
+        <option value="displayRevNew">Review New Signups</option>
+        <option value="displayRevEdit">Review Account Edits</option>
+        <option value="displayMail">E-mail All Members</option>
+        <option value="displayIcons">Edit Icons</option>
+        <option value="displayBans">Edit Blacklist</option>
+        <option value="displayReject">Edit Reject Emails</option>
+        <option value="displayLang">Edit Language Settings</option>
+        <option value="displayGate">Edit Gateway Page</option>
+        <option value="displayCheatLog">Display Cheat Log</option>
+        <option value="displayStats">Display Statistics</option>
+        <option value="displayListEmails">List E-mail Addresses</option>
+        <option value="displayChangePass">Change Admin Password</option>
+        <option value=""></option>
+        <option value="clearMemberStats">Clear Member Stats</option>
+        <option value="clearIPs">Clear IP Logs</option>
+        <option value="resetList">Reset the List</option>
+        <option value="resetTotals">Reset Total Hit Counts</option>
+        <option value=""></option>
+        <option value="restoreDefault">Restore Default Template</option>
+      </select>
+    </td>
+  </tr>
+
+  <tr bgcolor="#ececec">
+    <td align="center">
+      <input type="radio" name="run" value="displayAll">
+    </td>
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Display</b>
+      </font>
+      <select name="scat" style="font-size: 11px; font-family: Verdana">
+        <option value="Overall">Overall</option>
+        #%CAT_OPT%#
+      </select>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Members Sorted By</b>
+      </font>
+      <select name="sort" style="font-size: 11px; font-family: Verdana">
+        <option value="hitsIn">Hits In Since Last Reset</option>
+        <option value="hitsOut">Hits Out Since Last Reset</option>
+        <option value="totalIn">Total Hits In</option>
+        <option value="totalOut">Total Hits Out</option>
+        <option value="inPerDay">Average Hits In Per Day</option>
+        <option value="inPerWeek">Average Hits In Per Week</option>
+        <option value="inPerMonth">Average Hits In Per Month</option>
+        <option value="outPerDay">Average Hits Out Per Day</option>
+        <option value="outPerWeek">Average Hits Out Per Week</option>
+        <option value="outPerMonth">Average Hits Out Per Month</option>
+        <option value="signupDate">Signup Date</option>
+        <option value="sortByID">Username</option>
+        <option value="sortByActivity">Inactivity</option>
+      </select>
+      <select name="show" style="font-size: 11px; font-family: Verdana">
+        <option value="9999999">All</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="40">40</option>
+        <option value="80">80</option>
+      </select>
+      <input type="hidden" name="end" value="0">
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Per Page</b>
+      </font>
+    </td>
+  </tr>
+
+  <tr bgcolor="#cccccc">
+    <td align="center">
+      <input type="radio" name="run" value="displayHTML">
+    </td>
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Edit the HTML for</b>
+      </font>
+      <select name="hpages" style="font-size: 11px; font-family: Verdana">
+      #%PAGES%#
+      </select>
+    </td>
+  </tr>
+
+  <tr bgcolor="#ececec">
+    <td align="center">
+      <input type="radio" name="run" value="displayBreaks">
+    </td>
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Edit the list breaks for</b>
+      </font>
+      <select name="bpages" style="font-size: 11px; font-family: Verdana">
+      <option value="Overall">Overall</option>
+      #%CAT_OPT%#
+      </select>
+    </td>
+  </tr>
+
+  <tr bgcolor="#cccccc">
+    <td align="center">
+      <input type="radio" name="run" value="displayTemplate">
+    </td>
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Edit the</b>
+      </font>
+      <select name="template" style="font-size: 11px; font-family: Verdana">
+        <option value='_account_add.htmlt'>_account_add.htmlt</option>      
+        <option value='_account_added.htmlt'>_account_added.htmlt</option>
+        <option value='_account_edit.htmlt'>_account_edit.htmlt</option>
+        <option value='_account_edited.htmlt'>_account_edited.htmlt</option>
+        <option value='_account_farm.htmlt'>_account_farm.htmlt</option>
+        <option value='_account_login.htmlt'>_account_login.htmlt</option>
+        <option value='_account_remind.htmlt'>_account_remind.htmlt</option>
+        <option value='_account_reminded.htmlt'>_account_reminded.htmlt</option>
+        <option value='_account_review.htmlt'>_account_review.htmlt</option>
+        <option value='_account_statsb.htmlt'>_account_statsb.htmlt</option>
+        <option value='_account_statsm.htmlt'>_account_statsm.htmlt</option>
+        <option value='_account_statst.htmlt'>_account_statst.htmlt</option>
+        <option value='_error_data.htmlt'>_error_data.htmlt</option>
+        <option value='_error_http.htmlt'>_error_http.htmlt</option>
+        <option value='_quick_header.htmlt'>_quick_header.htmlt</option>
+        <option value='_quick_template.htmlt'>_quick_template.htmlt</option>
+        <option value='_quick_footer.htmlt'>_quick_footer.htmlt</option>
+        <option value='_search_header.htmlt'>_search_header.htmlt</option>
+        <option value='_search_template.htmlt'>_search_template.htmlt</option>
+        <option value='_search_footer.htmlt'>_search_footer.htmlt</option>
+        <option value='_email_approved.etmpl'>_email_approved.etmpl</option>
+        <option value='_email_edit.etmpl'>_email_edit.etmpl</option>
+        <option value='_email_remind.etmpl'>_email_remind.etmpl</option>
+        <option value='_email_review.etmpl'>_email_review.etmpl</option>
+        <option value='_email_added.etmpl'>_email_added.etmpl</option>
+        <option value='_email_admin.etmpl'>_email_admin.etmpl</option>
+      </select>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>template</b>
+      </font>
+    </td>
+  </tr>
+
+  <tr bgcolor="#ececec">
+    <td align="center">
+      <input type="radio" name="run" value="processInactive">
+    </td>
+    <td>
+      <select name="what" style="font-size: 11px; font-family: Verdana">
+        <option value="displayMail">E-mail</option>
+        <option value="deleteMember">Remove</option>
+      </select>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Members Inactive for</b>
+      </font>
+      <input type="text" name="inact" size="5" style="font-size: 11px;">
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>or More Resets</b>
+      </font>    
+    </td>
+  </tr>
+
+  <tr bgcolor="#cccccc">
+    <td align="center">
+      <input type="radio" name="run" value="displayMember">
+    </td>
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Display Member With ID</b>
+      </font>
+      <input type="text" name="id" size="12" style="font-size: 11px; font-family: Verdana">
+    </td>
+  </tr>
+
+  <tr bgcolor="#ececec">
+    <td align="center">
+      <input type="radio" name="run" value="displaySearch">
+    </td>
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Search Members For Keyword</b>
+      </font>
+      <input type="text" name="key" size="12" style="font-size: 11px; font-family: Verdana">
+    </td>
+  </tr>
+
+  <tr bgcolor="#cccccc">
+    <td align="center">
+      <input type="radio" name="run" value="displayBackup">
+    </td>
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Backup/Restore Your Data</b>      
+      <font color="red">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#%REMIND%#</b>
+      </font>
+      </font>
+    </td>
+  </tr>
+
+  <tr bgcolor="#ececec">
+    <td align="center">
+      &nbsp;
+    </td>
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b><a href="setup.cgi" class="reg">Edit Variables and Options</a></b>
+      </font>
+    </td>
+  </tr>
+
+  <tr bgcolor="#cccccc">
+    <td align="center" colspan="2">
+      <input type="submit" value="Execute Function" style="font-size: 11px; font-family: Verdana">
+    </td>
+  </tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<input type="hidden" name="from" value="displayMain">
+<input type="hidden" name="all" value="1">
+
+<br><br>
+
+<table border="0" cellpadding="0" cellspacing="0" width="450">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="450">
+  <tr>
+    <td bgcolor="#004080" align="center" colspan="2">
+      <font face="Arial" size="3" color="white" style="font-size: 15px;">
+      <b>Statistics And Information</b>
+      </font>
+    </td>
+  </tr>
+
+  <tr bgcolor="#cccccc">
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Total Members</b>
+      </font>
+    </td>
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      #%MEMBERS%#
+      </font>
+    </td>
+  </tr>
+
+  <tr bgcolor="#ececec">
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Accounts Awaiting Approval</b>
+      </font>
+    </td>
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      #%REVIEW%#
+      </font>
+    </td>
+  </tr>
+
+  <tr bgcolor="#cccccc">
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Last Rerank (#%RR_FROM%#) Occurred</b>
+      </font>
+    </td>
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      #%LAST_RR%# ago
+      </font>
+    </td>
+  </tr>
+
+  <tr bgcolor="#ececec">
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Last Reset (#%RS_FROM%#) Occurred</b>
+      </font>
+    </td>
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      #%LAST_RS%# ago
+      </font>
+    </td>
+  </tr>
+
+  <tr bgcolor="#cccccc">
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Last Database Backup Occurred</b>
+      </font>
+    </td>
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;" color="#%COLOR%#">
+      #%LAST_BU%# ago
+      </font>
+    </td>
+  </tr>
+
+  <tr bgcolor="#ececec">
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Your Version</b>
+      </font>
+    </td>
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      #%VERSION%#
+      </font>
+    </td>
+  </tr>
+
+  <tr bgcolor="#cccccc">
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <b>Your Main Ranking Page</b>
+      </font>
+    </td>
+    <td>
+      <font face="Verdana" size="2" style="font-size: 11px;">
+      <a href="#%MAIN_PAGE%#" class="reg" target="_new">Click Here</a>
+      </font>
+    </td>
+  </tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+<input type="hidden" name="apwd" value="#%APWD%#">
+
+</form>
+
+</body>
+</html>
+

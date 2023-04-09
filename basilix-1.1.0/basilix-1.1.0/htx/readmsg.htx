@@ -1,0 +1,103 @@
+<?php 
+//
+// Read MSG HTML file
+//
+?>
+<!-- read msg : START -->
+<div align="center">
+<?php push_errinfo() ?>
+<script language="javascript" src="<?php echo $BSX_BASEHREF?>/js/popwin.js"></script>
+<!-- prev/next/rep/etc : START -->
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+<tr>
+<td align="left" width="5%" class="chkfldr" nowrap>&nbsp;<b><?php echo imap_utf7_decode(decode_strip($mbox))?></b>&nbsp;#<?php echo $msg_no?>&nbsp;</td>
+<td align="center" width="15%" class="chknext" nowrap>&nbsp;<?php put_ahref("RequestID=REPMSG&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&ID=" . $ID . "&sort=" . $sort, $lng->p(262))?>&nbsp;</td>
+<td align="center" width="15%" class="chknext" nowrap>&nbsp;<?php put_ahref("RequestID=REPAMSG&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&ID=" . $ID . "&sort=" . $sort, $lng->p(263))?>&nbsp;</td>
+<td align="center" width="15%" class="chknext" nowrap>&nbsp;<?php 
+if($user_set["prevnext"]) {
+	put_ahref("RequestID=DELMSG&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&ID=" . $ID . "&prevID=" . $msg_previd . "&nextID=" . $msg_nextid . "&sort=" . $sort, $lng->p(264));
+} else {
+	put_ahref("RequestID=DELMSG&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&ID=" . $ID . "&sort=" . $sort, $lng->p(264));
+}
+?>&nbsp;</td>
+<td align="center" width="15%" class="chknext" nowrap>&nbsp;<?php put_ahref("RequestID=FORWMSG&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&ID=" . $ID . "&sort=" . $sort, $lng->p(265))?>&nbsp;</td>
+<td align="center" width="15%" class="chknext" nowrap>&nbsp;
+<?php if($is_js) {
+?>
+<a href="javascript:popWin('msghdrwin','<?php echo "$BSX_BASEHREF/$BSX_LAUNCHER?RequestID=SHOWHDR&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&SESSID=" . $SESSID . "&is_ssl=" . $is_ssl . "&ID=" . $ID . "&is_js=" . $is_js?>', 500, 400, 0);"><?php echo $lng->p(266)?></a>
+<?php
+} else {
+   put_ahref("RequestID=SHOWHDR&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&ID=" . $ID, $lng->p(266));
+}
+?>
+&nbsp;</td>
+<?php if($user_set["prevnext"]) { ?>
+<td align="right" width="5%" class="chknext" nowrap>&nbsp;<?php 
+if($msg_previd == -1) {
+	echo $lng->p(260); 
+} else { 
+	put_ahref("RequestID=READMSG&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&ID=" . $msg_previd . "&sort=" . $sort, $lng->p(260));
+}
+echo "/";
+if($msg_nextid == -1) {
+	echo $lng->p(261); 
+} else {
+	put_ahref("RequestID=READMSG&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&ID=" . $msg_nextid . "&sort=" . $sort, $lng->p(261));
+}
+?>
+&nbsp;</td>
+<?php } ?>
+</tr>
+</table>
+<!-- prev/next/rep/etc : FINISH -->
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+<tr>
+<td class="rmsghdr" align="left" width="10%" nowrap><?php echo nbsp($lng->p(251))?></td>
+<td class="rmsgval" align="left" width="80%" nowrap><?php echo nbsp($msg_detailed["from"])?>
+<?php if($msg_detailed["fromaddr"]) { // save address
+?>
+&nbsp;&nbsp;<small>&lt;<?php put_ahref("RequestID=ABOOK&addItem=1&add_email=" . $msg_detailed["fromaddr"], $lng->p(268))?>&gt;</small>
+<?
+}
+?>
+</td>
+</tr>
+<?php push_tocc($lng->p(252), $msg_detailed["to"]) ?>
+<?php push_tocc($lng->p(253), $msg_detailed["cc"]) ?>
+<tr>
+<td class="rmsghdr" align="left" width="10%" nowrap><?php echo nbsp($lng->p(255))?></td>
+<td class="rmsgval" align="left" width="80%" nowrap><?php echo nbsp($msg_detailed["date"])?></td>
+</tr>
+<tr>
+<td class="rmsghdr" align="left" width="10%" nowrap><?php echo nbsp($lng->p(254))?></td>
+<td class="rmsgval" align="left" width="80%" nowrap><?php echo nbsp($msg_detailed["subject"])?></td>
+</tr>
+<tr>
+<td class="rmsgbod" align="left" colspan="2" width="100%">
+<hr width="100%" align="center"><br><?php echo $msg_detailed["body"]?><br>
+<?php 
+if($is_js) {
+?>
+<div align="right"><a href="javascript:popWin('msgprint','<?php echo "$BSX_BASEHREF/$BSX_LAUNCHER?RequestID=PRINTMSG&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&ID=" . $ID . "&is_ssl=" . $is_ssl . "&SESSID=" . $SESSID . "&is_js=" . $is_js?>', screen.width / 2, screen.height * 3 / 4, 0);"><?php echo $lng->p(8)?></a></div>
+<?php
+}
+?>
+<hr width="100%" align="center">
+</td>
+</tr>
+<tr>
+<td class="normalbg" align="left" colspan="2" width="100%">
+&#187;&nbsp;<?php put_ahref("RequestID=READMSG&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&ID=" . $ID . "&part=0", $lng->p(281))?><br>
+<?php 
+if(($msg_atchcount = count($msg_atchlist))) {
+for($i = 0 ; $i < $msg_atchcount ; $i++) {
+   $aid = $i + 1;
+?>
+&#187;&nbsp;<?php put_ahref("RequestID=READMSG&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&ID=" . $ID . "&part=" . $aid, $msg_atchlist[$i]["name"])?>&nbsp;/&nbsp;<?php echo $msg_atchlist[$i]["desc"]?>&nbsp;-&nbsp;<?php echo $msg_atchlist[$i]["size"]?><br>
+<?php 
+}
+}
+?>
+</td>
+</tr>
+</table>

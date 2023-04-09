@@ -1,0 +1,1102 @@
+sub editprofile {  
+&vars;  
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader
+$submenu
+<br><br>
+<form method="post" action="$cgiurl/personals.pl">
+<blockquote>
+
+$text106
+
+</blockquote>
+<br>
+<center><table><tr><td><font size=2 face=verdana>Username</td><td><input type ="text" name="username" value="$inmembername" size=25></td></tr><tr>
+<td><font size=2 face=verdana>Password</td><td><input type ="password" name="password" value="$inpassword" size=25></td></tr></table></center>
+<br>
+<center><input type="submit" name="getprofiledata" value="Get Profile Data" class="button"></center>
+</form>
+<br>
+
+<br>$botcode
+EOF
+exit;
+}
+
+sub getprdata {
+&vars;
+
+if(($FORM{'username'} eq "")||($FORM{'password'} eq "")){&missingUorP;}
+unless(-e "$users/$FORM{'username'}.txt"){&problemencountered;}
+
+open (FILE, "$users/$FORM{'username'}.txt") || &oops ($!, "Could not open $users/$username.txt");
+flock (FILE, 1) or die "Cannot lock file\n";
+while (<FILE>) {
+chop;
+	@datafile=split(/\n/);
+	foreach $line (@datafile) {
+	&edprofchku($line);
+	}
+	}
+	close(FILE);
+	
+
+}
+
+sub edprofchku($line){
+
+local ($line) = @_;
+	local ($loginname,$password,$emailaddr);
+		  ($loginname,$password,$emailaddr)= split(/\|/, $line);
+
+if(($FORM{'username'} eq "$username")&&($FORM{'password'} eq "$password")){&getprofdata;}
+else {&problemencountered;}
+}
+
+sub getprofdata {
+&vars;
+
+unless(-e "$profiledatadir/$FORM{'username'}.txt"){&datafilenotfound;}
+open(IN, "$profiledatadir/$FORM{'username'}.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($gender,$lookingfor,$age,$betwages,$sexualorientation,$weight,$height,$partnersheight1,$partnersheight2,$zodiacsign,$ethnicbackground,$partnersethnicbackground,$profession,$parentalstatus,$smoker_nonsmoker,$smokinghabit,$pparentalstatus,$city,$state,$zip,$country,$favemovie,$faveperformer,$reltype,$status,$favoriteactivity,$mytype,$yourtype,$picyn,$additionalinfo)=split(/\|/,$line);
+
+if(($gender eq "female")&&($lookingfor eq "male")){
+$profilecat="catwsm";}
+
+if(($gender eq "female")&&($lookingfor eq "female")){
+$profilecat="catwsw";}
+
+if(($gender eq "male")&&($lookingfor eq "male")){
+$profilecat="catmsm";}
+
+if(($gender eq "male")&&($lookingfor eq "female")){
+$profilecat="catmsw";}
+
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader
+$menu1
+$menu2
+<center><table cellpadding=0 cellspacing=0 width=100%><tr> <td width=5% bgcolor=$cptdcolor1>&nbsp;</td><td  bgcolor=$cptdcolor1><b><font size=2 face=verdana>&nbsp;&nbsp;Edit Your Profile</td><td width=30% bgcolor=$cptdcolor2>
+<font size=1 face=verdana><center>
+EOF
+
+if($showusersonline eq "yes"){
+print "Users Online: $currentuserspresent\n";}
+else {print "$date\n";}
+
+print <<EOF;
+</center>
+</font>
+</td> <td  bgcolor=$cptdcolor2><b><font color=red face=verdana color=1>*</font></b><font size=1 face=verdana>indicates a required field.</table>   
+
+<table cellpadding=0 cellspacing=0 width=100%><tr> 
+<td width=25% bgcolor=$cpsidetdcolor valign=\"top\">
+<table width=100% cellpadding=1 cellspacing=1 border=0><tr><td width=10>&nbsp;</td><td>
+<center>
+$cpsidetdcont</center>
+</td></tr></table>
+</td>
+
+<td width=75%>  <form method="post" action="$cgiurl/updateprofile.pl"><br><br> 
+<blockquote>
+
+$text107
+
+
+</blockquote><p>
+ <blockquote><table cellpadding=0 width=100% cellspacing=0><tr> 
+<td><table cellpadding=0 cellspacing=0><tr>
+<td bgcolor=$createprofiletdcolor1>&nbsp;</td>
+ <td bgcolor=$createprofiletdcolor1><font size=1 face=verdana color=red>*</font><font size=1 face=verdana><b>I Am A:</b></font></td>
+<td width=20>&nbsp;</td>
+<td> 
+<select name=\"gender\" class=\"selist\">
+EOF
+
+if($gender eq "female"){
+print " 
+<option value=\"$gender\" Selected>Female</option> 
+<option value=\"male\">Male</option>\n";}
+
+if($gender eq "male"){
+print " 
+<option value=\"$gender\" Selected>Male</option> 
+<option value=\"female\">Female</option>\n";}
+
+print <<EOF;
+
+</select></td></tr><tr> 
+
+<td bgcolor=$createprofiletdcolor2>&nbsp;</td>
+<td bgcolor=$createprofiletdcolor2><font size=1 face=verdana color=red>*</font><font size=1 face=verdana><b>I Am Looking For A:</b></font></td>
+<td width=20>&nbsp;</td>
+<td> 
+<select name=\"lookingfor\" class=\"selist\">
+EOF
+
+if($lookingfor eq "male"){
+print " 
+<option value=\"$lookingfor\" selected>Male</option> 
+<option value=\"female\">Female</option> \n";}
+
+if($lookingfor eq "female"){
+print "
+<option value=\"$lookingfor\" selected>Female</option> 
+<option value=\"male\">Male</option> \n";}
+
+print <<EOF;
+
+</select></td></tr><tr> 
+
+<td bgcolor=$createprofiletdcolor1>&nbsp;</td>
+<td bgcolor=$createprofiletdcolor1><font size=1 face=verdana color=red>*</font><font size=1 face=verdana><b>My Age:</b></font></td> 
+<td width=20>&nbsp;</td>
+<td>
+<select name=\"age\" class=\"selist\">
+<option value=\"$age\">$age</option>
+<option value=\"18\">18</option> 
+<option value=\"19\">19</option> 
+<option value=\"20\">20</option> 
+<option value=\"21\">21</option> 
+<option value=\"22\">22</option> 
+<option value=\"23\">23</option> 
+<option value=\"24\">24</option> 
+<option value=\"25\">25</option> 
+<option value=\"26\">26</option> 
+<option value=\"27\">27</option> 
+<option value=\"28\">28</option> 
+<option value=\"29\">29</option> 
+<option value=\"30\">30</option> 
+<option value=\"31\">31</option> 
+<option value=\"32\">32</option> 
+<option value=\"33\">33</option> 
+<option value=\"34\">34</option> 
+<option value=\"35\">35</option> 
+<option value=\"36\">36</option> 
+<option value=\"37\">37</option> 
+<option value=\"38\">38</option> 
+<option value=\"39\">39</option> 
+<option value=\"40\">40</option> 
+<option value=\"41\">41</option> 
+<option value=\"42\">42</option> 
+<option value=\"43\">43</option> 
+<option value=\"44\">44</option> 
+<option value=\"45\">45</option> 
+<option value=\"46\">46</option> 
+<option value=\"47\">47</option> 
+<option value=\"48\">48</option> 
+<option value=\"49\">49</option> 
+<option value=\"50\">50</option> 
+<option value=\"51\">51</option> 
+<option value=\"52\">52</option> 
+<option value=\"53\">53</option> 
+<option value=\"54\">54</option> 
+<option value=\"55\">55</option> 
+<option value=\"56\">56</option> 
+<option value=\"57\">57</option> 
+<option value=\"58\">58</option> 
+<option value=\"59\">59</option> 
+<option value=\"60\">60</option> 
+<option value=\"61\">61</option>
+ <option value=\"62\">62</option>
+ <option value=\"63\">63</option>
+ <option value=\"64\">64</option>
+ <option value=\"65\">65</option>
+ <option value=\"66\">66</option>
+ <option value=\"67\">67</option>
+ <option value=\"68\">68</option>
+ <option value=\"69\">69</option>
+ <option value=\"70\">70</option>
+ <option value=\"71\">71</option>
+ <option value=\"72\">72</option>
+ <option value=\"73\">73</option>
+ <option value=\"74\">74</option>
+ <option value=\"75\">75</option>
+ <option value=\"76\">76</option>
+ <option value=\"77\">77</option>
+ <option value=\"78\">78</option>
+ <option value=\"79\">79</option>
+ <option value=\"80\">80</option>
+ <option value=\"81\">81</option>
+ <option value=\"82\">82</option>
+ <option value=\"83\">83</option>
+ <option value=\"84\">84</option>
+ <option value=\"85\">85</option>
+ <option value=\"86\">86</option>
+ <option value=\"87\">87</option>
+ <option value=\"88\">88</option>
+ <option value=\"89\">89</option>
+ <option value=\"90\">90</option>
+ <option value=\"91\">91</option>
+ <option value=\"92\">92</option>
+ <option value=\"93\">93</option>
+ <option value=\"94\">94</option>
+ <option value=\"95\">95</option>
+ <option value=\"96\">96</option>
+ <option value=\"97\">97</option>
+ <option value=\"98\">98</option>
+ <option value=\"99\">99</option>
+ <option value=\"100\">100</option>
+ </select></td></tr><tr>  
+
+<td bgcolor=$createprofiletdcolor2>&nbsp;</td>
+<td bgcolor=$createprofiletdcolor2><font size=1 face=verdana color=red>*</font><font size=1 face=verdana><b>Potential Partner's Age:</b></font></td>
+<td width=20>&nbsp;</td>
+<td> 
+<input type=\"text\" name=\"betwages\" size=4 maxlength=5 value=\"$betwages\" class=\"box\"></td></tr><tr> 
+
+
+<td bgcolor=$createprofiletdcolor1>&nbsp;</td><td bgcolor=$createprofiletdcolor1><font size=1 face=verdana color=red>*</font><font size=1 face=verdana><b>My Sexual Orientation:</b></font></td>
+<td width=20>&nbsp;</td>
+<td> 
+<select name=\"sexualorientation\" class=\"selist\">
+EOF
+
+if($sexualorientation eq "Heterosexual"){
+print " 
+<option value=\"$sexualorientation\" Selected>Heterosexual</option> 
+<option value=\"Bi-sexual\">Bi-sexual</option> 
+<option value=\"Gay\">Gay</option>\n";}
+
+if($sexualorientation eq "Bi-sexual"){
+print " 
+<option value=\"$sexualorientation\" Selected>Bi-sexual</option> 
+<option value=\"Heterosexual\">Heterosexual</option> 
+<option value=\"Gay\">Gay</option>\n";}
+
+if($sexualorientation eq "Gay"){
+print " 
+<option value=\"$sexualorientation\" Selected>Gay</option> 
+<option value=\"Bi-sexual\">Bi-sexual</option> 
+<option value=\"Heterosexual\">Heterosexual</option>\n";}
+
+print <<EOF;
+</select></td></tr><tr> 
+
+ <td bgcolor=$createprofiletdcolor2>&nbsp;</td>
+<td bgcolor=$createprofiletdcolor2>&nbsp;&nbsp;<font size=1 face=verdana><b>My weight:</b></font></td>
+<td width=20>&nbsp;</td>
+<td> 
+<select name=\"weight\" class=\"selist\"> 
+<option value=\"$weight\" Selected>$weight</option> 
+<option value=\"Under 100\">Under 100</option> 
+<option value=\"100 - 110\">100 - 110</option> 
+<option value=\"111 - 125\">111 - 125</option> 
+<option value=\"126 - 135\">126 - 135</option> 
+<option value=\"136 - 150\">136 - 150</option> 
+<option value=\"151 - 200\">151 - 200</option> 
+<option value=\"201 - 300\">201 - 300</option> 
+<option value=\"Over 300\">Over 300</option>
+<option value=\"Prefer Not To Say\">Prefer Not To Say</option> 
+</select></td></tr><tr>  
+
+<td bgcolor=$createprofiletdcolor1>&nbsp;</td><td bgcolor=$createprofiletdcolor1><font size=1 face=verdana color=red>*</font><font size=1 face=verdana><b>My height:</b></font></td>
+<td width=20>&nbsp;</td>
+<td> 
+<select name=\"height\" class=\"selist\"> 
+<option value=\"$height\" Selected>$height</option> 
+<option value=\"Under 5ft\">Under 5ft</option> 
+<option value=\"5ft 1in\">5ft 1in</option> 
+<option value=\"5ft 2in\">5ft 2in</option> 
+<option value=\"5ft 3in\">5ft 3in</option> 
+<option value=\"5ft 4in\">5ft 4in</option> 
+<option value=\"5ft 5in\">5ft 5in</option> 
+<option value=\"5ft 6in\">5ft 6in</option> 
+<option value=\"5ft 7in\">5ft 7in</option> 
+<option value=\"5ft 8in\">5ft 8in</option> 
+<option value=\"5ft 9in\">5ft 9in</option> 
+<option value=\"5ft 10in\">5ft 10in</option> 
+<option value=\"5ft 11in\">5ft 11in</option> 
+<option value=\"6ft\">6ft</option> 
+<option value=\"6ft 1in\">6ft 1in</option> 
+<option value=\"6ft 2in\">6ft 2in</option> 
+<option value=\"6ft 3in\">6ft 3in</option> 
+<option value=\"6ft 4in\">6ft 4in</option> 
+<option value=\"6ft 5in\">6ft 6in</option> 
+<option value=\"6ft 6in\">6ft 6in</option> 
+<option value=\"6ft 7in\">6ft 7in</option> 
+<option value=\"6ft 8in\">6ft 8in</option> 
+<option value=\"6ft 9in\">6ft 9in</option> 
+<option value=\"6ft 10in\">6ft 10in</option> 
+<option value=\"6ft 11in\">6ft 11in</option> 
+<option value=\"7ft\">7ft</option>
+<option value=\"Over 7ft\">Over 7ft</option>
+</select></td></tr><tr>   
+
+<td bgcolor=$createprofiletdcolor2>&nbsp;</td><td bgcolor=$createprofiletdcolor2>
+
+<font size=1 face=verdana color=red>*</font><font size=1 face=verdana><b>Partner's height:</b></font></td>
+<td width=20>&nbsp;</td>
+<td> <table><tr>
+<td><select name=\"partnersheight1\" class=\"selist\">
+<option value=\"$partnersheight1\" selected>$partnersheight1</option>
+<option value=\"Under 5ft\">Under 5ft</option> 
+<option value="5ft">5ft</option>
+<option value=\"5ft 1in\">5ft 1in</option> 
+<option value=\"5ft 2in\">5ft 2in</option> 
+<option value=\"5ft 3in\">5ft 3in</option> 
+<option value=\"5ft 4in\">5ft 4in</option> 
+<option value=\"5ft 5in\">5ft 5in</option> 
+<option value=\"5ft 6in\">5ft 6in</option> 
+<option value=\"5ft 7in\">5ft 7in</option> 
+<option value=\"5ft 8in\">5ft 8in</option> 
+<option value=\"5ft 9in\">5ft 9in</option> 
+<option value=\"5ft 10in\">5ft 10in</option> 
+<option value=\"5ft 11in\">5ft 11in</option> 
+<option value=\"6ft\">6ft</option> 
+<option value=\"6ft 1in\">6ft 1in</option> 
+<option value=\"6ft 2in\">6ft 2in</option> 
+<option value=\"6ft 3in\">6ft 3in</option> 
+<option value=\"6ft 4in\">6ft 4in</option> 
+<option value=\"6ft 5in\">6ft 6in</option> 
+<option value=\"6ft 6in\">6ft 6in</option> 
+<option value=\"6ft 7in\">6ft 7in</option> 
+<option value=\"6ft 8in\">6ft 8in</option> 
+<option value=\"6ft 9in\">6ft 9in</option> 
+<option value=\"6ft 10in\">6ft 10in</option> 
+<option value=\"6ft 11in\">6ft 11in</option> 
+<option value=\"7ft\">7ft</option>
+<option value=\"Over 7ft\">Over 7ft</option>
+</select></td>
+<td><font size=1 face=verdana><b>-</b></font></td>
+<td><select name=\"partnersheight2\" class=\"selist\">
+<option value=\"$partnersheight2\" selected>$partnersheight2</option>
+<option value=\"Under 5ft\">Under 5ft</option> 
+<option value="5ft">5ft</option>
+<option value=\"5ft 1in\">5ft 1in</option> 
+<option value=\"5ft 2in\">5ft 2in</option> 
+<option value=\"5ft 3in\">5ft 3in</option> 
+<option value=\"5ft 4in\">5ft 4in</option> 
+<option value=\"5ft 5in\">5ft 5in</option> 
+<option value=\"5ft 6in\">5ft 6in</option> 
+<option value=\"5ft 7in\">5ft 7in</option> 
+<option value=\"5ft 8in\">5ft 8in</option> 
+<option value=\"5ft 9in\">5ft 9in</option> 
+<option value=\"5ft 10in\">5ft 10in</option> 
+<option value=\"5ft 11in\">5ft 11in</option> 
+<option value=\"6ft\">6ft</option> 
+<option value=\"6ft 1in\">6ft 1in</option> 
+<option value=\"6ft 2in\">6ft 2in</option> 
+<option value=\"6ft 3in\">6ft 3in</option> 
+<option value=\"6ft 4in\">6ft 4in</option> 
+<option value=\"6ft 5in\">6ft 6in</option> 
+<option value=\"6ft 6in\">6ft 6in</option> 
+<option value=\"6ft 7in\">6ft 7in</option> 
+<option value=\"6ft 8in\">6ft 8in</option> 
+<option value=\"6ft 9in\">6ft 9in</option> 
+<option value=\"6ft 10in\">6ft 10in</option> 
+<option value=\"6ft 11in\">6ft 11in</option> 
+<option value=\"7ft\">7ft</option>
+<option value=\"Over 7ft\">Over 7ft</option>
+</select></td></tr></table></td>
+</tr><tr>
+
+<td bgcolor=$createprofiletdcolor1>&nbsp;</td>
+<td bgcolor=$createprofiletdcolor1><font size=1 face=verdana><b>My Zodiac Sign:</b></font></td>
+<td width=20>&nbsp;</td>
+<td> 
+<select name=\"zodiacsign\" class=\"selist\"> 
+<option value=\"$zodiacsign\" Selected>$zodiacsign</option> 
+<option value=\"Aquarius\">Aquarius</option> 
+<option value=\"Pisces\">Pisces</option> 
+<option value=\"Aries\">Aries</option> 
+<option value=\"Gemini\">Gemini</option> 
+<option value=\"Virgo\">Virgo</option> 
+<option value=\"Cancer\">Cancer</option> 
+<option value=\"Libra\">Libra</option> 
+<option value=\"Capricorn\">Capricorn</option> 
+<option value=\"Scorpio\">Scorpio</option> 
+<option value=\"Taurus\">Taurus</option> 
+<option value=\"Sagittarius\">Sagittarius</option> 
+<option value=\"Leo\">Leo</option> 
+<option value=\"Not Important\">Not Important</option>  
+</select></td></tr><tr>
+
+<td bgcolor=$createprofiletdcolor2>&nbsp;</td>
+<td bgcolor=$createprofiletdcolor2><font size=1 face=verdana color=red>*</font><font size=1 face=verdana><b>My Ethnic Background:</b></font></td>
+<td width=20>&nbsp;</td>
+<td> 
+<select name=\"ethnicbackground\" class=\"selist\"> 
+<option value=\"$ethnicbackground\" Selected>$ethnicbackground</option> 
+<option value=\"Aboriginal\">Aboriginal</option> 
+<option value=\"African-American\">African-American</option> 
+<option value=\"American Indian\">American Indian</option> 
+<option value=\"Asian\">Asian</option> 
+<option value=\"Black/Non-American\">Black/Non-American</option> 
+<option value=\"Eastern Indian\">Eastern Indian</option> 
+<option value=\"Hispanic\">Hispanic</option> 
+<option value=\"Multi-racial\">Multi-racial</option> 
+<option value=\"White European\">White European</option>
+<option value=\"White American\">White American</option>
+<option value=\"Other\">Other</option> 
+<option value=\"Prefer Not To Say\">Prefer Not To Say</option> </select></td></tr><tr>
+
+
+<td bgcolor=$createprofiletdcolor1>&nbsp;</td>
+<td bgcolor=$createprofiletdcolor1>
+<font size=1 face=verdana color=red>*</font><font size=1 face=verdana><b>Partner's Ethnicity:</b></font></td>
+<td width=20>&nbsp;</td>
+<td> 
+<select name=\"partnersethnicbackground\" class=\"selist\"> 
+<option value=\"$partnersethnicbackground\" Selected>$partnersethnicbackground</option> 
+<option value=\"Aboriginal\">Aboriginal</option> 
+<option value=\"African-American\">African-American</option> 
+<option value=\"American Indian\">American Indian</option> 
+<option value=\"Asian\">Asian</option> 
+<option value=\"Black/Non-American\">Black/Non-American</option> 
+<option value=\"Eastern Indian\">Eastern Indian</option> 
+<option value=\"Hispanic\">Hispanic</option> 
+<option value=\"Multi-racial\">Multi-racial</option> 
+<option value=\"White European\">White European</option>
+<option value=\"White American\">White American</option>
+<option value=\"Race Unimportant\">Race Unimportant</option> </select></td></tr><tr>  
+
+
+<td bgcolor=$createprofiletdcolor2>&nbsp;</td><td bgcolor=$createprofiletdcolor2>
+<font size=1 face=verdana>
+<b>My Profession:</b></font></td>
+<td width=20>&nbsp;</td>
+<td> 
+<select name=\"profession\" class=\"selist\"> 
+<option value=\"$profession\" Selected>$profession</option> 
+<option value=\"Student\">Student</option> 
+<option value=\"Executive\">Executive</option> 
+<option value=\"Administrative\">Administrative</option> 
+<option value=\"Financial\">Financial</option> 
+<option value=\"Artistic\">Artistic</option> 
+<option value=\"Managerial\">Managerial</option> 
+<option value=\"Clerical\">Clerical</option> 
+<option value=\"Secretarial\">Secretarial</option> 
+<option value=\"Science/Engineering\">Science/Engineering</option> 
+<option value=\"Technical\">Technical</option> 
+<option value=\"Teaching/Training\">Teaching/Training</option> 
+<option value=\"Law related\">Law Related</option> 
+<option value=\"Medical\">Medical</option> 
+<option value=\"Athletic\">Athletic</option>
+<option value=\"Entrepreneurial\">Entrepreneurial</option> 
+<option value=\"Retired\">Retired</option> 
+<option value=\"Other\">Other</option></select></td></tr><tr>
+</blockquote>
+
+
+<td bgcolor=$createprofiletdcolor1>&nbsp;</td><td bgcolor=$createprofiletdcolor1>
+<font 
+size=1 face=verdana><b>My Parental Status:</b></font></td>
+<td width=20>&nbsp;</td>
+<td>
+ <select name=\"parentalstatus\" class=\"selist\"> 
+<option value=\"$parentalstatus\" Selected>$parentalstatus</option> 
+<option value=\"No Children\">No Children</option>
+<option value=\"1 Child\">1 Child</option>
+<option value=\"2 Children\">2 Children</option>
+<option value=\"3 Children\">3 Children</option>
+<option value=\"4 Children\">4 Children</option>
+<option value=\"5 Children\">5 Children</option>
+<option value=\"6 Children\">6 Children</option>
+<option value=\"7 Children\">7 Children</option>
+<option value=\"More than 7 Children\">More than 7 Children</option></select></td></tr><tr>
+
+
+<td bgcolor=$createprofiletdcolor2>&nbsp;</td><td bgcolor=$createprofiletdcolor2>
+<font size=1 face=verdana><b>
+My smoking habits</b></font></td>
+<td width=20>&nbsp;</td>
+<td>
+ <select name=\"smoker_nonsmoker\" class=\"selist\"> 
+<option value="$smoker_nonsmoker" selected>$smoker_nonsmoker</option>
+<option value=\"Non-Smoker\">Non-Smoker</option>
+<option value=\"Light Smoker\">Light Smoker</option>
+<option value=\"Heavy Smoker\">Heavy Smoker</option></select></td></tr>
+
+<td bgcolor=$createprofiletdcolor1>&nbsp;</td><td bgcolor=$createprofiletdcolor1>
+<font size=1 face=verdana><b>
+Partner's smoking habits</b></font></td>
+<td width=20>&nbsp;</td>
+<td>
+ <select name=\"smokinghabit\" class=\"selist\"> 
+<option value="$smokinghabit" selected>$smokinghabit</option>
+<option value=\"Non-Smoker\">Non-Smoker</option>
+<option value=\"Light Smoker\">Light Smoker</option>
+<option value=\"Heavy Smoker\">Heavy Smoker</option>
+<option value=\"Doesn't Matter\">Doesn't Matter</option>
+</select></td></tr>
+
+<td bgcolor=$createprofiletdcolor2>&nbsp;</td><td bgcolor=$createprofiletdcolor2>
+<font size=1 face=verdana><b>
+Partner's parental status</b></font></td>
+<td width=20>&nbsp;</td>
+<td>
+ <select name=\"pparentalstatus\" class=\"selist\">
+EOF
+
+if($pparentalstatus eq "Children Okay"){
+print " 
+<option value=\"$pparentalstatus\">Children Okay</option>
+<option value=\"No children\">No children</option>\n";}
+
+if($pparentalstatus eq "No children"){
+print " 
+<option value=\"$pparentalstatus\">No children</option>
+<option value=\"Children Okay\">Children Okay</option>\n";}
+
+print <<EOF;
+
+</select></td></tr>
+
+<tr><td bgcolor=$createprofiletdcolor1>&nbsp;</td><td bgcolor=$createprofiletdcolor1><font size=1 face=verdana><b>My City</b></td>
+<td width=20>&nbsp;</td>
+<td><input type="text" name="city" size=25 class="box" value="$city"></td></tr><tr>
+
+<tr><td bgcolor=$createprofiletdcolor2>&nbsp;</td><td bgcolor=$createprofiletdcolor2><font size=1 face=verdana><b>My State</b></td>
+<td width=20>&nbsp;</td>
+<td><select name= "state" class="selist">
+<option value="$state" selected>$state</option>
+<option value= "Alabama">Alabama</option>
+<option value= "Alaska">Alaska</option>
+<option value= "Arizona">Arizona</option>
+<option value= "Arkansas">Arkansas</option>
+<option value= "California">California</option>
+<option value= "Colorado">Colorado</option>
+<option value= "Connecticut">Connecticut</option>
+<option value= "Delaware">Delaware</option>
+<option value= "Florida">Florida</option>
+<option value= "Georgia">Georgia</option>
+<option value= "Hawaii">Hawaii</option>
+<option value= "Idaho">Idaho</option>
+<option value= "Illinois">Illinois</option>
+<option value= "Indiana">Indiana</option>
+<option value= "Iowa">Iowa</option>
+<option value= "Kansas">Kansas</option>
+<option value= "Kentucky">Kentucky</option>
+<option value= "Louisiana">Louisiana</option>
+<option value= "Maine">Maine</option>
+<option value= "Maryland">Maryland</option>
+<option value= "Massachusetts">Massachusetts</option>
+<option value= "Michigan">Michigan</option>
+<option value= "Minnesota">Minnesota</option>
+<option value= "Mississippi">Mississippi</option>
+<option value= "Missouri">Missouri</option>
+<option value= "Montana">Montana</option>
+<option value= "Nebraska">Nebraska</option>
+<option value= "Nevada">Nevada</option>
+<option value= "New Hampshire">New Hampshire</option>
+<option value= "New Jersey">New Jersey</option>
+<option value= "New Mexico">New Mexico</option>
+<option value= "New York">New York</option>
+<option value= "North Carolina">North Carolina</option>
+<option value= "North Dakota">North Dakota</option>
+<option value= "Ohio">Ohio</option>
+<option value= "Oklahoma">Oklahoma</option>
+<option value= "Oregon">Oregon</option>
+<option value= "Pennsylvania">Pennsylvania</option>
+<option value= "Rhode Island">Rhode Island</option>
+<option value= "South Carolina">South Carolina</option>
+<option value= "South Dakota">South Dakota</option>
+<option value= "Tennessee">Tennessee</option>
+<option value= "Texas">Texas</option>
+<option value= "Utah">Utah</option>
+<option value= "Vermont">Vermont</option>
+<option value= "Virginia">Virginia</option>
+<option value= "Washington">Washington</option>
+<option value= "Washington D.C.">Washington D.C.</option>
+<option value= "West Virginia">West Virginia</option>
+<option value= "Wisconsin">Wisconsin</option>
+<option value= "Wyoming">Wyoming</option>
+<option value= "Puerto Rico">Puerto Rico</option>
+<option value= "Virgin Islands">Virgin Islands</option>
+<option value= "Armed Forces Americas">Armed Forces Americas</option>
+<option value= "Armed Forces Pacific">Armed Forces Pacific</option>
+<option value= "Armed Forces">Armed Forces</option>
+<option value= "Not Applicable">Not Applicable</option>
+</select>
+</td></tr><tr>
+
+<tr><td bgcolor=$createprofiletdcolor1>&nbsp;</td><td bgcolor=$createprofiletdcolor1><font size=1 face=verdana><b>My Zip Code</b></td>
+<td width=20>&nbsp;</td>
+<td><input type="text" name="zip" size=25 value="$zip" class="box"></td></tr><tr>
+
+
+<tr><td bgcolor=$createprofiletdcolor2>&nbsp;</td><td bgcolor=$createprofiletdcolor2><font size=1 face=verdana><b>My Country</b></td>
+<td width=20>&nbsp;</td>
+<td>
+<select name="country" class="selist">
+<option value="$country" selected>$country</option>
+<option>United States
+              <option>Afghanistan
+              <option>Albania
+              <option>Algeria
+              <option>American Samoa
+              <option>Andorra
+              <option>Angola
+              <option>Anguilla
+              <option>Antarctica
+              <option>Antigua And Barbuda
+              <option>Argentina
+              <option>Armenia
+              <option>Aruba
+              <option>Australia
+              <option>Austria
+              <option>Azerbaijan
+              <option>Bahamas, The
+              <option>Bahrain
+              <option>Bangladesh
+              <option>Barbados
+              <option>Belarus
+              <option>Belgium
+              <option>Belize
+              <option>Benin
+              <option>Bermuda
+              <option>Bhutan
+              <option>Bolivia
+              <option>Bosnia and Herzegovina
+              <option>Botswana
+              <option>Bouvet Island
+              <option>Brazil
+              <option>British Indian Ocean Territory
+              <option>Brunei
+              <option>Bulgaria
+              <option>Burkina Faso
+              <option>Burundi
+              <option>Cambodia
+              <option>Cameroon
+              <option>Canada
+              <option>Cape Verde
+              <option>Cayman Islands
+              <option>Central African Republic
+              <option>Chad
+              <option>Chile
+              <option>China
+              <option>China (Hong Kong S.A.R.)
+              <option>Christmas Island
+              <option>Cocos (Keeling) Islands
+              <option>Colombia
+              <option>Comoros
+              <option>Congo
+              <option>Cook Islands
+              <option>Costa Rica
+              <option>Cote D'Ivoire (Ivory Coast)
+              <option>Croatia (Hrvatska)
+              <option>Cuba
+              <option>Cyprus
+              <option>Czech Republic
+              <option>Denmark
+              <option>Djibouti
+              <option>Dominica
+              <option>Dominican Republic
+              <option>East Timor
+              <option>Ecuador
+              <option>Egypt
+              <option>El Salvador
+              <option>Equatorial Guinea
+              <option>Eritrea
+              <option>Estonia
+              <option>Ethiopia
+              <option>Faroe Islands
+              <option>Fiji Islands
+              <option>Finland
+              <option>France
+              <option>French Guiana
+              <option>French Polynesia
+              <option>French Southern Territories
+              <option>Gabon
+              <option>Gambia, The
+              <option>Georgia
+              <option>Germany
+              <option>Ghana
+              <option>Gibraltar
+              <option>Greece
+              <option>Greenland
+              <option>Grenada
+              <option>Guadeloupe
+              <option>Guam
+              <option>Guatemala
+              <option>Guinea
+              <option>Guinea-Bissau
+              <option>Guyana
+              <option>Haiti
+              <option>Honduras
+              <option>Hungary
+              <option>Iceland
+              <option>India
+              <option>Indonesia
+              <option>Iran
+              <option>Iraq
+              <option>Ireland
+              <option>Israel
+              <option>Italy
+              <option>Jamaica
+              <option>Japan
+              <option>Jordan
+              <option>Kazakhstan
+              <option>Kenya
+              <option>Kiribati
+              <option>Korea
+              <option>Korea, North
+              <option>Kuwait
+              <option>Kyrgyzstan
+              <option>Laos
+              <option>Latvia
+              <option>Lebanon
+              <option>Lesotho
+              <option>Liberia
+              <option>Libya
+              <option>Liechtenstein
+              <option>Lithuania
+              <option>Luxembourg
+              <option>Macao
+              <option>Madagascar
+              <option>Malawi
+              <option>Malaysia
+              <option>Maldives
+              <option>Mali
+              <option>Malta
+              <option>Marshall Islands
+              <option>Martinique
+              <option>Mauritania
+              <option>Mauritius
+              <option>Mayotte
+              <option>Mexico
+              <option>Micronesia
+              <option>Moldova
+              <option>Monaco
+              <option>Mongolia
+              <option>Montserrat
+              <option>Morocco
+              <option>Mozambique
+              <option>Myanmar
+              <option>Namibia
+              <option>Nauru
+              <option>Nepal
+              <option>Netherlands Antilles
+              <option>Netherlands, The
+              <option>New Caledonia
+              <option>New Zealand
+              <option>Nicaragua
+              <option>Niger
+              <option>Nigeria
+              <option>Niue
+              <option>Norfolk Island
+              <option>Northern Mariana Islands
+              <option>Norway
+              <option>Oman
+              <option>Pakistan
+              <option>Palau
+              <option>Panama
+              <option>Papua new Guinea
+              <option>Paraguay
+              <option>Peru
+              <option>Philippines
+              <option>Pitcairn Island
+              <option>Poland
+              <option>Portugal
+              <option>Puerto Rico
+              <option>Qatar
+              <option>Reunion
+              <option>Romania
+              <option>Russia
+              <option>Rwanda
+              <option>Saint Helena
+              <option>Saint Kitts And Nevis
+              <option>Saint Lucia
+              <option>Samoa
+              <option>San Marino
+              <option>Sao Tome and Principe
+              <option>Saudi Arabia
+              <option>Senegal
+              <option>Seychelles
+              <option>Sierra Leone
+              <option>Singapore
+              <option>Slovakia
+              <option>Slovenia
+              <option>Solomon Islands
+              <option>Somalia
+              <option>South Africa
+              <option>Spain
+              <option>Sri Lanka
+              <option>Sudan
+              <option>Suriname
+              <option>Swaziland
+              <option>Sweden
+              <option>Switzerland
+              <option>Syria
+              <option>Taiwan
+              <option>Tajikistan
+              <option>Tanzania
+              <option>Thailand
+              <option>Togo
+              <option>Tokelau
+              <option>Tonga
+              <option>Trinidad And Tobago
+              <option>Tunisia
+              <option>Turkey
+              <option>Turkmenistan
+              <option>Turks And Caicos Islands
+              <option>Tuvalu
+              <option>Uganda
+              <option>Ukraine
+              <option>United Arab Emirates
+              <option>United Kingdom
+              <option>Uruguay
+              <option>Uzbekistan
+              <option>Vanuatu
+              <option>Venezuela
+              <option>Vietnam
+              <option>Virgin Islands (British)
+              <option>Virgin Islands (US)
+              <option>Wallis And Futuna Islands
+              <option>Western Sahara
+              <option>Yemen
+              <option>Yugoslavia
+              <option>Zambia
+              <option>Zimbabwe</option></select>
+
+</td></tr>
+
+<tr><td bgcolor=$createprofiletdcolor1>&nbsp;</td><td bgcolor=$createprofiletdcolor1><font size=1 face=verdana><b>I can't live without</b></td>
+<td width=20>&nbsp;</td>
+<td>
+<input type="text" name="favemovie" value="$favemovie" size=25
+ class="box"></td></tr><tr>
+
+<tr><td bgcolor=$createprofiletdcolor2>&nbsp;</td><td bgcolor=$createprofiletdcolor2><font size=1 face=verdana><b>I hate</b></td>
+<td width=20>&nbsp;</td>
+<td><input type="text" name="faveperformer" value="$faveperformer" size=25
+class="box"></td></tr>
+
+
+
+</table></td>
+</tr></table>
+</blockquote>
+
+<blockquote>
+<table cellpadding=2 width=75% cellspacing=2 bgcolor=$createprofiletdcolor1><tr> 
+<td><blockquote><font size=1 face=verdana><b>Type of relationship I am looking for: <font color=\"red\">*</font></b></font></blockquote></td></tr></table></blockquote>
+
+<blockquote><table cellpadding=2 width=75% cellspacing=2><tr> 
+<td><input type=\"radio\" name=\"reltype\" value=\"Long Term\" class=\"rachoice\"
+EOF
+
+if($reltype eq "Long Term"){
+print "checked\n";}
+
+print <<EOF;
+></td>
+<td><font size=1 face=verdana>Long Term</font></td>
+<td><input type=\"radio\" name=\"reltype\" value=\"Short Term\" class=\"rachoice\"
+EOF
+
+if($reltype eq "Short Term"){
+print "checked\n";}
+print <<EOF;
+></td>
+<td><font size=1 face=verdana>Short Term</font></td>
+<td><input type=\"radio\" name=\"reltype\" value=\"Virtual Flirtation\" class=\"rachoice\"
+EOF
+if($reltype eq "Virtual Flirtation"){
+print "checked\n";}
+print <<EOF;
+></td>
+<td><font size=1 face=verdana>Virtual Flirtation</font></td>
+<td><input type=\"radio\" name=\"reltype\" value=\"Dating\" class=\"rachoice\"
+EOF
+if($reltype eq "Dating"){
+print "checked\n";}
+print <<EOF;
+></td>
+<td><font size=1 face=verdana>Dating</font></td>
+<td><input type=\"radio\" name=\"reltype\" value=\"Friendship\" class=\"rachoice\"
+EOF
+if($reltype eq "Friendship"){
+print "checked\n";}
+print <<EOF;
+></td>
+<td><font size=1 face=verdana>Friendship</font></td>
+</tr></table>
+</blockquote>  <p>
+
+<blockquote><table cellpadding=2 width=75% cellspacing=2 bgcolor=$createprofiletdcolor2><tr> 
+<td><blockquote><font size=1 face=verdana><b>My Current Status: <font color=\"red\">*</font></b></font></blockquote></td></tr></table></blockquote>
+
+<blockquote><table cellpadding=2 width=75% cellspacing=2><tr> 
+<td><input type=\"radio\" name=\"status\" value=\"Single\" class=\"rachoice\" 
+EOF
+
+if($status eq "Single"){
+print "checked\n";}
+print <<EOF;
+><font size=1 face=verdana>Single</font></td>
+<td><input type=\"radio\" name=\"status\" value=\"Married\" class=\"rachoice\"
+EOF
+if($status eq "Married"){
+print "checked\n";}
+print <<EOF;
+><font size=1 face=verdana>Married</font></td>
+<td><input type=\"radio\" name=\"status\" value=\"Separated\" class=\"rachoice\"
+EOF
+if($status eq "Separated"){
+print "checked\n";}
+print <<EOF;
+><font size=1 face=verdana>Separated</font></td>
+<td><input type=\"radio\" name=\"status\" value=\"Divorced\" class=\"rachoice\"
+EOF
+if($status eq "Divorced"){
+print "checked\n";}
+print <<EOF;
+><font size=1 face=verdana>Divorced</font></td>
+</tr></table></blockquote> <p>
+
+<blockquote><table cellpadding=2 width=75% cellspacing=2 bgcolor=$createprofiletdcolor1><tr> 
+<td><blockquote><font size=1 face=verdana><b>Talk about your favorite leisure activities
+</b></font></blockquote></td></tr></table></blockquote>
+
+<blockquote><table width=75% cellpadding=2 cellspacing=2><tr> 
+<td><textarea wrap="virtual" name="favoriteactivity" rows=2 cols=50>$favoriteactivity</textarea></td>
+</tr></table></blockquote><P>
+
+<blockquote><table cellpadding=2 width=75% cellspacing=2 bgcolor=$createprofiletdcolor2><tr> 
+<td><blockquote><font size=1 face=verdana><b>Describe your personality</b></font></blockquote></td></tr></table></blockquote>
+
+<blockquote><table width=75% cellpadding=2 cellspacing=2><tr> 
+<td><textarea wrap="virtual" name="mytype" rows=2 cols=50>$mytype</textarea></td>
+</tr></table></blockquote><P>
+
+
+<blockquote><table cellpadding=2 width=75% cellspacing=2 bgcolor=$createprofiletdcolor1><tr> 
+<td><blockquote><font size=1 face=verdana><b>Describe your partner's personality</b></font></blockquote></td></tr></table></blockquote>
+
+<blockquote><table width=75% cellpadding=2 cellspacing=2><tr> 
+<td><textarea wrap="virtual" name="yourtype" rows=2 cols=50>$yourtype</textarea></td>
+</tr></table></blockquote><P>
+
+<blockquote><table cellpadding=2 width=75% cellspacing=2 bgcolor=$createprofiletdcolor2><tr> 
+<td><blockquote><font size=1 face=verdana><b>If you would like to include a brief message in your profile, <br>enter it into the text box below. 
+</b></font></blockquote></td></tr></table></blockquote>
+    
+
+<blockquote><table cellpadding=2 cellspacing=2><tr><td>
+<br><textarea wrap="virtual" name=\"additionalinfo\" rows=6 cols=50 class=\"tare\">$additionalinfo</textarea></td></tr> </table></blockquote><br>  
+<br>
+
+EOF
+
+if($picyn eq "No"){
+print "
+<blockquote><table cellpadding=2 width=75% cellspacing=2 bgcolor=$createprofiletdcolor1><tr> 
+<td><blockquote><font size=1 face=verdana>
+You are currently using the system's default picture with your profile. If you would like to upload a picture of yourself
+check \"Uploading Picture\". Otherwise, leave \"Not uploading picture\" checked.
+
+</blockquote></font></td></tr></table></blockquote>
+
+<blockquote><table cellpadding=2 cellspacing=2><tr><td>
+<b><font size=1 face=verdana></b><br> 
+<input type=\"radio\" name=\"picyn\" value=\"Yes\" class=\"rachoice\">
+<font size=1 face=univers><b>Uploading picture</b></font>&nbsp;&nbsp; 
+<input type=\"radio\" name=\"picyn\" value=\"No\" class=\"rachoice\" checked><font size=1 face=univers><b>Not uploading picture</b>
+</font></td></tr></table></blockquote>
+
+\n";}
+&getpicname;
+if(($picyn eq "Yes")||($picyn eq "usecurrent")){
+print "
+<blockquote><table cellpadding=2 width=75% cellspacing=2 bgcolor=$createprofiletdcolor1><tr> 
+<td><blockquote><font size=1 face=verdana>
+You are currently using the picture below with your profile. If
+you would like to keep the current picture, check \"Use Current Picture\". If you would like to 
+upload a new picture check \"Uploading Picture\". If you no longer wish to use a picture of yourself
+with your profile, check \"Use system default\".</blockquote></font></td></tr></table></blockquote>
+<p><center>
+<img src=$userimagesurl/$picturename height=120 border=1></center><p>
+<input type=\"hidden\" name=\"picturename\" value=\"$picturename\">
+<blockquote><table cellpadding=2 cellspacing=2><tr><td>
+<b><font size=1 face=verdana></b><br>
+<input type=\"radio\" name=\"picyn\" value=\"usecurrent\" class=\"rachoice\" checked>
+<font size=1 face=univers><b>Use Current Picture</b></font>&nbsp;&nbsp;  
+<input type=\"radio\" name=\"picyn\" value=\"Yes\" class=\"rachoice\">
+<font size=1 face=univers><b>Uploading picture</b></font>&nbsp;&nbsp; 
+<input type=\"radio\" name=\"picyn\" value=\"No\" class=\"rachoice\"><font size=1 face=univers><b>
+Use system default</b>
+</font></td></tr></table></blockquote>
+
+
+
+
+\n";}
+
+print <<EOF;
+
+
+<blockquote><table><tr><td><font size=1 face=verdana><b>Username</b></font></td>
+<td><input type="text" name="username" size="13" value="$FORM{'username'}"></td>
+<td><font size=1 face=verdana><b>Password</b></font></td>
+<td><input type="text" name="password" size="13" value="$FORM{'password'}"></td>
+</tr></table><blockquote>
+
+
+<blockquote><font size=1 face=verdana><a href="$cgiurl/personals.pl?retrievepass"><font size=1 color=$mainlinkcolor face=verdana>
+Forgot your login name and password?</font></a></blockquote>
+
+
+<br><br><center>
+<br><center><input type=\"submit\" name=\"updatepro\" value=\"Update Profile\" class=\"button\"></center><br><br> </td></tr></table></center>  
+
+
+</center> </form>
+</td></tr></table>
+$botcode
+ </body> </html>
+EOF
+exit;
+}     
+}
+
+
+
+sub datafilenotfound {
+
+print "Content=type:text/html\n\n";
+print <<EOF;
+$mainheader
+<br><br>
+<form method="post" action="$cgiurl/personals.pl">
+<blockquote><font size=2 face=verdana>  
+There was no data file for <b>$username</b> found. Cannot proceed with edit.
+<a href="javascript:history.go(-1)">Go back</a></font></blockquote>
+<br>$botcode
+EOF
+exit;
+
+
+
+}
+
+
+sub getpicname {
+opendir(DIR, "$profilesdir/$profilecat/datafiles");
+@dircont=readdir(DIR);
+closedir(DIR);
+
+foreach $plfileindir(@dircont){
+if($plfileindir =~ /proflist/){
+
+open(IN, "$profilesdir/$profilecat/datafiles/$plfileindir")||&oops($!,"Cannot read $profilesdir/$profilecat/datafiles/$plfileindir");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+foreach $line(@lines) {
+($username,$picfilename,$additionalinfo,$age,$country,$state,$city,$zip)=split(/\|/,$line);
+if($FORM{'username'} eq "$username"){
+$picturename = $picfilename;}}}}}
+
+
+
+
+1;

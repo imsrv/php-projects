@@ -1,0 +1,76 @@
+<?php
+error_reporting(0);
+session_start();
+include('config.php');
+if($_SESSION['amfradmin'] != $config['username'] || $_SESSION['amfrpassw'] != $config['password']) {
+session_destroy();
+header('Location: login.php');
+exit;
+}
+$handle = fopen('users.txt', 'rb');
+$content = fread($handle, filesize('users.txt'));
+fclose($handle);
+$users = explode('.', $content);
+echo '<HTML>
+<HEAD>
+<TITLE>Admin</TITLE>
+</HEAD>
+<BODY BGCOLOR="white" LINK="blue" ALINK="blue" VLINK="blue">
+<CENTER>
+<H1>Manage users</H1>';
+$action = $_REQUEST['action'];
+$aauser = $_REQUEST['aauser'];
+if($action == "delete" && $aauser) {
+function rmdirr($dirname)
+{
+    // Sanity check
+    if (!file_exists($dirname)) {
+        return false;
+    }
+ 
+    // Simple delete for a file
+    if (is_file($dirname)) {
+	chmod($dirname, 0777);
+        return unlink($dirname);
+    }
+ 
+    // Loop through the folder
+    $dir = dir($dirname);
+    while (false !== $entry = $dir->read()) {
+        // Skip pointers
+        if ($entry == '.' || $entry == '..') {
+            continue;
+        }
+ 
+        // Recurse
+        rmdirr("$dirname/$entry");
+    }
+ 
+    // Clean up
+    $dir->close();
+    return rmdir($dirname);
+}
+rmdirr($aauser);
+$handle = fopen('users.txt', 'rb');
+$content1 = fread($handle, filesize('users.txt'));
+fclose($handle);
+$content1 = str_replace($aauser.'.', '', $content1);
+$handle = fopen('users.txt', 'wb');
+fwrite($handle, $content1);
+fclose($handle);
+echo "$aauser deleted!<BR>";
+echo "<A HREF='admin.php'>Back</A>";
+}
+}
+else {
+echo "Click on a user's name to view their site:<BR>";
+$count = count($users);
+for($i = 0; $i <= $count; $i++) {
+$aa = $i - 1;
+if($users[$aa] && $users[$aa] != "\n") {
+echo "<A HREF='$users[$aa]/index.php'>$users[$aa]</A> | <A HREF='admin.php?action=delete&aauser=$users[$aa]'>Delete</A>";
+}
+}
+}
+echo "</CENTER></BODY></HTML>";
+?>

@@ -1,0 +1,18 @@
+#############################################################
+#############################################################
+##        Aaron's All Engine Expired Domain Finder         ##
+##                This is a Commercial Script              ##
+##        Modification, Distribution or Resale without     ##
+##        Prior written permission is in Violation of      ##
+##        the copyrights and International Intellectual    ##
+##        Property Laws.  Violators will be prosecuted!    ##
+##        http://www.aaronscgi.com - aaron@aaronscgi.com   ##
+#############################################################
+#############################################################
+url     => "http://www.google.com/search?q=^~query~^&btnG=Google+Search",
+ip      => "216.239.35.101",
+#Rec    => qr{<p><A HREF=([^>]+)>(.*?)</A>\s*(<font.*?)<font}si,
+Rec     => qr{<p><A HREF=([^>]+)>(.*?)</A><br>(<font.*?)<font}si,
+#Next   => qr{<A HREF=(/search\?[^>]+)><IMG [^>]+><br><span [^>]+><b>Next}si,
+Next    => qr{<A HREF=(/search\?[^>]+)><IMG [^>]+><br><span [^>]+>Next}si,
+

@@ -1,0 +1,38 @@
+<?
+// 'Settings' messages
+$lang_msg["settings"] = array(
+	501	=>	'Nie mo¿na zapisaæ ustawieñ, spróbuj pó¼niej',
+	502	=>	'Nowe ustawienia zosta³y zapisane.',
+	503	=>	'Imiê',
+	504	=>	'(bêdzie do³±czone do pola <u>Od</u> wychodz±cych wiadomo¶ci)',
+	505	=>	'Podpis',
+	506	=>	'(bêdzie dodany do ka¿dej wiadomo¶ci e-mail)',
+	507	=>	'Jêzyk',
+	508	=>	'(domy¶lny jêzyk)',
+	509	=>	'Sortuj wiadomo¶ci na',
+	510	=>	'(domy¶lny algorytm sortowania)',
+	511	=>	'Odwróæ sortowanie',
+	512	=>	'(je¿eli Tak, to ostatnio odebranych wiadomo¶ci widoczna bêdzie na górze listy)',
+	513	=>	'Zapisz wychodz±ce wiadomo¶ci',
+	514	=>	'(je¿eli Tak, to wiadomo¶ci bêd± zapisywane do folderu "Elementy wys³ane")',
+	515	=>	'Przenie¶ do Kosza',
+	516	=>	'(j¿eli Tak, to wiadomo¶ci skasowane zapisywane dêd± do folderu Kosz)',
+	517	=>	'Liczba wiadomo¶ci',
+	518	=>	'(Liczba wiadomo¶ci na stronê)',
+	519	=>	'Data',
+	520	=>	'Od',
+	521	=>	'Temat',
+	522	=>	'Rozmiar',
+	523	=>	'Szata graficzna',
+	524	=>	'(Zmienia szatê graficzn± bramki)',
+	525	=>	'Zapisz ustawienia',
+	526	=>	'Show',
+	527	=>	'Hide',
+	528	=>	'Show/Hide',
+	529	=>	'(show or hide the user folder list in the left menu)',
+	530	=>	'Prev/Next',
+	531	=>	'(shows the previous and the next message links when reading a message -- this is slow on large mailboxes)',
+	532	=>	'Reply-To',
+	533	=>	'(the recipient will reply to this address -- if empty <b>%e</b> is used)'
+);
+?>

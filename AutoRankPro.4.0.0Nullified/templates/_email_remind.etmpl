@@ -1,0 +1,18 @@
+To:  #%EMAIL%#
+From: #%ADMIN_EMAIL%#
+Subject: Login Information
+
+Here is the login information you requested:
+
+Username: #%USERNAME%#
+Password: #%PASSWORD%#
+
+You can use this information to update your account and
+view your stats.  Account maintenance is located at:
+#%LOGIN_URL%#
+
+The URL to send hits to is:
+#%TRACK_URL%#
+
+Regards,
+Top List Webmaster

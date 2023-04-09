@@ -1,0 +1,38 @@
+<?
+// 'Settings' messages
+$lang_msg["settings"] = array(
+	501	=>	'Impossibile salvare le nuove impostazioni, ritenta più tardi',
+	502	=>	'Le nuove impostazioni sono state salvate.',
+	503	=>	'Il tuo nome',
+	504	=>	'(sarà inserito nello spazio <u>Da</u> delle e-mail in uscita)',
+	505	=>	'Firma',
+	506	=>	'(sarà inserita in ogni mail che manderai)',
+	507	=>	'Lingua',
+	508	=>	'(lingua predefinita)',
+	509	=>	'Ordina i messaggi per',
+	510	=>	'(algoritmo di ordine predefinito)',
+	511	=>	'Ordine inverso',
+	512	=>	'(se sì, i messaggi più recenti verranno mostrati prima)',
+	513	=>	'Salva i messaggi in uscita',
+	514	=>	'(se sì, i messaggi in uscita saranno salvati in Posta Inviata)',
+	515	=>	'Sposta nel Cestino',
+	516	=>	'(se sì, i messaggi eliminati saranno spostati nel Cestino)',
+	517	=>	'Dimensione della pagina',
+	518	=>	'(messaggi per pagina quando si visualizza una mailbox)',
+	519	=>	'Data',
+	520	=>	'Da',
+	521	=>	'Oggetto',
+	522	=>	'Dimensione',
+	523	=>	'Tema',
+	524	=>	'(cambia aspetto al tuo mail gateway)',
+	525	=>	'Salva impostazioni',
+	526	=>	'Show',
+	527	=>	'Hide',
+	528	=>	'Show/Hide',
+	529	=>	'(show or hide the user folder list in the left menu)',
+	530	=>	'Prev/Next',
+	531	=>	'(shows the previous and the next message links when reading a message -- this is slow on large mailboxes)',
+	532	=>	'Reply-To',
+	533	=>	'(the recipient will reply to this address -- if empty <b>%e</b> is used)'
+);
+?>

@@ -1,0 +1,29 @@
+<script language=javascript>
+function checkform() {
+  if (document.mainform.login.value == '') {
+    alert("Please, enter admin name");
+    document.mainform.login.focus();
+    return false;
+  }
+  if (document.mainform.passwd.value != document.mainform.passwd2.value) {
+    alert("Please, retype password");
+    document.mainform.passwd2.focus();
+    return false;
+  }
+  return true;
+}
+</script>
+<form action=install.cgi method=post name=mainform onsubmit="return checkform();">
+<input type=hidden name=page value=step3>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr>
+	<th colspan=2>SETUP. STEP3</th>
+</tr>
+<tr><td class=td1>Please, type admin name:</td><td class=td1><input type=text name=login value="admin"></td></tr>
+<tr><td class=td2>Please, type admin password:</td><td class=td2><input type=password name=passwd value=""></td></tr>
+<tr><td class=td1>Please, retype admin password:</td><td class=td1><input type=password name=passwd2 value=""></td></tr>
+<tr><td colspan=2 class=tdb>
+<input type=Submit class=sbmt value="SET">
+</td></tr>
+</table>

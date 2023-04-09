@@ -1,0 +1,37 @@
+<?
+// Folders screen messages
+$lang_msg["folders"] = array(
+	151	=>	'Mapp',
+	152	=>	'Antal brev',
+	153	=>	'Antal ol&auml;sta',
+	154	=>	'Storlek',
+	155	=>	'Skapa egen mapp:',
+	156	=>	'Skapa',
+	157	=>	'Du kan skapa valfritt antal egna mappar. F&ouml;r att skapa en mapp, fyll i mappens namn nedan och klicka p&aring; knappen.',
+	158	=>	'Du angav inte mappens namn. F&ouml;rs&ouml;k igen.',
+	159	=>	'Det finns redan en mapp med det namnet. F&ouml;rs&ouml;k igen. ',
+	160	=>	'Din nya mapp har skapats.',
+	161	=>	'Radera mapp:',
+	162	=>	'Radera vald mapp',
+	163	=>	'Raderade mappar kan <u><b>INTE</b> &aring;terskapas</u>. Om du vill radera en mapp, v&auml;lj mapp och klicka p&aring; knappen.',
+	164	=>	'Du valde ingen mapp att radera. F&ouml;rs&ouml;k igen.',
+	165	=>	'Det gick inte att radera den mapp du angav. F&ouml;rs&ouml;k senare...',
+	166	=>	'Mappen du angav har raderats.',
+	167	=>	'Byt namn p&aring; en mapp:',
+	168	=>	'Byt namn',
+	169	=>	'Om du vill byta namn p&aring; en mapp, v&auml;lj mapp och klicka p&aring; knappen',
+	170	=>	'Nuvarande namn',
+	171	=>	'Nytt namn',
+	172	=>	'Du valde ingen mapp att byta namn p&aring;. F&ouml;rs&ouml;k igen.',
+	173	=>	'Du angav inget nytt namn. F&ouml;rs&ouml;k igen.',
+	174	=>	'Det gick inte att byta namn p&aring; den mapp du angav. F&ouml;rs&ouml;k senare...',
+	175	=>	'Mappen har bytt namn',
+	176	=>	't&ouml;m Papperskorgen',
+	177	=>	'I could not create the new folder. Could you be over your disk quota? please try again later..F&ouml;rs&ouml;k igen.',
+	178	=>	'Mappen du angav &auml;r nu t&ouml;md.',
+	179	=>	'Det gick inte att t&ouml;mma mappen du angav. F&ouml;rs&ouml;k senare...',
+	180	=>	'&Auml;r du s&auml;ker p&aring; att du vill t&ouml;mma mappen?',
+	181	=>	'Error creating Trash folder',
+	182	=>	'Error creating Sent Mail folder'
+);
+?>

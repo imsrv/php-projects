@@ -1,0 +1,542 @@
+<?XML version="1.0" ?>
+<!--
+Adsense.wsf v5.0
+Copyright (C) monetizers.com 2003-2005, very major revisions by somacon.com
+Distributed under the GNU General Public License (GPL)
+http://www.opensource.org/licenses/gpl-license.php
+
+http://www.monetizers.com/ - Search Engine Optimization
+http://www.somacon.com/ - Custom Web and Database Development
+
+
+INSTRUCTIONS:
+1. Rename the included "adsense-config_sample.vbs" to "adsense-config.vbs",
+    and set the user variables in that file.
+2. Run the script to test it.  It creates a new database file and
+    registers the SMTP component automatically if needed.
+3. Use Scheduled Tasks in Control Panel to schedule the script
+    to run every hour or two.
+
+NOTES: 
+1. There is no point in scheduling the script more often than every 30 minutes
+   because Adsense servers do not update statistics that fast.
+5. For email, we use the OstroSoft SMTP component, it is 
+   the OSSMTP.DLL file included with this zipped script
+   If for some reason you need to manually install OSSMTP.dll, 
+   simply copy the file into the system32
+   directory and type regsvr32 ossmtp.dll from a command prompt.
+   * |Full installation for OstroSoft SMTP component (in case your system 
+     |does not have VB run-time libraries) is available for download at
+     |http://www.ostrosoft.com/download/full/smtp_component.exe
+
+SYSTEM REQUIREMENTS:
+All of the system requirements (except ossmtp.dll) 
+are included in the latest, patched versions of Windows.
+Otherwise, they can be downloaded for free from Microsoft.
+
+1. Microsoft Windows Script Version 5.6
+	http://msdn.microsoft.com/library/default.asp?url=/downloads/list/webdev.asp
+2. Microsoft XML Core Services (MSXML) 4.0
+	http://www.xmlblueprint.com/MSXML.htm
+3. Microsoft Data Access Components (MDAC) 2.8
+	http://msdn.microsoft.com/data/downloads/updates/default.aspx#MDAC
+4. OstroSoft SMTP Component
+	(This is included with this script for optional email support.)
+	http://www.ostrosoft.com/download/full/smtp_component.exe
+
+-->
+<job>
+<reference object="Scripting.FileSystemObject" />
+<!-- Microsoft ActiveX Data Objects 2.5 Library -->
+<reference guid="{00000205-0000-0010-8000-00AA006D2EA4}" VERSION="2.5" />
+<!-- Microsoft ActiveX Data Objects Recordset 2.5 Library -->
+<reference guid="{00000205-0000-0010-8000-00AA006D2EA4}" VERSION="2.5" />
+<script language="VBScript" src="adsense-config.vbs" />
+<script language="VBScript">
+<![CDATA[
+Option Explicit
+
+' Run the main program and quit
+' Pass the user-configured variables to the main program.
+RunMainProgram UserName, Password, DatabasePath, _
+	ImagePathAndFilename, GMTTimeZone, _
+	UseMail, MailFrom, SendTo, Server, Authentication, _
+	POPServer, AutUsername, AutPassword
+
+WScript.Quit
+
+' ======================================================
+' ================  Main Program Section  ==============
+' ======================================================
+
+Sub RunMainProgram(UserName, Password, DatabasePath, _
+	ImagePathAndFilename, GMTTimeZone, _
+	UseMail, MailFrom, SendTo, Server, Authentication, _
+	POPServer, AutUsername, AutPassword)
+	' Declare local variables
+	Dim objHTTP, CombinedReportData
+	Dim MonthlyByAdUnitCSV, MonthlyByPageCSV, MonthlySearchCSV
+	Dim MessageSubject, MessageText, ErrorMessage, objStats
+	Set objStats = CreateObject("Scripting.Dictionary")
+	
+	' Install the SMTP component if it is not already installed
+	InstallSMTPComponentIfNeeded
+
+	' Find, validate, and create the Access database if needed
+	SetupDatabase DatabasePath
+
+	' Do HTTP traffic
+	Set objHTTP = CreateObject("MSXML2.XMLHTTP") 
+
+	' Initialize the statistics variables
+	objStats("QueryDate") = Now
+	objStats("PageImpressions") = 0
+	objStats("AdUnitImpressions") = 0
+	objStats("AdClicks") = 0
+	objStats("AdEarnings") = 0
+	objStats("SearchPageImpressions") = 0
+	objStats("SearchClicks") = 0
+	objStats("SearchEarnings") = 0
+	objStats("AdMonthlyEarnings") = 0
+	objStats("SearchMonthlyEarnings") = 0
+	objStats("QueryNote") = ""
+
+	ErrorMessage = LoginToGoogleAdsense(objHTTP, UserName, Password)
+	If ErrorMessage <> "" Then
+		objStats("QueryNote") = Left("Error when logging into Google. The network is may be down: " & ErrorMessage,100)
+		InsertStatsIntoDatabase DatabasePath, objStats
+		WScript.Quit
+	End If
+
+	' Perform request for Monthly Stats
+	MonthlyByAdUnitCSV = GetWebPage(objHTTP, getResource("AdsenseMonthlyByAdUnitCSV"))
+	If InStr(MonthlyByAdUnitCSV, "<html") Then
+		objStats("QueryNote") = "Bad password when logging into Google."
+		InsertStatsIntoDatabase DatabasePath, objStats
+		WScript.Quit
+	End If
+	MonthlyByPageCSV = GetWebPage(objHTTP, getResource("AdsenseMonthlyByPageCSV"))
+	MonthlySearchCSV = GetWebPage(objHTTP, getResource("AdsenseMonthlySearchCSV"))
+	
+	' Get the payment history page
+	CombinedReportData = GetWebPage(objHTTP, getResource("AdsensePaymentHistoryURL"))
+	' Parse out the body
+	CombinedReportData = GetFirstMatch("<body.*?>([\s\S]*)</body", CombinedReportData)
+	' Concatenate it with the csv files
+	CombinedReportData = "<pre>" & _
+		"AD UNIT:<br>" & vbCrLf & MonthlyByAdUnitCSV & vbCrLf & "<hr>" & _
+		"PAGE:<br>" & vbCrLf & MonthlyByPageCSV & vbCrLf & "<hr>" & _
+		"SEARCH STATS:<br>" & vbCrLf & MonthlySearchCSV & vbCrLf & "<hr>" & _
+		"</pre><br>" & CombinedReportData
+
+	Set objHTTP = Nothing
+
+	' Insert the stats into the database
+	ParseStats objStats, MonthlyByAdUnitCSV, MonthlyByPageCSV, MonthlySearchCSV
+	
+	InsertStatsIntoDatabase DatabasePath, objStats
+
+	' Send an email if necessary
+	If UseMail = "yes" Then
+		CreateEmailMessage MessageSubject, MessageText, objStats
+		' Send the email
+		SendEmail MailFrom, SendTo, Server, Authentication, _
+			POPServer, AutUserName, AutPassword, _
+			MessageSubject, MessageText
+	End If
+
+	' Write downloaded data to a file if necessary
+	WriteImageFileIfNecessary ImagePathAndFileName, CombinedReportData
+End Sub
+
+' ======================================================
+' ================  Subroutine Section  ================
+' ======================================================
+
+Sub CreateEmailMessage(ByRef MessageSubject, ByRef MessageText, ByRef objStats)
+	Dim KeyName
+	' Create the subject and text
+	MessageSubject = "Adsense Update"
+	MessageText = "Adsense Statistics as of " & Now & vbCrLf
+	For Each KeyName In objStats.Keys
+		MessageText = MessageText & KeyName & ": " & objStats(KeyName) & vbCrLf
+	Next
+End Sub
+
+' Register the OSSMTP dll if it isn't installed.
+' Requires the script to be run as administrator.
+Sub InstallSMTPComponentIfNeeded()
+	Dim oSMTPSession, objFSO, objWshShell, ErrorCode
+	Dim strComponentPath, adSystemFolder, strCommand
+	
+	' Test if the component is installed
+	On Error Resume Next
+	Set oSMTPSession = CreateObject("OSSMTP.SMTPSession")
+	ErrorCode = Err.Number
+	On Error Goto 0
+	
+	' If no error, then the object is installed and quit.
+	If ErrorCode = 0 Then
+		Set oSMTPSession = Nothing
+		Exit Sub
+	End If
+	' If any other error besides "can't create object error"
+	' Then raise the error
+	If ErrorCode <> 429 Then
+		Err.Raise ErrorCode
+	End If
+	
+	' Otherwise, install the object
+	Set objFSO = CreateObject("Scripting.FileSystemObject")
+	strComponentPath = objFSO.GetParentFolderName(WScript.ScriptFullName)
+	strComponentPath = objFSO.BuildPath(strComponentPath, "OSSMTP.dll")
+	' Check if the file exists
+	If Not objFSO.FileExists(strComponentPath) Then
+		WScript.Echo "Error, the required component file '" & _
+			strComponentPath & "' was not found. Can not install."
+		WScript.Quit
+	End If
+	
+	' Copy the file to the system directory
+	adSystemFolder = 1
+	objFSO.CopyFile strComponentPath, _
+		objFSO.BuildPath(objFSO.GetSpecialFolder(adSystemFolder), "OSSMTP.dll")
+	
+	' Register the component
+	strComponentPath = objFSO.BuildPath(objFSO.GetSpecialFolder(adSystemFolder), _
+		 "OSSMTP.dll")
+	strCommand = "regsvr32 /s " & Chr(34) & strComponentPath & Chr(34)
+	
+	Set objWshShell = CreateObject("WScript.Shell")
+	objWshShell.Run strCommand, 0, True
+	' wait a second to let it properly install
+	WScript.Sleep(1000)
+
+	Set objWshShell = Nothing
+	Set objFSO = Nothing
+End Sub
+
+' Create the adsense statistics database
+' The old schema:
+'	AdsenseID, QueryDate, Impressions, Clicks, ClickRate, Earnings, Flag, MonthlyTotal
+' The new schema
+'   AdsenseID, QueryDate, PageImpressions, AdUnitImpressions, AdClicks, AdEarnings, SearchPageImpressions, SearchClicks, SearchEarnings, AdMonthlyEarnings, SearchMonthlyEarnings, QueryNote
+Sub CreateAdsenseAccessDatabaseIfNotExist(strDBPath)
+	Dim objCatalog, strsql
+	Dim objFSO, objCN
+
+	' If the file does not exist, create it
+	Set objFSO = CreateObject("Scripting.FileSystemObject")
+	If Not objFSO.FileExists(strDBPath) Then
+		' Create the reference database
+		Set objCatalog = CreateObject("ADOX.Catalog")
+		objCatalog.Create "Provider=Microsoft.Jet.OLEDB.4.0;" & _
+			"Data Source=" & strDBPath
+		Set objCatalog = Nothing
+	End If
+	Set objFSO = Nothing
+
+	Set objCN = CreateObject("ADODB.Connection")
+	objCN.Open "PROVIDER=MICROSOFT.JET.OLEDB.4.0;DATA SOURCE=" & DatabasePath
+
+	' Check if the new table exists
+	If Not TableExists(objCN, "tblAdsense") Then
+		objCN.Execute "CREATE TABLE tblAdsense (AdsenseID AUTOINCREMENT PRIMARY KEY, QueryDate DATETIME NOT NULL, PageImpressions INTEGER NOT NULL, AdUnitImpressions INTEGER NOT NULL, AdClicks INTEGER NOT NULL, AdEarnings FLOAT NOT NULL, SearchPageImpressions INTEGER NOT NULL, SearchClicks INTEGER NOT NULL, SearchEarnings FLOAT NOT NULL, AdMonthlyEarnings FLOAT NOT NULL, SearchMonthlyEarnings FLOAT NOT NULL, QueryNote VARCHAR(100))"
+		objCN.Execute "CREATE INDEX IDX_QueryDate ON tblAdsense (QueryDate)"
+	End If
+
+	' If the old table exists, copy it to the new table and then drop it
+	If TableExists(objCN, "Adsense") Then
+		objCN.Execute "INSERT INTO tblAdsense (QueryDate, PageImpressions, AdUnitImpressions, AdClicks, AdEarnings, SearchPageImpressions, SearchClicks, SearchEarnings, AdMonthlyEarnings, SearchMonthlyEarnings, QueryNote) SELECT QueryDate, Impressions, 0, Clicks, Earnings, 0, 0, 0, IIF(ISNULL(MonthlyTotal),0,MonthlyTotal), 0, Flag FROM Adsense"
+		
+		objCN.Execute "DROP TABLE Adsense"
+	End If
+	Set objCN = Nothing
+
+End Sub
+
+' Returns true if the table exists in the database, otherwise false
+Function TableExists(objCN, TableName)
+	Dim strsql
+	strsql = "SELECT NULL FROM " & TableName & " WHERE 1=0"
+	On Error Resume Next
+	objCN.Execute strsql,,adExecuteNoRecords+adCmdText
+	If Err.Number = 0 Then
+		TableExists = True
+	Else
+		TableExists = False
+	End If
+End Function
+
+' Send Mail
+Sub SendEmail(MailFrom, SendTo, Server, Authentication, POPServer, _
+	AutUserName, AutPassword, MessageSubject, MessageText)
+	Dim oSMTPSession
+
+	Set oSMTPSession = CreateObject("OSSMTP.SMTPSession")
+
+	With oSMTPSession
+		.MailFrom = MailFrom
+		.SendTo = SendTo
+		.Server = Server
+		.Port = 25
+		.MessageSubject = MessageSubject
+		.MessageText = MessageText
+
+		' Authenticate if your mail server requires it
+		If Authentication = "yes" Then  
+			.AuthenticationType = 1 'POP3 authentication
+			.POPServer = POPServer
+			.Username = AutUserName
+			.Password = AutPassword
+		End If
+  
+		' If SMTP Component incorrectly detects message date/time, 
+		' you can over-write it using TimeStamp property
+		'.TimeStamp = "20 Oct 2003 19:22:50"
+
+		' SMTP Component defaults to "US-ASCII" character set, 
+		' to change it use Charset property
+		'.Charset = "GB2312"
+		.SendEmail
+	End With
+	
+	Set oSMTPSession = Nothing
+End Sub
+
+Function SetupDatabase(ByRef DatabasePath)
+	Dim objFSO
+	Set objFSO = CreateObject("Scripting.FileSystemObject")
+	' Get current path to database file
+	If DatabasePath = "" Then
+		DatabasePath = objFSO.GetParentFolderName(WScript.ScriptFullName)
+		DatabasePath = objFSO.BuildPath(DatabasePath, "adsense.mdb")
+	End If
+
+	' Try to create the database if it doesn't exist
+	CreateAdsenseAccessDatabaseIfNotExist DatabasePath
+
+	' Check that the database file exists
+	If Not objFSO.FileExists(DatabasePath) Then
+		WScript.Echo "Error running adsense script." & _
+			" The database file '" & DatabasePath & "' does not exist."
+		WScript.Quit
+	End If
+	Set objFSO = Nothing
+End Function
+
+' Write image of downloaded page to a file if necessary
+Sub WriteImageFileIfNecessary(ImagePathAndFileName, FullPageData)
+	Dim objFSO, MyFile
+
+	' Do nothing if the path/filename is unspecified
+	If ImagePathAndFileName = "" Then
+		Exit Sub
+	End if
+
+	' Clean up the downloaded data for writing to a file
+	' Remove images, scripts, anchors, forms, onclicks, and empty paragraphs
+	ReplaceAllByExpression FullPageData, "<img[^>]*?>", ""
+	ReplaceAllByExpression FullPageData, "<script[\s\S]*?</script>", ""
+	ReplaceAllByExpression FullPageData, "<a\s+[\s\S]*?</a>", ""
+	ReplaceAllByExpression FullPageData, "<form[\s\S]*?</form>", ""
+	ReplaceAllByExpression FullPageData, "<p>\s*?</p>", ""
+	ReplaceAllByExpression FullPageData, "\sonclick=""[^""]*?""", ""
+	' Remove excess whitespace
+	ReplaceAllByExpression FullPageData, "(\s)\s+", "$1"
+
+	' Create the file, overwriting if it already exists
+	Set objFSO = CreateObject("Scripting.FileSystemObject")
+	Set MyFile = objFSO.CreateTextFile(ImagePathAndFilename, True)
+	MyFile.Write("<html><head><title>Adsense Tracking Script</title>")
+	MyFile.Write("</head><body><center><span style=""font-size:16pt;font-weight:bold;"">Adsense Tracking Script</span>")
+	MyFile.Write("<br>Created at " & Now())
+	MyFile.Write("<hr noshade></center>" & vbCrLf)
+	MyFile.Write(FullPageData)
+	MyFile.Write("</body></html>")
+	MyFile.Close
+End Sub
+
+' Get the stats into the dictionary
+Sub ParseStats(ByRef objStats, MonthlyByAdUnitCSV, MonthlyByPageCSV, MonthlySearchCSV)
+	Dim LinesArray, LineIndex, StatsArray, StatIndex
+	Dim AdjustedTime, TheCurrentDate
+
+	' Parse the page stats
+	LinesArray = Split(MonthlyByPageCSV, vbLf)
+	If IsArray(LinesArray) Then
+		For LineIndex = UBound(LinesArray) To 0 Step -1
+			If Trim(LinesArray(LineIndex)) <> "" Then
+				StatsArray = Split(LinesArray(LineIndex), vbTab)
+				If IsArray(StatsArray) Then
+					' Process a totals line
+					If LCase(StatsArray(0)) = LCase("Totals") Then
+						objStats("AdMonthlyEarnings") = StatsArray(5)
+					End If
+					' Process the first date line then quit
+					If IsDate(StatsArray(0)) Then
+						objStats("QueryDate") = StatsArray(0)
+						objStats("PageImpressions") = StatsArray(1)
+						objStats("AdClicks") = StatsArray(2)
+						objStats("AdEarnings") = StatsArray(5)
+						Exit For
+					End If
+				End If
+			End If
+		Next	
+	End If
+
+	' Parse the ad unit stats
+	LinesArray = Split(MonthlyByAdUnitCSV, vbLf)
+	If IsArray(LinesArray) Then
+		For LineIndex = UBound(LinesArray) To 0 Step -1
+			If Trim(LinesArray(LineIndex)) <> "" Then
+				StatsArray = Split(LinesArray(LineIndex), vbTab)
+				If IsArray(StatsArray) Then
+					' Process the first date line then quit
+					If IsDate(StatsArray(0)) Then
+						objStats("AdUnitImpressions") = StatsArray(1)
+						Exit For
+					End If
+				End If
+			End If
+		Next	
+	End If
+
+	' Parse the search stats
+	LinesArray = Split(MonthlySearchCSV, vbLf)
+	If IsArray(LinesArray) Then
+		For LineIndex = UBound(LinesArray) To 0 Step -1
+			If Trim(LinesArray(LineIndex)) <> "" Then
+				StatsArray = Split(LinesArray(LineIndex), vbTab)
+				If IsArray(StatsArray) Then
+					' Process a totals line
+					If LCase(StatsArray(0)) = LCase("Totals") Then
+						objStats("SearchMonthlyEarnings") = StatsArray(5)
+					End If
+					' Process the first date line then quit
+					If IsDate(StatsArray(0)) Then
+						objStats("SearchPageImpressions") = StatsArray(1)
+						objStats("SearchClicks") = StatsArray(2)
+						objStats("SearchEarnings") = StatsArray(5)
+						Exit For
+					End If
+				End If
+			End If
+		Next	
+	End If
+
+	' We need to calculate the date so we can be sure
+	' the stats in the last row are actually for today
+	AdjustedTime = DateAdd("h",-(GMTTimeZone+8),Now)
+	TheCurrentDate = MonthName(Month(AdjustedTime),False) & " " & _
+		Day(AdjustedTime) & ", " & Year(AdjustedTime)
+
+	' Make sure the current date is in the last row
+	If FormatDateTime(objStats("QueryDate"),vbShortDate) <> FormatDateTime(AdjustedTime,vbShortDate) Then
+		objStats("QueryNote") = "-No Data-"
+	Else
+		objStats("QueryNote") = ""
+	End If
+	objStats("QueryDate") = Now
+
+End Sub
+
+
+' Insert the stats into the database
+Sub InsertStatsIntoDatabase(DatabasePath, ByRef objStats)
+	Dim objCN, LinesArray, LineIndex, StatsArray, StatIndex
+	Dim RequiredNumericFields, FieldName
+
+	' Validate all the numeric fields
+	RequiredNumericFields = Array("PageImpressions", "AdUnitImpressions", "AdClicks", "AdEarnings", "SearchPageImpressions", "SearchClicks", "SearchEarnings", "AdMonthlyEarnings", "SearchMonthlyEarnings")
+	For Each FieldName In RequiredNumericFields
+		If Not IsNumeric(objStats(FieldName)) Then
+			objStats(FieldName) = 0
+		Else
+			objStats(FieldName) = CDbl(objStats(FieldName))
+		End If
+	Next
+
+	' Insert the data into the databaes
+	Set objCN = CreateObject("ADODB.Connection")
+	objCN.Open "PROVIDER=MICROSOFT.JET.OLEDB.4.0;DATA SOURCE=" & DatabasePath
+	objCN.Execute "INSERT INTO tblAdsense (QueryDate, PageImpressions, AdUnitImpressions, AdClicks, AdEarnings, SearchPageImpressions, SearchClicks, SearchEarnings, AdMonthlyEarnings, SearchMonthlyEarnings, QueryNote) VALUES ('"&objStats("QueryDate")&"',"&objStats("PageImpressions")&","&objStats("AdUnitImpressions")&","&objStats("AdClicks")&","&objStats("AdEarnings")&","&objStats("SearchPageImpressions")&","&objStats("SearchClicks")&","&objStats("SearchEarnings")&","&objStats("AdMonthlyEarnings")&","&objStats("SearchMonthlyEarnings")&",'"&objStats("QueryNote")&"')",,adExecuteNoRecords+adCmdText
+	objCN.Close
+	Set objCN = Nothing
+End Sub
+
+' Login via the HTTP object to Google Adsense
+' Return the empty string on success, otherwise an error message
+Function LoginToGoogleAdsense(ByRef objHTTP, ByVal UserName, ByVal Password)
+	Dim DataToPost, ErrorMessage
+
+	' Create request URI
+	DataToPost="username=" & UserName & "&password=" & Password
+
+	' Perform request for Main Page
+	On Error Resume Next
+	objHTTP.Open "POST", getResource("AdsenseLoginURL"), False
+	objHTTP.SetRequestHeader "lastCached", Now()
+	objHTTP.SetRequestHeader "Content-Type", "application/x-www-form-urlencoded" 
+	objHTTP.Send DataToPost
+	If Err.Number <> 0 Then
+		ErrorMessage = Err.Number & " " & Err.Description
+	Else
+		ErrorMessage = ""
+	End If
+	LoginToGoogleAdsense = ErrorMessage
+End Function
+
+' Returns the contents of the URL retrieved via HTTP GET
+Function GetWebPage(objHTTP, URLToGet)
+	objHTTP.Open "GET", URLToGet, False
+	objHTTP.Send
+	GetWebPage = objHTTP.ResponseText
+End Function
+
+' Get the first regex submatch from the string
+Function GetFirstMatch(PatternToMatch, StringToSearch)
+	Dim regEx, CurrentMatch, CurrentMatches
+
+	Set regEx = New RegExp
+	regEx.Pattern = PatternToMatch
+	regEx.IgnoreCase = True
+	regEx.Global = True
+	regEx.MultiLine = True
+	Set CurrentMatches = regEx.Execute(StringToSearch)
+
+	GetFirstMatch = ""
+	If CurrentMatches.Count >= 1 Then
+		Set CurrentMatch = CurrentMatches(0)
+		If CurrentMatch.SubMatches.Count >= 1 Then
+			GetFirstMatch = CurrentMatch.SubMatches(0)
+		End If
+	End If
+	Set regEx = Nothing
+End Function
+
+' Erase all non-numeric characters (excluding period) from the string
+Sub ReplaceAllByExpression(ByRef StringToExtract, ByVal MatchPattern, _
+	ByVal ReplacementText)
+	Dim regEx, CurrentMatch, CurrentMatches
+
+	Set regEx = New RegExp
+	regEx.Pattern = MatchPattern
+	regEx.IgnoreCase = True
+	regEx.Global = True
+	regEx.MultiLine = True
+	StringToExtract = regEx.Replace(StringToExtract, ReplacementText)
+	Set regEx = Nothing
+
+End Sub
+
+]]>
+</script>
+<resource id="AdsenseLoginURL"><![CDATA[https://www.google.com/adsense/login.do]]></resource>
+<resource id="AdsenseMonthlyByAdUnitCSV"><![CDATA[https://www.google.com/adsense/report/aggregate?product=afc&dateRange.dateRangeType=simple&dateRange.simpleDate=thismonth&groupByPref=date&unitPref=adunit&reportType=property&null=Display+Report&csv=true]]></resource>
+<resource id="AdsenseMonthlyByPageCSV"><![CDATA[https://www.google.com/adsense/report/aggregate?product=afc&dateRange.dateRangeType=simple&dateRange.simpleDate=thismonth&groupByPref=date&unitPref=page&reportType=property&null=Display+Report&csv=true]]></resource>
+<resource id="AdsenseMonthlySearchCSV"><![CDATA[https://www.google.com/adsense/report/aggregate?product=afs&dateRange.dateRangeType=simple&dateRange.simpleDate=thismonth&groupByPref=date&reportType=property&null=Display+Report&csv=true]]></resource>
+<resource id="AdsensePaymentHistoryURL"><![CDATA[https://www.google.com/adsense/reports-payment]]></resource>
+</job>
+

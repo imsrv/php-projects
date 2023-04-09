@@ -1,0 +1,186 @@
+<?php 
+//
+// Settings HTML file
+//
+?>
+<div align="center">
+<?php push_jsthemes()?>
+<br><?php push_errinfo()?>
+<?php if($GLOBALS["godiv"]) { ?>
+<script language="JavaScript"><!-- //
+<?php
+if($GLOBALS["godiv_hidden"] == true) echo "var canshow = false;\n";
+else echo "var canshow = true;\n";
+?>
+// --></script>
+<?php } // godiv ?>
+<script language="JavaScript" src="<?php echo $BSX_BASEHREF?>/js/settings.js"></script>
+<?php start_form("userSet")?>
+<input type="hidden" name="RequestID" value="SETTINGS">
+<input type="hidden" name="save_sets" value="yes">
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+<tr>
+<td class="tblborder">
+<table border="0" cellpadding="3" cellspacing="1" width="100%">
+
+<tr>
+<td align="left" class="normalbg">
+<b><?php echo nbsp($lng->p(503))?>:</b>
+<br>
+<?php echo nbsp($lng->p(504))?>
+</td>
+<td align="left" class="normalbg" valign="center">
+<input type="text" name="set_name" size="30" maxlength="64" value="<?php echo $set_name?>">
+</td>
+</tr>
+
+<tr>
+<td align="left" class="normalbg">
+<b><?php echo nbsp($lng->p(532))?>:</b>
+<br><?php $lng->sb(533); $lng->sr("%e", $GLOBALS["username"] . "@" . $GLOBALS["domain_name"]); echo nbsp($lng->sp()); ?>
+</td>
+<td align="left" class="normalbg" valign="center">
+<input type="text" name="set_replyto" size="30" maxlength="64" value="<?php echo $set_replyto?>">
+</td>
+</tr>
+
+<tr>
+<td align="left" class="normalbg">
+<b><?php echo nbsp($lng->p(505))?>:</b>
+<br>
+<?php echo nbsp($lng->p(506))?>
+</td>
+<td align="left" class="normalbg" valign="center">
+<textarea name="set_sign" cols="40" rows="4"><?php echo $set_sign?></textarea>
+</td>
+</tr>
+
+<tr>
+<td align="left" class="normalbg">
+<b><?php echo nbsp($lng->p(507))?>:</b>
+<br>
+<?php echo nbsp($lng->p(508))?>
+</td>
+<td align="left" class="normalbg" valign="center"><?php push_langs()?></td>
+</tr>
+
+<tr>
+<td align="left" class="normalbg">
+<b><?php echo nbsp($lng->p(509))?>:</b>
+<br>
+<?php echo nbsp($lng->p(510))?>
+</td>
+<td align="left" class="normalbg" valign="center">
+<select name="set_sort" size="1">
+<option value="1" <?php if($set_sort == 1) echo "selected"?>><?php echo $lng->p(519)?></option>
+<option value="2" <?php if($set_sort == 2) echo "selected"?>><?php echo $lng->p(520)?></option>
+<option value="3" <?php if($set_sort == 3) echo "selected"?>><?php echo $lng->p(521)?></option>
+<option value="4" <?php if($set_sort == 4) echo "selected"?>><?php echo $lng->p(522)?></option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td align="left" class="normalbg">
+<b><?php echo nbsp($lng->p(511))?>:</b>
+<br>
+<?php echo nbsp($lng->p(512))?>
+</td>
+<td align="left" class="normalbg" valign="center">
+<?php echo $lng->p(1)?><input type="radio" style="border-width:0;" name="set_rsort" value="1" <?php if($set_rsort == 1) echo "checked"?>>
+&nbsp;/&nbsp;
+<?php echo $lng->p(2)?><input type="radio" style="border-width:0;" name="set_rsort" value="0" <?php if($set_rsort == 0) echo "checked"?>>
+</td>
+</tr>
+
+<tr>
+<td align="left" class="normalbg">
+<b><?php echo nbsp($lng->p(513))?>:</b>
+<br>
+<?php echo nbsp($lng->p(514))?>
+</td>
+<td align="left" class="normalbg" valign="center">
+<?php echo $lng->p(1)?><input type="radio"  style="border-width:0;" name="set_sent" value="1" <?php if($set_sent == 1) echo "checked"?>>
+&nbsp;/&nbsp;
+<?php echo $lng->p(2)?><input type="radio"  style="border-width:0;" name="set_sent" value="0" <?php if($set_sent == 0) echo "checked"?>>
+</td>
+</tr>
+
+<tr>
+<td align="left" class="normalbg">
+<b><?php echo nbsp($lng->p(515))?>:</b>
+<br>
+<?php echo nbsp($lng->p(516))?>
+</td>
+<td align="left" class="normalbg" valign="center">
+<?php echo $lng->p(1)?><input type="radio"  style="border-width:0;" name="set_trash" value="1" <?php if($set_trash == 1) echo "checked"?>>
+&nbsp;/&nbsp;
+<?php echo $lng->p(2)?><input type="radio"  style="border-width:0;" name="set_trash" value="0" <?php if($set_trash == 0) echo "checked"?>>
+</td>
+</tr>
+
+<tr>
+<td align="left" class="normalbg">
+<b><?php echo nbsp($lng->p(530))?>:</b>
+<br>
+<?php echo nbsp($lng->p(531))?>
+</td>
+<td align="left" class="normalbg" valign="center">
+<?php echo $lng->p(1)?><input type="radio"  style="border-width:0;" name="set_prevnext" value="1" <?php if($set_prevnext == 1) echo "checked"?>>
+&nbsp;/&nbsp;
+<?php echo $lng->p(2)?><input type="radio"  style="border-width:0;" name="set_prevnext" value="0" <?php if($set_prevnext == 0) echo "checked"?>>
+</td>
+</tr>
+
+<tr>
+<td align="left" class="normalbg">
+<b><?php echo nbsp($lng->p(528))?>:</b>
+<br>
+<?php echo nbsp($lng->p(529))?>
+</td>
+<td align="left" class="normalbg" valign="center">
+<select name="set_ifexpand" size="1" <?php if($GLOBALS["godiv"]) echo "onChange=\"javascript:toggleView('userfolders');\"";?>>
+<option value="1" <?php if($set_ifexpand) echo "selected"?>><?php echo $lng->p(526)?></option>
+<option value="0" <?php if(!$set_ifexpand) echo "selected"?>><?php echo $lng->p(527)?></option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td align="left" class="normalbg">
+<b><?php echo nbsp($lng->p(517))?>:</b>
+<br>
+<?php echo nbsp($lng->p(518))?>
+</td>
+<td align="left" class="normalbg" valign="center">
+<select name="set_psize" size="1">
+<option value="20" <?php if($set_psize == 20) echo "selected"?>>20</option>
+<option value="25" <?php if($set_psize == 25) echo "selected"?>>25</option>
+<option value="40" <?php if($set_psize == 40) echo "selected"?>>40</option>
+<option value="50" <?php if($set_psize == 50) echo "selected"?>>50</option>
+<option value="75" <?php if($set_psize == 75) echo "selected"?>>75</option>
+<option value="100" <?php if($set_psize == 100) echo "selected"?>>100</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td align="left" class="normalbg">
+<b><?php echo nbsp($lng->p(523))?>:</b>
+<br>
+<?php echo nbsp($lng->p(524))?>
+</td>
+<td align="left" class="normalbg" valign="center"><?php push_themes()?></td>
+</tr>
+
+<tr>
+<td align="center" class="normalbg" colspan="2">
+<br><br>
+<input type="submit" class="button" value="<?php echo $lng->p(525)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>
+<br>&nbsp;
+</td></tr>
+</table>
+</td></tr>
+</table>
+<?php stop_form()?>
+</div>

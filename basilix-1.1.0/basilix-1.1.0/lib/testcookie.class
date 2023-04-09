@@ -1,0 +1,25 @@
+<?php
+/*
++----------------------------------------------------------------------+
+| BasiliX - Copyright (C) 2000-2002 Murat Arslan <arslanm@basilix.org> |
++----------------------------------------------------------------------+
+*/
+
+// -----------------------------------------------------------------------
+class test_cookie {
+    function test_cookie() {
+	// do nothing
+    }
+    function do_test($cookie_var, $cookie_sent) {
+        global $BSX_BASEHREF, $BSX_PHP_EXTENSION;
+	if(!$cookie_var && $cookie_sent) return false;
+	if(!$cookie_sent) {
+	   SetCookie("BSX_TestCookie", "Yes");
+	   url_redirect("$BSX_BASEHREF/index" . $BSX_PHP_EXTENSION . "?" . "testCookie=1");
+	} else {
+	   if(!$cookie_var) return false;
+	}
+	return true;
+   }
+}
+?>

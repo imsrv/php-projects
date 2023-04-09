@@ -1,0 +1,325 @@
+#!/usr/bin/perl
+###########################
+##  AutoRank Pro v3.5.x  ##
+#####################################################################
+##  rankem.cgi - track incoming hits to the list                   ##
+#####################################################################
+
+#use lib '.';
+
+my $DDIR = './data';
+my $NT   = 0;                                     ## NT support - set this to 1 (one) if you are having problems with cookies
+
+eval {
+  require "$DDIR/vars.dat";
+  main();
+};
+
+err("$@", 'out.cgi') if( $@ );
+exit;
+
+#####################################################################
+##  Removing the link back to CGI Works is a copyright violation.  ##
+##  Altering or removing any of the code that is responsible, in   ##
+##  any way, for generating that link is strictly forbidden.       ##
+##  Anyone violating the above policy will have their license      ##
+##  terminated on the spot.  Do not remove that link - ever.       ##
+#####################################################################
+
+sub main {
+
+  if( $ENV{REQUEST_METHOD} eq 'POST' ) {
+    parsepost();    
+    giveHit();
+  }
+  else {
+    parseget();
+
+    if( $USE_GATEWAY ) {
+      displayGate();
+    }
+    else {
+      giveHit();
+    }
+
+  }
+
+}
+
+sub giveHit {
+  my $cat;
+
+  cheat('No Cookie Support      ') if( $USE_REQ_COOK && $USE_GATEWAY && index($ENV{HTTP_COOKIE}, "hitcheck_$QRY{id}=") == -1 );  
+  cheat('Multiple Click - Cookie') if( $USE_COOKIES && index($ENV{HTTP_COOKIE}, "hitmult_$QRY{id}=") != -1 );  
+  cheat('Using Proxy Server     ') if( $USE_NO_PROXY && ($ENV{HTTP_VIA} || $ENV{HTTP_X_FORWARDED_FOR}) );  
+  cheat('Unsupported Browser    ') if( !$ENV{HTTP_ACCEPT} || !$ENV{HTTP_USER_AGENT} ); 
+  cheat('Bad Referring URL      ') if( $USE_GATEWAY && index($ENV{HTTP_REFERER}, $IN_URL) == -1 );  
+  cheat('Expired Gateway Session') if( $USE_GATEWAY && checkSession($ses) );
+  
+  checkIP() if( $USE_IP_LOG );
+  setCookie( "hitmult_$QRY{id}", $COOKIE_TIME ) if( $USE_COOKIES );
+
+  if( -e "$DDIR/members/$QRY{id}.cnt" ) {
+    diskspace("$DDIR/members/$QRY{id}.cnt");
+  
+    sysopen(FH, "$DDIR/members/$QRY{id}.cnt", $O_RDWR) || err("$!", "$QRY{id}.cnt");
+    $ofh = select(FH); $|=1; select($ofh);
+    flock(FH, $LOCK_EX);
+    my @cd = split(/\|/, <FH>);
+
+    ## repair data
+
+    $cd[0]++;
+    $cd[2]++;
+    $cd[9] = 0;
+
+    seek(FH, 0, 0);
+    print FH join('|', @cd);
+    truncate(FH, tell(FH));
+    close(FH);
+
+    $cat = $cd[6];
+  }
+
+  checkTime() if( !$USE_CRON );
+
+  if( $USE_FORWARD_CAT && $cat ) {
+    print "Location: $HTML_URL/" . HTMLName($cat, $FILE_EXT) . "\n\n";
+  }
+  else {
+    print "Location: $FORWARD_URL\n\n";
+  } 
+}
+
+sub displayGate() {
+  if( !$QRY{id} ) {
+    print "Location: $FORWARD_URL\n\n";
+    exit;
+  }
+
+  $ses = newSession();  
+  setCookie("hitcheck_$QRY{id}", 300) if( $USE_REQ_COOK );
+
+  print "Content-type: text/html\n\n";
+
+print <<HTML;
+#%HTML%#
+HTML
+
+}
+
+sub newSession {
+  my($ip, $time);
+  $ip   = $ENV{REMOTE_ADDR};
+  $ip   =~ s/\.//g;
+  $ip   = substr($ip, 0, 9);
+  $time = time;
+
+  return reverse($time - $ip);
+}
+
+sub checkSession {
+  my($ip, $time, $val);
+
+  $val  = reverse($QRY{ses});
+  $ip   = $ENV{REMOTE_ADDR};
+  $ip   =~ s/\.//g;
+  $ip   = substr($ip, 0, 9);
+  $val  += int($ip);
+  $time = time;
+
+  return 1 if( $time - $val > $SESSION_TIME );
+  return 0;
+}
+
+sub cheat {
+  my( $desc ) = shift;
+  fappend("$DDIR/cheat.log", "[ " . scalar( localtime ) . " ]  [ $desc ]  [ $QRY{id} ] [ $ENV{REMOTE_ADDR} ($ENV{HTTP_X_FORWARDED_FOR}) ]\n") if( $USE_CHEAT_LOG );
+  checkTime() if( !$USE_CRON );
+  print "Location: $FORWARD_URL\n\n";
+  exit;
+}
+
+sub checkIP {
+  my $rm = (split(/\./, $ENV{REMOTE_ADDR}))[0];
+
+  open(IP, "$DDIR/ips/$rm") || err("$!", "$DDIR/ips/$rm");
+  for( reverse <IP> ) {
+    if( $_ eq "$ENV{REMOTE_ADDR}|$QRY{id}\n" ) {
+      close(IP);
+      cheat("Multiple Click - IP Add");
+    }
+  }
+  close(IP);
+
+  open(APP, ">>$DDIR/ips/$rm") || err("$!", "$DDIR/ips/$rm");
+  print APP "$ENV{REMOTE_ADDR}|$QRY{id}\n";
+  close(APP);
+}
+
+sub setCookie {
+  my ( $val, $exp ) = @_;
+  my %mths = ( 0 => 'Jan', 1 => 'Feb', 2 => 'Mar', 3 => 'Apr', 4 => 'May', 5 => 'Jun',
+               6 => 'Jul', 7 => 'Aug', 8 => 'Sep', 9 => 'Oct', 10 => 'Nov', 11 => 'Dec');
+  my %days = ( 0 => 'Sunday', 1 => 'Monday', 2 => 'Tuesday', 3 => 'Wednesday', 4 => 'Thursday', 5 => 'Friday', 6 => 'Saturday');
+  my @date = gmtime(time + $exp);
+  my $year = substr($date[5] + 1900, 2, 2);
+  my $mins = length($date[1]) < 2 ? "0" . $date[1] : $date[1];
+  my $secs = length($date[0]) < 2 ? "0" . $date[0] : $date[0];
+
+  print "HTTP/1.0 302 Found\n" if( $NT );
+  print "Set-Cookie: $val=" . time . "; Expires=$days{$date[6]}, $date[3]-$mths{$date[4]}-$year $date[2]:$mins:$secs GMT\n";
+}
+
+sub checkTime {
+  if( getAge("$DDIR/times/rerank") >= $RERANK ) {
+    fwrite("$DDIR/times/rerank", time);
+    fwrite("$DDIR/times/rerank.frm", 'rankem.cgi');
+    require 'arp.pl';
+    doRerank($USE_RERANK_CAT);
+  }
+  
+  if( $RESET ne '-1' && getAge("$DDIR/times/reset") >= $RESET ) {
+    fwrite("$DDIR/times/reset", time);
+    fwrite("$DDIR/times/reset.frm", 'rankem.cgi');
+    require 'arp.pl';
+    doReset();
+  }
+ 
+  if( getAge("$DDIR/times/clean") >= $CLEAN_TIME ) {
+    fwrite("$DDIR/times/clean", time);
+    for( 1..255 ) {
+      open(FILE, ">$DDIR/ips/$_") || err("$!", "$DDIR/ips/$_");
+      close(FILE);
+    }
+  }
+}
+
+sub parsepost {
+  my( $rmhtml ) = shift;
+  my( $value, $name, $buffer );
+  read(STDIN, $buffer, $ENV{CONTENT_LENGTH});
+  my @pairs = split(/&/, $buffer);
+	
+  for (@pairs) {
+    ($name, $value) = split(/=/, $_);
+    $value =~ tr/+/ /;
+    $value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
+    $value =~ s/</&lt;/g if($rmhtml);
+    $value =~ s/>/&gt;/g if($rmhtml);
+    $QRY{$name} .= (defined $QRY{$name}) ? "," . $value : $value;
+  }
+}
+
+sub parseget {
+  my @pairs = split(/&/, $ENV{QUERY_STRING});
+  my ($name, $value);
+  
+  for (@pairs) {
+    ($name, $value) = split(/=/, $_);
+    $value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
+    $QRY{$name} = $value;
+  }
+}
+
+sub getAge {
+  my $file = shift;
+  return time - freadline($file);
+}
+
+sub HTMLName {
+  my($name, $fe) = @_;
+  $name = lc($name);
+  $name =~ s/\W//g;
+  return "$name.$fe";
+}
+
+sub diskspace {
+  my $file = shift;
+  my $dir  = $file;
+
+  if( $dir =~ /\// ) {
+    $dir =~ s/\/[^\/]+$//i;
+  }
+  else {
+    $dir = './';
+  }
+
+  sysopen(FILE, "$dir/test.file", $O_WRONLY | $O_CREAT) || err("$!", "$file     (Space Test)");
+  flock(FILE, $LOCK_EX);
+  truncate(FILE, 0);
+  print FILE "THIS FILE IS USED TO CHECK FOR FREE DISK SPACE";
+  flock(FILE, $LOCK_UN);
+  close(FILE);
+  mode(0666, "$dir/test.file");
+
+  my $size = (-s "$dir/test.file");
+
+  fremove("$dir/test.file");
+
+  err("No Disk Space Available", $file) if( $size == 0 ); 
+}
+
+sub mode {
+  my($perms, $file) = @_;
+  if( -O $file ) {
+    chmod($perms, $file) || err("$!", $file);
+  }
+}
+
+sub fremove {
+  my($file) = shift;
+  unlink($file) || err("$!", $file);
+}
+
+sub freadline {
+  my($file) = shift;
+  open(FILE, $file) || err("$!", $file);
+  flock(FILE, 1);
+  my $line = <FILE>;
+  flock(FILE, 8);
+  close(FILE);
+  chomp($line);
+
+  return $line;
+}
+
+sub fappend {
+  my($file, $data) = @_;
+  open(FILE, ">>$file") || err("$!", $file);
+  flock(FILE, 2);
+  print FILE $data;
+  flock(FILE, 8);
+  close(FILE);
+  chmod(0666, $file) if( -O $file );
+}
+
+sub fwrite {
+  my($file, $data) = @_;
+  open(FILE, ">$file") || err("$!", $file);
+  flock(FILE, 2);
+  print FILE $data;
+  flock(FILE, 8);
+  close(FILE);
+  chmod(0666, $file) if( -O $file );
+}
+
+sub err {
+  my($cause, $file) = @_;
+  chomp($cause);
+
+  print "Content-type: text/html\n\n";
+  print "<pre>\n";
+  print "A CGI ERROR HAS OCCURRED\n========================\n";
+  print "Error Message     :  $cause\n";   
+  print "Accessing File    :  $file\n\n</pre>";
+  print "<font face='Verdana' size='2'><b><a href='$FORWARD_URL'>Continue...</a></b></font>";
+  exit;
+}
+
+  ## If using the gateway, and requiring cookie enabled browser, check the cookie_id cookie
+  ## If using cookies to track hits, check the hit_id cookie
+  ## If not allowing proxies, check for proxy server
+  ## Check for a valid browser
+  ## If using the gateway, check for valid referer
+  ## If using the gateway, check the session

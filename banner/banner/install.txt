@@ -1,0 +1,26 @@
+maxer- date:14/06/2005
+
+hey, thanks for downloading my script.. its what i love doing-
+
+anyways- firstly this is distributed under GPL license see LICENSE file for more details -
+
+check out http://scripts.maxersmix.com for more updates and other scripts.
+
+anyways.. i thought this didnt need a admin area as phpmyadmin could do all the work. so to install setup a database on your mysql server and then goto banners.php and edit the connection details with your server- login and pass and the name of the db..
+
+then run this sql in phpmyadmin
+
+CREATE TABLE `banners` (
+  `id` int(11) NOT NULL auto_increment,
+  `banner` varchar(180) NOT NULL default '',
+  `link` varchar(180) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM;
+        
+
+then add a few banners using phpmyadmin then drop this html into you pages
+
+<script src="http://PATHTOFILE/banners.php"></script>
+
+change this url to wherever you have put the file on your server.
+

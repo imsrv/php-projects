@@ -1,0 +1,334 @@
+sub coutpostform {
+&vars;
+$inmembername=$query->param('inmembername');
+$inpassword=$query->param('inpassword');
+
+		if (! $inmembername) { $inmembername = cookie("amembernamecookie"); }
+	    	if (! $inpassword)   { $inpassword   = cookie("apasswordcookie"); }
+       
+
+
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader
+$menu1
+$menu2
+<center><table cellpadding=0 cellspacing=0 width=100%><tr> <td width=5% bgcolor=$cptdcolor1>&nbsp;</td><td  bgcolor=$cptdcolor1><b><font size=2 face=verdana>&nbsp;&nbsp;Post An Ad</td><td width=30% bgcolor=$cptdcolor2>
+<font size=1 face=verdana><center>
+EOF
+
+if($showusersonline eq "yes"){
+print "Users Online: $currentuserspresent\n";}
+else {print "$date\n";}
+
+print <<EOF;
+</center>
+</font>
+</td> <td bgcolor=$cptdcolor2><b><font color=red face=verdana size=3>*</font></b><font size=1 face=verdana>indicates a required field.</td></tr></table>   
+
+<table cellpadding=0 cellspacing=0 width=100%><tr> 
+<td width=25% bgcolor=$cpsidetdcolor valign=\"top\">
+<table width=100% cellpadding=1 cellspacing=1 border=0><tr><td width=10>&nbsp;</td><td>
+<center>
+$cpsidetdcont</center>
+</td></tr></table>
+</td>
+
+<td width=75%> 
+<blockquote><br>
+<form method="post" action="$cgiurl/personals.pl">
+<table border=0 cellpadding=2 cellspacing=2>
+<tr>
+<td>
+
+$text104
+
+<table><tr>
+<td>
+<font size=1 face=verdana><b>
+User Name</font><font color="red">*</font></b></td><td>
+<input type=text name=username value="$inmembername" size=15 maxlength=20></td></tr><tr>
+
+<td><font size=1 face=verdana><b>
+Password</font></b><font color="red">*</font></td><td>
+<input type=password name=password value="$inpassword" size=15 maxlength=20></td>
+</tr>
+</table>
+<p>
+
+<table border=0 cellpadding=2 cellspacing=2>
+<tr>
+<td>
+<b><font size=1 face=verdana><b>Check the category in which to place your ad</b></font></TD></tr>
+EOF
+
+if(($gender eq "female")&&($lookingfor eq "male")){
+print "
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wsmads\" checked><font size=1 face=verdana>Women Seeking Men</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"mswads\"><font size=1 face=verdana>Men Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wswads\"><font size=1 face=verdana>Women Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"msmads\"><font size=1 face=verdana>Men Seeking Men</font></td></tr>
+</table>\n";}
+
+elsif(($gender eq "female")&&($lookingfor eq "female")){
+print "
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wsmads\"><font size=1 face=verdana>Women Seeking Men</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"mswads\"><font size=1 face=verdana>Men Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wswads\" checked><font size=1 face=verdana>Women Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"msmads\"><font size=1 face=verdana>Men Seeking Men</font></td></tr>
+</table>\n";}
+
+elsif(($gender eq "male")&&($lookingfor eq "male")){
+print "
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wsmads\"><font size=1 face=verdana>Women Seeking Men</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"mswads\"><font size=1 face=verdana>Men Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wswads\"><font size=1 face=verdana>Women Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"msmads\" checked><font size=1 face=verdana>Men Seeking Men</font></td></tr>
+</table>\n";}
+
+elsif(($gender eq "male")&&($lookingfor eq "female")){
+print "
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wsmads\"><font size=1 face=verdana>Women Seeking Men</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"mswads\" checked><font size=1 face=verdana>Men Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wswads\"><font size=1 face=verdana>Women Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"msmads\"><font size=1 face=verdana>Men Seeking Men</font></td></tr>
+</table>\n";}
+
+else {
+print "
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wsmads\"><font size=1 face=verdana>Women Seeking Men</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"mswads\"><font size=1 face=verdana>Men Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wswads\"><font size=1 face=verdana>Women Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"msmads\"><font size=1 face=verdana>Men Seeking Men</font></td></tr>
+</table>\n";}
+
+print <<EOF;
+<p>
+<table><tr><td>
+
+$text105
+
+</td></tr><td><font size=1 face=verdana><b>Picture File Name</b></td></tr><tr>
+<td>
+<input type="text" name="adpicname" size=20></td></tr><tr>
+<td>
+<input type="submit" name="uploadadpic" value="Upload Pic" class="button"></td></tr></table>
+
+
+<table>
+<tr>
+<td><b><font size=1 face=verdana>Your Personals Ad Headline</font><font color="red">*</font><br><input type=text name=persadheadline size=50 maxlength=50></td></tr>
+<tr><td><font size=1 face=verdana><b>Enter your ad text.</b><font size=1>Press Enter/Return
+on your keyboard for new lines)</font>
+<font color="red">*</font><br>
+<TEXTAREA NAME="adtext" ROWS=5 COLS=50 wrap="virtual"></TEXTAREA><p>
+</td></tr>
+<tr>
+<td><font size=1 face=verdana>
+&nbsp;</font><br></td></tr>
+<p>
+</table>
+</td></tr></table>
+<p>
+<center><input type=submit name="postad" value="Post My Ad" class="button">
+<input type=reset value="Clear All" class="button"></center><p></blockquote>
+</form></td></tr></table>
+$botcode
+EOF
+exit;
+}
+
+#######################################################################################
+
+sub coutdelsfrm {
+
+  print qq~
+$mainheader
+$menu1
+$menu2
+<table cellpadding=0 cellspacing=0 width=100%><tr> 
+<td width=25% bgcolor=$cpsidetdcolor valign=\"top\">
+<table width=100% cellpadding=1 cellspacing=1 border=0><tr><td width=10>&nbsp;</td><td>
+<center>
+$cpsidetdcont</center>
+</td></tr></table>
+</td>
+
+<td width=75%> 
+
+<blockquote><br>
+<form method="post" action="$cgiurl/personals.pl">
+<table cellpadding=0 cellspacing=0 border=0><tr>
+<td>
+
+$text111
+
+<table border=0 cellpadding=2 cellspacing=2>
+<tr>
+<td>
+<table><tr><td><b><font size=1 face=verdana>In which category is your ad located?</b></font><br>
+<select name = "adpagenm" class="selist">
+<option value="wsmads">Women Seeking Men</option>
+<option value="mswads">Men Seeking Women</option>
+<option value="wswads">Women Seeking Women</option>
+<option value="msmads">Men Seeking Men</option>
+</select></td></tr>
+<tr><td>
+<font size=1 face=verdana><b>
+Username</b></font><br><input type=text name=username value="$inmembername" size=20 maxlength=40 class="box"></td></tr>
+<tr><td><font size=1 face=verdana><b>
+Password</b></font><br><input type=password name="password" value="$inpassword" size=20 maxlength=50 class="box"></td></tr>
+<tr><td><font size=1 face=verdana><b>
+Ticket Number</b></font><br><input type=text name=delticknum size=20 maxlength=50 class="box"></td></tr>
+<tr><td align=center><center><input type=submit name="deletead" value="Delete Ad" class="button">
+<input type=reset value="Clear All" class="button"></center></td></tr>
+</table></td></tr></table></td></tr></table></center><p></form></blockquote>
+</td></tr></table>
+$botcode
+~;
+exit;
+}
+
+
+###############################################################################
+
+sub defpage {
+
+print "Location: $cgiurl/index.pl\n\n";
+
+}
+
+
+sub editad {
+&vars;
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader
+$menu1
+$menu2
+<center><table cellpadding=0 cellspacing=0 width=100%><tr> <td width=5% bgcolor=$cptdcolor1>&nbsp;</td><td  bgcolor=$cptdcolor1><b><font size=2 face=verdana>&nbsp;&nbsp;Edit Your Ad</td><td width=30% bgcolor=$cptdcolor2>
+<font size=1 face=verdana><center>
+EOF
+
+if($showusersonline eq "yes"){
+print "Users Online: $currentuserspresent\n";}
+else {print "$date\n";}
+
+print <<EOF;
+</center>
+</font>
+</td> <td bgcolor=$cptdcolor2><b><font color=red face=verdana size=3>*</font></b><font size=1 face=verdana>indicates a required field.</td></tr></table>   
+
+<table cellpadding=0 cellspacing=0 width=100%><tr> 
+<td width=25% bgcolor=$cpsidetdcolor valign=\"top\">
+<table width=100% cellpadding=1 cellspacing=1 border=0><tr><td width=10>&nbsp;</td><td>
+<center>
+$cpsidetdcont</center>
+</td></tr></table>
+</td>
+
+<td width=75%> 
+<blockquote><br>
+<form method="post" action="$cgiurl/personals.pl">
+<table border=0 cellpadding=2 cellspacing=2>
+<tr>
+<td>
+
+
+<table><tr>
+<td>
+<font size=1 face=verdana><b>
+User Name</font><font color="red">*</font></b></td><td>
+<input type=text name=username value="$one" size=15 maxlength=20></td></tr><tr>
+
+<td><font size=1 face=verdana><b>
+Password</font></b><font color="red">*</font></td><td>
+<input type=password name=password value="$two" size=15 maxlength=20></td>
+</tr>
+</table>
+<p>
+
+<table border=0 cellpadding=2 cellspacing=2>
+<tr>
+<td>
+<b><font size=1 face=verdana><b>Check the category in which to place your ad</b></font></TD></tr>
+EOF
+
+if($four eq "wsmads"){
+print "
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wsmads\" checked><font size=1 face=verdana>Women Seeking Men</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"mswads\"><font size=1 face=verdana>Men Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wswads\"><font size=1 face=verdana>Women Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"msmads\"><font size=1 face=verdana>Men Seeking Men</font></td></tr>
+</table>\n";}
+
+elsif($four eq "wswads"){
+print "
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wsmads\"><font size=1 face=verdana>Women Seeking Men</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"mswads\"><font size=1 face=verdana>Men Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wswads\" checked><font size=1 face=verdana>Women Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"msmads\"><font size=1 face=verdana>Men Seeking Men</font></td></tr>
+</table>\n";}
+
+elsif($four eq "msmads"){
+print "
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wsmads\"><font size=1 face=verdana>Women Seeking Men</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"mswads\"><font size=1 face=verdana>Men Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wswads\"><font size=1 face=verdana>Women Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"msmads\" checked><font size=1 face=verdana>Men Seeking Men</font></td></tr>
+</table>\n";}
+
+elsif($four eq "mswads"){
+print "
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wsmads\"><font size=1 face=verdana>Women Seeking Men</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"mswads\" checked><font size=1 face=verdana>Men Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wswads\"><font size=1 face=verdana>Women Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"msmads\"><font size=1 face=verdana>Men Seeking Men</font></td></tr>
+</table>\n";}
+
+else {
+print "
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wsmads\"><font size=1 face=verdana>Women Seeking Men</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"mswads\"><font size=1 face=verdana>Men Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"wswads\"><font size=1 face=verdana>Women Seeking Women</font></td></tr><tr>
+<td> <b><font size=1 face=verdana><INPUT TYPE=\"radio\" NAME=\"adpagenm\" VALUE=\"msmads\"><font size=1 face=verdana>Men Seeking Men</font></td></tr>
+</table>\n";}
+
+print <<EOF;
+<p>
+<table><tr><td>
+
+$text105
+
+</td></tr><td><font size=1 face=verdana><b>Picture File Name</b></td></tr><tr>
+<td>
+<input type="text" name="adpicname" value="$five" size=20></td></tr><tr>
+<td>
+<input type="submit" name="uploadadpic" value="Upload Pic" class="button"></td></tr></table>
+
+
+<table>
+<tr>
+<td><b><font size=1 face=verdana>Your Personals Ad Headline</font><font color="red">*</font><br><input type=text name=persadheadline size=50 value="$six" maxlength=50></td></tr>
+<tr><td><font size=1 face=verdana><b>Enter your ad text.</b><font size=1>Press Enter/Return
+on your keyboard for new lines)</font>
+<font color="red">*</font><br>
+<TEXTAREA wrap="virtual" NAME="adtext" ROWS=5 COLS=50 wrap=physical>$seven</TEXTAREA><p>
+</td></tr>
+<tr>
+<td><font size=1 face=verdana>
+&nbsp;</font><br></td></tr>
+<p>
+</table>
+</td></tr></table>
+<p>
+<input type="hidden" name="delticknum" value="$three">
+<center><input type=submit name="postad" value="Update My Ad" class="button">
+<input type=reset value="Clear All" class="button"></center><p></blockquote>
+</form></td></tr></table>
+$botcode
+EOF
+exit;
+
+}
+1;

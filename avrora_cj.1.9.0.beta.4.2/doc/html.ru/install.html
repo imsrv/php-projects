@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=win-1251">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>Avrora CJ</TITLE>
+</HEAD>
+<body bgcolor="#FFFFFF" text="#000000">
+<P><font style="font-size: 12px; font-family: Arial, Helvetica, sans-serif;">
+1.&nbsp;&nbsp;&nbsp;распаковать дистрибутив в директорию вэб сайта.
+<br>
+2.&nbsp;&nbsp;&nbsp;выставить права на файлы и директории:
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/sys_log/&nbsp;&nbsp;&nbsp;- 0777 (rwx-rwx-rwx)
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/thumb/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 0777 (rwx-rwx-rwx)
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/.htaccess&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 0666 (rw--rw--rw-)
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/cj_config.php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 0666 (rw--rw--rw-)
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/thumb/thumb.csv&nbsp;&nbsp;&nbsp;- 0666 (rw--rw--rw-)
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/thumb/top.txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 0666 (rw--rw--rw-)
+<br>
+
+<br>
+4.&nbsp;&nbsp;&nbsp;отредактировать cj_config.php указав правильные данные для доступа к базе данных
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F0000">define('DB_HOST','localhost');</span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">&nbsp;&nbsp;&nbsp;<span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F00">// хост базы данных</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F0000">define('DB_LOGIN','root');</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">&nbsp;&nbsp;&nbsp;<span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F00">// логин пользователя к базе данных
+<br>
+</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F0000">define('DB_PASS','');</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F00">// пароль пользователя к базе данных
+<br>
+</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F0000">define('DB_DEVICE','vadim_pornolom');</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">&nbsp;&nbsp;&nbsp;<span style="font-family:Helvetica,Arial; font-size:10pt; color:#007F00">// имя базы данных
+<br>
+</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">5.&nbsp;&nbsp;&nbsp;запустить процес инсталляции используя <span style="font-family:Helvetica,Arial; font-size:10pt; color:#0000FF">http://www.your-server.com/install/</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+6.&nbsp;&nbsp;&nbsp;удалить директорию install
+<br>
+
+<br>
+Доступ к панели управления находится по адресу <span style="font-family:Helvetica,Arial; font-size:10pt; color:#0000FF">http://www.your-server.com/cj_adm.php</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+где дефолтным паролем является слово <span style="font-family:Helvetica,Arial; font-size:10pt; color:#FF0000"><b>admin</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+
+<br>
+Регистрация трейдеров происходит по адресу <span style="font-family:Helvetica,Arial; font-size:10pt; color:#0000FF">http://www.your-server.com/cj_wbm.php</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+главное не забудьте отредактировать темплейты<span style="font-family:Helvetica,Arial; font-size:10pt; color:#FF0000"> /faces/tpl.register.* </span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">и указать там свои данные.
+<br>
+
+<br>
+Версии авроры как правило делятся на несколько веток.
+<br>
+1.X.0&nbsp;&nbsp;&nbsp;- новая ветка, но не проверенная в работе.
+<br>
+1.X.1&nbsp;&nbsp;&nbsp;- стабильная ветка, проверенная в работе, иногда с мелкими багфиксами
+<br>
+1.X.X&nbsp;&nbsp;&nbsp;- стабильная ветка, с некоторыми последующими изменениями.
+<br>
+</font></P>
+</BODY>
+</HTML>

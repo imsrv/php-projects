@@ -1,0 +1,141 @@
+sub searchads {
+&verify;}
+
+
+sub verify {
+&vars;
+
+if($FORM{'keyphrase'} eq ""){
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader<br><br>
+<font size=2 face=verdana><blockquote>You did not enter anything to search for.
+Please go back and enter a keyword or phrase to search for.</font></blockquote>
+<center><FORM> <INPUT type="button" value="Click here to go back" onClick="history.go(-1)" class="button"> </FORM></center>
+<br><br>$botcode
+EOF
+exit;}
+
+unless(-e "$persadsdir/$FORM{'adsearchcat'}/ads/$FORM{'adsearchcat'}.txt"){
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader<br><br>
+<font size=2 face=verdana><blockquote>There were <b>(0)</b> ads found.</font></blockquote>
+<center><FORM> <INPUT type="button" value="Click here to go back" onClick="history.go(-1)" class="button"> </FORM></center>
+<br><br>$botcode
+EOF
+exit;}
+
+&checkforempty;
+}
+
+sub checkforempty {
+&vars;
+
+open(IN, "$persadsdir/$FORM{'adsearchcat'}/ads/$FORM{'adsearchcat'}.txt")||&oops($!,"Cannot read $persadsdir/$FORM{'adsearchcat'}/ads/$FORM{'adsearchcat'}.txt");
+@lines= <IN>;
+close(IN);
+
+$x= @lines;
+
+for($i = $x; $i >=0; $i--) {
+
+if($x > 0){&nokeyword;}
+else {
+print "Content-type:text/html\n\n";
+print "$mainheader<br><br>\n";
+print "<font size=2 face=verdana><blockquote>There were <b>(0)</b> ads found
+</font></blockquote>
+<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\" class=\"button\"> </FORM></center>\n";
+print "<br><br>$botcode\n";
+exit;
+}
+}
+}
+
+
+sub nokeyword {
+&vars;
+opendir(DIR, "$persadsdir/$FORM{'adsearchcat'}/ads");
+@dirdocs=readdir(DIR);
+closedir(DIR);
+
+foreach $docindir(@dirdocs){
+unless(($docindir eq ".")||($docindir eq "..")){
+
+open(IN, "$persadsdir/$FORM{'adsearchcat'}/ads/$docindir")||&oops($!,"Cannot read $persadsdir/$FORM{'adsearchcat'}/ads/$docindir");
+@lines= <IN>;
+close(IN);
+
+foreach $line(@lines) {
+
+$keyphrase =~ s/  / /g;
+@searchwords = split(/ /,$keyphrase);
+foreach $searchword(@searchwords){
+
+
+if($line =~ /$searchword/i){
+$keywordsfound = "yes";}
+
+else{$keywordsfound = "no";}
+
+
+if($keywordsfound eq "yes"){&showresults;}
+}
+}
+}
+}
+
+if($keywordsfound eq "no"){
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader<br><br>
+<font size=2 face=verdana><blockquote>There were <b>(0)</b> ads found
+</font></blockquote>
+<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\" class=\"button\"> </FORM></center>
+<br><br>$botcode
+EOF
+}
+exit;
+}
+
+
+
+
+sub showresults {
+&vars;
+
+print "Content-type:text/html\n\n";
+print "$mainheader<br><br>\n";
+
+$keyphrase =~ s/  / /g;
+@searchwords = split(/ /,$keyphrase);
+foreach $searchword(@searchwords){
+
+opendir(DIR, "$persadsdir/$FORM{'adsearchcat'}/ads");
+@dirdocs=readdir(DIR);
+closedir(DIR);
+
+foreach $docindir(@dirdocs){
+unless(($docindir eq ".")||($docindir eq "..")){
+
+open(IN, "$persadsdir/$FORM{'adsearchcat'}/ads/$docindir")||&oops($!,"Cannot read $persadsdir/$FORM{'adsearchcat'}/ads/$docindir");
+@lines= <IN>;
+close(IN);
+
+foreach $line(@lines) {
+
+if($line =~ /$searchword/i){
+
+print "$line";
+}
+}
+}
+}
+}
+print "<br><br>$botcode\n";
+exit;
+}
+
+
+1;

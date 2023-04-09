@@ -1,0 +1,18 @@
+To: #%EMAIL%#
+From: #%FROM%#
+Subject: Account Rejected
+
+Your account has been rejected for addition to our top list.
+
+Site Title  : #%TITLE%#
+Description : #%DESC%#
+Site URL    : #%URL%#
+
+The information you submitted was not acceptable for our site,
+and therefore we have removed your account.  If you want to 
+try signing up again, use the following URL:
+#%ACCTS_URL%#
+
+Regards,
+Webmaster
+#%MAIN_PAGE%#

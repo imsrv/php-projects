@@ -1,0 +1,394 @@
+require "configdat.lib";  
+
+sub delprof { 
+&vars;
+
+unless(-e "$users/$username.txt"){
+&problemencountered;}
+
+open (FILE, "$users/$username.txt") || &oops ($!, "Could not open $users/$username.txt");
+flock (FILE, 1) or die "Cannot lock file\n";
+while (<FILE>) {
+chop;
+	@datafile=split(/\n/);
+	foreach $line (@datafile) {
+	&delprochku($line);
+	}
+	}
+	close(FILE);
+	
+
+}
+
+sub delprochku($line){
+
+local ($line) = @_;
+	local ($loginname,$password,$emailaddr);
+		  ($loginname,$password,$emailaddr)= split(/\|/, $line);
+
+
+if(($FORM{'username'} eq "$loginname")&&($FORM{'password'} eq "$password")){
+
+print "Content-type: text/html\n\n"; 	
+print "$mainheader$submenu<br><br>\n"; 	
+print "<TABLE><TR><TD>
+<form method=\"post\" action=\"personals.pl\">
+<blockquote>
+$text112
+
+<input type=\"hidden\" name=\"username\" value=\"$username\">
+<input type=\"hidden\" name=\"password\" value=\"$password\">
+<br><br><center><input type=\"submit\" name=\"dodelpro\" value=\"Proceed\" class=\"button\">
+</form>\n"; 	
+print "<FORM> <INPUT type=\"button\" value=\"Go Back\" onClick=\"history.go(-1)\" class=\"button\"> </center></FORM><br><br>
+</TD></TR></TABLE>\n"; 	
+print "$botcode\n"; 
+exit; 
+}  
+
+else {&invalidlogin;}}
+
+sub dodelpro {
+
+&vars;
+
+
+
+if(-e "$profilesdir/catwsm/$username.html") {
+$profdatloc = "$profilesdir/catwsm";  	
+&redefprofile;
+&remnmprofdat;}
+
+elsif(-e "$profilesdir/catwsw/$username.html") {
+$profdatloc = "$profilesdir/catwsw";  	
+&redefprofile;
+&remnmprofdat;}
+
+elsif(-e "$profilesdir/catmsw/$username.html") {
+$profdatloc = "$profilesdir/catmsw";  	
+&redefprofile;
+&remnmprofdat;}
+
+elsif(-e "$profilesdir/catmsm/$username.html") {  	
+$profdatloc = "$profilesdir/catmsm";
+&redefprofile;
+&remnmprofdat;}
+
+else{
+print "Content-type: text/html\n\n"; 	
+print "$mainheader$submenu<br><br>\n"; 	
+print "<blockquote>
+
+$text113
+<br><br>
+</blockquote><p>\n"; 	
+print "<center><a href=\"$cgiurl/personals.pl?launchindex\">
+<b><font size=2 face=verdana>Personals Home</font></b></a><br><br></center><br><br><br>\n"; 	
+print "$botcode\n"; 
+exit;}
+
+
+# Notify user of successful deletion 		 	
+
+print "Content-type: text/html\n\n"; 	
+print "$mainheader<br><br>\n"; 	
+print "<blockquote>
+
+$text114
+
+</blockquote><p>\n"; 	
+print "<center><a href=\"$cgiurl/personals.pl?launchindex\">
+<b><font size=2 face=verdana>Personals Home</font></b></a><br><br></center>\n"; 	
+print "$botcode\n"; 
+exit; 		
+
+}  
+ 
+
+sub remnmprofdat {
+&removenm_admin_profiles_txt;
+
+opendir(DIR, "$profdatloc/datafiles");
+@dircont=readdir(DIR);
+closedir(DIR);
+
+foreach $fileindir(@dircont){
+unless(($fileindir eq ".")||($fileindir eq "..")||($fileindir eq "pdnext.txt")||($fileindir eq "plnext.txt")){
+
+
+open(IN, "$profdatloc/datafiles/$fileindir")||&oops($!,"Cannot read $profdatloc/datafiles/$fileindir");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+open(OUT,">$profdatloc/datafiles/$fileindir") || &oops ($!,"Cannot write $profdatloc/datafiles/$fileindir");
+flock (OUT, 2);
+foreach $line(@lines) {
+$nameinques=$FORM{'username'};
+if ($line !~ /$nameinques/) {
+print OUT "$line";
+}
+}
+close (OUT);
+
+}
+}
+
+$cnt=unlink "$profilesdir/datafiles/$username.txt";
+
+}
+
+
+sub deletead {
+&vars;
+
+if(($username eq "")||($password eq "")){&missingUorP;}
+
+unless(-e "$users/$username.txt"){
+&problemencountered;}
+
+open (FILE, "$users/$username.txt") || &oops ($!, "Could not open $users/$username.txt");
+flock (FILE, 1) or die "Cannot lock file\n";
+while (<FILE>) {
+chop;
+	@datafile=split(/\n/);
+	foreach $line (@datafile) {
+	&delchku($line);
+	}
+	}
+	close(FILE);
+	
+
+}
+
+sub delchku($line){
+
+local ($line) = @_;
+	local ($loginname,$password,$emailaddr);
+		  ($loginname,$password,$emailaddr)= split(/\|/, $line);
+
+
+if(($FORM{'username'} eq "$loginname")&&($FORM{'password'} eq "$password")){
+&goodtogo;}
+
+else{&invalidlogin;}
+}
+
+sub goodtogo {
+&vars;
+
+unless(-e "$persadsdir/$FORM{'adpagenm'}/ads/$FORM{'adpagenm'}.txt"){
+print "Location: $cgiurl/personals.pl?launchindex\n\n";}
+
+
+opendir(DIR, "$persadsdir/$FORM{'adpagenm'}/ads");
+@docs=readdir(DIR);
+closedir(DIR);
+
+$nd=@docs;
+
+foreach $doc(@docs){
+
+unless(($doc eq ".")||($doc eq "..")){
+
+open(IN, "$persadsdir/$FORM{'adpagenm'}/ads/$doc")||&oops($!,"Cannot read $persadsdir/$FORM{'adpagenm'}/ads/$doc");
+@lines= <IN>;
+close(IN);
+
+$tls=250 * $nd;
+$x= @lines;
+$adjtls=($tls - 250) + $x;
+
+for($i = $x; $i >=0; $i--) {
+unless($adjtls > 0){
+print "Location: $cgiurl/personals.pl?launchindex\n\n";}
+
+&delproceed;
+}
+}
+}
+}
+
+
+
+
+
+sub delproceed {
+open (FILE, "$messagecenterdir/$username/ads.txt") || &oops ($!, "Could not open $messagecenterdir/$username/ads.txt");
+flock (FILE, 1) or die "Cannot lock file\n";
+while (<FILE>) {
+chop;
+	@datafile=split(/\n/);
+	foreach $line (@datafile) {
+	&isitusersad($line);
+	}
+	}
+	close(FILE);
+}
+
+sub isitusersad($line) {
+local ($line) = @_;
+	local ($username,$delticknum);
+	($username,$delticknum) = split(/\|/, $line);
+
+if(($FORM{'username'} eq "$username")&&($FORM{'delticknum'} eq "$delticknum")){
+&findeltick;}
+
+else {
+
+print "Content-type:text/html\n\n";
+print "$mainheader$submenu<br><br>\n";
+print "<blockquote>
+
+$text115
+<br><br>
+</blockquote>\n";
+print "<br><br>$botcode\n";
+exit;
+
+}
+}
+
+
+sub findeltick {
+&vars;
+opendir(DIR, "$persadsdir/$FORM{'adpagenm'}/ads");
+@ddocs=readdir(DIR);
+closedir(DIR);
+
+foreach $ddoc(@ddocs){
+
+unless(($ddoc eq ".")||($ddoc eq "..")){
+
+open(IN, "$persadsdir/$FORM{'adpagenm'}/ads/$ddoc")||&oops($!,"Cannot read $persadsdir/$FORM{'adpagenm'}/ads/$ddoc");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+open(OUT,">$persadsdir/$FORM{'adpagenm'}/ads/$ddoc") || &oops ($!,"Cannot write $persadsdir/$FORM{'adpagenm'}/ads/$ddoc");
+flock (OUT, 2);
+foreach $line(@lines) {
+$codetofind = $FORM{'delticknum'};
+if ($line !~ /$codetofind/) {
+print OUT "$line";
+}
+}
+}
+}
+close (OUT);
+
+
+
+$cnt=unlink "$messagecenterdir/$username/ads.txt";
+
+
+open(IN, "$admincgidir/ads.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($numberofads)=split(/\n/,$line);
+$oldadcount=$numberofads;
+$newadcount=$numberofads - 1;
+
+open (FILE, ">$admincgidir/ads.txt") || die "Cannot open $admincgidir/ads.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$newadcount\n";  
+close (FILE);
+}
+
+
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader
+$submenu
+<br><br><blockquote>
+
+$text116
+
+
+<br><br>
+</blockquote>
+<br><br>$botcode
+EOF
+exit;
+}
+
+sub redefprofile {
+
+&vars;
+
+open (HTML, ">$profdatloc/$username.html") || die "Cannot open $profdatloc/$username.html to recreate user default profile\n";
+flock (HTML, 2) or die "cannot lock file\n";
+print HTML "
+$mainheader
+$submenu
+
+<form method=\"post\" action=\"$cgiurl/personals.pl\">
+
+
+<font size=2 face=verdana><blockquote>Sorry, this user does not have a profile yet; but you can 
+leave a message by clicking the button below.<p>
+</blockquote></font>
+<input type=\"hidden\" name=\"username\" value=\"$username\">
+<center><input type=\"submit\" name=\"leavemess\" value=\"Leave Message\" class=\"button\"></center><br><br>
+
+<br><br>
+$botcode\n";
+}
+
+
+sub edad {
+
+print "Content-type:text/html\n\n";
+print "<html><head><title>Delete Profile</title></head>
+<body topmargin=0 bottommargin=0 marginheight=0 marginwidth=0 leftmargin=0 rightmargin=0>
+$mainheader
+$submenu
+
+<br><br>
+<center>
+<form method=\"post\" action=\"personals.pl\">
+<table cellpadding=0 cellspacing=0 width=300>
+<tr><td><font size=2 face=verdana color=000000>
+<br><br>
+Enter your username and password to retrieve your ad data.
+
+</td></tr></table>
+
+<br><br>
+<table cellpadding=0 cellspacing=0 width=300><tr>
+<td><b><font size=2 face=univers>Username</font></b></td><td><input type=\"text\" name=\"username\" value=\"$inmembername\" size=15></td></tr><tr>
+<td><b><font size=2 face=univers>Password</font></b></td><td><input type=\"password\" name=\"password\" value=\"$inpassword\" size=15></td>
+</tr></table><br>
+<input type=\"submit\" name=\"doeditad\" value=\"Next\" class=\"button\"></center>
+</form>
+$botcode
+</body></html>\n";
+
+}
+
+
+sub doeditad {
+&vars;
+
+if(($username eq "")||($password eq "")){&missingUorP;}
+
+unless(-e "$users/$username.txt"){
+&problemencountered;}
+
+open (FILE, "$messagecenterdir/$username/addata.txt") || &oops ($!, "Could not open $messagecenterdir/$username/addata.txt");
+flock (FILE, 1) or die "Cannot lock file\n";
+@lines=<FILE>;
+close(FILE);
+
+foreach $line(@lines){
+($one,$two,$three,$four,$five,$six,$seven)= split(/\|/, $line);
+
+if(($FORM{'username'} eq "$one")&&($FORM{'password'} eq "$two")){
+&editad;}
+
+else{&invalidlogin;}
+}
+}
+1;

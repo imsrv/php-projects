@@ -1,0 +1,135 @@
+<html>
+<head>
+  <title>AutoGallery SQL Administration</title>
+  <script language="JavaScript">
+    function openHelp(url, name) { 
+      window.open(url, name, 'scrollbars=1,resizable=no,width=350,height=450,status=0,menubar=0');
+    }
+  </script>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<font face="Verdana" size="2" style="font-size: 11px;" color="red">
+<b>#%MESSAGE%#</b>
+</font>
+
+<br><br>
+
+<form action="admin.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="650">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+
+<tr>
+<td bgcolor="#004080" align="center" colspan="3">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Edit Rejection E-mails<br>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td width="100">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>E-mail ID</b>
+</font>
+</td>
+<td width="550">
+<input type="text" name="id" size="12" value="#%REJECT_ID%#" style="font-size: 11px; font-family: Verdana">
+<font face="Verdana" size="2" style="font-size: 11px;">
+A 5-8 character identifier for this e-mail
+</font>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#ececec" valign="top" colspan="2">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Enter The Text For the Entire E-mail In the Box Below</b><br>
+
+Don't forget to include the To, From, and Subject lines in the e-mail!<br>
+See the templates.html documentation file if you need more information on this.
+</font>
+</font>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#cccccc" colspan="2" align="center">
+<textarea name="html" cols="95" rows="15" wrap="OFF" style="font-size: 11px; font-family: Verdana">#%HTML%#</textarea>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td align="center" colspan="2">
+
+<select name="run" style="font-size: 11px; font-family: Verdana">
+  <option value="saveReject">Save E-mail</option>
+  <option value="loadReject">Load E-mail</option>
+  <option value="deleteReject">Delete E-mail</option>
+</select>
+
+&nbsp;&nbsp;&nbsp;
+<input type="submit" name="submit" value="Execute Function" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+<br><br>
+
+<table border="0" cellpadding="0" cellspacing="0" width="650">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="100%">
+
+<tr>
+<td bgcolor="#004080" align="center" colspan="3">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Current Rejection E-mails<br>
+</font>
+</td>
+</tr>

@@ -1,0 +1,36 @@
+<table cellcpacing=0 cellpadding=0 border=0 width=740 align=center><tr><td>
+<form action=admin.cgi method=get><input type=hidden name=page value=adduser>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr>
+	<th>ACCOUNT NAME</th>
+	<th>LAST IP</th>
+	<th>LAST LOGGED</th>
+	<th>ACCESS RIGHT</th>
+	<th>EDIT</th>
+	<th>DEL</th>
+</tr>
+#user-lines#
+<tr><td colspan=6 class=tdb><input type=submit value="ADD USER" class=sbmt></td></tr>
+</table>
+
+
+
+</td></tr></table>
+</form>
+
+
+</td></tr></table>
+
+
+
+<!--[user-lines]-->
+<tr>
+	<td class=td#?1:2#><a href=admin.cgi?page=viewuser&uid=#user-id# class=ar><img src=#image_dir#user.gif width=16 height=16 border=0> #user-name#</a></td>
+	<td class=td#?1:2# align=right>#user-ip#</td>
+	<td class=td#?1:2# align=right>#user-time#</td>
+	<td class=td#?1:2# align=right>#user-right#</td>
+	<td class=td#?1:2# align=center><a href=admin.cgi?page=edituser&uid=#user-id#><img src=#image_dir#edit.gif width=16 height=16 border=0></a></td>
+	<td class=td#?1:2# align=center><a href=admin.cgi?page=deleteuser&uid=#user-id# onClick="return confirm('Are you sure to delete user?');"><img src=#image_dir#del.gif width=16 height=16 border=0></a></td>
+</tr>
+<!--[user-lines]-->

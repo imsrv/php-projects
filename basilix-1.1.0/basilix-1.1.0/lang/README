@@ -1,0 +1,19 @@
+To create your language's messages:
+o copy the directory of english version to your language.
+  (italian is given as an example)
+
+	$ cp -R en it
+
+o enter the directory "it"
+	
+	$ cd it
+
+o edit the files.
+o add the new language to the /usr/local/basilix/conf/lang.conf:
+
+	$bsx_lang[$i]["long"]           = "Italiano";
+	$bsx_lang[$i]["short"]          = "it";
+	$bsx_lang[$i++]["charset"]      = "iso8859-1";	// its charset
+
+-
+That's all, now your language is active

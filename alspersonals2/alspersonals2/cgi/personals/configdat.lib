@@ -1,0 +1,409 @@
+################################################################### 
+# Begin Configuration  
+################################################################### 
+# Set the various directory paths, URLs etc. for main program
+# If you don't know your basepath, run the file checkpath.cgi
+# Make sure you set permissions on checkpath.cgi to 755 Must enter
+# value at $basedir="". Do not leave empty
+################################################################### 
+$basedir="";
+$baseurl="http://www.etown21.com";   
+
+#Your website URL 
+$siteurl="http://www.etown21.com";
+
+#The URL of your cgi directory  
+$cgidir="";
+$cgiurl="$siteurl/cgi-bin/personals"; 
+$perscgidir	= "$cgidir/personals";
+#The maximum size of uploaded image files you will allow  
+$maxfilesize = "10000"; 
+#The title of your website  
+$sitename="AlsPersonals Demo";			     
+
+#Path to you mail program	  
+$sendmail='/usr/lib/sendmail';		    
+
+#Your email address 
+$email='etown21mailcenter@mail.com';
+
+$pin="1234";
+################################################################### 
+# Set paths etc. for postad.pl 
+###################################################################           
+$postadurl = "$cgiurl/postad.pl"; 
+$persadsdir= "$cgidir/personals/persads"; 
+$persadsurl= "$cgiurl/persads";  
+$persadscgidir= "$cgidir/personals/persads";
+$persadswwwdir = "$basedir/personals/persads";  
+$persadswwwurl= "$baseurl/personals/persads";    
+$personalsurl="$baseurl/personals";
+$personalsdir="$basedir/personals";
+
+
+$htmldir="$persadsurl"; 
+$randpwdint = "039742";	 
+$imgurl="$baseurl/personals/images";	   
+$users="$basedir/personals/users";   
+$profilesdir="$basedir/personals/profiles"; 
+$profilesurl="$baseurl/personals/profiles";  
+$userimagesdir="$profilesdir/pictures";  
+$userimagesurl="$profilesurl/pictures"; 
+$admindir="$basedir/personals/admin"; 
+$admindirurl="$baseurl/personals/admin"; 
+$admincgiurl="$cgiurl/admin"; 
+$admincgidir="$cgidir/personals/admin"; 
+$adminpage="$admindir/mancenter.html"; 
+$userdata="$admindir/userdata"; 
+$userdataurl="$admindirurl/userdata";  
+$storepass="$users/storepass";
+$lovescopedir="$personalsdir/lovescope";
+$lovescopeurl="$personalsurl/lovescope";
+$messagecenterdir="$personalsdir/messagecenter";
+$messagecenterurl="$personalsurl/messagecenter";
+$profiledatadir="$profilesdir/datafiles";
+###################################################################################################
+# Chat paths and variables
+
+# Change only if you have changed the location of the directory "chatdocs",
+# or changed the extensions on the files rm1.html, rm2.html, rm3.html, and rm4.html 
+# something other than .html
+
+$chatroomdir='$personalsdir/chatdocs';
+$croomext='.html';
+$progcom=1;
+$chatpersonalitiesurl="$personalsurl/chatdocs/personalities";
+
+
+# Set preferred theme color
+
+$chatroomthemecolor="AB0604";
+$chatbarcolor="eeeeee";			# The message bar displaying text box for user to type message
+$chatbarfontcolor="000000";		# Should be visible on $chatbarcolor
+$usernamedisplayfontcolor="000080";	# Font color for username in chatrooms
+$timedisplayfontcolor="000080";		# Font color for time in chatrooms
+$allownonmemberchatting="on";
+$chatlogo="<center><img src=\"$imgurl/chatlogo.gif\" border=0></center>";
+$chatroomborderyn="yes";
+$chatroombordersize=1;
+$chatroombordercolor="000000";
+$chatscrollbarshadowcolor="#000000";
+$chatscrollbarfacecolor="#AB0604";
+$chatscrollbarhighlightcolor="#000000";
+$chatscrollbar3dlightcolor="#000000";
+$chatscrolldarkshadowcolor="#000000";
+$chatscrollbartrackcolor="#000000";
+$chatscrollbararrowcolor="#000000";
+$chatmenutdcolor="$chatroomthemecolor";
+$croomlinkcolor="ffffff";
+$croomfcolormain="ffffff";
+
+
+# Customize the index page. The file index.lib contains the code for the index page that is
+# executed after login. You can customize various areas of the page by changing the variables below.
+
+# Page margins
+
+$bottommargin="0";
+$topmargin="0";
+$marginheight="0";
+$marginwidth="0";
+$leftmargin="0";
+$rightmargin="0";
+
+
+# Page colors
+$indexmainbodybgcolor="4D0503";
+$mainbodybgcolor="ffffff";
+$feaprotablecolor1="A40201";
+$feaprotdcolor1="994D4D";
+$feaprotdcolor2="FFFFFF";
+$feaprotdcolor3="994D4D";
+$indexthemecolor="4D0503";
+$left_menu_td_color="AB0604";
+$tdbgcolor1="E8B8B7";
+$tdbgcolor2="5E1411";
+$tdbgcolor3="5E1411";
+$tdbgcolor4="E8B8B7";
+$tdbgcolor5="5E1411";
+$tdbgcolor6="5E1411";
+$rightbottomtdcolor="F8F0FF";
+$bannertablebgcolor="020100";
+$bannertdbgcolor="dfdfdf";
+$rightofbannertdbgcolor="AB0604";
+$adheadertdbgcolor = "AB0604";			
+$adheaderfsize = 2;				
+$adheaderfstyle	= "verdana";			
+$adheaderfcolor	= "ffffff";			
+$adtexttdbgcolor = "eeeeee";			
+$adtextfsize = 2;				
+$adtextfstyle = "verdana";			
+$adtextfcolor = "000000";			
+$adpostedby_tdbgcolor = "c0c0c0";			 
+$adpostedbyfsize = 2;				
+$adpostedbyfcolor = "000000";			
+$adpostedbyfstyle = "verdana";			
+$adpagesmainbgcolor = "ffffff";			
+$adcategorybgcolor = "eeeeee";			
+$adpagesleftcolumnbgcolor = "AB0604";			
+$adduration	= "5";
+$adinfolength=50;
+$adlength=50;
+$searchadstablecolor="ffffff";
+$searchresultspictdcol="c0c0c0";
+$searchresultstxttdcol="ffffff";
+$mhmenutableheight=30;
+$mhtablecolor1=AB0604;
+$mhmenutdcolor=E8B8B7;
+$mhmenuitemfontsize="2";
+$mhmenuitemfontstyle="geneva,verdana";
+$mhmenuitemfontcolor="020100";
+$indsubmenubgcolor="eeeeee";
+$indsubmenutdcolor="eeeeee";
+$indsubmenuheight=35;
+$left_menu_font_color="ffffff";		# Must show on $left_menu_td_color
+$viewprofile_font_color="800080";
+$viewprofilelinkcolor=ffffff;
+$monlinetablecolor="eeeeee";
+$profilesofweekfontfamily="geneva,verdana,arial";
+$profilesofweekfontsize="13pt";
+$profilesofweekfontcolor="ffffff";
+$messagecenterbgcolor1="ab0604";
+$messagecenterbgcolor2="e8b8b7";
+$messagecenterbgcolor3="eeeeee";
+$msgcenfcolor1="ffffff";
+
+
+
+# Your copyright information
+
+$copyright="<center><font size=1 face=verdana color=white>Powered by: <a href=\"http://www.etown21.com\">AlsPersonals</a><br>
+Copyright &copy; 2001<br>Adela Lewis</font></center>";
+
+# You can reset the colors for most of the script generated pages. To change the colors from 
+# the HTML pages, you will have edit manually.
+# Experiment by changing the value then  
+# going back and running the program to see where the color change was 
+# made  
+
+$cptdcolor1 = "E8B8B7";   
+$cptdcolor2 = "c0c0c0";   
+$cpsidetdcolor = "5E1411";    
+$createprofiletdcolor1 = "e8b8b7";
+$createprofiletdcolor2 = "eeeeee";
+$cpsidetdcont_tdbgcol="eeeeee";
+$cpsidetdcont_fcol="000000";
+$cptdfcolor1="000000";
+$cptdfstyle="geneva";
+
+
+$menumain="<table width=100% HEIGHT=250 bgcolor=$tdbgcolor2 cellpadding=2 cellspacing=2 valign=top><tr><td valign=top>
+
+<table width=100% bgcolor=$tdbgcolor3 cellpaddibg=2 cellspacing=2 border=0 valign=top><tr>
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/personals.pl?launchindex\"><font color=$left_menu_font_color size=1 face=verdana>MEMBER'S HOME</font></a></center></td></tr><tr>
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/personals.pl?myprofile\"><font color=$left_menu_font_color size=1 face=verdana>MY PROFILE</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?createprofile\"><font color=$left_menu_font_color size=1 face=verdana>CREATE A PROFILE</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?edpro\"><font color=$left_menu_font_color size=1 face=verdana>EDIT PROFILE</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/delprofile.pl\"><font color=$left_menu_font_color size=1 face=verdana>DELETE PROFILE</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?browse_ads\"><font color=$left_menu_font_color size=1 face=verdana>BROWSE PROFILES</font></a></center></td></tr><tr>
+
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?place_new\"><font color=$left_menu_font_color size=1 face=verdana>POST AN AD</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?edad\"><font color=$left_menu_font_color size=1 face=verdana>EDIT AD</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?del_persad\"><font color=$left_menu_font_color size=1 face=verdana>DELETE AD</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?viewads\"><font color=$left_menu_font_color size=1 face=verdana>VIEW ADS</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/postad.pl?getfeatured\"><font color=$left_menu_font_color size=1 face=verdana>GET FEATURED</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/personals.pl?msgcenform\"><font color=$left_menu_font_color size=1 face=verdana>CHECK MESSAGES</font></a></center></td></tr><tr>
+
+
+<td bgcolor=$left_menu_td_color>
+<center><a href=\"$cgiurl/personals.pl?mescenform\"><font color=$left_menu_font_color size=1 face=verdana>SEND A MESSAGE</font></a></center></td></tr><tr>
+
+<td bgcolor=$left_menu_td_color>
+<center><font color=$left_menu_font_color size=1 face=verdana><b>CHAT</b> 
+<select name=chatlocale class=\"selist\" onchange=\"window.location.href=this.options[this.selectedIndex].value\">
+<option value=\"Choose Room\" selected>Choose Room</option>
+<option value=\"$cgiurl/chatdocs/rm1/index.pl\">Lounge One</option>
+<option value=\"$cgiurl/chatdocs/rm2/index.pl\">Lounge Two</option>
+<option value=\"$cgiurl/chatdocs/rm2/index.pl\">Lounge Three</option>
+</select>
+
+</font></center></td></tr></table></td></tr></table>";
+
+# You can add content to left table of certain pages, such as the form the user fills out to create a profile, browse profiles
+# etc. Just place your html code between the quotation marks of 
+# $cpsidetdcont. Remember to backslash quotation marks, scalars($), @ signs 
+# and % signs. Do not put a backslash in front of the opening and 
+# closing quotes. To keep the main menu just add your HTML code after  
+# $menumain 
+
+$cpsidetdcont = "$menumain";     
+
+
+# Your main page contains a space for a banner ad or rotating banner content
+# Just replace the code below to change the current banner. To remove the banner
+# table, set $bannerspace to "off"
+
+$bannerspace="on";
+
+$bannercode="<a href=\"http://www.etown21.com\"><img src=\"http://www.etown21.com/images/banner1.gif\" border=\"0\"></a>";
+
+$messagecenterbannercode="<a href=\"http://www.etown21.com\"><img src=\"http://www.etown21.com/images/banner1.gif\" border=\"0\"></a>";
+
+# $rightofbannercode will hold the code to fill the space to the right of the banner you display on the main page
+
+$rightofbannercode="";
+
+# Customize the message box colors
+
+$bgcolormain="ffffff";
+$bgcolor1="eeeeee";			# Very light gray color used for various message box tables
+$bgcolor2="AB0604"; 			# Light violet color showing "Delete" "Read" buttons 			
+$bgcolor3="E8B8B7";			# Message box table header displaying "From" "Date" "Subject" 
+$bgcolor4="AB0604";
+$bgcolor5="E8B8B7";
+$msgbxfcolor1=ffffff;
+$msgbxfcolor2=ffffff;
+$msgbxfcolor3=ffffff;
+$randomlovescopeheaderbgcolor="AB0604";
+$randomlovescopetdbgcolor="ffffff";
+$messageboxmenutdcellbgcolor="E8B8B7";
+$msgbxlftmenubgcolormain="AB0604";
+
+
+# Customize the profile page colors
+
+$profilepagesthemecolor="AB0604";
+$ppcolor1="eeeeee";			
+$ppcolor2="ffffff";			
+$ppcolor3="E8B8B7";
+$profileheadfontfamily="geneva,verdana,arial,univers";
+$profileheadfontcolor=ffffff;
+$profileheadfontsize="18pt";
+$fcolortheme="ffffff";     	# Must be visible on the color set in $profilepagesthemecolor
+$fcolor1="000000";	   	# Must be visible on the color set in $ppcolor1	
+$fcolor2="020100";		# Must be visible on the color set in $ppcolor2	
+$fcolor3="000000";	   	# Must be visible on the color set in $ppcolor3		
+
+###################################################################  
+# You can put a logo or title text in the blank table to the left of the 
+# banner at the top of your program pages. Enter the HTML code
+# in $lbheadcode="";
+
+$lbheadcode="";
+
+$mainheader="<table cellpadding=1 cellspacing=1 width=100% height=60 bgcolor=$bannertablebgcolor border=0><tr>
+<td width=40% bgcolor=$rightofbannertdbgcolor>$lbheadcode</td><td width=60% bgcolor=$bannertdbgcolor><center>$bannercode</center></td></tr></table>";
+
+$submenu="<!--menu 1 listing the program options of create profile, search ads etc.-->
+ 
+<table width=100% height=$mhmenutableheight border=0 cellpadding=0 cellspacing=0><tr>
+<td bgcolor=$mhmenutdcolor>
+<center><a href=\"$cgiurl/postad.pl?createprofile\">
+<font size=$mhmenuitemfontsize face=$mhmenuitemfontstyle color=$mhmenuitemfontcolor>Create Profile</font></a></td>
+
+<td nowrap width=1 bgcolor=$mhtablecolor1></td>
+<td bgcolor=$mhmenutdcolor>
+<center><a href=\"$cgiurl/postad.pl?browse_ads\"><font size=$mhmenuitemfontsize face=$mhmenuitemfontstyle
+color=$mhmenuitemfontcolor>Search Ads/Profiles</font></font></td>
+
+<td nowrap width=1 bgcolor=$mhtablecolor1></td>
+<td bgcolor=\"$mhmenutdcolor\">
+<center><a href=\"$cgiurl/postad.pl?place_new\">
+<font size=$mhmenuitemfontsize face=$mhmenuitemfontstyle color=$mhmenuitemfontcolor>Place Ad</font></a></td>
+
+<td nowrap width=1 bgcolor=$mhtablecolor1></td>
+<td bgcolor=\"$mhmenutdcolor\">
+<center><a href=\"$cgiurl/postad.pl?edpro\">
+<font size=$mhmenuitemfontsize face=$mhmenuitemfontstyle color=$mhmenuitemfontcolor>Edit Profile</font></a></td>
+
+<td nowrap width=1 bgcolor=$mhtablecolor1></td>
+<td bgcolor=\"$mhmenutdcolor\">
+<center><a href=\"$cgiurl/delprofile.pl\">
+<font size=$mhmenuitemfontsize face=$mhmenuitemfontstyle color=$mhmenuitemfontcolor>Delete Profile</font></a></td>
+
+
+
+<td nowrap width=1 bgcolor=$mhtablecolor1></td>
+<td bgcolor=\"$mhmenutdcolor\">
+<center><a href=\"$cgiurl/postad.pl?del_persad\" >
+<font size=$mhmenuitemfontsize face=$mhmenuitemfontstyle color=$mhmenuitemfontcolor>Delete Ad</font></a></td>
+
+<td nowrap width=1 bgcolor=$mhtablecolor1></td>
+<td bgcolor=\"$mhmenutdcolor\">
+<center><a href=\"$cgiurl/personals.pl?msgcenform\" >
+<font size=$mhmenuitemfontsize face=$mhmenuitemfontstyle color=$mhmenuitemfontcolor>
+My Messages</font></a></td>
+
+<td nowrap width=1 bgcolor=$mhtablecolor1></td>
+<td bgcolor=\"$mhmenutdcolor\">
+<center><a href=\"$cgiurl/personals.pl?launchindex\">
+<font size=$mhmenuitemfontsize face=$mhmenuitemfontstyle color=$mhmenuitemfontcolor>Home</font></a></td>
+
+
+</tr></table>";
+
+
+
+$botcode="<table cellpadding=0 cellspacing=0 width=100% height=60><tr>
+<td bgcolor=$cptdcolor1>$copyright</table></center>";
+
+$indsubmenu="<table width=100% bgcolor=$indsubmenubgcolor cellpadding=0 cellspacing=0 border=0 height=$indsubmenuheight><tr>
+<td bgcolor=$indsubmenutdcolor>
+<center><span style=\"color:000000; font-family:geneva,verdana,arial,univers; font-size:8pt; text-decoration:none; font-weight:normal;\">Thanks for trying AlsPersonals Version 2 Demo. For questions or comments contact <a href=\"mailto:customerservice\@etown21.com\">customerservice\@etown21.com</a></span></center></td></tr></table>";
+
+$indsubmenubottom="<table width=100% bgcolor=$indsubmenubgcolor cellpadding=2 cellspacing=2 border=0 height=$indsubmenuheight><tr>
+<td bgcolor=$indsubmenutdcolor>
+<center><span style=\"color:000000; font-family:geneva,verdana,arial,univers; font-size:8pt; text-decoration:none; font-weight:normal;\">March sale price: <font color=navy><b>\$19.99!</b></span>&nbsp;&nbsp;
+<a href=\"http://www.etown21.com/alsp2purchase.shtml\"><font color=4D0503 size=2 face=verdana,geneva><b>
+Click here to buy AlsPersonals Version 2</b></center></a></td></tr></table>";
+
+###################################################################  
+
+# Bad words to filter. Please excuse the following word list. In  
+# order to prevent users from using  obscene language on their  
+# pages, the script must know what words to look  
+# for that must be removed.   
+# Add any other words to be removed. Follow the pattern!    
+
+@foulwords = ("fuck",  "shit", "bitch", "whore", "cunt", "pussy", "damn");      
+
+
+
+################################################################### 
+#------------------No Other Changes Necessary---------------------#     
+(undef, $min, $hour, $day, $month, $year, $weekday) = localtime(time);  
+@weekdays = ("Sun","Mon","Tue","Wed",               
+"Thurs","Fri","Sat");  
+@months = ("01","02","03","04","05","06","07",            
+"08","09","10","11","12");  
+if ($year > 97) { $year += 1900; } else { $year += 2000; }    
+if ($hour > 12) { $hour -= 12; $div = "PM"; } else { $div = "AM"; }  
+if ($hour == 0) { $hour = 12; }  
+if ($min < 10) { $zero = "0"; } else { $zero = ""; }  
+$time = "$hour:$zero$min $div";  
+$date = "$months[$month]\/$day\/$year"; 
+$remote_addr = $ENV{'REMOTE_ADDR'};  
+######################################################################   
+1;

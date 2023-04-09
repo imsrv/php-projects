@@ -1,0 +1,37 @@
+<?
+// Folders screen messages
+$lang_msg["folders"] = array(
+	151	=>	'Carpeta',
+	152	=>	'Total',
+	153	=>	'No leido',
+	154	=>	'Tamaño',
+	155	=>	'Crear carpeta personal:',
+	156	=>	'Crear mi carpeta personal',
+	157	=>	'Usted creo una cantidad de carpetas personales. Para crear una nueva carpeta, Por favor escriba el nombre abajo y presione CREAR CARPETA.',
+	158	=>	'Usted no he ingresado el nombre de la carpeta, intente de nuevo.',
+	159	=>	'Esa carpeta ya existe, intente de nuevo.',
+	160	=>	'Su nueva carpeta ha sido creado.',
+	161	=>	'Borrar carpeta:',
+	162	=>	'Borrar carpeta seleccionada',
+	163	=>	'Las carpetas borradas <u><b>NO</b> seran recuperadas</u>. Si usted quiere borrar una carpeta, seleccionela y presione el boton borrar.',
+	164	=>	'Usted no selecciono una carpeta para borrar intentelo de nuevo.',
+	165	=>	'No puedo borrar la carpeta que usted especifico intente de nuevo',
+	166	=>	'La carpeta que usted especifico ha sido borrada.',
+	167	=>	'Renombrar una carpeta:',
+	168	=>	'Renombrar la carpeta seleccionada',
+	169	=>	'Si quiere renombrar una carpeta por favor seleccionela.',
+	170	=>	'Nombre anterior',
+	171	=>	'Nuevo nombre',
+	172	=>	'Usted no selecciono una carpeta para renombrer por favor intentelo nuevamente',
+	173	=>	'Usted no selecciono un nuevo nombre ',
+	174	=>	'No puedo renombrar la carpeta que usted selecciono intentelo de nuevo',
+	175	=>	'Su carpeta ha sido renombrada',
+	176	=>	'Vaciar papelera',
+	177	=>	'No puedo crear una nueva carpeta puede que este el dico lleno???',
+	178	=>	'La carpeta que usted selecciono ha sido vaciada.',
+	179	=>	'No puedo vaciar la carpeta seleccionada intentelo de nuevo',
+	180	=>	'Esta seguro que desea vaciar esta carpeta?',
+	181	=>	'Error al crear la carpeta de la Papelera',
+	182	=>	'Error creando carpeta de mensajes enviados'
+);
+?>

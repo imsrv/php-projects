@@ -1,0 +1,5 @@
+
+## AutoGallery SQL 2.1.x Crontab Entry
+
+## Update the TGP pages at 8am daily
+0 8 * * * /home/soft/cgi-bin/ags/cron.cgi

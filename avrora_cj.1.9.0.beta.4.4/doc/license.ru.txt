@@ -1,0 +1,61 @@
+Данная лицензия от PI PHP Devs. ("PHP Devs") дает вам возможность бесплатно, на общих условиях, согласно условиям лицензии Avrora CJ 1.x ("программного обеспечения") использовать данную программу для своих нужд.  
+
+*** Использование программного обеспечения  ***
+Лицензия позволяет вам скачивать, инсталлировать и использовать данное программное обеспечение. Любое использование копий данного програмного обеспечения в обход лицензии - запрещено.
+
+*** Права ***
+
+The software and related user documentation are protected under LT copyright law. All right, title, 
+and interest in and to the software, including associated intellectual property rights, are and shall 
+remain with PHP Devs. This Agreement does not convey to Licensee an interest in or to the software, but only 
+a limited right to use the software, revocable in accordance with the terms of this Agreement. 
+
+*** Restrictions ***
+
+Licensee agrees not to reverse assemble, reverse compile, or otherwise translate the software. Licensee 
+may not use, copy, modify, or distribute the software (electronically or otherwise), or any copy, 
+adaptation, transcription, or merged portion thereof, except as expressly authorized by this Agreement. 
+Licensee may not alter, remove, or make less visible, in any way, the copyright notice(s) embedded in 
+the software, including but not limited to, HTML generated pages and the source code files. 
+
+*** Distribution ***
+
+Distribution of the software from any location other than an official PHP Devs site or an authorized mirror, 
+in modified or non-modified form, is strictly prohibited and in violation of this Agreement. 
+
+*** Source Code Modification ***
+
+You are granted permission to make modifications to the software for your own use, under the following 
+conditions: 
+
+- You agree that any modified files are still subject to the terms of this license agreement, and all 
+ownership rights are retained by PHP Devs. 
+- You do not modify or make less visible, in any way, the copyright notice as noted in the Copyright 
+Information section of this license agreement. 
+- You do not distribute modified files in complete form. 
+
+*** Warranty  ***
+
+The software is being provided AS IS and PHP Devs makes no warranty as to its use or performance. 
+PHP Devs AND ITS SUPPLIERS DO NOT AND CANNOT WARRANT THE PERFORMANCE OR RESULTS LICENSEE MAY OBTAIN BY 
+USING THE SOFTWARE. PHP Devs AND ITS SUPPLIERS MAKE NO WARRANTIES, EXPRESS OR IMPLIED, AS TO 
+NON-INFRINGEMENT OF THIRD-PARTY RIGHTS, MERCHANTABILITY, OR FITNESS FOR ANY PARTICULAR PURPOSE. 
+IN NO EVENT WILL PHP Devs OR ITS SUPPLIERS BE LIABLE TO LICENSEE FOR ANY CONSEQUENTIAL, INCIDENTAL, OR 
+SPECIAL DAMAGES, INCLUDING ANY LOST PROFITS OR LOST SAVINGS, EVEN IF A PHP Devs REPRESENTATIVE HAS BEEN 
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, OR FOR ANY CLAIM BY ANY THIRD PARTY. 
+
+*** Term and Termination ***
+
+This Agreement is effective upon Licensee's execution of this Agreement, and shall continue until 
+terminated. PHP Devs may terminate this Agreement at any time for any reason. Upon such termination by PHP Devs, 
+Licensee agrees to destroy all copies or portions of the software under its control. 
+
+*** Commercial Use & Licensing ***
+
+Use of the software is granted, free of charge, for personal, non-commercial, and limited commercial 
+use. Licensee may not use, without a commercial license, the software for monetary gain. Requests for 
+commercial licenses may be directed via e-mail to: support@phpdevs.com
+
+*** Amendments ***
+
+This Agreement may only be modified in writing, with the signature of an authorized officer of PHP Devs. 

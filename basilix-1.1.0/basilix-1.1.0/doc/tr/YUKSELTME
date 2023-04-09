@@ -1,0 +1,75 @@
+1.0.5b -> 1.1.0
+	1. Adým:
+	Ayar dosyalarýnýn (öngörülen dizin /usr/local/basilix/conf)
+	ve þayet deðiþiklik yaptýysanýz HTML dosyalarýnýn 
+	(/usr/local/basilix/htx) yedeklerini aldýktan sonra,
+	basilix arþivini /usr/local/basilix dizininde açýnýz.
+	Daha sonra da yedeklemiþ olduðunuz dosyalarý eski yerlerine
+	kopyalayýnýz.
+
+	2. Adým:
+	SESSION ve SETTINGS tablolarýnda deðiþiklik yapmamýz gerekiyor.
+	Mysql programýna root olarak login olduktan sonra aþaðýdaki
+	komutlarý giriniz (kopya ve yapýþtýr yapabilirsiniz):
+
+	ALTER TABLE SESSION ADD LASTFOLDERS TEXT;
+	ALTER TABLE SESSION MODIFY USERNAME VARCHAR(32) NOT NULL;
+	ALTER TABLE SESSION MODIFY PASSWORD VARCHAR(96) NOT NULL;
+	ALTER TABLE SETTINGS ADD IFEXPAND CHAR(1) NOT NULL DEFAULT '0';
+	ALTER TABLE SETTINGS ADD PREVNEXT CHAR(1) NOT NULL DEFAULT '0';
+	ALTER TABLE SETTINGS ADD REPLYTO VARCHAR(96);
+
+	Ayrýca, /usr/local/basilix/db/mysql/basilix.sql dosyasý içerisinde
+	SENDMSGS adýnda yeni bir tablo göreceksiniz. Bu tablo ile ilgili
+	satýrlarý kopyalayýp mysql komut satýrýna yapýþtýrýniz.
+
+1.0.3b -> 1.0.4b
+	
+	Konfigurasyon dosyalarýnýzýn yedeðini alýnýz
+	(/usr/local/basilix/conf dizinini içerisindeki).
+	Eski basilix dizinini siliniz -- öngörülen dizin
+	/usr/local/basilix. (eðer baþka dosyalarda da
+	deðiþiklikler yaptýysanýz o dosyalarýn da yedeðini
+	alýnýz). 1.0.4b sürümünü kurduktan sonra yedeðini
+	aldýðýnýz dosyalarý eski yerlerine kopyalayýnýz.
+
+1.0.2b -> 1.0.3b
+	Konfigurasyon dosyalarýnýzýn yedeðini alýnýz
+	(/usr/local/basilix/conf dizinini içerisindeki).
+	Eski basilix dizinini siliniz -- öngörülen dizin
+	/usr/local/basilix. (eðer baþka dosyalarda da
+	deðiþiklikler yaptýysanýz o dosyalarýn da yedeðini
+	alýnýz). 1.0.3b sürümünü kurduktan sonra yedeðini
+	aldýðýnýz dosyalarý eski yerlerine kopyalayýnýz
+	ve son olarak /usr/local/basilix/dbset/mysql-set.inc
+	dosyasý içinde yer alan dbuser, dbpass, dbhost
+	deðiþkenlerini ayarlayýnýz.
+
+0.9.7 -> 1.0.3b:
+      -> 1.0.4b:
+
+	1.0.3b sürümü baþarýlý bir þekilde sisteme kurduktan sonra,
+	/usr/local/basilix/lib/abook.inc dosyasý içerisinde yer alan
+	old_dbuser, old_dbpass, old_dbost deðiþkenlerini 0.9.7'de
+	kullanýlan deðerlere ayarlayýnýz. Adres Defteri penceresinde
+	eski adres defterinde bulunan kayýtlarý yeni veritabanýna
+	ekleyen "Eski adres defteri kayýtlarýný yükle" linkini
+	göreceksiniz. Yeni BasiliX programýný kullanmadan önce
+	eski adresdefteri tablosunun yedeðini almanýzý öneririm.
+
+	Yedekleme iþlemini mysql_dump programý ile yapabilirsiniz:
+
+	mysql_dump -u dbuser -p basilix AddressBook > addr_dump.txt
+	
+	Burada "dbuser" eski veritabanýnýn kullanýcý adý, "basilix"
+	veritabanýnýn adý ve "AddressBook" ise tablonun adýdýr.
+
+
+0.9.7 -> 1.0.2b:
+	
+	1.0.2b sürümünü kullanabilirsiniz, ama 0.9.7'yi desteklemediði
+	için eski veritabanýný silmeniz gerekir. Bu yüzden 1.0.3b sürümünü
+	kurup bir üstekki bölümü okumanýzý tavsiye ederim.
+
+
+

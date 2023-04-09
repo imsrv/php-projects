@@ -1,0 +1,156 @@
+<script language=javascript>
+function tsort(col) {
+	document.location='admin.cgi?page=banners&tid=#FORM_tid#&order='+col;
+}
+</script>
+<table cellcpacing=0 cellpadding=0 border=0 width=740 align=center><tr><td>
+
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr>
+	<th><a href="javascript:tsort('#order-name#name')" alt='Banner name' title='Banner name'>BANNER</a> #name-arrow#</th>
+	<th><a href="javascript:tsort('#order-show#show')" alt='Impression count' title='Impression count'>SHOW</a> #show-arrow#</th>
+	<th><a href="javascript:tsort('#order-click#click')" alt='Click count' title='Click count'>CLICK</a> #click-arrow#</th>
+	<th><a href="javascript:tsort('#order-acps#acps')" alt='Average CPS' title='Average CPS'>A. CPS</a> #acps-arrow#</th>
+	<th><a href="javascript:tsort('#order-acpst#acpst')" alt='Average CPS today' title='Average CPS today'>A. CPS TODAY</a> #acpst-arrow#</th>
+	<th><a href="javascript:tsort('#order-exp#exp')" alt='When expired' title='When expired'>EXPIRE</a> #exp-arrow#</th>
+	<th><a name=stats alt='Banner stats' title='Banner stats'>STATS</a></th>
+	<th><a href="javascript:tsort('#order-type#type')" alt='Banner type' title='Banner type'>TYPE</a> #type-arrow#</th>
+	<th><a name=code alt='Banner code' title='Banner code'>CODE</a></th>
+</tr>
+#banners-lines#
+</form>
+</table>
+
+</td></tr></table>
+<br><br>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><th colspan=2><img src=#image_dir#stat.gif width=16 height=16> Statistics for banners</th></tr>
+<tr><td class=td1><img src=#image_dir#total.gif width=16 height=16> Total banners:</td><td class=td1>#stat-total-banners#</td></tr>
+<tr><td class=td2><img src=#image_dir#alert.gif width=16 height=16> Expired banners:</td><td class=td2>#stat-expired-banners#</td></tr>
+<tr><td class=td1><img src=#image_dir#ok.gif width=16 height=16> Active banners:</td><td class=td1>#stat-active-banners#</td></tr>
+</table>
+</td></tr></table>
+<br><br>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><th colspan=7><img src=#image_dir#stat.gif width=16 height=16> Statistics for last week</th></tr>
+<tr valign=bottom>
+#stat-week#
+</tr>
+</table>
+</td></tr></table>
+<br><br>
+
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><th colspan=12><img src=#image_dir#stat.gif width=16 height=16> Statistics for last 12 hours</th></tr>
+<tr valign=bottom>
+#stat-day#
+</tr>
+</table>
+</td></tr></table>
+</td></tr></table>
+
+
+<!--[banners-lines]-->
+<tr>
+	<td class=td#?1:2#><a href=admin.cgi?page=viewbanner&bid=#id#&tid=#FORM_tid# class=ar>#b_type# #name#</a></td>
+	<td class=td#?1:2# align=right>#shows#</td>
+	<td class=td#?1:2# align=right>#clicks#</td>
+	<td class=td#?1:2# align=right>#cps# %</td>
+	<td class=td#?1:2# align=right>#cpstoday# %</td>
+	<td class=td#?1:2#>#stop#</td>
+	<td class=td#?1:2# align=center width=50><a href=admin.cgi?page=statcampaignyear&tid=#FORM_tid#&bid=#id# target=statswin><img src=#image_dir#stat.gif width=16 height=16 border=0></a></td>
+	<td class=td#?1:2# align=center width=30>#b_type#</td>
+	<td class=td#?1:2# align=center widht=30><a href=admin.cgi?page=bcode&bid=#id#&tid=#FORM_tid# class=ar><img src=#image_dir#getcode.gif border=0 title='Get banner code' alt='Get banner code' width=16 height=16></a></td>
+
+</tr>
+<!--[banners-lines]-->
+
+<!--[banners-lines-none]-->
+<tr><td class=td1 colspan=11 align=center>No banners in this campaign</td></tr>
+<!--[banners-lines-none]-->
+
+
+<!--[down_arrow]-->
+<img src=#image_dir#toparrow.gif>
+<!--[down_arrow]-->
+<!--[top_arrow]-->
+<img src=#image_dir#downarrow.gif>
+<!--[top_arrow]-->
+
+<!--[active-banner]-->
+<img src=#image_dir#check_r.gif alt=active title=active border=0 width=16 height=16>
+<!--[active-banner]-->
+<!--[no-active-banner]-->
+<img src=#image_dir#check_b.gif alt=disable title=disable border=0 width=16 height=16>
+<!--[no-active-banner]-->
+
+<!--[swf-image]-->
+<img src=#image_dir#types/swf.gif title='swf banner' alt='swf banner' border=0 width=16 height=16>
+<!--[swf-image]-->
+<!--[image-image]-->
+<img src=#image_dir#types/gif.gif title='image banner' alt='image banner' border=0 width=16 height=16>
+<!--[image-image]-->
+<!--[html-image]-->
+<img src=#image_dir#types/html.gif title='html banner' alt='html banner' border=0 width=16 height=16>
+<!--[html-image]-->
+<!--[mov-image]-->
+<img src=#image_dir#types/mov.gif title='mov banner' alt='mov banner' border=0 width=16 height=16>
+<!--[mov-image]-->
+
+
+<!--[expire-never]-->
+<img src=#image_dir#ok.gif width=16 height=16 alt='Never expire' title='Never expire'> Never
+<!--[expire-never]-->
+
+<!--[expire-date]-->
+<img src=#image_dir#ok.gif width=16 height=16 alt='expire after #date-expire#' title='expire after #date-expire#'> #date-expire#
+<!--[expire-date]-->
+<!--[expire-date-yes]-->
+<img src=#image_dir#alert.gif width=16 height=16 alt='expire after #date-expire#' title='expire after #date-expire#'> #date-expire#
+<!--[expire-date-yes]-->
+
+<!--[expire-click]-->
+<img src=#image_dir#ok.gif width=16 height=16 alt='expire when #click-expire# clicks' title='expire when #click-expire# clicks'> #click-expire# clicks
+<!--[expire-click]-->
+<!--[expire-click-yes]-->
+<img src=#image_dir#alert.gif width=16 height=16 alt='expire when #click-expire# clicks' title='expire when #click-expire# clicks'> #click-expire# clicks
+<!--[expire-click-yes]-->
+
+<!--[expire-show]-->
+<img src=#image_dir#ok.gif width=16 height=16 alt='expire when #show-expire# impressions' title='expire when #show-expire# impressions'> #show-expire# imps
+<!--[expire-show]-->
+<!--[expire-show-yes]-->
+<img src=#image_dir#alert.gif width=16 height=16 alt='expire when #show-expire# impressions' title='expire when #show-expire# impressions'> #show-expire# imps
+<!--[expire-show-yes]-->
+
+
+<!--[stat-week]-->
+<td class=td1 width=14%>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr valign=bottom><td width=50%><img src=#image_dir#s.gif width=1 height=100>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td class=tds><img src=#image_dir#s.gif width=1 height=#shows_height#>#shows#</td></tr></table>
+</td><td width=50%>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td class=tdc><img src=#image_dir#s.gif width=1 height=#clicks_height#>#clicks#</td></tr></table>
+</td></tr>
+<tr><td colspan=2 align=center class=tdb>#date#</td></tr>
+</table>
+</td>
+<!--[stat-week]-->
+
+<!--[stat-day]-->
+<td class=td1 width=8%>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr valign=bottom><td width=50%><img src=#image_dir#s.gif width=1 height=100>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td class=tds><img src=#image_dir#s.gif width=1 height=#shows_height#>#shows#</td></tr></table>
+</td><td width=50%>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td class=tdc><img src=#image_dir#s.gif width=1 height=#clicks_height#>#clicks#</td></tr></table>
+</td></tr>
+<tr><td colspan=2 align=center class=tdb>#date#</td></tr>
+</table>
+</td>
+<!--[stat-day]-->

@@ -1,0 +1,130 @@
+<html>
+<head>
+  <title>Account Updated</title>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center" colspan="2">
+<font face="Arial" size="3" color="white">
+<b>Partner Account Updated</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td width="150">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Username</b>
+</font>
+</td>
+<td width="450">
+<font face="Verdana" size="1" style="font-size: 11px;">
+#%PARTNER_ID%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Password</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+#%PASSWORD%#
+</font>
+</td>
+</tr>
+
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Name/Nickname</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+#%CONTACT%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>E-mail Address</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+#%EMAIL%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b>Site URL</b>
+</font>
+</td>
+<td>
+<font face="Verdana" size="1" style="font-size: 11px;">
+#%SITE_URL%#
+</font>
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</form>
+
+</body>
+</html>

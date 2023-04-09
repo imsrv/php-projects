@@ -1,0 +1,13 @@
+To:  #%ADMIN_EMAIL%#
+From: #%ADMIN_EMAIL%#
+Subject: Account Edited
+
+An account has been edited by the account holder.
+
+Username: #%USERNAME%#
+Site URL: #%SITE_URL%#
+Title: #%TITLE%#
+Description: #%DESCRIPTION%#
+
+You may want to review the changes that were made to assure
+they are acceptable for your site.

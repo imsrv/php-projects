@@ -1,0 +1,39 @@
+You can install themes as many as you want. Here is how:
+
+1) Dive into the "css" directory (if the webspace is not 
+   /home/httpd/html/basilix, replace it below)
+
+	$ cd /home/httpd/html/basilix/css
+
+2) Copy the default directory to the name of your new theme.
+   (let's assume it is "orion")
+
+	$ cp -R default orion
+
+3) Enter the new theme directory.
+
+	$ cd orion
+
+4) You will find there two files, which are "ie.css" and "ns.css",
+   CSS files for Internet Explorer and Netscape, respectively.
+   Edit these files, and make your changes as you desire. But
+   don't forget to not to delete/modify the definitions, but
+   to modify the features for definitions.
+
+5) Enter the basilix configuration directory (default
+   basilix installation directory is /usr/local/basilix. if yours
+   is different, replace it)
+	
+	$ cd /usr/local/basilix/conf
+
+6) Edit the theme.conf file, and add your new theme
+
+	$bsx_theme[$i]["dir"]           = "orion";
+	$bsx_theme[$i]["active"]        = 1;    // 1 is "active", 0 is "not active"
+	$bsx_theme[$i++]["desc"]        = "Orion theme";
+
+	"active" is for web-based administration, which is coming soon.
+
+7) Try your new theme in the "Settings" window.
+
+-arslanm

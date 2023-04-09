@@ -1,0 +1,37 @@
+<?
+// MBox listing messages
+$lang_msg["mboxlst"] = array(
+	201	=>	'De',
+	202	=>	'Trié par De',
+	203	=>	'A',
+	204	=>	'Trié par A',
+	205	=>	'Date',
+	206	=>	'Trié par Date',
+	207	=>	'Taille',
+	208	=>	'Trié par Taille',
+	209	=>	'Sujet',
+	210	=>	'Trié par Sujet',
+	211	=>	'(pas de sujet)',
+	212	=>	'Déplacer les messages sélectionnés vers',
+	213	=>	'Le faire',
+	214	=>	'Vider le dossier',
+	215	=>	'Supprimer les messages sélectionnés',
+	216	=>	'Purger les messages sélectionnés',
+	217	=>	'Precédent',
+	218	=>	'Suivant',
+	219	=>	'Il n\'y a pas de messages dans ce dossier.',
+	220	=>	'Vous n\'avez pas sélectionné de dossier, essayez à nouveau...',
+	221	=>	'Vous n\'avez choisi aucun message, essayez à nouveau...',
+	222	=>	'Impossible de déplacer les messages sélectionnés, essayez à nouveau plus tard...',
+	223	=>	'Les messages sélectionnés (%d) ont été déplacés dans la Corbeille.',
+	224	=>	'Impossible de déplacer les messages sélectionnés, essayez à nouveau plus tard...',
+	225	=>	'Les messages sélectionnés ont bien été déplacés.',
+	226	=>	'Impossible de purger les messages sélectionnés, essayez à nouveau plus tard...',
+	227	=>	'Les messages sélectionnés ont bien été purgés.',
+	228	=>	'Page: ',
+	229	=>	'Voulez-vous vraiment vider ce dossier ?',
+	230	=>	'Bienvenue, votre dernière connexion a été depuis ',
+	231	=>	'Le message a bien été effacé.',
+	232	=>	'Le message a bien été purgé.'
+);
+?>

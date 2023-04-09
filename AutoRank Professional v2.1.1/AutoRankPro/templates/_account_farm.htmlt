@@ -1,0 +1,47 @@
+<html>
+<head>
+  <title>Banner Farm</title>
+</head>
+<body bgcolor="white" link="blue">
+<div align="center">
+<p>
+<form action="accounts.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr bgcolor="#000000">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#7384BD" align="center">
+<font face="Arial" size="3" color="white">
+<b>Banner Farm</b>
+</font>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#ffffff">
+<font face="Verdana,Arial" size="2">
+<b>Link:</b><br>
+<a href="#%URL%#">Vote For Us At The Top 50</a><br>
+<b>HTML For This Link:</b><br>
+&lt;a href=&quot;#%URL%#&quot;&gt;Vote For Us At The Top 50&lt;/a&gt;
+
+<br><br>
+
+<b>Link:</b><br>
+<a href="#%URL%#">Visit The Top 50</a><br>
+<b>HTML For This Link:</b><br>
+&lt;a href=&quot;#%URL%#&quot;&gt;Visit The Top 50&lt;/a&gt;
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>

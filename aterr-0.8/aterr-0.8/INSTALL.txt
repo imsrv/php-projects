@@ -1,0 +1,6 @@
+aterr - threaded forum system
+http://chimaera.starglade.org/aterr/
+
+To install aterr, put the contents of this directory on a webserver, and
+access 'install.php' through a web browser. This file will guide you through
+the installation process.

@@ -1,0 +1,27 @@
+#<IfModule mod_rewrite.c>
+#	RewriteEngine On
+#
+#	<IfModule mod_env.c>
+#		SetEnv ATERR_REWRITE 1
+#	</IfModule>
+#	
+#	RewriteRule ^forums/(view|edit|bookmark|unbookmark)/([0-9]+)$ /forums/forums.php?op=$1&p=$2 [QSA]
+#	RewriteRule ^forums/([0-9]+)$ /forums/forums.php?op=viewforum&f=$1 [QSA]
+#	RewriteRule ^forums/reply/([0-9]+)$ /forums/forums.php?op=post&p=$1 [QSA]
+#	RewriteRule ^forums/new/([0-9]+)$ /forums/forums.php?op=post&f=$1 [QSA]
+#	RewriteRule ^forums/(addforum|resync|bookmarks)$ /forums/forums.php?op=$1 [QSA]
+#	RewriteRule ^forums$ /forums/forums.php [QSA]
+#
+#	RewriteRule ^forums/admin$ /forums/forums.php?op=admin [QSA]
+#	RewriteRule ^forums/admin/([a-z]+)$ /forums/forums.php?op=admin&sub=$1 [QSA]
+#	RewriteRule ^forums/admin/([a-z]+)/([0-9]+)$ /forums/forums.php?op=admin&sub=$1&f=$2 [QSA]
+#	RewriteRule ^forums/admin/([a-z]+)/([0-9]+)/([a-z]+)$ /forums/forums.php?op=admin&sub=$1&f=$2&action=$3 [QSA]
+#	RewriteRule ^forums/admin/([a-z]+)/([0-9]+)/([a-z]+)/([0-9]+)$ /forums/forums.php?op=admin&sub=$1&f=$2&action=$3&u_id=$4 [QSA]
+#
+#	RewriteRule ^accounts/(register|help|editsig|changepass)$ /forums/accounts.php?op=$1 [QSA]
+#	RewriteRule ^accounts/(register|help|editsig|changepass)/([a-z]+)$ /forums/accounts.php?op=$1&sub=$2 [QSA]
+#	RewriteRule ^accounts/activate/([a-z0-9]+)$  /forums/accounts.php?op=activate&key=$1 [QSA]
+#	RewriteRule ^accounts/(signin|signout)$  /forums/accounts.php?op=$1 [QSA]
+#	RewriteRule ^accounts/viewprofile/([0-9]+)$ /forums/accounts.php?op=viewprofile&u=$1 [QSA]
+#	RewriteRule ^accounts$ /forums/accounts.php [QSA]
+#</IfModule>

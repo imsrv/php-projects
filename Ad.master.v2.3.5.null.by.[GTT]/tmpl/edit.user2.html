@@ -1,0 +1,63 @@
+
+<table cellcpacing=0 cellpadding=0 border=0 width=50% align=center><tr><td>
+<form action=admin.cgi method=post name=mainform>
+<input type=hidden name=page value=adduser2>
+<input type=hidden name=action value=adduser>
+<input type=hidden name=uid value=#FORM_uid#>
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr>
+	<th colspan=2><img src=#image_dir#user.gif width=16 height=16> EDIT USER (Step 2)</th>
+</tr>
+<tr><td class=td1><img src=#image_dir#name.gif width=16 height=16> Login:</td><td class=td1>#user-login#</td></tr>
+<tr valign=top><td class=td2><img src=#image_dir#desc.gif width=16 height=16> Description:</td><td class=td2>#user-desc#</td></tr>
+<tr><td class=td1><img src=#image_dir#type.gif width=16 height=16> Account type:</td><td class=td1>#user-access#</td></tr>
+<tr><td class=td2><img src=#image_dir#email.gif width=16 height=16> E-mail:</td><td class=td2>#user-email#</td></tr>
+<tr><td class=td1><img src=#image_dir#url.gif width=16 height=16> User site URL:</td><td class=td1>#user-url#</td></tr>
+</table>
+</td></tr></table>
+<br><br>
+#table-select#
+
+
+
+
+</form>
+
+
+
+</td></tr></table>
+
+
+
+<!--[table-campaign]-->
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><th>Select campaign</th></tr>
+#campaign-list#
+<tr><td class=tdb>
+<input type=button class=sbmt value="<< RETURN" onClick="document.location='admin.cgi?page=edituser&uid=#FORM_uid#';"> &nbsp; <input type=submit value="SAVE" class=sbmt> &nbsp; <input type=button value="Cancel" onClick="document.location='admin.cgi?page=users';" class=sbmt>
+</td></tr>
+</table>
+</td></tr></table>
+<!--[table-campaign]-->
+
+<!--[table-banners]-->
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><th>Select banners</th></tr>
+#banners-list#
+<tr><td class=tdb>
+<input type=button class=sbmt value="<< RETURN" onClick="document.location='admin.cgi?page=edituser&uid=#FORM_uid#';"> &nbsp; <input type=submit value="SAVE" class=sbmt> &nbsp; <input type=button value="Cancel" onClick="document.location='admin.cgi?page=users';" class=sbmt>
+</td></tr>
+</table>
+</td></tr></table>
+<!--[table-banners]-->
+
+<!--[campaign-list]-->
+<tr><td class=td#?1:2#><input type=checkbox name=camp#camp-id# value=#camp-id# #camp-sel#> #camp-name#</td></tr>
+<!--[campaign-list]-->
+
+<!--[banner-list]-->
+<tr><td class=td#?1:2#><input type=checkbox name=ban#ban-id# value=#ban-id# #ban-sel#> #ban-name#</td></tr>
+<!--[banner-list]-->

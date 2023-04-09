@@ -1,0 +1,36 @@
+lang_nl.tar.gz
+------- v0.1 -
+
+This file contains a languagepack for Basilix 1.0.3b.
+The language included is Dutch (Nederlands)
+
+To install this package, unzip this .tar.gz file to
+/usr/local/basilix/lang
+
+This way there will be a new directory called
+/usr/local/basilix/lang/nl
+Verify this! 
+
+In /usr/local/basilix/conf/lang.conf you add:
+
+$bsx_lang[$i]["long"]           = "Nederlands";
+$bsx_lang[$i]["short"]          = "nl";
+$bsx_lang[$i++]["charset"]      = "iso8859-1";
+
+This way Basilix knows that the Dutch language is available.
+If you want the default language to be set to Dutch, at the bottom
+of the same file change
+
+$BSX_DEFAULT_LANG               = 1; 
+
+to whatever the index is of the Dutch language. Basilix starts counting
+from 0, so if Dutch is the 3rd option in you list, you should set
+$BSX_DEFAULT_LANG to be 2.
+
+Now login to your mailaccount and set your language too Dutch.
+
+Klaar! (Done!)
+
+If you experience any trouble or find mistranslations, please let me
+know at ariejan@gmx.net
+

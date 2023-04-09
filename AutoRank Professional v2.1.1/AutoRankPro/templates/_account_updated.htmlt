@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>Account Updated</title>
+</head>
+<body bgcolor="white" link="blue">
+<div align="center">
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr bgcolor="#000000">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#7384BD" align="center">
+<font face="Arial" size="3" color="white">
+<b>Account Successfully Updated</b>
+</font>
+</td>
+</tr>
+<tr bgcolor="#ffffff">
+<td>
+<font face="Verdana, Arial" size="2">
+Your account has been updated with the information you entered.
+</td>
+</tr>
+</table>
+
+</td></tr></table>
+
+</body>
+</html>

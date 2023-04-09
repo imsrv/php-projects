@@ -1,0 +1,13 @@
+$L_BANNER_URL = "Banner URL";
+$L_DOMAIN = "Domain";
+$L_EMAIL = "E-mail Address";
+$L_PASSWORD = "Password";
+$L_RECIP_URL = "Reciprocal URL";
+$L_SEARCH_TERM = "Search Term";
+$L_SITE_DESC = "Site Description";
+$L_SITE_TITLE = "Site Title";
+$L_SITE_URL = "Site URL";
+$L_USERNAME = "Username";
+$L_WORD = "Word or Phrase";
+
+1;

@@ -1,0 +1,5 @@
+### 04-04-2002 19:00
+url     => "http://www.teoma.com/search.asp?t=^~query~^&qcat=1&qsrc=0&search.x=28&search.y=6",
+ip      => "65.214.39.8",
+Rec     => qr{<b>\d+\.</b>.*?<a href="[^\"]*&url=([^\&]+)&[^\"]*">(.*?)</a>.*?<table.*?<tr>(.*?)</tr>}si,
+Next    => qr{Result Pages.*?<a href=\"([^\"]+)\">&gt;&gt;}si,

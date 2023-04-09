@@ -1,0 +1,1 @@
+<tr><td align="left">(there are no templates available)</td></tr>

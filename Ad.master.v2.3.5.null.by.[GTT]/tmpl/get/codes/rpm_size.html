@@ -1,0 +1,7 @@
+<script language='javascript'>
+var r=Math.random(9999999);
+document.write('<a href="#server-url#bb.cgi?c='+r+'" target=_blank><object classid=\'clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA\' width=\'#width#\' height=\'#height#\'>');
+document.write('<param name=\'src\' value="#server-url#bb.cgi?camp=#id#&type=#type#&w=#width#&h=#height#&s='+r+'"><param name=\'controls\' value=\'ImageWindow\'>');
+document.write('<param name=\'autostart\' value=\'true\'>');
+document.write('<embed src="#server-url#bb.cgi?camp=#id#&type=#type#&w=#width#&h=#height#&s='+r+'" controls=\'ImageWindow\' autostart=\'true\' width=\'#width#\' height=\'#height#\' type=\'audio/x-pn-realaudio-plugin\'></embed></object></a>');
+</script>

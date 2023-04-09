@@ -1,0 +1,234 @@
+sub register { 
+&vars;   
+if (($emailaddr eq "")||($FORM{'rusername'} eq "")||($FORM{'rpassword'} eq "")||($FORM{'profilecategory'} eq "")){  
+
+print "Content-type:text/html\n\n";  
+&html_missing;  
+print "$mainheader
+<blockquote><font size=2 face=verdana,geneva>
+You have left a required field empty. You must enter  
+your email address, a username and a password in order to
+proceed. Please go back and enter the missing information.
+</blockquote></font>\n"; 
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\" class=button> </FORM></center><br><br><br><br>\n"; 
+exit; 
+}    
+
+
+
+if($emailaddr !~ /.\@.+\..+/) {  
+print "Content-type:text/html\n\n"; 
+print "<html><head><title>Problem Processing Info</title></head>\n"; 
+print "<br><br><hr color=\"red\" size=6 width=400><br>\n";  
+print "<center><h4><font color=0000ff face=bodoni,univers,arial>  
+Invalid Email Address</font></h4><font size=2 face=univers>\n"; 	
+print "<center><font face=univers size=2>Your email address 
+is not valid.\n"; 	print "Please go back and enter a 
+valid email address.</font></center>\n"; 	
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\"> </FORM></center><br><br><br><br>\n"; 	
+exit; 
+}   
+
+if(-e "$users/$FORM{'rusername'}.txt"){  
+print "Content-type:text/html\n\n";  
+&html_error;  
+print "$mainheader<br><br> <br><br>
+The username you have selected is already in use. Please choose 
+another.<br>\n"; 
+print "<center><FORM> <INPUT type=\"button\" 
+value=\"Click here to go back\" onClick=\"history.go(-1)\" class=button> </FORM>
+</center><br><br><br><br>\n"; 
+exit; 
+}   
+&cont;     
+}    
+
+sub cont {  
+$username=$FORM{'rusername'};
+$password=$FORM{'rpassword'};
+
+open (FILE, ">>$users/$username.txt") || die "Cannot open $users/$username.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$username|$password|$emailaddr\n";  
+close (FILE);    
+
+
+open (FILE, ">>$users/storepass/$emailaddr.txt") || die "Cannot open $users/storepass/$emailaddr.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$username|$password\n";  
+close (FILE);     
+
+umask(000); 
+mkdir("$messagecenterdir/$username", 0777) unless (-d "$messagecenterdir//$username/");  
+
+open (HTACCESS,">$messagecenterdir/$username/.htaccess") || &cgiError ("Error Writing $messagecenterdir/$username/.htpasswd:", "$!");
+	print HTACCESS "AuthUserFile $messagecenterdir/$username/.htpasswd\n";
+	print HTACCESS "AuthGroupFile $messagecenterdir/$username/.htgroup\n";
+	print HTACCESS "AuthName \'Personal Message Box for $username\'\n";
+	print HTACCESS "AuthType Basic\n\n";
+	print HTACCESS "<Limit GET PUT POST>\n";
+	print HTACCESS "require valid-user\n";
+	print HTACCESS "</Limit>\n";
+	close(HTACCESS);
+
+################################################################################
+
+open (HTGROUP,">$messagecenterdir/$username/.htgroup") || &cgiError ("Error Writing $messagecenterdir/$username/.htgroup:", "$!");
+	print HTGROUP "$username: $username";
+	close(HTGROUP);
+
+	@salt_chars = ('A' .. 'Z', 0 .. 9, 'a' .. 'z', '.', '/');
+	$salt = join '', @salt_chars[rand 64, rand 64];
+	$encrypted = crypt($password, $salt);
+
+	open (HTPASSWD,">$messagecenterdir/$username/.htpasswd") || &cgiError ("Error Writing $messagecenterdir/$username/.htpasswd:", "$!");
+	print HTPASSWD "$username:$encrypted";
+	close(HTPASSWD);
+
+open (FILE, ">>$messagecenterdir/$username/messages.txt") || die "Cannot open $messagecenterdir/$username/messages.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "\n";  
+close (FILE);
+chmod 0777, '$messagecenterdir/$username/messages.txt';
+
+open (FILE, ">>$messagecenterdir/$username/messages_content.txt") || die "Cannot open $messagecenterdir/$username/messages_content.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "\n";  
+close (FILE);
+chmod 0777, '$messagecenterdir/$username/messages_content.txt';
+
+open (FILE, ">$messagecenterdir/$username/data.txt") || die "Cannot open $messagecenterdir/$username/data.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$FORM{'profilecategory'}\n";  
+close (FILE);
+chmod 0777, '$messagecenterdir/$username/data.txt';
+
+open(IN, "$admincgidir/members.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($numberofmembers)=split(/\n/,$line);
+$oldcount=$numberofmembers;
+$newcount=$numberofmembers + 1;
+
+
+open (FILE, ">$admincgidir/members.txt") || die "Cannot open $admincgidir/members.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$newcount\n";  
+close (FILE);
+}
+
+
+
+
+if(-e "$profiledatadir/$username.txt"){$prorilestate="yes";}
+else {$profilestate = "No";}
+if(-e "$messagecenterdir/$username/ads.txt"){$adstate="yes";}
+else {$adstate = "No";}
+$membercode = time();
+open (FILE, ">>$admincgidir/memberdatafiles/memberdata.txt") || die "Cannot open $admincgidir/memberdatafiles/memberdata.txt\n";
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$username|$password|$membercode|$profilestate|$adstate\n";
+close (FILE);
+
+
+
+opendir(DIR, "$admincgidir/emaillists");
+@dircontent=readdir(DIR);
+closedir(DIR);
+
+foreach $fileindir(@dircontent){
+
+unless(($fileindir eq "next.txt")||($fileindir eq ".")||($fileindir eq "..")){
+
+open(IN, "$admincgidir/emaillists/$fileindir");
+@addresses=<IN>;
+close(IN);
+
+foreach $address(@addresses){
+$addresstocheckfor = $FORM{'emailaddr'};
+if($address =~ /$addresstocheckfor/i){
+&defprofile;}
+
+}
+}
+}
+
+open (FILE, ">>$admincgidir/emaillists/emaillist.txt") || die "Cannot open $admincgidir/emaillists/emaillist.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$emailaddr\n";  
+close (FILE);
+
+open  (MAIL, "| $sendmail -t") || die "cannot open sendmail\n"; 
+print MAIL "Subject: Your $sitename User Info\n";  
+print MAIL "From: $email\n";
+print MAIL "To: $username <$emailaddr>\n";  
+print MAIL "Thank you for registering at $sitename.\n";  
+print MAIL "Your Chosen user name and password are:\n";  
+print MAIL "User Name: $username\n";  
+print MAIL "Password: $password\n";
+print MAIL "\n";  
+print MAIL "$sitename administration\n";  
+close MAIL;  
+
+&defprofile;
+
+$thusername=$username;
+$thpassword=$password;
+$classification=$FORM{'profilecategory'};
+&launchindex;
+exit;
+}   
+
+
+
+sub invalidcharacter {
+
+print "Content-type:text/html\n\n";  
+&html_error;  
+print "$mainheader<br><br>
+<blockquote><font size=2 face=verdana,geneva> 
+Either your username or your password contains invalid characters. You may not use any
+special characters in your username or password.</blockquote><br>\n"; 
+print "<center><FORM> <INPUT type=\"button\" 
+value=\"Click here to go back\" onClick=\"history.go(-1)\" class=button> </FORM>
+</center><br><br><br><br>\n"; 
+exit; 
+
+}
+   
+
+sub defprofile {
+
+&vars;
+$username=$FORM{'rusername'};
+$password=$FORM{'rpassword'};
+$classification=$FORM{'classification'};
+open (HTML, ">$profilesdir/$FORM{'profilecategory'}/$username.html") || die "Cannot open $profilesdir/$FORM{'classification'}/$username.html to create user profile\n";
+flock (HTML, 2) or die "cannot lock file\n";
+print HTML "
+$mainheader
+$themenu
+<center>$submenu</center>
+<form method=\"post\" action=\"$cgiurl/personals.pl\">
+
+
+<font size=2 face=verdana><blockquote>Sorry, this user does not have a profile yet; but you can 
+leave a message by clicking the button below.<p>
+</blockquote></font>
+<input type=\"hidden\" name=\"username\" value=\"$username\">
+<center><input type=\"submit\" name=\"leavemess\" value=\"Leave Message\" class=\"button\"></center><br><br>
+<br><br><br><br><br>
+$botcode\n";
+}
+1;
+
+
+
+
+
+
+
+
+

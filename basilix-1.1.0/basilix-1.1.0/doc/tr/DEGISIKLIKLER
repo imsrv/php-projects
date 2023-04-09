@@ -1,0 +1,25 @@
+1.1.0:
+	- adres defteri geliþtirildi
+	- menu tekrar soldaki eski yerine getirildi
+	- yazýlan mesajlarý kaydetme ve sonra gönderme mekanizmasý eklendi
+	- reply-to eklendi
+	- mail okuma esnasýndaki önceki/sonraki eklendi
+	- girilen alan adýný direk kullanma imkaný eklendi
+	- kullanýcý posta kutularýný listeleme eklendi
+	- pek çok yeni tema eklendi
+	- ufak bir kaç sorun düzeltildi
+1.0.4b:
+        - adres defteri geliþtirildi.
+	- türkçe dil dosyalarýndaki sorun düzeltildi.
+	- courier imap sunucusu desteði verildi.
+	- courier imap sunucusu için sanal alan desteði verildi.
+	- bir kaç sorun düzeltildi.
+1.0.3b:
+	- veritabaný kullanýcýsýnýn adý deðiþti (basilix -> bsxuser)
+	bu sayede 0.9.7 sürümünü kullananlar için eski adres defteri
+	kayýtlarýný yükleme imkaný saðlandý.
+	- files/logout.php3 içindeki bir hata düzeltildi.
+	- kullanýlmayan RequestID'ler silindi.
+1.0.2b:
+
+	- tamamen yeniden yazýldý.

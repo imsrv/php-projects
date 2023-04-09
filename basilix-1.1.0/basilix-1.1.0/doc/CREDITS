@@ -1,0 +1,38 @@
+Main code and design:
+- Murat Arslan <arslanm@bilkent.edu.tr>, <arslanm@basilix.org>
+
+Ideas:
+- Ozgur C. Demir <ocd@koc.net>
+- Can Ugur Ayfer <cayfer@bilkent.edu.tr>
+- Gokhan Sut <gsut@bilkent.edu.tr>
+
+
+Bugs, patches and other:
+
+- Erik Bruse <erik@bruse.com>
+  o Swedish language messages
+
+- Benoit Maisonny <benoit@synclude.com>
+  o Accept language code
+
+- Klaus Strebel <stb@ep-ag.com>
+  o PHP4 port.
+  o Patch for the Cyrus IMAPd.
+
+- Andreas Mueller <amu@tr.debian.net>
+  o German language messages.
+
+- Trevor Croft <trevor@sharpercards.com>
+  o Fixed the filename problem in attaching files when filename has a space 
+    in it.
+
+- Justin Buist <jbuist@tridenttechnology.com>
+  o Passwords with apostrophe problem, fixed.
+
+- Stéphane Martin <martin@webtrio.de>
+  o French language messages.
+
+- Laurent Laperrousaz <laurent.laperrousaz@lusis.fr>
+  o French language messages.
+
+- and all others that I forgot to write here.

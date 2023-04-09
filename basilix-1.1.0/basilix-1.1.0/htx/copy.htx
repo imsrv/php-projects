@@ -1,0 +1,16 @@
+<!-- copyright notice : START -->
+<br><hr width="20%">
+<div align="center">
+<table border="0" width="50%">
+<tr><td align="center" width="100%">
+<?php // online info?
+$sqloi = new MySQL; $sqloi->open(); $online_users = $sqloi->online_users(); $sqloi->close();
+$lng->sb(10); $lng->sr("%d", $online_users);
+$online_info = $lng->sp();
+?>
+<div align="center" class="copy"><?php echo $online_info?><br>
+Copyright &copy; 2000-2002 - <a href="http://basilix.org" target=_new>&nbsp;http://basilix.org&nbsp;</a></div>
+</td></tr>
+</table>
+</div>
+<!-- copyright notice : FINISH -->

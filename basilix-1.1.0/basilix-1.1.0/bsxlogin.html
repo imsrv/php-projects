@@ -1,0 +1,19 @@
+// READ THE FILE README.bsxlogin IN doc DIRECTORY //
+
+<script language="JavaScript" src="http://beta.basilix.org/js/browser.js"></script>
+<form name="loginForm" method="POST" action="http://beta.basilix.org/basilix.php">
+<input type="hidden" name="RequestID" value="LOGIN">
+<input type="hidden" name="domain" value="1">
+<input type="hidden" name="is_nocookie" value="yes">
+<script language="JavaScript"><!-- //
+	var x = eval('navigator.cookieEnabled');
+	if(x == true) {
+		document.write('<input type="hidden" name="BSX_TestCookie" value="yes">');
+		document.loginForm.is_nocookie.value = '';
+	}
+	document.write('<input type="hidden" name="is_js" value="' + is_js + '">');
+// --></script>
+Email: <input type="text" name="username" size="15"> @ basilix.org<br>
+Password: <input type="password" name="password" size="15"><br>
+<input type="submit">
+</form>

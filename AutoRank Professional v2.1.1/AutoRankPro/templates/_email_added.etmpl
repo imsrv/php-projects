@@ -1,0 +1,24 @@
+To: #%EMAIL%#
+From: #%FROM%#
+Subject: Account Added
+
+Your account has been added to our top sites list.
+
+You can begin sending hits to the list at any time.
+Use the following URL for your links:
+#%SEND_URL%#
+
+If you need to make changes to your account, or want
+to see your statistics, use the following login info:
+
+Login At: #%LOGIN_URL%#
+Username: #%USER%#
+Password: #%PASS%#
+
+Make sure you write down your username and password!
+
+If you have any questions contact #%FROM%#
+
+Regards,
+Webmaster
+#%MAIN_PAGE%#

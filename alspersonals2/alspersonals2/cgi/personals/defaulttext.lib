@@ -1,0 +1,1186 @@
+# Do not change the variable names in this file. Only edit the text to suit
+# your preferences. If your program is to use a foreign language simply translate the 
+# English to the language of your choice. Do not remove opening or closing quotation marks, or ending semi-colon
+# Do not translate HTML tags
+##################################################################################################################
+
+# Text for delete profile form
+
+$text100="
+<font size=2 face=verdana>
+To delete your profile, enter your user name and your password
+into the text boxes below, then click \"Delete Profile\"!</font> <a href=\"$cgiurl/personals.pl?retrievepass\">
+<font size=1 face=verdana>Forgot your password?</font></a>
+";
+
+# Text for browse profiles/search ads form
+
+$text101="
+<font color=000000 size=2 face=verdana>To search personals ads, select your search criteria, 
+then enter the key words or phrase into the text box, 
+and click \"Search Ads\".
+</font><br>
+";
+
+$text102="
+<font size=1 face=verdana>
+** Checking \"and\" will search for both \"city, state, zip, country\", <b>and</b> the keywords you enter which could
+reduce the number of profiles returned. Checking \"or\" will search for either \"city, state, zip, country\" <b>or</b> the keywords you enter. 
+</font> 
+";
+
+# If you want text on the create profile form. Text entered here will appear
+# at the top of the form above the first form field.
+
+$text103="<font size=2 face=verdana>Fill out the form below to create your profile. Your city, state and zip will not be displayed in your
+profile. When entering additional information about yourself, remember not to give out personal information such as your address and telephone
+number.<font color=$deflinkcol>Your profile can be edited later!</font>
+";
+
+
+# Text to appear in the \"Place Ad\" form
+
+$text104="<font size=1 face=verdana>
+In order to place your personals ad, you must be a registered user. If you are not registered <a href=\"$personalsurl/index.html\">
+Click here to register</a>. <br><br>You will need your $sitename username and password in order
+to place an ad. If you don't remember your username and password, <a href=\"$cgiurl/postad.pl?retrievepass\">
+Click here</a> to have your information emailed to you.<br> <br>
+Fields followed by a red <font color=\"red\"> *</font> are required.</font>
+<hr size=1 color=$mainthemecolor>
+";
+
+
+$text105="<font size=1 face=verdana>You can use a 100 x 100 picture with your ad. Your picture file size should be less than 2000 bytes. 
+All pictures will be automatically sized to 100 x 100. To prevent warping of your picture, you should edit it to fit the required file size
+before you upload it.</font>
+";
+
+# Text to appear on first page launched when user clicks on edit profile link 
+
+$text106="<font size=2 face=verdana>  Enter your username and password below to retrieve your profile data.</font>
+";
+
+
+# Text to appear on the edit profile form at top of form
+
+$text107="<font size=2 face=verdana>The form below is a duplicate of the profile you have
+previously created. All values filled in are the values which you selected or entered. Change as needed
+then press \"Update Profile\".</font><hr size=1 color=$mainthemecolor>
+";
+
+
+# Text to appear on the first page launched when user clicks "My Messages"
+
+$text108="<font size=2 color=000000 face=verdana,arial,helvetica>Welcome to the message center. Login below to check your messages. You will have messages only if you have created a profile or posted an ad, and someone has viewed your profile and/or your ad, and has chosen to leave you a message.
+Not registered? <a href=\"$personalsurl/index.html\">Click here to register</a></font>
+";
+
+
+# Text to appear on \Send Message\" form
+
+$text109="<font size=1 color=000000 face=verdana,arial,helvetica>Welcome to the message center. Here you can send a message to a particular individual whose profile or personals ad you have viewed. 
+You will need your username and password to send a message. If you do not remember your username and password,
+<a href=\"$cgiurl/personals.pl?retrievepass\">Click here to receive your information by email</a>
+ </font>
+";
+
+# Text to appear on the form member uses to reply to a message
+
+$text110="<font size=1 color=000000 face=verdana,arial,helvetica>Use the form below to reply to a message or send a message to another member.</font>
+";
+
+# Text to appear on delete ad form
+
+$text111="<font color=000000 size=2 face=verdana>
+In order to delete your personals ad you will need the ticket number
+you were given when you placed the ad.
+<p></font>
+";
+
+
+# Text to appear on delete profile confirmation page
+
+$text112="<font face=verdana,times,,univers, arial,helvetica size=2>
+You have asked to delete your profile.
+Are you sure this is the action you want to take?
+You cannot undo the deletion of your profile.
+If you are certain you want to delete your profile,
+use the \"Proceed\" button to complete the process.</font>
+";
+
+# Text to post if the program does not find the profile the member is trying to delete
+
+$text113="<font face=univers size=2>Your profile was not found
+</font>";
+
+# Text to post to notify member that the profile was successfully deleted
+
+$text114="<font face=univers size=2>Your profile has been deleted!</font>";
+
+# Text to post if ticket number user is trying to use to delete their ad doesn't match 
+# with their member name
+
+$text115="
+<font size=2 face=verdana>There appears to be an error. The system shows that you are trying to delete an ad you did not post.
+Did you enter the correct ticket number? Please go back and try again.</font>
+";
+
+
+# Text to notify user of successful "ad" deletion
+
+$text116="<font size=2 face=verdana>Your ad has been deleted</font>";
+
+# Text to appear at top of "get featured" page
+
+$text117="
+<font size=2 color=000000 face=verdana,arial,helvetica>
+To submit your profile to be featured,  enter your username
+then click \"Feature My Profile\". There is no guarantee that your profile will be featured. 
+</font>";
+
+
+# Text for page launched after user's information has been validated for adding to feature list
+
+$text118="<font size=2 face=verdana>Your information has been checked. You may click the \"Complete Process\" button below to complete the process of submitting your
+request to have your profile featured.</font>
+";
+
+# Text to post if there is no user file for the username entered
+
+$text119="<font size=2 face=verdana>There appears to be an error. No data
+was found for a member named <b>$username</b></font>
+";
+
+# Text to post if user does not have a profile to feature or isn't using a profile with
+# a picture
+
+$text120="<font size=2 face=verdana>
+It appears you have not yet created a profile. You must first create
+a profile before your profile can be featured, and your profile must
+have a picture other than the default.
+";
+
+# Text to post if user information checks out but no picture is found that is
+# associated with the user
+
+$text121="<font size=2 face=verdana>
+It appears that you do not have a picture of yourself on file. Your
+profile cannot be featured if there is no picture. Only profiles with pictures can be featured. To feature your
+profile, please edit your profile to include a picture of yourself. The default picture does not count.</font>
+";
+
+# Text to post if request to be profiled is successfully processed
+
+$text122="
+<font size=2 face=verdana>Your name has been added to the list. If your 
+profile is selected to be featured, you will be notified by email.
+";
+
+# Text to post if users name is already in the request file
+
+$text123="
+<font size=2 face=verdana>
+Our records indicate that you have already submitted a request
+to be featured. If your 
+profile is selected to be featured, you will be notified by email.
+";
+
+# Text for page launched upon successful registration
+
+$text124="<blockquote>
+Congratulations, your registration has been successfully processed. You now have full access
+to the personals services of $sitename. Now that you are registered, why not take a moment to
+create your profile. Creating a profile will enable others to find you when they come to search the profiles.
+It takes only a few minutes to create a profile. Of course you are free to come back and create your
+profile later. If you prefer to create your profile later, <a href=\"$cgiurl/index.pl\">click here</a> to go back 
+to the main page.</font></blockquote>
+";
+
+# Text for lost password form
+
+$text125="<font size=2 face=verdana>Enter the email address you used to register below to have your login information 
+(username, password)sent to you.</font>
+<br><br>";
+
+# Text for publish love story form
+
+$text126="<font size=1 face=verdana> 
+Add your page to the love story book. 
+Simply enter a headline to appear in the table of 
+contents, enter your story, upload a picture 
+if you want to use a picture, 
+then click \"Add Story\"!  </font>
+<br> <br>";
+
+# Text to post upon successful posting of users ad
+
+$text127="<font size=2 face=univers><b>Your personals ad has been published!</b></h3></center>
+<blockquote><font size=2 face=univers>If you wish to delete your ad any time in the future of its duration,
+you will need to know the ticket number shown below.<p>";
+
+# Text to post for form that is launched when users want to search ads
+# Relevant only if you have $allownonmembersearching set to "off"
+
+$text128="<font size=2 face=verdana>Enter your login information to search ads or browse profiles.</font><br>";
+
+# Displayed on search ads browse profiles page
+
+$text129="To search personals ads, select your search criteria, then enter the key words or phrase into the text box, and click \"$putsearchadsbutton\"";
+
+
+# The text that is posted after user has uploaded picture just before profile creation process is completed
+$text130="";
+
+#In the event user choses to upload a file but selects the skip upload button
+
+$text131="You must enter your username and password below to assure that your picture gets appended to the
+correct profile. You must also enter the name of your image file if it is not already entered.";
+
+
+
+# If you want to put text or other content at the top of the pages that display ads when
+# user clicks on women seeking men, men seeking women, women seeking women,
+# men seeking men links enter below
+
+$wsmcontenttop="";
+$wswcontenttop="";
+$mswcontenttop="";
+$msmcontenttop="";
+
+
+# If you want to put text or other content at the bottmom of the pages that display ads when
+# user clicks on women seeking men, men seeking women, women seeking women,
+# men seeking men links enter below
+
+$wsmcontentbottom="";
+$wswcontentbottom="";
+$mswcontentbotom="";
+$msmcontentbottom="";
+
+# DO NOT USE HTML in mailsubject, mailcontent, or mailsignature fields.
+
+# Subject of mail to be sent to user after successful registration if $sendmailafterregistration
+# is set to "on" in configuration file
+
+$mailsubject1="Your $sitename User Info";
+
+$mailcontent1="Thank you for signing up to use $sitename personals";
+
+# Content of message to send in mail to members upon successful registration for pay sites
+
+$mailcontent1paysubscr="Thank you for joining $sitename. Your registration is currently being processed. Once your payment has been processed, you will receive an email notification
+that your membership has been activated. The email will contain the username and password you will need in order to use the personals.
+";
+
+# Subject for mail to be sent to usr if admin expels the user
+
+$mailsubject2="You have been expelled from $sitename";
+
+# Content for mail to be sent to user if admin expels the user
+
+$mailcontent2="You have been expelled from $sitename for violating our terms of use. Your registration and user information have been deleted.";
+
+# Subject for email to be sent to user if admin has deleted their username
+# because it is not appropriate
+
+$mailsubject3="Your username information has been deleted";
+
+# Content of message to send to user if admin has deleted their username (This
+# deletes all files pertaining to the user
+# because it is not appropriate
+
+$mailcontent3="It has been determined that your the name you have chosen as your username, is not appropriate.
+Your information has been deleted and you will need to register a new username that cannot be construed as offensive.
+";
+
+# Subject for email to be sent to user if admin has renamed their username
+
+$mailsubject4="Your username has been changed";
+
+# Content of message to send to user if admin has renamed their username
+
+$mailcontent4="It has been determined that the name you have chosen as your username, is not an appropriate name for use at $sitename. Your username has been changed to the username shown below. If you have created a profile using $oldname as your username, you will need to create a new profile using your new username.";
+
+# Subject for email to be sent to user if admin has deleted the users ad due to inappropriate content
+
+$mailsubject5="Your Personals Ad has been deleted";
+
+# Content for email to be sent to user if admin has deleted the users ad due to inappropriate content
+
+$mailcontent5="In reviewing the personals ad which you placed at $sitename, it has been found that your ad contains inappropraite content. Consequently, your ad has been deleted.
+If you should post another ad in the personals, please avoid the use of profanity, or other offensive language.";
+
+$mailsubject6="You have received a new message";
+$mailcontent6="You have received a new message from another member. Your username and password to check your message box are shown below.";
+
+$mailcontent6a="$sendersusername has replied to your message";
+
+$mailsignature1="Thank you for using the personals";
+$mailsignature2="$sitename administration";
+$mailgstart="Dear";
+$mailsto="To";
+$mailfr="From";
+$mailsubjhd="Subject";
+# To tell user their username and password in email message
+
+$ycup="Your Chosen user name and password are:";
+
+# The message to post to user who tries to create a profile though they 
+# have already created a profile
+
+$profileExists="
+It seems you already have a profile on record. If you want to create a new profile, you will first
+have to delete the profile you have on record. If you simply want to change something in your profile,
+you may simply edit your profile.
+";
+
+
+# Post after profile has been successfully created
+
+$profilecreated="
+Your profile has been created. If you would like to post an ad, now would be a good time to do so.
+Posting an ad now by clicking on the \"Post Ad Now\" button below will save you considerable time. Of
+course you are always free to come back and post an ad later.
+";
+
+# Post when user does not enter either the username or the password
+
+$nouser_nopass="
+<font size=2 face=-verdana>
+Either you did not enter your username or you did not enter your password.
+Please go back and fill in any missing information.</font>
+";
+
+# Post when user has left a required form field empty
+
+$emptyfielderror="
+All fields must be filled in. Please go back and fill in any missing information.
+";
+
+
+# Post when email is not in valid format
+
+$emailnotvalid="
+Your email address is not valid.
+Please go back and enter a 
+valid email address.
+";
+
+# Post when user selects a username that has already been chosen
+
+$usernameisinuse="
+The username you have selected is already in use.
+Please choose another.
+";
+
+
+# Post when user tries to give a file a name that matches the name of a file in the directory
+
+$filenameinuse="
+A file already exists with that name. Please enter a different name.
+";
+
+# Post when user login information does not check out
+
+$loginhasfailed="
+One of the following errors have occurred:<P>
+<ul><li>The password you have entered did not match the password on record.
+<li>The username you entered did not match the username on record
+<li>The email address you entered did not match the email address on record.
+</ul><br>	 
+Please go back and re-enter your information.
+";
+
+# Post when user either does not enter the extension for their image file
+# or enters an invalid extension
+
+$imgexterror="
+Either you have not added the file extension to your picture file name, or you have entered a file
+type that is not allowed. Your file name must end with .jpg or .gif.
+";
+
+# Post when search does not find the image file in the user images directory
+
+$nopicturefound="<font size=2 face=verdana>
+The directory does not contain a file by the name you have entered. Did you forget to upload your file? If you have
+uploaded your file, perhaps you have entered the wrong name or extension. Please try again.</font>
+";
+
+
+# Post when no member file is found for the username entered
+
+$nouserfilefound="<font size=2 face=verdana>It appears you have entered the name of a non-existent member. Have you made an error? Please go back and
+try again.</font>";
+
+
+# If you are using a different language the following has been added to make it simpler to translate the program into the language you are using.
+
+# Replace the following list of variables with their translation in your language.
+# For example: If your language was French, you would change $cp="Create Profile" to $cp="create profile in your language"; 
+
+$mcp 	= "Create Profile";
+$msap	= "Search Ads/Profiles";
+$mpa	= "Place Ad";
+$mep	= "Edit Profile";
+$mdp	= "Delete Profile";
+$mda	= "Delete Ad";
+$mMM	= "My Messages";
+$mfp	= "Featured Profiles";
+$mgf	= "Get Featured";
+$msu	= "Subscribe/Unsubscribe";
+$mhome= "Home";
+$mfc	= "Fortune Cookie";
+$mls	= "Love Stories";
+$msm	= "Send Message";
+$msug = "Suggestions";
+$mcom	= "Complaints";
+$mlp	= "Lost Password";
+$mbtm	= "Back To Main";
+$mbp	= "Browse Profiles";
+$mpaa	= "Post An Ad";
+$mcm	= "Check Messages";
+$msam	= "Send A Message";
+
+$phome="Personals Home";
+$chtgb="Click here to go back";
+$jsgbk="Go Back";
+
+$cyp	= "Create Your Profile";
+$uo	= "Users Online";
+$nuo	= "Number of users online:";
+$iarf	= "indicates a required field";
+
+# select list default option
+$notspeci="Not Specified";
+
+# Select list window text
+
+$selheight="Your Height";
+$selweight="Your Weight";
+$selethn="Your Ethnicity";
+$selzsign="Your Sign";
+$selpethn="Partner's Ethnicity";
+$selprof="Your Profession";
+$selpstat="Parental Status";
+
+
+
+
+$cat1	= "Women Seeking Men";
+$cat2	= "Men Seeking Women";
+$cat3	= "Women Seeking Women";
+$cat4	= "Men Seeking Men";
+
+$cat1sing 	= "Woman Seeking Man";
+$cat2sing	= "Man Seeking Woman";
+$cat3sing	= "Woman Seeking Woman";
+$cat4sing	= "Man Seeking Man";
+
+$ctspb= "Click to select picture board";
+$ccr	= "Choose Chat Room";	# The chat room names can be edited in configdat.lib
+$utcr="Unable to complete request:";
+$eyunm="Enter your username";
+$eypwd="Enter Your Password";
+$chtcap="click here to create a profile";
+
+
+
+# These are the values to print on submit buttons 
+
+$putcpbutton = "Create Profile";
+$putregbutton= "Register";
+$putsubbutton= "Subscribe";
+$putuploadpicturebutton="Upload Picture";
+$putskipuploadbutton="Skip Upload";
+$putpostadnowbutton="Post Ad Now";
+$putappendbutton="Append Picture";
+$putcontbutton="Continue";
+$putbpbutton="Browse Profile";
+$putloginbutton="Login";
+$putproceedbutton="Proceed";
+$putleavemessagebutton="Leave Message";
+$putdpbutton="Delete Profile";
+$putuploadpicbutton="Upload Pic"; 		#Must be different from $putuploadpicturebutton or wrong upload function will be executed
+$putpostmyadbutton="Post My Ad";
+$putclearallbutton="Clear All";
+$putdeladbutton="Delete Ad";
+$putgetprodatabutton="Get Profile Data";
+$putupdateprobutton="Update Profile";
+$putcpnowbutton="Create Profile Now";
+$putfeaprofbutton="Feature My Profile";
+$putcomplprocessbutton="Complete Process";
+$putsubmitcomplbutton="Submit Complaint";
+$putsubmitbutton="Submit";
+$putuploadfilebutton="Upload File";
+$putreadbutton="Read";
+$putreplybutton="Reply";
+$putinboxbutton="Inbox";
+$putsendmessagebutton="Send Message";
+$putaddpicturebutton="Add Picture";
+$putprevpagebutton="Preview Page";
+$putaddstorybutton="Add Story";
+$putdeletebutton="Delete";
+$putcheckmsgsbutton="Check Messages";
+$putemailmyinfobutton="Email My Login Information";
+$putviewprofbutton="View Profile";
+$putleaveinboxbutton="Leave A Message In My Message Box";
+$putsearchadsbutton="Search Ads";
+$putlogintosearchbutton="Login to Search";
+$putaskbutton="Ask";
+$putlogoffbutton="Logoff";
+$putrefreshbutton="Refresh";
+$putdeleteadbutton="Delete Ad";
+$putremovepicturebutton="Remove Picture";
+$putshowidbutton="Show ID";
+$putgotopaycenterbutton="Go to payment center";
+
+
+$rmtxt1= "Dont have a login name or password?";
+$rmtxt2= "Click here to register";
+$rmtxt3= "Forgot your login name and password?";
+
+$gunm = "Username";
+$gpwd = "Password";
+$ppfnm= "Picture File Name";
+$bth="Exit";
+$delmp="Delete My Profile";
+
+$comi	= "Cost of membership monthly is";
+$mif	= "Membership is free!";
+$mntly= "monthly";
+$mntlycap="Monthly";
+$yrly	= "yearly";
+$yrlycap= "Yearly";
+$fofj	= "Fill out the form below to join.";
+$cansub= "Cancel Subscription";
+$pinfo= "Personal Information";
+$rfname= "First Name";
+$rlname= "Last Name";
+$rsaddr= "Street Address";
+$rtcty= "Town/City";
+$rstcnty= "State/County"; 		# Edit variable $list1 in selectlists.lib
+$rzpcde= "Zip/Postal Code";
+$rcntry= "Country";			#Edit variable $list2 in selectlists.lib
+$rbrthdt= "Birth Date";			#Edit variable $list3 in selectlists.lib
+$remaiddr="Email Address";
+
+$rcmid= "Create Your Member ID";
+$rcau	= "Create a username:";
+$rcanyd= "Choose any name you desire";
+$reu= "Enter Username:";
+$rcap= "Create a password";
+$rcapexp= "Choose a word that will be easy to remember";
+$renp= "Enter Password:";
+$reyea= "Enter your email address";
+$reyeava= "Must be a valid address";
+$reea= "Enter Email Address";
+$rchacl= "Choose a classification";
+$rptrb= "Press the Register Button";
+$rcasob= "Choose a subscription option below.";
+$rptsb= "Press the Subscribe Button";
+
+# Caution text for registration errors
+
+$rpefln="Please enter your full last name.";
+$rpeffn="Please enter your full firstname.";
+$rmsngf="You have left a required field empty. You must enter  
+your email address, a username and a password in order to
+proceed. Please go back and enter the missing information.";
+$rmsngfnln="Either you have not entered your first name, or you have not entered your last name.
+Please go back and enter the missing information.";
+$rmsngaddr="You have left a required field in your address empty. 
+You must enter your street, city, state, zip and country.
+Please go back and enter the missing information.";
+$rmsngbdte="You have left a required field in your birthdate empty. 
+Please go back and enter the missing information.";
+$rinvem="Your email address is not valid.Please go back and enter a 
+valid email address.";
+$rnminu="The username you have selected is already in use. Please choose 
+another.";
+$rnnapl="\"Not Applicable\" cannot be selected if you reside in the United States.
+Please select your state of residence if you live the the United States.";
+$rnzip="\"00000\" is acceptable only for non-US residents who do not have a country zip
+code. Please enter your correct zip code.";
+$rnager1="Please check your year of birth. There appears to be an error. You must enter the full year of birth. Example: 1979 instead of 79.";
+$rnager2="Please check your year of birth. There appears to be an error. 
+According to the calculations you are <b>$difinyears</b> years old.";
+$rnager3="Please check your year of birth. There appears to be an error. Your year of birth should not contain letters.";
+$rzipltr="Please check your zip code. There appears to be an error. 
+Your zip code should be entered not contain letters.";
+$rsubscr="Please select a subscription option. ";
+$rresrv="The username you have selected is currently reserved for another member.<br>Please choose 
+another.";
+$rnager4="According to the calculator you are too young to use this web site. You must be 18 years or older.";
+
+# For pay sites after member has paid for subscription
+
+$afptxt="Your membership is being processed. 
+You will receive an email at <b>$emailaddr</b> once your username and password have been activated. In the meantime
+feel free to use any part of $sitename while you await the activation of your username and password.";
+
+# Message to post to banned users who try to register
+
+$bntxt="<b>Alert!</b><P>
+You are not allowed to register from this IP. The IP address has been banned.";
+
+
+# After member has registered post message that registration has been completed
+# and invite member to create a profile
+
+$congrpstpro="Congratulations, your registration has been successfully processed. You now have full access
+to the personals services of $sitename. Now that you are registered, why not take a moment to
+create your profile. Creating a profile will enable others to find you when they come to search the profiles.
+It takes only a few minutes to create a profile. Of course you are free to come back and create your
+profile later. If you prefer to create your profile later, <a href=\"$cgiurl/index.pl\">click here</a> to go back 
+to the main page.";
+
+
+# When members register a default profile is created. The default profile contains the 
+# text below. Edit as needed
+
+$defptxt="Sorry, this user does not have a profile yet; but you can 
+leave a message by clicking the button below.";
+
+# Profile text for the form
+# You can change any of the categories that have an accompanying select list or radio list as
+# long as the select list options and radio button choices match the category.
+# It is not recommended that you change address categories (i.e. state, country, zip)
+# as this will affect the searching capabilities of the program.
+
+$pt1 	= "I am a";
+$pt2	= "I am looking for a";
+$pt3 	= "My Age";
+$pt4	= "Potential partner's age";
+$pt5	= "My sexual orientation";		# Can edit select list7 in selectlists.lib
+$pt6	= "My weight"; 				# Can edit select list8 in selectlists.lib
+$pt7	= "My height"; 				# Can edit select list9 in selectlists.lib
+$pt8	= "Partners Height";			# Uses list9
+$pt9	= "My Zodiac Sign";			# Can edit select list10 in selectlists.lib
+$pt10	= "My Ethnic Background:";		# Can edit select list11 in selectlists.lib
+$pt101="Partner's Ethnicity:";			# Uses list11
+$pt102="My Profession:";			# Can edit select list12 in selectlists.lib
+$pt103="My Parental Status:";			# Can edit select list13 in selectlists.lib
+$pt104="My smoking habits";			# Can edit select list14 in selectlists.lib
+$pt105="Partner's smoking habits";		# Can edit select list15 in selectlists.lib
+$pt106="Partner's parental status";		# Can edit select list16 in selectlists.lib
+$pt107="My City";					
+$pt108="My State";				# Uses list1
+$pt109="My Zip Code(Enter 00000 if no zip)";
+$pt110="My Country";				# Uses list2
+$pt111="My Favorite Movie";
+$pt112="My Favorite Performer";
+$pt113="Type of relationship I am looking for:"; 
+$pt114="My Current Status:";
+$pt115="My favorite leisure activity";
+$pt116="My Personality Type";
+$pt117="Partner's Personality Type";
+$pt118="Will you be uploading a picture to use with your profile?";
+$pt119="Uploading picture";
+$pt120="Not uploading picture";
+$pt121="If you would like to include a brief message in your profile, <br>enter it into the text box below. ";
+
+$edfnf="There was no data file for <b>$username</b> found. Cannot proceed with edit.";
+
+# Used on edit page form for users who aren't using a picture
+
+$edpt1="You are currently using the system's default picture with your profile. If you would like to upload a picture of yourself
+check \"$pt119\". Otherwise, leave \"$pt120\" checked.";
+
+# Used on edit page form for users who are using a picture
+$edptucur="Use Current Picture";
+$edptusysdef="Use system default";
+$edpt2="You are currently using the picture below with your profile. If
+you would like to keep the current picture, check \"$edptucur\". If you would like to 
+upload a new picture check \"Uploading Picture\". If you no longer wish to use a picture of yourself
+with your profile, check \"$edptusysdef\".";
+
+# Radio lists of type of relationship sought($pt113)
+$reltypechoice1="Long Term";
+$reltypechoice2="Short Term";
+$reltypechoice3="Virtual Flirtation";
+$reltypechoice4="Dating";
+$reltypechoice5="Friendship";
+$reltypechoice6="Discreet Affair";
+
+#Radio list for current status(pt114)
+$curstatchoice1="Single";
+$curstatchoice2="Married";
+$curstatchoice3="Separated";
+$curstatchoice4="Divorced";
+
+#Radio list for favorite activities($pt115)
+$faveactchoice1="Watching tv";
+$faveactchoice2="Playing Golf";
+$faveactchoice3="Gardening";
+$faveactchoice4="Reading";
+$faveactchoice5="Sky diving";
+$faveactchoice6="Athletics/Working out";
+$faveactchoice7="Fishing";
+$faveactchoice8="Going to dance clubs";
+$faveactchoice9="Making Love";
+$faveactchoice10="Shopping";
+$faveactchoice11="Cooking";
+$faveactchoice12="Hanging out in bars";
+$faveactchoice13="Going to the movies";
+$faveactchoice14="Cultural activites (museums, theaters, operas etc.)";
+$faveactchoice15="Artistic stuff(Paint, sculpt, act, write, create music)";
+
+#Radio list choices for personality types($pt116)
+$ptypechoice1="Shy/Reserved";
+$ptypechoice2="Bubbly/Energetic";
+$ptypechoice3="Serious/Philosophical";
+$ptypechoice4="Quiet/Introspective";
+$ptypechoice5="Talky/Opinionated";
+$ptypechoice6="Comical/Carefree";
+
+# Profile text for the actual created profile
+
+$pph1	="About Me";
+$pt11	="Name";
+$pt12	="Gender";
+$pt13	="Age";
+$pt14	="Zodiac Sign";
+$pt15	="Ethnicity";
+$pt16	="Sexual Orientation";
+$pt17	="Height";
+$pt18	="Weight";
+$pt19	="Profession";
+$pt20	="Parental Status";
+$pt21	="Smoker/Non-Smoker";
+$pt22	="Country";
+$pph2	="What I'm Looking For";
+$pt23	="Type of relationship wanted";
+$pt24	="Partner's Gender";
+$pt25	="Partner's Age";
+$pt26	="Partner's Height";
+$pt27	="Partner's smoking habits";
+$pt28	="Partner's parental status";
+$pt29	="Partner's Ethnicity";
+$pt30	="Partner's Personality Type";
+$pph3	="More About Me";
+$pt31	="Status";
+$pt32	="Favorite Activity";
+$pt33	="Favorite Performer";
+$pt34	="Favorite Movie";
+$pt35	="Personality Type";
+$pt36	="Contact";
+$pt37	="Leave A Message In My Message Box";
+
+# After first successcful stage of profile creation, this screen in launched for users
+# to upload picture. $putuploadpicturebutton is a variable which has been declared above with
+# the value of the button users will click to upload their picture. $putskipuploadbutton is also
+# a variable that has been declared above. Whereever the script encounters this variable, it will
+# replace the variable with its value, including when it encounters the variable
+# while reading the below variable $ppontoupload
+
+$ppontoupload="<font size=2 face=verdana>You may now upload your picture to include with your profile.
+There are two steps involved in the process.<p>
+<b>First:</b><br>
+Press the \"Browse\" button to search your system for the picture you want to upload. When you have selected the
+picture you want to use, press \"$putuploadpicturebutton\". <p>
+
+<b>Next:</b><br>
+You will be prompted to complete the
+process of attaching your picture to your file. If you've uploaded a picture before that you would like to use,
+press \"$putskipuploadbutton\" to move on</font>";
+
+# Text for click here to view your profile link
+$yphbu="Your profile has been updated.";
+$chtvyp="You may click here to view your profile";
+$rtmp="Return to main page";
+
+# If user does not add additional information to profile, a default statement is added to the datafile.
+# This statement is: Hi, I'm (username). I'm (age). I'm interested in (type of relationship) with (gender)
+
+# The program will read in (username, age, type of relationship sought, and gender) from the 
+# user's submission; therefore, you must include the variables $username, $age, $reltype and $lookingfor in your default 
+# text. They can be used in any order; but the MUST be used if the default text is to contain the username, age, type of
+# relationship sought and gender of person sought.
+
+$pdeftxt="Hi, I'm $username. I'm $age. Interested in $reltype with a $lookingfor";
+
+
+# For page launched when user click's "Place Ad" or "Post an Ad"
+
+$padtxt1="Check the category in which to place your ad";
+$padcat1="Women Seeking Men";
+$padcat2="Men Seeking Women";
+$padcat3="Women Seeking Women";
+$padcat4="Men Seeking Men";
+$padtxt2="Your Personals Ad Headline";
+$padtxt3="Enter your ad text.</b><font size=1>Press Enter/Return
+on your keyboard for new lines)";
+
+# For page launched when user clicks "Delete Ad"
+
+$dadtxt1="In which category is your ad located?";
+$tkn="Ticket Number";
+
+
+# Submitting a complaint page
+$complfiled="Your complaint has been filed.";
+
+$scomphtxt="Use the form below to file a complaint to the 
+administrator. You might report a user who is violating the 
+<a href=\"$cgiurl/personals.pl?tos\">terms of use</a>. 
+Nude photos posted in profiles, obscene, offensive ads, are 
+some of the violations you might use the form below to report.";
+
+$scompl1="Enter complaint below:";
+$ndta="You did not enter any data.";
+
+# Submitting a suggestion
+
+$flsug="Use the form below to make a suggestion or comment to the 
+adminstrator.";
+$ssug1="Enter suggestion or comment below:";
+$ssug2="Your suggestion/comment has been filed.";
+
+# Displayed under featured profiles
+
+$ftr1="Name:";
+$ftr2="Age:";
+$ftr3="Seeking:";
+$ftr4="View Profile";
+
+# File upload message handlers
+
+$fupl1="<blockquote><font size=2 face=verdana>Either the specified directory does not exist, is not writable 
+(chmod 777), or it is not a directory. Directory Name: <b>userimages</b></font></blockquote> ";
+
+$fupl2="<blockquote><font size=2 face=verdana>You may only upload files that end with
+ <b>jpg</b>,<b>JPG</b> <b>jpeg</b>, <b>gif</b>, or <b>GIF</b></font></blockquote>";
+
+$fupl3="<blockquote><font size=2 face=verdana>The directory contains a file with the same name as the file you are trying to upload. You cannot upload your file if there is already a file in the directory with the same file name. Please rename your file; or if the file is yours, please start over and select the filename from the list of your available files.</font></blockquote>";
+
+$fupl4="<blockquote><font size=2 face=verdana>The file you have attempted to upload must be renamed. 
+You cannot upload a file with the name index.</blockquote></font>";
+
+$fupl5="<blockquote><font size=2 face=verdana>The file you are trying to upload  
+is either not properly formatted or does not have a valid filename. Please rename the file and try to upload 
+it again. You cannot upload files with spaces, forward or backward slashes in the filename, 
+and periods at the beginning of the filename, spaces and other special characters.</font></blockquote>.";
+
+$fupl6="<blockquote><font size=2 face=verdana>Click the \"Browse\" button to search for a file on your 
+computer. After you have selected a file click \"Upload File\" 
+to upload the file. The speed at which the file uploads depends on your system and 
+on the size of the file you're uploading. Please be patient 
+while the file uploads. </font></blockquote> ";
+
+$fupl7="<blockquote><font size=2 face=verdana>The file you are uploading exceeds the maximum allowed.
+Your file was not successfully saved. Please reduce the file size and try again. The maximum allowed bytes for your file size is shown below:</blockquote></font>";
+
+$fupl8="<blockquote><font size=2 face=verdana>
+You must enter your username and password below to assure that your picture gets appended to the
+correct profile. You must also enter the name of the file you have just uploaded. For example, if the name of the
+file was \"mypic.jpg\", you enter \"mypic.jpg\" into the filename text box; and the email address
+at which you would like to receive email from persons interested in your profile. </blockquote></font>";
+
+$msname="Maximum bytes allowed";
+# Text for main index
+
+$welct="Welcome to";
+$prtgac="Please register to gain full access to this web site.";
+
+# Text for message box
+
+$msgbxgreet="<b>Welcome, $username</b>";
+
+# To tell member how many messages they have
+$yhv="You have";
+$msgs="Messages";
+$yhvnmsgs="You have no messages";
+# Random lovescope header text
+$rndlvsc="Random Lovescope";
+$selmsg="selected message";
+$msgbxfr="From";
+$msgbxsubj="Subject";
+$msgbxdte="Date";
+
+# Email login reminder
+
+$emnf="We're sorry, but the email address you entered was not found. The information you 
+requested cannot be emailed to you without your email address.<p>Is it possible you
+have entered a different address from the one you supplied at the time you registered? 
+It is necessary that you enter the same email address you supplied upon registration.<p>
+If the address you have entered is correct, and you continue 
+to receive this message, please consider registering again.";
+
+$lrmdmailsubj="Your $sitename login information";
+$lrmdmailcont="Below is the information you have requested. Your user name and password are:";
+$lrmdsent="Your login information has been sent to <b>$emailaddr</b>. You should receive it 
+shortly.<br>";
+
+# Message center
+
+$mscen1="This Message is For:";
+$mscen2="Sender's Username:";
+$mscen3="Sender's Password:";
+$mscen4="Subject of Message";
+$mscen5="Write Your Message Here:";
+$mscen6="A message box was not found for the member to whom you are trying to send a message.";
+$mscen7="Your message has been sent to, <b>$username</b>.";
+
+$mscen8="It appears you do not have a message box. Are you a registered member? Only registered members 
+have message boxes. If you would like to register, <a href=\"$personalsurl/index.html\">click here</a>. If you are registered but have forgotten your user information,
+your information can be sent to your email address. To have your information sent to your email address, <a href=\"$cgiurl/postad.pl?retrievepass\">Click here</a>";
+
+$mscen9="The information you entered did not match our records. The message center is only accessible to registered members. 
+If you are not registered, <a href=\"$personalsurl/register.html\">click here</a> to register. If you have 
+forgotten your login information, <a href=\"$personalsurl/retrievepass.html\">click here</a> to have your information 
+emailed to you.<br>";
+$mscen10="The message you are trying to delete was not found";
+$mscen11="A message box was not found for the member to whom you are trying to send a message.";
+$mscen12="The message has been sent!";
+$inre="Re:";
+
+
+# Ask Venus
+
+$askv1="$loveadvicename knows love";
+$askv2="Asked by:";
+
+$askv3="Have a question about love? Enter your question in the box above to 
+ask $loveadvicename.<font size=-2> <font color=maroon>**</font>$loveadvicename 
+is not a love and relationships expert. \"$loveadvicename knows love\" is for 
+entertainment purposes only.";
+
+# Picture booard
+# If user tries to upload pic without entering username and password
+
+$picb1="Please enter your username, password and the picture id number, and select the picture board category in order to proceed.
+If you do not have a username and password, 
+<a href=\"$personalsurl/index.html\">click here to 
+register</a> a username and password.<br><br>
+If you don't remember your username and password, 
+<a href=\"$cgiurl/personals.pl?retrievepass\">click here</a>
+to have your information sent to you by email.";
+
+$picb2="Your picture has been added to the picture board. The picture id number is shown below. Please save this id number as you will need it to remove your picture from the board.";
+
+$picb3="To add your picture 
+to the picture board fill out the form below";
+
+$picb4="You should have uploaded your picture in the first step. If not, or there is no filename entered below <a href=\"$cgiurl/postad.pl?addpicform\">Click here to start over</a><br><br>";
+
+$picb5="Enter your username and password below:";
+$picb6="Click the \"$putaddpicturebutton\" button below to add your picture to the selected picture board.";
+$picb7="Enter Picture Filename";
+$picb8="Select which picture board you want to add your picture to. If you are a woman seeking a man you should add your picture to the \"Women Seeking Men\" board. If you're a man seeking a woman you should add your picture to the \"Men Seeking Women\" board and so on.";
+$picb9="Select Picture Board";
+
+$picb10="To remove your picture from the picture board, enter your username and password, then press \"$putremovepicturebutton\".";
+
+#Setting $picb11 is necessary only if you purchased your A Personals Touch license before )1/31/02 and if you have member pictures on the picture boards.
+
+$picb11="There is a Problem:<P>Either you don't have a picture on the selected board, or you might have placed your picture on the board before the option to delete
+your picture was added. If the latter is true you will have to send a request to the administrator to remove your picture.
+Please enter the name of your picture file below (You can right-click on your picture and press \"Properties\" to verify the file name),
+then press submit.";
+
+$picb12="Your picture has been removed from the picture board!";
+
+# $pic13 is in the event a member cannot delete their picture from the picture board.
+
+$picb13="Please enter the file name of the photo you would like the administrator to delete.";
+
+$picb14="The username and password you have entered don't match the username and password combination on file.";
+$picb15="Click here to view the picture board";
+
+$picb16="There is either a problem with the username and password or the picture ID Number. If you don't remember the ID number of the picture
+you're trying to delete, press the \"$putsendidbutton\" button to have the ID number shown to you.";
+
+$picb17="Either you have selected the wrong category, or no picture was found that matches the ID number you have entered. If you don't remember your picture's ID Number you may press the \"$putshowidbutton\" button to have the id revealed. **Please note that the ID will only be revealed if you user information is valid.";
+
+$picb18="It appears you have already placed a picture on the picture board. If you want to replace your picture, please delete the current picture first.";
+$pbpin="Picture ID Number";
+$pbwhich="Which Picture Board";
+
+# A message will be emailed to the administrator if a member submits a request to have
+# their picture removed from the picture board. Please define the variables below for this email
+
+$dadm="Dear Administrator";
+$rmpfpb="Remove my picture from the picture board";
+$smmbr="Member";
+$prmpfpb="Please remove the following picture from the picture board on my behalf:";
+$pbty="Thank you";
+$pbyms="Your request has been mailed to the administrator.";
+
+
+
+# Chat room
+
+$croomtxt1="Personals Chat";
+$croomtxt2="Back to $sitename";
+$croomtxt3="Message";
+$croomtxt4="The chatroom you trying to enter was not found.";
+$croomtxt5="Please choose a  different room.";
+$croomtxt6="There is already someone chatting under the name <b>$FORM{'username'}</b>. Please choose another name.";
+$croomtxt7="Chatting As:";
+$croomtxt8="Logon Greeting";
+
+
+$croomwarn="***You <font color=red>CANNOT</font>
+use the <font color=red>\"Enter\"</font> or <font color=red>\"Return\"</font> key on your
+keyboard to send your message. You <font color=red>MUST</font> use the <font color=red>\"Send Message\"</font> button!";
+
+# Love stories
+
+$ls1="Table of contents";
+$ls2="Headline for Table of Contents";
+$ls3="limit 100 characters";
+$ls4="Your love Story";
+$ls5="Picture File Name";
+$ls6="Your love story page has been added to the Love Story Book.You may view your page by <a href=\"$lovestoriesurl/$username.html\">Clicking here!</a>";
+
+# Posting ads
+
+$padstxt1="There is a $adlength word limit for personal ads. Please go back and edit your ad. You have (<b>$x</b>) words in your ad.
+You need to reduce your ad word count by (<b>$difference</b>).";
+$padstxt2="It appears you have already posted an ad. You cannot post another ad before you delete
+your previous ad.";
+$padstxt3="Posted By:";
+$padstxt4="Posted On:";
+$padstxt5="Ad number:";
+$padstxt6="Ticket Number:";
+$padstxt7="You will need your ticket number if you should decide to delete your ad. Please write it down
+in a safe place.";
+
+# Viewing ads
+
+$adschd1="MEN SEEKING MEN";
+$adschd2="MEN SEEKING WOMEN";
+$adschd3="WOMEN SEEKING MEN";
+$adschd4="WOMEN SEEKING WOMEN";
+
+$nxtxt="Next";
+$prvtxt="Previous";
+
+# Searching ads
+
+$sbhead="Browse Profiles/Search Ads";
+$soptb1="I'm A:";
+$soptcat1="Man seeking a woman";
+$soptcat2="Woman seeking a man";
+$soptcat3="Woman seeking a woman";
+$soptcat4="Man seeking a man";
+
+$soptentk="Enter Keywords";
+$soptbheading="Browse Profiles";
+$soptbcat1="Woman";
+$soptbcat1a="Female";
+$soptbcat2="Man";
+$soptlf="Looking For";
+$soptb3="Between Ages";
+$soptb4="Age Only";
+$soptb5="Location";
+$soptb5exp="town/city, state/county etc.";
+$soptb6="and";
+$soptb7="or";
+$soptb8="Enter Keywords";
+$soptb8exp="example: intelligent, cute, sensitive";
+$soptb9="Location Only";
+
+$soptbdet="To search by age only, check \"$soptb4\" and select your starting and ending age, then press \"$putbpbutton\".
+To search by location only, check \"$soptb9\", enter the location in the location box and press \"$putbpbutton\". To check by location
+<b>AND</b> keyword, enter both a location and key word and check \"$sopt6\". To search by location <b>OR</b> keyword, enter either a location or a keyword,
+select \"$soptb7\" and press \"$putbpbutton\".";
+
+
+# Caution text for errors
+
+$schads1="You did not enter anything to search for.
+Please go back and enter a keyword or phrase to search for.";
+
+$schads2="There were <b>(0)</b> ads found.";
+
+# Caution text for errors when creating profiles
+
+$vdte1="You must select an option for each field that is preceded by a red star 
+(<font color=\"red\" size=1 face=\"verdana\">*</font>)Please go back and make the necessary corrections.";
+
+$vdte2="You must select an option for each field that is preceded by a red star 
+(<font color=\"red\" size=1 face=\"verdana\">*</font>)Please go back and make the necessary corrections.";
+
+$vdte3="You must enter your state and country
+Please go back and make the necessary corrections.";
+$vdte4="You must select your state of residence.
+Please go back and make the necessary corrections.";
+$vdte5="There is a $adinfolength word limit for for the additional information you can include in your profile. Please go back and edit your ad. You have (<b>$x</b>) words in your ad.
+You need to reduce your ad word count by (<b>$difference</b>).";
+
+# Picture Board text
+
+$acpbt1="MEN SEEKING MEN PICTURE BOARD";
+$acpbt2="Add Your Picture";
+$acpbt3="Remove Your Picture";
+$acpbt4="Next";
+$acpbt5="Previous";
+$acpbt6="MEN SEEKING WOMEN PICTURE BOARD";
+$acpbt7="WOMEN SEEKING MEN PICTURE BOARD";
+$acpbt8="WOMEN SEEKING WOMEN PICTURE BOARD";
+
+
+#More chat room text
+
+$crmtxt1="Select a chat personality";
+$crmtxt2="Select a chat font color";
+$crmtxt3="Exit Without Chatting";
+$crmtxt4="Who's Here?";
+$crmtxt5="chatting";
+
+$cdefgr="Hello everybody!";
+
+$crmfc1="RED";
+$crmfc2="NAVY";
+$crmfc3="GREEN";
+$crmfc4="BLUE";
+$crmfc5="ORANGE";
+$crmfc6="PURPLE";
+
+$crmcopyright="Powered by <a href=\"http://www.etown21.com/apersonalstouch\"><font size=1 face=verdana color=$croomlinkcolor>Apersonalstouch</font></a><br>Copyright &copy;2000,2001,2002<br>Adela Lewis(ACML Productions)";
+
+
+# Pay site registration
+
+$psubscr1="Step Two";
+$psubscr2="If the information  below is correct, proceed to the payment
+center by pressing the \"Go to payment center\" button below.";
+$psubscr3="In order to complete your registration you must
+visit the payment center to pay for your subscription to $sitename. 
+Click on the link below to go to the payment center. The user information you have registered
+will remain inactive until your payment has been received and processed.</font></blockquote><br>";
+
+
+# Notice
+
+$dntce="
+Important notice: Our personals ads are provided as a free service 
+to you. We are not responsible for any misrepresentation made by 
+persons posting ads on any of our ads sites. Please use your own 
+discretion when responding to advertisements posted herein.";
+
+$pwdby="Powered By <a href=http://www.etown21.com/apersonalstouch.html>A Personals Touch</a><br>Copyright © 2000,2001 <br>    
+All rights reserved.";
+
+
+$propicuploaded="The picture you have uploaded is shown on the left. Please click the \"Next\" button below to continue.";
+
+$propicuploadmsg="Keep in mind that your picture must end with the extension .jpg, .jpeg or .gif.
+Also keep in mind that your picture might not show in your profile if there are spaces in the
+file name. For example <b>my pic.jpg</b> Also with certain browsers the picture will not show with underscores
+and other special characters in the file name. For example <b>my_pic.jpg</b>, <b>my-pic.jpg</b>. 
+To avoid these problems do not use spaces or special characters in your
+file name.<P>To upload your picture, click the \"Browse\" button to search for a file on your computer. 
+After you have selected a file click \"Upload File\" to upload the file. 
+You are limited to $maxfilesize k file size. The speed at which the 
+file uploads depends on your system and on the size of the file 
+you're uploading. Please be patient while the file uploads.";
+
+$querypropic="Will you be using a picture of yourself with your profile? Profiles with 
+pictures are more likely to receive responses than profiles without pictures.";
+
+$anspropic="Please check whether you will be using a picture with your profile or not.";
+
+$textviewads="Select a category from the list below. If you are not automatically directed to the search page, press the submit button,";
+1;

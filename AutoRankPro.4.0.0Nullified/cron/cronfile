@@ -1,0 +1,15 @@
+
+# AutoRank Pro v4.0.x Crontab Entries
+
+# Rerank the list every 30 minutes
+15,45 * * * * /path/to/cron.cgi --mode=rerankList
+
+# Reset the list every 24 hours at midnight
+0 0 * * * /path/to/cron.cgi --mode=resetList
+
+# Clear the IP logs every 24 hours at 10 past midnight
+10 0 * * * /path/to/cron.cgi --mode=clearIPs
+
+# Backup database every 24 hours at 11:30pm
+30 23 * * * /path/to/cron.cgi --mode=backupData data.txt
+

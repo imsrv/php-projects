@@ -1,0 +1,222 @@
+<html>
+<head>
+  <title>Edit Your Account</title>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<form action="accounts.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="650">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center" colspan="2">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Edit Your Account</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td width="160">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>E-Mail Address</b>
+</font>
+</td>
+<td width="490">
+<input type="text" name="email" size="30" value="#%EMAIL%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Site URL</b>
+</font>
+</td>
+<td>
+<input type="text" name="surl" size="50" value="#%SITE_URL%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Site Title</b>
+</font>
+</td>
+<td>
+<input type="text" name="title" size="30" value="#%TITLE%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Description</b>
+</font>
+</td>
+<td>
+<input type="text" name="desc" size="50" value="#%DESCRIPTION%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Banner URL</b>
+</font>
+</td>
+<td>
+<input type="text" name="burl" size="50" value="#%BANNER_URL%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Banner Height</b>
+</font>
+</td>
+<td>
+<input type="text" name="bht" size="10" value="#%HEIGHT%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Banner Width</b>
+</font>
+</td>
+<td>
+<input type="text" name="bwd" size="10" value="#%WIDTH%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Category</b>
+</font>
+</td>
+<td>
+<select name="cat" style="font-size: 11px; font-family: Verdana">
+#%CAT_OPTIONS%#
+</select>
+</td>
+</tr>
+
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Reciprocal Link URL</b>
+</font>
+</td>
+<td>
+<input type="text" name="rurl" size="50" value="#%RECIP_URL%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Password</b>
+</font>
+</td>
+<td>
+<input type="text" name="pass" size="12" maxlength="8" value="#%PASSWORD%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>#%FIELD_1_NAME%#</b>
+</font>
+</td>
+<td>
+<input type="text" name="fld1" size="50" value="#%FIELD_1%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>#%FIELD_2_NAME%#</b>
+</font>
+</td>
+<td>
+<input type="text" name="fld2" size="50" value="#%FIELD_2%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>#%FIELD_3_NAME%#</b>
+</font>
+</td>
+<td>
+<input type="text" name="fld3" size="50" value="#%FIELD_3%#" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+
+<tr bgcolor="#ececec">
+<td colspan="2" align="center">
+<input type="hidden" name="opwd" value="#%PASSWORD%#">
+<input type="hidden" name="user" value="#%USERNAME%#">
+<input type="hidden" name="run" value="editAccount">
+<input type="submit" name="submit" value="Submit" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</form>
+
+</body>
+</html>
+

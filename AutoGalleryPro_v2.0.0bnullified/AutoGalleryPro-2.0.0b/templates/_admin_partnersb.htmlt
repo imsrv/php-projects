@@ -1,0 +1,43 @@
+</table>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+
+<table width="100%">
+<tr>
+<td align="center">
+
+<select name="run" style="font-size: 11px; font-family: Verdana">
+  <option value="displayEditPartner">Edit Selected Partner</option>
+  <option value="displayMail">E-mail Selected Partners</option>
+  <option value="deletePartners">Delete Selected Partners</option>
+</select>
+
+<input type="hidden" name="db" value="partners">
+<input type="hidden" name="efnct" value="mailPartners">
+<input type="submit" name="submit" value="Execute Function" style="font-size: 11px; font-family: Verdana">
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<br><br>
+
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b><a href="admin.cgi" class="reg">Back To Main Page</a></b>
+</font>
+
+</div>
+
+</body>
+</html>

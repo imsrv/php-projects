@@ -1,0 +1,35 @@
+<?php 
+//
+// Header HTML file
+//
+?>
+<?php Header("Pragma: no-cache"); /*Header("Cache-Control: no-cache");*/ ?>
+<!-- header : START -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>BasiliX <?php echo $BSX_VERSION?></title>
+<meta http-equiv="Content-Type" content="text/html;charset=<?php echo $GLOBALS["charset"]?>">
+<meta name="generator" content="BasiliX <?php echo $BSX_VERSION?>">
+<meta name="author" content="Murat Arslan; arslanm@basilix.org">
+<?php if(!empty($REFRESH_URL)) {
+?>
+<meta http-equiv="Refresh" content="<?php echo $REFRESH_SEC?>; URL=<?php echo $REFRESH_URL?>">
+<?php 
+}
+?>
+<script src="<?php echo $BSX_BASEHREF?>/js/browser.js"></script>
+<script src="<?php echo $BSX_BASEHREF?>/js/util.js"></script>
+<script language="JavaScript">
+if(is_ie4up) {
+  document.write('<link rel="stylesheet" href="<?php echo $BSX_BASEHREF?>/css/<?php echo $BSX_THEMEDIR?>/ie.css">');
+} else {
+  document.write('<link rel="stylesheet" href="<?php echo $BSX_BASEHREF?>/css/<?php echo $BSX_THEMEDIR?>/ns.css">');
+}
+</script>
+</head>
+<body marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" <?php echo $BODY_ONLOAD?> <?php echo $BODY_ONUNLOAD?>>
+<noscript><div class="error" align="center"><?php echo $lng->p(4)?></div></noscript>
+<div class="csserr" align="center" style="position:absolute;"><?php echo $lng->p(5)?></div>
+<?php flush() ?>
+<!-- header : FINISH -->

@@ -1,0 +1,38 @@
+<?
+// 'Settings' messages
+$lang_msg["settings"] = array(
+	501	=>	'I couldnot save the new settings, please try again later',
+	502	=>	'The new settings have been saved',
+	503	=>	'Your Name',
+	504	=>	'(will be attached to the <u>From</u> parts of the outgoing e-mails)',
+	505	=>	'Signature',
+	506	=>	'(will be appended to every mail you send)',
+	507	=>	'Language',
+	508	=>	'(default language)',
+	509	=>	'Sort messages by',
+	510	=>	'(default sorting algorithm)',
+	511	=>	'Reverse sorting',
+	512	=>	'(if yes, most recent messages will be displayed top)',
+	513	=>	'Save outgoing messages',
+	514	=>	'(if yes, the outgoing messages will be saved to "Sent Mail")',
+	515	=>	'Move to Trash folder',
+	516	=>	'(if yes, the deleted messages will be moved to Trash folder)',
+	517	=>	'Page size',
+	518	=>	'(message per page when listing a mailbox)',
+	519	=>	'Date',
+	520	=>	'From',
+	521	=>	'Subject',
+	522	=>	'Size',
+	523	=>	'Theme',
+	524	=>	'(changes the look of your mail gateway)',
+	525	=>	'Save settings',
+	526	=>	'Show',
+	527	=>	'Hide',
+	528	=>	'Show/Hide',
+	529	=>	'(show or hide the user folder list in the left menu)',
+	530	=>	'Prev/Next',
+	531	=>	'(shows the previous and the next message links when reading a message -- this is slow on large mailboxes)',
+	532	=>	'Reply-To',
+	533	=>	'(the recipient will reply to this address -- if empty <b>%e</b> is used)'
+);
+?>

@@ -1,0 +1,93 @@
+<?
+/*
++----------------------------------------------------------------------+
+| BasiliX - Copyright (C) 2000-2002 Murat Arslan <arslanm@basilix.org> |
++----------------------------------------------------------------------+
+*/
+
+// Language related functions
+// -----------------------------------------------------------------------
+class Language {
+   var $langshort = "";
+   var $langlong = "";
+   var $lngdir = "";
+   var $charset = "";
+   var $cur_str = "";
+   
+   var $lng = array();
+
+   function init($lang) {
+       global $BSX_LANGDIR, $BSX_DEFAULT_LANG, $bsx_lang, $bsx_lang_cnt;
+
+       /* no longer needed -Benoit
+       $found = -1;
+       for($i = 0 ; $i < $bsx_lang_cnt ; $i++) {
+	 if($i == $lang) {
+            $found = $i;
+            break;
+         }
+       }
+
+       if($found < 0)
+         $found = $BSX_DEFAULT_LANG;
+
+       */
+       
+       // already checked, so make the assignment -Benoit
+       if($lang == -1) $found = $BSX_DEFAULT_LANG;
+       else $found = $lang;
+       
+       $this->charset = $bsx_lang[$found]["charset"];
+       $this->langlong = $bsx_lang[$found]["long"];
+       $this->langshort = $bsx_lang[$found]["short"];
+       $this->lngdir = $BSX_LANGDIR . "/" . $this->langshort;
+
+       $this->load("global");
+       $this->load("menu");
+       return $this->charset;
+   }
+
+   // append the second parameter (array) to the first one..
+   function array_mymerge(&$toarr, $fromarr) {
+       while(list($key, $val) = each($fromarr)) $toarr["$key"] = $val;
+   }
+
+   // load the section
+   function load($section) {
+       global $bsx_langfiles;
+       $filename = $bsx_langfiles["$section"];
+       if($filename == "") exit();
+       $file = $this->lngdir . "/" . $filename;
+       include("$file");
+       if(empty($lang_msg["$section"])) exit();
+       // merge the arrays
+       $this->array_mymerge($this->lng, $lang_msg["$section"]);
+
+   }
+   
+   // copy the lang msg to the buffer
+   function sb($what) {
+       $this->cur_str = $this->lng["$what"];
+   }
+
+   // replace $a with $b
+   // example: xxx->pr("%d", "233") does replace "%d" in string to 233.
+   function sr($a, $b) {
+       $this->cur_str = eregi_replace("$a", "$b", $this->cur_str);
+   }
+  
+   // send the message
+   function sp() {
+       $b = $this->cur_str;
+       $this->cur_str = "";
+       return $b;
+   }
+
+   // print the related message
+   function p($what) {
+       return $this->lng["$what"];
+   }
+}
+
+$lng = new Language;
+?>

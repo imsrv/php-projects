@@ -1,0 +1,6 @@
+#DELETE THIS LINE AND RENAME THIS FILE TO ".htaccess"
+Options +ExecCGI
+<Files *.html>
+    Action text/html /adam/i.cgi
+</Files>
+DirectoryIndex index.html

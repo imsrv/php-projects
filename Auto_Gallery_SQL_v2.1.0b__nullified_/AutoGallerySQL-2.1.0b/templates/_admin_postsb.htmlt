@@ -1,0 +1,83 @@
+</table>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+
+<table width="100%">
+<tr>
+<td align="center">
+<select name="run" style="font-size: 11px; font-family: Verdana">
+  <option value="displayEditPost">Edit Selected Post</option>
+  <option value="displayMail">E-mail Selected Posters</option>
+  #%ARCHIVE%#
+  <option value="deletePosts">Delete Selected Posts</option>
+  #%NEXT%#
+</select>
+<input type="hidden" name="show" value="#%SHOW%#">
+<input type="hidden" name="page" value="#%PAGE%#">
+<input type="hidden" name="db"   value="#%DATABASE%#">
+<input type="hidden" name="dbcat" value="#%DBCAT%#">
+<input type="hidden" name="from" value="displayPosts">
+<input type="hidden" name="efnct" value="mailPosters">
+<input type="submit" name="submit" value="Execute Function" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</form>
+
+<form action="admin.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="800">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="800">
+
+<tr bgcolor="#ececec">
+<td align="center">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Jump directly to the page that starts with submission</b>
+</font>
+<select  name="page" style="font-size: 11px; font-family: Verdana"#%STATUS%#>
+#%JUMP%#
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="submit" value="Jump" style="font-size: 11px; font-family: Verdana"#%STATUS%#>
+<input type="hidden" name="show" value="#%SHOW%#">
+<input type="hidden" name="page" value="#%PAGE%#">
+<input type="hidden" name="dbcat" value="#%DBCAT%#">
+<input type="hidden" name="db"   value="#%DATABASE%#">
+<input type="hidden" name="from" value="displayPosts">
+<input type="hidden" name="run"  value="quickJump">
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</form>
+
+<br><br>
+
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b><a href="admin.cgi" class="reg">Back To Main Page</a></b>
+</font>
+
+</div>
+
+</body>
+</html>

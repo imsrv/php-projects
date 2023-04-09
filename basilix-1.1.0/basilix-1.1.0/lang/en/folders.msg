@@ -1,0 +1,37 @@
+<?
+// Folders screen messages
+$lang_msg["folders"] = array(
+	151	=>	'Folder',
+	152	=>	'Total',
+	153	=>	'Unread',
+	154	=>	'Size',
+	155	=>	'Create a personal folder:',
+	156	=>	'Create my personal folder',
+	157	=>	'You can create any number of personal folders. To create a new personal folder, please enter its name below and click the CREATE button.',
+	158	=>	'You did not enter the new folder name, please try again.',
+	159	=>	'That folder already exists, please try again.',
+	160	=>	'Your new folder has been successfully created.',
+	161	=>	'Delete a folder:',
+	162	=>	'Delete selected folder',
+	163	=>	'Deleted folders are <u><b>NOT</b> recoverable</u>. If you want to delete a folder, please select it and click the DELETE button.',
+	164	=>	'You did not select a folder name to be deleted, please try again.',
+	165	=>	'I could not delete the folder you have specified, please try again later..',
+	166	=>	'The folder you have specified has been successfully deleted.',
+	167	=>	'Rename a folder:',
+	168	=>	'Rename selected folder',
+	169	=>	'If you want to rename a personal folder, please select it and click the RENAME button.',
+	170	=>	'Old folder name',
+	171	=>	'New folder name',
+	172	=>	'You did not select a folder name to rename, please try again..',
+	173	=>	'You did not enter the new folder name, please try again..',
+	174	=>	'I could not rename the folder you have specified, please try again later..',
+	175	=>	'Your folder has been succesfully renamed.',
+	176	=>	'empty Trash folder',
+	177	=>	'I could not create the new folder. Could you be over your disk quota? please try again later..',
+	178	=>	'The folder you have specified has been successfully emptied.',
+	179	=>	'I could not empty the folder you have specified, please try again later..',
+	180	=>	'Do you really want to empty this folder?',
+	181	=>	'Error creating Trash folder',
+	182	=>	'Error creating Sent Mail folder'
+);
+?>

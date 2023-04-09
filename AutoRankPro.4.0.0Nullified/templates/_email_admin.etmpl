@@ -1,0 +1,13 @@
+To:  #%ADMIN_EMAIL%#
+From: #%ADMIN_EMAIL%#
+Subject: Account Submitted
+
+An account has been submitted to your top sites list.
+
+Username: #%USERNAME%#
+Site URL: #%SITE_URL%#
+Title: #%TITLE%#
+Description: #%DESCRIPTION%#
+
+If you are reviewing new accounts, you will need to visit
+your administrative script to approve/reject this account.

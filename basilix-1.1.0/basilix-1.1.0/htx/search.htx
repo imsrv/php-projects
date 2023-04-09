@@ -1,0 +1,118 @@
+<?php 
+//
+// Search HTML file
+//
+?>
+<div align="center">
+<br>
+<?php start_form("findMail")?>
+<script language="JavaScript" src="<?php echo $BSX_BASEHREF?>/js/search.js"></script>
+<input type="hidden" name="RequestID" value="FINDMSG">
+<input type="hidden" name="doSearch" value="yes">
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+<tr><td align="center" class="tblborder">
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tr>
+<td class="normalbg" align="center" width="100%"><br>
+<table><tr><td class="normalbg" align="left"><blockquote><?php echo nbsp($lng->p(606))?></blockquote></td></tr></table>
+<blockquote>
+<input type="checkbox" style="border-width:0;" name="search_mbox[0]" value="Inbox" checked>Inbox
+<?php
+for($i = 0 ; $i < count($bsx_mboxes) ; $i++) {
+	$j = $i + 1;
+?>
+<input type="checkbox" style="border-width:0;" name="search_mbox[<?php echo $j?>]" value="<?php echo urlencode($bsx_mboxes[$i])?>"><?php echo $bsx_mboxes[$i]?><?php echo "\n"?>
+<?php
+}
+?>
+<br>
+<?php if($is_js) { ?>
+<br>
+<a href="#" onClick="checkAllMboxes(true)"><?php echo $lng->p(614)?></a> | <a href="#" onClick="checkAllMboxes(false)"><?php echo $lng->p(615)?></a>
+<?php } ?>
+</blockquote>
+<br>
+<select name="search_src" size="1">
+<option value="1" <?php if($search_src == 1) echo "selected"?>><?php echo $lng->p(607)?></option>
+<option value="2" <?php if($search_src == 2) echo "selected"?>><?php echo $lng->p(608)?></option>
+<option value="3" <?php if($search_src == 3) echo "selected"?>><?php echo $lng->p(609)?></option>
+</select>
+&nbsp;&nbsp;<input type="text" name="search_txt" size="40" maxlength="40" value="<?php echo $search_txt?>">
+<br>
+&nbsp;</td>
+</tr>
+<tr>
+<td class="normalbg" align="center" width="100%" nowrap><br>
+<?php push_errinfo()?><br>
+<input class="button" type="submit" value="<?php echo $lng->p(611)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>
+<br>
+&nbsp;
+</td></tr>
+</table>
+</td></tr>
+</table>
+<?php 
+if($found_cnt) {
+?>
+<br>
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+<tr><td align="center" class="tblborder">
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<td align="left" class="normalbg">
+<?php 
+$prevbox = "";
+for($i = 0 ; $i < $found_cnt ; $i++) {
+  if($search_result[$i]["mbox"] != $prevbox) {
+    if($j && $i) {
+      echo "</table></td></tr></table><br><hr width=\"30%\"></div>\n";
+    }
+?>
+<br>&nbsp;&middot;&nbsp;<b><?php echo imap_utf7_decode($search_result[$i]["mbox"])?></b>:
+<?php  $j = 0; ?>
+<?php 
+}
+if(!$j) {
+?>
+<div align="center"><br>
+<table border="0" cellpadding="0" cellspacing="0" width="90%">
+<tr><td align="center" class="tblborder">
+<table border="0 cellpadding="1" cellspacing="1" width="100%">
+<tr>
+<td class="mboxhdr" align="left" width="40%" nowrap><?php echo nbsp($lng->p(609))?></td>
+<td class="mboxhdr" align="left" width="40%" nowrap><?php echo nbsp($lng->p(608))?></td>
+<td class="mboxhdr" align="center" width="20%" nowrap><?php echo nbsp($lng->p(613))?></td>
+</tr>
+<?php 
+}
+$j++;
+?>
+<tr>
+<td class="<?php echo $search_result[$i]["class"]?>" align="left" width="40%" nowrap>&nbsp;
+<?php put_ahref("RequestID=READMSG&mbox=".urlencode(imap_utf7_decode($search_result[$i]["mbox"]))."&ID=".$search_result[$i]["uid"]."&sort=".$userSettings["sort"], $search_result[$i]["from"])?>
+</td>
+<td class="<?php echo $search_result[$i]["class"]?>" align="left" width="40%" nowrap>&nbsp;
+<?php echo $search_result[$i]["subject"]?>
+</td>
+<td class="<?php echo $search_result[$i]["class"]?>" align="left" width="20%" nowrap>&nbsp;
+<?php echo $search_result[$i]["date"]?>
+</td>
+</tr>
+<?php 
+$prevbox = $search_result[$i]["mbox"];
+}
+echo "</table></td></tr></table></div>\n";
+}
+?>
+<?php 
+if($found_cnt) {
+?>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<?php 
+}
+?>
+<?php stop_form()?>
+</div>
+

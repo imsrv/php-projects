@@ -1,0 +1,112 @@
+.input {
+	background-color : #FFF5EE;
+	font-size : 11px;
+	font-family : Verdana;
+	font-weight : bold;
+	border : thin groove #DCDCDC;
+}
+.box{
+	border : thin groove #DCDCDC;
+	background-color : #FFF5EE;
+}
+.button{
+	color : White;
+	background-color : #6A5ACD;
+	font-weight : bold;
+	font : bold 12px;
+}
+.title{
+	font : bold 14px Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color : #483D8B;
+}
+.name{
+	color : Black;
+	font : bold 12px Arial, Helvetica, sans-serif;
+}
+.normal{
+	color : Black;
+	font : 12px Arial, Helvetica, sans-serif;
+}
+.normalBlue{
+	color : #4B0082;
+	font : 12px Arial, Helvetica, sans-serif;
+	font-weight : bold;
+}
+.titleTextWhite{
+	font-family : Verdana;
+	font-size : 12px;
+	font-weight : bold;
+	color : White;
+}
+.ok {
+	font-family : Verdana;
+	font-size : 12px;
+	font-weight : bold;
+	background-color : #556B2F;
+	color : White;
+}
+.warning {
+	font-family : Verdana;
+	font-size : 12px;
+	font-weight : bold;
+	background-color : #B22222;
+	color : #FFEFD5;
+}
+
+.calToday{
+	color : #B22222;
+	font-size : 12px;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.calMonLink{
+	color : Black;
+	font-size : 12px;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.calYesterday {
+	color : Black;
+	font-size : 12px;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.calTomorrow  {
+	color : Black;
+	font-size : 12px;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.calTitle  {
+	color : Navy;
+	font-size : 11px;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-weight : bold;
+}
+
+.calTblMain {
+	border : 1px solid #708090;
+}
+
+.calTblTitle {
+	border : 0px solid #A9A9A9;
+}
+
+.calTblDayNull {
+	border : 1px solid #5F9EA0;
+}
+
+.calTblDay {
+	border : 1px solid #5F9EA0;
+	background : #EFF3F7;
+}
+
+.calTblYesterday {
+	border : 1px solid #5F9EA0;
+	background : #EFF3F7;
+}
+
+.calTblToday {
+	border : 1px solid #5F9EA0;
+	background: #ADC7EF;
+}

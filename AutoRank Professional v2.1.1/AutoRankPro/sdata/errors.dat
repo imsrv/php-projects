@@ -1,0 +1,89 @@
+package err;
+
+$err::code{'1000'} = <<1000;
+The password you have entered is invalid.
+1000
+
+$err::code{'1001'} = <<1001;
+A required form field was left blank.
+1001
+
+$err::code{'1002'} = <<1002;
+The username field may only contain letters and numbers.
+1002
+
+$err::code{'1003'} = <<1003;
+This field needs to be 5-8 characters in length.
+1003
+
+$err::code{'1004'} = <<1004;
+The passwords you have entered do not match.
+1004
+
+$err::code{'1005'} = <<1005;
+The username you entered is already in use by another account.
+1005
+
+$err::code{'1006'} = <<1006;
+Some of the data you have entered is banned from this site.
+1006
+
+$err::code{'1007'} = <<1007;
+You must enter a name for the icon.
+1007
+
+$err::code{'1008'} = <<1008;
+The HTML you enter must be 1000 characters or less in size.
+1008
+
+$err::code{'1009'} = <<1009;
+The username you entered does not exist.
+1009
+
+$err::code{'1010'} = <<1010;
+No function was selected or you did not press the submit button.
+1010
+
+$err::code{'1011'} = <<1011;
+You have not choosen to review new additions in setup.cgi.
+1011
+
+$err::code{'1012'} = <<1012;
+Could not fork a new process so e-mails could be sent.  Mailing Failure!
+1012
+
+$err::code{'1013'} = <<1013;
+The e-mail address you entered was not found in our database or your account has not yet been approved.
+1013
+
+$err::code{'1014'} = <<1014;
+This account has been locked by the list administrator. No changes may
+ be made to the account, but you are still ranked on the list.
+1014
+
+$err::code{'1015'} = <<1015;
+This account is suspended by the list administrator.  You are no longer
+ being ranked on the list. Contact the list administrator for more details.
+1015
+
+$err::code{'1016'} = <<1016;
+One of the URLs you entered was formatted incorrectly.
+1016
+
+$err::code{'1017'} = <<1017;
+You must have exactly one more page than list splits.  If you enter 25,50,75 for
+the list split value, then you need to have 4 pages:  index.html,index2.html,index3.html,index4.html
+1017
+
+$err::code{'1018'} = <<1018;
+The username you entered was not found in our database or has not yet been approved.
+1018
+
+$err::code{'1019'} = <<1019;
+The site description you entered exceeds the maximum size allowed for this site.
+1019
+
+$err::code{'1020'} = <<1020;
+The site description you entered exceeds the maximum size allowed for this site.
+1020
+1;

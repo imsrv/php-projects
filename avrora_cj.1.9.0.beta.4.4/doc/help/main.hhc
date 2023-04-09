@@ -1,0 +1,110 @@
+<html><head></head><body>
+<OBJECT type="text/site properties"><param name="Window Styles" value="0x227"></OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Avrora CJ">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\index.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Возможности">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\info.features.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Быстродействие">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\info.performance.html">
+</OBJECT>
+</UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Инсталляция">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\install.html">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Требования">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\install.request.html">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Обновление">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\install.update.html">
+</OBJECT>
+</UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Использование">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\work.html">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Настройки">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\work.settings.html">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Системные трейдеры">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\work.system_traders.html">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Работа с трейдерами">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\work.with_trader.html">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Статистика трейдеров">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\work.trader_stats.html">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Параметры трейда">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\work.trade_param.html">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Использование форсов">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\work.force.html">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Ротация тумб">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\work.thumb.html">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Морды сиджа">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\work.faces.html">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Ротация морд">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\work.fase_rotation.html">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Блокировки">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\work.block.html">
+</OBJECT>
+</UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Помощь">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\help.ask.html">
+<PARAM NAME="ImageNumber" value="37">
+</OBJECT>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="О авторе">
+<PARAM NAME="Local" VALUE="D:\project\www.av-cj.loc\help\about.html">
+<PARAM NAME="ImageNumber" value="27">
+</OBJECT>
+</UL></body></html>

@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=win-1251">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>Avrora CJ</TITLE>
+</HEAD>
+<body bgcolor="#FFFFFF" text="#000000">
+<P><font style="font-size: 12px; font-family: Arial, Helvetica, sans-serif;">
+<br>
+Avrora CJ построен на основе PHP + MySQL. 
+<br>
+
+<br>
+В принципе, широко распространено мнение, что такая связка медленная и сильно нагружает сервер. Могу сказать только, что это не так. При правильно распланированной структуре возможно получение скорости быстрее чем у скриптов на основе C/C++. Это достигается отсутствием дополнительных вызовов cgi приложений, которые кстати потребляют довольно много ресурсов.
+<br>
+
+<br>
+Ну а использование MySQL думаю будет надежнее, чем попытки самому создать свою собственную базу со всеми блокировками и транзакциями. 
+<br>
+
+<br>
+При разработке движка Avrora CJ использовался опыт и технологии от баннерных и поисковых систем. 
+<br>
+
+<br>
+Так например при анализе посетителей используются числовые представления ip адресов и доменов трейдеров, что позволяет в разы увеличить скорость работы базы данных. 
+<br>
+
+<br>
+При обработке категорий используется булева логика всего с одним числовым полем, что так же сильно влияет на быстродействие в его положительном представлении.
+<br>
+
+<br>
+На предварительных тестах на IP 133MHz / 32 Ram отработалось около 250.000 запросов за 24 часа,  что с учетом неравномерности загрузки на вэб проектах, составит около 100.000 хитов в сутки.  
+<br>
+
+<br>
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#7F0000"><b>
+<br>
+</b></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000"><span style="font-family:Helvetica,Arial; font-size:10pt; color:#FF0000"><b>Реальное быстродействие</b></span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+
+<br>
+Железо: IP III 1GHz, 512 RAM, IDE диск на 5200 оборотов
+<br>
+Операционая система: Windows XP
+<br>
+Серверный софт: Apache + PHP 4.3.1 + MySQL 4.0.12 . 
+<br>
+В качестве тестирующего софта использовался Webserver Stress Tool 6 находящийся <u>на том же самом</u> компьютере.
+<br>
+
+<br>
+Все установлено с настройками по умолчанию, т.е. никаких дополнительных тюнингов не производилось. 
+<br>
+
+<br>
+В базе находилось 30 трейдеров и 100.000 ip адресов. 
+<br>
+В качестве теста CJ было установлено использовать 50 клиентов работающих одновремено. Результат работы приведен ниже.
+<br>
+
+<br>
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#0000FF">** Test Setup **</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Test Type: TIME (run test for 10 minutes)
+<br>
+User Simulation: 50 simultaneous users - 0 seconds between clicks
+<br>
+
+<br>
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#0000FF">** Browser Settings **</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Browser Simulation: 
+<br>
+User Agent: Mozilla/5.0 (compatible; Webserver Stress Tool; Windows)
+<br>
+HTTP Request Timeout: 120 s
+<br>
+Enable Cookies
+<br>
+
+<br>
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#0000FF">** Client System **</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">
+<br>
+Windows XP V5.1 (Build 2600) Service Pack 1, CPU Proc. Lev. 686 (Rev. 2054) at 1004 MHz, 
+<br>
+133 MB available RAM of 536 MB total physical RAM, 270 MB available pagefile, 5088 MB free disk space on C:
+<br>
+Client's MAC address: 00-50-22-8A-21-E9
+<br>
+Time measurement resolution: 2,793651 µsec, clock runs at 4MHz
+<br>
+
+<br>
+Setting Priority of WebStress.exe Process to "HIGH"
+<br>
+
+<br>
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#FF0000">Hits per Second</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">: 16,325 (equals 58771,44 Hits per Hour)
+<br>
+<span style="font-family:Helvetica,Arial; font-size:10pt; color:#FF0000">Successful clicks per Second</span></span></span><span style="font-family:Helvetica,Arial; font-size:10pt; color:#000000">: 16,325 (equals 58771,44 Clicks per Hour)
+<br>
+
+<br>
+Т.е. грубо говоря, мой домашний компьютер держал свыше 50.000 запросов в час. И это с условием того, что WinXP+Apache+MySQL изначально медленее нормального *nix сервера. 
+<br>
+
+<br>
+</font></P>
+</BODY>
+</HTML>

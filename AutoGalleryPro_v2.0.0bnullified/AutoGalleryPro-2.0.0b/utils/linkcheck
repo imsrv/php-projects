@@ -1,0 +1,201 @@
+#!/usr/bin/perl
+##################################
+#  HTTP Library v1.0.0        
+#   Program Name	: AutoGallery Pro
+#   Website		: http://www.jmbsoft.com
+#   Version		: 2.0.0b
+#   Supplier By  	: Sliding
+#   Nullified By	: CyKuH
+######################################################
+##  http.pl - HTTP functions                        ##
+######################################################
+
+package HTTP;
+
+#use lib '.';                         ## You may need to change this to the full path to the directory where cgiworks.pmis located
+use cgiworks;
+use Parallel;
+use Socket;
+use strict;
+use vars qw( $CRLF $Location $Status $SCode $URL $URI $Host $Port );
+
+#####################################################################
+##  Removing the link back to CGI Works is a copyright violation.  ##
+##  Altering or removing any of the code that is responsible, in   ##
+##  any way, for generating that link is strictly forbidden.       ##
+##  Anyone violating the above policy will have their license      ##
+##  terminated on the spot.  Do not remove that link - ever.       ##
+#####################################################################
+
+print "Not yet completed\n";
+exit;
+
+$SIG{ALRM} = sub { die "timeout" };
+$CRLF      = "\015\012"; 
+
+my @urls;
+my $file = $ARGV[0];
+
+my($host, $sock, $response);
+
+if( $file =~ /http:/ )
+{
+    $Status = STATUS($file);
+    $Status =~ s/^\s+|\s+$//gi;
+    printf("%-80s %-18s\n", $file, $Status);
+    exit;
+}
+
+die "No filename specified or file doesn't exist" if( $file eq '' || !-e $file );
+
+open(FILE, $file);
+
+for( <FILE> ) {
+  if( $_ =~ /<a href="(http[^"]+)"/ ) {
+    push(@urls, $1);   
+  }
+}
+
+my $pm = new Parallel(3); 
+
+my $start = time;
+for( @urls ) {
+  $pm->start and next;
+  $Status = STATUS($_);
+  $Status =~ s/^\s+|\s+$//gi;
+  printf("%-80s %-18s\n", $_, $Status);
+  $pm->finish;
+}
+
+$pm->wait_all_children;
+
+my $end = time - $start;
+
+print "\n" . scalar(@urls) . " URLs checked in $end seconds\n";
+
+1;
+
+
+## Get a the status line 
+sub STATUS {
+  $URL = shift;
+
+  URLExpand($URL);
+
+  my $sock = Connect( $Host, $Port );
+
+  return $sock if( $sock =~ /TIMEOUT/ );
+
+  my $temp = Send( $sock, GETString($URI, $Host) );
+
+  return $temp if( $temp =~ /TIMEOUT/ );
+
+  my $data = Read($sock);
+
+  Disconnect($sock);
+
+  return $data;
+}
+
+## Connect to HTTP server
+sub Connect {
+  my($host, $port) = @_;
+
+  $Location = undef;
+
+  socket( SOCK, AF_INET, SOCK_STREAM, getprotobyname('tcp') );
+
+  my $iaddr = inet_aton($host) || return "Could not resolve $host";
+  my $paddr = sockaddr_in($port, $iaddr);
+
+  eval {
+    alarm(10);
+    connect( SOCK, $paddr ) || return "$!";
+    alarm(0);
+  };
+
+  return "CONNECT TIMEOUT" if( $@ );
+
+  return \*SOCK;
+}
+
+
+## Disconnect from HTTP server
+sub Disconnect {
+  my $sock = shift;
+  close($sock);
+}
+
+
+## Send data to an open socket
+sub Send {
+  my($sock, $data) = @_;
+
+  eval {
+    alarm(15);
+    send( $sock, $data, undef );
+    alarm(0);
+  };
+
+  return "SEND TIMEOUT" if( $@ );
+}
+
+
+## Receive data from an open socket
+sub Read {
+  my $sock = shift;
+  my( $data, $hdone );
+
+  eval {
+    alarm(30);
+
+    ## Check the status line for 400+ status codes
+    chomp($Status = <$sock>);
+    $Status =~ /\s(\d\d\d)\s/;
+    $Status = substr($Status, 9);
+    $SCode  = $1;
+
+    #Error($Status) if( $SCode >= 400 );
+
+    #for( <$sock> ) {
+    #  chomp($Location = $1) if( $_ =~ /^Location:\s+(.*)$CRLF/ );
+    #  $data .= $_ if( $hdone );
+    #  $hdone = 1 if( $_ =~ /^$CRLF$/ );
+    #}
+    alarm(0);
+  };
+
+  return "READ TIMEOUT" if( $@ );
+
+  return $Status;
+}
+
+
+## Return the headers to send to server for GET request
+sub GETString {
+  my( $URI, $host ) = @_;
+
+  return "GET $URI HTTP/1.0$CRLF" . "Host: $host$CRLF$CRLF";
+}
+
+sub URLExpand {
+  $URL = shift;
+
+  Error(1002) if( $URL !~ /^http:\/\/[\w\d\-\.]+\.[\w\d\-\.]+/ );
+  
+  $URL =~ /http:\/\/([^\/]+)(\/?.*)/;
+  ($Host, $Port) = split(/:/, $1);
+
+  $URI  = $2;
+  $URI  = '/' if( $URI eq '' );
+  $Port = 80 if( $Port eq '' );
+}
+
+
+sub Error {
+  my $msg = shift;
+  print "Error Accessing A URL You Entered\n";
+  print "URL: $URL\n";
+  print "Error: $msg\n";
+  exit;
+}

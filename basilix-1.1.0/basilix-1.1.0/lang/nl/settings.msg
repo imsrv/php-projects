@@ -1,0 +1,38 @@
+<?
+// 'Settings' messages
+$lang_msg["settings"] = array(
+	501	=>	'De nieuwe instellingen konden niet worden opgeslagen, probeer het later nog eens',
+	502	=>	'De nieuwe instellingen zijn opgeslagen.',
+	503	=>	'Uw naam',
+	504	=>	'(zal worden toegevoegd aan het <u>Van</u> deel van uitgaande e-mails)',
+	505	=>	'Signatuur',
+	506	=>	'(zal onderaan elke e-mail worden toegevoegd)',
+	507	=>	'Taal',
+	508	=>	'(standaard taal)',
+	509	=>	'Sorteer berichten op',
+	510	=>	'(standaard sorteer algoritme)',
+	511	=>	'Omgekeerd sorteren',
+	512	=>	'(indien ja, de meest recente berichten worden bovenaan getoond)',
+	513	=>	'Bewaar verstuurde e-mail',
+	514	=>	'(indien ja, de verstuurde e-mails worden opgeslagen in "Verstuurde Berichten")',
+	515	=>	'Verplaatsen naar Prullenbak',
+	516	=>	'(indien ja, verwijderde berichten worden naar de Prullenbak verplaatst)',
+	517	=>	'Papier grootte',
+	518	=>	'(berichten per pagina bij het bekijken van uw postvak)',
+	519	=>	'Datum',
+	520	=>	'Van',
+	521	=>	'Onderwerp',
+	522	=>	'Grootte',
+	523	=>	'Thema',
+	524	=>	'(verander het gezicht van uw mail-gateway)',
+	525	=>	'Instellingen opslaan',
+	526	=>	'Show',
+	527	=>	'Hide',
+	528	=>	'Show/Hide',
+	529	=>	'(show or hide the user folder list in the left menu)',
+	530	=>	'Prev/Next',
+	531	=>	'(shows the previous and the next message links when reading a message -- this is slow on large mailboxes)',
+	532	=>	'Reply-To',
+	533	=>	'(the recipient will reply to this address -- if empty <b>%e</b> is used)'
+);
+?>

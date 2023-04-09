@@ -1,0 +1,157 @@
+#Routines to handle user instructions   
+sub routines {
+   
+if ($FORM{'login'} eq "Login") {  
+&login;  
+}     
+
+if ($FORM{'createprofile'} eq "Create Profile") {  
+&createprofile;  
+}    
+
+if ($FORM{'browseprofile'} eq "Browse Profile") {  
+&browse;  
+}    
+
+if($FORM {'register'} eq "Register"){  
+&register;  
+}    
+
+if($FORM {'createpro'} eq "Create Profile"){  
+&createpro;  
+}
+
+if($FORM {'appendpic'} eq "Append Picture"){  
+&appendpic;  
+} 
+
+
+if($FORM {'continueappend'} eq "Continue"){  
+&continue;  
+}
+
+if($FORM {'delprof'} eq "Delete Profile"){  
+&delprof;  
+}
+
+if($FORM {'dodelpro'} eq "Proceed"){  
+&dodelpro;  
+}
+
+
+if($FORM{'leaveamessage'} eq "Leave A Message In My Message Box"){
+&mescenform;}
+
+
+if($FORM{'leavemess'} eq "Leave Message"){
+&mescenform;}
+
+if($FORM{'leavemess'} eq "Leave message"){
+&mescenform;}
+
+if($FORM{'savemess'} eq "Send Message"){
+&transmitmess;}
+
+if($FORM{'messagecenter'} eq "  Messages  "){
+&openmessagecenter;}
+
+if($FORM{'checkmessages'} eq "Check Messages"){
+&checkmessages;}
+
+if($FORM{'read'} eq "Read"){
+&readmessage;}
+
+if($FORM{'delthemes'} eq "Delete"){
+&delthemes;}
+
+if($FORM {'deletemessage'} eq "Delete"){  
+&deletemessage;  
+}
+
+if($FORM {'delchecked'} eq "Delete"){  
+&deletemessage;  
+}
+
+
+if($FORM{'reply'} eq "Reply"){
+&reply;}
+
+if($FORM {'sendreply'} eq "Send Message"){  
+&transmitreply;  
+}
+
+if($FORM{'backtoinbox'} eq "Inbox"){
+&coutmescen;}
+
+if (($FORM{'launchindex'} ne "") || ($ENV{'QUERY_STRING'} =~ /launchindex/))
+{&launchindex;}
+
+if(($FORM{'msgcenform'} ne "") || ($ENV{'QUERY_STRING'} =~ /msgcenform/))
+{&msgcenform;}
+
+if(($FORM{'mescenform'} ne "") || ($ENV{'QUERY_STRING'} =~ /mescenform/))
+{&mescenform;}
+
+if (($FORM{'retrievepass'} ne "") || ($ENV{'QUERY_STRING'} =~ /retrievepass/))
+{&retrievepass;	}
+
+if($FORM{'getprofiledata'} eq "Get Profile Data"){&getprdata;}
+
+if ($FORM{'searchads'} eq "Search Ads") {
+&searchads;
+}
+
+if($FORM{'postadnow'} eq "Post Ad Now"){&coutpostform;}
+
+if ($FORM{'processfeaturerequest'} eq "Complete Process"){&processfeaturerequest;}
+
+if ($FORM{'cpnow'} eq "Create Profile Now") {
+&createprofile;
+}
+
+if (($FORM{'editprofile'} ne "") || ($ENV{'QUERY_STRING'} =~ /editprofile/))
+{&editprofile;	}
+
+if (($FORM{'retrievepass'} ne "") || ($ENV{'QUERY_STRING'} =~ /retrievepass/))
+{&retrievepass;	}
+
+
+if ($FORM{'postad'} eq "Post My Ad") {
+&postpersad;
+}
+
+if ($FORM{'doeditad'} eq "Next") {
+&doeditad;
+}
+
+if($FORM{'showads'} eq "Submit"){
+print "Location:$FORM{'showadspage'}\n\n";
+}
+
+if ($FORM{'deletead'} eq "Delete Ad") {
+&deletead;
+}
+
+if ($FORM{'postad'} eq "Update My Ad") {
+&updatepersad;
+}
+
+if($FORM {'featureprofile'} eq "Feature My Profile"){  
+&addtofeaturelist;  
+}
+
+if($FORM {'loginreminder'} eq "Email My Login Information"){  
+&loginreminder;  
+}
+
+if($FORM {'uploadadpic'} eq "Upload Pic"){  
+&uploadadpic;  
+}
+
+if (($FORM{'myprofile'} ne "") || ($ENV{'QUERY_STRING'} =~ /myprofile/))
+{&myprofile;	}
+
+if($FORM{'getprofile'} eq "Go"){&getprofile;}
+#################################################################  
+}   
+1;

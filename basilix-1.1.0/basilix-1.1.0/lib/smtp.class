@@ -1,0 +1,196 @@
+<?php
+/*
++----------------------------------------------------------------------+
+| BasiliX - Copyright (C) 2000-2002 Murat Arslan <arslanm@basilix.org> |
++----------------------------------------------------------------------+
+*/
+
+// SMTP connection to send mail
+// -----------------------------------------------------------------------
+// note1:
+// the error messages in fact are only for the system admins since
+// endusers are not interested in the RCPT or the DATA requests.
+// so, after configuring the SMTP_HOSTS for the domains, check them
+// by sending a mail to yourself.
+// --
+// so if you get a feedback like "hey i cant send my mail. it said
+// _RCPT TO error_", then check this file out.
+// --
+// note2:
+// Another error code is -104 which is about switching to DATA transfer
+// mode. If the server replied 503 RCPT first (or something like that)
+// it is about "invalid" email addresses which are used to pass to "RCPT TO" 
+// command. We need a "isEmail" javascript or something like that to check
+// the e-mail addresses whether they are valid or not just before the user 
+// hits the send the mail button.
+// --
+class SMTP {
+	var $socket = "";
+	var $host = "";
+	var $port = 25;
+	var $error = "";
+	var $errno = "";
+	var $errserver = "";
+	var $timeout = 15;	// enough?
+	var $debug = 0;
+
+
+	function SMTP($h) {
+		$this->host = $h;
+		$this->error = $this->errno = $this->socket = $this->errserver = "";
+	}
+
+	// toggle debugging
+	function togdebug() {
+		if($this->debug)
+			$this->debug = 0;
+		else
+			$this->debug = 1;
+	}
+
+	// debug - print output if debugging
+	function ifdebug($m) {
+		if($this->debug) {
+			echo "DEBUG: " . htmlspecialchars(rtrim($m)) . "<br>\n";
+			flush();
+		}
+	}
+
+	// send a data to the socket
+	function senddata($data) {
+		if(empty($data)) return true;
+		$this->ifdebug($data);
+		if(!@fputs($this->socket, $data, strlen($data))) {
+			$this->errno = -100;
+			$this->error = "unable to send data to $this->host:$this->port";
+			return false;
+		}
+		return true;
+	}
+
+	// read data from socket
+	function readdata() {
+		$data = "";
+		while(1) {
+			if(feof($this->socket)) return 0;
+			$data .= @fgets($this->socket, 128);
+
+			$this->ifdebug($data);
+
+			$len = strlen($data);
+			if($len > 2 && substr($data, $len - 2, 2) == "\r\n") {
+				$line = substr($data, 0, $len - 2);
+				return $data;
+			}
+		}
+	}
+	
+	// can i be your friend?
+	function verify($code) {
+		while(($data = $this->readdata())) { 
+			$mcode = strtok($data, " ");
+			if(strlen($mcode) == 3) { 
+				if($mcode == $code) return true;
+				$this->errserver = $data;
+				return false;
+			}
+		}
+		$this->errserver = $data;
+		return false;
+	}
+					
+	// connect to the smtp host
+	function connect() {
+		global $REMOTE_ADDR;
+		$this->ifdebug("Connecting to $this->host:$this->port, timeout is $this->timeout seconds.");
+		$i = @fsockopen($this->host, $this->port, &$errno, $error, $this->timeout);
+		if(!$i) {
+			$this->error = $error;
+			$this->errno = $errno;
+			return $errno;
+		}
+		$this->socket = $i;
+
+		if(!$this->verify(220) || !$this->senddata("HELO $REMOTE_ADDR\r\n") || !$this->verify(250)) {
+			fclose($i);
+			$this->error = "the server didnot take notice at my greeting (HELO $REMOTE_ADDR)";
+			$this->errno = -101;
+			$this->socket = "";
+			return 0;
+		}
+		return 1;
+	}
+
+	function disconnect() {
+		fclose($this->socket);
+		$this->socket = "";
+		return true;
+	}
+		
+	// send the MAIL FROM data
+	function mailfrom($f) {
+		if(!$this->senddata("MAIL FROM: " . $f . "\r\n") || !$this->verify(250)) {
+			$this->errno = -102;
+			$this->error = "the server didnot send the 250 OK string to my MAIL FROM request";
+			return false;
+		}
+		return true;
+	}
+
+	// Send the RCPT TO Data
+	function rcptto($a) {
+		if(!$this->senddata("RCPT TO: <$a>\r\n") || !$this->verify(250)) {
+			$this->errno = -103;
+			$this->error = "RCPT TO error for $a";
+			return false;
+		}
+		return true;
+	}
+
+	// send all the recipients to the server
+	function rcptall($all) {
+		for($j = 0 ; $j < count($all) ; $j++) {
+		    if(!$this->rcptto($all[$j]))
+			return false;
+		}
+		return true;
+	}
+
+	// start sending the mail data
+	function startdata() {
+		if(!$this->senddata("DATA\r\n") || !$this->verify(354)) {
+			$this->errno = -104;
+			$this->error = "cannot switch to DATA transfer mode";
+			return false;
+		}
+		return true;
+	}
+
+	// stop, tell mta to send the mail now
+	function stopdata() {
+		if(!$this->senddata(".\r\n") || !$this->verify(250)) {
+			$this->errno = -105;
+			$this->error = "cannot _end_ the data transfer";
+			return false;
+		}
+		return true;
+	}
+
+	// launch another command, maybe?
+	function mycmd($cmd, $ret) {
+		if(!$this->senddata($cmd) || !$this->verify($ret)) {
+			$this->errno = -106;
+			$this->error = "the command $cmd didnot return $ret";
+			return false;
+		}
+		return true;
+	}
+
+	// receive the errno/msg
+	function geterr(&$error, $srverr) {
+		$error = $this->error;
+		$srverr = $this->errserver;
+		return $this->errno;
+	}
+}
+?>

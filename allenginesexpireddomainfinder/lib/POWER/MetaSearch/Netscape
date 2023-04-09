@@ -1,0 +1,15 @@
+#############################################################
+#############################################################
+##        Aaron's All Engine Expired Domain Finder         ##
+##                This is a Commercial Script              ##
+##        Modification, Distribution or Resale without     ##
+##        Prior written permission is in Violation of      ##
+##        the copyrights and International Intellectual    ##
+##        Property Laws.  Violators will be prosecuted!    ##
+##        http://www.aaronscgi.com - aaron@aaronscgi.com   ##
+#############################################################
+#############################################################
+url     => "http://search.netscape.com/search.psp?cp=nsikwphopNetscape&search=^~query~^", 
+ip      => "64.12.153.152",
+Rec     => qr{<LI><a href=\"http:[^\"]*?/nrpusrws/([^\"]*?)\">(.*?)</a>.*?<br>(.*?)<br>}si,
+Next    => qr{<a href=\"(/search.psp\?[^\"]*)\">next}si,

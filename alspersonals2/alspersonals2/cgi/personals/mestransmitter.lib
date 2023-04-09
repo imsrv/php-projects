@@ -1,0 +1,492 @@
+require "configdat.lib";
+
+sub transmitmess {
+&vars;
+
+
+if(($username eq "")||($sendersusername eq "")||($senderspassword eq "")||($message eq "")|| ($subject eq "")){&missingfield;}
+
+############################################################
+
+unless(-e "$users/$sendersusername.txt"){ 
+&problemencountered;}
+
+
+open (FILE, "$users/$sendersusername.txt") || &oops ($!, "Either could not find or could not open $username.txt");
+flock (FILE, 1) or die "Cannot lock file\n";
+while (<FILE>) {
+chop;
+	@datafile=split(/\n/);
+	foreach $line (@datafile) {
+	&pass_name_email($line);
+	}
+	}
+	close(FILE);
+	
+
+}
+
+sub pass_name_email($line){
+&vars;
+
+local ($line) = @_;
+	local ($loginname,$password,$emailaddr);
+		  ($loginname,$password,$emailaddr)= split(/\|/, $line);
+
+
+if(($sendersusername eq "$loginname")&&($senderspassword eq "$password"))
+{
+
+
+&processmessage_step2;}
+
+else {
+&problemencountered;}
+}
+
+sub processmessage_step2 {
+&vars;
+
+if(-e "$profilesdir/catwsm/$sendersusername.html"){$profilecat ="catwsm";}
+if(-e "$profilesdir/catwsw/$sendersusername.html"){$profilecat ="catwsw";}
+if(-e "$profilesdir/catmsm/$sendersusername.html"){$profilecat ="catmsm";}
+if(-e "$profilesdir/catmsw/$sendersusername.html"){$profilecat ="catmsw";}
+
+unless(-e "$messagecenterdir/$username/messages.txt"){ 
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader<br><br> <blockquote>
+<font size=2 face=verdana>
+$mscen6
+</font></blockquote>
+<center><FORM> <INPUT type="button" value="$chtgb" onClick="history.go(-1)" class="button"> </FORM></center>
+<br><br>$botcode
+
+EOF
+exit;}
+
+unless(-e "$messagecenterdir/$username/nummessages.txt"){
+open (FILE, ">$messagecenterdir/$username/nummessages.txt") || die "Cannot open $messagecenterdir/$username/nummessages.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "0";  
+close (FILE);
+chmod 0777, '$messagecenterdir/$username/nummessages.txt';}
+
+
+$messagenumber=time();
+$tdate = `date +"%a, %d/%m"`; chop ($tdate);
+open (FILE, ">>$messagecenterdir/$username/messages.txt") || 
+&oops($!, "Problem encountered. Cannot open $messagecenterdir/$username/messages.txt");
+flock (FILE, 2) or die "cannot lock $messagecenterdir/$username/messages.txt\n";
+print FILE "<td bgcolor=eeeeee><input type=\"radio\" name=\"messagenumber\" value=\"$messagenumber\"><a href=\"$profilesurl/$profilecat/$sendersusername.html\" target=_blank><span style=\"color:000000; font-family:geneva,verdana,arial,univers; font-size:8pt; text-decoration:underline; font-weight:bold;\">$sendersusername</span></a></td><td bgcolor=eeeeee><center><font size=2 face=verdana>$subject</a></font></center></td><td bgcolor=eeeeee><center><font size=2 face=verdana>$tdate</font><input type=\"hidden\" name=\"username\" value=\"$username\"></center></td><td><input type=\"hidden\" name=\"subject\" value=\"$subject\"></td><td><input type=\"hidden\" name=\"sender\" value=\"$sendersusername\"></td></tr><tr>\n";
+close (FILE);
+
+
+open (FILE, ">>$messagecenterdir/$username/messages_content.txt") || die "Cannot open $users/$username\.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$messagenumber|$subject|$message|$sendersusername|$tdate\n";  
+close (FILE);
+chmod 0777, '$messagecenterdir/$username/messages_content.txt';
+
+open(IN, "$messagecenterdir/$username/nummessages.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($numberofmessages)=split(/\n/,$line);
+$oldmescount=$numberofmessages;
+$newmescount=$numberofmessages + 1;
+
+if($newmescount < 0){$newmescount = 0;}
+
+open (FILE, ">$messagecenterdir/$username/nummessages.txt") || die "Cannot open $messagecenterdir/$username/nummessages.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$newmescount\n";  
+close (FILE);
+}
+
+##################################################################
+print "Content-type:text/html\n\n";
+print "$mainheader
+<blockquote><font size=2 face=verdana>
+<br><br>Your message has been sent to, <b>$username</b>.
+</blockquote></font>\n";
+print "<center><FORM method=\"post\" action=\"$cgiurl/personals.pl?launchindex\"> <INPUT type=\"submit\" value=\"Personals Home\" class=\"button\"> </FORM></center>\n";
+print "<br><br>$botcode\n";
+exit;
+
+}
+
+
+sub checkmessages {
+&vars;
+
+if(($username eq "")||($password eq "")){&missingUorP;}
+
+unless(-e "$messagecenterdir/$username/messages.txt"){ 
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader<br><br> <blockquote>
+<font size=2 face=verdana>
+It appears you do not have a message box. Are you a registered member? Only registered members 
+have message boxes. If you would like to register, <a href="$cgiurl/postad.pl?reg_form">click here</a>. If you are registered but have forgotten your user information,
+your information can be sent to your email address. To have your information sent to your email address, <a href="$cgiurl/postad.pl?retrievepass">Click here</a>
+</font></blockquote>
+<center><FORM> <INPUT type="button" value="Click here to go back" onClick="history.go(-1)" class="button"> </FORM></center>
+<br><br>$botcode
+
+EOF
+exit;}
+
+open (FILE, "$users/$username.txt") || &oops ($!, "Either could not find or could not open $users/$username.txt");
+flock (FILE, 1) or die "Cannot lock file\n";
+while (<FILE>) {
+chop;
+	@datafile=split(/\n/);
+	foreach $line (@datafile) {
+	&checktoval($line);
+	}
+	}
+	close(FILE);
+	
+
+}
+
+sub checktoval($line){
+&vars;
+
+local ($line) = @_;
+	local ($loginname,$password,$emailaddr);
+		  ($loginname,$password,$emailaddr)= split(/\|/, $line);
+
+
+if(($FORM{'username'} eq "$loginname")&&($FORM{'password'} eq "$password"))
+{
+
+&openmessagecenter;
+}
+
+
+else {
+
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader<br><br> <blockquote>
+<font size=1 face=verdana>
+The information you entered did not match our records. The message center is only accessible to registered members. If you are not registered, <a href="$personalsurl/register.html">click here</a> to register. If you have forgotten your login information, <a href="$personalsurl/retrievepass.html">click here</a> to have your information emailed to you.<br>
+</blockquote>
+<center><FORM> <INPUT type="button" value="Click here to go back" onClick="history.go(-1)" class="button"> </FORM></center>
+<br><br>$botcode
+
+EOF
+exit;
+}
+}
+
+sub deletemessage {
+&vars;
+open(IN, "$messagecenterdir/$username/messages.txt")||&oops($!,"Cannot read $messagecenterdir/$username/messages.txt");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+foreach $line(@lines) {
+$mestodel=$FORM{'messagenumber'};
+if ($line =~ $FORM{'mestodel'}) {
+&proceedtodel;}
+
+else {
+
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader
+<br><br><blockquote><font size=2 face=verdana>The message you are trying to delete was not found
+<p><a href="$cgiurl/personals.pl?launchindex">Back to main</a>
+</font></blockquote>
+<br><br>$botcode
+EOF
+exit;
+}
+}
+}
+
+sub proceedtodel {
+
+&vars;
+
+open(IN, "$messagecenterdir/$username/messages.txt")||&oops($!,"Cannot read $messagecenterdir/$username/messages.txt");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+open(OUT,">$messagecenterdir/$username/messages.txt") || &oops ($!,"Cannot write $messagecenterdir/$username/messages.txt");
+flock (OUT, 2);
+foreach $line(@lines) {
+$mestodel=$FORM{'messagenumber'};
+if ($line !~ /$mestodel/) {
+print OUT "$line";
+}
+}
+close (OUT);
+
+open(IN, "$messagecenterdir/$username/messages_content.txt")||&oops($!,"Cannot read $messagecenterdir/$username/messages_content.txt");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+open(OUT,">$messagecenterdir/$username/messages_content.txt") || &oops ($!,"Cannot write $messagecenterdir/$username/messages_content.txt");
+flock (OUT, 2);
+foreach $line(@lines) {
+$mesctodel=$FORM{'messagenumber'};
+if ($line !~ /$mesctodel/) {
+print OUT "$line";
+}
+}
+close (OUT);
+
+open(IN, "$messagecenterdir/$username/nummessages.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($numberofmessages)=split(/\n/,$line);
+$oldmescount=$numberofmessages;
+$newmescount=$numberofmessages - 1;
+
+if($newmescount < 0){$newmescount = 0;}
+
+open (FILE, ">$messagecenterdir/$username/nummessages.txt") || die "Cannot open $messagecenterdir/$username/nummessages.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$newmescount\n";  
+close (FILE);
+}
+
+&openmessagecenter;
+
+}
+
+
+sub readmessage {
+&vars;
+
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader
+<table width=100% bgcolor=$bgcolor1><tr><td>
+<form method="post" action="$cgiurl/personals.pl">
+<center><table width=100% cellpadding=2 cellspacing=2 border=0 bgcolor=$bgcolormain><tr>
+<td bgcolor=$messageboxmenutdcellbgcolor>
+<center><a href="$cgiurl/postad.pl\?browse_ads"><font color=purple size=1 face=verdana>BROWSE PROFILES</font></a></center></td></tr><tr>
+
+
+<td bgcolor=$messageboxmenutdcellbgcolor>
+<center><a href="$cgiurl/postad.pl\?place_new"><font color=purple size=1 face=verdana>POST AN AD</font></a></center></td></tr><tr>
+
+
+<td bgcolor=$messageboxmenutdcellbgcolor>
+<center><a href="$cgiurl/delprofile.pl"><font color=purple size=1 face=verdana>DELETE PROFILE</font></a></center></td></tr><tr>
+
+
+<td bgcolor=$messageboxmenutdcellbgcolor>
+<center><a href="$cgiurl/postad.pl\?del_persad"><font color=purple size=1 face=verdana>DELETE AD</font></a></center></td></tr><tr>
+
+<td bgcolor=$messageboxmenutdcellbgcolor>
+<center><a href="$cgiurl/postad.pl\?send_message"><font color=purple size=1 face=verdana>SEND A MESSAGE</font></a></center></td></tr><tr>
+EOF
+
+if($showusersonline eq "yes"){
+print "<td bgcolor=$messageboxmenutdcellbgcolor>
+<center><font color=purple size=1 face=verdana>USERS ONLINE: 
+ <b>$currentuserspresent</b>
+</font></center></td></tr><tr>\n";}
+
+print <<EOF;
+<td>
+<table width=100% height=150 cellpadding=0 cellspacing=0><tr>
+<td width=100% height=30 bgcolor=$randomlovescopeheaderbgcolor><center><font size=2 face=verdana><b>Random Lovescope</b></font></center>
+</td></tr><td width=100% height=120 bgcolor=$randomlovescopetdbgcolor>
+<font size=1 face=verdana><blockquote>
+EOF
+
+&getlovescope;
+
+print <<EOF;
+$lovescope
+</blockquote></font></td></tr>
+</table>
+<input type="hidden" name="username" value="$FORM{'username'}">
+<input type="hidden" name="password" value="$FORM{'password'}">
+</td></tr>
+
+
+</table></center></td>
+&nbsp;
+<td width=69% bgcolor=ffffff valign="top">
+EOF
+open(IN, "$messagecenterdir/$username/messages_content.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($messagenumber,$subject,$message,$sendersusername,$date) = split(/\|/, $line);
+
+if($FORM{'messagenumber'} eq "$messagenumber"){
+print "
+<table cellpadding=2 cellspacing=2 border=0><tr>
+<td width=120><center><font size=2 face=verdana>From:</font></center></td><td align=\"left\"><font size=2 face=verdana>$sendersusername</font></td></tr><tr>
+<td width=120><center><font size=2 face=verdana>Subject:</font></center></td><td align=\"left\"><font size=2 face=verdana>$subject</font></td></tr><tr>
+<td width=120><center><font size=2 face=verdana>Date:</font></center></td><td align=\"left\"><font size=2 face=verdana>$tdate</font></td></tr></table>
+<br><br><table  cellpadding=0 cellspacing=0 border=0><tr><td>
+<blockquote><font size=2 face=verdana>$message</font></blockquote>
+</td></tr></table>
+
+<center>
+<table><tr><td>
+<center><input type=\"hidden\" name=\"messagenumber\" value=\"$messagenumber\">
+<input type=\"submit\" name=\"deletemessage\" value=\"Delete\" class=\"button\"></center></td>
+<td><center>
+<input type=\"hidden\" name=\"sender\" value=\"$sendersusername\">
+<input type=\"hidden\" name=\"subject\" value=\"$subject\">
+<input type=\"submit\" name=\"reply\" value=\"Reply\" class=\"button\"></center></td>
+<td><input type=\"submit\" name=\"backtoinbox\" value=\"Inbox\" class=\"button\"></center></td>
+\n";}}
+
+print <<EOF;
+</tr></table></center>
+
+</td></tr></table>
+</form>
+</td></tr></table>
+$botcode
+EOF
+}
+
+#################################################################################################################
+
+sub transmitreply {
+&vars;
+
+
+if(($username eq "")||($sendersusername eq "")||($message eq "")||
+($subject eq "")){&missingfield;}
+
+############################################################
+if(-e "$profilesdir/catwsm/$sendersusername.html"){$profilecat ="catwsm";}
+if(-e "$profilesdir/catwsw/$sendersusername.html"){$profilecat ="catwsw";}
+if(-e "$profilesdir/catmsm/$sendersusername.html"){$profilecat ="catmsm";}
+if(-e "$profilesdir/catmsw/$sendersusername.html"){$profilecat ="catmsw";}
+
+
+unless(-e "$messagecenterdir/$username/messages.txt"){ 
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader<br><br> <blockquote>
+<font size=2 face=verdana>
+A message box was not found for the member to whom you are trying to send a message.</font></blockquote>
+<center><FORM> <INPUT type="button" value="Click here to go back" onClick="history.go(-1)" class="button"> </FORM></center>
+<br><br>$botcode
+
+EOF
+exit;}
+
+unless(-e "$messagecenterdir/$username/nummessages.txt"){
+open (FILE, ">$messagecenterdir/$username/nummessages.txt") || die "Cannot open $messagecenterdir/$username/nummessages.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "0";  
+close (FILE);
+chmod 0777, '$messagecenterdir/$username/nummessages.txt';}
+
+$messagenumber=time();
+
+open (FILE, ">>$messagecenterdir/$username/messages.txt") || 
+&oops($!, "Problem encountered. Cannot open $messagecenterdir/$username/messages.txt");
+flock (FILE, 2) or die "cannot lock $messagecenterdir/$username/messages.txt\n";
+print FILE "<td bgcolor=eeeeee><input type=\"radio\" name=\"messagenumber\" value=\"$messagenumber\"><a href=\"$profilesurl/$profilecat/$sendersusername.html\" target=_blank><span style=\"color:000000; font-family:geneva,verdana,arial,univers; font-size:8pt; text-decoration:underline; font-weight:bold;\">$sendersusername</span></a></td><td bgcolor=eeeeee><center><font size=2 face=verdana >$subject</a></font></center></td><td bgcolor=eeeeee><center><font size=2 face=verdana>$tdate</font><input type=\"hidden\" name=\"username\" value=\"$username\"></center></td><td><input type=\"hidden\" name=\"subject\" value=\"$subject\"></td><td><input type=\"hidden\" name=\"sender\" value=\"$sendersusername\"></td></tr><tr>\n";
+close (FILE);
+
+
+open (FILE, ">>$messagecenterdir/$username/messages_content.txt") || die "Cannot open $users/$username\.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$messagenumber|$subject|$message|$sendersusername|$tdate\n";  
+close (FILE);
+chmod 0777, '$messagecenterdir/$username/messages_content.txt';
+
+open(IN, "$messagecenterdir/$username/nummessages.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($numberofmessages)=split(/\n/,$line);
+$oldmescount=$numberofmessages;
+$newmescount=$numberofmessages + 1;
+
+if($newmescount < 0){$newmescount = 0;}
+
+open (FILE, ">$messagecenterdir/$username/nummessages.txt") || die "Cannot open $messagecenterdir/$username/nummessages.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$newmescount\n";  
+close (FILE);
+}
+
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader<br><br> <blockquote>
+<font size=2 face=verdana>
+The message has been sent!</font></blockquote>
+<center><FORM> <INPUT type="button" value="Click here to go back" onClick="history.go(-3)" class="button"> </FORM></center>
+<br><br>$botcode
+
+EOF
+exit;
+
+}
+
+
+sub reply {
+
+&vars;
+
+print "Content-type:text/html\n\n";
+print <<EOF;
+
+$mainheader
+
+<form method="post" action="$cgiurl/personals.pl">
+
+
+<br>
+<table cellpadding=0 cellspacing=0 width=100% width=60 bgcolor=ffffff><tr><td>
+<td width=20>&nbsp;</td><td>
+
+$text110
+
+</td></tr></table>
+<br><br>
+<table cellpadding=2 cellspacing=2 width=100% border=0><tr>
+<td width=30>&nbsp;</td>
+<td><b><font size=1 face=verdana>This Message is For:</td><td>
+<input type="text" name="username" value="$FORM{'sender'}" size=20></font></td></tr><tr>
+
+<td width=30>&nbsp;</td>
+<td><b><font size=1 face=verdana>Sender's Username:</td><td>
+<input type="text" name="sendersusername" value="$username" size=20></font></td></tr><tr>
+
+<td width=30>&nbsp;</td>
+<td><b><font size=1 face=verdana>Subject of Message</td><td>
+<input type="text" name="subject" value="Re: $subject" size=35></font></td></tr><tr>
+
+
+
+<td width=30>&nbsp;</td>
+<td><b><font size=1 face=verdana>Write Your Message Here:</td><td><textarea name="message" cols=40 rows=6></textarea></font></td>
+</table>
+<center>
+<input type="submit" name="sendreply" value="Send Message" class="button"></center>
+</form>
+$botcode
+
+EOF
+exit;
+}
+
+1;

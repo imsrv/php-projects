@@ -1,0 +1,234 @@
+<html>
+<head>
+  <title>AutoRank Pro Administration</title>
+  <script language="JavaScript">
+    function openHelp(url, name) { 
+      window.open(url, name, 'scrollbars=1,resizable=no,width=350,height=450,status=0,menubar=0');
+    }
+  </script>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<form action="admin.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="3" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center" colspan="2">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Edit Account Details For '#%USERNAME%#'</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td width="175">
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>E-Mail Address</b>
+</font>
+</td>
+<td width="425">
+<input type="text" name="mail" value="#%EMAIL%#" size="30" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Site URL</b>
+</font>
+</td>
+<td>
+<input type="text" name="surl" value="#%SITE_URL%#" size="60" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Site Title</b>
+</font>
+</td>
+<td>
+<input type="text" name="titl" value="#%TITLE%#" size="30" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Description</b>
+</font>
+</td>
+<td>
+<input type="text" name="desc" value="#%DESCRIPTION%#" size="60" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Banner URL</b>
+</font>
+</td>
+<td>
+<input type="text" name="burl" value="#%BANNER_URL%#" size="60" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Banner Height</b>
+</font>
+</td>
+<td>
+<input type="text" name="bht" value="#%HEIGHT%#" size="10" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Banner Width</b>
+</font>
+</td>
+<td>
+<input type="text" name="bwd" value="#%WIDTH%#" size="10" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Category</b>
+</font>
+</td>
+<td>
+<select name="cat" style="font-size: 11px; font-family: Verdana">
+#%CAT_OPTIONS%#
+</select>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Reciprocal Link URL</b>
+</font>
+</td>
+<td>
+<input type="text" name="rurl" value="#%RECIP_URL%#" size="60" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>Password</b>
+</font>
+</td>
+<td>
+<input type="text" name="pass" value="#%PASSWORD%#" size="12" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>#%FIELD_1_NAME%#</b>
+</font>
+</td>
+<td>
+<input type="text" name="fld1" value="#%FIELD_1%#" size="60" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>#%FIELD_2_NAME%#</b>
+</font>
+</td>
+<td>
+<input type="text" name="fld2" value="#%FIELD_2%#" size="60" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td>
+<font face="Verdana" size="2" style="font-size: 11px;">
+<b>#%FIELD_3_NAME%#</b>
+</font>
+</td>
+<td>
+<input type="text" name="fld3" value="#%FIELD_3%#" size="60" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+<tr bgcolor="#ffffff">
+<td colspan="2" align="center">
+<input type="hidden" name="id" value="#%USERNAME%#">
+<input type="hidden" name="run" value="updateReview">
+<input type="submit" value="Update Account" style="font-size: 11px; font-family: Verdana">
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+<input type="hidden" name="apwd" value="#%APWD%#">
+</form>
+
+<br>
+
+<form action="admin.cgi" method="POST">
+<input type="hidden" name="apwd" value="#%APWD%#">
+#%BACK%#
+</form>
+
+<br><br>
+
+</body>
+</html>

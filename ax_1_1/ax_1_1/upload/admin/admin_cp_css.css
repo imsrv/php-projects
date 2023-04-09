@@ -1,0 +1,24 @@
+/* CSS Document */
+/* Admin CP CSS v.1.0 by Cat */
+BODY { color: #000; background: #fff; font-family: Arial; font-size: 9pt; }
+A:LINK, A:VISITED { color: #003366; text-decoration: underline; }
+A:ACTIVE{ color: #006699; text-decoration: underline; }
+A:HOVER { color: #002266; text-decoration: underline; }
+.header { height: 24px; color: #fff; background: #006699;  background-image: url(./header.jpg); font-family: Arial; font-size: 11pt; font-weight: bold; }
+.menu_row { height: 27px; color: #000; backgound: #EFEFEF; border: 1px solid; bordercolor: #CCCCCC; font-family: Arial; font-size: 9pt; }
+.menu_row A:LINK { color: #003366; text-decoration: none; }
+.menu_row A:VISITED { color: #003366; text-decoration: none; }
+.menu_row A:ACTIVE{ color: #006699; text-decoration: none; }
+.menu_row A:HOVER { color: #002266; text-decoration: none; }
+.menu_bottom { background: #006699; height: 5px; }
+.table_row { background: #EFEFEF; color: #000; font-family: Arial; font-size: 9pt; height: 27px; border: 1px solid; bordercolor: #CCCCCC; }
+.table_row A:LINK, .table_row A:VISITED { color: #003366; text-decoration: underline; }
+.table_row A:ACTIVE{ color: #006699; text-decoration: underline; }
+.table_row A:HOVER { color: #002266; text-decoration: underline; }
+.table_bottom { background: #006699; height: 5px; }
+.field { color: #000; border: 1px solid; border-color: #003366; font-family: Arial; font-size: 8pt; font-weight: bold; }
+.submit { color: #000; font-family: Arial; font-size: 8pt; font-weight: bold; cursor: hand; }
+.inlinetable { color: #000; font-family: Arial; font-size: 8pt; border: 1px; border-color: #CCCCCC; border-collapse: collapse; background: #EFEFEF; }
+.inlinerow { color: #000; font-family: Arial; font-size: 8pt; }
+.inlineheader { color: #000; font-family: Arial; font-size: 8pt; font-weight: bold; }
+.textarea { color: #000; font-family: Arial; font-size: 8pt; }

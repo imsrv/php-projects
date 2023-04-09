@@ -1,0 +1,157 @@
+<?php 
+//
+// Mbox listing HTML file
+//
+?>
+<!-- mbox listing : START -->
+<div align="center">
+<?php push_lastinfo() ?>
+<?php push_errinfo() ?>
+<?
+if(!$no_msgs_infolder) {
+?>
+<script language="javascript" src="<?php echo $BSX_BASEHREF?>/js/mbox.js"></script>
+<?php start_form("messageList")?>
+<input type="hidden" name="RequestID" value="MBOXACT">
+<input type="hidden" name="curmbox" value="<?php echo htmlspecialchars($mbox)?>">
+<input type="hidden" name="fromPage" value="<?php echo $fromPage?>">
+<input type="hidden" name="fromMsg" value="<?php echo $fromMsg?>">
+<input type="hidden" name="sort" value="<?php echo $sort?>">
+
+<!-- move messages selection: START -->
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+<tr>
+<td align="center" width="50%" class="chknext" nowrap>
+<?php push_moveselect()?>
+&nbsp;&nbsp;<input type="submit" class="button" name="moveSelected" value="<?php echo $lng->p(213)?>" onMouseOver='inset(this, 1)' onMouseOut='outset(this, 1)'>
+</td></tr>
+</table>
+<!-- move messages selection: FINISH -->
+<!-- del/purge button: START -->
+<br><?php push_delpurge()?><br>
+<!-- del/purge button: FINISH -->
+<!-- mbox listing header: START -->
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+<tr>
+<td align="left" width="5%" class="chkfldr" nowrap>&nbsp;<b><?php echo imap_utf7_decode(decode_strip($mbox))?></b>&nbsp;</td>
+<td align="left" class="chknext" width="100%" nowrap>&nbsp;<?php push_pages($box_info["nmsgs"])?>&nbsp;</td>
+<td align="right" class="chknext" width="25%" nowrap>&nbsp;<?php push_emptfol($mbox)?>&nbsp;</td>
+<td align="right" width="25%" class="chknext" nowrap>&nbsp;<?php push_prevnext($box_info["nmsgs"])?>&nbsp;</td>
+</tr>
+</table>
+<!-- mbox listing header: FINISH -->
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+<tr><td align="center" class="tblborder">
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tr>
+<td class="mboxhdr" align="center" width="1%" nowrap><input type="checkbox" name="checkall" onClick="javascript:checkAll()" style="border-width:0px;height:10px;width:10px;"></td>
+<?php 
+if($mbox == $BSX_SENTMAIL_NAME) {
+  if($sort != 5) {
+     echo "<td class=\"mboxhdr\" align=\"left\" width=\"35%\" onClick='myclk(sortto)' nowrap>&nbsp;";
+     put_ahref("RequestID=MBOXLST&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&sort=5", $lng->p(203), "sortto", $lng->p(204));
+  } else {
+     echo "<td class=\"mboxhdract\" align=\"left\" width=\"35%\" nowrap>&nbsp;";
+     echo $lng->p(203);
+  }
+} else {
+  if($sort != 2) {
+     echo "<td class=\"mboxhdr\" align=\"left\" width=\"35%\" onClick='myclk(sortfrom)' nowrap>&nbsp;";
+     put_ahref("RequestID=MBOXLST&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&sort=2", $lng->p(201), "sortfrom", $lng->p(202));
+?>
+<?php 
+  } else {
+     echo "<td class=\"mboxhdract\" align=\"left\" width=\"35%\" nowrap>&nbsp;";
+     echo $lng->p(201);
+  }
+}
+?>
+</td>
+<?php 
+if($sort != 3) {
+   echo "<td class=\"mboxhdr\" align=\"center\" width=\"35%\" onClick='myclk(sortsubject)' nowrap>";
+   put_ahref("RequestID=MBOXLST&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&sort=3", $lng->p(209), "sortsubject", $lng->p(210));
+?>
+<?php 
+} else {
+   echo "<td class=\"mboxhdract\" align=\"center\" width=\"35%\" nowrap>";
+   echo $lng->p(209);
+}
+?>
+</td>
+<?php 
+if($sort != 2 && $sort != 3 && $sort != 4 && $sort != 5) {
+  echo "<td class=\"mboxhdract\" align=\"center\" width=\"20%\" nowrap>";
+  echo $lng->p(205);
+} else {
+  echo "<td class=\"mboxhdr\" align=\"center\" width=\"20%\" onClick='myclk(sortdate)' nowrap>";
+  put_ahref("RequestID=MBOXLST&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&sort=1", $lng->p(205), "sortdate", $lng->p(206));
+?>
+<?php 
+}
+?>
+</td>
+<?php 
+if($sort != 4) {
+   echo "<td class=\"mboxhdr\" align=\"center\" width=\"4%\" onClick='myclk(sortsize)' nowrap>";
+   put_ahref("RequestID=MBOXLST&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&sort=4", $lng->p(207), "sortsize", $lng->p(208));
+?>
+<?php 
+} else {
+   echo "<td class=\"mboxhdract\" align=\"center\" width=\"4%\" nowrap>";
+   echo $lng->p(207);
+}
+?>
+</td>
+</tr>
+<?php 
+for($i = 0 ; $i < $this_many_msgs ; $i++) {
+    $linkid = "msg" . $box_detailed[$i]["uid"];
+?>
+<tr>
+<td align="center" width="1%" class="<?php echo $box_detailed[$i]["trclass"]?>" nowrap>
+<input type="checkbox" name="msgID[<?php echo $i?>]" value="<?php echo $box_detailed[$i]["uid"]?>" onClick="javascript:checkCtrl()"></td>
+<td align="left" width="35%" class="<?php echo $box_detailed[$i]["trclass"]?>" nowrap>&nbsp;
+<?php
+if($box_detailed[$i]["rcptme"]) echo "&#187;&nbsp;"; // print the char "»" if the recepient of this message is myself.
+if($bsx_mboxes_curmbox == $sentmail_upper) {
+  echo $box_detailed[$i]["to"];
+} else {
+  echo $box_detailed[$i]["from"];
+}
+?>
+</td>
+<td align="left" width="35%" class="<?php echo $box_detailed[$i]["trclass"]?>" onClick='myclk(<?php echo $linkid?>)' nowrap>&nbsp;
+<?php 
+if($box_detailed[$i]["subject"] != $box_detailed[$i]["orgsubject"]) {
+   put_ahref("RequestID=READMSG&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&ID=" . $box_detailed[$i]["uid"] . "&sort=" . $sort, $box_detailed[$i]["subject"], $linkid, $box_detailed[$i]["orgsubject"]);
+} else {
+   put_ahref("RequestID=READMSG&mbox=" . urlencode(imap_utf7_decode($mbox)) . "&ID=" . $box_detailed[$i]["uid"] . "&sort=" . $sort, $box_detailed[$i]["subject"], $linkid);
+}
+?>
+</td>
+<td align="center" width="20%" class="<?php echo $box_detailed[$i]["trclass"]?>" nowrap><?php echo nbsp($box_detailed[$i]["date"])?></td>
+<td align="right" width="4%" class="<?php echo $box_detailed[$i]["trclass"]?>" nowrap><?php if($box_detailed[$i]["mixed"]) {?><img src='<?php echo $BSX_BASEHREF?>/images/attachment.gif' alt="&#215;">&nbsp;<?php }?><?php echo nbsp($box_detailed[$i]["size"])?></td>
+</tr>
+<?php } ?>
+</table>
+</td></tr>
+</table>
+<?php 
+if($this_many_msgs > 30) {
+?>
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+<tr>
+<td align="left" width="5%" class="chkfldr" nowrap>&nbsp;<b><?php echo imap_utf7_decode(decode_strip($mbox))?></b>&nbsp;</td>
+<td align="left" class="chknext" width="100%" nowrap>&nbsp;<?php push_pages($box_info["nmsgs"])?>&nbsp;</td>
+<td align="right" width="25%" class="chknext" nowrap>&nbsp;<?php push_prevnext($box_info["nmsgs"])?>&nbsp;</td>
+</tr></table>
+<?php 
+}
+?>
+<?php stop_form()?>
+</div>
+<!-- mbox listing : FINISH -->
+<?
+} // no_msgs_infolder
+?>

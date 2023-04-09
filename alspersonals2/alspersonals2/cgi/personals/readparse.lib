@@ -1,0 +1,57 @@
+sub html_missing {
+print "<html><head><title>Missing Field</title><head>\n";
+}
+#############################################################
+
+sub html_cannot_create {
+print "<html><head><title>Cannot Create Document</title><head>\n";
+}
+#############################################################
+sub html_success {
+print "<html><head><title>Action Performed Successfully</title><head>\n";
+}
+#############################################################
+sub html_error {
+print "<html><head><title>Error Encountered</title><head>\n";
+}
+#############################################################
+sub print_header {
+print "Content-type: text/html\n\n";
+}
+#############################################################
+
+#############################################################
+
+sub readparse {
+
+
+$SIG{__DIE__} = \&Error_Msg;
+sub Error_Msg {
+    $msg = "@_"; 
+   print "\nContent-type: text/html\n\n";
+  print "The following error occurred : $msg\n";
+  exit;
+}
+
+# Get the input
+read(STDIN, $input, $ENV{'CONTENT_LENGTH'});
+   @pairs = split(/&/, $input);
+   foreach $pair (@pairs) {
+
+   ($name, $value) = split(/=/, $pair);
+  
+   $name =~ tr/+/ /;  
+   $name =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
+   $value =~ tr/+/ /;
+   $value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
+    $value =~ s/<([^>]|\n)*>//g;
+
+ $FORM{$name} = $value;  
+
+      }
+		  }	
+
+
+
+
+1;

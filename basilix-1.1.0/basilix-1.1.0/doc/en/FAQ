@@ -1,0 +1,35 @@
+Frequently Asked Questions and the Answers:
+===========================================
+
+First, questions:
+-----------------
+Q1) I just set up the BasiliX but I got a blank page!?
+
+Q2) My PHP is IMAP and MySQL enabled, but still blank page!?
+
+Q3) I use Netscape/Explorer and BasiliX redirects me to the
+    download page of Netscape/Explorer??
+
+Q4) I got "Fatal error: Maximum execution of XX seconds exceeded"
+    error?
+
+
+Now, the answers:
+-----------------
+A1) Check your PHP if it's IMAP enabled or not. In file 
+    lib/imap.class, in function open(), you'll see imap_open()
+    is called. There, in front of the imap_open(), is a @ char
+    which prevents showing warning messages of invalid logins.
+    Remove the @ char, and try again. If you get a Fatal Error
+    (imap_open() no such function), your PHP is not IMAP enabled.
+
+A2) Check the include_path variable set in php3.ini (or php.ini)
+    usually resides in /usr/local/lib. Try adding the basilix directory
+    which is "/usr/local/basilix" to the value of include_path.
+
+A3) You must upgrade your browser.
+    for Netscape > 4.0
+    for IE Explorer > 4.0
+
+A4) Try uncommenting the line set_time_limit(0) in file lib/util.inc.
+

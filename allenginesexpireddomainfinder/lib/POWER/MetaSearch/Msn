@@ -1,0 +1,9 @@
+### 08-08-2001 04:30
+#Rec     => qr{<LI /><A CLASS=\"clsResult.*?href=\"(.*?)\">(.*?)</A>(.*?)<br /><}si,
+### 18-01-2002 21:20
+#Rec     => qr{<LI[^>]*><a href="([^"]*?)"[^>]+>(.*?)</A>(.*?)<br><}si,
+### 23-02-2002 19:40
+url     => "http://search.msn.com/results.asp?FORM=SMCRT&cfg=SMCINITIAL&q=^~query~^&un=doc&v=1",
+ip      => "207.68.176.250",
+Rec     => qr{<LI[^>]*>(?:<nobr>)?<a href="([^"]*?)"[^>]+>(.*?)</A>(.*?)<BR><}si,
+Next    => qr{<a CLASS=\"clsNextPrev\"[^>]+href=\"(results.asp\?[^\"]*)\">NEXT}si,

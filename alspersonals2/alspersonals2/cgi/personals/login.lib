@@ -1,0 +1,90 @@
+# handle login   
+
+
+
+sub login {    
+&vars;    
+if(($username eq "") ||($password eq "")){    
+print "Content-type: text/html\n\n"; 	  
+print "<html><head><title>Login Error</title></head>\n"; 	  
+print "<body bgcolor=ffffff>\n"; 	  
+print "$mainheader<p>\n"; 	  
+print "<center><font face=univers,times,verdana,arial,helvetica size=2>You did not enter one or more 
+of the following:<br><ul><li>Username<li>Password</ul><br>\n";
+print "Please go back and re-enter your login information.</font></center>\n"; 	  
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\" class=\"button\"> </FORM></center>\n"; 	  
+print "</body></html>\n";   
+exit;   
+}  
+
+unless(-e "$users/$username.txt"){
+&problemencountered;}
+
+open (FILE, "$users/$username.txt") || &oops ($!, "Could not open $users/$username.txt");
+@lines=<FILE>;
+close(FILE);
+
+foreach $line(@lines){
+ 
+($loginname,$password,$emailaddr)= split(/\|/, $line);
+
+
+if(($FORM{'username'} eq "$loginname")&&($FORM{'password'} eq "$password")){
+&getclassi;
+$thusername=$loginname;
+$thpassword=$password;
+$classification=$cl;
+&launchindex;
+}
+else {
+&passwordmismatch;}
+}}
+
+
+sub getclassi {
+
+open(IN, "$messagecenterdir/$loginname/data.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($cat)=split(/\n/,$line);
+$cl=$cat;
+
+}
+}
+
+
+
+sub passwordmismatch {
+print "Content-type: text/html\n\n"; 	  
+print "<html><head><title>Login Error</title></head>\n"; 	  
+print "<body bgcolor=ffffff>\n"; 	  
+print "$mainheader<br><p>\n"; 	  
+print "<blockquote><font face=verdana,univers,times,arial,helvetica size=2>One of the following errors have occurred:<P>
+<ul><li>The password you have entered did not match the password on record.
+<li>The username you entered did not match the username on record
+<li>The email address you entered did not match the email address on record.
+</ul><br>\n"; 	 
+print "Please go back and re-enter your information.</font></blockquote>\n"; 	  
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\" class=button> </FORM></center>\n"; 
+print "</body></html>\n";   
+exit;   
+}
+
+
+sub problemencountered {    
+print "Content-type: text/html\n\n"; 	  
+print "<html><head><title>Login Error</title></head>\n"; 	  
+print "<body bgcolor=ffffff>\n"; 	  
+print "$mainheader<br><p>\n"; 	  
+print "<blockquote><font face=verdana,univers,times,arial,helvetica size=2>Your login information could not be verified.<br>\n"; 	 
+print "Please go back and re-enter your login information.</font></blockquote>\n"; 	  
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\" class=button> </FORM></center>\n"; 
+print "</body></html>\n";   
+exit; 
+}  
+
+################################################################### 
+
+1;

@@ -1,0 +1,158 @@
+#!/usr/bin/perl -w
+#####################################################################
+##  Program Name	: AutoGallery SQL                          ##
+##  Version		: 2.1.0b                                   ##
+##  Program Author      : JMB Software                             ##
+##  Retail Price	: $85.00 United States Dollars             ##
+##  xCGI Price		: $00.00 Always 100% Free                  ##
+##  WebForum Price      : $00.00 Always 100% Free                  ##
+##  Supplier By  	: Dionis                                   ##
+##  Delivery by         : Slayer                                   ##
+##  Nullified By	: CyKuH [WTN]                              ##
+##  Distribution        : via WebForum and Forums File Dumps       ##
+#####################################################################
+##  backup - command line and cron backup tool                     ##
+#####################################################################
+
+use vars qw( $HTMLFILE $SQLFILE $CDIR %OPTIONS );
+
+$CDIR = '/home/soft/cgi-bin/ags';               ## The full directory path to your AutoGallery SQL Installation
+
+#####################################################################
+##  Removing the link back to CGI Works is a copyright violation.  ##
+##  Altering or removing any of the code that is responsible, in   ##
+##  any way, for generating that link is strictly forbidden.       ##
+##  Anyone violating the above policy will have their license      ##
+##  terminated on the spot.  Do not remove that link - ever.       ##
+#####################################################################
+
+chdir($CDIR);
+
+require 'ags.pl';
+
+parseArgs();
+
+print "\nBacking up your data, please wait..." if( $OPTIONS{'-v'} );
+
+backupData();
+
+if( $OPTIONS{'-v'} )
+{
+    print "done\n\n";   
+    print "HTML  Datafile: $HTMLFILE\n";
+    print "MySQL Datafile: $SQLFILE\n\n";
+}
+
+exit;
+
+
+
+sub backupData
+{
+    fwrite("$DDIR/$SQLFILE");
+    fwrite("$DDIR/$HTMLFILE");
+
+    my @dirs = qw( banned dbs html icons links mails );
+
+    foreach $dir ( @dirs )
+    { 
+        for( @{ dread("$DDIR/$dir", '^[^.]') } )
+        {
+            fappend("$DDIR/$HTMLFILE", "Database: $dir/$_\n<<<");
+            open(DB, "$DDIR/$dir/$_") || err("$!", "$DDIR/$dir/$_");
+            flock(DB, $LOCK_EX);
+            while( <DB> )
+            {
+                fappend("$DDIR/$HTMLFILE", $_);
+            }
+            fappend("$DDIR/$HTMLFILE", ">>>\n");
+            flock(DB, $LOCK_UN);
+            close(DB);
+        }
+    }
+
+    system("$MYSQLDUMP -h$HOSTNAME -u$USERNAME -p$PASSWORD $DATABASE >$DDIR/$SQLFILE");
+
+    fwrite("$DDIR/backup", time);
+}
+
+
+
+sub parseArgs
+{
+    my %valid = qw( -v 1 );
+
+    # Parse out the options
+    if( $#ARGV != -1 )
+    {
+        if( $ARGV[0] eq '--help' )
+        {
+            usage();
+        }
+        else
+        {
+            for( @ARGV )
+            {
+                if( index($_, '-') == 0 )
+                {
+                    if( length($_) > 2 )
+                    {
+                        while( $_ =~ /([a-zA-Z])/g )
+                        {
+                            $OPTIONS{"-$1"} = 1;
+                        }
+                    }
+                    else
+                    {
+                        $OPTIONS{$_} = 1;
+                    }
+                }
+                else
+                {
+                    if( !$HTMLFILE )
+                    {
+                        $HTMLFILE = $_;
+                    }
+                    else
+                    {
+                        $SQLFILE = $_;
+                    }
+                }
+            }
+        }
+    }
+
+    $HTMLFILE = fdate('%m-%d-%Y') . '-HTML.txt' if( !$HTMLFILE );
+    $SQLFILE  = fdate('%m-%d-%Y') . '-SQL.txt'  if( !$SQLFILE  );
+
+
+    for( keys %OPTIONS )
+    {
+        if( !$valid{$_} )
+        {
+            print "\nInvalid option: $_\n";
+            usage();
+        }
+    }
+}
+
+
+
+sub usage
+{
+    print "\nusage: backup [OPTIONS] HTMLFILE SQLFILE\n\n";
+    print "Options:\n";
+    print "  -v     Verbose mode\n";
+    print "\n";
+    print "HTMLFILE:\n";
+    print "  This specifies the filename you want the HTML data to be written to.\n";
+    print "  The backup file will be generated in your data directory.  If you\n";
+    print "  do not specify a filename, a file named with the current date will\n";
+    print "  be used.  Example: 02-04-2002-HTML.txt for February 4th, 2002\n\n";
+    print "SQLFILE:\n";
+    print "  This specifies the filename you want the MySQL data to be written to.\n";
+    print "  The backup file will be generated in your data directory.  If you\n";
+    print "  do not specify a filename, a file named with the current date will\n";
+    print "  be used.  Example: 02-04-2002-SQL.txt for February 4th, 2002\n\n";
+    exit;
+}

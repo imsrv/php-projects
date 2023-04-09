@@ -1,0 +1,37 @@
+<?
+// MBox listing messages
+$lang_msg["mboxlst"] = array(
+	201	=>	'Lähettäjä',
+	202	=>	'Järjestä lähettäjän mukaan',
+	203	=>	'Vastaanottaja',
+	204	=>	'Järjestä vastaanottajan mukaan',
+	205	=>	'Päiväys',
+	206	=>	'Järjestä päiväyksen mukaan',
+	207	=>	'Koko',
+	208	=>	'Järjestä koon mukaan',
+	209	=>	'Aihe',
+	210	=>	'Järjestä aiheen mukaan',
+	211	=>	'(ei otsikkoa)',
+	212	=>	'Siirrä merkityt viestit',
+	213	=>	'Tee',
+	214	=>	'Tyhjennä kansio',
+	215	=>	'Poista valitut viestit',
+	216	=>	'Poista poistettavaksi merkityt viestit',
+	217	=>	'Edell.',
+	218	=>	'Seur.',
+	219	=>	'Tässä kansiossa ei ole yhtään viestiä.',
+	220	=>	'Et valinnut kansiota.',
+	221	=>	'Et valinnut yhtään viestiä.',
+	222	=>	'Valittuja viestejä ei voitu siirtää.',
+	223	=>	'Valitut viestit (%d kpl) on siirretty roskakoriin.',
+	224	=>	'Valittuja viestejä ei voitu poistaa.',
+	225	=>	'Valitut viestit ovat siirretty.',
+	226	=>	'Poistettavaksi merkittyjä viestejä ei voitu poistaa.',
+	227	=>	'Poistettavaksi merkityt viestit on poistettu.',
+	228	=>	'Sivu: ',
+	229	=>	'Haluatko todellakin poistaa KAIKKI viestit tästä kansiosta?',
+	230	=>	'Tervetuloa, edellinen yhteytesi oli ',
+	231	=>	'Viesti on merkitty poistettavaksi.',
+	232	=>	'Poistettvaksi merkitty viesti on poistettu.'
+);
+?>

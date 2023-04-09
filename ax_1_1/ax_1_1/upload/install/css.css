@@ -1,0 +1,42 @@
+/* CSS Document */
+BODY { background: #003366;
+		color: #fff;
+		font-family: Arial;
+		font-size: 8pt;
+		font-weight: bold;
+		}
+		
+TD.HEADER { background: #006699;
+		color: #fff;
+		font-family: Arial;
+		font-size: 10pt;
+		}
+		
+TD.MAIN { background: #fff;
+		color: #000;
+		font-family: Arial;
+		font-size: 8pt;
+		font-weight: bold;
+		}
+		
+TD.FORM { background: #fff;
+		color: #000;
+		font-family: Arial;
+		font-size: 8pt;
+		}
+		
+.submit { color: #000;
+			font-family: Arial;
+			font-size: 9pt;
+			font-wight: bold;
+			cursor: hand;
+			}
+			
+.field { color: #000;
+		font-family: Arial;
+		font-size: 9pt;
+		font-weight: none;
+		border: 1px solid;
+		border-color: #003366;
+		}
+		

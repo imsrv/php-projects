@@ -1,0 +1,122 @@
+<tr bgcolor="#cccccc">
+<td width="16">
+<input type="checkbox" name="id" value="#%USERNAME%#"> 
+</td>
+<td width="342">
+<font face="Verdana" size="1">
+<b>#%USERNAME%#</b>
+</font>
+</td>
+<td width="342" align="right">
+<font face="Verdana" size="1">
+&nbsp;
+</font>
+</td>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1">
+&nbsp;&nbsp;
+</font>
+</td>
+<td colspan="2">
+<font face="Verdana" size="1">
+<b>Site:</b> <a href="#%SITE_URL%#" target="new" class="reg">#%TITLE%#</a> - #%DESCRIPTION%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1">
+&nbsp;&nbsp;
+</font>
+</td>
+<td>
+<font face="Verdana" size="1">
+<b>E-mail:</b> <a href="mailto:#%EMAIL%#" class="reg">#%EMAIL%#</a>
+</font>
+</td>
+<td>
+<font face="Verdana" size="1">
+<b>Recip:</b> #%RECIP_URL%#
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#ececec">
+<td>
+<font face="Verdana" size="1">
+&nbsp;&nbsp;
+</font>
+</td>
+<td>
+<font face="Verdana" size="1">
+<b>Category:</b> #%CATEGORY%#
+</font>
+</td>
+<td>
+<font face="Verdana" size="1">
+<b>Banner:</b> #%BANNER_URL%#
+</font>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec" colspan="2">
+<font face="Verdana" size="1">
+<b>#%FIELD_1_NAME%#:</b> #%FIELD_1%#
+</font>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec" colspan="2">
+<font face="Verdana" size="1">
+<b>#%FIELD_2_NAME%#:</b> #%FIELD_2%#
+</font>
+</td>
+</tr>
+
+
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec" colspan="2">
+<font face="Verdana" size="1">
+<b>#%FIELD_3_NAME%#:</b> #%FIELD_3%#
+</font>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#ececec">
+<font face="Verdana" size="1">
+&nbsp;&nbsp;
+</font>
+</td>
+<td bgcolor="#ececec" colspan="2">
+<font face="Verdana" size="1">
+<b>Reason for Rejection:</b>
+<select name="#%R_SELECT%#" style="font-size: 10px;">
+  <option value="none">None</option>
+  #%REJECT%#
+</select>
+</font>
+</td>
+</tr>

@@ -1,0 +1,322 @@
+/*
+ * CSS designed for BasiliX
+ * -----------------------------------
+ * Theme        = Default
+ * Browser      = Netscape Navigator
+ * -----------------------------------
+ * -arslanm
+ *
+ */
+
+/* General */
+BODY {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	color: black;
+	background-color: #f3f3f3;
+}
+
+A {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	color: blue;
+	text-decoration: none;
+}
+
+A:Hover {
+	background-color: #eeeee;
+	color: red;
+}
+
+HR {
+	color: #cccccc;
+	height: 1px;
+}
+
+INPUT,SELECT {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: normal;
+	color: black;
+}
+
+TEXTAREA {
+	background-color: #f3f3f3;
+	color: black;
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight:normal;
+}
+
+PRE {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: medium;
+	background-color: #f3f3f3;
+	color: black;
+}
+
+
+/* Error/info message displaying */
+.error {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 10pt;
+	font-weight: bold;
+	background-color: #e1baa3;
+	color: black;
+        border-style: outset;
+        border-width: 1;
+}
+
+.csserr {
+	font-family: arial;
+	font-size: 1pt;
+	color: #f3f3f3;
+}
+
+.info {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 10pt;
+	font-weight: bold;
+	background-color: #cccccc;
+	color: black;
+        border-style: outset;
+        border-width: 1;
+}
+
+/* Used to border the tables with color */
+.tblborder {
+	background-color: #c0c0c0;
+}
+
+/* This is the same as BODY */
+.normalbg {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	color: black;
+	background-color: #f3f3f3;
+}
+
+/* Buttons */
+.button {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: bold;
+	background-color: #c6d2c7;
+	color: black;
+}
+.butover {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: bold;
+	background-color: #696969;
+	color: white;
+}
+
+/* Login menu */
+.login {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: normal;
+	background-color: #f3f3f3;
+	color: black;
+}
+
+/* The menu links */
+.menutop {
+	background-color: #c1c2ef;
+}
+
+.menuleft {
+	background-color: #c1c2ef;
+	border-style: outset;
+	border-width: 1;
+}
+
+/* Page informative header */
+.pagehdr {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 10pt;
+	font-weight: bold;
+	background-color: #9bbad6;
+	color: black;
+}
+
+/* Copyright notice */
+.copy {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 8pt;
+	color: black;
+}
+
+/* Folder list */
+.folderhdr {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 10pt;
+	background-color: #afb2cd; 
+	color: black;
+	font-weight: medium;
+	border-style: outset;
+	border-width: 1;
+}
+
+.folderlst {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 9pt;
+	background-color: #f3f3f3;
+	color: black;
+}
+
+.folderlst A {
+	color: darkblue;
+}
+
+.folderlst A:hover {
+	text-decoration: underline;
+}
+
+/* Mbox listing */
+.chkfldr {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 9pt;
+	background-color: #cdcdcd;
+	color: black;
+	border-style: outset;
+	border-width: 1;
+}
+       
+.chknext {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 9pt;
+	background-color: #dcdcdc;
+	color: black;
+	border-style: outset;
+	border-width: 1;
+}
+.mboxhdr {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 10pt;
+	background-color: #c1c2ef;
+	color: black;
+	font-weight: normal;
+}
+
+.mboxhdr A {
+	color: blue;
+}
+
+.mboxhdr A:hover {
+	color: red;
+	text-decoration: underline;
+}
+
+.mboxhdract {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 10pt;
+	background-color: #c1c2ef;
+	color: black;
+	font-weight: normal;
+	border-style: inset;
+	border-width: 1;
+}
+
+.oldmsg {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: normal;
+	background-color: #f3f3f3;
+	color: #444444;
+}
+.oldmsg A {
+	color: #444444;
+}
+
+.oldmsg A:Hover {
+	color: red;
+}
+
+.newmsg {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: normal;
+	background-color: #dcdcdc;
+	color: black;
+}
+
+.newmsg A {
+	color: blue;
+}
+
+.newmsg A:Hover {
+	color: red;
+}
+
+/* Read Msg */
+.rmsghdr {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 10pt;
+	font-weight: bold;
+	background-color: #f5f5f5;
+	color: black;
+}
+.rmsgval {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 10pt;
+	background-color: #f5f5f5;
+	color: black;
+}
+.rmsgbod {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: medium;
+	background-color: #f3f3f3;
+	color: black;
+}
+
+/* Compose Msg */
+.cmsghdr {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 10pt;
+	font-weight: bold;
+	background-color: #f5f5f5;
+	color: black;
+}
+.cmsgval {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 10pt;
+	background-color: #f5f5f5;
+	color: black;
+}
+.cmsgbod {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: medium;
+	background-color: #f3f3f3;
+	color: black;
+}
+
+.cmsgatchlist {
+	background-color: #f3f3f3;
+	font-family: lucida,verdana,tahoma,arial,helvetica;
+	font-size: 8pt;
+}	
+
+/* Address book */
+.addrhdr {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 10pt;
+	background-color: #afb2cd;
+	color: black;
+	font-weight: normal;
+	border-style: outset;
+	border-width: 2;
+}
+
+.addrlst {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: normal;
+	background-color: #f3f3f3;
+	color: black;
+}
+

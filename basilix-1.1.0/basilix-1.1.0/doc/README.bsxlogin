@@ -1,0 +1,20 @@
+Ok, several people asked me about this: logging from some other page with the 
+basilix login form inside.
+
+The name of the file is bsxlogin.html which is a temporary file showing 
+what to do.
+
+1) Change the URL which is http://beta.basilix.org to yours.
+
+2) Change the value of the hidden form variable "domain" to the index of the
+   desired domain plus one. For instance, assume you'll use this HTML form 
+   template for domain "abc.com" and the index of this domain specified in
+   file conf/domain.conf is 1. Then the value of the "domain" should be 2.
+
+3) Change the text "basilix.org" to "abc.com", following the example.
+
+That's all. This simple form script simply detects the browser, its JS version,
+and if it's cookie enabled. Do not change the form variable names unless you know
+what you're doing.
+
+-arslanm

@@ -1,0 +1,76 @@
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td align="center" width="5">&nbsp;</td>
+<td align="center" width="10%" valign="top" class="normalbg">
+<a href="http://basilix.org" target=_new>BasiliX</a><br>
+<!-- left menu -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td align="center" valign="top" class="menuleft" width="5%">&nbsp;</td>
+<td align="center" valign="top" class="menutop">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" width="100%"></td>
+</tr>
+<tr>
+<td align="left" valign="top" class="normalbg" nowrap><br>
+&nbsp;<?php put_ahref("RequestID=FOLDERS",$lng->p(102))?><br>
+&nbsp;&nbsp;&middot;&nbsp;<?php put_ahref("RequestID=MBOXLST" ,$lng->p(101))?><br>
+&nbsp;&nbsp;&middot;&nbsp;<?php put_ahref("RequestID=MBOXLST&mbox=" . urlencode($BSX_SENTMAIL_NAME), $lng->p(108))?><br>
+&nbsp;&nbsp;&middot;&nbsp;<?php put_ahref("RequestID=MBOXLST&mbox=" . urlencode($BSX_TRASH_NAME), $lng->p(109))?><br>
+<?php
+if($is_js && $GLOBALS["RequestID"] == "SETTINGS") $GLOBALS["godiv"] = true;
+if($GLOBALS["user_set"]["ifexpand"] || $GLOBALS["godiv"]) { 
+	$GLOBALS["sql"]->open();
+	$menu_folders = $GLOBALS["sql"]->folders_load($GLOBALS["customerID"]);
+	$GLOBALS["sql"]->close();
+	$menu_folders_arr = explode(chr(2), decode_strip($menu_folders["LASTFOLDERS"]));
+	$menu_folders_cnt = count($menu_folders_arr);
+	
+	if($GLOBALS["godiv"]) { 
+		if($GLOBALS["user_set"]["ifexpand"]) {
+			$stylestr = "position:relative;visibility:visible";
+			$GLOBALS["godiv_hidden"] = false;
+		} else {
+			$stylestr = "position:absolute;visibility:hidden";
+			$GLOBALS["godiv_hidden"] = true;
+		}
+?>
+<div id="userfolders" style="<?php echo $stylestr?>;">
+<?php
+	}
+	for($i = 0 ; $i < count($menu_folders_arr) ; $i++) {
+		$menu_mbox_lowname = strtolower($menu_folders_arr[$i]);
+		if($menu_mbox_lowname == strtolower($BSX_SENTMAIL_NAME) ||
+		   $menu_mbox_lowname == strtolower($BSX_TRASH_NAME)) continue;
+?>
+&nbsp;&nbsp;&middot;&nbsp;<?php put_ahref("RequestID=MBOXLST&mbox=" . urlencode($menu_folders_arr[$i]), $menu_folders_arr[$i])?><br>
+<?php
+	}
+	if($GLOBALS["godiv"]) {
+		echo "</div>\n";
+	}
+}
+?>
+&nbsp;<?php put_ahref("RequestID=FINDMSG",$lng->p(103))?><br>
+&nbsp;<?php put_ahref("RequestID=CMPSMENU",$lng->p(104))?><br>
+&nbsp;<?php put_ahref("RequestID=ABOOK",$lng->p(105))?><br>
+&nbsp;<?php put_ahref("RequestID=SETTINGS",$lng->p(106))?><br>
+<br>
+&nbsp;<?php put_ahref("RequestID=LOGOUT",$lng->p(107))?><br>
+<br>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td align="center" valign="top">
+<?php push_pagehdr()?>
+<br>
+<!-- menu : FINISH -->
+<!-- banner : START -->
+<?php include($GLOBALS["BSX_BANNERDIR"] . "/banner.inc")?>
+<!-- banner : FINISH -->
+<?php flush() ?>

@@ -1,0 +1,285 @@
+#!/usr/local/bin/perl 
+
+use CGI::Carp qw(fatalsToBrowser);
+require "configdat.lib";
+require "defaulttext.lib";
+
+
+# No additional changes necessary
+# Leave what lies below this line in tact
+###########################################
+
+	
+	$| = 1;
+	chop $userimagesdir if ($userimagesdir =~ /\/$/);
+	use CGI qw(:standard);
+	$query = new CGI;
+
+	if ( (!(-e $userimagesdir)) ||
+		 (!(-W $userimagesdir)) ||
+		 (!(-d $userimagesdir)) ) {
+		print header;
+		print <<ENDOFHTML;;
+		
+		$mainheader<br><br>
+		<BLOCKQUOTE>Either the specified directory, $userimagesdir, does 
+		not exist, is not writable (chmod 777), or
+		it is not a directory. 
+		</BLOCKQUOTE>
+		<br>$botcode
+		
+ENDOFHTML
+		exit;
+	}
+	
+#############################################################################
+
+	foreach $key (sort {$a <=> $b} $query->param()) {
+		next if ($key =~ /^\s*$/);
+		next if ($query->param($key) =~ /^\s*$/);
+		next if ($key !~ /^file-to-upload-(\d+)$/);
+		
+		$Number = $1;
+		
+		if ($query->param($key) =~ /([^\/\\]+)$/) {
+			$Filename = $1;
+			$Filename =~ s/^\.+//;
+			$File_Handle = $query->param($key);
+
+		
+
+
+unless($Filename =~/\.gif$|\.GIF$|\.jpg$|\.JPG$|\.jpeg$/){
+print header;
+print "$mainheader$menu1$menu2<br><br>\n";
+print "$fupl2\n";
+print "<center><FORM> <INPUT type=\"button\" value=\"$chtgb\" onClick=\"history.go(-1)\" class=\"button\"> </FORM></center> <br><br>$botcode\n";
+exit;
+}
+
+		if(-e "$userimagesdir/$Filename"){
+
+		print header;
+		print "$mainheader$menu1$menu2<br><br>\n";
+		print "$fupl3 <br>
+		<center><FORM> <INPUT type=\"button\" value=\"$chtgb\" onClick=\"history.go(-1)\" class=\"button\"> </FORM></center>
+		<br><br>$botcode\n";
+		exit;
+		}
+
+		if($Filename =~ / /){
+		print "Content-type:text/html\n\n";
+		print "$mainheader$menu1$menu2<br><br>\n";
+		print "$fupl5 <br>
+		<center><FORM> <INPUT type=\"button\" value=\"$chtgb\" onClick=\"history.go(-1)\" class=\"button\"> </FORM></center>
+		<br><br>$botcode\n";
+		exit;
+		}
+
+		if(($Filename =~ /\$./)||($Filename =~ /\@/)||($Filename =~ /\*/)||
+		($Filename =~ /\%/)||($Filename =~ /\^/)||($Filename =~ /\#/)||
+		($Filename =~ /\!/)||($Filename =~ /\~/)||($Filename =~ /\`/)||
+		($Filename =~ /\;/)||($Filename =~ /\:/)||($Filename =~ /\[/)||
+		($Filename =~ /\]/)||($Filename =~ /\(/)||($Filename =~ /\)/)||
+		($Filename =~ /\&/)||($Filename =~ /\"/)||($Filename =~ /\'/)||
+		($Filename =~ /\+/)||($Filename =~ /\=/)||($Filename =~ /\|/)||
+		($Filename =~ /\{/)||($Filename =~ /\}/)||($Filename =~ /\//)||
+		($Filename =~ /\\/)||($Filename =~ /\?/)||($Filename =~ /\,/)||
+		($Filename =~ /\>/)||($Filename =~ /\</)||
+		($Filename =~ /\$/)){
+
+		print "Content-type:text/html\n\n";
+		print "$mainheader$menu1$menu2<br><br>\n";
+		print "$fupl5 <br>
+		<center><FORM> <INPUT type=\"button\" value=\"$chtgb\" onClick=\"history.go(-1)\" class=\"button\"> </FORM></center>
+		<br><br>$botcode\n";
+		exit;
+		}
+
+
+		if (!$files_named_index && $Filename =~ /^index/i) {
+
+				print "Content-type:text/html\n\n";
+				print "
+				$mainheader	$menu1 $menu2
+				<br><br>
+				$fupl4	
+				<center><FORM> <INPUT type=\"button\" value=\"$chtgb\" onClick=\"history.go(-1)\" class=\"button\"> </FORM></center>
+				$botcode	
+				\n";
+				exit;
+				}
+
+		} else {
+
+			$invalid_filename = $query->param($key);
+
+			
+
+			print "Content-type:text/html\n\n";
+			print "
+			$mainheader$menu1 $menu2 <br><br>
+			
+			$fupl5
+			
+			<center><FORM> <INPUT type=\"button\" value=\"$chtgb\" onClick=\"history.go(-1)\" class=\"button\"> </FORM></center>
+			$botcode
+			\n";
+			exit;
+			}
+
+##############################################################################
+
+
+
+            if (!open(OUTFILE, ">$userimagesdir\/$Filename")) {
+            print "Content-type: text/plain\n\n";
+            print "$fupl1\n\n";
+	    exit;
+
+        	}
+
+
+
+		undef $BytesRead;
+		undef $Buffer;
+        	while ($Bytes = read($File_Handle,$Buffer,1024)) {
+		$BytesRead += $Bytes;
+            	print OUTFILE $Buffer;
+        	}
+		
+		push(@Files_Written, "$userimagesdir\/$Filename");
+		$TOTAL_BYTES += $BytesRead;
+		$Confirmation{$File_Handle} = $BytesRead;
+
+        close($File_Handle);
+		close(OUTFILE);
+
+        chmod (0666, "$userimagesdir\/$Filename");
+    }
+
+	$FILES_UPLOADED = scalar(keys(%Confirmation));
+
+	
+	if ($TOTAL_BYTES > $maxfilesize && $maxfilesize > 0) {
+		foreach $File (@Files_Written) {
+			unlink $File;
+		}
+		
+		print header;
+		print <<ENDOFHTML;
+		
+		<HTML>
+		<HEAD>
+			<TITLE>Error</TITLE>
+		</HEAD>
+		<BODY BGCOLOR="#FFFFFF">
+		<br><br>
+		$mainheader
+		<blockquote>The file you are uploading exceeds the maximum allowed.
+		Your file is <B>$TOTAL_BYTES</B> in size. The maximum allowed
+		is <B>$maxfilesize</B> bytes.  <B>Your file was not successfully saved.
+		Please reduce the file size and try again.</blockquote>
+		<br>
+		$botcode
+		</BODY></HTML>
+				
+ENDOFHTML
+		exit;
+	}
+	
+#################################################################################
+
+	
+	$password=$query->param('password');
+	$username=$query->param('username');
+	$emailaddr=$query->param('emailaddr');
+	$age=$query->param('age');
+	$reltype=$query->param('reltype');
+	$gender=$query->param('gender');
+	$lookingfor=$query->param('lookingfor');
+	$country=$query->param('country');
+	$state=$query->param('state');
+	$zip=$query->param('zip');
+	$city=$query->param('city');
+	$additionalinfo=$query->param('additionalinfo');
+	$returnpg=$query->param('returnpg');
+
+unless(-e "$messagecenterdir/$username/userpics.txt"){
+open (FILE, ">>$messagecenterdir/$username/userpics.txt") || die "Cannot open $messagecenterdir/$username/userpics.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+close (FILE); }
+
+open (FILE, ">>$messagecenterdir/$username/userpics.txt") || die "Cannot open $messagecenterdir/$username/userpics.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";
+print FILE "$Filename\n";  
+close (FILE);
+	
+		print "Content-type:text/html\n\n";
+		print "
+		<HTML><HEAD><TITLE>Begin Append Picture</TITLE></HEAD>
+		<BODY BGCOLOR=\"#FFFFFF\" topmargin=0 bottommargin=0 leftmargin=0 rightmargin=0 marginheight=0 marginwidth=0>
+
+		$mainheader
+		$menu1
+		$menu2
+		<br><br>
+		<center><table cellpadding=0 cellspacing=0 width=100% border=0><tr>
+		<td width=20% valign=\"middle\"><center><img src=\"$userimagesurl/$Filename\" border=0></center></td>
+		<td width=80% valign=\"top\">
+		<center><table cellpadding=0 cellspacing=0 width=400 border=0><tr><td>
+
+		<font size=1 face=verdana><blockquote>
+
+		You must enter your username and password below to assure that your picture gets appended to the
+
+		correct profile. You must also enter the name of the file you have just uploaded. For example, if the name of the
+
+		file was \"mypic.jpg\", you enter \"mypic.jpg\" into the filename text box; and the email address
+
+		at which you would like to receive email from persons interested in your profile. </blcokquote><br><br>\n";
+
+		if($returnpg eq "update"){
+
+		print "<form method=\"post\" action=\"$cgiurl/updateprofile.pl\">";}
+
+		else {print "<form method=\"post\" action=\"$cgiurl/createpro.pl\">";}
+
+		print "
+
+	<table cellpadding=0 cellspacing=0 width=400 border=0><tr>
+
+	<td><font size=2 face=univers><b>Enter Username</b></font></td>
+
+	<td><input type=\"text\" name=\"username\" value=\"$username\" size=15></td></tr><tr>
+
+	<td><font size=2 face=univers><b>Enter Password</b></font></td>
+
+	<td><input type=\"text\" name=\"password\" value=\"$password\" size=15></td></tr><tr>
+
+	<td><font size=2 face=univers><b>Your Picture File Name</b></font></td>
+
+	<td><input type=\"text\" name=\"picfilename\" value=\"$Filename\" size=15></td></tr><tr>
+	</tr></table><br>
+
+	<input type=\"hidden\" name=\"age\" value=\"$age\">
+	<input type=\"hidden\" name=\"reltype\" value=\"$reltype\">
+	<input type=\"hidden\" name=\"gender\" value=\"$gender\">
+	<input type=\"hidden\" name=\"lookingfor\" value=\"$lookingfor\">
+	<input type=\"hidden\" name=\"username\" value=\"$username\">
+	<input type=\"hidden\" name=\"password\" value=\"$password\">
+	<input type=\"hidden\" name=\"emailaddr\" value=\"$emailaddr\">
+	<input type=\"hidden\" name=\"country\" value=\"$country\">
+	<input type=\"hidden\" name=\"city\" value=\"$city\">
+	<input type=\"hidden\" name=\"zip\" value=\"$zip\">
+	<input type=\"hidden\" name=\"state\" value=\"$state\">
+	<input type=\"hidden\" name=\"additionalinfo\" value=\"$additionalinfo\">
+
+	<center><input type=\"submit\" name=\"appendpic\" value=\"Append Picture\" class=\"button\"></center><br><br>
+	</form>
+	</td></tr></table></center></td></tr></table>
+	$botcode
+	\n";
+	exit;	
+		
+	

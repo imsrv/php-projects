@@ -1,0 +1,37 @@
+<?
+// MBox listing messages
+$lang_msg["mboxlst"] = array(
+	201	=>	'Od',
+	202	=>	'Sortuj na Od',
+	203	=>	'Do',
+	204	=>	'Sortuj na Do',
+	205	=>	'Data',
+	206	=>	'Sortuj na Datê',
+	207	=>	'Rozmiar',
+	208	=>	'Sortuj na Rozmiar',
+	209	=>	'Temat',
+	210	=>	'Sortuj na temat',
+	211	=>	'(brak tematu)',
+	212	=>	'Przenie¶ zaznaczone wiadomo¶ci do',
+	213	=>	'Zrób to',
+	214	=>	'Opró¿nij Folder',
+	215	=>	'Skasuj zaznaczone wiadomo¶ci',
+	216	=>	'Wyczy¶æ zaznaczne wiadomo¶ci',
+	217	=>	'Poprzednia',
+	218	=>	'Nastêpna',
+	219	=>	'Nie ma wiêcej wiadomo¶ci.',
+	220	=>	'Nie zaznaczy³e¶ folderu, spróbuj jeszcze raz..',
+	221	=>	'Nie zaznaczy³e¶ wiadomo¶ci, spróbuj jeszcze raz..',
+	222	=>	'Nie mo¿na przenie¶æ wiadomo¶ci, spróbuj pó¼niej..',
+	223	=>	'Zaznaczone wiadomo¶ci (%d) zosta³y usuniête do Kosza.',
+	224	=>	'Nie mo¿na usun±æ zaznaczonych wiadomo¶ci, spróbuj pó¼niej..',
+	225	=>	'Zaznaczone wiadomo¶ci zosta³y przeniesione.',
+	226	=>	'Nie m¿na wyczy¶ciæ zaznaczonych wiadomo¶ci, spróbuj pó¼niej..',
+	227	=>	'Zaznaczone wiadomo¶ci zosta³y wyczyszczone.',
+	228	=>	'Strona: ',
+	229	=>	'Czy na pewno chcesz opró¿niæ ten folder?',
+	230	=>	'Witam, Twoje ostatnie po³±czenie by³o z ',
+	231	=>	'Wiadomo¶æ zosta³a skasowana.',
+	232	=>	'Wiadomo¶æ zosta³a wyczyszczona.'
+);
+?>

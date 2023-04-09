@@ -1,0 +1,44 @@
+<center><table cellspacing=0 cellpadding=0 border=0 width=740><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><th colspan=4><img src=#image_dir#stat.gif width=16 height=16> Statistics for year</th></tr>
+<tr><th>Month</th><th>Imps</th><th>Clicks</th><th>Imps / Clicks</th>
+#stat-year#
+</td></tr></table>
+</td></tr></table>
+<br><br>
+
+<center><table cellspacing=0 cellpadding=0 border=0 width=740><tr><td bgcolor=black>
+<table cellspacing=1 cellpadding=2 border=0 width=100%>
+<tr><th colspan=4><img src=#image_dir#stat.gif width=16 height=16> Statistics for #cur-month#</th></tr>
+<tr><th>Day</th><th>Imps</th><th>Clicks</th><th>Imps / Clicks</th>
+#stat-month#
+</td></tr></table>
+</td></tr></table>
+<br><br>
+
+<!--[for-banner-only]-->
+<a href=admin.cgi?page=statip&mode=imps&bid=#FORM_bid# style="color: black;"><b>IP log Impression</b></a> | <a href=admin.cgi?page=statip&mode=clicks&bid=#FORM_bid# style="color: black;"><b>IP log Clicks</b>
+<!--[for-banner-only]-->
+
+</center>
+
+
+<!--[stat-year]-->
+<tr><td class=td#?1:2#><a href=admin.cgi?page=statcampaignyear&tid=#FORM_tid#&bid=#FORM_bid#&month=#month_num# class=ar>#month#</a></td><td class=td#?1:2# align=right>#shows#</td><td class=td#?1:2# align=right>#clicks#</td><td class=td#?1:2#>
+<table cellspacing=1 cellpadding=0 border=0 width=100%><tr><td width=300>
+	<table cellspacing=0 cellpadding=0 border=0 width=1><tr><td class=tds><img src=#image_dir#s.gif width=#shows_width# height=6></td></tr></table>
+</td><td width=300>
+	<table cellspacing=0 cellpadding=0 border=0 width=1><tr><td class=tdc><img src=#image_dir#s.gif width=#clicks_width# height=6></td></tr></table>
+</td></tr></table>
+</td></tr>
+<!--[stat-year]-->
+
+<!--[stat-month]-->
+<tr><td class=td#?1:2#>#day#</td><td class=td#?1:2# align=right>#shows#</td><td class=td#?1:2# align=right>#clicks#</td><td class=td#?1:2#>
+<table cellspacing=1 cellpadding=0 border=0 width=100%><tr><td width=300>
+	<table cellspacing=0 cellpadding=0 border=0 width=1><tr><td class=tds><img src=#image_dir#s.gif width=#shows_width# height=6></td></tr></table>
+</td><td width=300>
+	<table cellspacing=0 cellpadding=0 border=0 width=1><tr><td class=tdc><img src=#image_dir#s.gif width=#clicks_width# height=6></td></tr></table>
+</td></tr></table>
+</td></tr>
+<!--[stat-month]-->

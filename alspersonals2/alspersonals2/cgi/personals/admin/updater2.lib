@@ -1,0 +1,1181 @@
+
+sub lookupticknum {
+if($postersname eq ""){
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<font size=2 face=verdana><blockquote>There was no name entered. In order to look up the ticket number
+it is necessary that you enter the name of the person who posted the ad.
+<P>
+<a href="javascript:history.go(-1)">Go back</a>
+</font></blockquote>
+<br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;
+}
+unless(-e "$messagecenterdir/$postersname/ads.txt"){
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br>
+<table><tr><td>
+<font size=2 face=verdana><blockquote>
+There was no ad file found for the member <b>$FORM{'postersname'}</b>
+.</font><br><br>
+</td></tr></table>
+<br>
+<br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html></form>
+EOF
+exit;
+}
+
+open(IN, "$messagecenterdir/$FORM{'postersname'}/ads.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($username,$ticketnumber)=split(/\|/, $line);
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br>
+<table><tr><td>
+<form method="post" action="$admincgiurl/updater.pl">
+<input type="hidden" name="adcat" value="$FORM{'adcat'}">
+<input type="hidden" name="postersname" value="$FORM{'postersname'}">
+<font size=2 face=verdana><blockquote>
+The ticket number for the ad posted by, <b>$postersname</b>, is entered in the
+ad deletion box below. Pressing Delete Ad will delete the ad and send a notice to 
+the user that the ad has been deleted.</font><br><br>
+
+<input type="text" name="deltick" size=25 value="$ticketnumber">
+&nbsp;
+<input type="submit" name="admdelad" value="Delete Ad" class="button">
+</td></tr></table>
+<br>
+<br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html></form>
+EOF
+exit;
+}
+}
+
+
+sub admdelad {
+
+if($deltick eq ""){
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<font size=2 face=verdana><blockquote>There was no deletion ticket number entered.
+<P>
+<a href="javascript:history.go(-1)">Go back</a>
+</font></blockquote>
+<br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;
+}
+
+
+opendir(DIR, "$persadsdir/$adcat/ads");
+@ddocs=readdir(DIR);
+closedir(DIR);
+
+foreach $ddoc(@ddocs){
+
+unless(($ddoc eq ".")||($ddoc eq "..")){
+
+open(IN, "$persadsdir/$adcat/ads/$ddoc")||&adminerror($!,"Cannot read $persadsdir/$adcat/ads/$ddoc");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+open(OUT,">$persadsdir/$adcat/ads/$ddoc") || &adminerror($!,"Cannot write $persadsdir/$adcat/ads/$ddoc");
+flock (OUT, 2);
+foreach $line(@lines) {
+if ($line !~ /$deltick/) {
+print OUT "$line";
+}
+}
+}
+}
+close (OUT);
+
+open(IN, "$admincgidir/ads.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($numberofads)=split(/\n/,$line);
+$oldadcount=$numberofads;
+$newadcount=$numberofads - 1;
+
+open (FILE, ">$admincgidir/ads.txt") || die "Cannot open $admincgidir/ads.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$newadcount\n";  
+close (FILE);
+}
+
+$cnt=unlink "$messagecenterdir/$postersname/ads.txt";
+
+&admsendemail;
+
+}
+
+
+sub admsendemail {
+
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<font size=2 face=verdana><blockquote>The ad has been deleted.
+
+<P>
+
+</font></blockquote>
+<br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;
+}
+
+
+sub launchmailcenter {
+
+if($ENV{'HTTP_REFERER'} !~ /$admincgiurl/){
+
+print "Content-type:text/html\n\n";
+print "<br><br><br><br><blockquote><font size=2 face=verdana><b><b>Access Violation</b><br><br>
+You are not authorized to access this document. </font></blockquote><br><br><br>\n";
+exit;}
+
+&getnumemaillists;
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<table width=100% bgcolor=eeeeee><tr><td><br>
+<form method="post" action="messagemailer.pl">
+<font size=2 face=verdana><blockquote>The mass mailer below allows you to 
+send HTML formatted email to your members. There are currently (<b>$numemaillists</b>) email lists in the directory.
+<br><br></td></tr></table>
+<center><table><tr><td valign="top"><tr>
+<td><b><font size=1 face=verdana>Subject of Message</font></b></td>
+<td><input type="text" name="subject" size=40 class="box"></td></tr><tr>
+<td><b><font size=1 face=verdana>Title of Sender</font></b></td>
+<td><input type="text" name="title" size=25 class="box"></td></tr><tr>
+<td><b><font size=1 face=verdana>Recipient Email(To send an individual email)</font></b></td>
+<td><input type="text" name="sendto" size=25 class="box"></td></tr><tr>
+<td valign="top"><b><font size=1 face=verdana>Body of Message</font></b></td>
+<td><textarea name="message" cols=60 rows=15 class=tarea></textarea></td></tr><tr>
+<td>&nbsp;</td><td>
+<center><input type="submit" name="sendall" value="Send to all members" class="button">
+<br>
+<input type="submit" name="sendone" value="Send to named recipient" class="button">
+</center></td>
+</tr></table>
+</center>
+<br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html></form>
+EOF
+exit;
+
+}
+
+
+sub showallprofiles {
+
+
+if($ENV{'HTTP_REFERER'} !~ /$admincgiurl/){
+
+print "Content-type:text/html\n\n";
+print "<br><br><br><br><blockquote><font size=2 face=verdana><b><b>Access Violation</b><br><br>
+You are not authorized to access this document. </font></blockquote><br><br><br>\n";
+exit;}
+
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print "
+<table cellpadding=2 cellspacing=2 width=100% border=1 bordercolordark=black bordercolorlight=808080><tr>
+<td bgcolor=c0c0c0><center><font size=2 face=verdana>Women Seeking Men</font></center></td>
+<td bgcolor=c0c0c0><center><font size=2 face=verdana>Men Seeking Women</font></center></td>
+<td bgcolor=c0c0c0><center><font size=2 face=verdana>Women Seeking Women</font></center></td>
+<td bgcolor=c0c0c0><center><font size=2 face=verdana>Men Seeking Men</font></center></td></tr><tr>
+<td bgcolor=ffffff valign=\"top\">\n";
+
+opendir(DIR, "$profilesdir/catwsm");
+@wsmprofiles= readdir(DIR);
+closedir(DIR);
+
+foreach $wsmprofile(@wsmprofiles){
+unless($wsmprofile eq "index.html"){
+if($wsmprofile =~ /\.html/){
+$wsmprofile =~ s/\.html//g;
+$wsmname=$wsmprofile;
+
+print "
+
+<a href=\"$profilesurl/catwsm/$wsmprofile.html\">
+<font size=2 face=verdana>$wsmname</font></a><br>\n";}
+}
+}
+
+print "
+</td>
+<td bgcolor=ffffff valign=\"top\">\n";
+
+opendir(DIR, "$profilesdir/catmsw");
+@mswprofiles = readdir(DIR);
+closedir(DIR);
+
+foreach $mswprofile(@mswprofiles){
+unless($mswprofile eq "index.html"){
+if($mswprofile =~ /\.html/){
+$mswprofile =~ s/\.html//g;
+$mswname=$mswprofile;
+
+print "
+<a href=\"$profilesurl/catmsw/$mswprofile.html\">
+<font size=2 face=verdana>$mswname</font></a><br>\n";}
+}
+}
+print "
+</td>
+
+<td bgcolor=ffffff valign=\"top\">\n";
+
+opendir(DIR, "$profilesdir/catwsw");
+@wswprofiles= readdir(DIR);
+closedir(DIR);
+
+foreach $wswprofile(@wswprofiles){
+unless($wswprofile eq "index.html"){
+if($wswprofile =~ /\.html/){
+$wswprofile =~ s/\.html//g;
+$wswname=$wswprofile;
+
+print "
+<a href=\"$profilesurl/catwsw/$wswprofile.html\">
+<font size=2 face=verdana>$wswname</font></a><br>\n";}
+}
+}
+print "</td>
+
+<td bgcolor=ffffff valign=\"top\">\n";
+
+opendir(DIR, "$profilesdir/catmsm");
+@msmprofiles= readdir(DIR);
+closedir(DIR);
+
+foreach $msmprofile(@msmprofiles){
+unless($msmprofile eq "index.html"){
+if($msmprofile =~ /\.html/){
+$msmprofile =~ s/\.html//g;
+$msmname=$msmprofile;
+
+print "
+<a href=\"$profilesurl/catmsm/$msmprofile.html\">
+<font size=2 face=verdana>$msmname</font></a><br>\n";}
+}
+}
+print <<EOF;
+</td>
+</tr></table>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10><form method="post" action="$admincgiurl/updater.pl"></td><td><center><input type="text" name="nameofprofile" size=20>&nbsp;
+<input type="submit" name="admdelprof" value="Delete Profile" class="button"></center>
+</form>
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+
+}
+
+
+
+sub showallmembers {
+
+if($ENV{'HTTP_REFERER'} !~ /$admincgiurl/){
+
+print "Content-type:text/html\n\n";
+print "<br><br><br><br><blockquote><font size=2 face=verdana><b><b>Access Violation</b><br><br>
+You are not authorized to access this document. </font></blockquote><br><br><br>\n";
+exit;}
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+
+print "<form method=\"post\" action=\"$admincgiurl/updater.pl\"><table width=100% cellpadding=0 cellspacing=0 border=0><tr><td>
+<br><blockquote><font size=1 face=verdana>
+<table><tr><td bgcolor=404040><font size=2 color=ffffff face=verdana>
+<b>User names shown below</b></font></td></tr><tr>
+<td><font size=2 color=maroon face=verdana>\n";
+
+
+opendir(DIR, "$users");
+@files = readdir(DIR);
+closedir(DIR);
+
+foreach $file(@files){
+
+
+
+if($file =~ /\.txt$/){
+$file =~ s/\.txt//g;
+
+if(-e "$profilesdir/catwsm/$file.html"){$profilecat="catwsm";}
+if(-e "$profilesdir/catwsw/$file.html"){$profilecat="catwsw";}
+if(-e "$profilesdir/catmsm/$file.html"){$profilecat="catmsm";}
+if(-e "$profilesdir/catmsw/$file.html"){$profilecat="catmsw";}
+
+
+print "<a href=\"$admincgiurl/viewp.pl?name=$file\"><font size=2 face=verdana>$file</font></a> | ";
+}
+}
+print "</font></td></tr></table></blockquote>\n";
+print <<EOF;
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+
+
+}
+	
+
+sub deloffensive {
+
+if(($FORM{'username'} eq "")||($FORM{'membercode'} eq "")){
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br><font size=2 face=verdana><blockquote>You are trying to delete a username but you have not
+left out some required information. <a href="javascript:history.go(-1)">Go back</a>
+</font></blockquote><br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;}
+
+
+
+unless(-e "$users/$FORM{'username'}.txt"){
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br><font size=2 face=verdana><blockquote>No member was found by the name <b>$FORM{'username'}</b>.
+Please <a href="javascript:history.go(-1)">go back</a>
+and enter the username to delete.</font></blockquote><br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;}
+
+$ctdel=$FORM{'membercode'};
+
+opendir(DIR, "$admincgidir/memberdatafiles");
+@files=readdir(DIR);
+closedir(DIR);
+
+foreach $file(@files){
+
+unless(($file eq "next.txt")||($file eq ".")||($file eq "..")){
+
+open(IN, "$admincgidir/memberdatafiles/$file")||&adminerror($!,"Cannot read $admincgidir/memberdatafiles/$file");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+foreach $line(@lines) {
+($firstname,$lastname,$street,$city,$state,$zip,$country,$mofbirth,$dofbirth,$yofbirth,$username,$password,$emailaddress,$profilecategory,$remote_addr,$membercode)=split(/\|/,$line);
+
+if($FORM{'username'} eq "$username"){
+$ema=$emailaddress;
+$thdeco=$membercode;
+$ustode=$username;}
+}
+}
+}
+
+unless($ctdel == $thdeco){&mismatchname_code;}
+
+$cnt=unlink "$users/$FORM{'username'}.txt";
+
+&removenm_admin_profiles_txt;
+&removenm_profdat_txt;
+&removenm_members_txt;
+&removenm_proflist_txt;
+&delmescendir;
+&dellovestoryfile;
+
+&contdel1;
+}
+
+
+sub contdel1 {
+
+opendir(DIR, "$admincgidir/memberdatafiles");
+@files=readdir(DIR);
+closedir(DIR);
+
+foreach $file(@files){
+
+unless(($file eq "next.txt")||($file eq ".")||($file eq "..")){
+
+open(IN, "$admincgidir/memberdatafiles/$file")||&adminerror($!,"Cannot read $admincgidir/memberdatafiles/$file");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+open(OUT,">$admincgidir/memberdatafiles/$file") || &adminerror($!,"Cannot write $admincgidir/memberdatafiles/$file");
+flock (OUT, 2);
+foreach $line(@lines) {
+($firstname,$lastname,$street,$city,$state,$zip,$country,$mofbirth,$dofbirth,$yofbirth,$username,$password,$emailaddress,$profilecategory,$remote_addr,$membercode)=split(/\|/,$line);
+$codetodel = $FORM{'membercode'};
+if($line !~ /$codetodel/){
+$ema=$emailaddress;
+print OUT "$line";
+}
+}
+}
+}
+close (OUT);
+
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<font size=2 face=verdana><blockquote>The username <b>$FORM{'username'}</b> has
+been deleted. If you wish to notify the member you may write your message below.
+<p></font></blockquote>
+<br>
+<form method="post" action="$admincgiurl/messagemailer.pl">
+<center><table><tr>
+<td><font size=2 face=verdana>Subject of Message</font></td>
+<td><input type="text" size="40" name="subject" value="Your membership has been revoked"></td></tr><tr>
+<td><font size=2 face=verdana>Name of Sender</font></td>
+<td><input type="text" name="title" value="Administrator"></td></tr><tr>
+<td><font size=2 face=verdana>Recipient Name</font></td>
+<td><input type="text" name="username" value="$FORM{'username'}"></td></tr><tr>
+<td><font size=2 face=verdana>Recipient's email address</font></td>
+<td><input type="text" name="sendto" value="$ema"></td></tr><tr>
+<td valign="top"><font size=2 face=verdana>Body of Message</font></td>
+<td><textarea name="message" rows="6" cols="40"></textarea></td></tr><tr>
+<td>&nbsp;</td><td><input type="submit" name="notifymember" value="Notify Member" class="button"></td></tr></table>
+</center>
+</form>
+
+<br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;
+}
+
+
+
+
+sub renameuser {
+if($FORM{'renusername'} eq ""){
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br><font size=2 face=verdana><blockquote>You are trying to rename
+a username but you have not
+entered the username you want to rename. Please <a href="javascript:history.go(-1)">go back</a>
+and enter the username to rename.</font></blockquote><br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;}
+
+if($FORM{'newusername'} eq ""){
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br><font size=2 face=verdana><blockquote>You are trying to rename
+<b>$username</b> but you have not
+entered the new name to replace the old name. Please <a href="javascript:history.go(-1)">go back</a>
+and enter the new name.</font></blockquote><br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;}
+
+
+
+$newname=$FORM{'newusername'};
+$oldname=$FORM{'renusername'};
+
+if(-e "$users/$newname.txt"){
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br><font size=2 face=verdana><blockquote>There is already a member using the name <b>$newname</b>
+Please <a href="javascript:history.go(-1)">go back</a>
+and try another name.</font></blockquote><br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;}
+
+
+
+if(-e "$profilesdir/catwsm/$oldname.html"){
+$profilecat="catwsm";
+$cnt=unlink "$profilesdir/catwsm/$oldname.html";
+&resetprofile;}
+if(-e "$profilesdir/catwsw/$oldname.html"){
+$profilecat="catwsm";
+$cnt=unlink "$profilesdir/catwsw/$oldname.html";
+&resetprofile;}
+if(-e "$profilesdir/catmsm/$oldname.html"){
+$profilecat="catwsm";
+$cnt=unlink "$profilesdir/catmsm/$oldname.html";
+&resetprofile;}
+if(-e "$profilesdir/catmsw/$oldname.html"){
+$profilecat="catwsm";
+$cnt=unlink "$profilesdir/catmsw/$oldname.html";
+&resetprofile;}
+
+&removenm_admin_profiles_txt;
+
+opendir(DIR, "$profilesdir/$profilecat/datafiles");
+@docs=readdir(DIR);
+closedir(DIR);
+
+foreach $doc(@docs){
+if($doc =~ /profdat/){
+
+open(IN, "$profilesdir/$profilecat/datafiles/$doc")||&adminerror($!,"Cannot read $profilesdir/$profilecat/datafiles/$doc");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+open(OUT,">$profilesdir/$profilecat/datafiles/$doc") || &adminerror($!,"Cannot write $profilesdir/$profilecat/datafiles/$doc");
+flock (OUT, 2);
+foreach $line(@lines) {
+if ($line !~ /$oldname/) {
+print OUT "$line";
+}
+}
+}
+}
+close (OUT);
+
+&removenm_proflist_txt;
+
+if(-e "$lovestorieshtmldir/$oldname.html"){
+$oldlsname=$lovestorieshtmldir/$oldname.html;
+$newlsname=$lovestorieshtmldir/$newname.html;
+rename("$oldlsname", "$newlsname")|| &adminerror ("Error Renaming $oldlsname to $newlsname:", "$!");}
+
+if(-e "$messagecenterdir/$oldname"){
+rename("$messagecenterdir/$oldname","$messagecenterdir/$newname")|| &adminerror ("Error Renaming $messagecenterdir/$oldname to $messagecenterdir/$newname:", "$!");}
+
+&changeunm_memdata;
+}
+
+
+sub resetprofile {
+
+open (HTML, ">$profilesdir/$profilecat/$newname.html") || die "Cannot open $profilesdir/$profilecat/$newname.html to create user profile\n";
+flock (HTML, 2) or die "cannot lock file\n";
+print HTML "
+$mainheader<br><br>
+
+<form method=\"post\" action=\"$cgiurl/personals.pl\">
+
+
+<font size=2 face=verdana><blockquote>Sorry, this user does not have a profile yet; but you can 
+leave a message by clicking the button below.<p>
+</blockquote></font>
+<input type=\"hidden\" name=\"username\" value=\"$newname\">
+<center><input type=\"submit\" name=\"leavemess\" value=\"Leave Message\" class=\"button\"></center><br><br>
+
+<br><br>
+$botcode\n";
+}
+
+sub changeunm_memdata {
+
+opendir(DIR, "$admincgidir/memberdatafiles");
+@files=readdir(DIR);
+closedir(DIR);
+
+foreach $file(@files){
+
+open(IN, "$admincgidir/memberdatafiles/$file");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($firstname,$lastname,$street,$city,$state,$zip,$country,$mofbirth,$dofbirth,$yofbirth,$username,$password,$emailaddress,$profilecategory,$remote_addr,$membercode)=split(/\|/,$line);
+
+if($FORM{'renusername'} eq "$username"){
+
+$workingfile = $file;
+
+open(IN, "$admincgidir/memberdatafiles/$workingfile")||&adminerror($!,"Cannot read $admincgidir/memberdatafiles/$workingfile");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+open(OUT,">$admincgidir/memberdatafiles/$workingfile") || &adminerror($!,"Cannot write $admincgidir/memberdatafiles/$workingfile");
+flock (OUT, 2);
+foreach $line(@lines) {
+if ($line !~ /$oldname/) {
+print OUT "$line";
+}
+}
+close (OUT);
+
+open (FILE, ">>$admincgidir/memberdatafiles/$workingfile") || die "Cannot open $admincgidir/memberdatafiles/$workingfile\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$firstname|$lastname|$street|$city|$state|$zip|$country|$mofbirth|$dofbirth|$yofbirth|$newname|$password|$emailaddress|$profilecategory|$remote_addr|$membercode\n";  
+close (FILE);
+
+$cnt=unlink "$users/$oldname.txt";
+
+open (FILE, ">$users/$newname.txt") || die "Cannot open $users/$newname.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$newname|$password|$emailaddress\n";  
+close (FILE);
+
+&sendnmchgnotice;
+}
+}
+}
+}
+
+sub sendnmchgnotice {
+unless($username){$username = $FORM{'renusername'};}
+open  (MAIL, "| $sendmail -t") || die "cannot open $sendmail\n";  
+print MAIL "To: $oldname <$emailaddress>\n";  
+print MAIL "From: $email\n"; 
+print MAIL "Subject: $mailsubject4\n"; 
+print MAIL "Dear $username,\n";  
+print MAIL "\n";
+print MAIL "$mailcontent4\n";
+print MAIL "\n";
+print MAIL "New Username: $newname\n";
+print MAIL "Password: $password\n";
+print MAIL "\n";
+print MAIL "$mailsignature1\n";  
+print MAIL "\n";  
+print MAIL "$mailsignature2\n";  
+close MAIL;
+
+&namerenamed;
+}
+
+
+sub namerenamed {
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<font size=2 face=verdana><blockquote>The username <b>$username</b> has
+been changed to <b>$newname</b>, and the user has been notified at, <b>$emailaddress</b>.
+<P>
+<a href="javascript:history.go(-1)">Go back</a>
+</font></blockquote>
+<br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;
+}
+
+
+sub searchmemdatafile {
+
+if($ENV{'HTTP_REFERER'} !~ /$admincgiurl/){
+
+print "Content-type:text/html\n\n";
+print "<br><br><br><br><blockquote><font size=2 face=verdana><b><b>Access Violation</b><br><br>
+You are not authorized to access this document. </font></blockquote><br><br><br>\n";
+exit;}
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<table cellpadding=0 cellspacing=0 width=100% border=0><tr>
+<td>
+<form method="post" action="$admincgiurl/updater.pl">
+<br>
+<font size=2 face=verdana><blockquote>
+By selecting a <i>search by</i> option and entering the term to search for (Example: last name; city; state, zip, country)
+you can receive a list of all entries that match your search criteria. (If you wanted to see the details for all members from 
+Arizona, you would select "State" as your <i>search by</i> option, and enter "Arizona" into the search box. If there
+are ten members from the state of Arizona, the search will return the table with the registration data for all ten members.)<p>
+</font></blockquote></td></tr></table>
+<center><table width=100% cellpadding=2 cellspacing=2>
+<tr>
+<td><font size=2 face=verdana><blockquote>
+
+<b>Search by:</font></b><p>
+<center><table width=90% cellpadding=2 cellspacing=2><tr>
+<td>
+
+<input type="radio" name="searchby" value="city"><font size=2 face=verdana>City</font></td>
+<td><input type="radio" name="searchby" value="state"><font size=2 face=verdana>State</font></td>
+<td><input type="radio" name="searchby" value="country"><font size=2 face=verdana>Country</font></td>
+<td><input type="radio" name="searchby" value="zip"><font size=2 face=verdana>Zip Code</font></td></tr><tr>
+<td><input type="radio" name="searchby" value="lastname"><font size=2 face=verdana>Last name</font></td>
+<td><input type="radio" name="searchby" value="firstname"><font size=2 face=verdana>First name</font></td>
+<td><input type="radio" name="searchby" value="yofbirth"><font size=2 face=verdana>Year of birth</font></td>
+<td><input type="radio" name="searchby" value="username"><font size=2 face=verdana>Username</font></td></tr></table>
+</center><p>
+</font></blockquote></td></tr><tr>
+<td>
+<center><table><tr><td>
+<font size=2 face=verdana>
+<b>Enter Search Term</b></font></td>
+<td><input type="text" name="searchterm" size=15></td>
+<td><input type="submit" name="searchdata" value="Search" class="button"></td></tr></table></center>
+</td></tr></table>
+
+
+
+<br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table></form>
+</body></html>
+EOF
+exit;
+
+
+}
+
+
+sub searchdata {
+
+if(($searchby eq "")||($searchterm eq "")){
+print "Content-type:text/html\n\n";
+&adminmenu;
+print "<br>
+<font size=2 face=verdana><blockquote>
+Either you have not selected a \"search by\" term, or you have not entered the term to search for.
+Please <a href=\"javascript:history.go(-1)\">go back</a> and enter the missing 
+information.</font></blockquote><br><br>\n";
+print "<table cellspacing=\"0\" cellpadding=\"0\" width=100% height=60 border=\"0\" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing=\"0\" cellpadding=\"0\" width=100% height=35 border=\"0\" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align=\"right\"><a href=\"$admincgiurl/adminindex.pl?launchadmin\">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table></form>
+</body></html>\n";
+exit;
+}
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+
+
+opendir(DIR, "$admincgidir/memberdatafiles");
+@files =  readdir(DIR);
+closedir(DIR);
+
+foreach $file(@files){
+
+unless(($file eq "next.txt")||($file eq ".")||($file eq "..")){
+
+open(IN, "$admincgidir/memberdatafiles/$file")||&adminerror($!,"Cannot open $admincgidir/memberdatafiles/$file");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($firstname,$lastname,$street,$city,$state,$zip,$country,$mofbirth,$dofbirth,$yofbirth,$username,$password,$emailaddr,$profilecategory,$remote_addr,$membercode)=split(/\|/,$line);
+
+if(($searchby eq "city")&& ($FORM{'searchterm'} eq "$city")
+||($searchby eq "country")&& ($FORM{'searchterm'} eq "$country")
+||($searchby eq "state")&& ($FORM{'searchterm'} eq "$state")
+||($searchby eq "zip")&& ($FORM{'searchterm'} eq "$zip")
+||($searchby eq "firstname")&& ($FORM{'searchterm'} eq "$firstname")
+||($searchby eq "lastname")&& ($FORM{'searchterm'} eq "$lastname")
+||($searchby eq "yofbirth")&& ($FORM{'searchterm'} eq "$yofbirth")
+||($searchby eq "username")&& ($FORM{'searchterm'} eq "$username")){
+$termexists = "yes";}
+}
+}
+}
+
+unless($termexists eq "yes"){
+
+
+print "
+<td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td>
+<td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td>
+</tr></table>
+<table><tr>
+<td><br>
+<font size=2 face=verdana><blockquote>
+There was no data found for the $searchby: <b>$searchterm</b><p>
+<a href=\"javascript:history.go(-1)\">Go back</a>.
+</font></blockquote></td></tr></table><br><br>
+<table cellspacing=\"0\" cellpadding=\"0\" width=100% height=60 border=\"0\" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing=\"0\" cellpadding=\"0\" width=100% height=35 border=\"0\" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align=\"right\"><a href=\"$admincgiurl/adminindex.pl?launchadmin\">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table></form>
+</body></html>\n";
+exit;
+}
+
+
+if($termexists eq "yes"){&termexists;}
+
+}
+
+
+
+sub termexists {
+
+print "
+<table width=100% cellpadding=1 cellspacing=1 border=0 bgcolor=404040><tr>
+<td bgcolor=c0c0c0><center><font size=1 face=verdana>First Name</font></center></td>
+<td bgcolor=c0c0c0><center><font size=1 face=verdana>Last name</font></center></td>
+<td bgcolor=c0c0c0><center><font size=1 face=verdana>Street</font></center></td>
+<td bgcolor=c0c0c0><center><font size=1 face=verdana>City</font></center></td>
+<td bgcolor=c0c0c0><center><font size=1 face=verdana>State</font></center></td>
+<td bgcolor=c0c0c0><center><font size=1 face=verdana>Zip</font></center></td>
+<td bgcolor=c0c0c0><center><font size=1 face=verdana>Country</font></center></td>
+<td bgcolor=c0c0c0><center><font size=1 face=verdana>Year of Birth</font></center></td>
+<td bgcolor=c0c0c0><center><font size=1 face=verdana>Username</font></center></td>
+<td bgcolor=c0c0c0><center><font size=1 face=verdana>Member Code</font></center></td>
+<td bgcolor=c0c0c0><center><font size=1 face=verdana>Email Address</font></center></td></tr><tr>\n";
+
+
+opendir(DIR, "$admincgidir/memberdatafiles");
+@files =  readdir(DIR);
+closedir(DIR);
+
+foreach $file(@files){
+
+open(IN, "$admincgidir/memberdatafiles/$file")||&adminerror($!,"Cannot open $admincgidir/memberdatafiles/$file");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($firstname,$lastname,$street,$city,$state,$zip,$country,$mofbirth,$dofbirth,$yofbirth,$username,$password,$emailaddr,$profilecategory,$remote_addr,$membercode)=split(/\|/,$line);
+
+
+if(($searchby eq "city")&& ($FORM{'searchterm'} eq "$city")
+||($searchby eq "country")&& ($FORM{'searchterm'} eq "$country")
+||($searchby eq "state")&& ($FORM{'searchterm'} eq "$state")
+||($searchby eq "zip")&& ($FORM{'searchterm'} eq "$zip")
+||($searchby eq "firstname")&& ($FORM{'searchterm'} eq "$firstname")
+||($searchby eq "lastname")&& ($FORM{'searchterm'} eq "$lastname")
+||($searchby eq "yofbirth")&& ($FORM{'searchterm'} eq "$yofbirth")
+||($searchby eq "username")&&($FORM{'searchterm'} eq "$username")){
+
+print "
+<td\n";
+if($searchby eq "firstname"){
+print "bgcolor=ffff00\n";}else{print "bgcolor=ffffff\n";}
+print "><center><font size=1 face=verdana>$firstname</font></center></td>
+<td\n";
+if($searchby eq "lastname"){
+print "bgcolor=ffff00\n";}else{print "bgcolor=ffffff\n";}
+print "><center><font size=1 face=verdana>$lastname</font></center></td>
+<td bgcolor=ffffff><center><font size=1 face=verdana>$street</font></center></td>
+<td\n";
+if($searchby eq "city"){
+print "bgcolor=ffff00\n";}else{print "bgcolor=ffffff\n";}
+print "><center><font size=1 face=verdana>$city</font></center></td>
+<td\n";
+if($searchby eq "state"){
+print "bgcolor=ffff00\n";}else{print "bgcolor=ffffff\n";}
+print "><center><font size=1 face=verdana>$state</font></center></td>
+<td\n";
+if($searchby eq "zip"){
+print "bgcolor=ffff00\n";}else{print "bgcolor=ffffff\n";}
+print "><center><font size=1 face=verdana>$zip</font></center></td>
+<td\n";
+if($searchby eq "country"){
+print "bgcolor=ffff00\n";}else{print "bgcolor=ffffff\n";}
+print "><center><font size=1 face=verdana>$country</font></center></td>
+<td\n";
+if($searchby eq "yofbirth"){
+print "bgcolor=ffff00\n";}else{print "bgcolor=ffffff\n";}
+print "><center><font size=1 face=verdana>$yofbirth</font></center></td>
+
+<td\n";
+if($searchby eq "username"){
+print "bgcolor=ffff00\n";}else{print "bgcolor=ffffff\n";}
+print "><center><font size=1 face=verdana>$username</font></center></td>
+<td bgcolor=ffffff><center><font size=1 face=verdana>$membercode</font></center></td>
+<td bgcolor=ffffff><center><font size=1 face=verdana>$emailaddr</font></center></td></tr><tr>\n";
+}
+}
+}
+
+print "
+<td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td>
+<td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td><td bgcolor=eeeeee>&nbsp;</td>
+</tr></table><table cellspacing=\"0\" cellpadding=\"0\" width=100% height=60 border=\"0\" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing=\"0\" cellpadding=\"0\" width=100% height=35 border=\"0\" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align=\"right\"><a href=\"$admincgiurl/adminindex.pl?launchadmin\">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table></form>
+</body></html>\n";
+exit;
+}
+
+
+
+
+
+
+sub noresultswerefound {
+print "<br>
+<font size=2 face=verdana><blockquote>
+There was no data found for the $searchby: <b>$searchterm</b><p>
+<a href=\"javascript:history.go(-1)\">Go back</a>.
+</font></blockquote><br><br>\n";
+print "<table cellspacing=\"0\" cellpadding=\"0\" width=100% height=60 border=\"0\" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing=\"0\" cellpadding=\"0\" width=100% height=35 border=\"0\" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align=\"right\"><a href=\"$admincgiurl/adminindex.pl?launchadmin\">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table></form>
+</body></html>\n";
+exit;
+}
+
+sub admindelprofile {
+
+if($FORM{'nameofprofile'} eq ""){
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br><font size=2 face=verdana><blockquote>You did not enter 
+a profile to delete.
+</font></blockquote><br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;
+}
+
+if(-e "$profilesdir/catwsm/$FORM{'nameofprofile'}.html") {
+$profdatloc = "$profilesdir/catwsm";  	
+&admredefprofile;
+&admremnmprofdat;}
+
+elsif(-e "$profilesdir/catwsw/$FORM{'nameofprofile'}.html") {
+$profdatloc = "$profilesdir/catwsw";  	
+&admredefprofile;
+&admremnmprofdat;}
+
+elsif(-e "$profilesdir/catmsw/$FORM{'nameofprofile'}.html") {
+$profdatloc = "$profilesdir/catmsw";  	
+&admredefprofile;
+&admremnmprofdat;}
+
+elsif(-e "$profilesdir/catmsm/$FORM{'nameofprofile'}.html") {  	
+$profdatloc = "$profilesdir/catmsm";
+&admredefprofile;
+&admremnmprofdat;}
+
+else {
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br><font size=2 face=verdana><blockquote>The profile for <b>$FORM{'nameofprofile'}</b>
+was not found.
+</font></blockquote><br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;
+}
+
+
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<font size=2 face=verdana><blockquote>The profile for <b>$FORM{'nameofprofile'}
+</b> has
+been deleted. 
+<P>
+<a href="javascript:history.go(-1)">Go back</a>
+</font></blockquote>
+<br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;
+}
+
+
+sub mismatchname_code {
+if($ENV{'HTTP_REFERER'} !~ /$admincgiurl/){
+
+print "Content-type:text/html\n\n";
+print "<br><br><br><br><blockquote><font size=2 face=verdana><b><b>Access Violation</b><br><br>
+You are not authorized to access this document. </font></blockquote><br><br><br>\n";
+exit;}
+print "Content-type:text/html\n\n";
+&adminmenu;
+print <<EOF;
+<br><br><font size=2 face=verdana><blockquote>The membercode you have entered does not match the 
+name for the user you are trying to delete.
+<a href="javascript:history.go(-1)">Go back</a>
+</font></blockquote><br><br>
+<table cellspacing="0" cellpadding="0" width=100% height=60 border="0" bgcolor=eeeeee>
+<tr><TD WIDTH=10>&nbsp;</td><td>&nbsp;
+</td></tr></table>
+<table cellspacing="0" cellpadding="0" width=100% height=35 border="0" bgcolor=808080>
+<tr><TD WIDTH=10>&nbsp;</td><td align="right"><a href="$admincgiurl/adminindex.pl?launchadmin">
+<font size=2 face=verdana color=white>ADMINISTRATION CENTER</font></a>
+</td></tr></table>
+</body></html>
+EOF
+exit;}
+1;

@@ -1,0 +1,15 @@
+#############################################################
+#############################################################
+##        Aaron's All Engine Expired Domain Finder         ##
+##                This is a Commercial Script              ##
+##        Modification, Distribution or Resale without     ##
+##        Prior written permission is in Violation of      ##
+##        the copyrights and International Intellectual    ##
+##        Property Laws.  Violators will be prosecuted!    ##
+##        http://www.aaronscgi.com - aaron@aaronscgi.com   ##
+#############################################################
+#############################################################
+url     => "http://search.aol.com/dirsearch.adp?start=&from=topsearchbox.%2Findex.adp&query=^~query~^",
+ip      => "205.188.180.57",
+Rec     => qr{<li><b>.*?onmouseover=\"self\.status=\'([^\']+)\'[^>]*>(.*?)</A>(.*?)<br>}si,
+Next    => qr{<A HREF=\"(dirsearch.adp\?[^\"]+)\"><b>more}si,

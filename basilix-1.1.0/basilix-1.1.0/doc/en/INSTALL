@@ -1,0 +1,18 @@
+BasiliX Documentation (we need a better one):
+=============================================
+
+To install and configure, proceed:
+
+1) Read INSTALL.bsx
+
+2) Read INSTALL.db
+
+3) Read INSTALL.domain
+
+4) If you decide to use SMTP direct connection to send e-mails, read INSTALL.relay
+
+5) Read INSTALL.theme
+
+6) and you are finished.
+
+-arslanm

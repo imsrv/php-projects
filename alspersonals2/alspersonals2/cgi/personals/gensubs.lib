@@ -1,0 +1,525 @@
+###################################################################################################
+# Commonly used sub routines
+###################################################################################################
+
+sub readparse {
+
+
+$SIG{__DIE__} = \&Error_Msg;
+sub Error_Msg {
+    $msg = "@_"; 
+   print "\nContent-type: text/html\n\n";
+  print "The following error occurred : $msg\n";
+  exit;
+}
+
+# Get the input
+read(STDIN, $input, $ENV{'CONTENT_LENGTH'});
+   @pairs = split(/&/, $input);
+   foreach $pair (@pairs) {
+
+   ($name, $value) = split(/=/, $pair);
+  
+   $name =~ tr/+/ /;  
+   $name =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
+   $value =~ tr/+/ /;
+   $value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
+
+	unless($HTML_ALLOW eq "Y"){
+
+   $value =~ s/<([^>]|\n)*>//g;}
+
+ $FORM{$name} = $value;  
+      }
+      }	
+###################################################################################################
+sub oops { 
+my($err, $msg) = @_; 
+print "Content-type: text/html\n\n";
+print " 
+$mainheader<br><br>
+<table width=100% cellpadding=0 cellspacing=0 border=0><tr><td>
+<center>
+<font face=arial><br><br><h5>$err</h5> <br><br>
+<font size=2>$msg </font></center>
+</td></tr></table><br><br>
+$botcode
+\n"; 
+exit(1); 
+}
+###################################################################################################
+sub cgiError { 
+my($err, $msg) = @_; 
+print "Content-type: text/html\n\n";
+print " 
+$mainheader<br><br>
+<table width=100% cellpadding=0 cellspacing=0 border=0><tr><td>
+<center>
+<font face=arial><br><br><h5>$err</h5> <br><br>
+<font size=2>$msg </font></center>
+</td></tr></table><br><br>
+$botcode
+\n"; 
+exit(1); 
+}
+###################################################################################################
+sub missingUorP{
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader<br><br> 
+<table width=100% cellpadding=0 cellspacing=0 border=0><tr><td>
+<blockquote>
+<font size=1 face=verdana>
+
+$nouser_nopass
+
+</blockquote><br>
+<center><FORM> <INPUT type="button" value="Click here to go back" onClick="history.go(-1)" class="button"> </FORM></center>
+</td></tr></table>
+<br><br>$botcode
+
+EOF
+exit;
+}
+###################################################################################################
+sub missingfield {
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader<br><br> 
+<table width=100% cellpadding=0 cellspacing=0 border=0><tr><td>
+<blockquote>
+<font size=1 face=verdana>
+
+$emptyfielderror
+
+</blockquote><br>
+<center><FORM> <INPUT type="button" value="Click here to go back" onClick="history.go(-1)" class="button"> </FORM></center>
+</td></tr></table>
+<br><br>$botcode
+
+EOF
+exit;
+}
+###################################################################################################
+sub html_missing {
+print "<html><head><title>Missing Field</title><head>\n";
+}
+###################################################################################################
+
+sub html_cannot_create {
+print "<html><head><title>Cannot Create Document</title><head>\n";
+}
+###################################################################################################
+sub html_success {
+print "<html><head><title>Action Performed Successfully</title><head>\n";
+}
+###################################################################################################
+sub html_error {
+print "<html><head><title>Error Encountered</title><head>\n";
+}
+###################################################################################################
+sub print_header {
+print "Content-type: text/html\n\n";
+}
+###################################################################################################
+sub invalidemail{
+print "Content-type:text/html\n\n"; 
+print "$mainheader\n"; 
+print "<br><br><table width=100% cellpadding=0 cellspacing=0 border=0><tr><td>\n"; 
+print "<font size=1 face=verdana>\n"; 	
+print "<blockquote>
+$emailnotvalid
+</font></blockquote>\n"; 	
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\" class=\"button\"> 
+</FORM></center>\n"; 
+print "</td></tr></table>\n";	
+print "<br><br>$botcode\n";
+exit; 
+}
+###################################################################################################
+sub usernametaken {
+
+print "Content-type:text/html\n\n";  
+print "$mainheader\n"; 
+print "<table width=100% cellpadding=0 cellspacing=0 border=0><tr><td>\n"; 
+print "<font size=1 face=verdana>\n"; 	
+print "<blockquote>
+
+$usernameisinuse
+
+</blockquote></font><br>\n"; 
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\" class=\"button\"> </FORM></center>\n"; 
+print "</td></tr></table>\n";
+print "<br><br>$botcode\n";
+exit; 
+
+}   
+
+###################################################################################################
+
+sub file_exists {
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader
+<br><br>
+<table width=100% cellpadding=0 cellspacing=0 border=0><tr><td>
+<blockquote><font size=2 face=verdana>
+
+$filenameinuse
+
+</blockquote></font><br><br>
+<center><FORM> <INPUT type="button" value="Click here to go back" onClick="history.go(-1)" class="button"> <br><br>
+</td></tr></table>
+$botcode
+EOF
+exit;
+}
+
+###################################################################################################
+
+sub invalidlogin {
+print "Content-type: text/html\n\n"; 	  
+print "$mainheader<br><br>\n";
+print "<table width=100% cellpadding=0 cellspacing=0 border=0><tr><td>\n";
+print "<blockquote><font face=verdana,univers,times,arial,helvetica size=1>
+
+$loginhasfailed
+
+
+</font></blockquote>\n"; 	  
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\" class=\"button\"> 
+</FORM></center>\n"; 
+print "</td></tr></table>\n";
+print "<br>$botcode\n";   
+exit;   
+}
+###################################################################################################
+sub problemencountered {    
+print "Content-type: text/html\n\n"; 	  
+print "$mainheader\n";
+print "<table width=100% cellpadding=0 cellspacing=0 border=0><tr><td>\n";
+print "<br><br><blockquote><font face=verdana,univers,times,arial,helvetica size=1>
+$loginhasfailed
+</font></blockquote>\n"; 	  
+print "<center><FORM> <INPUT type=\"button\" value=\"Click here to go back\" onClick=\"history.go(-1)\" class-\"button\"> </FORM></center>\n"; 
+print "</td></tr></table>\n";
+print "<br>$botcode\n";  
+exit; 
+} 
+
+sub missinginfo {
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader<br><br> 
+<table width=100% cellpadding=0 cellspacing=0 border=0><tr><td>
+<blockquote>
+<font size=1 face=verdana>
+$emptyfielderror
+</blockquote><br>
+<center><FORM> <INPUT type="button" value="Click here to go back" onClick="history.go(-1)" class="button"> </FORM></center>
+</td></tr></table>
+<br><br>$botcode
+
+EOF
+exit;
+} 
+
+
+
+sub nopicfileextension {
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader<br><br> 
+<table width=100% cellpadding=0 cellspacing=0 border=0><tr><td>
+<blockquote><font size=1 face=verdana>
+
+$imgexterror
+
+</font></blockquote>
+<center><FORM> <INPUT type="button" value="Click here to go back" onClick="history.go(-1)" class="button"> </FORM></center>
+</td></tr></table>
+<br><br>$botcode
+EOF
+exit;
+} 
+
+
+sub picfilenotfound {
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader<br><br> 
+<table width=100% cellpadding=0 cellspacing=0 border=0><tr><td>
+<blockquote>
+<font size=1 face=verdana>
+
+$nopicturefound
+
+</font></blockquote>
+<center><FORM> <INPUT type="button" value="Click here to go back" onClick="history.go(-1)" class="button"> </FORM></center>
+</td></tr></table>
+<br><br>$botcode
+EOF
+exit;
+} 
+
+sub userfilenotfound {
+print "Content-type:text/html\n\n";
+print <<EOF;
+$mainheader<br><br> 
+<table width=100% cellpadding=0 cellspacing=0 border=0><tr><td>
+<blockquote>
+<font size=1 face=verdana>
+
+$nouserfilefound
+
+</font></blockquote>
+<center><FORM> <INPUT type="button" value="Click here to go back" onClick="history.go(-1)" class="button"> </FORM></center>
+</td></tr></table>
+<br><br>$botcode
+EOF
+exit;
+}
+
+sub removenm_members_txt {
+
+open(IN, "$admincgidir/members.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($numberofmembers)=split(/\n/,$line);
+$oldcount=$numberofmembers;
+$newcount=$numberofmembers - 1;
+
+if($newcount < 0){$newcount = 0;}
+open (FILE, ">$admincgidir/members.txt") || die "Cannot open $admincgidir/members.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$newcount\n";  
+close (FILE);
+}
+}
+
+sub removenm_proflist_txt {
+unless($username){$username = $FORM{'renusername'};}
+if(-e "$profilesdir/catwsm/$FORM{'username'}.html"){
+$profilecat="catwsm";}
+if(-e "$profilesdir/catwsw/$FORM{'username'}.html"){
+$profilecat="catwsw";}
+if(-e "$profilesdir/catmsm/$FORM{'username'}.html"){
+$profilecat="catmsm";}
+if(-e "$profilesdir/catmsw/$FORM{'username'}.html"){
+$profilecat="catmsw";}
+
+opendir(DIR, "$profilesdir/$profilecat/datafiles");
+@docs=readdir(DIR);
+closedir(DIR);
+
+foreach $doc(@docs){
+
+next if($doc eq ".");
+next if($doc eq "..");
+
+open(IN, "$profilesdir/$profilecat/datafiles/$doc")||&adminerror($!,"Cannot read $profilesdir/$profilecat/datafiles/$doc");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+open(OUT,">$profilesdir/$profilecat/datafiles/$doc") || &adminerror($!,"Cannot write $profilesdir/$profilecat/datafiles/$doc");
+flock (OUT, 2);
+foreach $line(@lines) {
+$idtocheck="$FORM{'username'}";
+if ($line !~ /$idtocheck/) {
+print OUT "$line";
+}
+}
+close (OUT);
+}
+}
+
+
+
+sub delmescendir {
+if(-e "$messagecenterdir/$FORM{'username'}"){
+`rm -rf $messagecenterdir/$FORM{'username'}`;}
+}
+
+
+sub dellovestoryfile {
+
+if(-e "$lovestorieshtmldir/$FORM{'username'}.html"){
+$cnt=unlink "$lovestorieshtmldir/$FORM{'username'}.html";}
+
+open(IN, "$lovestoriesdir/lovestories.txt")||&adminerror($!,"Cannot read $lovestoriesdir/lovestories.txt");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+open(OUT,">$lovestoriesdir/lovestories.txt") || &adminerror($!,"Cannot write $lovestoriesdir/lovestories.txt");
+flock (OUT, 2);
+foreach $line(@lines) {
+if ($line !~ /$FORM{'username'}/) {
+print OUT "$line";
+}
+}
+close (OUT);
+}
+
+sub removenm_profdat_txt {
+if(-e "$profilesdir/catwsm/$FORM{'username'}.html"){
+$profilecat="catwsm";
+$cnt=unlink "$profilesdir/catwsm/$FORM{'username'}.html";}
+if(-e "$profilesdir/catwsw/$FORM{'username'}.html"){
+$profilecat="catwsm";
+$cnt=unlink "$profilesdir/catwsw/$FORM{'username'}.html";}
+if(-e "$profilesdir/catmsm/$FORM{'username'}.html"){
+$profilecat="catwsm";
+$cnt=unlink "$profilesdir/catmsm/$username.html";}
+if(-e "$profilesdir/catmsw/$FORM{'username'}.html"){
+$profilecat="catwsm";
+$cnt=unlink "$profilesdir/catmsw/$FORM{'username'}.html";}
+
+opendir(DIR, "$profilesdir/$profilecat/datafiles");
+@docs=readdir(DIR);
+closedir(DIR);
+
+foreach $doc(@docs){
+if($doc =~ /profdat/){
+
+open(IN, "$profilesdir/$profilecat/datafiles/$doc")||&adminerror($!,"Cannot read $profilesdir/$profilecat/datafiles/$doc");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+open(OUT,">$profilesdir/$profilecat/datafiles/$doc") || &adminerror($!,"Cannot write $profilesdir/$profilecat/datafiles/$doc");
+flock (OUT, 2);
+foreach $line(@lines) {
+if ($line !~ /$FORM{'username'}/) {
+print OUT "$line";
+}
+}
+}
+}
+close (OUT);
+}
+
+sub removenm_memberdata_txt {
+
+opendir(DIR, "$admincgidir/memberdatafiles");
+@files=readdir(DIR);
+closedir(DIR);
+
+foreach $file(@files){
+
+unless(($file eq "next.txt")||($file eq ".")||($file eq "..")){
+
+
+open(IN, "$admincgidir/memberdatafiles/$file")||&adminerror($!,"Cannot read $admincgidir/memberdatafiles/$file");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+open(OUT,">$admincgidir/memberdatafiles/$file") || &adminerror($!,"Cannot write $admincgidir/memberdatafiles/$file");
+flock (OUT, 2);
+foreach $line(@lines) {
+($firstname,$lastname,$street,$city,$state,$zip,$country,$mofbirth,$dofbirth,$yofbirth,$username,$password,$emailaddress,$profilecategory,$remote_addr,$membercode)=split(/\|/,$line);
+$codetodel = $FORM{'membercode'};
+if($line !~ /$codetodel/){
+print OUT "$line";
+}
+}
+}
+close (OUT);
+}
+}
+
+
+
+sub removenm_admin_profiles_txt {
+unless(($username)||($FORM{'username'}))
+{$username = $FORM{'renusername'};}
+
+if(-e "$profilesdir/catwsm/$FORM{'username'}.html"){
+$profilecat="catwsm";}
+
+if(-e "$profilesdir/catwsw/$FORM{'username'}.html"){
+$profilecat="catwsw";}
+
+if(-e "$profilesdir/catmsm/$FORM{'username'}.html"){
+$profilecat="catmsm";}
+
+if(-e "$profilesdir/catmsw/$FORM{'username'}.html"){
+$profilecat="catmsw";}
+
+opendir(DIR, "$profilesdir/$profilecat/datafiles");
+@docs=readdir(DIR);
+closedir(DIR);
+
+foreach $doc(@docs){
+if($doc =~ /profdat/){
+
+open(IN, "$profilesdir/$profilecat/datafiles/$doc")||&adminerror($!,"Cannot read $profilesdir/$profilecat/datafiles/$doc");
+flock (IN, 1);
+@lines= <IN>;
+close(IN);
+
+foreach $line(@lines) {
+$nmtlf=$username;
+if ($line =~ /$nmtlf/) {
+
+open(IN, "$admincgidir/profiles.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($numberofprofiles)=split(/\n/,$line);
+$oldprocount=$numberofprofiles;
+$newprocount=$numberofprofiles - 1;
+
+if($newprocount < 0){$newprocount = 0;}
+
+open (FILE, ">$admincgidir/profiles.txt") || die "Cannot open $users/$username\.txt\n";  
+flock (FILE, 2) or die "can't lock file\n";  
+print FILE "$newprocount\n";  
+close (FILE);
+}
+}
+}
+}
+}
+}
+
+
+sub getunm_pwd_ema {
+unless($username){$username = $FORM{'renusername'};}
+open(IN, "$users/$username.txt");
+@lines=<IN>;
+close(IN);
+
+foreach $line(@lines){
+($one,$two,$three)=split(/\|/,$line);
+
+$username = $one;
+$password = $two;
+$emailaddr= $three;
+}
+}
+
+
+sub pallads {
+foreach $line(@lines) {
+print "$line";
+}
+}
+
+sub pln($lines){
+
+print "$lines[$i]";
+
+
+}
+
+
+
+
+
+1;

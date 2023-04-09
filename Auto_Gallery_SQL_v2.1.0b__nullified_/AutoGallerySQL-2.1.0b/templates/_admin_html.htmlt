@@ -1,0 +1,136 @@
+<html>
+<head>
+  <title>AutoGallery SQL Administration</title>
+  <script language="JavaScript">
+    function openHelp(url, name) { 
+      window.open(url, name, 'scrollbars=1,resizable=no,width=350,height=450,status=0,menubar=0');
+    }
+    function openExtern(url, name) { 
+      window.open(url, name, 'scrollbars=1,resizable=no,width=500,height=250,status=0,menubar=0');
+    }
+  </script>
+  <style type="text/css">
+  <!--
+    a.reg  {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+
+    a.reg:hover  {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited {
+      text-decoration: none;
+      color: #004080;
+    }
+
+    a.reg:visited:hover {
+      text-decoration: none;
+      color: #990000;
+    }
+
+    a.reg:visited:active  {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  -->
+  </style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#004080" vlink="#adadad" alink="#ff0000">
+
+<div align="center">
+
+<form action="admin.cgi" method="POST">
+
+<table border="0" cellpadding="0" cellspacing="0" width="700">
+<tr bgcolor="#aaaaaa">
+<td align="center">
+
+<table cellspacing="1" cellpadding="4" border="0" width="100%">
+<tr>
+<td bgcolor="#004080" align="center">
+<font face="Arial" size="3" color="white" style="font-size: 15px;">
+<b>Editing the HTML for #%HPAGE%#</b>
+</font>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td align="center">
+<font face="Arial" size="2">
+<b>Main HTML</b>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td align="center">
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b><a href="javascript:openExtern('extern.cgi?act=gen');" class="reg">Generate Template Values</a></b>
+</font>
+
+<br><br>
+
+<textarea name="html" cols="95" rows="60" wrap="OFF" style="font-size: 11px; font-family: Verdana">#%HTML%#</textarea>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td align="center">
+<font face="Arial" size="2">
+<b>Template HTML</b>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td align="center">
+<textarea name="temp" cols="95" rows="10" wrap="OFF" style="font-size: 11px; font-family: Verdana">#%TEMP%#</textarea>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td align="center">
+<font face="Arial" size="2">
+<b>Date Change HTML</b>
+</td>
+</tr>
+<tr bgcolor="#ececec">
+<td align="center">
+<textarea name="date" cols="95" rows="10" wrap="OFF" style="font-size: 11px; font-family: Verdana">#%DATE%#</textarea>
+</td>
+</tr>
+
+<tr bgcolor="#cccccc">
+<td align="center">
+<input type="hidden" name="run" value="updateHTML">
+<input type="submit" value="Update HTML" style="font-size: 11px; font-family: Verdana">
+<font face="Verdana" size="2" style="font-size: 11px;"><b>For</b></font>
+<select name="pages" style="font-size: 11px; font-family: Verdana">
+<option value="#%HPAGE%#">#%HPAGE%# Only</option>
+<option value="#%MAIN%#">All Main Pages</option>
+#%ARCHIVES%#
+#%ALL%#
+</select>
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+<br><br>
+
+<font face="Verdana" size="1" style="font-size: 11px;">
+<b><a href="admin.cgi" class="reg">Back To Main Page</a></b>
+</font>
+
+</div>
+
+</body>
+</html>

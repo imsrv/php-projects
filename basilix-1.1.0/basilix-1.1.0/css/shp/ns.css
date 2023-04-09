@@ -1,0 +1,339 @@
+/*
+ * CSS designed for BasiliX
+ * -----------------------------------
+ * Theme        = Default
+ * Browser      = Netscape Navigator
+ * -----------------------------------
+ * derived from whu.css by widowmaker
+ * ek$i sozluk: http://sozluk.sourtimes.org
+ *
+ * -arslanm
+ *
+ */
+
+/* General */
+BODY {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	color: white;
+	background-color: #0077ed;
+}
+
+A {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	color: white;
+	text-decoration: none;
+}
+
+A:Hover {
+	background-color: #990133;
+	color: #ffcb02;
+}
+
+HR {
+	color: #cccccc;
+	height: 1px;
+}
+
+INPUT,SELECT {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: normal;
+	color: black;
+	background-color: #ffcb02;
+}
+
+TEXTAREA {
+	background-color: #ffcb02;
+	color: black;
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight:normal;
+}
+
+PRE {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: medium;
+	background-color: #0077ed;
+	color: black;
+}
+
+
+/* Error/info message displaying */
+.error {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 10pt;
+	font-weight: bold;
+	background-color: #990133;
+	color: #ffcb02;
+        border-style: outset;
+        border-width: 1;
+}
+
+.csserr {
+	font-family: arial;
+	font-size: 1pt;
+	color: #0077ed;
+}
+
+.info {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 10pt;
+	font-weight: bold;
+	background-color: #ffcb02;
+	color: #990133;
+        border-style: outset;
+        border-width: 1;
+}
+
+/* Used to border the tables with color */
+.tblborder {
+	background-color: #c0c0c0;
+}
+
+/* This is the same as BODY */
+.normalbg {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	color: white;
+	background-color: #0077ed;
+}
+
+/* Buttons */
+.button {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: bold;
+	background-color: #990133;
+	color: #ffcb02;
+}
+.butover {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: bold;
+	background-color: #ffcb02;
+	color: #990133;
+}
+
+/* Login menu */
+.login {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: normal;
+	background-color: #0077ed;
+	color: black;
+}
+
+/* The menu links */
+.menutop {
+	background-color: #ffcb02;
+}
+
+.menuleft {
+	background-color: #ffcb02;
+	border-style: outset;
+	border-width: 1;
+	border-color: #ffcb02;
+}
+
+/* Page informative header */
+.pagehdr {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 10pt;
+	font-weight: normal;
+	background-color: #ffcb02;
+	color: #990133;
+	border-style: outset;
+	border-width: 1;
+}
+
+/* Copyright notice */
+.copy {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 8pt;
+	color: white;
+}
+
+/* Folder list */
+.folderhdr {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 10pt;
+	background-color: #990133;
+	color: #ffcb02;
+	font-weight: medium;
+	border: 1px solid #ffcb02;
+	
+}
+
+.folderlst {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 9pt;
+	background-color: #0077ed;
+	color: white;
+}
+
+.folderlst A {
+	color: white;
+}
+
+.folderlst A:hover {
+	text-decoration: underline;
+}
+
+/* Mbox listing */
+.chkfldr {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 9pt;
+	background-color: #990133;
+	color: #ffcb02;
+	border-style: outset;
+	border-width: 1;
+}
+       
+.chknext {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 9pt;
+	background-color: #ffcb02;
+	color: #990133;
+	border-style: outset;
+	border-width: 1;
+}
+.chknext A {
+	color: black;
+}
+
+.mboxhdr {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 10pt;
+	background-color: #990133;
+	color: #ffcb02;
+	font-weight: normal;
+	border-style: outset;
+	border-width: 1;
+}
+
+.mboxhdr A {
+	color: #ffcb02;
+}
+
+.mboxhdr A:hover {
+	color: #ffcb02;
+	text-decoration: underline;
+}
+
+.mboxhdract {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 10pt;
+	background-color: #ffcb02;
+	color: black;
+	font-weight: normal;
+	border-style: inset;
+	border-width: 1;
+}
+
+.oldmsg {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: normal;
+	color: white;
+	background-color: #0077ed;
+}
+.oldmsg A {
+	color: white;
+}
+
+.oldmsg A:Hover {
+	color: white;
+	background-color: transparent;
+	text-decoration: underline;
+}
+
+.newmsg {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: normal;
+	background-color: #ffcb02;
+	color: #990133;
+}
+
+.newmsg A {
+	color: #990133;
+}
+
+.newmsg A:Hover {
+	color: #990133;
+	background-color: transparent;
+	text-decoration: underline;
+}
+
+/* Read Msg */
+.rmsghdr {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 10pt;
+	font-weight: bold;
+	color: white;
+	background-color: #0077ed;
+}
+.rmsgval {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 10pt;
+	color: white;
+	background-color: #0077ed;
+}
+.rmsgbod {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: medium;
+	color: white;
+	background-color: #0077ed;
+}
+
+/* Compose Msg */
+.cmsghdr {
+	font-family: tahoma,verdana,arial,helvetica;
+	font-size: 10pt;
+	font-weight: bold;
+	color: white;
+	background-color: #0077ed;
+}
+.cmsgval {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 10pt;
+	color: white;
+	background-color: #0077ed;
+}
+.cmsgbod {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: medium;
+	color: white;
+	background-color: #0077ed;
+}
+
+.cmsgatchlist {
+	color: white;
+	background-color: #0077ed;
+	font-family: lucida,verdana,tahoma,arial,helvetica;
+	font-size: 8pt;
+}	
+
+/* Address book */
+.addrhdr {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 10pt;
+	background-color: #990133;
+	color: #ffcb02;
+	font-weight: normal;
+	border: 1px solid #ffcb02;
+}
+
+.addrlst {
+	font-family: verdana,tahoma,arial,helvetica;
+	font-size: 9pt;
+	font-weight: normal;
+	background-color: #0077ed;
+	color: white;
+}
+
